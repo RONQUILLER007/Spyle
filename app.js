@@ -9,8 +9,7 @@ const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx9Supz_QAPtnOT0afc
 function enviarSugerenciaAGoogle(promptTitulo, palabraSugerida) {
   const payload = JSON.stringify({
     promptTitle: promptTitulo,
-    suggestedWord: palabraSugerida,
-    suggestedTier: 'Sugerido por agente'
+    suggestedWord: palabraSugerida
   });
 
   return fetch(WEBHOOK_URL, {
