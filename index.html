@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>SPYLE // CONTRAINTELIGENCIA — Protocolo de Infiltración</title>
+  <link rel="stylesheet" href="style.css?v=1.0">
+</head>
+<body>
+  <!-- Canvas de partículas de polvo ambiental de baja intensidad -->
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Capa atmosférica táctica (retícula de coordenadas militar + scanlines + viñeta CRT) -->
+  <div class="tactical-backdrop" aria-hidden="true"></div>
+  <div class="tactical-scanlines" aria-hidden="true"></div>
+  <div class="tactical-vignette" aria-hidden="true"></div>
+
+  <!-- Telemetría lateral de Aptitud de Infiltración (0 a 700 pts) -->
+  <aside id="depth-gauge" aria-label="Escala de aptitud de infiltración">
+    <div class="gauge-title">APTITUD</div>
+    <div class="gauge-track">
+      <div class="gauge-ruler">
+        <span class="depth-mark" style="bottom: 0%">000</span>
+        <span class="depth-mark" style="bottom: 14.28%">100</span>
+        <span class="depth-mark" style="bottom: 28.57%">200</span>
+        <span class="depth-mark" style="bottom: 42.85%">300</span>
+        <span class="depth-mark" style="bottom: 57.14%">400</span>
+        <span class="depth-mark" style="bottom: 71.42%">500</span>
+        <span class="depth-mark" style="bottom: 85.71%">600</span>
+        <span class="depth-mark" style="bottom: 100%">700</span>
+      </div>
+      <div id="depthfill"></div>
+      <div id="depth-sub">
+        <div class="sub-marker"></div>
+        <div class="sub-label" id="gauge-label">0 pts</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Notificación flotante de expediente desclasificado -->
+  <div id="unlock-toast" class="unlock-toast hidden" role="status" aria-live="polite">
+    <span class="toast-icon" id="toast-icon">🗝️</span>
+    <div class="toast-body">
+      <b id="toast-title">ARCHIVO DESCLASIFICADO</b>
+      <span id="toast-desc">Incorporado a la Cámara de Archivos</span>
+    </div>
+  </div>
+
+  <main id="app">
+    <header class="dossier-header">
+      <div class="brand-block">
+        <span class="station-tag">ESTACIÓN DE ESCUCHA K-7 // CONTRAINTELIGENCIA</span>
+        <h1>SPYLE <span>ES</span></h1>
+      </div>
+      <div class="header-right">
+        <button id="btn-header-calendar" class="icon-btn btn-header-calendar calendar-locked" type="button" title="Archivo Histórico de Misiones" aria-label="Archivo de Misiones" style="display: none;">📅</button>
+        <button id="btn-help" class="icon-btn btn-briefing-help" type="button" title="Consultar Directiva de Operaciones // Briefing" aria-label="Directiva de Operaciones // Briefing">?</button>
+        <div class="telemetry-pill" title="Índice de Cobertura Operativa acumulada">
+          <span class="telemetry-kicker">COBERTURA</span>
+          <span id="depthtext">0000</span>
+        </div>
+        <button id="btn-mute" class="icon-btn" type="button" title="Activar/Silenciar audio de terminal" aria-label="Sonido">🔊</button>
+      </div>
+    </header>
+
+    <!-- JUEZ VISUAL: Sello / Indicador de Dictamen de Inteligencia -->
+    <div class="seal-wrap" id="judge-seal" data-state="idle" role="region" aria-label="Dictamen de Contrainteligencia">
+      <div class="seal-meta-bar">
+        <span class="seal-led-group">
+          <span class="seal-led"></span>
+          <span id="seal-channel">CANAL DE VERIFICACIÓN // ACTIVO</span>
+        </span>
+        <span class="seal-serial" id="seal-serial">REF: K7-000</span>
+      </div>
+
+      <div class="seal-viewport">
+        <button type="button" class="stamp-frame stamp-frame-btn" id="stamp-frame" title="Volver al Cuartel General / Menú de Inicio" aria-label="Volver al Cuartel General / Menú de Inicio">
+          <span class="stamp-icon" id="stamp-icon">🗂️</span>
+          <span class="stamp-verdict" id="stamp-verdict">[ EN ESPERA DE INTERROGATORIO ]</span>
+        </button>
+        <div class="seal-subtext" id="seal-subtext">Evalúe las referencias locales del agente antes de autorizar su despliegue.</div>
+      </div>
+    </div>
+
+    <!-- MENÚ PRINCIPAL -->
+    <section id="screen-menu" class="screen active">
+      <div class="briefing-box">
+        <div class="briefing-header">DIRECTIVA DE OPERACIONES // BRIEFING</div>
+        <p class="lead">
+          Eres instructor de contrainteligencia. Evalúa a agentes durmientes en <b>7 consultas de 25 segundos</b> sobre cultura local española antes de infiltrarlos tras las líneas. Una respuesta obvia delata manual de turista; un cliché forzado quema la tapadera.
+        </p>
+      </div>
+
+      <div class="menu-actions">
+        <button class="btn big primary-action" id="btn-daily" type="button">
+          <span class="btn-main-line">📡 Interrogatorio Diario</span>
+          <small id="daily-status"></small>
+        </button>
+        <button class="btn big calendar-action-btn calendar-locked" id="btn-calendar" type="button" style="display: none;">
+          <span class="btn-main-line">📅 Archivo Histórico de Misiones</span>
+          <small id="calendar-status">Expedientes desclasificados del calendario</small>
+        </button>
+        <button class="btn big" id="btn-unlimited" type="button">
+          <span class="btn-main-line">♾️ Simulacro Continuo (Unlimited)</span>
+          <small>Tandas aleatorias de entrenamiento sin restricción diaria</small>
+        </button>
+        <button class="btn big" id="btn-packs" type="button">
+          <span class="btn-main-line">🗂️ Dossiers de Campo (Packs Temáticos)</span>
+          <small>5 áreas operativas divididas en capítulos desbloqueables</small>
+        </button>
+        <button class="btn big" id="btn-bestiary" type="button">
+          <span class="btn-main-line">🔐 Archivos Clasificados</span>
+          <small id="bestiary-status"></small>
+        </button>
+      </div>
+    </section>
+
+    <!-- CALENDARIO / ARCHIVO HISTÓRICO DE MISIONES -->
+    <section id="screen-calendar" class="screen">
+      <div class="section-head">
+        <h2>📅 Archivo Histórico de Misiones</h2>
+        <p class="muted">Terminal de expedientes desclasificados. Revisa, juega o vuelve a evaluar cualquier misión del calendario operativo.</p>
+      </div>
+
+      <div class="calendar-terminal-panel">
+        <div class="calendar-meta-bar">
+          <span class="meta-tag">// REGISTRO DE INTELIGENCIA RETROACTIVO</span>
+          <span id="calendar-summary-text" class="meta-info">Expedientes disponibles</span>
+        </div>
+        <div id="calendar-grid" class="calendar-grid"></div>
+      </div>
+
+      <div class="final-actions" style="margin-top: 24px;">
+        <button class="btn" type="button" data-goto="menu">← Volver al centro de mando</button>
+      </div>
+    </section>
+
+    <!-- PACKS TEMÁTICOS (DOSSIERS) -->
+    <section id="screen-packs" class="screen">
+      <div class="section-head">
+        <h2>Dossiers de Campo</h2>
+        <p class="muted">Selecciona una división temática para inspeccionar sus capítulos operativos:</p>
+      </div>
+      <div id="pack-list"></div>
+      <button class="btn" type="button" data-goto="menu">← Volver al centro de mando</button>
+    </section>
+
+    <!-- CAPÍTULOS DE UN PACK -->
+    <section id="screen-chapters" class="screen">
+      <div class="section-head">
+        <h2 id="pack-title">Capítulos Operativos</h2>
+        <p class="muted">7 consultas exactas por capítulo. Se requieren 250+ puntos de aptitud para desclasificar el siguiente nivel.</p>
+      </div>
+      <div id="chapter-list"></div>
+      <button class="btn" type="button" id="btn-back-packs">← Volver a Dossiers</button>
+    </section>
+
+    <!-- ARCHIVOS CLASIFICADOS (ANTES BESTIARIO) -->
+    <section id="screen-bestiary" class="screen">
+      <div class="section-head">
+        <h2>🔐 Cámara de Archivos Clasificados</h2>
+        <p class="muted">Desclasifica equipamiento real de espionaje activando el <b>Protocolo Doble Fondo</b> en rondas con dictamen de 65+ puntos (🕵️, 🗝️, 🎖️).</p>
+      </div>
+      <div id="bestiary-list" class="bestiary-grid"></div>
+      <button class="btn" type="button" data-goto="menu">← Volver al centro de mando</button>
+    </section>
+
+    <!-- PANTALLA DE JUEGO / INTERROGATORIO (Layout Responsivo Táctico) -->
+    <section id="screen-game" class="screen">
+      <!-- HUD unificado (visible en móvil y desktop) -->
+      <div class="hud">
+        <span class="hud-cell"><small>CONSULTA</small> <b id="round-label">1/7</b></span>
+        <span class="hud-cell hud-center" id="mode-label"></span>
+        <span class="hud-cell hud-right"><small>APTITUD</small> <b id="score-label">0 pts</b></span>
+      </div>
+
+      <!-- Panel Tripartito Desktop / Disposición Vertical Móvil -->
+      <div class="game-tripartite-layout">
+        <!-- COLUMNA IZQUIERDA: Telemetría de Misión -->
+        <aside class="panel-telemetry" aria-label="Telemetría de la misión">
+          <div class="panel-box">
+            <div class="panel-box-header">// TELEMETRÍA DE MISIÓN</div>
+
+            <!-- Registro de fecha y estación -->
+            <div class="telemetry-block">
+              <div class="t-label">REGISTRO DE MISIÓN</div>
+              <div class="t-value" id="side-mission-date">EXPEDIENTE --</div>
+              <div class="t-sub" id="side-station-id">ESTACIÓN K-7 // ACTIVA</div>
+            </div>
+
+            <!-- Estado de la red / cifrado -->
+            <div class="telemetry-block">
+              <div class="t-label">ESTADO DE LA RED</div>
+              <div class="net-status-row">
+                <span class="net-led" id="net-led"></span>
+                <span class="net-label" id="net-label">EN LÍNEA // CIFRADO AES-256</span>
+              </div>
+            </div>
+
+            <!-- Medidor en vivo del Speed Bonus con indicador luminoso -->
+            <div class="telemetry-block">
+              <div class="t-label">IMPULSO DE VELOCIDAD</div>
+              <div class="speed-meter-box" id="side-speed-box">
+                <div class="speed-led-row">
+                  <span class="speed-led" id="side-speed-led"></span>
+                  <span class="speed-led-text" id="side-speed-text">⚡ +20% VELOCIDAD</span>
+                </div>
+                <div class="speed-bar-track">
+                  <div class="speed-bar-fill" id="side-speed-bar"></div>
+                </div>
+                <div class="speed-sub" id="side-speed-sub">Ventana de tiro: 6s iniciales (&ge;19s)</div>
+              </div>
+            </div>
+
+            <!-- Estado del comodín Wildcard (Protocolo Doble Fondo) -->
+            <div class="telemetry-block">
+              <div class="t-label">ESTADO DEL COMODÍN</div>
+              <div class="side-wildcard-display" id="side-wildcard-display">
+                <span class="side-wc-icon">🃏</span>
+                <span class="side-wc-state" id="side-wc-state">Disponible</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- COLUMNA CENTRAL: Área de Interrogatorio Activa -->
+        <div class="panel-interrogation">
+          <!-- Interruptor de Comodín (Protocolo Doble Fondo) -->
+          <div class="wildcard-wrapper">
+            <button id="btn-wildcard" type="button" class="btn-wildcard" title="Activa antes de responder para duplicar cobertura y desclasificar archivo si obtienes 65+ pts">
+              <span class="wc-indicator"></span>
+              <span class="wc-icon">🃏</span>
+              <span id="wc-label">Protocolo Doble Fondo: Disponible</span>
+            </button>
+          </div>
+
+          <!-- Temporizador táctico circular perimetral de 25s (Desktop/Tablet) + barra lineal compatible -->
+          <div class="timer-wrapper">
+            <div class="circular-timer-box" aria-label="Temporizador circular de 25 segundos">
+              <svg class="circular-timer-svg" viewBox="0 0 120 120" role="img" aria-hidden="true">
+                <circle class="c-timer-track" cx="60" cy="60" r="54" />
+                <circle class="c-timer-speed-arc" cx="60" cy="60" r="54" />
+                <circle id="c-timer-progress" class="c-timer-progress" cx="60" cy="60" r="54" />
+              </svg>
+              <div class="circular-timer-content">
+                <span id="circular-timer-text" class="c-timer-time">25s</span>
+                <span id="circular-timer-sub" class="c-timer-sub">RESTANTE</span>
+              </div>
+            </div>
+
+            <!-- Temporizador lineal complementario / móvil -->
+            <div class="timer" aria-label="Tiempo restante">
+              <div id="timer-fill"></div>
+              <div id="timer-speed-marker" class="timer-speed-marker" title="Umbral de bonificación de velocidad (19s)"></div>
+              <span id="speed-live-indicator" class="speed-live-indicator">⚡ +20% VELOCIDAD</span>
+              <span id="timer-text">25s</span>
+            </div>
+          </div>
+
+          <!-- Consulta del recluta (Prompt clasificado) -->
+          <div class="prompt-container">
+            <div class="prompt-kicker">CONSULTA DEL AGENTE EN CAMPO //</div>
+            <div id="prompt-text" class="prompt"></div>
+          </div>
+
+          <!-- Entrada de terminal -->
+          <form id="answer-form" autocomplete="off">
+            <div id="terminal-input-wrap" class="terminal-input-wrap">
+              <span class="terminal-chevron" aria-hidden="true">&gt;</span>
+              <input id="answer-input" type="text" maxlength="60" placeholder="Transmitir referencia cultural…" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="text" enterkeyhint="send">
+            </div>
+            <button class="btn btn-transmit" type="submit" id="btn-submit">Transmitir</button>
+          </form>
+          <div id="attempt-feedback" class="attempt-feedback hidden" role="status" aria-live="polite"></div>
+          <div id="intentos-en-vivo" class="intentos-en-vivo hidden" aria-live="polite" aria-label="Intentos no catalogados en esta ronda"></div>
+
+          <!-- Cartel de dictamen de ronda -->
+          <div id="result" class="result hidden">
+            <div class="result-top-row">
+              <span id="result-emoji"></span>
+              <div class="result-verdict-group">
+                <div id="result-stamp-tag" class="result-stamp-tag"></div>
+                <div id="result-text"></div>
+              </div>
+            </div>
+            <div id="result-speed-bonus" class="speed-badge hidden"></div>
+            <div id="result-wildcard-note" class="wc-note hidden"></div>
+            <button class="btn primary-action" type="button" id="btn-next">Siguiente consulta ➔</button>
+          </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: Dossier Clasificado de la Sesión -->
+        <aside class="panel-dossier" aria-label="Dossier clasificado de la sesión">
+          <div class="panel-box">
+            <div class="panel-box-header">// DOSSIER CLASIFICADO (7 RONDAS)</div>
+            <div id="side-dossier-list" class="side-dossier-list">
+              <!-- Se puebla dinámicamente con las 7 tarjetas de las rondas -->
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PANTALLA FINAL: INFORME DE MISIÓN -->
+    <section id="screen-final" class="screen">
+      <h2 id="final-title">Informe de Evaluación</h2>
+
+      <div class="card dossier-summary-card">
+        <div class="card-stamp-corner">CLASIFICADO</div>
+        <div id="final-head">SPYLE</div>
+        <div class="final-score-wrap">
+          <span class="final-score-label">Aptitud de Infiltración</span>
+          <div id="final-score">0 pts</div>
+        </div>
+        <div id="final-emojis" aria-label="Resumen de sellos por ronda"></div>
+        <div id="final-depth"></div>
+        <div class="final-protocol-foot">spyle.app</div>
+      </div>
+
+      <button class="btn big primary-action" type="button" id="btn-copy">📋 Copiar expediente para compartir</button>
+      <div id="copy-msg" class="muted copy-feedback"></div>
+
+      <div class="breakdown-section">
+        <h3>Registro Desclasificado del Interrogatorio</h3>
+        <p class="muted">Si probaste términos no catalogados durante una ronda, aparecerán listados abajo. Pulsa <b>[ ✉️ Reclamar ]</b> junto a cualquiera de ellos para remitirlo a contrainteligencia.</p>
+        <div id="breakdown"></div>
+      </div>
+
+      <div class="final-actions">
+        <button class="btn big" type="button" id="btn-view-bestiary">🔐 Abrir Archivos Clasificados</button>
+        <button class="btn" type="button" data-goto="menu">← Volver al centro de mando</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL TÁCTICO DEL MANUAL DE EVALUACIÓN (REGLAS / BRIEFING) -->
+  <div id="modal-rules" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-rules-title">
+    <div class="modal-card modal-rules-card">
+      <div class="claim-modal-header">
+        <h3 id="modal-rules-title" class="claim-modal-title">// DIRECTIVA DE OPERACIONES // BRIEFING</h3>
+        <button id="btn-close-rules" type="button" class="modal-close" aria-label="Cerrar manual">✕</button>
+      </div>
+      <div class="rules-modal-body">
+        <div class="rules-intro">
+          Directiva de calibración para la estación de escucha. Conoce los <b>7 sellos de dictamen</b> y los multiplicadores de infiltración:
+        </div>
+        <ul class="tier-list rules-modal-tiers" id="rules-tier-list">
+          <li class="tier-item"><span class="t-badge t-0">⬛ 0 pts</span> <div class="tier-desc"><b>Delatado / Misión Fallida:</b> La tapadera cayó o se agotó el tiempo de respuesta.</div></li>
+          <li class="tier-item"><span class="t-badge t-10">📰 10 pts</span> <div class="tier-desc"><b>Registro Turístico:</b> Demasiado obvio; cualquier forastero lo sabría de inmediato.</div></li>
+          <li class="tier-item"><span class="t-badge t-25">🎭 25 pts</span> <div class="tier-desc"><b>Tapadera Chapucera:</b> Cliché pretencioso (*too clever*) que levanta sospechas.</div></li>
+          <li class="tier-item"><span class="t-badge t-45">🗂️ 45 pts</span> <div class="tier-desc"><b>Conocimiento de Campo:</b> Creíble y natural en una conversación callejera real.</div></li>
+          <li class="tier-item"><span class="t-badge t-65">🕵️ 65 pts</span> <div class="tier-desc"><b>Infiltración Profunda:</b> Dominio cultural propio de un residente veterano.</div></li>
+          <li class="tier-item"><span class="t-badge t-85">🗝️ 85 pts</span> <div class="tier-desc"><b>Alto Secreto:</b> Microcultura local de nicho casi invisible desde fuera.</div></li>
+          <li class="tier-item"><span class="t-badge t-100">🎖️ 100 pts</span> <div class="tier-desc"><b>Agente Durmiente Perfecto:</b> Precisión cultural milimétrica e inexpugnable.</div></li>
+        </ul>
+        <div class="rules-bonus-section">
+          <div class="bonus-box">
+            <b>⚡ Impulso de Velocidad (+20%):</b> Responder con éxito en los primeros 6 segundos (&ge;19 s restantes) otorga un <b>+20%</b> sobre los puntos base (redondeado al alza). Un primer fallo en la ronda cancela este bonus.
+          </div>
+          <div class="bonus-box">
+            <b>🃏 Protocolo Doble Fondo (1 Comodín por sesión):</b> Actívalo antes de responder. Si obtienes 65+ pts (🕵️, 🗝️ o 🎖️), duplicas la cobertura operativa y desclasificas un artefacto en los <i>Archivos Clasificados</i>. Se quema si fallas la infiltración.
+          </div>
+          <div class="bonus-box">
+            <b>🗂️ Dossiers por Capítulos:</b> Cada capítulo consta de 7 consultas. Supera <b>250 puntos</b> para desclasificar el siguiente capítulo.
+          </div>
+        </div>
+        <div class="rules-modal-actions">
+          <button id="btn-ack-rules" type="button" class="btn btn-rules-ack">[ ENTENDIDO / INICIAR ]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ESPECIAL // ALERTA DE INTELIGENCIA DE ACCESO NO AUTORIZADO (EASTER EGG) -->
+  <div id="modal-easter-egg" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-ee-title">
+    <div class="modal-card modal-easter-egg-card">
+      <div class="ee-classified-banner">[ // ACCESO NO AUTORIZADO DETECTADO ]</div>
+      <div class="ee-header">
+        <h3 id="modal-ee-title" class="ee-title">CÓDIGO CRIPTOGRÁFICO ACEPTADO</h3>
+        <p class="ee-lead">EL ARCHIVO HISTÓRICO Y CALENDARIO DE MISIONES HA SIDO DESCLASIFICADO DE FORMA PERMANENTE.</p>
+      </div>
+      <div class="ee-body">
+        <div class="ee-intel-note">
+          <span class="ee-bullet">◈</span>
+          <span>Acceso concedido a la terminal retroactiva de expedientes diarios.</span>
+        </div>
+        <div class="ee-intel-note">
+          <span class="ee-bullet">◈</span>
+          <span>Dispositivo operativo: botón <strong>[ 📅 ARCHIVO DE MISIONES ]</strong> visible de forma permanente en cabecera y cuartel general.</span>
+        </div>
+        <div class="ee-actions">
+          <button id="btn-ack-easter-egg" type="button" class="btn btn-ee-confirm">[ CONFIRMAR DESCLASIFICACIÓN / CONTINUAR ]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TÁCTICO DE CONFIRMACIÓN PREVIO AL DESPLIEGUE -->
+  <div id="modal-deploy" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-deploy-title">
+    <div class="modal-card modal-deploy-card">
+      <div class="claim-modal-header">
+        <h3 id="modal-deploy-title" class="claim-modal-title">// PROTOCOLO DE DESPLIEGUE OPERATIVO</h3>
+        <button id="btn-close-deploy" type="button" class="modal-close" aria-label="Abortar despliegue">✕</button>
+      </div>
+      <div class="deploy-modal-body">
+        <div id="deploy-mode-subtitle" class="deploy-mode-subtitle">MODO DIARIO: OPERACIÓN ACTIVA</div>
+        <div class="deploy-intel-box">
+          <div class="deploy-intel-item">
+            <span class="deploy-bullet">•</span>
+            <span class="deploy-item-text"><strong>Duración:</strong> 7 rondas consecutivas de 25 segundos cada una.</span>
+          </div>
+          <div class="deploy-intel-item">
+            <span class="deploy-bullet">•</span>
+            <span class="deploy-item-text"><strong>Regla de velocidad:</strong> +20% de bonificación en los primeros 6 segundos (se anula tras el primer fallo).</span>
+          </div>
+          <div class="deploy-intel-item">
+            <span class="deploy-bullet">•</span>
+            <span class="deploy-item-text"><strong>Comodín:</strong> 1 uso disponible. Se quema si la respuesta es no catalogada.</span>
+          </div>
+          <div class="deploy-intel-item deploy-intel-alert">
+            <span class="deploy-bullet">⚡</span>
+            <span class="deploy-item-text">Al pulsar iniciar, el reloj comenzará de inmediato.</span>
+          </div>
+        </div>
+        <div class="deploy-actions">
+          <button id="btn-abort-deploy" type="button" class="btn btn-deploy-abort">[ ABORTAR ]</button>
+          <button id="btn-confirm-deploy" type="button" class="btn btn-deploy-confirm">[ INICIAR OPERACIÓN ]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TÁCTICO DE CONFIRMACIÓN DE ABORTO DE MISIÓN -->
+  <div id="modal-abort" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-abort-title">
+    <div class="modal-card modal-abort-card">
+      <div class="claim-modal-header">
+        <h3 id="modal-abort-title" class="claim-modal-title">// ALERTA DE EVACUACIÓN TÁCTICA</h3>
+        <button id="btn-close-abort" type="button" class="modal-close" aria-label="Cancelar evacuación">✕</button>
+      </div>
+      <div class="abort-modal-body">
+        <p class="abort-warning-text">// ¿ABORTAR MISIÓN? El progreso no guardado de esta misión se perderá.</p>
+        <div class="abort-actions">
+          <button id="btn-confirm-abort" type="button" class="btn btn-abort-confirm">[ CONFIRMAR ]</button>
+          <button id="btn-cancel-abort" type="button" class="btn btn-abort-cancel">[ CANCELAR ]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TÁCTICO DE TRANSMISIÓN DE INTELIGENCIA DE CAMPO -->
+  <div id="modal-suggestion" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-claim-title">
+    <div class="modal-card modal-claim-card">
+      <div class="claim-modal-header">
+        <h3 id="modal-claim-title" class="claim-modal-title">// TRANSMISIÓN DE INTELIGENCIA DE CAMPO</h3>
+        <button id="btn-close-modal" type="button" class="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+      <form id="suggestion-form" class="claim-form" autocomplete="off">
+        <div class="claim-field">
+          <label class="claim-label" for="modal-prompt-text">CATEGORÍA DEL EXPEDIENTE // SOLO LECTURA</label>
+          <input type="text" id="modal-prompt-text" class="modal-input claim-category-readonly" readonly tabindex="-1">
+        </div>
+        <div class="claim-field">
+          <label class="claim-label" for="sug-word">REFERENCIA PROPUESTA POR EL AGENTE // EDITABLE</label>
+          <input type="text" id="sug-word" class="modal-input claim-input" maxlength="60" placeholder="Introduce la palabra o expresión…" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+        </div>
+        <button id="btn-submit-sug" type="submit" class="btn btn-claim-submit">[ TRANSMITIR A CONTRAINTELIGENCIA ]</button>
+        <div id="sug-status" class="claim-status hidden" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PANEL PRIVADO DE DESARROLLADOR (Alt + D o ?dev=1) -->
+  <aside id="dev-audit-panel" class="dev-audit-panel hidden" aria-label="Auditor de densidad (solo desarrollador)">
+    <div class="dev-audit-header">
+      <b>// AUDITOR DE DENSIDAD</b>
+      <button id="btn-close-dev-audit" type="button" class="modal-close" aria-label="Cerrar">✕</button>
+    </div>
+    <div id="dev-audit-summary" class="dev-audit-summary"></div>
+    <div id="dev-audit-body" class="dev-audit-body"></div>
+  </aside>
+
+  <script src="prompts.js?v=1.0" charset="UTF-8"></script>
+  <script src="app.js?v=1.0" charset="UTF-8"></script>
+</body>
+</html>
