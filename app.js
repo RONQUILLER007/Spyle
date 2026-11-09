@@ -2697,13 +2697,16 @@ function auditPrompts() {
     DEV_TIERS.forEach((t) => { byTier[t] = values.filter((v) => v === t).length; });
     const total = Object.keys(p.answers || {}).length;
     const light = total >= 130 ? "🟢" : total >= 70 ? "🟡" : "🔴";
-    return { id: p.id, titulo: p.texto, total, byTier, light };
+    return { id: p.id, title: p.texto, titulo: p.texto, total, byTier, light };
   });
 }
 
 function logAuditToConsole() {
   const table = {};
-  auditPrompts().forEach((a) => {
+  const categoriasOrdenadas = [...auditPrompts()].sort((a, b) =>
+    a.title.localeCompare(b.title, 'es', { sensitivity: 'base' })
+  );
+  categoriasOrdenadas.forEach((a) => {
     table[a.id] = { titulo: a.titulo, total: a.total, ...a.byTier, estado: a.light };
   });
   console.table(table);
@@ -2713,21 +2716,24 @@ function renderDevAudit() {
   const body = $("dev-audit-body");
   if (!body) return;
   body.innerHTML = "";
-  const audit = auditPrompts();
-  const count = (l) => audit.filter((a) => a.light === l).length;
-  $("dev-audit-summary").textContent = `${audit.length} categorías · 🟢 ${count("🟢")} · 🟡 ${count("🟡")} · 🔴 ${count("🔴")}`;
+  const bancoCategorias = auditPrompts();
+  const categoriasOrdenadas = [...bancoCategorias].sort((a, b) =>
+    a.title.localeCompare(b.title, 'es', { sensitivity: 'base' })
+  );
+  const count = (l) => categoriasOrdenadas.filter((a) => a.light === l).length;
+  $("dev-audit-summary").textContent = `${categoriasOrdenadas.length} categorías · 🟢 ${count("🟢")} · 🟡 ${count("🟡")} · 🔴 ${count("🔴")}`;
 
-  audit.forEach((a) => {
+  categoriasOrdenadas.forEach((a) => {
     const row = document.createElement("div");
     row.className = "dev-row";
 
     const head = document.createElement("div");
     head.className = "dev-row-head";
-    head.textContent = `${a.light} ${a.id} — ${a.titulo}`;
+    head.textContent = `${a.light} ${a.title}`;
 
     const stats = document.createElement("div");
     stats.className = "dev-row-stats";
-    stats.textContent = `Total: ${a.total} | ` + DEV_TIERS.map((t) => `${t}: ${a.byTier[t]}`).join(" · ");
+    stats.textContent = `[${a.id}] · Total: ${a.total} | ` + DEV_TIERS.map((t) => `${t}: ${a.byTier[t]}`).join(" · ");
 
     row.append(head, stats);
     body.appendChild(row);
