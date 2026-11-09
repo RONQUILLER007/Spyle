@@ -113,16 +113,130 @@ const PTS_TO_TIER = {
 };
 
 /* ---------- Cámara de Archivos Clasificados (Guerra Fría) ---------- */
-const ARCHIVES = [
-  { id: "minox-b",          nombre: "Cámara Subminiatura Minox B",     icono: "📷", codigo: "ARCHIVO // BERLÍN-01",   desc: "Oculta en un encendedor metálico; fotografía documentos A4 a 20 cm en penumbra." },
-  { id: "libreta-otp",      nombre: "Libreta de Un Solo Uso (OTP)",    icono: "🔢", codigo: "ARCHIVO // VIENA-02",    desc: "Hojas microimpresas en celulosa inflamable con claves numéricas irrompibles." },
-  { id: "moneda-hueca",     nombre: "Moneda Hueca de Buzón Muerto",    icono: "🪙", codigo: "ARCHIVO // PRAGA-03",    desc: "Pieza de curso legal mecanizada con apertura por aguja para ocultar microfilmes." },
-  { id: "onda-corta",       nombre: "Receptor de Estación Numerada",   icono: "📻", codigo: "ARCHIVO // VARSOVIA-04", desc: "Sintonizador de valija que capta locuciones cifradas emitidas de madrugada." },
-  { id: "pasaporte-serieb", nombre: "Pasaporte Diplomático Serie B",   icono: "📕", codigo: "ARCHIVO // GINEBRA-05",  desc: "Documentación con sellos consulares envejecidos artificialmente en laboratorio." },
-  { id: "tinta-nitrato",    nombre: "Tinta Simpática de Nitrato",      icono: "🧪", codigo: "ARCHIVO // DRESDE-06",   desc: "Escritura invisible revelada por vapor térmico entre líneas de cartas ordinarias." },
-  { id: "resonador-sello",  nombre: "Resonador Pasivo «El Sello»",     icono: "🎙️", codigo: "ARCHIVO // MOSCÚ-07",    desc: "Escucha endovibratoria sin baterías ni cables; solo transmite bajo haz de microondas." },
-  { id: "dossier-sombra",   nombre: "Dossier Maestro «Red Durmiente»", icono: "💼", codigo: "ARCHIVO // MADRID-08",   desc: "Registro cifrado de identidades y puntos de extracción desplegados en la Península." }
+/* ---------- Catálogo Oficial de Condecoraciones Tácticas (10 Logros Clasificados) ---------- */
+const ACHIEVEMENTS = [
+  {
+    id: "logro_doble_centenario",
+    titulo: "Doble Agente Durmiente",
+    icono: "🎖️",
+    codigo: "CONDECORACIÓN // OP-01",
+    desc: "Clava dos palabras de 100 puntos en una misma misión (partida de 7 rondas).",
+    censurada: "Mérito confidencial. Requiere infiltración extrema doble (dos aciertos de 100 pts en una sola misión)."
+  },
+  {
+    id: "logro_umbral_500",
+    titulo: "Informe Sobresaliente",
+    icono: "📁",
+    codigo: "CONDECORACIÓN // OP-02",
+    desc: "Consigue 500 o más puntos en una sola misión.",
+    censurada: "Aptitud insuficiente. Requiere alcanzar un umbral mínimo de 500 puntos en un expediente."
+  },
+  {
+    id: "logro_pleno_700",
+    titulo: "Operativo Impecable",
+    icono: "⭐",
+    codigo: "CONDECORACIÓN // OP-03",
+    desc: "Consigue un pleno perfecto de 700 puntos base (o más con multiplicadores) en una sola misión (todas las rondas de 100 pts).",
+    censurada: "Perfección operativa exigida. Pleno absoluto de 7 rondas consecutivas de 100 puntos."
+  },
+  {
+    id: "logro_reflejos_frio",
+    titulo: "Gatillo Rápido",
+    icono: "⚡",
+    codigo: "CONDECORACIÓN // OP-04",
+    desc: "Responde de forma válida en menos de 2,0 segundos en cualquier ronda activa.",
+    censurada: "Tiempo de reacción insuficiente. Requiere dictamen válido en menos de 2,0 segundos de reloj."
+  },
+  {
+    id: "logro_pleno_velocidad",
+    titulo: "Carrera de Espías",
+    icono: "⏱️",
+    codigo: "CONDECORACIÓN // OP-05",
+    desc: "Obtén la bonificación de velocidad (+20% por responder en <6s) en las 7 rondas de una misma misión.",
+    censurada: "Misión contrarreloj. Requiere bonificación de velocidad mantenida en las 7 rondas de la sesión."
+  },
+  {
+    id: "logro_tiro_limpio",
+    titulo: "Sin Rastro",
+    icono: "🎯",
+    codigo: "CONDECORACIÓN // OP-06",
+    desc: "Completa las 7 rondas de una misión sin registrar un solo intento fallido o no catalogado (100% de efectividad al primer intento).",
+    censurada: "Fugas detectadas. Requiere completar las 7 rondas con efectividad quirúrgica sin fallos."
+  },
+  {
+    id: "logro_al_limite",
+    titulo: "Extracción In Extremis",
+    icono: "⏳",
+    codigo: "CONDECORACIÓN // OP-07",
+    desc: "Acierta una palabra válida quedando menos de 1,0 segundo en el temporizador de la ronda.",
+    censurada: "Extracción al borde del abismo. Requiere acierto válido con menos de 1,0 segundo en el temporizador."
+  },
+  {
+    id: "logro_comodin_dorado",
+    titulo: "Infiltración Duplicada",
+    icono: "🃏",
+    codigo: "CONDECORACIÓN // OP-08",
+    desc: "Activa el comodín en una ronda y obtén una puntuación de Infiltración Profunda (≥65 pts), duplicando con éxito los puntos.",
+    censurada: "Protocolo Doble Fondo. Requiere duplicar con éxito una ronda de 65 o más puntos con el comodín."
+  },
+  {
+    id: "logro_veterano_red",
+    titulo: "Red Durmiente",
+    icono: "🌐",
+    codigo: "CONDECORACIÓN // OP-09",
+    desc: "Completa al menos 5 misiones completas (diarias o ilimitadas) acumulando un mínimo de 2.000 puntos totales históricos.",
+    censurada: "Experiencia de campo acumulada. Requiere al menos 5 misiones finalizadas y 2.000 pts totales."
+  },
+  {
+    id: "logro_criptografo",
+    titulo: "Desclasificación Total",
+    icono: "🗝️",
+    codigo: "CONDECORACIÓN // OP-10",
+    desc: "Descubre el Easter Egg diario y desbloquea el Archivo Histórico y Calendario de Misiones.",
+    censurada: "Cifrado de máxima seguridad. Requiere introducir la clave Easter Egg y desclasificar el Calendario."
+  }
 ];
+
+// Alias de retrocompatibilidad
+const ARCHIVES = ACHIEVEMENTS;
+
+/* ---------- Marcador Persistente de Puntuación Acumulada (localStorage: spyle_puntos_totales) ---------- */
+function getPuntosHistoricosTotales() {
+  try {
+    const raw = localStorage.getItem("spyle_puntos_totales");
+    const val = parseInt(raw || "0", 10);
+    return isNaN(val) ? 0 : val;
+  } catch {
+    return 0;
+  }
+}
+
+function actualizarMarcadorPuntosTotales(puntos, animar = false) {
+  const el = $("marcador-puntos-totales");
+  if (el) {
+    el.textContent = Number(puntos || 0).toLocaleString("es-ES");
+  }
+  if (animar) {
+    const pill = document.querySelector(".marcador-total-pill");
+    if (pill) {
+      pill.classList.remove("pulse-impact");
+      void pill.offsetWidth; // Forzar reflow para reiniciar animación
+      pill.classList.add("pulse-impact");
+      setTimeout(() => pill.classList.remove("pulse-impact"), 350);
+    }
+  }
+}
+
+function sumarPuntosHistoricos(puntosGanados) {
+  if (!puntosGanados || puntosGanados <= 0) return getPuntosHistoricosTotales();
+  let puntosHistoricos = getPuntosHistoricosTotales();
+  puntosHistoricos += puntosGanados;
+  try {
+    localStorage.setItem("spyle_puntos_totales", puntosHistoricos.toString());
+  } catch { /* almacenamiento restringido */ }
+  actualizarMarcadorPuntosTotales(puntosHistoricos, true);
+  return puntosHistoricos;
+}
 
 /* ---------- Almacenamiento Local ---------- */
 const store = {
@@ -489,76 +603,204 @@ function shuffle(arr, rnd = Math.random) {
 }
 
 /* ---------- Gestión de Archivos Clasificados (Coleccionables) ---------- */
-function getUnlockedArchives() {
-  let saved = store.get("archives", null);
-  if (!Array.isArray(saved)) {
-    // Migrar conteo si existía progreso previo en localStorage
-    const legacy = store.get("bestiary", []);
-    const legacyCount = Array.isArray(legacy) ? Math.min(legacy.length, ARCHIVES.length) : 0;
-    saved = ARCHIVES.slice(0, legacyCount).map((a) => a.id);
-    store.set("archives", saved);
+/* ==========================================================================
+   SISTEMA DE LOGROS Y ARCHIVOS CLASIFICADOS (localStorage: spyle_logros)
+   ========================================================================== */
+function getAchievements() {
+  try {
+    const raw = localStorage.getItem("spyle_logros");
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") return parsed;
+    }
+  } catch { /* ignorar error de parseo */ }
+  return {};
+}
+
+function saveAchievements(obj) {
+  try {
+    localStorage.setItem("spyle_logros", JSON.stringify(obj));
+  } catch { /* almacenamiento restringido */ }
+}
+
+function isAchievementUnlocked(id) {
+  const achs = getAchievements();
+  return Boolean(achs[id] && achs[id].unlocked);
+}
+
+// Cola de notificaciones tácticas para evitar solapamientos
+const achievementToastQueue = [];
+let isShowingAchievementToast = false;
+let toastHideTimeout = null;
+
+function unlockAchievement(id) {
+  const ach = ACHIEVEMENTS.find((a) => a.id === id);
+  if (!ach) return null;
+
+  const current = getAchievements();
+  if (current[id] && current[id].unlocked) {
+    return null; // Ya obtenido previamente
   }
-  return new Set(saved);
+
+  const unlockedAt = new Date().toISOString();
+  current[id] = { unlocked: true, unlockedAt };
+  saveAchievements(current);
+
+  // Alerta sonora táctica de condecoración
+  sound.unlockSound();
+
+  // Encolar y mostrar notificación flotante
+  achievementToastQueue.push({ ...ach, unlockedAt });
+  processToastQueue();
+
+  // Actualizar indicadores visuales de logros si están montados
+  updateAchievementsStatus();
+  return ach;
+}
+
+function processToastQueue() {
+  if (isShowingAchievementToast || achievementToastQueue.length === 0) return;
+  const ach = achievementToastQueue.shift();
+  showAchievementToast(ach);
+}
+
+function showAchievementToast(ach) {
+  const toast = $("unlock-toast");
+  if (!toast) return;
+
+  isShowingAchievementToast = true;
+  if (toastHideTimeout) clearTimeout(toastHideTimeout);
+
+  const iconEl = $("toast-icon");
+  const titleEl = $("toast-title");
+  const descEl = $("toast-desc");
+
+  if (iconEl) iconEl.textContent = ach.icono || "🎖️";
+  if (titleEl) titleEl.textContent = `CONDECORACIÓN: ${ach.titulo.toUpperCase()}`;
+  if (descEl) descEl.textContent = `${ach.codigo} · Desclasificado e incorporado a los Archivos`;
+
+  toast.classList.remove("hidden", "toast-closing");
+
+  // Duración estricta de 3.5 segundos con transición de salida
+  toastHideTimeout = setTimeout(() => {
+    toast.classList.add("toast-closing");
+    setTimeout(() => {
+      toast.classList.add("hidden");
+      toast.classList.remove("toast-closing");
+      isShowingAchievementToast = false;
+      // Procesar siguiente logro en cola si lo hubiera
+      processToastQueue();
+    }, 350);
+  }, 3150);
+}
+
+// Compatibilidad con invocaciones antiguas
+function getUnlockedArchives() {
+  const achs = getAchievements();
+  const unlocked = new Set();
+  ACHIEVEMENTS.forEach((a) => {
+    if (achs[a.id] && achs[a.id].unlocked) unlocked.add(a.id);
+  });
+  return unlocked;
 }
 
 function unlockNextArchive() {
-  const unlocked = getUnlockedArchives();
-  const next = ARCHIVES.find((a) => !unlocked.has(a.id));
-  if (!next) return null;
-  unlocked.add(next.id);
-  store.set("archives", [...unlocked]);
-  showUnlockToast(next);
-  sound.unlockSound();
-  return next;
+  // En el nuevo sistema, el comodín exitoso activa directamente logro_comodin_dorado
+  return unlockAchievement("logro_comodin_dorado");
 }
 
 function showUnlockToast(archive) {
-  const toast = $("unlock-toast");
-  if (!toast) return;
-  $("toast-icon").textContent = archive.icono;
-  $("toast-title").textContent = `DESCLASIFICADO: ${archive.nombre}`;
-  $("toast-desc").textContent = `${archive.codigo} · Incorporado a la Cámara de Archivos`;
-  toast.classList.remove("hidden");
-  setTimeout(() => toast.classList.add("hidden"), 4500);
+  showAchievementToast(archive);
+}
+
+function updateAchievementsStatus() {
+  const achs = getAchievements();
+  let count = 0;
+  ACHIEVEMENTS.forEach((a) => {
+    if (achs[a.id] && achs[a.id].unlocked) count++;
+  });
+
+  const counterEl = $("archives-counter");
+  if (counterEl) {
+    counterEl.textContent = `ARCHIVOS DESCLASIFICADOS: [${count} / ${ACHIEVEMENTS.length}]`;
+  }
+
+  const menuStatusEl = $("bestiary-status");
+  if (menuStatusEl) {
+    menuStatusEl.textContent = `${count}/${ACHIEVEMENTS.length} condecoraciones desclasificadas`;
+  }
 }
 
 function renderArchives() {
   const list = $("bestiary-list");
   if (!list) return;
   list.innerHTML = "";
-  const unlocked = getUnlockedArchives();
+  const achs = getAchievements();
 
-  ARCHIVES.forEach((item) => {
-    const isUnlocked = unlocked.has(item.id);
+  let unlockedCount = 0;
+
+  ACHIEVEMENTS.forEach((item) => {
+    const isUnlocked = Boolean(achs[item.id] && achs[item.id].unlocked);
+    if (isUnlocked) unlockedCount++;
+
     const card = document.createElement("div");
-    card.className = `creature-card ${isUnlocked ? "unlocked" : "locked"}`;
+    const isElite = item.id === "logro_pleno_700" || item.id === "logro_criptografo";
+    card.className = `achievement-card ${isUnlocked ? "unlocked" : "locked"} ${isUnlocked && isElite ? "elite" : ""}`;
 
+    // Cabecera superior
     const top = document.createElement("div");
-    top.className = "creature-top";
+    top.className = "ach-top";
 
     const code = document.createElement("div");
-    code.className = "creature-depth";
-    code.textContent = isUnlocked ? item.codigo : "EXPEDIENTE CENSURADO";
+    code.className = "ach-code";
+    code.textContent = item.codigo;
 
     const icon = document.createElement("div");
-    icon.className = "creature-icon";
+    icon.className = "ach-icon";
     icon.textContent = isUnlocked ? item.icono : "🔒";
 
     top.append(code, icon);
 
-    const name = document.createElement("div");
-    name.className = "creature-name";
-    name.textContent = isUnlocked ? item.nombre : "████████████████";
+    // Título de la condecoración
+    const title = document.createElement("div");
+    title.className = "ach-title";
+    title.textContent = isUnlocked ? item.titulo : "EXPEDIENTE CENSURADO";
 
+    // Descripción del mérito
     const desc = document.createElement("div");
-    desc.className = "creature-desc";
-    desc.textContent = isUnlocked
-      ? item.desc
-      : "Autorización denegada. Activa el Protocolo Doble Fondo y obtén 65+ pts para desclasificar.";
+    desc.className = "ach-desc";
+    desc.textContent = isUnlocked ? item.desc : (item.censurada || "Autorización confidencial denegada.");
 
-    card.append(top, name, desc);
+    // Pie con estado y fecha de desclasificación
+    const footer = document.createElement("div");
+    footer.className = "ach-footer";
+
+    const badge = document.createElement("span");
+    badge.className = "ach-status-badge";
+    badge.textContent = isUnlocked ? "DESCLASIFICADO" : "CLASIFICADO";
+
+    const dateSpan = document.createElement("span");
+    dateSpan.className = "ach-date";
+    if (isUnlocked && achs[item.id].unlockedAt) {
+      try {
+        const d = new Date(achs[item.id].unlockedAt);
+        dateSpan.textContent = d.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "numeric" });
+      } catch {
+        dateSpan.textContent = "AUTORIZADO";
+      }
+    } else {
+      dateSpan.textContent = "[NIVEL RESTRINGIDO]";
+    }
+
+    footer.append(badge, dateSpan);
+    card.append(top, title, desc, footer);
     list.appendChild(card);
   });
+
+  const counterEl = $("archives-counter");
+  if (counterEl) {
+    counterEl.textContent = `ARCHIVOS DESCLASIFICADOS: [${unlockedCount} / ${ACHIEVEMENTS.length}]`;
+  }
 }
 
 /* ---------- Selección de Prompts: Diaria e Unlimited ---------- */
@@ -831,11 +1073,21 @@ function checkFirstVisitBriefing() {
 /* ---------- Modal de Protocolo de Despliegue Operativo (Confirmación) ---------- */
 let pendingDeployAction = null;
 
-function openDeployModal(modeSubtitle, onConfirm) {
+function openDeployModal(modeSubtitle, onConfirm, isUnlimited = false) {
   const modal = $("modal-deploy");
   const subEl = $("deploy-mode-subtitle");
+  const wcIntelEl = $("deploy-intel-wildcard");
   if (!modal) return;
   if (subEl) subEl.textContent = modeSubtitle;
+
+  if (wcIntelEl) {
+    if (isUnlimited) {
+      wcIntelEl.innerHTML = "<strong>Comodín:</strong> Deshabilitado en este modo operativo.";
+    } else {
+      wcIntelEl.innerHTML = "<strong>Comodín:</strong> 1 uso disponible. Se quema si la respuesta es no catalogada.";
+    }
+  }
+
   pendingDeployAction = onConfirm;
   modal.classList.remove("hidden", "closing");
   sound.playTone(380, "triangle", 0.09, 0.14);
@@ -1251,7 +1503,27 @@ function updateWildcardUI() {
   const btn = $("btn-wildcard");
   const label = $("wc-label");
   const sideWcState = $("side-wc-state");
+  const sideWcDisplay = $("side-wildcard-display");
   if (!btn || !label || !game) return;
+
+  // Bloqueo exclusivo para Modo Ilimitado
+  if (game.mode === "unlimited" || game.wildcardAvailable === false) {
+    btn.className = "btn-wildcard disabled-mode";
+    btn.disabled = true;
+    label.textContent = "[ COMODÍN: NO DISPONIBLE EN ENTRENAMIENTO ]";
+    if (sideWcState) {
+      sideWcState.className = "side-wc-state disabled-mode";
+      sideWcState.textContent = "NO DISPONIBLE";
+    }
+    if (sideWcDisplay) {
+      sideWcDisplay.className = "side-wildcard-display disabled-mode";
+    }
+    return;
+  }
+
+  if (sideWcDisplay) {
+    sideWcDisplay.classList.remove("disabled-mode");
+  }
 
   if (game.wildcardBurnedThisRound) {
     btn.className = "btn-wildcard burned";
@@ -1261,6 +1533,9 @@ function updateWildcardUI() {
       sideWcState.className = "side-wc-state burned";
       sideWcState.textContent = "COMODÍN QUEMADO";
     }
+    if (sideWcDisplay) {
+      sideWcDisplay.className = "side-wildcard-display burned";
+    }
   } else if (game.wildcardUsed) {
     btn.className = "btn-wildcard used";
     btn.disabled = true;
@@ -1268,6 +1543,9 @@ function updateWildcardUI() {
     if (sideWcState) {
       sideWcState.className = "side-wc-state used";
       sideWcState.textContent = "CONSUMIDO";
+    }
+    if (sideWcDisplay) {
+      sideWcDisplay.className = "side-wildcard-display";
     }
   } else if (!rondaLimpia) {
     btn.className = "btn-wildcard locked-dirty";
@@ -1277,6 +1555,9 @@ function updateWildcardUI() {
       sideWcState.className = "side-wc-state locked";
       sideWcState.textContent = "BLOQUEADO EN ESTA RONDA";
     }
+    if (sideWcDisplay) {
+      sideWcDisplay.className = "side-wildcard-display";
+    }
   } else if (game.wildcardActive) {
     btn.className = "btn-wildcard active";
     btn.disabled = false;
@@ -1284,6 +1565,9 @@ function updateWildcardUI() {
     if (sideWcState) {
       sideWcState.className = "side-wc-state active";
       sideWcState.textContent = "⚡ DOBLE FONDO ARMADO";
+    }
+    if (sideWcDisplay) {
+      sideWcDisplay.className = "side-wildcard-display active";
     }
   } else {
     btn.className = "btn-wildcard";
@@ -1293,11 +1577,14 @@ function updateWildcardUI() {
       sideWcState.className = "side-wc-state ready";
       sideWcState.textContent = "DISPONIBLE PARA ACTIVAR";
     }
+    if (sideWcDisplay) {
+      sideWcDisplay.className = "side-wildcard-display";
+    }
   }
 }
 
 function toggleWildcard() {
-  if (!game || game.answered || game.wildcardUsed || !rondaLimpia) return;
+  if (!game || game.mode === "unlimited" || game.wildcardAvailable === false || game.answered || game.wildcardUsed || !rondaLimpia) return;
   game.wildcardActive = !game.wildcardActive;
   if (game.wildcardActive) {
     sound.playTone(840, "triangle", 0.1, 0.16);
@@ -1312,6 +1599,7 @@ function toggleWildcard() {
 function startGame(mode, prompts, extra = {}) {
   intentosNoReconocidosPorRonda = prompts.map(() => []);
   rondaLimpia = true;
+  const isUnlimitedMode = mode === "unlimited";
   game = {
     mode,
     prompts,
@@ -1319,7 +1607,8 @@ function startGame(mode, prompts, extra = {}) {
     idx: 0,
     started: false,
     answered: false,
-    wildcardUsed: false,
+    wildcardAvailable: !isUnlimitedMode,
+    wildcardUsed: isUnlimitedMode,
     wildcardActive: false,
     wildcardBurnedThisRound: false,
     ...extra
@@ -1493,8 +1782,20 @@ function submitAnswer(timeout = false) {
 
     // Bonificación de velocidad (+20%) SOLO si rondaLimpia === true y quedan >= 19 s; si no, valor nominal 1.0x
     const timeLeftMs = deadline - performance.now();
+    const elapsedMs = (ROUND_SECONDS * 1000) - timeLeftMs;
     const speedBonus = rondaLimpia && t.pts > 0 && timeLeftMs >= SPEED_BONUS_MIN_LEFT_MS;
     const roundPts = speedBonus ? Math.ceil(t.pts * SPEED_BONUS_MULT) : t.pts;
+
+    // Evaluaciones tácticas inmediatas en la ronda activa:
+    // 1. logro_reflejos_frio: Responde de forma válida en menos de 2,0 segundos
+    if (elapsedMs < 2000 && t.pts > 0) {
+      unlockAchievement("logro_reflejos_frio");
+    }
+
+    // 2. logro_al_limite: Acierta una palabra válida quedando menos de 1,0 segundo en el temporizador
+    if (timeLeftMs <= 1000 && timeLeftMs > 0 && t.pts > 0) {
+      unlockAchievement("logro_al_limite");
+    }
 
     // Comprobar activación de Comodín (solo aplicable si rondaLimpia === true)
     let roundCover = roundPts * COVER_UNITS_PER_POINT;
@@ -1509,7 +1810,7 @@ function submitAnswer(timeout = false) {
       if (t.pts >= 65) {
         isWildcardDoubled = true;
         roundCover = roundCover * 2;
-        unlockedArchive = unlockNextArchive();
+        unlockAchievement("logro_comodin_dorado");
       } else {
         wildcardFailedAttempt = true;
       }
@@ -1705,6 +2006,62 @@ function renderFinal() {
       timestamp: Date.now()
     };
     store.set("daily_history", history);
+  }
+
+  // --- EVALUACIÓN DE CONDECORACIONES TÁCTICAS AL FINALIZAR MISIÓN ---
+  if (game && Array.isArray(game.results) && game.results.length >= ROUNDS) {
+    // 1. logro_doble_centenario: Clava dos palabras de 100 puntos en una misma misión
+    const count100 = game.results.filter((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100).length;
+    if (count100 >= 2) {
+      unlockAchievement("logro_doble_centenario");
+    }
+
+    // 2. logro_umbral_500: Consigue 500 o más puntos en una sola misión
+    if (pts >= 500) {
+      unlockAchievement("logro_umbral_500");
+    }
+
+    // 3. logro_pleno_700: Pleno perfecto de 700 pts base (todas las rondas de 100 pts)
+    const isPleno700 = game.results.length === ROUNDS && game.results.every((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100);
+    if (isPleno700 && pts >= 700) {
+      unlockAchievement("logro_pleno_700");
+    }
+
+    // 4. logro_pleno_velocidad: Bonificación de velocidad en las 7 rondas de la misión
+    const isPlenoVelocidad = game.results.length === ROUNDS && game.results.every((r) => Boolean(r.speedBonus));
+    if (isPlenoVelocidad) {
+      unlockAchievement("logro_pleno_velocidad");
+    }
+
+    // 5. logro_tiro_limpio: Completa las 7 rondas sin un solo intento fallido o no catalogado (efectividad 100% al primer intento)
+    const isTiroLimpio = game.results.length === ROUNDS && game.results.every((r, idx) => {
+      if (r.tier === "fail") return false;
+      const unrec = Array.isArray(r.unrecognizedAttempts)
+        ? r.unrecognizedAttempts
+        : (Array.isArray(intentosNoReconocidosPorRonda[idx]) ? intentosNoReconocidosPorRonda[idx] : []);
+      return unrec.length === 0;
+    });
+    if (isTiroLimpio) {
+      unlockAchievement("logro_tiro_limpio");
+    }
+
+    // 6. Registro de estadísticas históricas acumuladas y marcador persistente
+    const stats = store.get("player_stats", { completedMissions: 0, totalHistoricalPoints: 0 });
+    let puntosHistoricosTotales = getPuntosHistoricosTotales();
+
+    // Solo sumar si esta partida es una sesión completa recién terminada
+    if (!game._historicalRecorded) {
+      stats.completedMissions = (stats.completedMissions || 0) + 1;
+      puntosHistoricosTotales = sumarPuntosHistoricos(pts);
+      stats.totalHistoricalPoints = puntosHistoricosTotales;
+      store.set("player_stats", stats);
+      game._historicalRecorded = true;
+    }
+
+    // Vinculación directa de logro_veterano_red con spyle_puntos_totales
+    if (stats.completedMissions >= 5 && puntosHistoricosTotales >= 2000) {
+      unlockAchievement("logro_veterano_red");
+    }
   }
 
   let title = game.label || "Informe de Misión";
@@ -1925,8 +2282,7 @@ function refreshMenu() {
     ? (d.done ? `Expediente #${day} completado ✔ — ver informe` : `Interrogatorio en curso (${d.results.length}/${ROUNDS})`)
     : `Expediente #${day} — listo para evaluación`;
 
-  const unlockedCount = getUnlockedArchives().size;
-  $("bestiary-status").textContent = `${unlockedCount}/${ARCHIVES.length} expedientes desclasificados`;
+  updateAchievementsStatus();
 }
 
 function startDaily() {
@@ -2014,6 +2370,7 @@ function checkEasterEggUnlock(prompt, word) {
 
 function triggerEasterEggUnlock() {
   localStorage.setItem("spyle_archivo_desbloqueado", "true");
+  unlockAchievement("logro_criptografo");
   updateCalendarVisibility();
 
   const modal = $("modal-easter-egg");
@@ -2162,7 +2519,7 @@ $("btn-daily").addEventListener("click", requestDailyStart);
 $("btn-unlimited").addEventListener("click", () => {
   openDeployModal("ENTRENAMIENTO ILIMITADO", () => {
     startGame("unlimited", unlimitedPrompts(), { day: dayNumber(), label: "Simulacro Continuo" });
-  });
+  }, true);
 });
 $("btn-packs").addEventListener("click", () => { renderPacks(); showScreen("packs"); });
 $("btn-back-packs").addEventListener("click", () => { renderPacks(); showScreen("packs"); });
@@ -2443,4 +2800,42 @@ if (modalEasterEggEl) {
 }
 
 updateCalendarVisibility();
+// Comprobación de desbloqueos previos (ej. Easter Egg ya activado)
+if (localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
+  unlockAchievement("logro_criptografo");
+}
+// Sincronizar estadísticas iniciales y marcador persistente con historial previo
+(function syncInitialPlayerStats() {
+  const history = store.get("daily_history", {});
+  const stats = store.get("player_stats", { completedMissions: 0, totalHistoricalPoints: 0 });
+  let historyCount = 0;
+  let historyPts = 0;
+  Object.values(history).forEach((h) => {
+    if (h && h.done) {
+      historyCount++;
+      historyPts += (h.score || 0);
+    }
+  });
+
+  let currentSavedPoints = getPuntosHistoricosTotales();
+  if (currentSavedPoints === 0 && historyPts > 0) {
+    currentSavedPoints = historyPts;
+    try {
+      localStorage.setItem("spyle_puntos_totales", currentSavedPoints.toString());
+    } catch { /* noop */ }
+  }
+
+  if (historyCount > stats.completedMissions) {
+    stats.completedMissions = historyCount;
+  }
+  stats.totalHistoricalPoints = Math.max(stats.totalHistoricalPoints || 0, currentSavedPoints);
+  store.set("player_stats", stats);
+
+  actualizarMarcadorPuntosTotales(currentSavedPoints, false);
+
+  if (stats.completedMissions >= 5 && currentSavedPoints >= 2000) {
+    unlockAchievement("logro_veterano_red");
+  }
+})();
+updateAchievementsStatus();
 checkFirstVisitBriefing();

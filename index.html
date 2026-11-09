@@ -37,12 +37,15 @@
     </div>
   </aside>
 
-  <!-- Notificación flotante de expediente desclasificado -->
+  <!-- Notificación táctica flotante de condecoración / archivo clasificado -->
   <div id="unlock-toast" class="unlock-toast hidden" role="status" aria-live="polite">
-    <span class="toast-icon" id="toast-icon">🗝️</span>
-    <div class="toast-body">
-      <b id="toast-title">ARCHIVO DESCLASIFICADO</b>
-      <span id="toast-desc">Incorporado a la Cámara de Archivos</span>
+    <div class="toast-kicker">// ARCHIVO CLASIFICADO DESBLOQUEADO</div>
+    <div class="toast-content">
+      <span class="toast-icon" id="toast-icon">🎖️</span>
+      <div class="toast-body">
+        <b id="toast-title">CONDECORACIÓN: DOBLE AGENTE DURMIENTE</b>
+        <span id="toast-desc">Mérito confidencial incorporado a la Cámara de Archivos</span>
+      </div>
     </div>
   </div>
 
@@ -54,6 +57,10 @@
       </div>
       <div class="header-right">
         <button id="btn-header-calendar" class="icon-btn btn-header-calendar calendar-locked" type="button" title="Archivo Histórico de Misiones" aria-label="Archivo de Misiones" style="display: none;">📅</button>
+        <div class="marcador-total-pill" title="Expediente total: puntuación acumulada">
+          <span class="marcador-kicker">PTS TOTALES:</span>
+          <span id="marcador-puntos-totales" class="marcador-num">0</span>
+        </div>
         <button id="btn-help" class="icon-btn btn-briefing-help" type="button" title="Consultar Directiva de Operaciones // Briefing" aria-label="Directiva de Operaciones // Briefing">?</button>
         <div class="telemetry-pill" title="Índice de Cobertura Operativa acumulada">
           <span class="telemetry-kicker">COBERTURA</span>
@@ -155,13 +162,16 @@
       <button class="btn" type="button" id="btn-back-packs">← Volver a Dossiers</button>
     </section>
 
-    <!-- ARCHIVOS CLASIFICADOS (ANTES BESTIARIO) -->
+    <!-- ARCHIVOS CLASIFICADOS (CÁMARA DE CONDECORACIONES TÁCTICAS) -->
     <section id="screen-bestiary" class="screen">
       <div class="section-head">
         <h2>🔐 Cámara de Archivos Clasificados</h2>
-        <p class="muted">Desclasifica equipamiento real de espionaje activando el <b>Protocolo Doble Fondo</b> en rondas con dictamen de 65+ puntos (🕵️, 🗝️, 🎖️).</p>
+        <p class="muted">Condecoraciones tácticas y expedientes confidenciales desclasificados mediante desempeño operativo estricto en el terreno.</p>
+        <div class="archives-counter-bar">
+          <span class="archives-counter-badge" id="archives-counter">ARCHIVOS DESCLASIFICADOS: [0 / 10]</span>
+        </div>
       </div>
-      <div id="bestiary-list" class="bestiary-grid"></div>
+      <div id="bestiary-list" class="achievements-grid"></div>
       <button class="btn" type="button" data-goto="menu">← Volver al centro de mando</button>
     </section>
 
@@ -415,7 +425,7 @@
           </div>
           <div class="deploy-intel-item">
             <span class="deploy-bullet">•</span>
-            <span class="deploy-item-text"><strong>Comodín:</strong> 1 uso disponible. Se quema si la respuesta es no catalogada.</span>
+            <span id="deploy-intel-wildcard" class="deploy-item-text"><strong>Comodín:</strong> 1 uso disponible. Se quema si la respuesta es no catalogada.</span>
           </div>
           <div class="deploy-intel-item deploy-intel-alert">
             <span class="deploy-bullet">⚡</span>
