@@ -501,19 +501,22 @@ function registerKeyInMaps(spacedMap, collapsedMap, rawAns, tier) {
 }
 
 function getIndex(p) {
+  if (!p) return { spacedMap: new Map(), collapsedMap: new Map() };
   if (!indexCache.has(p.id)) {
     const spacedMap = new Map();
     const collapsedMap = new Map();
 
-    if (p.answers) {
+    if (p.answers && typeof p.answers === "object") {
       for (const [ans, pts] of Object.entries(p.answers)) {
         const tier = PTS_TO_TIER[pts] || "fail";
         registerKeyInMaps(spacedMap, collapsedMap, ans, tier);
       }
-    } else if (p.respuestas) {
+    } else if (p.respuestas && typeof p.respuestas === "object") {
       for (const [tier, list] of Object.entries(p.respuestas)) {
-        for (const ans of list) {
-          registerKeyInMaps(spacedMap, collapsedMap, ans, tier);
+        if (Array.isArray(list)) {
+          for (const ans of list) {
+            registerKeyInMaps(spacedMap, collapsedMap, ans, tier);
+          }
         }
       }
     }
@@ -524,6 +527,7 @@ function getIndex(p) {
 }
 
 function evaluate(prompt, input) {
+  if (!prompt) return "fail";
   const spaced = normalizeInput(input);
   if (!spaced) return "fail";
 
@@ -708,6 +712,163 @@ function unlockNextArchive() {
   return unlockAchievement("logro_comodin_dorado");
 }
 
+/* ==========================================================================
+   REGLA ESTRICTA OP-06 (Sin Rastro) Y SISTEMA DE EVALUACIÓN EN VIVO
+   ========================================================================== */
+function verificarElegibilidadOP06(target) {
+  if (!target) return false;
+
+  // 1. Si es un expediente persistido (localStorage)
+  if (Array.isArray(target.rondas)) {
+    const rondas = target.rondas;
+    if (rondas.length !== ROUNDS || rondas.length !== 7) return false;
+
+    for (let i = 0; i < rondas.length; i++) {
+      const r = rondas[i];
+      if (!r) return false;
+
+      // Puntos > 0 y respuesta dada válida (en ninguna ronda se agotó el tiempo)
+      const pts = (typeof r.puntosObtenidos === "number") ? r.puntosObtenidos : 0;
+      if (pts <= 0 || !r.respuestaDada || String(r.respuestaDada).trim() === "") return false;
+
+      // En ninguna de las 7 rondas puede haber habido intentos no catalogados o fallidos
+      const unrec = Array.isArray(r.intentosNoReconocidos) ? r.intentosNoReconocidos : [];
+      const fail = Array.isArray(r.intentosFallidos) ? r.intentosFallidos : [];
+      const recs = Array.isArray(r.reclamaciones) ? r.reclamaciones : [];
+      if (unrec.length > 0 || fail.length > 0 || recs.length > 0) return false;
+    }
+    return true;
+  }
+
+  // 2. Si es una sesión de partida activa (game)
+  if (Array.isArray(target.results)) {
+    const results = target.results;
+    const totalRounds = target.prompts ? target.prompts.length : ROUNDS;
+    if (results.length !== totalRounds || results.length !== 7) return false;
+
+    for (let i = 0; i < results.length; i++) {
+      const r = results[i];
+      if (!r) return false;
+
+      // Puntos > 0, superada con éxito y sin tiempo agotado (tier !== "fail")
+      if (r.tier === "fail" || !r.points || r.points <= 0) return false;
+      if (!r.answer || String(r.answer).trim() === "") return false;
+
+      // En ninguna ronda hubo intentos no reconocidos, fallidos ni reclamados
+      const unrecResults = Array.isArray(r.unrecognizedAttempts) ? r.unrecognizedAttempts : [];
+      const unrecRound = (typeof intentosNoReconocidosPorRonda !== "undefined" && Array.isArray(intentosNoReconocidosPorRonda[i]))
+        ? intentosNoReconocidosPorRonda[i]
+        : [];
+      if (unrecResults.length > 0 || unrecRound.length > 0) return false;
+
+      const unrec = Array.isArray(r.intentosNoReconocidos) ? r.intentosNoReconocidos : [];
+      const fail = Array.isArray(r.intentosFallidos) ? r.intentosFallidos : [];
+      const recs = Array.isArray(r.reclamaciones) ? r.reclamaciones : [];
+      if (unrec.length > 0 || fail.length > 0 || recs.length > 0) return false;
+    }
+    return true;
+  }
+
+  return false;
+}
+
+function comprobarLogros() {
+  if (!game || !Array.isArray(game.results)) return;
+  // Aislamiento total: estrictamente prohibido evaluar en modo lectura, histórico o restaurado
+  if (game._readOnly || game._isHistoricViewer || game._logrosEvaluados) return;
+
+  const totalRounds = game.prompts ? game.prompts.length : ROUNDS;
+  if (game.results.length < totalRounds) return;
+
+  // Marcar como evaluado para que solo se invoque una única vez en la partida en vivo
+  game._logrosEvaluados = true;
+
+  const pts = totalPoints();
+
+  // OP-01: Doble Agente Durmiente (al menos 2 rondas de 100 pts)
+  const count100 = game.results.filter((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100).length;
+  if (count100 >= 2) unlockAchievement("logro_doble_centenario");
+
+  // OP-02: Umbral 500
+  if (pts >= 500) unlockAchievement("logro_umbral_500");
+
+  // OP-03: Operativo Impecable (7 rondas de 100 pts)
+  const isPleno700 = game.results.length === ROUNDS && game.results.every((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100);
+  if (isPleno700 && pts >= 700) unlockAchievement("logro_pleno_700");
+
+  // OP-05: Carrera de Espías (velocidad en las 7 rondas)
+  const isPlenoVelocidad = game.results.length === ROUNDS && game.results.every((r) => Boolean(r.speedBonus));
+  if (isPlenoVelocidad) unlockAchievement("logro_pleno_velocidad");
+
+  // OP-06: Sin Rastro (validación estricta de 7 rondas perfectas sin un solo intento fallido)
+  if (verificarElegibilidadOP06(game)) {
+    unlockAchievement("logro_tiro_limpio");
+  }
+
+  // Estadísticas del jugador y OP-09
+  const stats = store.get("player_stats", { completedMissions: 0, totalHistoricalPoints: 0 });
+  let puntosHistoricosTotales = getPuntosHistoricosTotales();
+
+  if (!game._historicalRecorded) {
+    stats.completedMissions = (stats.completedMissions || 0) + 1;
+    puntosHistoricosTotales = sumarPuntosHistoricos(pts);
+    stats.totalHistoricalPoints = puntosHistoricosTotales;
+    store.set("player_stats", stats);
+    game._historicalRecorded = true;
+  }
+
+  if (stats.completedMissions >= 5 && puntosHistoricosTotales >= 2000) {
+    unlockAchievement("logro_veterano_red");
+  }
+
+  if (game.mode === "daily" && game.day) {
+    const history = store.get("daily_history", {}) || {};
+    history[game.day] = {
+      day: game.day,
+      score: pts,
+      emojis: game.results.map((r) => TIERS[r.tier]?.emoji || "⬛").join(""),
+      done: true,
+      timestamp: Date.now()
+    };
+    store.set("daily_history", history);
+  }
+}
+
+// Rutina de saneamiento / re-bloqueo de OP-06 si fue desbloqueado incorrectamente
+function sanearLogroOP06() {
+  try {
+    const achs = getAchievements();
+    if (!achs || !achs["logro_tiro_limpio"]) return;
+
+    // Verificar si el expediente del Día 4 contiene fallos o si se desbloqueó erróneamente
+    const exp4 = getDailyState(4);
+    const unlockedAt = achs["logro_tiro_limpio"].unlockedAt || "";
+    const esDeHoy = unlockedAt.includes("2026-11-10");
+
+    let debeRevocarse = false;
+
+    if (exp4) {
+      if (!verificarElegibilidadOP06(exp4)) {
+        debeRevocarse = true;
+      }
+    } else if (esDeHoy) {
+      debeRevocarse = true;
+    }
+
+    if (debeRevocarse) {
+      delete achs["logro_tiro_limpio"];
+      saveAchievements(achs);
+      console.warn("// AUDITORÍA DE CONDECORACIONES: Condecoración OP-06 (Sin Rastro) revocada y bloqueada por contener intentos fallidos/0 pts.");
+      updateAchievementsStatus();
+      if (typeof renderArchives === "function" && $("bestiary-list")) {
+        renderArchives();
+      }
+    }
+  } catch (err) {
+    console.warn("Error en saneamiento de OP-06:", err);
+  }
+}
+
 function showUnlockToast(archive) {
   showAchievementToast(archive);
 }
@@ -731,6 +892,7 @@ function updateAchievementsStatus() {
 }
 
 function renderArchives() {
+  sanearLogroOP06();
   const list = $("bestiary-list");
   if (!list) return;
   list.innerHTML = "";
@@ -793,6 +955,21 @@ function renderArchives() {
 
     footer.append(badge, dateSpan);
     card.append(top, title, desc, footer);
+
+    if (item.id === "logro_criptografo" && isUnlocked) {
+      card.classList.add("op10-unlocked");
+      card.title = "Pulsa para acceder al Archivo Histórico y Calendario de Misiones";
+      card.addEventListener("click", () => {
+        renderCalendar();
+        showScreen("calendar");
+      });
+      icon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        renderCalendar();
+        showScreen("calendar");
+      });
+    }
+
     list.appendChild(card);
   });
 
@@ -813,7 +990,7 @@ function dateForDay(d) {
 
 function dailyPrompts(day = dayNumber()) {
   const mission = (typeof DAILY_MISSIONS !== "undefined")
-    ? (DAILY_MISSIONS[day] || DAILY_MISSIONS[`dia_${day}`] || DAILY_MISSIONS[((day - 1) % 3) + 1])
+    ? (DAILY_MISSIONS[day] || DAILY_MISSIONS[`dia_${day}`] || DAILY_MISSIONS[((day - 1) % (typeof DAILY_MISSIONS !== 'undefined' ? Object.keys(DAILY_MISSIONS).filter(k => !isNaN(k)).length : 3)) + 1])
     : null;
 
   if (mission && Array.isArray(mission.prompts) && mission.prompts.length >= ROUNDS) {
@@ -871,18 +1048,41 @@ function savePackProgress(prog) {
   store.set("packChapters", prog);
 }
 
-function getChapterPrompts(packId, chapterNum) {
-  const all = PROMPTS.filter((p) => p.pack === packId);
-  if (!all.length) return [];
+const CHAPTER_TITLES = {
+  1: "Infiltración",
+  2: "Reconocimiento",
+  3: "Extracción"
+};
 
-  const seed = packId.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0) * 100 + chapterNum * 37;
-  const shuffled = shuffle(all, mulberry32(seed));
+const PACK_PREFIX_MAP = {
+  "peliculas": "pel",
+  "deportes": "dep",
+  "geografia": "geo",
+  "musica": "mus",
+  "palabras": "pal"
+};
+
+function getChapterPrompts(packId, chapterNum) {
+  const prefix = PACK_PREFIX_MAP[packId] || packId.slice(0, 3);
+  const startNum = (chapterNum - 1) * ROUNDS + 1;
+  const endNum = chapterNum * ROUNDS;
 
   const prompts = [];
-  const start = (chapterNum - 1) * ROUNDS;
-  for (let i = 0; i < ROUNDS; i++) {
-    const idx = (start + i) % shuffled.length;
-    prompts.push(shuffled[idx]);
+  for (let i = startNum; i <= endNum; i++) {
+    const targetId = `${prefix}-${String(i).padStart(3, "0")}`;
+    const found = PROMPTS.find((p) => p.id === targetId);
+    if (found) {
+      prompts.push(found);
+    } else {
+      // Fallback seguro si la categoría aún no se ha catalogado en prompts.js
+      prompts.push({
+        id: targetId,
+        pack: packId,
+        texto: `Expediente clasificado [${targetId}] · Capítulo 0${chapterNum}`,
+        ejemplo: "---",
+        answers: {}
+      });
+    }
   }
   return prompts;
 }
@@ -943,7 +1143,8 @@ function openPackChapters(packId) {
     const info = document.createElement("div");
     info.className = "chapter-info";
     const h4 = document.createElement("h4");
-    h4.textContent = `Capítulo 0${c} · 7 consultas`;
+    const chapterName = CHAPTER_TITLES[c] || `Fase ${c}`;
+    h4.textContent = `Capítulo 0${c}: ${chapterName} · 7 consultas`;
     const desc = document.createElement("small");
 
     if (chData.passed) {
@@ -1107,6 +1308,71 @@ function closeDeployModal() {
 function openAbortModal() {
   const modal = $("modal-abort");
   if (!modal) return;
+
+  const warningMsg = $("abort-warning-msg");
+  const unrecContainer = $("abort-unrecognized-container");
+  const unrecItems = $("abort-unrecognized-items");
+
+  if (game && game.mode === "unlimited") {
+    if (warningMsg) {
+      warningMsg.textContent = "// ¿PAUSAR O ABANDONAR SIMULACRO? Puedes reclamar los términos no catalogados antes de volver al cuartel.";
+    }
+    // Collect all unrecognized attempts from the session
+    const allUnrec = [];
+    if (Array.isArray(game.prompts)) {
+      game.prompts.forEach((p, idx) => {
+        const attempts = Array.isArray(intentosNoReconocidosPorRonda[idx])
+          ? intentosNoReconocidosPorRonda[idx]
+          : (game.results && game.results[idx] && Array.isArray(game.results[idx].unrecognizedAttempts) ? game.results[idx].unrecognizedAttempts : []);
+        attempts.forEach((palabra) => {
+          allUnrec.push({ prompt: p, word: palabra });
+        });
+      });
+    }
+
+    if (unrecContainer && unrecItems) {
+      if (allUnrec.length > 0) {
+        unrecItems.innerHTML = "";
+        allUnrec.forEach(({ prompt, word }) => {
+          const row = document.createElement("div");
+          row.className = "abort-unrecognized-row";
+
+          const info = document.createElement("div");
+          info.className = "abort-unrec-info";
+
+          const pText = document.createElement("span");
+          pText.className = "abort-unrec-prompt";
+          pText.textContent = prompt.texto;
+
+          const wText = document.createElement("span");
+          wText.className = "abort-unrec-word";
+          wText.textContent = `[${word}]`;
+
+          info.append(pText, wText);
+
+          const claimBtn = document.createElement("button");
+          claimBtn.className = "btn-claim-inline";
+          claimBtn.type = "button";
+          claimBtn.textContent = "[ ✉️ Reclamar ]";
+          claimBtn.addEventListener("click", () => {
+            openSuggestionModal(prompt, word, claimBtn);
+          });
+
+          row.append(info, claimBtn);
+          unrecItems.appendChild(row);
+        });
+        unrecContainer.classList.remove("hidden");
+      } else {
+        unrecContainer.classList.add("hidden");
+      }
+    }
+  } else {
+    if (warningMsg) {
+      warningMsg.textContent = "// ¿ABORTAR MISIÓN? El progreso no guardado de esta misión se perderá.";
+    }
+    if (unrecContainer) unrecContainer.classList.add("hidden");
+  }
+
   modal.classList.remove("hidden", "closing");
   sound.playTone(280, "sawtooth", 0.12, 0.14);
 }
@@ -1431,11 +1697,41 @@ function showScreen(name) {
   }
 }
 
+function obtenerAgenteDurmiente(answers) {
+  if (!answers || Object.keys(answers).length === 0) return { palabra: "Desconocido", pts: 100 };
+
+  const entradas = Object.entries(answers);
+
+  // 1. Prioridad absoluta: buscar términos de 100 pts
+  const candidatos100 = entradas.filter(([_, pts]) => Number(pts) === 100);
+  if (candidatos100.length > 0) {
+    // Elegir uno aleatorio de los de 100 para dar variedad si se consulta varias veces
+    const elegido = candidatos100[Math.floor(Math.random() * candidatos100.length)];
+    return { palabra: elegido[0], pts: 100 };
+  }
+
+  // 2. Si no hay de 100, buscar los de 85 pts
+  const candidatos85 = entradas.filter(([_, pts]) => Number(pts) === 85);
+  if (candidatos85.length > 0) {
+    const elegido = candidatos85[Math.floor(Math.random() * candidatos85.length)];
+    return { palabra: elegido[0], pts: 85 };
+  }
+
+  // 3. Fallback dinámico: obtener la palabra con el valor MÁXIMO real
+  const maxPuntos = Math.max(...entradas.map(([_, pts]) => Number(pts)));
+  const mejores = entradas.filter(([_, pts]) => Number(pts) === maxPuntos);
+  const elegido = mejores[Math.floor(Math.random() * mejores.length)];
+  return { palabra: elegido[0], pts: maxPuntos };
+}
+
 function roundPoints(r) {
   return typeof r.points === "number" ? r.points : TIERS[r.tier].pts;
 }
 
 function totalPoints() {
+  if (game && typeof game._puntosTotalesDia === "number" && game._puntosTotalesDia > 0) {
+    return game._puntosTotalesDia;
+  }
   return game ? game.results.reduce((s, r) => s + roundPoints(r), 0) : 0;
 }
 
@@ -1462,6 +1758,210 @@ function updateTelemetry(points, coverUnits = null) {
   if (coverEl) coverEl.textContent = String(displayCover).padStart(4, "0");
 }
 
+/* ---------- Persistencia Integral del Interrogatorio Diario (spyle_expediente_diaX) ---------- */
+function getExpedienteKey(day = dayNumber()) {
+  const dNum = typeof day === "string" ? day.replace(/^dia_?/, "") : day;
+  return "spyle_expediente_dia" + dNum;
+}
+
+// Compatibilidad con claves previas
+function getDailyStateStorageKey(day = dayNumber()) {
+  return getExpedienteKey(day);
+}
+
+function getTodayISODate(d = new Date()) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function getDailyState(day = dayNumber()) {
+  const dNum = typeof day === "string" ? day.replace(/^dia_?/, "") : day;
+  const canonicalKey = "spyle_expediente_dia" + dNum;
+  const legacyKey = "spyle_daily_state_dia" + dNum;
+
+  try {
+    let raw = localStorage.getItem(canonicalKey);
+    if (!raw) {
+      raw = localStorage.getItem(legacyKey);
+    }
+    if (!raw) {
+      // Fallback a daily_history si existiese
+      const history = (typeof store !== "undefined" ? store.get("daily_history", {}) : null) || {};
+      const h = history[dNum];
+      if (h && h.done) {
+        return {
+          diaId: "dia" + dNum,
+          fecha: getTodayISODate(),
+          completado: true,
+          puntosTotales: h.score || 0,
+          puntosTotalesDia: h.score || 0,
+          rondas: []
+        };
+      }
+      return null;
+    }
+
+    const parsed = JSON.parse(raw);
+    if (parsed) {
+      // Normalizar campos (puntosTotales y puntosTotalesDia alineados)
+      const pts = (typeof parsed.puntosTotales === "number")
+        ? parsed.puntosTotales
+        : (typeof parsed.puntosTotalesDia === "number" ? parsed.puntosTotalesDia : 0);
+      parsed.puntosTotales = pts;
+      parsed.puntosTotalesDia = pts;
+      parsed.completado = parsed.completado !== false;
+      if (!parsed.diaId) parsed.diaId = "dia" + dNum;
+      if (!Array.isArray(parsed.rondas)) parsed.rondas = [];
+    }
+    return parsed;
+  } catch (err) {
+    console.warn("Error leyendo expediente diario:", err);
+    return null;
+  }
+}
+
+function saveDailyState(day = null) {
+  if (!game || game.mode !== "daily") return null;
+  const targetDay = day || game.day || dayNumber();
+  const isDone = Array.isArray(game.results) && game.results.length >= (game.prompts ? game.prompts.length : ROUNDS);
+  if (!isDone) return null;
+
+  const rawSum = game ? game.results.reduce((s, r) => s + roundPoints(r), 0) : 0;
+  const existingState = getDailyState(targetDay);
+  let finalScore = (typeof game._puntosTotalesDia === "number" && game._puntosTotalesDia > 0)
+    ? game._puntosTotalesDia
+    : (rawSum > 0 ? rawSum : (existingState?.puntosTotales || existingState?.puntosTotalesDia || 0));
+
+  game._puntosTotalesDia = finalScore;
+
+  const existingRondasMap = {};
+  if (existingState && Array.isArray(existingState.rondas)) {
+    existingState.rondas.forEach((r) => {
+      if (r && r.promptId) existingRondasMap[r.promptId] = r;
+    });
+  }
+
+  const rondas = game.prompts.map((p, idx) => {
+    const r = game.results[idx] || {};
+    const existingR = existingRondasMap[p.id] || {};
+    const unrec = Array.isArray(r.unrecognizedAttempts)
+      ? r.unrecognizedAttempts
+      : (Array.isArray(intentosNoReconocidosPorRonda[idx]) ? intentosNoReconocidosPorRonda[idx] : (existingR.intentosNoReconocidos || existingR.intentosFallidos || []));
+
+    let mergedReclamaciones = [];
+    if (Array.isArray(r.reclamaciones) && r.reclamaciones.length > 0) {
+      mergedReclamaciones = r.reclamaciones.slice();
+    } else if (Array.isArray(existingR.reclamaciones) && existingR.reclamaciones.length > 0) {
+      mergedReclamaciones = existingR.reclamaciones.slice();
+    } else {
+      mergedReclamaciones = unrec.map((w) => ({ palabra: w, reclamada: false }));
+    }
+
+    const rPts = typeof r.points === "number" ? r.points : (existingR.puntosObtenidos !== undefined ? existingR.puntosObtenidos : roundPoints(r));
+    const speed = r.speedBonus !== undefined ? Boolean(r.speedBonus) : Boolean(existingR.bonusVelocidad);
+    const resp = r.answer !== undefined ? r.answer : (existingR.respuestaDada || "");
+    const durmienteRef = (obtenerAgenteDurmiente(p.answers).palabra || existingR.referenciaDurmiente || p.ejemplo || "");
+
+    return {
+      promptId: p.id,
+      promptTitle: p.texto,
+      respuestaDada: resp,
+      puntosObtenidos: rPts,
+      bonusVelocidad: speed,
+      referenciaDurmiente: durmienteRef,
+      intentosNoReconocidos: unrec.slice(),
+      intentosFallidos: unrec.slice(),
+      reclamaciones: mergedReclamaciones
+    };
+  });
+
+  const expediente = {
+    diaId: "dia" + targetDay,
+    fecha: existingState?.fecha || getTodayISODate(),
+    completado: true,
+    puntosTotales: finalScore,
+    puntosTotalesDia: finalScore,
+    rondas: rondas
+  };
+
+  try {
+    const canonicalKey = getExpedienteKey(targetDay);
+    localStorage.setItem(canonicalKey, JSON.stringify(expediente));
+    // Sincronizar clave heredada para máxima seguridad
+    localStorage.setItem("spyle_daily_state_dia" + targetDay, JSON.stringify(expediente));
+  } catch (err) {
+    console.warn("Error guardando expediente diario:", err);
+  }
+
+  return expediente;
+}
+
+function restoreDailyStateAndRender(day = dayNumber()) {
+  const state = getDailyState(day);
+  if (!state || !state.completado) {
+    return false;
+  }
+
+  renderizarInformeEvaluacion(state, day);
+  return true;
+}
+
+function markWordAsClaimedInDailyState(word, roundIdx = null) {
+  if (!word) return;
+  const targetDay = (game && game.day) ? game.day : dayNumber();
+  const state = getDailyState(targetDay);
+  if (!state || !Array.isArray(state.rondas)) return;
+
+  const cleanWord = word.trim().toLowerCase();
+
+  state.rondas.forEach((r, idx) => {
+    if (roundIdx !== null && roundIdx !== undefined && idx !== roundIdx) return;
+    const unrecList = r.intentosNoReconocidos || r.intentosFallidos || [];
+    if (!Array.isArray(r.reclamaciones)) {
+      r.reclamaciones = unrecList.map((w) => ({ palabra: w, reclamada: false }));
+    }
+    let found = false;
+    r.reclamaciones.forEach((item) => {
+      if (item && item.palabra && item.palabra.trim().toLowerCase() === cleanWord) {
+        item.reclamada = true;
+        found = true;
+      }
+    });
+    if (!found && unrecList.some((w) => w.trim().toLowerCase() === cleanWord)) {
+      r.reclamaciones.push({ palabra: word.trim(), reclamada: true });
+    }
+  });
+
+  try {
+    const canonicalKey = getExpedienteKey(targetDay);
+    localStorage.setItem(canonicalKey, JSON.stringify(state));
+    localStorage.setItem("spyle_daily_state_dia" + targetDay, JSON.stringify(state));
+  } catch (err) {
+    console.warn("Error actualizando reclamación en expediente:", err);
+  }
+
+  if (game && Array.isArray(game.results)) {
+    game.results.forEach((res, idx) => {
+      if (roundIdx !== null && roundIdx !== undefined && idx !== roundIdx) return;
+      if (!Array.isArray(res.reclamaciones)) {
+        res.reclamaciones = (res.unrecognizedAttempts || []).map((w) => ({ palabra: w, reclamada: false }));
+      }
+      let f = false;
+      res.reclamaciones.forEach((item) => {
+        if (item && item.palabra && item.palabra.trim().toLowerCase() === cleanWord) {
+          item.reclamada = true;
+          f = true;
+        }
+      });
+      if (!f && res.unrecognizedAttempts && res.unrecognizedAttempts.some((w) => w.trim().toLowerCase() === cleanWord)) {
+        res.reclamaciones.push({ palabra: word.trim(), reclamada: true });
+      }
+    });
+  }
+}
+
 function saveDaily() {
   if (!game || game.mode !== "daily") return;
   const isDone = game.results.length >= game.prompts.length;
@@ -1477,10 +1977,14 @@ function saveDaily() {
     });
   }
   if (isDone && game.day) {
+    saveDailyState(game.day);
+    const scoreVal = (typeof game._puntosTotalesDia === "number" && game._puntosTotalesDia > 0)
+      ? game._puntosTotalesDia
+      : totalPoints();
     const history = store.get("daily_history", {}) || {};
     history[game.day] = {
       day: game.day,
-      score: totalPoints(),
+      score: scoreVal,
       emojis: game.results.map((r) => TIERS[r.tier]?.emoji || "⬛").join(""),
       done: true,
       timestamp: Date.now()
@@ -1639,6 +2143,8 @@ function startRound() {
   $("result").classList.add("hidden");
   $("result-speed-bonus").classList.add("hidden");
   $("result-wildcard-note").classList.add("hidden");
+  const btnClaimRoundInit = $("btn-claim-round");
+  if (btnClaimRoundInit) btnClaimRoundInit.classList.add("hidden");
 
   const input = $("answer-input");
   input.value = "";
@@ -1831,6 +2337,11 @@ function submitAnswer(timeout = false) {
     });
     game.idx++;
 
+    // En el momento exacto en que el jugador envía su última respuesta en vivo
+    if (game.idx >= game.prompts.length) {
+      comprobarLogros();
+    }
+
     setJudgeSeal(tier, { timeout: false, pts: roundPts });
     sound.tierSound(tier);
 
@@ -1866,6 +2377,22 @@ function submitAnswer(timeout = false) {
         wcNote.classList.remove("hidden");
       } else {
         wcNote.classList.add("hidden");
+      }
+    }
+
+    const btnClaimRound = $("btn-claim-round");
+    if (btnClaimRound) {
+      const currentUnrec = Array.isArray(intentosNoReconocidosPorRonda[rondaActual]) ? intentosNoReconocidosPorRonda[rondaActual] : [];
+      if (currentUnrec.length > 0) {
+        btnClaimRound.textContent = "[ 📡 RECLAMAR TÉRMINO A CONTRAINTELIGENCIA ]";
+        btnClaimRound.disabled = false;
+        btnClaimRound.classList.remove("claimed", "hidden");
+        btnClaimRound.onclick = () => {
+          const lastWord = currentUnrec[currentUnrec.length - 1] || "";
+          openSuggestionModal(p, lastWord, btnClaimRound);
+        };
+      } else {
+        btnClaimRound.classList.add("hidden");
       }
     }
 
@@ -1910,6 +2437,11 @@ function submitAnswer(timeout = false) {
   });
   game.idx++;
 
+  // En el momento exacto en que finaliza la última ronda en vivo por tiempo
+  if (game.idx >= game.prompts.length) {
+    comprobarLogros();
+  }
+
   setJudgeSeal("fail", { timeout: true, pts: 0 });
   sound.tierSound("fail");
 
@@ -1933,6 +2465,18 @@ function submitAnswer(timeout = false) {
     }
   }
 
+  const btnClaimRound = $("btn-claim-round");
+  if (btnClaimRound) {
+    const currentUnrec = Array.isArray(intentosNoReconocidosPorRonda[rondaActual]) ? intentosNoReconocidosPorRonda[rondaActual] : [];
+    btnClaimRound.textContent = "[ 📡 RECLAMAR TÉRMINO A CONTRAINTELIGENCIA ]";
+    btnClaimRound.disabled = false;
+    btnClaimRound.classList.remove("claimed", "hidden");
+    btnClaimRound.onclick = () => {
+      const lastWord = currentUnrec.length > 0 ? currentUnrec[currentUnrec.length - 1] : "";
+      openSuggestionModal(p, lastWord, btnClaimRound);
+    };
+  }
+
   $("btn-next").textContent = game.idx >= game.prompts.length ? "Emitir expediente final ➔" : "Siguiente consulta ➔";
   $("result").classList.remove("hidden");
 
@@ -1944,13 +2488,30 @@ function submitAnswer(timeout = false) {
 function nextStep() {
   if (!game) return;
   if (game.idx >= game.prompts.length) {
+    if (game.mode === "unlimited") {
+      // In unlimited mode, fetch more prompts seamlessly to continue infinite streak!
+      const morePrompts = unlimitedPrompts();
+      morePrompts.forEach((p) => {
+        game.prompts.push(p);
+        intentosNoReconocidosPorRonda.push([]);
+      });
+      startRound();
+      return;
+    }
     return finish();
   }
   startRound();
 }
 
 function finish() {
-  if (game.mode === "daily") saveDaily();
+  if (game && !game._readOnly && !game._isHistoricViewer) {
+    comprobarLogros();
+  }
+
+  if (game.mode === "daily") {
+    saveDaily();
+    saveDailyState(game.day);
+  }
 
   if (game.mode === "pack" && game.packId && game.chapter) {
     const pts = totalPoints();
@@ -1978,90 +2539,117 @@ function shareText() {
   return `SPYLE #${game.day || dayNumber()} 🗂️\nAptitud de Infiltración: ${pts} pts\n${emojis}\nspyle.app`;
 }
 
-function renderFinal() {
+function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
   showScreen("final");
-  const pts = totalPoints();
+
+  // Si se pasa un expediente guardado, reconstruir el estado de la partida
+  if (expedienteParam && expedienteParam.completado) {
+    const dNum = dayParam || (expedienteParam.diaId ? Number(String(expedienteParam.diaId).replace(/^dia_?/, "")) : dayNumber());
+    const prompts = dailyPrompts(dNum);
+    const results = [];
+    intentosNoReconocidosPorRonda = prompts.map(() => []);
+
+    const ptsExp = (typeof expedienteParam.puntosTotales === "number")
+      ? expedienteParam.puntosTotales
+      : (typeof expedienteParam.puntosTotalesDia === "number" ? expedienteParam.puntosTotalesDia : 0);
+
+    const hasRondas = Array.isArray(expedienteParam.rondas) && expedienteParam.rondas.length > 0;
+
+    prompts.forEach((p, idx) => {
+      const savedR = hasRondas
+        ? (expedienteParam.rondas.find((r) => r && r.promptId === p.id) || expedienteParam.rondas[idx])
+        : null;
+
+      if (savedR) {
+        const isFail = !savedR.respuestaDada && (savedR.puntosObtenidos === 0);
+        const tierObj = Object.entries(TIERS).find(([k, v]) => v.pts === savedR.puntosObtenidos);
+        const tierKey = isFail
+          ? "fail"
+          : (tierObj ? tierObj[0] : (savedR.puntosObtenidos >= 100 ? "trillion" : savedR.puntosObtenidos >= 65 ? "rare" : savedR.puntosObtenidos >= 45 ? "schooler" : savedR.puntosObtenidos >= 25 ? "tooclever" : "plankton"));
+
+        const unrec = Array.isArray(savedR.intentosNoReconocidos)
+          ? savedR.intentosNoReconocidos.slice()
+          : (Array.isArray(savedR.intentosFallidos) ? savedR.intentosFallidos.slice() : []);
+
+        intentosNoReconocidosPorRonda[idx] = unrec.slice();
+
+        results.push({
+          tier: tierKey,
+          answer: savedR.respuestaDada || "",
+          points: savedR.puntosObtenidos,
+          speedBonus: Boolean(savedR.bonusVelocidad),
+          meters: savedR.puntosObtenidos * COVER_UNITS_PER_POINT,
+          wildcardDoubled: false,
+          unrecognizedAttempts: unrec,
+          reclamaciones: Array.isArray(savedR.reclamaciones) ? savedR.reclamaciones.slice() : []
+        });
+      } else {
+        // Fallback táctico seguro si faltan rondas detalladas
+        const estimatedPts = Math.round(ptsExp / ROUNDS);
+        results.push({
+          tier: ptsExp > 0 ? "schooler" : "fail",
+          answer: ptsExp > 0 ? "(Registro consolidado)" : "",
+          points: estimatedPts,
+          speedBonus: false,
+          meters: estimatedPts * COVER_UNITS_PER_POINT,
+          wildcardDoubled: false,
+          unrecognizedAttempts: [],
+          reclamaciones: []
+        });
+      }
+    });
+
+    game = {
+      mode: "daily",
+      day: dNum,
+      label: `Expediente Diario #${dNum}`,
+      prompts: prompts,
+      results: results,
+      idx: prompts.length,
+      started: false,
+      answered: true,
+      wildcardUsed: true,
+      wildcardActive: false,
+      wildcardBurnedThisRound: false,
+      _puntosTotalesDia: ptsExp,
+      _historicalRecorded: true,
+      _readOnly: true,
+      _isHistoricViewer: true,
+      _logrosEvaluados: true
+    };
+  }
+
+  // Comprobar si existe expediente guardado para proteger la puntuación
+  if (game && game.mode === "daily" && game.day) {
+    const existingSt = getDailyState(game.day);
+    const scoreGuard = (existingSt && typeof existingSt.puntosTotales === "number" && existingSt.puntosTotales > 0)
+      ? existingSt.puntosTotales
+      : (existingSt && typeof existingSt.puntosTotalesDia === "number" ? existingSt.puntosTotalesDia : null);
+    if (scoreGuard !== null) {
+      game._puntosTotalesDia = scoreGuard;
+    }
+  }
+
+  const pts = (game && typeof game._puntosTotalesDia === "number" && game._puntosTotalesDia > 0)
+    ? game._puntosTotalesDia
+    : totalPoints();
   const cover = totalCoverUnits();
 
+  // Actualizar sello del dictamen
   if (pts >= 500) {
     setJudgeSeal("trillion", { pts });
   } else if (pts >= 250) {
     setJudgeSeal("schooler", { pts });
-  } else if (pts === 0) {
-    setJudgeSeal("fail", { pts: 0 });
-  } else {
+  } else if (pts > 0) {
     setJudgeSeal("tooclever", { pts });
+  } else {
+    setJudgeSeal("fail", { pts: 0 });
   }
 
   updateTelemetry(pts, cover);
 
-  if (game && game.mode === "daily" && game.day) {
-    const history = store.get("daily_history", {}) || {};
-    history[game.day] = {
-      day: game.day,
-      score: pts,
-      emojis: game.results.map((r) => TIERS[r.tier]?.emoji || "⬛").join(""),
-      done: true,
-      timestamp: Date.now()
-    };
-    store.set("daily_history", history);
-  }
-
-  // --- EVALUACIÓN DE CONDECORACIONES TÁCTICAS AL FINALIZAR MISIÓN ---
-  if (game && Array.isArray(game.results) && game.results.length >= ROUNDS) {
-    // 1. logro_doble_centenario: Clava dos palabras de 100 puntos en una misma misión
-    const count100 = game.results.filter((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100).length;
-    if (count100 >= 2) {
-      unlockAchievement("logro_doble_centenario");
-    }
-
-    // 2. logro_umbral_500: Consigue 500 o más puntos en una sola misión
-    if (pts >= 500) {
-      unlockAchievement("logro_umbral_500");
-    }
-
-    // 3. logro_pleno_700: Pleno perfecto de 700 pts base (todas las rondas de 100 pts)
-    const isPleno700 = game.results.length === ROUNDS && game.results.every((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100);
-    if (isPleno700 && pts >= 700) {
-      unlockAchievement("logro_pleno_700");
-    }
-
-    // 4. logro_pleno_velocidad: Bonificación de velocidad en las 7 rondas de la misión
-    const isPlenoVelocidad = game.results.length === ROUNDS && game.results.every((r) => Boolean(r.speedBonus));
-    if (isPlenoVelocidad) {
-      unlockAchievement("logro_pleno_velocidad");
-    }
-
-    // 5. logro_tiro_limpio: Completa las 7 rondas sin un solo intento fallido o no catalogado (efectividad 100% al primer intento)
-    const isTiroLimpio = game.results.length === ROUNDS && game.results.every((r, idx) => {
-      if (r.tier === "fail") return false;
-      const unrec = Array.isArray(r.unrecognizedAttempts)
-        ? r.unrecognizedAttempts
-        : (Array.isArray(intentosNoReconocidosPorRonda[idx]) ? intentosNoReconocidosPorRonda[idx] : []);
-      return unrec.length === 0;
-    });
-    if (isTiroLimpio) {
-      unlockAchievement("logro_tiro_limpio");
-    }
-
-    // 6. Registro de estadísticas históricas acumuladas y marcador persistente
-    const stats = store.get("player_stats", { completedMissions: 0, totalHistoricalPoints: 0 });
-    let puntosHistoricosTotales = getPuntosHistoricosTotales();
-
-    // Solo sumar si esta partida es una sesión completa recién terminada
-    if (!game._historicalRecorded) {
-      stats.completedMissions = (stats.completedMissions || 0) + 1;
-      puntosHistoricosTotales = sumarPuntosHistoricos(pts);
-      stats.totalHistoricalPoints = puntosHistoricosTotales;
-      store.set("player_stats", stats);
-      game._historicalRecorded = true;
-    }
-
-    // Vinculación directa de logro_veterano_red con spyle_puntos_totales
-    if (stats.completedMissions >= 5 && puntosHistoricosTotales >= 2000) {
-      unlockAchievement("logro_veterano_red");
-    }
-  }
+  // Aislamiento: renderizarInformeEvaluacion es estrictamente de solo lectura.
+  // Prohibido evaluar o desbloquear condecoraciones al visualizar expedientes o historial.
 
   let title = game.label || "Informe de Misión";
   if (game.mode === "pack" && game.chapter) {
@@ -2070,7 +2658,7 @@ function renderFinal() {
   $("final-title").textContent = title;
   $("final-head").textContent = `SPYLE #${game.day || dayNumber()} 🗂️`;
   $("final-score").textContent = `${pts} pts`;
-  $("final-emojis").textContent = game.results.map((r) => TIERS[r.tier].emoji).join("");
+  $("final-emojis").textContent = game.results.map((r) => TIERS[r.tier]?.emoji || "⬛").join("");
   $("final-depth").textContent = `Índice de Cobertura Operativa: ${fmt(cover)} uds.${cover > pts * COVER_UNITS_PER_POINT ? " · [Doble Fondo x2 aplicado]" : ""}`;
   $("copy-msg").textContent = "";
 
@@ -2078,8 +2666,8 @@ function renderFinal() {
   box.innerHTML = "";
 
   game.prompts.forEach((p, i) => {
-    const r = game.results[i];
-    const t = TIERS[r.tier];
+    const r = game.results[i] || {};
+    const t = TIERS[r.tier] || TIERS.fail;
     const rPts = roundPoints(r);
     const isFail = r.tier === "fail" || rPts === 0;
     const unrecognized = Array.isArray(r.unrecognizedAttempts)
@@ -2116,12 +2704,10 @@ function renderFinal() {
       mine.append(b);
     }
 
+    const durmiente = obtenerAgenteDurmiente(p.answers);
     const ex = document.createElement("div");
     ex.className = "row-example";
-    ex.append("🎖️ Referencia Agente Durmiente (100 pts): ");
-    const e = document.createElement("b");
-    e.textContent = p.ejemplo;
-    ex.append(e);
+    ex.innerHTML = `🎖️ Referencia Agente Durmiente (${durmiente.pts} pts): <strong>${durmiente.palabra}</strong>`;
 
     row.append(headWrap, mine, ex);
 
@@ -2136,6 +2722,7 @@ function renderFinal() {
       const unrecItems = document.createElement("div");
       unrecItems.className = "unrecognized-items";
 
+      const roundReclamaciones = Array.isArray(r.reclamaciones) ? r.reclamaciones : [];
       unrecognized.forEach((palabra) => {
         const chip = document.createElement("span");
         chip.className = "unrecognized-chip";
@@ -2144,11 +2731,18 @@ function renderFinal() {
         wordSpan.className = "unrecognized-word";
         wordSpan.textContent = `[${palabra}]`;
 
+        const isClaimed = roundReclamaciones.some((rc) => rc && rc.palabra && rc.palabra.trim().toLowerCase() === palabra.trim().toLowerCase() && rc.reclamada === true);
+
         const claimBtn = document.createElement("button");
-        claimBtn.className = "btn-claim-inline";
+        claimBtn.className = "btn-claim-inline" + (isClaimed ? " claimed" : "");
         claimBtn.type = "button";
-        claimBtn.textContent = "[ ✉️ Reclamar ]";
-        claimBtn.addEventListener("click", () => openSuggestionModal(p, palabra, claimBtn));
+        if (isClaimed) {
+          claimBtn.textContent = "[ ✓ Reclamada ]";
+          claimBtn.disabled = true;
+        } else {
+          claimBtn.textContent = "[ ✉️ Reclamar ]";
+          claimBtn.addEventListener("click", () => openSuggestionModal(p, palabra, claimBtn, i));
+        }
 
         chip.append(wordSpan, claimBtn);
         unrecItems.appendChild(chip);
@@ -2160,6 +2754,10 @@ function renderFinal() {
 
     box.appendChild(row);
   });
+}
+
+function renderFinal() {
+  renderizarInformeEvaluacion();
 }
 
 async function copyResult() {
@@ -2180,15 +2778,17 @@ async function copyResult() {
 /* ---------- Sistema Blindado de Transmisión de Inteligencia de Campo ---------- */
 let currentSuggestingPrompt = null;
 let currentClaimButton = null;
+let currentClaimRoundIdx = null;
 let suggestionCloseTimer = null;
 let modalHideTimer = null;
 
-function openSuggestionModal(prompt, initialWord = "", triggerBtn = null) {
+function openSuggestionModal(prompt, initialWord = "", triggerBtn = null, roundIdx = null) {
   clearTimeout(suggestionCloseTimer);
   clearTimeout(modalHideTimer);
   $("modal-suggestion").classList.remove("closing");
   currentSuggestingPrompt = prompt;
   currentClaimButton = triggerBtn;
+  currentClaimRoundIdx = (roundIdx !== null && roundIdx !== undefined) ? roundIdx : null;
 
   const promptEl = $("modal-prompt-text");
   if ("value" in promptEl) {
@@ -2262,8 +2862,10 @@ async function transmitirSugerencia(categoria, palabra) {
     currentClaimButton.classList.add("claimed");
   }
 
+  markWordAsClaimedInDailyState(cleanWord, currentClaimRoundIdx);
+
   const statusEl = $("sug-status");
-  statusEl.textContent = "✓ INFORME TRANSMITIDO CON ÉXITO";
+  statusEl.textContent = "// REPORTE TRANSMITIDO CON ÉXITO";
   statusEl.classList.remove("hidden");
   sound.playTone(760, "triangle", 0.08, 0.12);
 
@@ -2308,7 +2910,10 @@ function startDaily() {
       wildcardBurnedThisRound: false,
       ...extra
     };
-    if (saved.done) return renderFinal();
+    if (saved.done) {
+      if (restoreDailyStateAndRender(day)) return;
+      return renderFinal();
+    }
     if (saved.started) {
       const prevUnrec = (intentosNoReconocidosPorRonda[game.idx] || []).slice();
       game.results.push({
@@ -2393,10 +2998,23 @@ function closeEasterEggModal() {
   }, 220);
 }
 
+function isHistoricalUnlocked() {
+  try {
+    if (localStorage.getItem("spyle_archivo_desbloqueado") === "true" ||
+        localStorage.getItem("archivo_calendario_desbloqueado") === "true") {
+      return true;
+    }
+    const achs = typeof getAchievements === "function" ? getAchievements() : {};
+    return Boolean(achs["logro_criptografo"] && achs["logro_criptografo"].unlocked);
+  } catch {
+    return false;
+  }
+}
+
 function updateCalendarVisibility() {
-  const isUnlocked = localStorage.getItem("spyle_archivo_desbloqueado") === "true" || localStorage.getItem("archivo_calendario_desbloqueado") === "true";
+  const isUnlocked = isHistoricalUnlocked();
   const headerBtn = $("btn-header-calendar");
-  const menuBtn = $("btn-calendar");
+  const menuBtn = $("btn-archivo-historico") || $("btn-calendar");
 
   if (headerBtn) {
     headerBtn.style.display = isUnlocked ? "inline-flex" : "none";
@@ -2413,7 +3031,10 @@ function renderCalendar() {
   grid.innerHTML = "";
 
   const today = dayNumber();
-  const totalDays = Math.max(today, 3);
+  const maxConfiguredDay = (typeof DAILY_MISSIONS !== "undefined")
+    ? Math.max(...Object.keys(DAILY_MISSIONS).map(Number).filter((n) => !isNaN(n) && n > 0), 19)
+    : 19;
+  const totalDays = Math.max(today, maxConfiguredDay);
   const history = store.get("daily_history", {}) || {};
   const currentDaily = store.get("daily", null);
 
@@ -2435,12 +3056,21 @@ function renderCalendar() {
 
   for (let d = 1; d <= totalDays; d++) {
     const hist = history[d];
-    const isDone = Boolean(hist && hist.done);
-    if (isDone) completedCount++;
+    const isSavedDone = Boolean(hist && hist.done);
+    const persistentState = typeof getDailyState === "function" ? getDailyState(d) : null;
+    const isCompleted = isSavedDone || Boolean(persistentState && persistentState.completado);
 
-    const card = document.createElement("button");
-    card.type = "button";
-    card.className = `calendar-day-card${d === today ? " current-day" : ""}`;
+    if (isCompleted) completedCount++;
+
+    const isFuture = d > today;
+    const isPastUnplayed = !isCompleted && !isFuture;
+
+    const card = document.createElement("div");
+    let statusClass = "status-completed";
+    if (isFuture) statusClass = "status-future";
+    else if (isPastUnplayed) statusClass = "status-pending";
+
+    card.className = `calendar-day-card ${statusClass}${d === today ? " current-day" : ""}`;
 
     const header = document.createElement("div");
     header.className = "cal-day-header";
@@ -2456,7 +3086,7 @@ function renderCalendar() {
     header.append(num, dtSpan);
 
     const mission = (typeof DAILY_MISSIONS !== "undefined")
-      ? (DAILY_MISSIONS[d] || DAILY_MISSIONS[`dia_${d}`] || DAILY_MISSIONS[((d - 1) % 3) + 1])
+      ? (DAILY_MISSIONS[d] || DAILY_MISSIONS[`dia_${d}`] || DAILY_MISSIONS[((d - 1) % 19) + 1])
       : null;
     const titleDiv = document.createElement("div");
     titleDiv.className = "cal-day-title";
@@ -2466,33 +3096,84 @@ function renderCalendar() {
     statusRow.className = "cal-day-status-row";
 
     const badge = document.createElement("span");
-    badge.className = `cal-badge ${isDone ? "completed" : "pending"}`;
-    badge.textContent = isDone ? "COMPLETADO" : "PENDIENTE";
-
     const scoreSpan = document.createElement("span");
     scoreSpan.className = "cal-day-score";
-    scoreSpan.textContent = isDone ? `${hist.score || 0} pts` : "—";
+
+    if (isCompleted) {
+      badge.className = "cal-badge completed";
+      badge.textContent = "[ COMPLETADO ]";
+      const displayScore = (persistentState && typeof persistentState.puntosTotalesDia === "number" && persistentState.puntosTotalesDia > 0)
+        ? persistentState.puntosTotalesDia
+        : ((hist && hist.score) || 0);
+      scoreSpan.textContent = `${displayScore} pts`;
+    } else if (isPastUnplayed) {
+      badge.className = "cal-badge unplayed";
+      badge.textContent = "[ NO REGISTRADO ]";
+      scoreSpan.textContent = "—";
+    } else {
+      badge.className = "cal-badge future";
+      badge.textContent = "🔒 [ ACCESO RESTRINGIDO // EN RESERVA ]";
+      scoreSpan.textContent = "—";
+    }
 
     statusRow.append(badge, scoreSpan);
 
     const emojisDiv = document.createElement("div");
     emojisDiv.className = "cal-day-emojis";
-    emojisDiv.textContent = isDone ? (hist.emojis || "") : "—";
+    if (isCompleted) {
+      emojisDiv.textContent = (hist && hist.emojis) || "🟩🟩🟩🟩🟩🟩🟩";
+    } else if (isPastUnplayed) {
+      emojisDiv.textContent = "—";
+    } else {
+      emojisDiv.textContent = "🔒 // ENCRIPTADO";
+    }
 
     const footer = document.createElement("div");
     footer.className = "cal-day-footer";
-    footer.innerHTML = `<span>7 consultas / 25s</span><span>${isDone ? "Rejugar misión →" : "Iniciar misión →"}</span>`;
 
-    card.append(header, titleDiv, statusRow, emojisDiv, footer);
+    const footInfo = document.createElement("span");
+    footInfo.textContent = "7 consultas / 25s";
 
-    card.addEventListener("click", () => {
-      const dStr = dateForDay(d);
-      openDeployModal(`EXPEDIENTE HISTÓRICO: DÍA #${d} (${dStr.toUpperCase()})`, () => {
-        const prompts = dailyPrompts(d);
-        startGame("daily", prompts, { day: d, label: `Expediente Diario #${d}` });
+    const actionBtn = document.createElement("button");
+    actionBtn.type = "button";
+    actionBtn.className = "cal-btn-action";
+
+    if (isCompleted) {
+      actionBtn.classList.add("btn-view");
+      actionBtn.textContent = "[ VER EXPEDIENTE ]";
+      actionBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const exp = getDailyState(d);
+        if (exp && exp.completado) {
+          renderizarInformeEvaluacion(exp, d);
+          return;
+        }
+        if (typeof restoreDailyStateAndRender === "function" && restoreDailyStateAndRender(d)) {
+          return;
+        }
+        if (hist && hist.done) {
+          renderizarInformeEvaluacion({ completado: true, puntosTotales: hist.score || 0, diaId: "dia" + d }, d);
+        }
       });
-    });
+    } else if (isPastUnplayed) {
+      actionBtn.classList.add("btn-infiltrate");
+      actionBtn.textContent = "[ INFILTRARSE ]";
+      actionBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const dStr = dateForDay(d);
+        openDeployModal(`ENTRENAMIENTO HISTÓRICO: DÍA #${d} (${dStr.toUpperCase()})`, () => {
+          const prompts = dailyPrompts(d);
+          startGame("daily", prompts, { day: d, label: `Expediente Diario #${d}` });
+        });
+      });
+    } else {
+      actionBtn.classList.add("btn-locked");
+      actionBtn.disabled = true;
+      actionBtn.textContent = "🔒 BLOQUEADO";
+    }
 
+    footer.append(footInfo, actionBtn);
+    card.append(header, titleDiv, statusRow, emojisDiv, footer);
     grid.appendChild(card);
   }
 
@@ -2505,9 +3186,16 @@ function renderCalendar() {
 /* ---------- Eventos e Interacción ---------- */
 function requestDailyStart() {
   const day = dayNumber();
+  const expediente = getDailyState(day);
+  if (expediente && expediente.completado) {
+    renderizarInformeEvaluacion(expediente, day);
+    return;
+  }
   const saved = store.get("daily", null);
   if (saved && saved.day === day && saved.done) {
-    return renderFinal();
+    if (restoreDailyStateAndRender(day)) return;
+    renderFinal();
+    return;
   }
   openDeployModal("MODO DIARIO: OPERACIÓN ACTIVA", () => {
     startDaily();
@@ -2697,14 +3385,14 @@ function auditPrompts() {
     DEV_TIERS.forEach((t) => { byTier[t] = values.filter((v) => v === t).length; });
     const total = Object.keys(p.answers || {}).length;
     const light = total >= 130 ? "🟢" : total >= 70 ? "🟡" : "🔴";
-    return { id: p.id, title: p.texto, titulo: p.texto, total, byTier, light };
+    return { id: p.id, dailyId: p.dailyId || "", title: p.texto, titulo: p.texto, total, byTier, light };
   });
 }
 
 function logAuditToConsole() {
   const table = {};
   const categoriasOrdenadas = [...auditPrompts()].sort((a, b) =>
-    a.title.localeCompare(b.title, 'es', { sensitivity: 'base' })
+    a.id.localeCompare(b.id, 'es', { numeric: true, sensitivity: 'base' })
   );
   categoriasOrdenadas.forEach((a) => {
     table[a.id] = { titulo: a.titulo, total: a.total, ...a.byTier, estado: a.light };
@@ -2718,10 +3406,12 @@ function renderDevAudit() {
   body.innerHTML = "";
   const bancoCategorias = auditPrompts();
   const categoriasOrdenadas = [...bancoCategorias].sort((a, b) =>
-    a.title.localeCompare(b.title, 'es', { sensitivity: 'base' })
+    a.id.localeCompare(b.id, 'es', { numeric: true, sensitivity: 'base' })
   );
+  const totalExpedientes = categoriasOrdenadas.length;
+  const diasCompletos = Math.floor(totalExpedientes / ROUNDS);
   const count = (l) => categoriasOrdenadas.filter((a) => a.light === l).length;
-  $("dev-audit-summary").textContent = `${categoriasOrdenadas.length} categorías · 🟢 ${count("🟢")} · 🟡 ${count("🟡")} · 🔴 ${count("🔴")}`;
+  $("dev-audit-summary").innerHTML = `<div style="font-weight:700;letter-spacing:0.04em;color:var(--gold-elite, #e5a93c);margin-bottom:3px;">RESERVA OPERATIVA: ${diasCompletos} DÍAS COMPLETOS (${totalExpedientes} EXPEDIENTES TOTALES)</div><div>${totalExpedientes} categorías · 🟢 ${count("🟢")} · 🟡 ${count("🟡")} · 🔴 ${count("🔴")}</div>`;
 
   categoriasOrdenadas.forEach((a) => {
     const row = document.createElement("div");
@@ -2729,7 +3419,8 @@ function renderDevAudit() {
 
     const head = document.createElement("div");
     head.className = "dev-row-head";
-    head.textContent = `${a.light} ${a.title}`;
+    const dailyTag = a.dailyId ? ` · [${a.dailyId}]` : "";
+    head.textContent = `${a.light} [${a.id}]${dailyTag} — ${a.title}`;
 
     const stats = document.createElement("div");
     stats.className = "dev-row-stats";
@@ -2775,9 +3466,9 @@ refreshMenu();
 updateTelemetry(0, 0);
 
 // Navegación al Calendario Histórico
-const btnCalendar = $("btn-calendar");
-if (btnCalendar) {
-  btnCalendar.addEventListener("click", () => {
+const btnArchivoHistorico = $("btn-archivo-historico") || $("btn-calendar");
+if (btnArchivoHistorico) {
+  btnArchivoHistorico.addEventListener("click", () => {
     renderCalendar();
     showScreen("calendar");
   });
@@ -2842,5 +3533,18 @@ if (localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
     unlockAchievement("logro_veterano_red");
   }
 })();
+sanearLogroOP06();
 updateAchievementsStatus();
 checkFirstVisitBriefing();
+
+// Restaurar automáticamente el Interrogatorio Diario si el día de hoy ya está finalizado
+(function checkInitialDailyRestoration() {
+  const today = dayNumber();
+  const expediente = getDailyState(today);
+  const savedDaily = store.get("daily", null);
+  if (expediente && expediente.completado) {
+    renderizarInformeEvaluacion(expediente, today);
+  } else if (savedDaily && savedDaily.day === today && savedDaily.done) {
+    restoreDailyStateAndRender(today);
+  }
+})();

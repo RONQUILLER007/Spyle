@@ -40,18 +40,147 @@ const DAILY_MISSIONS = {
     fecha: "9 nov 2026",
     prompts: ["gen-015", "gen-016", "gen-017", "gen-018", "gen-019", "gen-020", "gen-021"],
     easterEgg: { promptId: "gen-019", word: "mantecado" }
+  },
+  4: {
+    id: "dia_4",
+    dia: 4,
+    nombre: "Operación Cuadrante",
+    fecha: "10 nov 2026",
+    prompts: ["gen-027", "gen-028", "gen-022", "gen-023", "gen-024", "gen-025", "gen-026"],
+    easterEgg: { promptId: "gen-027", word: "malaui" }
+  },
+  5: {
+    id: "dia_5",
+    dia: 5,
+    nombre: "Operación Pentágono",
+    fecha: "11 nov 2026",
+    prompts: ["geo-001", "mus-001", "pal-001", "dep-001", "pel-002", "pel-001", "dep-002"]
+  },
+  6: {
+    id: "dia_6",
+    dia: 6,
+    nombre: "Operación Sextante",
+    fecha: "12 nov 2026",
+    prompts: ["pal-002", "geo-002", "geo-003", "dep-003", "mus-003", "pel-003", "mus-002"]
+  },
+  7: {
+    id: "dia_7",
+    dia: 7,
+    nombre: "Operación Septentrión",
+    fecha: "13 nov 2026",
+    prompts: ["pel-005", "mus-004", "pel-004", "geo-004", "pal-004", "dep-004", "pal-003"]
+  },
+  8: {
+    id: "dia_8",
+    dia: 8,
+    nombre: "Operación Octógono",
+    fecha: "14 nov 2026",
+    prompts: ["mus-005", "pel-006", "pal-005", "geo-006", "geo-005", "dep-005", "dep-006"]
+  },
+  9: {
+    id: "dia_9",
+    dia: 9,
+    nombre: "Operación Nono",
+    fecha: "15 nov 2026",
+    prompts: ["pal-007", "pel-007", "mus-007", "dep-007", "mus-006", "pal-006", "geo-007"]
+  },
+  10: {
+    id: "dia_10",
+    dia: 10,
+    nombre: "Operación Decatlón",
+    fecha: "16 nov 2026",
+    prompts: ["pel-008", "dep-008", "geo-009", "geo-008", "mus-008", "pel-009", "pal-008"]
+  },
+  11: {
+    id: "dia_11",
+    dia: 11,
+    nombre: "Operación Enclave",
+    fecha: "17 nov 2026",
+    prompts: ["geo-010", "dep-010", "pel-010", "pal-009", "dep-009", "mus-009", "mus-010"]
+  },
+  12: {
+    id: "dia_12",
+    dia: 12,
+    nombre: "Operación Eclipse",
+    fecha: "18 nov 2026",
+    prompts: ["mus-011", "pal-010", "geo-011", "geo-012", "dep-011", "pal-011", "pel-011"]
+  },
+  13: {
+    id: "dia_13",
+    dia: 13,
+    nombre: "Operación Tridente",
+    fecha: "19 nov 2026",
+    prompts: ["dep-012", "pel-013", "mus-013", "mus-012", "pal-012", "pel-012", "geo-013"]
+  },
+  14: {
+    id: "dia_14",
+    dia: 14,
+    nombre: "Operación Baluarte",
+    fecha: "20 nov 2026",
+    prompts: ["pal-013", "mus-014", "dep-013", "pel-014", "pal-014", "dep-014", "geo-014"]
+  },
+  15: {
+    id: "dia_15",
+    dia: 15,
+    nombre: "Operación Quimera",
+    fecha: "21 nov 2026",
+    prompts: ["mus-015", "pel-016", "pal-015", "pel-015", "dep-016", "geo-015", "dep-015"]
+  },
+  16: {
+    id: "dia_16",
+    dia: 16,
+    nombre: "Operación Centinela",
+    fecha: "22 nov 2026",
+    prompts: ["geo-016", "mus-016", "dep-017", "geo-017", "pel-017", "mus-017", "pal-016"]
+  },
+  17: {
+    id: "dia_17",
+    dia: 17,
+    nombre: "Operación Aurora",
+    fecha: "23 nov 2026",
+    prompts: ["dep-018", "mus-018", "pel-018", "pal-018", "geo-018", "pel-019", "pal-017"]
+  },
+  18: {
+    id: "dia_18",
+    dia: 18,
+    nombre: "Operación Bastión",
+    fecha: "24 nov 2026",
+    prompts: ["pel-020", "dep-020", "pal-019", "geo-020", "mus-019", "geo-019", "dep-019"]
+  },
+  19: {
+    id: "dia_19",
+    dia: 19,
+    nombre: "Operación Éxodo",
+    fecha: "25 nov 2026",
+    prompts: ["dep-021", "pal-021", "mus-020", "pel-021", "pal-020", "geo-021", "mus-021"]
   }
 };
 DAILY_MISSIONS.dia_1 = DAILY_MISSIONS[1];
 DAILY_MISSIONS.dia_2 = DAILY_MISSIONS[2];
 DAILY_MISSIONS.dia_3 = DAILY_MISSIONS[3];
+DAILY_MISSIONS.dia_4 = DAILY_MISSIONS[4];
+DAILY_MISSIONS.dia_5 = DAILY_MISSIONS[5];
+DAILY_MISSIONS.dia_6 = DAILY_MISSIONS[6];
+DAILY_MISSIONS.dia_7 = DAILY_MISSIONS[7];
+DAILY_MISSIONS.dia_8 = DAILY_MISSIONS[8];
+DAILY_MISSIONS.dia_9 = DAILY_MISSIONS[9];
+DAILY_MISSIONS.dia_10 = DAILY_MISSIONS[10];
+DAILY_MISSIONS.dia_11 = DAILY_MISSIONS[11];
+DAILY_MISSIONS.dia_12 = DAILY_MISSIONS[12];
+DAILY_MISSIONS.dia_13 = DAILY_MISSIONS[13];
+DAILY_MISSIONS.dia_14 = DAILY_MISSIONS[14];
+DAILY_MISSIONS.dia_15 = DAILY_MISSIONS[15];
+DAILY_MISSIONS.dia_16 = DAILY_MISSIONS[16];
+DAILY_MISSIONS.dia_17 = DAILY_MISSIONS[17];
+DAILY_MISSIONS.dia_18 = DAILY_MISSIONS[18];
+DAILY_MISSIONS.dia_19 = DAILY_MISSIONS[19];
 if (typeof window !== "undefined") window.DAILY_MISSIONS = DAILY_MISSIONS;
 
 
 const PROMPTS = [
   /* ===================== BLOQUE GENERAL 1 (14 prompts = 2 días) ===================== */
   {
-    id: "gen-001", pack: "general",
+    id: "gen-001", dailyId: "dia1-01", pack: "general",
     texto: "Marca de yogures o postres lácteos vendida en España",
     ejemplo: "sojasun",
     answers: {
@@ -64,7 +193,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-002", pack: "general",
+    id: "gen-002", dailyId: "dia1-02", pack: "general",
     texto: "Sinónimo en español de «feliz»",
     ejemplo: "bienhadado",
     answers: {
@@ -77,7 +206,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-003", pack: "general",
+    id: "gen-003", dailyId: "dia1-03", pack: "general",
     texto: "Municipio o ciudad de España que empiece por la letra «S»",
     ejemplo: "sot de chera",
     answers: {
@@ -90,7 +219,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-004", pack: "general",
+    id: "gen-004", dailyId: "dia1-04", pack: "general",
     texto: "Equipo de fútbol español que haya jugado al menos una temporada en Primera División",
     ejemplo: "atletico tetuan",
     answers: {
@@ -103,7 +232,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-005", pack: "general",
+    id: "gen-005", dailyId: "dia1-05", pack: "general",
     texto: "Marca de automóviles (desde generalistas hasta artesanales o desaparecidas)",
     ejemplo: "hurtan",
     easterEgg: "delorean",
@@ -111,13 +240,13 @@ const PROMPTS = [
       "seat": 10, "renault": 10, "ford": 10, "volkswagen": 10, "vw": 10, "toyota": 10, "bmw": 10, "mercedes": 10, "mercedes benz": 10, "audi": 10, "peugeot": 10, "citroen": 10, "opel": 10, "fiat": 10, "nissan": 10, "hyundai": 10, "kia": 10, "honda": 10,
       "ferrari": 25, "lamborghini": 25, "tesla": 25, "rolls royce": 25, "bentley": 25, "porsche": 25, "bugatti": 25, "mclaren": 25, "maserati": 25, "aston martin": 25, "delorean": 25, "lotus": 25,
       "skoda": 45, "dacia": 45, "mazda": 45, "suzuki": 45, "mitsubishi": 45, "volvo": 45, "jeep": 45, "land rover": 45, "mini": 45, "smart": 45, "alfa romeo": 45, "lancia": 45, "chevrolet": 45, "cupra": 45, "lexus": 45, "subaru": 45, "jaguar": 45, "saab": 45, "chrysler": 45, "dodge": 45, "daewoo": 45, "abarth": 45, "alpine": 45, "ds": 45, "infiniti": 45,
-      "byd": 65, "omoda": 65, "jaecoo": 65, "xiaomi": 65, "mg": 65, "morris garages": 65, "polestar": 65, "lynk and co": 65, "lynk & co": 65, "zeekr": 65, "xpeng": 65, "nio": 65, "seres": 65, "leapmotor": 65, "dr": 65, "dfsk": 65, "maxus": 65, "aiways": 65, "voyah": 65, "rover": 65, "ssangyong": 65, "kgm": 65, "daihatsu": 65, "isuzu": 65, "lada": 65, "trabant": 65, "cadillac": 65, "hummer": 65, "pontiac": 65, "simca": 65, "talbot": 65, "genesis": 65,
+      "byd": 65, "omoda": 65, "jaecoo": 65, "xiaomi": 65, "mg": 65, "morris garages": 65, "polestar": 65, "lynk and co": 65, "lynk co": 65, "zeekr": 65, "xpeng": 65, "nio": 65, "seres": 65, "leapmotor": 65, "dr": 65, "dfsk": 65, "maxus": 65, "aiways": 65, "voyah": 65, "rover": 65, "ssangyong": 65, "kgm": 65, "daihatsu": 65, "isuzu": 65, "lada": 65, "trabant": 65, "cadillac": 65, "hummer": 65, "pontiac": 65, "simca": 65, "talbot": 65, "genesis": 65,
       "pegaso": 85, "santana": 85, "barreiros": 85, "hispano suiza": 85, "dkw": 85, "tvr": 85, "morgan": 85, "tata": 85, "mahindra": 85, "wiesmann": 85, "spyker": 85, "koenigsegg": 85, "pagani": 85, "de tomaso": 85, "borgward": 85, "tatra": 85, "zastava": 85, "yugo": 85, "moskvich": 85, "wartburg": 85, "plymouth": 85, "oldsmobile": 85, "buick": 85, "autobianchi": 85, "caterham": 85, "ariel": 85, "ssc": 85, "ssc north america": 85,
       "hurtan": 100, "gta spano": 100, "spano": 100, "tramontana": 100, "ebro": 100, "aixam": 100, "ligier": 100, "donkervoort": 100, "rimac": 100, "panoz": 100, "ginetta": 100, "comarth": 100, "microcar": 100, "bac": 100, "gumpert": 100, "noble": 100, "icona": 100
     }
   },
   {
-    id: "gen-006", pack: "general",
+    id: "gen-006", dailyId: "dia1-06", pack: "general",
     texto: "Película española ganadora del Goya a Mejor Película o muy taquillera",
     ejemplo: "arrebato",
     answers: {
@@ -130,7 +259,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-007", pack: "general",
+    id: "gen-007", dailyId: "dia1-07", pack: "general",
     texto: "Fruta o verdura de color verde",
     ejemplo: "salicornia",
     answers: {
@@ -143,7 +272,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-008", pack: "general",
+    id: "gen-008", dailyId: "dia2-01", pack: "general",
     texto: "Cadena de supermercados o hipermercados que opere o haya operado en España",
     ejemplo: "valvi",
     answers: {
@@ -156,7 +285,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-009", pack: "general",
+    id: "gen-009", dailyId: "dia2-02", pack: "general",
     texto: "Videojuego lanzado originalmente para PlayStation 2 o PC en los años 2000",
     ejemplo: "praetorians",
     answers: {
@@ -169,7 +298,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-010", pack: "general",
+    id: "gen-010", dailyId: "dia2-03", pack: "general",
     texto: "País soberano de Europa o Asia",
     ejemplo: "timor oriental",
     easterEgg: "liechtenstein",
@@ -183,7 +312,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-011", pack: "general",
+    id: "gen-011", dailyId: "dia2-04", pack: "general",
     texto: "Instrumento musical de viento o percusión",
     ejemplo: "heckelphone",
     answers: {
@@ -196,7 +325,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-012", pack: "general",
+    id: "gen-012", dailyId: "dia2-05", pack: "general",
     texto: "Sinónimo en español de «rápido»",
     ejemplo: "aligero",
     answers: {
@@ -209,7 +338,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-013", pack: "general",
+    id: "gen-013", dailyId: "dia2-06", pack: "general",
     texto: "Marca de cerveza (nacional o de importación)",
     ejemplo: "cisk",
     answers: {
@@ -222,7 +351,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-014", pack: "general",
+    id: "gen-014", dailyId: "dia2-07", pack: "general",
     texto: "Animal marino que no sea un pez",
     ejemplo: "pennatula",
     answers: {
@@ -237,7 +366,7 @@ const PROMPTS = [
 
 
   {
-    id: "gen-015", pack: "general",
+    id: "gen-015", dailyId: "dia3-01", pack: "general",
     texto: "Plato, ración o tapa típica de la gastronomía española",
     ejemplo: "cap i pota",
     answers: {
@@ -250,20 +379,20 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-016", pack: "general",
+    id: "gen-016", dailyId: "dia3-02", pack: "general",
     texto: "Cadena de comida rápida o franquicia de restauración que opere en España",
     ejemplo: "burger ranch",
     answers: {
       "mcdonalds": 10, "mcdonald s": 10, "mc donalds": 10, "mcdonald": 10, "burger king": 10, "bk": 10, "kfc": 10, "telepizza": 10, "dominos": 10, "domino s": 10, "dominos pizza": 10, "pizza hut": 10, "subway": 10, "starbucks": 10, "100 montaditos": 10, "cien montaditos": 10, "foster hollywood": 10, "fosters hollywood": 10, "vips": 10, "taco bell": 10, "five guys": 10, "pans and company": 10, "pans company": 10, "burguer": 10, "montaditos": 10, "foster": 10, "fosters": 10, "mcdonals": 10, "macdonals": 10, "macdonalds": 10, "burguer king": 10, "burgerking": 10, "domino": 10,
-      "chilis": 25, "chili s": 25, "hooters": 25, "ruby tuesday": 25, "starbucks coffee": 25, "restaurante vips": 25, "burger": 25, "hamburgueseria": 25, "pizzeria": 25, "kebab": 25, "dunkin": 25, "dunkin donuts": 25, "krispy kreme": 25, "tim hortons": 25, "wendys": 25, "wendy s": 25, "popeyes": 25, "costa coffee": 25, "hard rock cafe": 25, "planet hollywood": 25, "dennys": 25, "denny s": 25, "tgi fridays": 25, "fridays": 25, "papa johns": 25, "papa john s": 25, "little caesars": 25, "pret a manger": 25, "macas": 25, "el macas": 25, "mcauto": 25, "el burguer": 25, "kentucky": 25, "el kentucky": 25, "telepi": 25, "el telepi": 25, "los montaditos": 25, "100m": 25, "sureña": 25, "el foster": 25, "pans": 25, "kebap": 25, "el kebab": 25, "chino": 25, "restaurante chino": 25, "wok": 25, "buffet": 25, "bufe": 25, "buffet libre": 25, "manolo bakes": 25, "manolitos": 25, "llaollao": 25, "mc": 25, "el mc": 25, "telepiza": 25, "el dominos": 25, "el goiko": 25, "el vips": 25, "el ginos": 25, "el rodilla": 25, "taco": 25, "el taco bell": 25, "popeye": 25, "el popeyes": 25, "fiveguys": 25, "dunkin donut": 25, "starbuck": 25, "el starbucks": 25, "100 montaitos": 25, "cien montaitos": 25, "montaitos": 25, "papa john": 25, "kfc pollo": 25, "japones": 25, "sushi": 25, "turco": 25,
-      "foster s hollywood": 45, "vips smart": 45, "dunkin coffee": 45, "cafe y te": 45, "cinco jotas": 45, "tea shop": 45, "llao llao": 45, "goiko": 45, "goiko grill": 45, "rodilla": 45, "la sureña": 45, "tgb": 45, "the good burger": 45, "bacoa": 45, "vicio": 45, "fitzgerald": 45, "pomodoro": 45, "ginos": 45, "gino s": 45, "tagliatelle": 45, "la tagliatella": 45, "tagliatella": 45, "bocatta": 45, "lizarran": 45, "wok to walk": 45, "viena": 45, "honest greens": 45, "flax and kale": 45, "kentucky fried chicken": 45, "santa gloria": 45, "santagloria": 45, "smooy": 45, "tgb burger": 45, "carls junior": 45, "carl jr": 45, "tim horton": 45, "little caesar": 45, "running sushi": 45,
+      "chilis": 25, "chili s": 25, "hooters": 25, "ruby tuesday": 25, "starbucks coffee": 25, "restaurante vips": 25, "burger": 25, "hamburgueseria": 25, "pizzeria": 25, "kebab": 25, "dunkin": 25, "dunkin donuts": 25, "krispy kreme": 25, "tim hortons": 25, "wendys": 25, "wendy s": 25, "popeyes": 25, "costa coffee": 25, "hard rock cafe": 25, "planet hollywood": 25, "dennys": 25, "denny s": 25, "tgi fridays": 25, "fridays": 25, "papa johns": 25, "papa john s": 25, "little caesars": 25, "pret a manger": 25, "macas": 25, "el macas": 25, "mcauto": 25, "kentucky": 25, "el kentucky": 25, "telepi": 25, "el telepi": 25, "100m": 25, "sureña": 25, "pans": 25, "kebap": 25, "el kebab": 25, "chino": 25, "restaurante chino": 25, "wok": 25, "buffet": 25, "bufe": 25, "buffet libre": 25, "manolo bakes": 25, "manolitos": 25, "llaollao": 25, "mc": 25, "el mc": 25, "telepiza": 25, "taco": 25, "popeye": 25, "el popeyes": 25, "fiveguys": 25, "dunkin donut": 25, "starbuck": 25, "100 montaitos": 25, "cien montaitos": 25, "montaitos": 25, "papa john": 25, "kfc pollo": 25, "japones": 25, "sushi": 25, "turco": 25,
+      "foster s hollywood": 45, "vips smart": 45, "dunkin coffee": 45, "cafe y te": 45, "cinco jotas": 45, "tea shop": 45, "llao llao": 45, "goiko": 45, "goiko grill": 45, "rodilla": 45, "tgb": 45, "the good burger": 45, "bacoa": 45, "vicio": 45, "fitzgerald": 45, "pomodoro": 45, "ginos": 45, "gino s": 45, "tagliatelle": 45, "la tagliatella": 45, "tagliatella": 45, "bocatta": 45, "lizarran": 45, "wok to walk": 45, "viena": 45, "honest greens": 45, "flax and kale": 45, "kentucky fried chicken": 45, "santa gloria": 45, "santagloria": 45, "smooy": 45, "tgb burger": 45, "carls junior": 45, "carl jr": 45, "tim horton": 45, "little caesar": 45, "running sushi": 45,
       "tommy mel s": 65, "tony roma s": 65, "carl s jr": 65, "txapela": 65, "muerde la pasta": 65, "wagamama": 65, "vapiano": 65, "viena capellanes": 65, "ribs": 65, "la pepita burger bar": 65, "hamburguesa nostra": 65, "nostrum": 65, "la mafia se sienta a la mesa": 65, "la mafia": 65, "sbarro": 65, "tommy mels": 65, "tony romas": 65, "carls jr": 65, "fresc co": 65, "lateral": 65, "la vaca argentina": 65, "fast good": 65, "pomme de pain": 65, "paul": 65, "cafe and te": 65, "sushi shop": 65, "cerveceria 100 montaditos": 65, "cañas y tapas": 65, "pollo feliz": 65, "pollo loco": 65, "kaiten sushi": 65,
       "smoy": 85, "il padrino": 85, "museo del jamon": 85, "pizza movil": 85, "cantina mariachi": 85, "ten con ten": 85, "il tavolo verde": 85, "alsur cafe": 85, "home burger bar": 85, "eat out": 85, "pollo campero": 85, "wimpy": 85, "sagardi": 85,
       "jamaica coffee shop": 100, "panaria": 100, "granier": 100, "panod": 100, "la mallorquina": 100, "sushita cafe": 100, "cruz blanca": 100, "mama campo": 100, "taberna del volapie": 100, "volapie": 100, "cafe de indias": 100, "pastelerias mallorca": 100, "burger ranch": 100
     }
   },
   {
-    id: "gen-017", pack: "general",
+    id: "gen-017", dailyId: "dia3-03", pack: "general",
     texto: "Serie de televisión española (clásica o actual)",
     ejemplo: "la bola de cristal",
     answers: {
@@ -276,7 +405,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-018", pack: "general",
+    id: "gen-018", dailyId: "dia3-04", pack: "general",
     texto: "Objeto, herramienta o accesorio que se suele guardar en la guantera o maletero del coche",
     ejemplo: "cortacinturones",
     answers: {
@@ -289,13 +418,13 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-019", pack: "general",
+    id: "gen-019", dailyId: "dia3-05", pack: "general",
     texto: "Dulce, bollería industrial, galleta o snack de quiosco vendido en España",
     ejemplo: "gusiluz",
     easterEgg: "mantecado",
     answers: {
       "donuts": 10, "donut": 10, "bollycao": 10, "phoskitos": 10, "pantera rosa": 10, "tigreton": 10, "bony": 10, "filipinos": 10, "conguitos": 10, "oreo": 10, "principe": 10, "maria": 10, "galletas maria": 10, "cheetos": 10, "lays": 10, "doritos": 10, "pringles": 10, "ruffles": 10, "kinder bueno": 10, "kit kat": 10, "risketos": 10, "gusanitos": 10, "chupa chups": 10, "chicles": 10, "lacasitos": 10, "kinder sorpresa": 10, "palmera de chocolate": 10, "tocino de cielo": 10, "palotes": 10, "llaves acidas": 10, "chetos": 10, "chicle": 10, "piruleta": 10, "palote": 10, "kitkat": 10, "huevo kinder": 10, "bollicao": 10, "riskettos": 10, "chupa chup": 10,
-      "chocolate": 25, "galletas": 25, "patatas fritas": 25, "patatas": 25, "snickers": 25, "mars": 25, "twix": 25, "bounty": 25, "kinder": 25, "ferrero rocher": 25, "magdalenas": 25, "croissant": 25, "napolitana": 25, "palmera": 25, "ensaimada": 25, "gominolas": 25, "chuches": 25, "caramelos": 25, "palomitas": 25, "pipas": 25, "frutos secos": 25, "cacahuetes": 25, "maiz": 25, "panchitos": 25, "gomitas": 25, "esponjitas": 25, "orbit": 25, "m&ms": 25, "mms": 25, "emanems": 25, "nutella": 25, "nocilla": 25, "caña": 25, "caña de chocolate": 25, "cruasan": 25, "curasan": 25, "magdalena": 25, "pipas peladas": 25, "pipas con sal": 25, "cheetos pandilla": 25, "ruffles jamon": 25, "campesinas": 25, "lays campesinas": 25, "palomitas de mantequilla": 25, "smint": 25,
+      "chocolate": 25, "galletas": 25, "patatas fritas": 25, "patatas": 25, "snickers": 25, "mars": 25, "twix": 25, "bounty": 25, "kinder": 25, "ferrero rocher": 25, "magdalenas": 25, "croissant": 25, "napolitana": 25, "palmera": 25, "ensaimada": 25, "gominolas": 25, "chuches": 25, "caramelos": 25, "palomitas": 25, "pipas": 25, "frutos secos": 25, "cacahuetes": 25, "maiz": 25, "panchitos": 25, "gomitas": 25, "esponjitas": 25, "orbit": 25, "m ms": 25, "mms": 25, "emanems": 25, "nutella": 25, "nocilla": 25, "caña": 25, "caña de chocolate": 25, "cruasan": 25, "curasan": 25, "magdalena": 25, "pipas peladas": 25, "pipas con sal": 25, "cheetos pandilla": 25, "ruffles jamon": 25, "campesinas": 25, "lays campesinas": 25, "palomitas de mantequilla": 25, "smint": 25,
       "huesitos": 45, "campurrianas": 45, "tosta rica": 45, "chiquilin": 45, "napolitanas": 45, "mantecado": 45, "mantecados": 45, "pelotazos": 45, "gublins": 45, "jumpers": 45, "boca bits": 45, "takis": 45, "mikado": 45, "tokke": 45, "fiesta": 45, "kojak": 45, "fresquito": 45, "donettes": 45, "tigretones": 45, "pinguinos": 45, "ganchitos": 45, "kikos": 45, "pipas tijuana": 45, "pipas facundo": 45, "dinosaurus": 45, "chips ahoy": 45, "digestive": 45, "galletas digestive": 45, "cuetara": 45, "artiach": 45, "gullon": 45, "fontaneda": 45, "milka": 45, "toblerone": 45, "raffaello": 45, "kinder delice": 45, "kinder maxi": 45, "kinder pingui": 45, "kinder joy": 45, "sugus": 45, "peta zetas": 45, "regaliz": 45, "haribo": 45, "mentos": 45, "trident": 45, "bazooka": 45, "ladrillos": 45, "lenguas": 45, "petazetas": 45, "pipas el piponazo": 45, "piponazo": 45, "pipas aguasal": 45, "aspitos": 45, "pandilla": 45, "fantasmitas": 45, "pajitas": 45, "conos": 45, "3d": 45, "bugles": 45, "vinagreta": 45, "lays al punto de sal": 45, "fritos": 45, "fritos matutano": 45, "bits": 45, "bocabits": 45, "pajitas de patata": 45, "torreznos de bolsa": 45, "corteza": 45, "cacahuetes con miel": 45, "kikos gigantes": 45, "mister corn": 45, "mr corn": 45, "palomitas ketchup": 45, "fresquitos": 45, "dipper": 45, "dipper xl": 45, "pintalenguas": 45, "melones": 45, "chicles melones": 45, "chicles boomer": 45, "happydent": 45, "five": 45,
       "bimbo": 65, "panrico": 65, "pepitos": 65, "birba": 65, "lotus": 65, "biscoff": 65, "galletas lotus": 65, "oreo thins": 65, "quicos": 65, "cortezas": 65, "chicharrones": 65, "maiz frito": 65, "monster munch": 65, "nachos": 65, "tortilla chips": 65, "snack de queso": 65, "bollo suizo": 65, "caracola": 65, "sobao": 65, "sobaos pasiegos": 65, "barquillo": 65, "barquillos": 65, "oblea": 65, "obleas": 65, "gofre": 65, "gofres": 65, "tronky": 65, "juanola": 65, "pastilla juanola": 65, "fruittella": 65, "pictolin": 65, "ositos de goma": 65, "nubes": 65, "algodon de azucar": 65, "boomer": 65, "milky way": 65, "munchitos": 65, "clix": 65,
       "dulcesol": 85, "marbu": 85, "cubanitos": 85, "cheiw": 85, "churruca": 85, "risi": 85, "matutano": 85, "pipas g": 85, "dentyne": 85, "pica pica": 85, "galletas sultana": 85, "palotes de regaliz": 85,
@@ -303,7 +432,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-020", pack: "general",
+    id: "gen-020", dailyId: "dia3-06", pack: "general",
     texto: "Marca de ropa, calzado o equipamiento deportivo",
     ejemplo: "luanvi",
     answers: {
@@ -316,7 +445,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "gen-021", pack: "general",
+    id: "gen-021", dailyId: "dia3-07", pack: "general",
     texto: "Profesión, oficio tradicional o puesto de trabajo",
     ejemplo: "campanero",
     answers: {
@@ -329,7 +458,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-003", pack: "palabras",
+    id: "pal-003", dailyId: "dia7-07", pack: "palabras",
     texto: "Palabra que contenga las cinco vocales (panvocálica)",
     ejemplo: "cuodlibetal",
     answers: {
@@ -338,12 +467,16 @@ const PROMPTS = [
       "aceituno": 45, "reumatico": 45, "inadecuado": 45, "autentico": 45, "equivocado": 45, "precaucion": 45, "regulacion": 45, "centrifugado": 45, "comunicable": 45, "comunicarse": 45, "persuasion": 45, "cuadrilatero": 45, "revolucionaria": 45, "revolucionario": 45, "universitario": 45, "audiovisuales": 45, "pañuelito": 45, "suplementario": 45, "presupuestario": 45, "documentalista": 45, "entusiasmo": 45, "entusiasmado": 45, "estimulador": 45, "estimuladora": 45, "evolucionar": 45, "educativo": 45, "configurable": 45, "cuestionario": 45, "curiosamente": 45, "desilusionar": 45, "funcionamiento": 45, "numeracion": 45, "puntuaciones": 45, "reputacion": 45, "restauracion": 45, "situaciones": 45, "superpoblacion": 45, "voluntariedad": 45, "publicaciones": 45, "recuperacion": 45, "remuneracion": 45, "reunificacion": 45, "subestimado": 45, "sobreactuacion": 45, "consecuencia": 45,
       "reconquistar": 65, "menstruacion": 65, "encuadernacion": 65, "republicano": 65, "consanguineo": 65, "desarticulado": 65, "desarticulacion": 65, "aceitunero": 65, "escupitajo": 65, "aguileño": 65, "acuñamiento": 65, "arquitectonico": 65, "argumentacion": 65, "autenticacion": 65, "autorregulacion": 65, "bautisterio": 65, "cauterizacion": 65, "coeducacion": 65, "consecutiva": 65, "conquistadores": 65, "cuentakilometros": 65, "desahuciado": 65, "desocupacion": 65, "despreocupacion": 65, "documentaria": 65, "ecuatoriano": 65, "especulacion": 65, "estructuracion": 65, "excomulgacion": 65, "farmaceutico": 65, "gesticulacion": 65, "gubernativo": 65, "alucinogeno": 65, "insurreccional": 65, "interurbano": 65, "justipreciado": 65, "lubricaciones": 65, "manipuladores": 65, "pasteurizado": 65, "persecutoria": 65, "autobiograficamente": 65,
       "vituperando": 85, "jaquimero": 85, "guaperio": 85, "sudoriental": 85, "zurrapiento": 85, "enloquecida": 85, "cigueñato": 85, "comunicadero": 85, "pseudoganglio": 85, "arquiepiscopal": 85, "auriculoventricular": 85, "autoindulgencia": 85, "boquiabierto": 85, "circunnavegacion": 85, "consuetudinario": 85, "contrarrevolucion": 85, "cuadragesimo": 85, "desnaturalizado": 85, "electroacustica": 85, "genitourinaria": 85, "hipoglucemia": 85, "incomunicable": 85, "semiconductoras": 85, "neurocirugia": 85, "ultraperiferico": 85, "abrenuncio": 85,
-      "estanquillero": 100, "cuodlibetal": 100, "cuakerismo": 100, "cuaquerismo": 100, "cuadriplejico": 100, "neuropsiquiatra": 100, "seudohermafrodita": 100, "arqueobacteriano": 100, "esternoclavicular": 100, "aurifero": 100, "eudiometria": 100, "leucocitaria": 100, "aguijonear": 100, "autoluminiscente": 100, "braquiocefalico": 100
+      "estanquillero": 100, "cuodlibetal": 100, "cuakerismo": 100, "cuaquerismo": 100, "cuadriplejico": 100, "neuropsiquiatra": 100, "seudohermafrodita": 100, "arqueobacteriano": 100, "esternoclavicular": 100, "aurifero": 100, "eudiometria": 100, "leucocitaria": 100, "aguijonear": 100, "autoluminiscente": 100, "braquiocefalico": 100,
+      "aeronautico": 25, "aeroportuario": 25, "agropecuario": 25, "alfanumerico": 25,
+      "adulterino": 25, "acuifero": 25, "albaricoquero": 45, "alberchiguero": 45,
+      "altilocuente": 45, "alumbramiento": 45, "aponeurosis": 45, "albuminoide": 65,
+      "albuminoideo": 65, "alguacilesco": 65, "alharaquiento": 65
     }
   },
   {
-    id: "pal-004", pack: "palabras",
-    texto: "Palabra suelta (no frase) que sea un palíndromo en español (se lee igual al derecho y al revés)",
+    id: "pal-004", dailyId: "dia7-05", pack: "palabras",
+    texto: "Palabra suelta (no frase) que sea un palíndromo en español",
     ejemplo: "rotomotor",
     answers: {
       "oso": 10, "ojo": 10, "ana": 10, "reconocer": 10, "somos": 10, "radar": 10, "salas": 10, "solos": 10,
@@ -351,24 +484,62 @@ const PROMPTS = [
       "rotor": 45, "seres": 45, "sedes": 45, "aca": 45, "alla": 45, "oro": 45, "ala": 45, "ama": 45, "ata": 45, "asa": 45, "ara": 45, "aya": 45, "aja": 45, "ese": 45, "eje": 45, "efe": 45, "ele": 45, "eme": 45, "ene": 45, "eñe": 45, "ere": 45, "erre": 45, "elle": 45, "sus": 45, "non": 45, "pop": 45, "gag": 45, "pep": 45, "nadan": 45, "narran": 45, "sanas": 45, "sacas": 45, "sagas": 45, "sosos": 45, "sotos": 45, "rayar": 45, "rajar": 45, "rallar": 45, "rapar": 45, "rasar": 45, "ojo rojo": 45, "oso baboso": 45,
       "anilina": 65, "arenera": 65, "arepera": 65, "anona": 65, "anana": 65, "rodador": 65, "sometemos": 65, "rever": 65, "acurruca": 65, "aviva": 65, "azuza": 65, "aerea": 65, "alela": 65, "alila": 65, "amama": 65, "amima": 65, "apipa": 65, "ateta": 65, "afofa": 65, "sajas": 65, "selles": 65, "sobos": 65, "sexes": 65, "napan": 65, "madam": 65, "oruro": 65, "aza": 65, "apa": 65, "ete": 65, "arra": 65, "nen": 65, "somos o no somos": 65, "alli ves sevilla": 65, "arriba la birra": 65, "la ruta natural": 65, "a ti no bonita": 65, "ella te da detalle": 65,
       "amad a la dama": 85, "se van sus naves": 85, "son robos o sobornos": 85, "atar a la rata": 85, "no traces en ese carton": 85, "isaac no ronca asi": 85, "se verlas al reves": 85, "nada yo soy adan": 85, "adan no calla con nada": 85, "yo dono rosas oro no doy": 85, "amo la pacifica paloma": 85, "ana lleva al oso la avellana": 85, "oi lo de mama me dolio": 85, "sometamos o matemos": 85, "a la torre derrotala": 85, "añora la roña": 85, "amarga la grama": 85, "ata la lata": 85, "alala": 85, "alula": 85, "asesa": 85, "apopa": 85, "afufa": 85, "acoca": 85, "arara": 85,
-      "rotomotor": 100, "aña": 100, "uru": 100, "oto": 100, "aga": 100, "sebes": 100, "seles": 100, "senes": 100, "setes": 100, "soros": 100, "sonos": 100, "robor": 100, "rodor": 100, "razar": 100, "malayalam": 100, "atale demoniaco cain o me delata": 100, "salta lenin el atlas": 100, "la ruta nos aporto otro paso natural": 100, "eva usaba rimel y le miraba suave": 100, "alli si maria avisa y asi va a ir a mi silla": 100
+      "rotomotor": 100, "aña": 100, "uru": 100, "oto": 100, "aga": 100, "sebes": 100, "seles": 100, "senes": 100, "setes": 100, "soros": 100, "sonos": 100, "robor": 100, "rodor": 100, "razar": 100, "malayalam": 100, "atale demoniaco cain o me delata": 100, "salta lenin el atlas": 100, "la ruta nos aporto otro paso natural": 100, "eva usaba rimel y le miraba suave": 100, "alli si maria avisa y asi va a ir a mi silla": 100,
+      "dvd": 25, "ses": 45, "sis": 45, "aba": 45,
+      "dad": 45, "ovo": 45, "oyo": 45, "datad": 65,
+      "dimid": 65, "nomon": 85, "oidio": 85, "nin": 85
     }
   },
   {
-    id: "pal-005", pack: "palabras",
-    texto: "Verbo en español terminado en «-ecer» o «-ducir»",
+    id: "pal-005", dailyId: "dia8-03", pack: "palabras",
+    texto: "Palabra que termine en «Z»",
     ejemplo: "desguarnecer",
     answers: {
-      "crecer": 10, "nacer": 10, "parecer": 10, "amanecer": 10, "aparecer": 10, "desaparecer": 10, "conducir": 10, "producir": 10, "traducir": 10,
-      "hacer": 25, "renacer": 25, "conocer": 25, "reconocer": 25, "seducir": 25, "reducir": 25, "introducir": 25, "reproducir": 25, "deducir": 25, "inducir": 25, "mecer": 25,
-      "ofrecer": 45, "merecer": 45, "pertenecer": 45, "agradecer": 45, "obedecer": 45, "desobedecer": 45, "establecer": 45, "restablecer": 45, "padecer": 45, "compadecer": 45, "fallecer": 45, "desfallecer": 45, "carecer": 45, "perecer": 45, "florecer": 45, "envejecer": 45, "rejuvenecer": 45, "oscurecer": 45, "esclarecer": 45, "anochecer": 45, "atardecer": 45, "enriquecer": 45, "empobrecer": 45, "enloquecer": 45, "enfurecer": 45, "enmudecer": 45, "ensordecer": 45, "enrojecer": 45, "desvanecer": 45, "permanecer": 45, "fortalecer": 45, "abastecer": 45, "favorecer": 45, "desfavorecer": 45, "apetecer": 45, "encarecer": 45, "reconducir": 45, "abducir": 45,
-      "adolecer": 65, "acontecer": 65, "acaecer": 65, "comparecer": 65, "reaparecer": 65, "prevalecer": 65, "convalecer": 65, "resplandecer": 65, "estremecer": 65, "palidecer": 65, "humedecer": 65, "rehumedecer": 65, "endurecer": 65, "reblandecer": 65, "ablandecer": 65, "enternecer": 65, "entristecer": 65, "embellecer": 65, "empequeñecer": 65, "engrandecer": 65, "enaltecer": 65, "enorgullecer": 65, "envanecer": 65, "envilecer": 65, "ennoblecer": 65, "embrutecer": 65, "entontecer": 65, "entorpecer": 65, "entumecer": 65, "adormecer": 65, "aborrecer": 65, "emblanquecer": 65, "ennegrecer": 65, "ensombrecer": 65, "reverdecer": 65, "decrecer": 65, "desabastecer": 65, "preestablecer": 65, "aducir": 65, "coproducir": 65,
-      "languidecer": 85, "robustecer": 85, "guarnecer": 85, "encanecer": 85, "encallecer": 85, "enmohecer": 85, "enmugrecer": 85, "enronquecer": 85, "enflaquecer": 85, "enceguecer": 85, "enardecer": 85, "encandecer": 85, "enrarecer": 85, "ensoberbecer": 85, "embobecer": 85, "escarnecer": 85, "recrudecer": 85, "reflorecer": 85, "amarillecer": 85, "alborecer": 85, "clarecer": 85, "transparecer": 85, "trasparecer": 85, "acrecer": 85, "recrecer": 85, "remecer": 85, "autoabastecer": 85, "reintroducir": 85, "sobreproducir": 85, "autoinducir": 85,
-      "desguarnecer": 100, "desadormecer": 100, "lobreguecer": 100, "tenebrecer": 100, "arbolecer": 100, "herbecer": 100, "hojecer": 100, "frutecer": 100, "pimpollecer": 100, "tallecer": 100, "retoñecer": 100, "tardecer": 100, "remanecer": 100, "fosforecer": 100, "amortecer": 100, "amodorrecer": 100, "empedernecer": 100, "podrecer": 100, "educir": 100
+      "paz": 10, "luz": 10, "voz": 10, "pez": 10, "diez": 10, "arroz": 10, "feliz": 10,
+      "raiz": 10, "nariz": 10, "cruz": 10, "juez": 10, "vez": 10, "capaz": 10, "actriz": 10,
+      "ajedrez": 10,
+      "albornoz": 25, "acidez": 25, "andaluz": 25, "aprendiz": 25, "avestruz": 25, "altavoz": 25, "rapidez": 25,
+      "vejez": 25, "niñez": 25, "calidez": 25, "timidez": 25, "validez": 25, "veloz": 25, "voraz": 25,
+      "vivaz": 25, "fugaz": 25, "audaz": 25, "precoz": 25, "feroz": 25, "perdiz": 25, "lombriz": 25,
+      "matriz": 25, "cicatriz": 25, "barniz": 25, "tapiz": 25, "disfraz": 25, "antifaz": 25, "capataz": 25,
+      "nuez": 25, "haz": 25, "faz": 25, "doblez": 25, "escasez": 25, "estupidez": 25, "madurez": 25,
+      "palidez": 25, "honradez": 25, "sensatez": 25, "pesadez": 25, "rigidez": 25,
+      "altivez": 45, "alcatraz": 45, "atroz": 45, "amarillez": 45, "aridez": 45, "arcabuz": 45, "soez": 45,
+      "sagaz": 45, "tenaz": 45, "falaz": 45, "mordaz": 45, "locuaz": 45, "veraz": 45, "tez": 45,
+      "trasluz": 45, "tragaluz": 45, "variz": 45, "solidez": 45, "estrechez": 45, "tirantez": 45, "flacidez": 45,
+      "lucidez": 45, "mudez": 45, "sordidez": 45, "agraz": 45, "caliz": 45, "chintz": 45, "almez": 45,
+      "matraz": 45, "motriz": 45, "nutriz": 45, "cerviz": 45, "tamiz": 45, "testuz": 45, "tragaz": 45,
+      "torcaz": 45, "desliz": 45,
+      "ajimez": 65, "almirez": 65, "altramuz": 65, "alefriz": 65, "alfaraz": 65, "alferraz": 65, "alficoz": 65,
+      "alfiz": 65, "alfoz": 65, "algidez": 65, "tondiz": 65, "tornavoz": 65, "uvaduz": 65, "velmez": 65,
+      "alpartaz": 65, "alcahaz": 65, "alcartaz": 65, "ajonuez": 65, "abenuz": 65, "adoratriz": 65, "aljez": 65,
+      "belez": 65, "capuz": 65, "cariz": 65, "caz": 65, "cazuz": 65, "coz": 65, "cuz": 65,
+      "dicaz": 65, "duz": 65, "feraz": 65, "habiz": 65, "hafiz": 65, "hamez": 65, "hertz": 65,
+      "hez": 65, "hoz": 65, "jazz": 65, "jeliz": 65, "lataz": 65, "lapiz": 65, "matiz": 65,
+      "maiz": 65, "miz": 65, "ninez": 65, "pajuz": 65, "prez": 65, "pomez": 65, "rahez": 65,
+      "rapaz": 65, "refez": 65, "salaz": 65, "sauz": 65, "saz": 65, "socaz": 65, "solaz": 65,
+      "sovoz": 65, "tunez": 65,
+      "alferez": 85, "aljaraz": 85, "alquez": 85, "arrayaz": 85, "arraez": 85, "atramuz": 85, "avidez": 85,
+      "badajoz": 85, "beodez": 85, "bocacaz": 85, "caduquez": 85, "candidez": 85, "chamariz": 85, "chapuz": 85,
+      "codorniz": 85, "colapez": 85, "contumaz": 85, "cutrez": 85, "derechez": 85, "ductriz": 85, "eficaz": 85,
+      "endeblez": 85, "esbeltez": 85, "fetidez": 85, "frigidez": 85, "gravidez": 85, "hetiquez": 85, "horridez": 85,
+      "jaraiz": 85, "lenguaz": 85, "limpidez": 85, "lividez": 85, "malavez": 85, "malviz": 85, "matidez": 85,
+      "mendaz": 85, "meretriz": 85, "mogataz": 85, "montaraz": 85, "morbidez": 85, "nitidez": 85, "orozuz": 85,
+      "pardiez": 85, "parteluz": 85, "parvulez": 85, "pertinaz": 85, "pesantez": 85, "pollez": 85, "portapaz": 85,
+      "portavoz": 85, "procaz": 85, "pugnaz": 85, "pulidez": 85, "putridez": 85, "quirguiz": 85, "rancidez": 85,
+      "regaliz": 85, "robustez": 85, "rondiz": 85, "ronquez": 85, "satisfaz": 85, "secuaz": 85, "suspicaz": 85,
+      "tamariz": 85, "tastaz": 85, "telliz": 85, "terliz": 85, "viudez": 85,
+      "atractriz": 100, "brillantez": 100, "cantatriz": 100, "chochaperdiz": 100, "contrahaz": 100, "contraluz": 100, "delicadez": 100,
+      "desfachatez": 100, "despotiquez": 100, "directriz": 100, "domestiquez": 100, "dominatriz": 100, "electromotriz": 100, "embriaguez": 100,
+      "emperatriz": 100, "escualidez": 100, "espinapez": 100, "estitiquez": 100, "estolidez": 100, "exotiquez": 100, "flaccidez": 100,
+      "generatriz": 100, "gilipollez": 100, "hectiquez": 100, "impavidez": 100, "insipidez": 100, "institutriz": 100, "intrepidez": 100,
+      "languidez": 100, "lenguaraz": 100, "lobreguez": 100, "locomotriz": 100, "magnetomotriz": 100, "osculatriz": 100, "pedrojimenez": 100,
+      "perspicaz": 100, "protectriz": 100, "reconditez": 100, "ridiculez": 100, "rustiquez": 100, "saltatriz": 100, "sobrecruz": 100,
+      "sobrepelliz": 100, "sofistiquez": 100, "terriblez": 100
     }
   },
   {
-    id: "pal-006", pack: "palabras",
+    id: "pal-006", dailyId: "dia9-06", pack: "palabras",
     texto: "Palabra en español que empiece por la letra «K» o «W»",
     ejemplo: "wagneriano",
     answers: {
@@ -381,7 +552,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-007", pack: "palabras",
+    id: "pal-007", dailyId: "dia9-01", pack: "palabras",
     texto: "Gentilicio español terminado en «-ense»",
     ejemplo: "arcobrigense",
     answers: {
@@ -394,8 +565,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-008", pack: "palabras",
-    texto: "Palabra de origen árabe (arabismo) incorporada al español",
+    id: "pal-008", dailyId: "dia10-07", pack: "palabras",
+    texto: "Palabra de origen árabe (arabismo en español)",
     ejemplo: "almuerza",
     answers: {
       "ojala": 10, "almohada": 10, "aceite": 10, "aceituna": 10, "azucar": 10, "alcalde": 10, "albañil": 10, "alcachofa": 10, "alfombra": 10, "ajedrez": 10, "aceitunas": 10,
@@ -407,7 +578,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-009", pack: "palabras",
+    id: "pal-009", dailyId: "dia11-04", pack: "palabras",
     texto: "Sinónimo en español de «enfadado» o «cabreado»",
     ejemplo: "mohino",
     answers: {
@@ -420,12 +591,12 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-010", pack: "palabras",
+    id: "pal-010", dailyId: "dia12-02", pack: "palabras",
     texto: "Palabra o expresión coloquial en España para referirse al dinero",
     ejemplo: "parne",
     answers: {
       "pasta": 10, "guita": 10, "perras": 10, "cuartos": 10, "duros": 10, "plata": 10, "billetes": 10, "pavos": 10, "pelas": 10, "tela": 10,
-      "dinero": 25, "euros": 25, "pesetas": 25, "dolares": 25, "money": 25, "cash": 25, "efectivo": 25, "metalico": 25, "tarjeta": 25, "bizum": 25, "bitcoin": 25, "cripto": 25, "oro": 25, "sueldo": 25, "capital": 25, "leuros": 25, "leuro": 25, "paga": 25, "nomina": 25, "propina": 25, "bote": 25, "euracos": 25, "eurillos": 25, "euretes": 25, "ks": 25, "un k": 25, "el sueldo": 25, "la paga": 25, "la nomina": 25, "la propina": 25, "el bote": 25, "un euro": 25, "un pavo": 25,
+      "dinero": 25, "euros": 25, "pesetas": 25, "dolares": 25, "money": 25, "cash": 25, "efectivo": 25, "metalico": 25, "tarjeta": 25, "bizum": 25, "bitcoin": 25, "cripto": 25, "oro": 25, "sueldo": 25, "capital": 25, "leuros": 25, "leuro": 25, "paga": 25, "nomina": 25, "propina": 25, "bote": 25, "euracos": 25, "eurillos": 25, "euretes": 25, "ks": 25, "un k": 25, "el sueldo": 25, "la paga": 25, "la nomina": 25, "la propina": 25, "el bote": 25, "un euro": 25,
       "parne": 45, "lana": 45, "viruta": 45, "lereles": 45, "lerele": 45, "panoja": 45, "pasta gansa": 45, "pastizal": 45, "un pastizal": 45, "paston": 45, "dineral": 45, "millonada": 45, "kilos": 45, "kilo": 45, "talegos": 45, "talego": 45, "pavo": 45, "duro": 45, "pela": 45, "perra": 45, "suelto": 45, "calderilla": 45, "chatarra": 45, "cambio": 45, "vuelta": 45, "vueltas": 45, "fajo": 45, "fajos": 45, "taco": 45, "mazo": 45, "fondos": 45, "ahorros": 45, "fortuna": 45, "riqueza": 45, "calas": 45, "cala": 45, "chapas": 45, "chinchin": 45, "monises": 45, "monis": 45, "napos": 45, "napo": 45, "billetaje": 45, "fortunon": 45, "aguinaldo": 45, "jornal": 45, "finiquito": 45, "sobresueldo": 45, "paga extra": 45, "extra": 45, "pension": 45, "paro": 45, "beca": 45, "subvencion": 45, "comision": 45, "caja": 45, "hucha": 45, "el paro": 45, "el finiquito": 45, "la pension": 45, "el aguinaldo": 45,
       "leña": 65, "manteca": 65, "mosca": 65, "vil metal": 65, "el vil metal": 65, "gallina": 65, "boniatos": 65, "boniato": 65, "verdes": 65, "verde": 65, "morados": 65, "bin laden": 65, "binladen": 65, "cinco duros": 65, "veinte duros": 65, "perra gorda": 65, "perra chica": 65, "chavos": 65, "chavo": 65, "ochavos": 65, "ochavo": 65, "reales": 65, "real": 65, "cobres": 65, "maravedies": 65, "maravedi": 65, "monedas": 65, "papel": 65, "papeles": 65, "pellizco": 65, "pico": 65, "riñon": 65, "un riñon": 65, "puñado": 65, "colchon": 65, "coste": 65, "propineja": 65, "flus": 65, "bicho": 65, "bichos": 65, "lechugas": 65, "lechuga": 65, "racimo": 65, "ladrillo": 65, "piquillo": 65, "piquito": 65, "monedillas": 65, "caldero": 65, "aca": 65, "forro": 65,
       "pastuqui": 85, "perrillas": 85, "pelillas": 85, "cuartejos": 85, "dineros": 85, "peculio": 85, "pecunia": 85, "numerario": 85, "liquidez": 85, "caudal": 85, "hacienda": 85, "haberes": 85, "mordida": 85, "sobre": 85, "astilla": 85, "tajada": 85, "morterada": 85, "mandanga": 85, "rubias": 85, "sin blanca": 85, "potosi": 85, "don dinero": 85, "manteca colora": 85, "pomada": 85, "sangre": 85, "unguento": 85, "crema": 85, "centenes": 85, "picorza": 85, "manises": 85, "biyuyos": 85, "ducal": 85, "jurdels": 85, "pan": 85, "trigo": 85, "harina": 85, "bacalao": 85, "pescao": 85, "tela marinera": 85, "un ojo de la cara": 85, "un huevo": 85, "un cojon": 85, "una mierda": 85, "ni un duro": 85, "ni un clavo": 85, "ni un chavo": 85, "ni papa": 85, "pelao": 85, "tieso": 85, "canino": 85, "el oro y el moro": 85,
@@ -433,7 +604,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-011", pack: "palabras",
+    id: "pal-011", dailyId: "dia12-06", pack: "palabras",
     texto: "Sigla lexicalizada o acrónimo de uso cotidiano en español",
     ejemplo: "inri",
     answers: {
@@ -446,21 +617,21 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-012", pack: "palabras",
-    texto: "Sufijo diminutivo/aumentativo (ej. -ito, -azo) o palabra común que lo lleve",
+    id: "pal-012", dailyId: "dia13-05", pack: "palabras",
+    texto: "Sufijo diminutivo/aumentativo o palabra común que lo lleve",
     ejemplo: "achon",
     answers: {
-      "ito": 10, "ita": 10, "on": 10, "ona": 10, "azo": 10, "aza": 10, "illo": 10, "illa": 10, "casita": 10, "perrito": 10, "-ito": 10, "-ita": 10, "-on": 10, "-ona": 10, "-azo": 10, "-aza": 10, "-illo": 10, "-illa": 10,
-      "isimo": 25, "isima": 25, "mente": 25, "dor": 25, "cion": 25, "oso": 25, "able": 25, "ible": 25, "ero": 25, "era": 25, "ista": 25, "ismo": 25, "dad": 25, "-isimo": 25, "-isima": 25, "momentito": 25, "tapita": 25, "cochazo": 25, "partidazo": 25, "peliculon": 25, "puñetazo": 25, "cabezazo": 25, "cañita": 25, "copita": 25, "chupito": 25, "bocadillo": 25, "vasito": 25, "besito": 25, "abracito": 25, "ratillo": 25, "poquillo": 25, "juegazo": 25, "fieston": 25,
-      "ico": 45, "ica": 45, "in": 45, "ina": 45, "iño": 45, "iña": 45, "uco": 45, "uca": 45, "ete": 45, "eta": 45, "ote": 45, "ota": 45, "uelo": 45, "uela": 45, "ejo": 45, "eja": 45, "ucho": 45, "ucha": 45, "aco": 45, "aca": 45, "cito": 45, "cita": 45, "ecito": 45, "ecita": 45, "cillo": 45, "cilla": 45, "gatito": 45, "chiquito": 45, "pequeñito": 45, "poquito": 45, "ratito": 45, "cafelito": 45, "cervecita": 45, "cochecito": 45, "abuelito": 45, "pajarito": 45, "perrazo": 45, "golazo": 45, "temazo": 45, "cabezota": 45, "librote": 45, "-ico": 45, "-ica": 45, "-in": 45, "-ina": 45, "-iño": 45, "-iña": 45, "-uco": 45, "-uca": 45, "-ete": 45, "-eta": 45, "-ote": 45, "-ota": 45, "-uelo": 45, "-uela": 45, "-ucho": 45, "-ucha": 45, "-aco": 45, "novelon": 45, "cason": 45, "fortunon": 45, "guantazo": 45, "tortazo": 45, "portazo": 45, "balonazo": 45, "tontorron": 45, "birrita": 45, "pinchito": 45, "platito": 45, "momentillo": 45, "chiquilla": 45, "pequeñaja": 45, "pequeñajo": 45, "niñata": 45, "discazo": 45, "fotaza": 45, "casoplon": 45, "noticion": 45, "dramon": 45, "sueldazo": 45, "pastizal": 45,
+      "ito": 10, "ita": 10, "on": 10, "ona": 10, "azo": 10, "aza": 10, "illo": 10, "illa": 10, "casita": 10, "perrito": 10,
+      "isimo": 25, "isima": 25, "mente": 25, "dor": 25, "cion": 25, "oso": 25, "able": 25, "ible": 25, "ero": 25, "era": 25, "ista": 25, "ismo": 25, "dad": 25, "momentito": 25, "tapita": 25, "cochazo": 25, "partidazo": 25, "peliculon": 25, "puñetazo": 25, "cabezazo": 25, "cañita": 25, "copita": 25, "chupito": 25, "bocadillo": 25, "vasito": 25, "besito": 25, "abracito": 25, "ratillo": 25, "poquillo": 25, "juegazo": 25, "fieston": 25,
+      "ico": 45, "ica": 45, "in": 45, "ina": 45, "iño": 45, "iña": 45, "uco": 45, "uca": 45, "ete": 45, "eta": 45, "ote": 45, "ota": 45, "uelo": 45, "uela": 45, "ejo": 45, "eja": 45, "ucho": 45, "ucha": 45, "aco": 45, "aca": 45, "cito": 45, "cita": 45, "ecito": 45, "ecita": 45, "cillo": 45, "cilla": 45, "gatito": 45, "chiquito": 45, "pequeñito": 45, "poquito": 45, "ratito": 45, "cafelito": 45, "cervecita": 45, "cochecito": 45, "abuelito": 45, "pajarito": 45, "perrazo": 45, "golazo": 45, "temazo": 45, "cabezota": 45, "librote": 45, "novelon": 45, "cason": 45, "fortunon": 45, "guantazo": 45, "tortazo": 45, "portazo": 45, "balonazo": 45, "tontorron": 45, "birrita": 45, "pinchito": 45, "platito": 45, "momentillo": 45, "chiquilla": 45, "pequeñaja": 45, "pequeñajo": 45, "niñata": 45, "discazo": 45, "fotaza": 45, "casoplon": 45, "noticion": 45, "dramon": 45, "sueldazo": 45, "pastizal": 45,
       "acho": 65, "acha": 65, "ato": 65, "ata": 65, "orrio": 65, "orria": 65, "astro": 65, "astra": 65, "ango": 65, "anga": 65, "ales": 65, "oncho": 65, "uza": 65, "uzo": 65, "orro": 65, "ventanuco": 65, "chiquillo": 65, "pajarillo": 65, "pequeñin": 65, "chiquitin": 65, "mujerona": 65, "cabezon": 65, "narigon": 65, "barrigon": 65, "solteron": 65, "grandullon": 65, "moceton": 65, "libraco": 65, "pajarraco": 65, "bicharraco": 65, "casucha": 65, "pueblucho": 65, "perrucho": 65, "cuartucho": 65, "medicucho": 65, "gentuza": 65, "callejuela": 65, "plazuela": 65, "riachuelo": 65, "palabrota": 65, "festivalon": 65, "marronazo": 65,
       "achon": 85, "achona": 85, "uzco": 85, "uzca": 85, "ingo": 85, "inga": 85, "orio": 85, "iche": 85, "ezno": 85, "ezna": 85, "arraco": 85, "ijon": 85, "ejon": 85, "ullon": 85, "eton": 85, "ricachon": 85, "bonachon": 85, "frescachon": 85, "corpachon": 85, "villorrio": 85, "bodorrio": 85, "camastro": 85, "poetastro": 85, "pequeñuelo": 85, "niñato": 85, "señoritingo": 85, "lobezno": 85, "osezno": 85,
       "ingorrio": 100, "astron": 100, "erete": 100, "olacho": 100, "ezuelo": 100, "ezuela": 100, "zuelo": 100, "zuela": 100, "reyezuelo": 100, "ladronzuelo": 100, "pedrusco": 100, "peñasco": 100, "poblacho": 100, "vivales": 100, "frescales": 100
     }
   },
   {
-    id: "pal-013", pack: "palabras",
-    texto: "Sustantivo o adjetivo en español que sea palabra esdrújula (tilde en la antepenúltima sílaba)",
+    id: "pal-013", dailyId: "dia14-01", pack: "palabras",
+    texto: "Sustantivo o adjetivo común que sea palabra esdrújula",
     ejemplo: "forunculo",
     answers: {
       "esdrujula": 10, "musica": 10, "telefono": 10, "pajaro": 10, "sabado": 10, "medico": 10, "arboles": 10, "camara": 10, "pelicula": 10, "rapido": 10,
@@ -472,8 +643,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-014", pack: "palabras",
-    texto: "Onomatopeya en español (sonido de animal, acción o golpe)",
+    id: "pal-014", dailyId: "dia14-05", pack: "palabras",
+    texto: "Onomatopeya habitual en español",
     ejemplo: "pataplum",
     answers: {
       "guau": 10, "miau": 10, "pum": 10, "zas": 10, "mu": 10, "muu": 10, "pio": 10, "cuac": 10, "beee": 10, "kikiriki": 10, "jajaja": 10, "jeje": 10, "jiji": 10, "ja": 10, "uff": 10, "oh": 10, "eh": 10, "ah": 10,
@@ -485,7 +656,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-015", pack: "palabras",
+    id: "pal-015", dailyId: "dia15-03", pack: "palabras",
     texto: "Sinónimo en español de «engaño», «estafa» o «mentira»",
     ejemplo: "artilugio",
     answers: {
@@ -493,12 +664,12 @@ const PROMPTS = [
       "fake": 25, "fake news": 25, "scam": 25, "phishing": 25, "clickbait": 25, "spam": 25, "estafa piramidal": 25, "ponzi": 25, "humo": 25, "politica": 25, "promesa": 25, "ilusion": 25, "cuento chino": 25, "ficcion": 25, "bait": 25, "vendehumos": 25, "vende humos": 25, "ghosting": 25, "catfish": 25, "spoiler": 25, "troleo": 25, "trol": 25,
       "cuento": 45, "patraña": 45, "bola": 45, "camelo": 45, "enredo": 45, "chanchullo": 45, "artimaña": 45, "infundio": 45, "falacia": 45, "embrollo": 45, "pilleria": 45, "tocomocho": 45, "sisa": 45, "milonga": 45, "invencion": 45, "ardid": 45, "celada": 45, "triquiñuela": 45, "jugarreta": 45, "treta": 45, "truco": 45, "fantasmada": 45, "farol": 45, "chorizada": 45, "robo": 45, "atraco": 45, "sablazo": 45, "clavada": 45, "palo": 45, "pufo": 45, "tongo": 45, "amaño": 45, "apaño": 45, "montaje": 45, "paripe": 45, "teatro": 45, "comedia": 45, "pantomima": 45, "simulacro": 45, "impostura": 45, "falsedad": 45, "calumnia": 45, "moto": 45, "vender la moto": 45, "pirula": 45, "la pirula": 45, "pua": 45, "trapicheo": 45, "marron": 45, "coba": 45, "gato por liebre": 45, "jugada": 45, "invent": 45, "inventada": 45, "postureo": 45, "pelicula": 45, "historia": 45, "rollo": 45, "chiste": 45, "broma": 45,
       "engatuse": 65, "tangana": 65, "pega": 65, "chicana": 65, "argucia": 65, "trapisonda": 65, "trinquete": 65, "embuchado": 65, "gatuperio": 65, "tramoya": 65, "tangada": 65, "doblaje": 65, "estampita": 65, "pelotazo": 65, "corruptela": 65, "mordida": 65, "cohecho": 65, "desfalco": 65, "malversacion": 65, "usurpacion": 65, "suplantacion": 65, "falsificacion": 65, "simulacion": 65, "fingimiento": 65, "supercheria": 65, "charlataneria": 65, "fulleria": 65, "picardia": 65, "granujada": 65, "canallada": 65, "encerrona": 65, "emboscada": 65, "añagaza": 65, "maraña": 65, "chiringuito": 65, "mamandurria": 65, "difamacion": 65, "hipocresia": 65, "dar gato por liebre": 65, "pufazo": 65, "triple": 65, "tirarse un triple": 65, "tirarse el pisto": 65, "tirarse el moco": 65, "moco": 65, "pegote": 65, "papel": 65, "papelon": 65, "montarse una pelicula": 65, "historieta": 65, "rollo macabeo": 65, "inocentada": 65, "vacile": 65, "quedada": 65, "bacala": 65, "la bacala": 65, "meter la bacala": 65, "gambazo": 65, "chanchullada": 65, "enjuague": 65, "pastel": 65, "tostada": 65,
-      "insidia": 85, "dolo": 85, "perfidia": 85, "alevosia": 85, "maquinacion": 85, "faramalla": 85, "embaucamiento": 85, "sollado": 85, "subterfugio": 85, "estratagema": 85, "asechanza": 85, "acechanza": 85, "mistificacion": 85, "mixtificacion": 85, "fabula": 85, "quimera": 85, "paparrucha": 85, "habladuria": 85, "infamia": 85, "mendacidad": 85, "duplicidad": 85, "doblez": 85, "felonia": 85, "intriga": 85, "conjura": 85, "complot": 85, "confabulacion": 85, "putada": 85, "hijoputada": 85, "cabronada": 85, "guarrada": 85, "cerdada": 85, "perrada": 85, "mamoneo": 85, "compadreo": 85, "enchufe": 85, "dedazo": 85, "choriceo": 85, "mangoneo": 85, "afano": 85, "soplapollez": 85, "gilipollez": 85, "mierda": 85, "bullshit": 85, "cama": 85, "hacer la cama": 85, "la trece catorce": 85, "13 14": 85, "la envolvente": 85, "hacer la envolvente": 85, "trilerismo": 85, "trile": 85, "el tocomocho": 85, "la estampita": 85,
+      "insidia": 85, "dolo": 85, "perfidia": 85, "alevosia": 85, "maquinacion": 85, "faramalla": 85, "embaucamiento": 85, "sollado": 85, "subterfugio": 85, "estratagema": 85, "asechanza": 85, "acechanza": 85, "mistificacion": 85, "mixtificacion": 85, "fabula": 85, "quimera": 85, "paparrucha": 85, "habladuria": 85, "infamia": 85, "mendacidad": 85, "duplicidad": 85, "doblez": 85, "felonia": 85, "intriga": 85, "conjura": 85, "complot": 85, "confabulacion": 85, "putada": 85, "hijoputada": 85, "cabronada": 85, "guarrada": 85, "cerdada": 85, "perrada": 85, "mamoneo": 85, "compadreo": 85, "enchufe": 85, "dedazo": 85, "choriceo": 85, "mangoneo": 85, "afano": 85, "soplapollez": 85, "gilipollez": 85, "mierda": 85, "bullshit": 85, "cama": 85, "hacer la cama": 85, "la trece catorce": 85, "13 14": 85, "la envolvente": 85, "hacer la envolvente": 85, "trilerismo": 85, "trile": 85,
       "artilugio": 100, "engaitamiento": 100, "socaliña": 100, "zaragatero": 100, "engañifa": 100, "engañabobos": 100, "mohatra": 100, "barateria": 100, "estelionato": 100, "camama": 100, "filfa": 100, "andromina": 100, "embeleco": 100, "trapaza": 100, "trampa saducea": 100
     }
   },
   {
-    id: "pal-016", pack: "palabras",
+    id: "pal-016", dailyId: "dia16-07", pack: "palabras",
     texto: "Palabra del castellano que empiece por la letra «Z»",
     ejemplo: "zamarra",
     answers: {
@@ -512,8 +683,8 @@ const PROMPTS = [
   },
   /* ===================== PROMPTS DE PRUEBA DE LOS PACKS TEMÁTICOS ===================== */
   {
-    id: "pal-001", pack: "palabras",
-    texto: "Algo que puedas romper, partir o rasgar con tus propias manos (sin herramientas)",
+    id: "pal-001", dailyId: "dia5-03", pack: "palabras",
+    texto: "Objeto, material o alimento que puedas romper, partir o rasgar con tus propias manos",
     ejemplo: "pan de oro",
     answers: {
       "papel": 10, "folio": 10, "servilleta": 10, "huevo": 10, "cascara": 10, "galleta": 10, "chocolate": 10, "pan": 10, "palillo": 10, "rama": 10, "hoja": 10, "flor": 10, "lapiz": 10, "bolsa": 10, "globo": 10, "uña": 10, "pelo": 10, "vaso": 10, "plato": 10, "copa": 10, "cristal": 10, "cuerda": 10,
@@ -525,7 +696,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pal-002", pack: "palabras",
+    id: "pal-002", dailyId: "dia6-01", pack: "palabras",
     texto: "Un animal que empiece por C",
     ejemplo: "celacanto",
     answers: {
@@ -537,9 +708,40 @@ const PROMPTS = [
       "celacanto": 100, "cagu": 100, "cariama": 100, "chuña": 100, "coscoroba": 100, "cotinga": 100, "chachalaca": 100, "colin de virginia": 100, "ciervo raton": 100, "cefalofo": 100, "condiluro": 100, "ctenoforo": 100, "crinoideo": 100, "criptobranquio": 100
     }
   },
+  /* ----- Dossier Palabras y Lenguaje · Capítulo 3 (Continuación pal-017 a pal-021) ----- */
   {
-    id: "pel-001", pack: "peliculas",
-    texto: "Una película de Disney",
+    id: "pal-017", dailyId: "dia17-07", pack: "palabras",
+    texto: "Extranjerismo o anglicismo de uso diario en España",
+    ejemplo: "spoiler",
+    answers: {}
+  },
+  {
+    id: "pal-018", dailyId: "dia17-04", pack: "palabras",
+    texto: "Animal utilizado habitualmente como insulto o apelativo coloquial en español",
+    ejemplo: "buitre",
+    answers: {}
+  },
+  {
+    id: "pal-019", dailyId: "dia18-03", pack: "palabras",
+    texto: "Palabra aguda terminada en vocal con tilde",
+    ejemplo: "colibri",
+    answers: {}
+  },
+  {
+    id: "pal-020", dailyId: "dia19-05", pack: "palabras",
+    texto: "Sinónimo o término coloquial para referirse a estar borracho o a una borrachera",
+    ejemplo: "melopea",
+    answers: {}
+  },
+  {
+    id: "pal-021", dailyId: "dia19-02", pack: "palabras",
+    texto: "Verbo irregular común en español en infinitivo",
+    ejemplo: "ir",
+    answers: {}
+  },
+  {
+    id: "pel-001", dailyId: "dia5-06", pack: "peliculas",
+    texto: "Película de animación de Disney o Pixar",
     ejemplo: "ichabod y el señor sapo",
     answers: {
       "el rey leon": 10, "rey leon": 10, "frozen": 10, "aladdin": 10, "aladin": 10, "la sirenita": 10, "sirenita": 10, "la bella y la bestia": 10, "bella y la bestia": 10, "blancanieves": 10, "cenicienta": 10, "la cenicienta": 10,
@@ -551,7 +753,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pel-002", pack: "peliculas",
+    id: "pel-002", dailyId: "dia5-05", pack: "peliculas",
     texto: "Película cuya historia transcurra en un barco, submarino o en pleno mar",
     ejemplo: "el acorazado potemkin",
     answers: {
@@ -564,7 +766,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pel-003", pack: "peliculas",
+    id: "pel-003", dailyId: "dia6-06", pack: "peliculas",
     texto: "Película ganadora del Óscar a Mejor Película",
     ejemplo: "alas",
     answers: {
@@ -577,20 +779,36 @@ const PROMPTS = [
     }
   },
   {
-    id: "pel-004", pack: "peliculas",
+    id: "pel-004", dailyId: "dia7-03", pack: "peliculas",
     texto: "Película de ciencia ficción, viajes espaciales o futuro distópico",
     ejemplo: "viaje a la luna",
     answers: {
-      "star wars": 10, "la guerra de las galaxias": 10, "interstellar": 10, "matrix": 10, "avatar": 10, "alien": 10, "blade runner": 10, "regreso al futuro": 10, "terminator": 10, "dune": 10, "guerra de las galaxias": 10, "the matrix": 10, "alien el octavo pasajero": 10, "et": 10, "et el extraterrestre": 10, "jurassic park": 10, "parque jurasico": 10, "origen": 10, "inception": 10, "los juegos del hambre": 10, "juegos del hambre": 10, "wall e": 10,
-      "el señor de los anillos": 25, "harry potter": 25, "spiderman": 25, "batman": 25, "superman": 25, "iron man": 25, "armageddon": 25, "gravity": 25, "marte": 25, "the martian": 25, "el marciano": 25, "yo robot": 25, "i robot": 25, "soy leyenda": 25, "guerra mundial z": 25, "independence day": 25, "transformers": 25, "godzilla": 25, "king kong": 25, "pacific rim": 25,
-      "2001 una odisea del espacio": 45, "llegada": 45, "la llegada": 45, "ex machina": 45, "gattaca": 45, "hijos de los hombres": 45, "distrito 9": 45, "el quinto elemento": 45, "quinto elemento": 45, "minority report": 45, "desafio total": 45, "robocop": 45, "mad max": 45, "2001 odisea del espacio": 45, "odisea del espacio": 45, "arrival": 45, "district 9": 45, "total recall": 45, "mad max furia en la carretera": 45, "el planeta de los simios": 45, "planeta de los simios": 45, "la guerra de los mundos": 45, "guerra de los mundos": 45, "terminator 2": 45, "aliens": 45, "aliens el regreso": 45, "depredador": 45, "predator": 45, "la cosa": 45, "the thing": 45, "encuentros en la tercera fase": 45, "inteligencia artificial": 45, "el show de truman": 45, "her": 45, "donnie darko": 45, "el efecto mariposa": 45, "looper": 45, "al filo del mañana": 45,
-      "moon": 65, "stalker": 65, "solaris": 65, "akira": 65, "metropolis": 65, "brazil": 65, "dark city": 65, "la naranja mecanica": 65, "naranja mecanica": 65, "12 monos": 65, "doce monos": 65, "v de vendetta": 65, "watchmen": 65, "starship troopers": 65, "las brigadas del espacio": 65, "stargate": 65, "tron": 65, "tron legacy": 65, "el juego de ender": 65, "el gigante de hierro": 65, "ghost in the shell": 65, "la mosca": 65, "the fly": 65, "el hombre bicentenario": 65, "contact": 65, "señales": 65, "super 8": 65, "monstruoso": 65,
-      "coherence": 85, "primer": 85, "predestination": 85, "los cronocrimenes": 85, "cronocrimenes": 85, "el hoyo": 85, "cube": 85, "el cubo": 85, "pi fe en el caos": 85, "existenz": 85, "videodrome": 85, "scanners": 85, "estan vivos": 85, "they live": 85, "el abismo": 85, "abyss": 85, "esfera": 85, "planeta prohibido": 85, "ultimatum a la tierra": 85, "la invasion de los ladrones de cuerpos": 85,
-      "viaje a la luna": 100, "le voyage dans la lune": 100, "la jetee": 100, "el planeta salvaje": 100, "planeta salvaje": 100, "la planete sauvage": 100, "kin dza dza": 100, "un chico y su perro": 100, "el hombre con rayos x en los ojos": 100, "el increible hombre menguante": 100, "increible hombre menguante": 100, "quatermass": 100, "la amenaza de andromeda": 100, "aniara": 100
+      "star wars": 10, "la guerra de las galaxias": 10, "interstellar": 10, "matrix": 10, "avatar": 10, "alien": 10, "regreso al futuro": 10,
+      "terminator": 10, "dune": 10, "guerra de las galaxias": 10, "the matrix": 10, "alien el octavo pasajero": 10, "et": 10, "et el extraterrestre": 10,
+      "jurassic park": 10, "parque jurasico": 10, "origen": 10, "inception": 10, "los juegos del hambre": 10, "juegos del hambre": 10, "wall e": 10,
+      "el señor de los anillos": 25, "harry potter": 25, "spiderman": 25, "batman": 25, "superman": 25, "iron man": 25, "armageddon": 25,
+      "gravity": 25, "marte": 25, "the martian": 25, "el marciano": 25, "yo robot": 25, "i robot": 25, "soy leyenda": 25,
+      "guerra mundial z": 25, "independence day": 25, "transformers": 25, "godzilla": 25, "king kong": 25, "pacific rim": 25,
+      "blade runner": 45, "2001 una odisea del espacio": 45, "llegada": 45, "la llegada": 45, "ex machina": 45, "gattaca": 45, "hijos de los hombres": 45,
+      "distrito 9": 45, "el quinto elemento": 45, "quinto elemento": 45, "minority report": 45, "desafio total": 45, "robocop": 45, "mad max": 45,
+      "2001 odisea del espacio": 45, "odisea del espacio": 45, "arrival": 45, "district 9": 45, "total recall": 45, "mad max furia en la carretera": 45, "el planeta de los simios": 45,
+      "planeta de los simios": 45, "la guerra de los mundos": 45, "guerra de los mundos": 45, "terminator 2": 45, "aliens": 45, "aliens el regreso": 45, "depredador": 45,
+      "predator": 45, "la cosa": 45, "the thing": 45, "encuentros en la tercera fase": 45, "inteligencia artificial": 45, "el show de truman": 45, "her": 45,
+      "donnie darko": 45, "el efecto mariposa": 45, "looper": 45, "al filo del mañana": 45,
+      "moon": 65, "stalker": 65, "solaris": 65, "akira": 65, "brazil": 65, "dark city": 65, "la naranja mecanica": 65,
+      "naranja mecanica": 65, "12 monos": 65, "doce monos": 65, "v de vendetta": 65, "watchmen": 65, "starship troopers": 65, "las brigadas del espacio": 65,
+      "stargate": 65, "tron": 65, "tron legacy": 65, "el juego de ender": 65, "el gigante de hierro": 65, "ghost in the shell": 65, "la mosca": 65,
+      "the fly": 65, "el hombre bicentenario": 65, "contact": 65, "señales": 65, "super 8": 65, "monstruoso": 65,
+      "coherence": 85, "primer": 85, "predestination": 85, "los cronocrimenes": 85, "cronocrimenes": 85, "el hoyo": 85, "cube": 85,
+      "el cubo": 85, "pi fe en el caos": 85, "existenz": 85, "videodrome": 85, "scanners": 85, "estan vivos": 85, "they live": 85,
+      "el abismo": 85, "abyss": 85, "esfera": 85, "planeta prohibido": 85, "ultimatum a la tierra": 85, "la invasion de los ladrones de cuerpos": 85,
+      "metropolis": 100, "viaje a la luna": 100, "le voyage dans la lune": 100, "la jetee": 100, "el planeta salvaje": 100, "planeta salvaje": 100, "la planete sauvage": 100,
+      "kin dza dza": 100, "un chico y su perro": 100, "el hombre con rayos x en los ojos": 100, "el increible hombre menguante": 100, "increible hombre menguante": 100, "quatermass": 100, "la amenaza de andromeda": 100,
+      "aniara": 100
     }
   },
   {
-    id: "pel-005", pack: "peliculas",
+    id: "pel-005", dailyId: "dia7-01", pack: "peliculas",
     texto: "Director o directora de cine (internacional o español)",
     ejemplo: "segundo de chomon",
     answers: {
@@ -603,7 +821,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pel-006", pack: "peliculas",
+    id: "pel-006", dailyId: "dia8-02", pack: "peliculas",
     texto: "Película de terror, suspense psicológico o monstruos",
     ejemplo: "haxan",
     answers: {
@@ -616,7 +834,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "pel-007", pack: "peliculas",
+    id: "pel-007", dailyId: "dia9-02", pack: "peliculas",
     texto: "Película o saga de acción, superhéroes, agentes secretos o atracos",
     ejemplo: "rififi",
     answers: {
@@ -628,22 +846,171 @@ const PROMPTS = [
       "rififi": 100, "circulo rojo": 100, "le cercle rouge": 100, "el silencio de un hombre": 100, "le samourai": 100, "atraco perfecto": 100, "the killing": 100, "jungla de asfalto": 100, "the getaway": 100, "la huida": 100, "bullitt": 100, "pelham 1 2 3": 100, "asalto a la comisaria del distrito 13": 100, "to live and die in la": 100
     }
   },
+  /* ----- Dossier Películas · Capítulo 2: Cine Nacional, Comedia e Industria ----- */
   {
-    id: "dep-001", pack: "deportes",
-    texto: "Un deporte que se juegue con red",
+    id: "pel-008", dailyId: "dia10-01", pack: "peliculas",
+    texto: "Película española histórica o contemporánea",
+    ejemplo: "el verdugo",
+    answers: {}
+  },
+  {
+    id: "pel-009", dailyId: "dia10-06", pack: "peliculas",
+    texto: "Actor o actriz del cine español",
+    ejemplo: "antonio banderas",
+    answers: {}
+  },
+  {
+    id: "pel-010", dailyId: "dia11-03", pack: "peliculas",
+    texto: "Película de comedia (nacional o internacional)",
+    ejemplo: "aterriza como puedas",
+    answers: {}
+  },
+  {
+    id: "pel-011", dailyId: "dia12-07", pack: "peliculas",
+    texto: "Película bélica, de guerra o conflicto militar",
+    ejemplo: "salvar al soldado ryan",
+    answers: {}
+  },
+  {
+    id: "pel-012", dailyId: "dia13-06", pack: "peliculas",
+    texto: "Saga cinematográfica de al menos tres entregas",
+    ejemplo: "el padrino",
+    answers: {}
+  },
+  {
+    id: "pel-013", dailyId: "dia13-02", pack: "peliculas",
+    texto: "Actor o actriz clásico de la época dorada de Hollywood",
+    ejemplo: "humphrey bogart",
+    answers: {}
+  },
+  {
+    id: "pel-014", dailyId: "dia14-04", pack: "peliculas",
+    texto: "Película de animación NO producida por Disney ni Pixar (Ghibli, DreamWorks, etc.)",
+    ejemplo: "el viaje de chihiro",
+    answers: {
+      /* 10 pts - Éxitos comerciales masivos globales */
+      "shrek": 10, "shrek 2": 10, "shrek tercero": 10, "shrek 3": 10,
+      "madagascar": 10, "madagascar 2": 10, "kung fu panda": 10, "kung fu panda 2": 10,
+      "ice age": 10, "ice age 2": 10, "la era de hielo": 10, "minions": 10,
+      "los minions": 10, "gru mi villano favorito": 10, "mi villano favorito": 10, "como entrenar a tu dragon": 10,
+      "como entrenar a tu dragon 2": 10, "el viaje de chihiro": 10,
+      /* 25 pts - Blockbusters conocidos, DreamWorks/Illumination/Sony y clásicos Studio Ghibli */
+      "spider-man un nuevo universo": 25, "spiderman un nuevo universo": 25, "spider-man cruzando el multiverso": 25, "spiderman cruzando el multiverso": 25,
+      "spider-verse": 25, "el gato con botas": 25, "el gato con botas el ultimo deseo": 25, "mi vecino totoro": 25,
+      "totoro": 25, "la princesa mononoke": 25, "el castillo ambulante": 25, "coraline": 25,
+      "los mundos de coraline": 25, "la novia cadaver": 25, "pesadilla antes de navidad": 25, "rio": 25,
+      "hotel transilvania": 25, "hotel transylvania": 25, "spirit": 25, "spirit el corcel indomable": 25,
+      "el principe de egipto": 25, "el gigante de hierro": 25, "your name": 25, "kimi no na wa": 25,
+      "akira": 25, "megamind": 25, "canta": 25, "mascotas": 25,
+      "los croods": 25, "el espantatiburones": 25,
+      /* 45 pts - Animación europea, clásicos Ghibli y stop-motion */
+      "la tumba de las luciernagas": 45, "ponyo": 45, "ponyo en el acantilado": 45, "nausicaa": 45,
+      "nausicaa del valle del viento": 45, "porco rosso": 45, "el viento se levanta": 45, "el niño y la garza": 45,
+      "ghost in the shell": 45, "paprika": 45, "perfect blue": 45, "el tiempo contigo": 45,
+      "suzume": 45, "klaus": 45, "arrugas": 45, "mortadelo y filemon contra jimmy el cachondo": 45,
+      "las aventuras de tadeo jones": 45, "tadeo jones": 45, "planet 51": 45, "chico y rita": 45,
+      "wallace y gromit": 45, "rebelion en la granja": 45, "pollitos en fuga": 45, "chicken run": 45,
+      "fantastico sr fox": 45, "isla de perros": 45, "persepolis": 45,
+      /* 65 pts - Anime cinematográfico popular y cine de autor */
+      "jujutsu kaisen 0": 65, "demon slayer tren infinito": 65, "one piece film red": 65, "el ilusionista": 65,
+      "vals con bashir": 65, "la cancion del mar": 65, "wolfwalkers": 65, "chicos y mendez": 65,
+      "una voz silenciosa": 65, "la chica que saltaba a traves del tiempo": 65, "el niño y la bestia": 65, "summer wars": 65,
+      "belle": 65,
+      /* 85 pts - Cine de culto, franquicias de animación y joyas de autor */
+      "neon genesis evangelion the end of evangelion": 85, "the end of evangelion": 85, "evangelion 3.0+1.0": 85, "evangelion": 85,
+      "dragon ball super broly": 85, "dragon ball z el ataque del dragon": 85, "el castillo de cagliostro": 85, "belladonna of sadness": 85,
+      "la tortuga roja": 85, "robot dreams": 85, "buñuel en el laberinto de las tortugas": 85, "el secreto del libro de kells": 85,
+      "ernest y celestine": 85, "la vida de calabacin": 85, "mary and max": 85, "millenium actress": 85,
+      "tokyo godfathers": 85, "el planeta salvaje": 85, "la colina de las amapolas": 85, "marnie": 85,
+      "recuerdos del ayer": 85, "puedo escuchar el mar": 85, "mis vecinos los yamada": 85, "cartas para mormo": 85,
+      "ninja scroll": 85, "sword of the stranger": 85, "flee": 85,
+      /* 100 pts - AGENTE DURMIENTE / Nicho extremo, cine independiente y vanguardia */
+      "angel's egg": 100, "tenshi no tamago": 100, "mind game": 100, "night is short walk on girl": 100,
+      "it's such a beautiful day": 100, "tekkonkinkreet": 100, "jin-roh": 100, "metropolis": 100,
+      "genius party": 100, "redline": 100, "memory": 100, "memories": 100,
+      "royal space force": 100, "la casa lobo": 100, "mad god": 100, "memoria de un caracol": 100,
+      "crisalida": 100, "el bosque animado": 100, "la leyenda del unicornio": 100, "nocturna": 100,
+      "don quijote de la mancha": 100, "animales unidos": 100, "tamala 2010": 100, "patlabor": 100,
+      "marona's fantastic tale": 100
+    }
+  },
+
+  /* ----- Dossier Películas · Capítulo 3: Cine de Autor y Mitología Cinematográfica ----- */
+  {
+    id: "pel-015", dailyId: "dia15-04", pack: "peliculas",
+    texto: "Película ganadora del Premio Goya a Mejor Película",
+    ejemplo: "tesis",
+    answers: {}
+  },
+  {
+    id: "pel-016", dailyId: "dia15-02", pack: "peliculas",
+    texto: "Personaje de villano o antagonista icónico del cine",
+    ejemplo: "darth vader",
+    answers: {}
+  },
+  {
+    id: "pel-017", dailyId: "dia16-05", pack: "peliculas",
+    texto: "Película de género Western (del oeste o spaguetti western)",
+    ejemplo: "el bueno el feo y el malo",
+    answers: {}
+  },
+  {
+    id: "pel-018", dailyId: "dia17-03", pack: "peliculas",
+    texto: "Película basada en hechos reales, biopic o acontecimiento histórico",
+    ejemplo: "la lista de schindler",
+    answers: {}
+  },
+  {
+    id: "pel-019", dailyId: "dia17-06", pack: "peliculas",
+    texto: "Película musical o con temática centrada en la música",
+    ejemplo: "cantando bajo la lluvia",
+    answers: {}
+  },
+  {
+    id: "pel-020", dailyId: "dia18-01", pack: "peliculas",
+    texto: "Compositor legendario de bandas sonoras de cine",
+    ejemplo: "ennio morricone",
+    answers: {}
+  },
+  {
+    id: "pel-021", dailyId: "dia19-04", pack: "peliculas",
+    texto: "Película policiaca, de detectives, cine negro o mafia",
+    ejemplo: "uno de los nuestros",
+    answers: {}
+  },
+  {
+    id: "dep-001", dailyId: "dia5-04", pack: "deportes",
+    texto: "Deporte que se juegue con red",
     ejemplo: "jianzi",
     answers: {
-      "tenis": 10, "voleibol": 10, "voley": 10, "volei": 10, "padel": 10, "badminton": 10, "ping pong": 10, "tenis de mesa": 10,
-      "futbol": 25, "baloncesto": 25, "basket": 25, "balonmano": 25, "waterpolo": 25, "hockey": 25, "futbol sala": 25, "futsal": 25, "hockey sobre hielo": 25, "hockey hielo": 25, "hockey hierba": 25, "hockey sobre hierba": 25, "hockey patines": 25, "hockey sobre patines": 25, "pesca": 25, "pesca deportiva": 25, "pesca con caña": 25, "pingpong": 25, "pin pon": 25,
-      "volei playa": 45, "voley playa": 45, "voleibol playa": 45, "voleibol de playa": 45, "beach voley": 45, "tenis playa": 45, "tenis de playa": 45, "beach tennis": 45, "pickleball": 45, "futvoley": 45, "futvolei": 45, "footvolley": 45, "futbol tenis": 45, "futtenis": 45, "frontenis": 45, "tenis en silla de ruedas": 45, "tenis silla de ruedas": 45, "voleibol sentado": 45, "minitenis": 45, "mini tenis": 45, "minivoley": 45, "tenis individual": 45, "tenis dobles": 45, "lacrosse": 45, "futbol playa": 45, "balonmano playa": 45, "baloncesto 3x3": 45, "basket 3x3": 45, "polo": 45, "hockey linea": 45, "hockey en linea": 45, "padbol": 45, "teqball": 45, "netball": 45,
-      "sepak takraw": 65, "takraw": 65, "bossaball": 65, "roundnet": 65, "spikeball": 65, "badminton adaptado": 65, "parabadminton": 65, "para badminton": 65, "paratenis de mesa": 65, "tenis de mesa adaptado": 65, "tenis adaptado": 65, "padel en silla de ruedas": 65, "padel adaptado": 65, "touchtennis": 65, "touch tennis": 65, "soft tennis": 65, "tenis blando": 65, "speed badminton": 65, "crossminton": 65, "indiaca": 65, "peteca": 65, "fistball": 65, "faustball": 65, "punhobol": 65, "puñobol": 65, "squash tennis": 65, "korfball": 65, "korfbal": 65, "balonkorf": 65, "floorball": 65, "unihockey": 65, "kayak polo": 65, "piragua polo": 65, "tchoukball": 65, "wallyball": 65, "ecuavoley": 65, "cachibol": 65, "newcomb": 65, "voley nieve": 65, "voleibol de nieve": 65,
-      "jeu de paume": 85, "real tennis": 85, "tenis real": 85, "xare": 85, "share": 85, "teqvoly": 85, "teqis": 85, "teqpong": 85, "padel playa": 85, "jorkyball": 85, "headis": 85, "air badminton": 85, "airbadminton": 85, "tenis para ciegos": 85, "mintonette": 85, "hooverball": 85, "biribol": 85, "acuavoley": 85, "voleibol acuatico": 85, "footbag net": 85, "jokgu": 85, "bandy": 85, "ringette": 85, "hockey subacuatico": 85, "bikepolo": 85, "ciclopolo": 85, "cestoball": 85,
-      "jianzi": 100, "pluma": 100, "shuttlecock": 100, "battledore": 100, "qianball": 100, "speed ball": 100, "prellball": 100, "throwball": 100, "ball badminton": 100, "sipa": 100, "chinlone": 100, "ringtennis": 100, "tennikoit": 100, "deck tennis": 100, "featherball": 100
+      "tenis": 10, "voleibol": 10, "voley": 10, "volei": 10,
+      "padel": 25, "badminton": 25, "ping pong": 25, "tenis de mesa": 25, "futbol": 25, "baloncesto": 25, "basket": 25,
+      "balonmano": 25, "waterpolo": 25, "hockey": 25, "futbol sala": 25, "futsal": 25, "hockey sobre hielo": 25, "hockey hielo": 25,
+      "hockey hierba": 25, "hockey sobre hierba": 25, "hockey patines": 25, "hockey sobre patines": 25, "pesca": 25, "pesca deportiva": 25, "pesca con caña": 25,
+      "pingpong": 25, "pin pon": 25,
+      "volei playa": 45, "voley playa": 45, "voleibol playa": 45, "voleibol de playa": 45, "beach voley": 45, "tenis playa": 45, "tenis de playa": 45,
+      "beach tennis": 45, "pickleball": 45, "futvoley": 45, "futvolei": 45, "footvolley": 45, "futbol tenis": 45, "futtenis": 45,
+      "frontenis": 45, "tenis en silla de ruedas": 45, "tenis silla de ruedas": 45, "voleibol sentado": 45, "minitenis": 45, "mini tenis": 45, "minivoley": 45,
+      "tenis individual": 45, "tenis dobles": 45, "lacrosse": 45, "futbol playa": 45, "balonmano playa": 45, "baloncesto 3x3": 45, "basket 3x3": 45,
+      "polo": 45, "hockey linea": 45, "hockey en linea": 45, "padbol": 45, "teqball": 45, "netball": 45,
+      "badminton adaptado": 65, "parabadminton": 65, "para badminton": 65, "paratenis de mesa": 65, "tenis de mesa adaptado": 65, "tenis adaptado": 65, "padel en silla de ruedas": 65,
+      "padel adaptado": 65, "touchtennis": 65, "touch tennis": 65, "soft tennis": 65, "tenis blando": 65, "speed badminton": 65, "crossminton": 65,
+      "indiaca": 65, "peteca": 65, "fistball": 65, "faustball": 65, "punhobol": 65, "puñobol": 65, "squash tennis": 65,
+      "korfball": 65, "korfbal": 65, "balonkorf": 65, "floorball": 65, "unihockey": 65, "kayak polo": 65, "piragua polo": 65,
+      "tchoukball": 65, "wallyball": 65, "ecuavoley": 65, "cachibol": 65, "newcomb": 65, "voley nieve": 65, "voleibol de nieve": 65,
+      "sepak takraw": 85, "takraw": 85, "bossaball": 85, "roundnet": 85, "spikeball": 85, "jeu de paume": 85, "real tennis": 85,
+      "tenis real": 85, "xare": 85, "share": 85, "teqvoly": 85, "teqis": 85, "teqpong": 85, "padel playa": 85,
+      "jorkyball": 85, "headis": 85, "air badminton": 85, "airbadminton": 85, "tenis para ciegos": 85, "mintonette": 85, "hooverball": 85,
+      "biribol": 85, "acuavoley": 85, "voleibol acuatico": 85, "footbag net": 85, "jokgu": 85, "bandy": 85, "ringette": 85,
+      "hockey subacuatico": 85, "bikepolo": 85, "ciclopolo": 85, "cestoball": 85,
+      "jianzi": 100, "pluma": 100, "shuttlecock": 100, "battledore": 100, "qianball": 100, "speed ball": 100, "prellball": 100,
+      "throwball": 100, "ball badminton": 100, "sipa": 100, "chinlone": 100, "ringtennis": 100, "tennikoit": 100, "deck tennis": 100,
+      "featherball": 100
     }
   },
   {
-    id: "dep-002", pack: "deportes",
-    texto: "Club de fútbol histórico o actual de España (Primera, Segunda o categorías históricas)",
+    id: "dep-002", dailyId: "dia5-07", pack: "deportes",
+    texto: "Club de fútbol histórico o actual de España (Primera o Segunda División)",
     ejemplo: "arenas de getxo",
     answers: {
       "real madrid": 10, "barcelona": 10, "barca": 10, "atletico de madrid": 10, "sevilla": 10, "real betis": 10, "betis": 10, "valencia": 10, "athletic club": 10, "athletic de bilbao": 10, "real sociedad": 10, "villarreal": 10, "celta": 10, "madrid": 10, "fc barcelona": 10, "atletico": 10, "atleti": 10, "sevilla fc": 10, "valencia cf": 10, "athletic": 10, "celta de vigo": 10, "rcd espanyol": 10,
@@ -655,8 +1022,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "dep-003", pack: "deportes",
-    texto: "Disciplina, modalidad o prueba oficial de los Juegos Olímpicos (Verano o Invierno)",
+    id: "dep-003", dailyId: "dia6-04", pack: "deportes",
+    texto: "Disciplina, modalidad o prueba oficial de los Juegos Olímpicos",
     ejemplo: "sokatira",
     answers: {
       "atletismo": 10, "natacion": 10, "futbol": 10, "baloncesto": 10, "tenis": 10, "gimnasia": 10, "ciclismo": 10, "boxeo": 10, "esgrima": 10, "tiro con arco": 10, "taekwondo": 10, "judo": 10, "halterofilia": 10, "piraguismo": 10, "remo": 10, "vela": 10, "waterpolo": 10, "triatlon": 10, "gimnasia artistica": 10, "voleibol": 10, "balonmano": 10, "badminton": 10,
@@ -668,8 +1035,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "dep-004", pack: "deportes",
-    texto: "Deportista español de élite (histórico o en activo de cualquier disciplina)",
+    id: "dep-004", dailyId: "dia7-06", pack: "deportes",
+    texto: "Deportista español de élite (en activo o retirado)",
     ejemplo: "jose de amezola",
     answers: {
       "rafa nadal": 10, "nadal": 10, "pau gasol": 10, "gasol": 10, "fernando alonso": 10, "carlos alcaraz": 10, "marc marquez": 10, "andres iniesta": 10, "iker casillas": 10, "carlos sainz": 10, "miguel indurain": 10, "carolina marin": 10, "mireia belmonte": 10, "aitana bonmati": 10, "alexia putellas": 10, "rafael nadal": 10, "alonso": 10, "alcaraz": 10, "marquez": 10, "iniesta": 10, "casillas": 10, "sainz": 10,
@@ -681,8 +1048,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "dep-005", pack: "deportes",
-    texto: "Término reglamentario, posición táctica, golpe o infracción en deportes de equipo o raqueta",
+    id: "dep-005", dailyId: "dia8-06", pack: "deportes",
+    texto: "Término reglamentario, posición táctica, golpe o infracción deportiva",
     ejemplo: "gran willy",
     answers: {
       "fuera de juego": 10, "penalti": 10, "corner": 10, "saque de esquina": 10, "falta": 10, "tarjeta roja": 10, "tarjeta amarilla": 10, "gol": 10, "triple": 10, "tiro libre": 10, "mate": 10, "rebote": 10, "portero": 10, "delantero": 10, "centrocampista": 10, "defensa": 10, "penalty": 10, "roja": 10, "amarilla": 10, "canasta": 10, "saque": 10, "punto": 10,
@@ -694,8 +1061,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "dep-006", pack: "deportes",
-    texto: "Club de fútbol histórico o internacional (Europa y América, fuera de España)",
+    id: "dep-006", dailyId: "dia8-07", pack: "deportes",
+    texto: "Club de fútbol internacional (Europa o América, fuera de España)",
     ejemplo: "estrella roja de belgrado",
     answers: {
       "manchester united": 10, "united": 10, "liverpool": 10, "manchester city": 10, "city": 10, "arsenal": 10, "chelsea": 10, "bayern munich": 10, "bayern": 10, "bayern de munich": 10, "borussia dortmund": 10, "dortmund": 10, "juventus": 10, "juve": 10, "inter de milan": 10, "inter": 10, "milan": 10, "ac milan": 10, "psg": 10, "paris saint germain": 10, "boca juniors": 10, "boca": 10,
@@ -707,8 +1074,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "dep-007", pack: "deportes",
-    texto: "Estadio, circuito de motor o pabellón deportivo legendario (España o el mundo)",
+    id: "dep-007", dailyId: "dia9-04", pack: "deportes",
+    texto: "Estadio, circuito de motor o pabellón deportivo legendario",
     ejemplo: "twickenham",
     answers: {
       "santiago bernabeu": 10, "bernabeu": 10, "el bernabeu": 10, "camp nou": 10, "el camp nou": 10, "nou camp": 10, "sanchez pizjuan": 10, "sanzhez pizjuan": 10, "benito villamarin": 10, "villamarin": 10, "metropolitano": 10, "civitas metropolitano": 10, "wanda metropolitano": 10, "wembley": 10, "maracana": 10, "san siro": 10, "la bombonera": 10, "bombonera": 10, "monumental": 10, "monumenta": 10, "roland garros": 10, "wimbledon": 10,
@@ -719,9 +1086,96 @@ const PROMPTS = [
       "o2 arena": 100, "staples center": 100, "crypto arena": 100, "united center": 100, "td garden": 100, "chase center": 100, "fenway park": 100, "yankee stadium": 100, "wrigley field": 100, "lambeau field": 100, "rose bowl": 100, "twickenham": 100, "croke park": 100, "aviva stadium": 100
     }
   },
+  /* ----- Dossier Deportes · Capítulo 2: Motor, Raqueta y Competición de Élite ----- */
   {
-    id: "geo-001", pack: "geografia",
-    texto: "Un río de Europa",
+    id: "dep-008", dailyId: "dia10-02", pack: "deportes",
+    texto: "Piloto de Fórmula 1 o MotoGP (histórico o en activo)",
+    ejemplo: "fernando alonso",
+    answers: {}
+  },
+  {
+    id: "dep-009", dailyId: "dia11-05", pack: "deportes",
+    texto: "Jugador de baloncesto legendario de la NBA o Liga ACB",
+    ejemplo: "michael jordan",
+    answers: {}
+  },
+  {
+    id: "dep-010", dailyId: "dia11-02", pack: "deportes",
+    texto: "Tenista profesional de élite (circuito ATP o WTA)",
+    ejemplo: "rafa nadal",
+    answers: {}
+  },
+  {
+    id: "dep-011", dailyId: "dia12-05", pack: "deportes",
+    texto: "Deporte de combate, arte marcial o lucha reglada",
+    ejemplo: "judo",
+    answers: {}
+  },
+  {
+    id: "dep-012", dailyId: "dia13-01", pack: "deportes",
+    texto: "Futbolista ganador del Balón de Oro (masculino o femenino)",
+    ejemplo: "lionel messi",
+    answers: {}
+  },
+  {
+    id: "dep-013", dailyId: "dia14-03", pack: "deportes",
+    texto: "Competición, torneo, copa o gran premio deportivo internacional",
+    ejemplo: "copa del mundo",
+    answers: {}
+  },
+  {
+    id: "dep-014", dailyId: "dia14-06", pack: "deportes",
+    texto: "Deporte de invierno o disputado sobre nieve/hielo",
+    ejemplo: "esqui alpino",
+    answers: {}
+  },
+
+  /* ----- Dossier Deportes · Capítulo 3: Resistencia, Campo y Leyendas ----- */
+  {
+    id: "dep-015", dailyId: "dia15-07", pack: "deportes",
+    texto: "Prueba, modalidad o especialidad de atletismo",
+    ejemplo: "salto de longitud",
+    answers: {}
+  },
+  {
+    id: "dep-016", dailyId: "dia15-05", pack: "deportes",
+    texto: "Deporte que se dispute sin balón ni pelota",
+    ejemplo: "natacion",
+    answers: {}
+  },
+  {
+    id: "dep-017", dailyId: "dia16-03", pack: "deportes",
+    texto: "Ciclista profesional o equipo ciclista del WorldTour",
+    ejemplo: "miguel indurain",
+    answers: {}
+  },
+  {
+    id: "dep-018", dailyId: "dia17-01", pack: "deportes",
+    texto: "Deporte acuático, náutico o subacuático",
+    ejemplo: "waterpolo",
+    answers: {}
+  },
+  {
+    id: "dep-019", dailyId: "dia18-07", pack: "deportes",
+    texto: "Entrenador o seleccionador histórico de fútbol o baloncesto",
+    ejemplo: "pep guardiola",
+    answers: {}
+  },
+  {
+    id: "dep-020", dailyId: "dia18-02", pack: "deportes",
+    texto: "Apodo oficial o popular de un club de fútbol o selección deportiva",
+    ejemplo: "la roja",
+    answers: {}
+  },
+  {
+    id: "dep-021", dailyId: "dia19-01", pack: "deportes",
+    texto: "Escudería, fabricante o marca vinculada al motorsport de competición",
+    ejemplo: "ferrari",
+    answers: {}
+  },
+  {
+    id: "geo-001", dailyId: "dia5-01", pack: "geografia",
+    texto: "Río de Europa",
     ejemplo: "pechora",
     answers: {
       "tajo": 10, "ebro": 10, "guadalquivir": 10, "duero": 10, "danubio": 10, "rin": 10, "rhin": 10, "sena": 10, "tamesis": 10,
@@ -733,7 +1187,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "geo-002", pack: "geografia",
+    id: "geo-002", dailyId: "dia6-02", pack: "geografia",
     texto: "Capital de un país soberano del mundo",
     ejemplo: "ngerulmud",
     answers: {
@@ -746,20 +1200,36 @@ const PROMPTS = [
     }
   },
   {
-    id: "geo-003", pack: "geografia",
+    id: "geo-003", dailyId: "dia6-03", pack: "geografia",
     texto: "Isla o archipiélago del mundo (español o internacional)",
     ejemplo: "kerguelen",
     answers: {
-      "mallorca": 10, "menorca": 10, "ibiza": 10, "formentera": 10, "tenerife": 10, "gran canaria": 10, "lanzarote": 10, "fuerteventura": 10, "la palma": 10, "la gomera": 10, "el hierro": 10, "sicilia": 10, "cerdeña": 10, "creta": 10, "gran bretaña": 10, "irlanda": 10, "islandia": 10, "madagascar": 10, "cuba": 10, "hierro": 10, "islas baleares": 10, "baleares": 10,
-      "manhattan": 25, "australia": 25, "japon": 25, "reino unido": 25, "inglaterra": 25, "nueva zelanda": 25, "filipinas": 25, "indonesia": 25, "isla magica": 25, "la isla de las tentaciones": 25, "isla del tesoro": 25, "atlantida": 25, "alcatraz": 25, "isla de man": 25, "gibraltar": 25, "peninsula iberica": 25, "venecia": 25, "cabo de gata": 25, "tarifa": 25, "islantilla": 25,
-      "cabrera": 45, "la graciosa": 45, "islas cies": 45, "tabarca": 45, "corcega": 45, "chipre": 45, "malta": 45, "rodos": 45, "santorini": 45, "miconos": 45, "corfu": 45, "groenlandia": 45, "jamaica": 45, "puerto rico": 45, "bahamas": 45, "maldivas": 45, "seychelles": 45, "mauricio": 45, "zanzibar": 45, "sri lanka": 45, "bali": 45, "taiwan": 45, "isla de pascua": 45, "galapagos": 45, "malvinas": 45, "hawai": 45, "tahiti": 45, "fiyi": 45, "samoa": 45, "tasmania": 45, "azores": 45, "madeira": 45, "cabo verde": 45, "cies": 45, "isla de tabarca": 45, "mykonos": 45, "ceilan": 45, "hawaii": 45,
-      "isla cristina": 65, "buda": 65, "lesbos": 65, "la española": 65, "reunion": 65, "sumatra": 65, "java": 65, "borneo": 65, "celebes": 65, "luzon": 65, "mindanao": 65, "honshu": 65, "hokkaido": 65, "kyushu": 65, "okinawa": 65, "tierra del fuego": 65, "chiloe": 65, "nueva guinea": 65, "islas feroe": 65, "isla de buda": 65, "isla de la reunion": 65, "feroe": 65, "isla de ons": 65, "ons": 65, "isla de arousa": 65, "arousa": 65, "la toja": 65, "isla de la toja": 65,
-      "svalbard": 85, "nueva zembla": 85, "sajalin": 85, "islas kuriles": 85, "kuriles": 85, "islas aleutianas": 85, "aleutianas": 85, "isla de baffin": 85, "baffin": 85, "isla victoria": 85, "isla de ellesmere": 85, "terranova": 85, "isla del principe eduardo": 85, "isla de vancouver": 85, "cozumel": 85, "isla mujeres": 85, "margarita": 85, "isla margarita": 85, "curazao": 85, "aruba": 85,
-      "kerguelen": 100, "islas kerguelen": 100, "islas crozet": 100, "isla bouvet": 100, "georgias del sur": 100, "sandwich del sur": 100, "isla de wrangel": 100, "tierra de francisco jose": 100, "severnaya zemlya": 100, "islas de nueva siberia": 100, "isla de bancos": 100, "isla de devon": 100, "isla de melville": 100, "isla de southampton": 100
+      "mallorca": 10, "menorca": 10, "ibiza": 10, "formentera": 10, "tenerife": 10, "gran canaria": 10, "lanzarote": 10,
+      "fuerteventura": 10, "la palma": 10, "la gomera": 10, "el hierro": 10, "sicilia": 10, "cerdeña": 10, "creta": 10,
+      "gran bretaña": 10, "irlanda": 10, "islandia": 10, "cuba": 10, "hierro": 10, "islas baleares": 10, "baleares": 10,
+      "manhattan": 25, "australia": 25, "japon": 25, "reino unido": 25, "inglaterra": 25, "nueva zelanda": 25, "indonesia": 25,
+      "isla magica": 25, "la isla de las tentaciones": 25, "isla del tesoro": 25, "atlantida": 25, "alcatraz": 25, "isla de man": 25, "gibraltar": 25,
+      "peninsula iberica": 25, "venecia": 25, "cabo de gata": 25, "tarifa": 25, "islantilla": 25,
+      "madagascar": 45, "filipinas": 45, "cabrera": 45, "la graciosa": 45, "islas cies": 45, "tabarca": 45, "corcega": 45,
+      "chipre": 45, "malta": 45, "rodos": 45, "santorini": 45, "miconos": 45, "corfu": 45, "groenlandia": 45,
+      "jamaica": 45, "puerto rico": 45, "bahamas": 45, "maldivas": 45, "seychelles": 45, "mauricio": 45, "zanzibar": 45,
+      "sri lanka": 45, "bali": 45, "taiwan": 45, "isla de pascua": 45, "galapagos": 45, "malvinas": 45, "hawai": 45,
+      "tahiti": 45, "fiyi": 45, "samoa": 45, "tasmania": 45, "azores": 45, "madeira": 45, "cabo verde": 45,
+      "cies": 45, "isla de tabarca": 45, "mykonos": 45, "ceilan": 45, "hawaii": 45,
+      "isla cristina": 65, "buda": 65, "lesbos": 65, "la española": 65, "reunion": 65, "sumatra": 65, "java": 65,
+      "borneo": 65, "celebes": 65, "luzon": 65, "mindanao": 65, "honshu": 65, "hokkaido": 65, "kyushu": 65,
+      "okinawa": 65, "tierra del fuego": 65, "chiloe": 65, "nueva guinea": 65, "islas feroe": 65, "isla de buda": 65, "isla de la reunion": 65,
+      "feroe": 65, "isla de ons": 65, "ons": 65, "isla de arousa": 65, "arousa": 65, "la toja": 65, "isla de la toja": 65,
+      "svalbard": 85, "nueva zembla": 85, "sajalin": 85, "islas kuriles": 85, "kuriles": 85, "islas aleutianas": 85, "aleutianas": 85,
+      "isla de baffin": 85, "baffin": 85, "isla victoria": 85, "isla de ellesmere": 85, "terranova": 85, "isla del principe eduardo": 85, "isla de vancouver": 85,
+      "cozumel": 85, "isla mujeres": 85, "margarita": 85, "isla margarita": 85, "curazao": 85, "aruba": 85,
+      "kerguelen": 100, "islas kerguelen": 100, "islas crozet": 100, "isla bouvet": 100, "georgias del sur": 100, "sandwich del sur": 100, "isla de wrangel": 100,
+      "tierra de francisco jose": 100, "severnaya zemlya": 100, "islas de nueva siberia": 100, "isla de bancos": 100, "isla de devon": 100, "isla de melville": 100, "isla de southampton": 100,
+      "palaos": 100, "islas salomon": 100, "solomon": 100
     }
   },
   {
-    id: "geo-004", pack: "geografia",
+    id: "geo-004", dailyId: "dia7-04", pack: "geografia",
     texto: "Cordillera, sierra, volcán o pico montañoso del mundo",
     ejemplo: "gankhar puensum",
     answers: {
@@ -772,7 +1242,7 @@ const PROMPTS = [
     }
   },
   {
-    id: "geo-005", pack: "geografia",
+    id: "geo-005", dailyId: "dia8-05", pack: "geografia",
     texto: "Ciudad importante del mundo que NO es la capital de su país",
     ejemplo: "samarcanda",
     answers: {
@@ -785,12 +1255,12 @@ const PROMPTS = [
     }
   },
   {
-    id: "geo-006", pack: "geografia",
-    texto: "Mar, océano, golfo, estrecho, canal o masa de agua singular",
+    id: "geo-006", dailyId: "dia8-04", pack: "geografia",
+    texto: "Mar, océano, golfo, estrecho o masa de agua singular",
     ejemplo: "mar de los sargazos",
     answers: {
       "mar mediterraneo": 10, "mediterraneo": 10, "el mediterraneo": 10, "oceano atlantico": 10, "atlantico": 10, "el atlantico": 10, "oceano pacifico": 10, "pacifico": 10, "el pacifico": 10, "mar caribe": 10, "caribe": 10, "el caribe": 10, "mar muerto": 10, "mar rojo": 10, "mar negro": 10, "golfo de mexico": 10, "estrecho de gibraltar": 10, "gibraltar": 10, "canal de panama": 10, "canal de suez": 10, "mar cantabrico": 10, "cantabrico": 10,
-      "oceano indico": 25, "indico": 25, "oceano artico": 25, "artico": 25, "oceano antartico": 25, "antartico": 25, "el cantabrico": 25, "mar menor": 25, "el mar menor": 25, "canal de la mancha": 25, "bahia de cadiz": 25, "golfo de cadiz": 25, "golfo de vizcaya": 25, "mar de alboran": 25, "cataratas del niagara": 25, "niagara": 25, "cataratas del iguazu": 25, "iguazu": 25, "lago ness": 25, "lago victoria": 25,
+      "oceano indico": 25, "indico": 25, "oceano artico": 25, "artico": 25, "oceano antartico": 25, "antartico": 25, "mar menor": 25, "el mar menor": 25, "canal de la mancha": 25, "bahia de cadiz": 25, "golfo de cadiz": 25, "golfo de vizcaya": 25, "mar de alboran": 25, "cataratas del niagara": 25, "niagara": 25, "cataratas del iguazu": 25, "iguazu": 25, "lago ness": 25, "lago victoria": 25,
       "mar del norte": 45, "mar baltico": 45, "baltico": 45, "mar caspio": 45, "caspio": 45, "mar adriatico": 45, "adriatico": 45, "mar egeo": 45, "egeo": 45, "mar jonico": 45, "jonico": 45, "mar tirreno": 45, "tirreno": 45, "golfo persico": 45, "estrecho de bering": 45, "bering": 45, "estrecho del bosforo": 45, "bosforo": 45, "estrecho de magallanes": 45, "magallanes": 45, "estrecho de malaca": 45, "lago titicaca": 45, "titicaca": 45, "lago baikal": 45, "baikal": 45, "mar de aral": 45, "mar de china": 45, "mar del japon": 45, "mar amarillo": 45, "mar de coral": 45, "mar de tasmania": 45, "mar de barents": 45, "mar blanco": 45, "mar de azov": 45, "mar de marmara": 45, "mar arabigo": 45, "golfo de bengala": 45, "golfo de guinea": 45,
       "estrecho de ormuz": 65, "ormuz": 65, "estrecho de los dardanelos": 65, "dardanelos": 65, "estrecho de mesina": 65, "estrecho de taiwan": 65, "paso de drake": 65, "pasaje de drake": 65, "golfo de aden": 65, "golfo de oman": 65, "golfo de alaska": 65, "golfo de california": 65, "golfo de san lorenzo": 65, "golfo de leon": 65, "golfo de valencia": 65, "bahia de hudson": 65, "bahia de bengala": 65, "bahia de cochinos": 65, "bahia de san francisco": 65, "bahia de santander": 65, "bahia de la concha": 65, "bahia de algeciras": 65, "ria de vigo": 65, "ria de arousa": 65, "lago michigan": 65, "lago superior": 65, "lago tanganica": 65, "lago maracaibo": 65,
       "canal de corinto": 85, "canal de kiel": 85, "estrecho de cook": 85, "estrecho de bass": 85, "mar de weddell": 85, "mar de ross": 85, "mar de java": 85, "mar de andaman": 85, "mar de timor": 85, "mar de sulu": 85, "mar de celebes": 85, "mar de okhotsk": 85, "lago huron": 85, "lago erie": 85, "lago ontario": 85, "lago malawi": 85, "lago chad": 85, "lago de sanabria": 85, "la albufera": 85, "albufera de valencia": 85,
@@ -798,21 +1268,152 @@ const PROMPTS = [
     }
   },
   {
-    id: "geo-007", pack: "geografia",
+    id: "geo-007", dailyId: "dia9-07", pack: "geografia",
     texto: "Monumento, construcción emblemática o maravilla histórica de la humanidad",
     ejemplo: "mausoleo de halicarnaso",
     answers: {
-      "torre eiffel": 10, "la torre eiffel": 10, "coliseo": 10, "el coliseo": 10, "coliseo romano": 10, "gran muralla china": 10, "muralla china": 10, "la muralla china": 10, "taj mahal": 10, "el taj mahal": 10, "piramides de giza": 10, "las piramides": 10, "piramides de egipto": 10, "estatua de la libertad": 10, "la estatua de la libertad": 10, "big ben": 10, "el big ben": 10, "giralda": 10, "la giralda": 10, "alhambra": 10, "la alhambra": 10, "sagrada familia": 10,
-      "la sagrada familia": 25, "alhambra de granada": 25, "mezquita de cordoba": 25, "la mezquita de cordoba": 25, "acueducto de segovia": 25, "el acueducto de segovia": 25, "catedral de santiago": 25, "catedral de santiago de compostela": 25, "plaza mayor": 25, "palacio real": 25, "alcazar de sevilla": 25, "puerta de alcala": 25, "la puerta de alcala": 25, "puerta del sol": 25, "la cibeles": 25, "fuente de cibeles": 25, "el prado": 25, "museo del prado": 25, "guggenheim": 25, "museo guggenheim": 25,
+      "torre eiffel": 10, "la torre eiffel": 10, "coliseo": 10, "el coliseo": 10, "coliseo romano": 10, "gran muralla china": 10, "muralla china": 10, "la muralla china": 10, "taj mahal": 10, "el taj mahal": 10, "piramides de giza": 10, "las piramides": 10, "piramides de egipto": 10, "estatua de la libertad": 10, "la estatua de la libertad": 10, "big ben": 10, "el big ben": 10, "giralda": 10, "la giralda": 10, "alhambra": 10, "la alhambra": 10, "sagrada familia": 10, "alhambra de granada": 25, "mezquita de cordoba": 25, "la mezquita de cordoba": 25, "acueducto de segovia": 25, "el acueducto de segovia": 25, "catedral de santiago": 25, "catedral de santiago de compostela": 25, "plaza mayor": 25, "palacio real": 25, "alcazar de sevilla": 25, "puerta de alcala": 25, "la puerta de alcala": 25, "puerta del sol": 25, "la cibeles": 25, "fuente de cibeles": 25, "el prado": 25, "museo del prado": 25, "guggenheim": 25, "museo guggenheim": 25,
       "partenon": 45, "el partenon": 45, "acropolis": 45, "la acropolis": 45, "machu picchu": 45, "cristo redentor": 45, "el cristo redentor": 45, "cristo del corcovado": 45, "chichen itza": 45, "petra": 45, "torre de pisa": 45, "la torre de pisa": 45, "louvre": 45, "el louvre": 45, "museo del louvre": 45, "notre dame": 45, "catedral de notre dame": 45, "arco del triunfo": 45, "el arco del triunfo": 45, "torre de londres": 45, "stonehenge": 45, "empire state": 45, "burj khalifa": 45, "opera de sidney": 45, "santa sofia": 45, "muro de berlin": 45, "el muro de berlin": 45, "kremlin": 45, "el kremlin": 45, "plaza roja": 45, "catedral de burgos": 45, "catedral de leon": 45, "catedral de sevilla": 45, "catedral de toledo": 45, "basilica del pilar": 45, "el pilar": 45, "el escorial": 45, "monasterio del escorial": 45,
-      "teatro romano de merida": 65, "muralla de avila": 65, "alcazar de segovia": 65, "alcazar de toledo": 65, "torre del oro": 65, "la torre del oro": 65, "plaza de españa": 65, "ciudad de las artes y las ciencias": 65, "casa batllo": 65, "la pedrera": 65, "casa mila": 65, "park guell": 65, "parque guell": 65, "puerta de brandeburgo": 65, "fontana di trevi": 65, "panteon de agripa": 65, "panteon de roma": 65, "basilica de san pedro": 65, "capilla sixtina": 65, "tower bridge": 65, "puente de londres": 65, "palacio de buckingham": 65, "buckingham palace": 65, "palacio de versalles": 65, "versalles": 65, "mont saint michel": 65, "atomium": 65, "casa blanca": 65,
-      "la casa blanca": 85, "capitolio": 85, "golden gate": 85, "puente de brooklyn": 85, "monte rushmore": 85, "moais": 85, "isla de pascua": 85, "piramide de keops": 85, "esfinge": 85, "la esfinge": 85, "templo de luxor": 85, "abu simbel": 85, "angkor wat": 85, "ciudad prohibida": 85, "guerreros de terracota": 85, "guerreros de xian": 85, "templo del cielo": 85, "torre de tokio": 85, "torres petronas": 85, "taipei 101": 85,
+      "teatro romano de merida": 65, "muralla de avila": 65, "alcazar de segovia": 65, "alcazar de toledo": 65, "torre del oro": 65, "la torre del oro": 65, "plaza de españa": 65, "ciudad de las artes y las ciencias": 65, "casa batllo": 65, "la pedrera": 65, "casa mila": 65, "park guell": 65, "parque guell": 65, "puerta de brandeburgo": 65, "fontana di trevi": 65, "panteon de agripa": 65, "panteon de roma": 65, "basilica de san pedro": 65, "capilla sixtina": 65, "tower bridge": 65, "puente de londres": 65, "palacio de buckingham": 65, "buckingham palace": 65, "palacio de versalles": 65, "versalles": 65, "mont saint michel": 65, "atomium": 65, "casa blanca": 65, "capitolio": 85, "golden gate": 85, "puente de brooklyn": 85, "monte rushmore": 85, "moais": 85, "isla de pascua": 85, "piramide de keops": 85, "esfinge": 85, "la esfinge": 85, "templo de luxor": 85, "abu simbel": 85, "angkor wat": 85, "ciudad prohibida": 85, "guerreros de terracota": 85, "guerreros de xian": 85, "templo del cielo": 85, "torre de tokio": 85, "torres petronas": 85, "taipei 101": 85,
       "mausoleo de halicarnaso": 100, "coloso de rodas": 100, "faro de alejandria": 100, "jardines colgantes de babilonia": 100, "templo de artemisa": 100, "estatua de zeus": 100, "buda de lishan": 100, "borobudur": 100, "bagan": 100, "persepolis": 100, "zigurat de ur": 100, "iglesias de lalibela": 100, "mezquita de djenne": 100, "castillo de neuschwanstein": 100
     }
   },
+  /* ----- Dossier Geografía · Capítulo 2: Geografía Nacional e Ibérica ----- */
   {
-    id: "mus-001", pack: "musica",
-    texto: "Un instrumento de cuerda",
+    id: "geo-008", dailyId: "dia10-04", pack: "geografia",
+    texto: "Provincia, comarca o comunidad autónoma de España",
+    ejemplo: "caceres",
+    answers: {}
+  },
+  {
+    id: "geo-009", dailyId: "dia10-03", pack: "geografia",
+    texto: "Municipio, pueblo o ciudad de Andalucía",
+    ejemplo: "ronda",
+    answers: {}
+  },
+  {
+    id: "geo-010", dailyId: "dia11-01", pack: "geografia",
+    texto: "Río o afluente principal de la península ibérica",
+    ejemplo: "guadalquivir",
+    answers: {}
+  },
+  {
+    id: "geo-011", dailyId: "dia12-03", pack: "geografia",
+    texto: "Cabo, ría, golfo o bahía del litoral español",
+    ejemplo: "cabo de gata",
+    answers: {
+      /* 10 pts - Los más evidentes y estudiados a nivel escolar */
+      "cabo de gata": 10, "gata": 10, "cabo de palos": 10, "palos": 10,
+      "cabo de finisterre": 10, "finisterre": 10, "cabo de peñas": 10, "peñas": 10,
+      "cabo de creus": 10, "creus": 10, "cap de creus": 10, "golfo de cadiz": 10,
+      "golfo de vizcaya": 10, "ria de vigo": 10, "ria de arousa": 10, "ria de arosa": 10,
+      "bahia de cadiz": 10, "bahia de santander": 10, "cabo trafalgar": 10, "trafalgar": 10,
+      /* 25 pts - Cabos principales, rías gallegas mayores y golfos reconocidos */
+      "cabo de la nao": 25, "la nao": 25, "cabo de san antonio": 25, "cabo san antonio": 25,
+      "cabo de ajo": 25, "cabo ajo": 25, "cabo machichaco": 25, "cabo matxitxako": 25,
+      "cabo fisterra": 25, "cabo de san vicente": 25, "cabo oriol": 25, "golfo de valencia": 25,
+      "golfo de rosas": 25, "golfo de roses": 25, "golfo de almeria": 25, "bahia de algeciras": 25,
+      "bahia de palma": 25, "bahia de malaga": 25, "ria de pontevedra": 25, "ria de betanzos": 25,
+      "ria de ferrol": 25, "ria de la coruña": 25, "ria da coruña": 25, "ria de bilbao": 25,
+      "ria de aviles": 25,
+      /* 45 pts - Litoral cantábrico, atlántico y mediterráneo intermedio */
+      "cabo de tortosa": 45, "cabo cope": 45, "cabo salou": 45, "cabo cervera": 45,
+      "cabo santa pola": 45, "cabo de santa pola": 45, "cabo tiñoso": 45, "cabo silleiro": 45,
+      "cabo corrubedo": 45, "cabo villano": 45, "cabo vilan": 45, "cabo touriñan": 45,
+      "cabo tourinan": 45, "cabo vidio": 45, "cabo busto": 45, "cabo de torres": 45,
+      "cabo mayor": 45, "cabo quintres": 45, "cabo higuer": 45, "ria de muros y noia": 45,
+      "ria de cedeira": 45, "ria de ortigueira": 45, "ria de ribadeo": 45, "ria del eo": 45,
+      "ria de villaviciosa": 45, "ria de tina mayor": 45, "ria de tina menor": 45, "ria de san vicente": 45,
+      "ria de suances": 45,
+      /* 65 pts - Bahías y golfos secundarios */
+      "bahia de alcudia": 65, "bahia de pollensa": 65, "bahia de gijon": 65, "bahia de rosas": 65,
+      "golfo de mazaron": 65, "golfo de mazarron": 65, "golfo de sant jordi": 65,
+      /* 85 pts - Puntas, ensenadas, calas abiertas y cabos secundarios */
+      "cabo pinar": 85, "cabo formentor": 85, "formentor": 85, "cabo ses salines": 85,
+      "cabo blanco": 85, "cabo llebeig": 85, "cabo barbaria": 85, "cap de barbaria": 85,
+      "cabo falconera": 85, "cabo san carles": 85, "cabo berenguer": 85, "cabo huertas": 85,
+      "cabo de las huertas": 85, "cabo roig": 85, "cabo de aguas": 85, "cabo negrete": 85,
+      "punta falconera": 85, "punta de la mona": 85, "punta entinas": 85, "punta carnero": 85,
+      "punta de tarifa": 85, "punta candor": 85, "cabo de lastres": 85, "cabo mar": 85,
+      "cabo san lorenzo": 85, "cabo bocal": 85, "ria de foz": 85, "ria de viveiro": 85,
+      "ria del barquero": 85, "ria de lires": 85, "ria de camariñas": 85, "ria de corme y laxe": 85,
+      "ria de esteiro": 85, "bahia de portmany": 85, "bahia de palamos": 85, "bahia de llucmajor": 85,
+      /* 100 pts - AGENTE DURMIENTE / Puntas litorales de escala local y rías menores */
+      "cabo prior": 100, "cabo priorino": 100, "cabo prioriño": 100, "punta da vaca": 100,
+      "punta do castelo": 100, "punta frouxeira": 100, "punta langosteira": 100, "cabo llanse": 100,
+      "cabo norfeu": 100, "punta de s'agulla": 100, "punta de la mora": 100, "cabo de cullera": 100,
+      "punta prima": 100, "punta del morro": 100, "punta de la chullera": 100, "punta sabinar": 100,
+      "punta del fangar": 100, "punta de la banya": 100, "ria de aldan": 100, "ria de boa": 100,
+      "ria de lorbe": 100, "ria de navia": 100, "ria de pravia": 100, "ria de ribadesella": 100,
+      "ria de arriondas": 100, "ria de poo": 100, "ria de cabo mayor": 100, "bahia de fornells": 100,
+      "bahia de cadaques": 100, "bahia de san anton": 100
+    }
+  },
+  {
+    id: "geo-012", dailyId: "dia12-04", pack: "geografia",
+    texto: "Parque nacional o parque natural de España",
+    ejemplo: "doñana",
+    answers: {}
+  },
+  {
+    id: "geo-013", dailyId: "dia13-07", pack: "geografia",
+    texto: "Sierra o sistema montañoso de la península ibérica",
+    ejemplo: "sierra nevada",
+    answers: {}
+  },
+  {
+    id: "geo-014", dailyId: "dia14-07", pack: "geografia",
+    texto: "Gentilicio singular de una provincia, ciudad o pueblo español",
+    ejemplo: "gaditano",
+    answers: {}
+  },
+
+  /* ----- Dossier Geografía · Capítulo 3: Geopolítica, Fronteras y Relieve Internacional ----- */
+  {
+    id: "geo-015", dailyId: "dia15-06", pack: "geografia",
+    texto: "País soberano que no tiene salida al mar (país interior sin costa)",
+    ejemplo: "suiza",
+    answers: {}
+  },
+  {
+    id: "geo-016", dailyId: "dia16-01", pack: "geografia",
+    texto: "Estado de los Estados Unidos o territorio federal relevante",
+    ejemplo: "california",
+    answers: {}
+  },
+  {
+    id: "geo-017", dailyId: "dia16-04", pack: "geografia",
+    texto: "Desierto, estepa o salar del mundo",
+    ejemplo: "sahara",
+    answers: {}
+  },
+  {
+    id: "geo-018", dailyId: "dia17-05", pack: "geografia",
+    texto: "Lago o masa de agua dulce interior del mundo",
+    ejemplo: "titicaca",
+    answers: {}
+  },
+  {
+    id: "geo-019", dailyId: "dia18-06", pack: "geografia",
+    texto: "País soberano cuyo nombre comience por una vocal",
+    ejemplo: "alemania",
+    answers: {}
+  },
+  {
+    id: "geo-020", dailyId: "dia18-04", pack: "geografia",
+    texto: "Territorio dependiente, región ultraperiférica o colonia del mundo",
+    ejemplo: "groenlandia",
+    answers: {}
+  },
+  {
+    id: "geo-021", dailyId: "dia19-06", pack: "geografia",
+    texto: "Canal, estrecho o paso marítimo estratégico internacional",
+    ejemplo: "canal de suez",
+    answers: {}
+  },
+  {
+    id: "mus-001", dailyId: "dia5-02", pack: "musica",
+    texto: "Instrumento musical de cuerda",
     ejemplo: "nyckelharpa",
     answers: {
       "guitarra": 10, "violin": 10, "piano": 10, "arpa": 10, "bajo": 10, "bajo electrico": 10, "bajoelectrico": 10, "guitarra electrica": 10, "guitarraelectrica": 10, "guitarra española": 10, "guitarraespañola": 10, "guitarra acustica": 10, "guitarraacustica": 10, "guitarra clasica": 10, "guitarraclasica": 10,
@@ -824,33 +1425,50 @@ const PROMPTS = [
     }
   },
   {
-    id: "mus-002", pack: "musica",
+    id: "mus-002", dailyId: "dia6-07", pack: "musica",
     texto: "Grupo, banda o cantante solista de la música española",
     ejemplo: "aviador dro",
     answers: {
-      "rosalia": 10, "alejandro sanz": 10, "david bisbal": 10, "estopa": 10, "el canto del loco": 10, "mecano": 10, "heroes del silencio": 10, "fito y fitipaldis": 10, "extremoduro": 10, "julio iglesias": 10, "raphael": 10, "rocio jurado": 10, "camaron": 10, "paco de lucia": 10, "lola flores": 10, "joaquin sabina": 10, "joan manuel serrat": 10, "bisbal": 10, "canto del loco": 10, "fito": 10, "camaron de la isla": 10, "sabina": 10,
-      "enrique iglesias": 25, "pablo alboran": 25, "aitana": 25, "lola indigo": 25, "melendi": 25, "dani martin": 25, "manuel carrasco": 25, "pablo lopez": 25, "vane martin": 25, "vanesa martin": 25, "malu": 25, "rozalen": 25, "antonio orozco": 25, "chenoa": 25, "bustamante": 25, "david bustamante": 25, "sergio dalma": 25, "miguel bose": 25, "bose": 25, "isabel pantoja": 25, "taburete": 25,
-      "la oreja de van gogh": 45, "amaral": 45, "pereza": 45, "hombres g": 45, "alaska": 45, "fangoria": 45, "radio futura": 45, "nacha pop": 45, "los secretos": 45, "loquillo": 45, "mago de oz": 45, "vetusta morla": 45, "izal": 45, "love of lesbian": 45, "viva suecia": 45, "arde bogota": 45, "lori meyers": 45, "los planetas": 45, "supersubmarina": 45, "c tangana": 45, "quevedo": 45, "niña pastori": 45, "el barrio": 45, "oreja de van gogh": 45, "tangana": 45, "jarabe de palo": 45, "celtas cortos": 45, "duncan dhu": 45, "seguridad social": 45, "modestia aparte": 45, "danza invisible": 45, "la guardia": 45, "revolver": 45, "m clan": 45, "leiva": 45, "sidecars": 45, "miss caffeina": 45, "dorian": 45,
-      "barricada": 65, "marea": 65, "la polla records": 65, "kortatu": 65, "ska p": 65, "baron rojo": 65, "obus": 65, "kase o": 65, "violadores del verso": 65, "sfdk": 65, "toteking": 65, "nata y waor": 65, "natos y waor": 65, "delaossa": 65, "cruz cafune": 65, "ketama": 65, "triana": 65, "medina azahara": 65, "los delincuentes": 65, "mojinos escozios": 65, "doble v": 65, "platero y tu": 65, "la fuga": 65, "boikot": 65, "reincidentes": 65, "soziedad alkoholika": 65, "lendakaris muertos": 65, "eskorbuto": 65,
-      "nach": 85, "chambao": 85, "ojos de brujo": 85, "bebe": 85, "macaco": 85, "mala rodriguez": 85, "la mala rodriguez": 85, "falsalarma": 85, "hablando en plata": 85, "cpv": 85, "el club de los poetas violentos": 85, "7 notas 7 colores": 85, "mucho muchacho": 85, "ayax y prok": 85, "fernandocosta": 85, "hard gz": 85, "recycled j": 85, "rels b": 85, "bad gyal": 85, "yung beef": 85,
-      "aviador dro": 100, "smash": 100, "maquina": 100, "los bravos": 100, "los brincos": 100, "los pequeniques": 100, "los relampagos": 100, "los sirex": 100, "los salvajes": 100, "lone star": 100, "asfalto": 100, "topo": 100, "leño": 100, "coz": 100
+      "rosalia": 10, "alejandro sanz": 10, "david bisbal": 10, "estopa": 10, "el canto del loco": 10, "mecano": 10, "heroes del silencio": 10,
+      "fito y fitipaldis": 10, "extremoduro": 10, "julio iglesias": 10, "raphael": 10, "rocio jurado": 10, "camaron": 10, "paco de lucia": 10,
+      "lola flores": 10, "joaquin sabina": 10, "joan manuel serrat": 10, "bisbal": 10, "canto del loco": 10, "fito": 10, "camaron de la isla": 10,
+      "sabina": 10,
+      "enrique iglesias": 25, "pablo alboran": 25, "aitana": 25, "lola indigo": 25, "melendi": 25, "dani martin": 25, "manuel carrasco": 25,
+      "pablo lopez": 25, "vane martin": 25, "vanesa martin": 25, "malu": 25, "rozalen": 25, "antonio orozco": 25, "chenoa": 25,
+      "bustamante": 25, "david bustamante": 25, "sergio dalma": 25, "miguel bose": 25, "bose": 25, "isabel pantoja": 25, "taburete": 25,
+      "la oreja de van gogh": 45, "amaral": 45, "pereza": 45, "hombres g": 45, "alaska": 45, "fangoria": 45, "radio futura": 45,
+      "nacha pop": 45, "los secretos": 45, "loquillo": 45, "mago de oz": 45, "vetusta morla": 45, "izal": 45, "love of lesbian": 45,
+      "viva suecia": 45, "arde bogota": 45, "lori meyers": 45, "los planetas": 45, "supersubmarina": 45, "c tangana": 45, "quevedo": 45,
+      "niña pastori": 45, "el barrio": 45, "oreja de van gogh": 45, "tangana": 45, "jarabe de palo": 45, "celtas cortos": 45, "duncan dhu": 45,
+      "seguridad social": 45, "modestia aparte": 45, "danza invisible": 45, "la guardia": 45, "revolver": 45, "m clan": 45, "leiva": 45,
+      "sidecars": 45, "miss caffeina": 45, "dorian": 45,
+      "barricada": 65, "marea": 65, "la polla records": 65, "kortatu": 65, "ska p": 65, "kase o": 65, "violadores del verso": 65,
+      "sfdk": 65, "toteking": 65, "nata y waor": 65, "natos y waor": 65, "delaossa": 65, "cruz cafune": 65, "ketama": 65,
+      "triana": 65, "medina azahara": 65, "los delincuentes": 65, "mojinos escozios": 65, "doble v": 65, "platero y tu": 65, "la fuga": 65,
+      "boikot": 65, "reincidentes": 65, "soziedad alkoholika": 65, "lendakaris muertos": 65, "eskorbuto": 65,
+      "baron rojo": 85, "obus": 85, "nach": 85, "chambao": 85, "ojos de brujo": 85, "bebe": 85, "macaco": 85,
+      "mala rodriguez": 85, "la mala rodriguez": 85, "falsalarma": 85, "hablando en plata": 85, "cpv": 85, "el club de los poetas violentos": 85, "7 notas 7 colores": 85,
+      "mucho muchacho": 85, "ayax y prok": 85, "fernandocosta": 85, "hard gz": 85, "recycled j": 85, "rels b": 85, "bad gyal": 85,
+      "yung beef": 85,
+      "aviador dro": 100, "smash": 100, "maquina": 100, "los bravos": 100, "los brincos": 100, "los pequeniques": 100, "los relampagos": 100,
+      "los sirex": 100, "los salvajes": 100, "lone star": 100, "asfalto": 100, "topo": 100, "leño": 100, "coz": 100
     }
   },
   {
-    id: "mus-003", pack: "musica",
+    id: "mus-003", dailyId: "dia6-05", pack: "musica",
     texto: "Género, subgénero o estilo musical",
     ejemplo: "krautrock",
     answers: {
       "pop": 10, "rock": 10, "rap": 10, "hip hop": 10, "regueton": 10, "trap": 10, "electronica": 10, "techno": 10, "house": 10, "musica clasica": 10, "jazz": 10, "blues": 10, "heavy metal": 10, "punk": 10, "indie": 10, "flamenco": 10, "salsa": 10, "bachata": 10, "reggae": 10, "reggaeton": 10, "musica electronica": 10, "clasica": 10,
       "musica": 25, "cancion": 25, "baile": 25, "concierto": 25, "festival": 25, "banda sonora": 25, "bs": 25, "radio": 25, "spotify": 25, "autotune": 25, "remix": 25, "acustico": 25, "instrumental": 25, "karaoke": 25, "balada": 25, "lenta": 25, "romantica": 25, "verano": 25, "cancion del verano": 25, "navidad": 25,
-      "sevillanas": 45, "rumba": 45, "copla": 45, "merengue": 45, "cumbia": 45, "tango": 45, "bossa nova": 45, "samba": 45, "ska": 45, "dubstep": 45, "drum and bass": 45, "trance": 45, "disco": 45, "funk": 45, "soul": 45, "r&b": 45, "gospel": 45, "country": 45, "folk": 45, "grunge": 45, "hard rock": 45, "punk rock": 45, "kpop": 45, "jpop": 45, "corridos": 45, "ranchera": 45, "bolero": 45, "pasodoble": 45, "zarzuela": 45, "opera": 45, "gregoriano": 45, "drill": 45, "dembow": 45, "afrobeat": 45, "lo fi": 45, "r and b": 45, "k pop": 45, "j pop": 45,
+      "sevillanas": 45, "rumba": 45, "copla": 45, "merengue": 45, "cumbia": 45, "tango": 45, "bossa nova": 45, "samba": 45, "ska": 45, "dubstep": 45, "drum and bass": 45, "trance": 45, "disco": 45, "funk": 45, "soul": 45, "r b": 45, "gospel": 45, "country": 45, "folk": 45, "grunge": 45, "hard rock": 45, "punk rock": 45, "kpop": 45, "jpop": 45, "corridos": 45, "ranchera": 45, "bolero": 45, "pasodoble": 45, "zarzuela": 45, "opera": 45, "gregoriano": 45, "drill": 45, "dembow": 45, "afrobeat": 45, "lo fi": 45, "r and b": 45, "k pop": 45, "j pop": 45,
       "ambient": 65, "synthwave": 65, "thrash metal": 65, "death metal": 65, "black metal": 65, "nu metal": 65, "metalcore": 65, "post punk": 65, "new wave": 65, "shoegaze": 65, "britpop": 65, "corridos tumbados": 65, "vallenato": 65, "mariachi": 65, "son cubano": 65, "mambo": 65, "cha cha cha": 65, "chachacha": 65, "guaracha": 65, "champeta": 65, "cuarteto": 65, "zamba": 65, "chacarera": 65, "joropo": 65, "fado": 65, "chanson": 65, "polka": 65, "vals": 65,
       "power metal": 85, "doom metal": 85, "sludge metal": 85, "stoner rock": 85, "stoner metal": 85, "progressive metal": 85, "metal progresivo": 85, "symphonic metal": 85, "metal sinfonico": 85, "folk metal": 85, "viking metal": 85, "pagan metal": 85, "groove metal": 85, "industrial metal": 85, "metal industrial": 85, "deathcore": 85, "grindcore": 85, "djent": 85, "glam metal": 85, "hair metal": 85,
       "krautrock": 100, "zeuhl": 100, "canterbury scene": 100, "rock in opposition": 100, "no wave": 100, "witch house": 100, "seapunk": 100, "future funk": 100, "mallsoft": 100, "dungeon synth": 100, "blackgaze": 100, "dsbm": 100, "war metal": 100, "goregrind": 100
     }
   },
   {
-    id: "mus-004", pack: "musica",
+    id: "mus-004", dailyId: "dia7-02", pack: "musica",
     texto: "Banda o solista legendario de música internacional (Rock, Pop, Urbano, Electrónica)",
     ejemplo: "captain beefheart",
     answers: {
@@ -858,12 +1476,12 @@ const PROMPTS = [
       "justin bieber": 25, "ariana grande": 25, "dua lipa": 25, "billie eilish": 25, "harry styles": 25, "one direction": 25, "sam smith": 25, "sia": 25, "miley cyrus": 25, "selena gomez": 25, "katy perry": 25, "britney spears": 25, "christina aguilera": 25, "backstreet boys": 25, "spice girls": 25, "justin timberlake": 25, "shawn mendes": 25, "camila cabello": 25, "olivia rodrigo": 25, "post malone": 25,
       "oasis": 45, "blur": 45, "radiohead": 45, "muse": 45, "arctic monkeys": 45, "the strokes": 45, "red hot chili peppers": 45, "green day": 45, "blink 182": 45, "linkin park": 45, "system of a down": 45, "iron maiden": 45, "black sabbath": 45, "judas priest": 45, "guns n roses": 45, "bon jovi": 45, "aerosmith": 45, "dire straits": 45, "the police": 45, "david bowie": 45, "elton john": 45, "freddie mercury": 45, "bob dylan": 45, "bruce springsteen": 45, "bob marley": 45, "abba": 45, "bee gees": 45, "depeche mode": 45, "the cure": 45, "ramones": 45, "daft punk": 45, "bruno mars": 45, "the weeknd": 45, "ed sheeran": 45, "adele": 45, "amy winehouse": 45, "frank sinatra": 45, "daddy yankee": 45,
       "joy division": 65, "sex pistols": 65, "the clash": 65, "tupac": 65, "snoop dogg": 65, "jay z": 65, "kanye west": 65, "drake": 65, "kendrick lamar": 65, "aretha franklin": 65, "stevie wonder": 65, "prince": 65, "whitney houston": 65, "luis miguel": 65, "soda stereo": 65, "2pac": 65, "the doors": 65, "jimi hendrix": 65, "janis joplin": 65, "the who": 65, "deep purple": 65, "motorhead": 65, "slayer": 65, "megadeth": 65, "pantera": 65, "slipknot": 65, "korn": 65, "rage against the machine": 65,
-      "notorious big": 85, "biggie": 85, "nas": 85, "jay-z": 85, "wu tang clan": 85, "public enemy": 85, "nwa": 85, "ice cube": 85, "dr dre": 85, "eazy e": 85, "run dmc": 85, "beastie boys": 85, "a tribe called quest": 85, "de la soul": 85, "outkast": 85, "lauryn hill": 85, "fugees": 85, "missy elliott": 85, "busta rhymes": 85, "50 cent": 85,
+      "notorious big": 85, "biggie": 85, "nas": 85, "wu tang clan": 85, "public enemy": 85, "nwa": 85, "ice cube": 85, "dr dre": 85, "eazy e": 85, "run dmc": 85, "beastie boys": 85, "a tribe called quest": 85, "de la soul": 85, "outkast": 85, "lauryn hill": 85, "fugees": 85, "missy elliott": 85, "busta rhymes": 85, "50 cent": 85,
       "captain beefheart": 100, "frank zappa": 100, "the mothers of invention": 100, "the residents": 100, "pere ubu": 100, "this heat": 100, "throbbing gristle": 100, "cabaret voltaire": 100, "coil": 100, "einsturzende neubauten": 100, "laibach": 100, "swans": 100, "godspeed you black emperor": 100, "sigur ros": 100
     }
   },
   {
-    id: "mus-005", pack: "musica",
+    id: "mus-005", dailyId: "dia8-01", pack: "musica",
     texto: "Instrumento musical de viento o de percusión",
     ejemplo: "armonica de cristal",
     answers: {
@@ -876,8 +1494,8 @@ const PROMPTS = [
     }
   },
   {
-    id: "mus-006", pack: "musica",
-    texto: "Canción legendaria o himno popular en español (Pop, Rock, Fiesta o Clásico)",
+    id: "mus-006", dailyId: "dia9-05", pack: "musica",
+    texto: "Canción legendaria o himno popular en español",
     ejemplo: "dulce introduccion al caos",
     answers: {
       "la macarena": 10, "macarena": 10, "despacito": 10, "la flaca": 10, "flaca": 10, "corazon partio": 10, "el tractor amarillo": 10, "tractor amarillo": 10, "asereje": 10, "el asereje": 10, "devuelveme a mi chica": 10, "sufre mamon": 10, "ave maria": 10, "libre": 10, "soldadito marinero": 10, "la barbacoa": 10, "barbacoa": 10, "mi gran noche": 10, "vivir asi es morir de amor": 10, "bailando": 10, "resistire": 10, "paquito el chocolatero": 10,
@@ -889,12 +1507,12 @@ const PROMPTS = [
     }
   },
   {
-    id: "mus-007", pack: "musica",
-    texto: "Festival de música o macro-concierto multitudinario (España o internacional)",
+    id: "mus-007", dailyId: "dia9-03", pack: "musica",
+    texto: "Festival de música multitudinario (España o internacional)",
     ejemplo: "watkins glen",
     answers: {
       "viña rock": 10, "viñarock": 10, "el viña rock": 10, "primavera sound": 10, "el primavera sound": 10, "mad cool": 10, "el mad cool": 10, "arenal sound": 10, "arenasound": 10, "festival de benicassim": 10, "fib": 10, "benicassim": 10, "resurrection fest": 10, "resu": 10, "dreambeach": 10, "medusa festival": 10, "medusa": 10, "sonorama": 10, "bbk live": 10, "coachella": 10, "tomorrowland": 10, "eurovision": 10,
-      "el viña": 25, "el resu": 25, "bilbao bbk live": 25, "bbk": 25, "sonorama ribera": 25, "festival de eurovision": 25, "benidorm fest": 25, "festival de benidorm": 25, "reggaeton beach festival": 25, "rbf": 25, "puro latino": 25, "boombastic": 25, "starlite": 25, "starlite marbella": 25, "sonar": 25, "festival sonar": 25, "cruilla": 25, "canet rock": 25, "monegros": 25, "monegros desert festival": 25,
+      "el viña": 25, "bilbao bbk live": 25, "bbk": 25, "sonorama ribera": 25, "festival de eurovision": 25, "benidorm fest": 25, "festival de benidorm": 25, "reggaeton beach festival": 25, "rbf": 25, "puro latino": 25, "boombastic": 25, "starlite": 25, "starlite marbella": 25, "sonar": 25, "festival sonar": 25, "cruilla": 25, "canet rock": 25, "monegros": 25, "monegros desert festival": 25,
       "rototom": 45, "rototom sunsplash": 45, "leyendas del rock": 45, "glastonbury": 45, "lollapalooza": 45, "rock in rio": 45, "burning man": 45, "woodstock": 45, "wacken": 45, "wacken open air": 45, "hellfest": 45, "ultra music festival": 45, "ultra": 45, "umf": 45, "sziget": 45, "creamfields": 45, "time warp": 45, "defqon 1": 45, "monterey": 45, "download": 45, "download festival": 45, "azkena rock": 45, "azkena rock festival": 45, "tsunami xixon": 45, "o son do camiño": 45, "son do camiño": 45, "portamerica": 45, "caudal fest": 45, "morriña fest": 45, "low festival": 45, "warm up": 45, "san san festival": 45, "sansan": 45, "granada sound": 45, "cala mijas": 45, "dcode": 45, "rio babel": 45, "tomavistas": 45,
       "aquasella": 65, "elrow": 65, "awakenings": 65, "mysteryland": 65, "decibel": 65, "qlimax": 65, "dominator": 65, "edc": 65, "electric daisy carnival": 65, "riverland": 65, "holika": 65, "zlive": 65, "rock imperium": 65, "barcelona rock fest": 65, "rock fest": 65, "vida festival": 65, "cap roig": 65, "concert music festival": 65, "kalorama": 65, "contempopranea": 65, "etnosur": 65, "ortigueira": 65, "festival de ortigueira": 65, "pirineos sur": 65, "extremusika": 65, "alrumbo": 65, "sos 4 8": 65, "en vivo": 65,
       "reading": 85, "leeds": 85, "reading and leeds": 85, "isle of wight": 85, "isla de wight": 85, "wireless": 85, "roskilde": 85, "rock am ring": 85, "rock im park": 85, "rock werchter": 85, "werchter": 85, "pinkpop": 85, "pukkelpop": 85, "lowlands": 85, "graspop": 85, "brutal assault": 85, "bloodstock": 85, "summer breeze": 85, "monsters of rock": 85, "ozzfest": 85,
@@ -902,16 +1520,357 @@ const PROMPTS = [
     }
   },
   {
-    id: "mus-008", pack: "musica",
+    id: "mus-008", dailyId: "dia10-05", pack: "musica",
     texto: "Grupo, banda o artista solista de K-pop (pop coreano)",
     ejemplo: "seo taiji and boys",
     answers: {
-      "bts": 10, "blackpink": 10, "black pink": 10, "twice": 10, "stray kids": 10, "straykids": 10, "skz": 10, "newjeans": 10, "new jeans": 10, "txt": 10, "tomorrow x together": 10, "seventeen": 10, "svt": 10, "psy": 10, "exo": 10, "red velvet": 10, "redvelvet": 10, "aespa": 10, "itzy": 10, "ive": 10, "enhypen": 10, "ateez": 10,
-      "le sserafim": 25, "lesserafim": 25, "nct": 25, "nct 127": 25, "nct dream": 25, "mamamoo": 25, "illit": 25, "stayc": 25, "got7": 25, "bigbang": 25, "big bang": 25, "super junior": 25, "suju": 25, "shinee": 25, "girls generation": 25, "snsd": 25, "2ne1": 25, "babymonster": 25, "jungkook": 25, "iu": 25,
-      "monsta x": 45, "monstax": 45, "treasure": 45, "nmixx": 45, "the boyz": 45, "theboyz": 45, "astro": 45, "dreamcatcher": 45, "infinite": 45, "btob": 45, "winner": 45, "ikon": 45, "highlight": 45, "beast": 45, "kard": 45, "loona": 45, "kep1er": 45, "kepler": 45, "fifty fifty": 45, "fiftyfifty": 45, "riize": 45, "boynextdoor": 45, "boy next door": 45, "zerobaseone": 45, "zb1": 45, "kiss of life": 45, "everglow": 45, "taeyeon": 45, "g dragon": 45, "gdragon": 45, "sunmi": 45, "hyuna": 45, "chungha": 45, "ailee": 45, "somi": 45, "wonho": 45, "kang daniel": 45, "taemin": 45,
-      "block b": 65, "blockb": 65, "bap": 65, "b a p": 65, "vixx": 65, "cnblue": 65, "ft island": 65, "tvxq": 65, "dbsk": 65, "wonder girls": 65, "kara": 65, "t ara": 65, "tara": 65, "4minute": 65, "miss a": 65, "sistar": 65, "apink": 65, "exid": 65, "nuest": 65, "pentagon": 65, "victon": 65, "cravity": 65, "p1harmony": 65, "tempest": 65, "xikers": 65, "triples": 65, "triple s": 65, "billlie": 65,
-      "hot": 85, "h o t": 85, "sechskies": 85, "ses": 85, "s e s": 85, "finkl": 85, "fin k l": 85, "shinhwa": 85, "god": 85, "g o d": 85, "fly to the sky": 85, "turbo": 85, "baby vox": 85, "chakra": 85, "jewelry": 85, "brown eyed girls": 85, "after school": 85, "orange caramel": 85, "rainbow": 85, "secret": 85,
-      "seo taiji and boys": 100, "seo taiji": 100, "roora": 100, "r oo ra": 100, "koyote": 100, "untitle": 100, "diva": 100, "cleo": 100, "ttma": 100, "papaya": 100, "milk": 100, "sugar": 100, "shinvi": 100, "luv": 100
+      "bts": 10, "blackpink": 10, "black pink": 10, "newjeans": 10, "new jeans": 10, "txt": 10, "tomorrow x together": 10,
+      "seventeen": 10, "svt": 10, "psy": 10, "exo": 10, "red velvet": 10, "redvelvet": 10, "aespa": 10,
+      "itzy": 10, "ive": 10, "enhypen": 10, "ateez": 10,
+      "twice": 25, "stray kids": 25, "straykids": 25, "skz": 25, "le sserafim": 25, "lesserafim": 25, "nct": 25,
+      "nct 127": 25, "nct dream": 25, "illit": 25, "stayc": 25, "got7": 25, "bigbang": 25, "big bang": 25,
+      "super junior": 25, "suju": 25, "shinee": 25, "girls generation": 25, "snsd": 25, "2ne1": 25, "babymonster": 25,
+      "jungkook": 25, "iu": 25,
+      "mamamoo": 45, "monsta x": 45, "monstax": 45, "treasure": 45, "nmixx": 45, "the boyz": 45, "theboyz": 45,
+      "astro": 45, "dreamcatcher": 45, "infinite": 45, "btob": 45, "winner": 45, "ikon": 45, "highlight": 45,
+      "beast": 45, "kard": 45, "loona": 45, "kep1er": 45, "kepler": 45, "fifty fifty": 45, "fiftyfifty": 45,
+      "riize": 45, "boynextdoor": 45, "boy next door": 45, "zerobaseone": 45, "zb1": 45, "kiss of life": 45, "everglow": 45,
+      "taeyeon": 45, "g dragon": 45, "gdragon": 45, "sunmi": 45, "hyuna": 45, "chungha": 45, "ailee": 45,
+      "somi": 45, "wonho": 45, "kang daniel": 45, "taemin": 45,
+      "block b": 65, "blockb": 65, "bap": 65, "b a p": 65, "vixx": 65, "cnblue": 65, "ft island": 65,
+      "tvxq": 65, "dbsk": 65, "wonder girls": 65, "kara": 65, "t ara": 65, "tara": 65, "4minute": 65,
+      "miss a": 65, "sistar": 65, "apink": 65, "exid": 65, "nuest": 65, "pentagon": 65, "victon": 65,
+      "cravity": 65, "p1harmony": 65, "tempest": 65, "xikers": 65, "triples": 65, "triple s": 65, "billlie": 65,
+      "hot": 85, "h o t": 85, "sechskies": 85, "ses": 85, "s e s": 85, "finkl": 85, "fin k l": 85,
+      "shinhwa": 85, "god": 85, "g o d": 85, "fly to the sky": 85, "turbo": 85, "baby vox": 85, "chakra": 85,
+      "jewelry": 85, "brown eyed girls": 85, "after school": 85, "orange caramel": 85, "rainbow": 85, "secret": 85,
+      "seo taiji and boys": 100, "seo taiji": 100, "roora": 100, "r oo ra": 100, "koyote": 100, "untitle": 100, "diva": 100,
+      "cleo": 100, "ttma": 100, "papaya": 100, "milk": 100, "sugar": 100, "shinvi": 100, "luv": 100
+    }
+  },
+  /* ----- Dossier Música · Capítulo 2: Escena Urbana, Vanguardia y Electrónica (Continuación mus-009 a mus-014) ----- */
+  {
+    id: "mus-009", dailyId: "dia11-06", pack: "musica",
+    texto: "Cantante o referente de música urbana, reggaetón o trap en español",
+    ejemplo: "bad bunny",
+    answers: {}
+  },
+  {
+    id: "mus-010", dailyId: "dia11-07", pack: "musica",
+    texto: "Rapero, MC o grupo de hip hop (español o internacional)",
+    ejemplo: "kase o",
+    answers: {}
+  },
+  {
+    id: "mus-011", dailyId: "dia12-01", pack: "musica",
+    texto: "Productor o DJ de música electrónica",
+    ejemplo: "david guetta",
+    answers: {}
+  },
+  {
+    id: "mus-012", dailyId: "dia13-04", pack: "musica",
+    texto: "Canción histórica o representante de España en Eurovisión",
+    ejemplo: "eres tu",
+    answers: {}
+  },
+  {
+    id: "mus-013", dailyId: "dia13-03", pack: "musica",
+    texto: "Grupo o banda histórica de heavy metal, rock duro o punk",
+    ejemplo: "iron maiden",
+    answers: {}
+  },
+  {
+    id: "mus-014", dailyId: "dia14-02", pack: "musica",
+    texto: "Banda o artista de la Movida Madrileña o del pop español de los 80/90",
+    ejemplo: "radio futura",
+    answers: {}
+  },
+
+  /* ----- Dossier Música · Capítulo 3: Tradición, Clásicos y Teoría Sonora ----- */
+  {
+    id: "mus-015", dailyId: "dia15-01", pack: "musica",
+    texto: "Compositor célebre de música clásica, barroca o romántica",
+    ejemplo: "mozart",
+    answers: {}
+  },
+  {
+    id: "mus-016", dailyId: "dia16-02", pack: "musica",
+    texto: "Término musical reglamentario (tempo, escala, notación o dinámica)",
+    ejemplo: "allegro",
+    answers: {}
+  },
+  {
+    id: "mus-017", dailyId: "dia16-06", pack: "musica",
+    texto: "Álbum o disco histórico de la música española o internacional",
+    ejemplo: "thriller",
+    answers: {}
+  },
+  {
+    id: "mus-018", dailyId: "dia17-02", pack: "musica",
+    texto: "Dúo musical o formación compuesta por hermanos o familiares",
+    ejemplo: "estopa",
+    answers: {}
+  },
+  {
+    id: "mus-019", dailyId: "dia18-05", pack: "musica",
+    texto: "Cantaor, guitarrista o figura legendaria del flamenco",
+    ejemplo: "camaron de la isla",
+    answers: {}
+  },
+  {
+    id: "mus-020", dailyId: "dia19-03", pack: "musica",
+    texto: "Palo tradicional o estilo del cante y baile flamenco",
+    ejemplo: "bulerias",
+    answers: {}
+  },
+  {
+    id: "mus-021", dailyId: "dia19-07", pack: "musica",
+    texto: "Banda británica legendaria de las décadas de 1960 a 2000",
+    ejemplo: "the beatles",
+    answers: {}
+  },
+
+  /* ===================== DÍA 4: OPERACIÓN CUADRANTE (dia4-01 a dia4-07) ===================== */
+  {
+    id: "gen-027", dailyId: "dia4-01", pack: "general",
+    texto: "País o territorio soberano que tenga un sol en su bandera",
+    ejemplo: "argentina",
+    easterEgg: "malaui",
+    answers: {
+      "malaui": 45, "argentina": 10, "uruguay": 10, "japon": 10,
+      "filipinas": 10, "taiwan": 10, "el japon": 10, "la argentina": 10,
+      "el uruguay": 10, "las filipinas": 10, "nepal": 25, "macedonia del norte": 25,
+      "macedonia": 25, "kazajistan": 25, "kirguistan": 25, "namibia": 25,
+      "ruanda": 25, "bangladesh": 25, "mongolia": 25, "india": 25,
+      "niger": 25, "antigua y barbuda": 25, "palaos": 25, "islas marshall": 25,
+      "republica de macedonia del norte": 25, "republica de macedonia": 25, "el nepal": 25, "el kazajistan": 25,
+      "la india": 25, "el tibet": 25, "tibet": 25, "groenlandia": 25,
+      "malawi": 45, "kurdistan": 45, "arizona": 45, "nuevo mexico": 45,
+      "republica de palaos": 45, "republica de las islas marshall": 45, "republica de kazajistan": 45, "republica kirguisa": 45,
+      "republica de namibia": 45, "republica de ruanda": 45, "republica oriental del uruguay": 45, "republica argentina": 45,
+      "republica de china": 45, "republica de china taiwan": 45, "republica de filipinas": 45, "republica de la india": 45,
+      "republica popular de bangladesh": 45, "islas canarias": 45, "canarias": 45, "estado de japon": 45,
+      "republica de vanuatu": 45, "vanuatu": 45, "kiribati": 65, "republica de kiribati": 65,
+      "moldavia": 65, "republica de moldavia": 65, "angola": 65, "republica de angola": 65,
+      "ecuador": 65, "republica del ecuador": 65, "costa rica": 65, "republica de costa rica": 65,
+      "el salvador": 65, "republica de el salvador": 65, "bolivia": 65, "estado plurinacional de bolivia": 65,
+      "colombia": 65, "republica de colombia": 65, "republica dominicana": 65, "la republica dominicana": 65,
+      "guatemala": 65, "republica de guatemala": 65, "paraguay": 65, "republica del paraguay": 65,
+      "venezuela": 65, "republica bolivariana de venezuela": 65, "malasia": 65, "federacion de malasia": 65,
+      "sudamerica": 65, "imperio de japon": 65, "republica de mongolia": 65, "tibetano": 65,
+      "isla de pascua": 65, "rapa nui": 65, "antigua barbuda": 85,
+      "marshall islands": 85, "marshall": 85, "republica de china en taiwan": 85, "republica de malaui": 85,
+      "republica de malawi": 85, "republica del niger": 85, "republica democratica de congo": 85, "republica democratica del congo": 85,
+      "republica de zambia": 85, "zambia": 85, "sahara occidental": 85, "republica arabe saharaui democratica": 85,
+      "republica del kurdistan": 85, "kurdistan iraqui": 85, "rojava": 85, "kurdistan sirio": 85,
+      "estado de arizona": 85, "estado de nuevo mexico": 85, "bandera de arizona": 85, "bandera de nuevo mexico": 85,
+      "comunidad autonoma de canarias": 85, "archipielago canario": 85, "republica de biafra": 100, "biafra": 100,
+      "imperio inca": 100, "imperio incaico": 100, "tahuantinsuyo": 100, "republica de china de 1912": 100,
+      "republica de formosa": 100, "imperio persa": 100, "persia": 100, "imperio mogol": 100,
+      "manchuria": 100, "manchukuo": 100, "republica de ezo": 100, "republica de vermont": 100,
+      "republica de california": 100, "republica del rio grande": 100, "bandera del sol naciente": 65, "islas baleares": 85,
+      "republica de yucatan": 100, "sol naciente": 65, "tatarstan": 85, "bandera de yucatan": 100,
+      "sol de mayo": 65, "republica de tatarstan": 85, "confederacion peruano boliviana": 100, "buriatia": 85,
+      "provincias unidas del rio de la plata": 100, "republica de buriatia": 85, "provincias unidas de centroamerica": 100, "jakasia": 85,
+      "republica federal de centroamerica": 100, "republica de jakasia": 85
+    }
+  },
+  {
+    id: "gen-028", dailyId: "dia4-02", pack: "general",
+    texto: "Palabra común en español que contenga la letra «X»",
+    ejemplo: "taxi",
+    answers: {
+      "taxi": 10, "examen": 10, "exito": 10, "oxigeno": 10, "sexo": 10, "texto": 10, "mixto": 10,
+      "boxeo": 10, "flexo": 10, "galaxia": 10, "mexico": 10, "texas": 10,
+      "proximo": 25, "exacto": 25, "exilio": 25, "experto": 25, "auxilio": 25, "conexion": 25, "toxico": 25,
+      "lexico": 25, "reflejo": 25, "oxido": 25, "contexto": 25, "pretexto": 25, "exceso": 25, "excluir": 25,
+      "existir": 25, "extintor": 25, "flexible": 25, "extra": 25, "extraño": 25, "explicar": 25, "exposicion": 25,
+      "exterior": 25, "extremo": 25, "auxiliar": 25, "anexo": 25, "anexar": 25, "anexion": 25, "antrax": 25,
+      "aproximadamente": 25, "auxiliador": 25,
+      "asfixia": 45, "exactitud": 45, "exagerar": 45, "examinar": 45, "excavar": 45, "excelente": 45, "excepcion": 45,
+      "exclamar": 45, "excursion": 45, "excusa": 45, "ejecutar": 45, "exhibir": 45, "exhortar": 45, "exigir": 45,
+      "exitoso": 45, "exotico": 45, "expansion": 45, "expediente": 45, "experiencia": 45, "experimento": 45, "explorar": 45,
+      "explosion": 45, "exportar": 45, "expresar": 45, "exprimir": 45, "expulsar": 45, "extender": 45, "extension": 45,
+      "extranjero": 45, "extraordinario": 45, "extraviar": 45, "luxacion": 45, "maxilar": 45, "anafilaxia": 45, "anexionar": 45,
+      "axial": 45, "axilar": 45, "axis": 45, "excelso": 45,
+      "claxon": 65, "duplex": 65, "ortodoxo": 65, "paradoja": 65, "yuxtaponer": 65, "xenofobia": 65, "xilofono": 65,
+      "exogamia": 65, "oxitocina": 65, "taxonomia": 65, "pixeles": 65, "sintaxis": 65, "flexibilizar": 65, "exoftalmia": 65,
+      "aproximar": 65, "coexistir": 65, "desoxirribonucleico": 65, "exabrupto": 65, "exacerbar": 65, "exasperar": 65, "exhaustivo": 65,
+      "exhibicion": 65, "exorcismo": 65, "exorcista": 65, "expatriado": 65, "expectativa": 65, "explanada": 65, "explayar": 65,
+      "explicito": 65, "explotar": 65, "ambidextro": 65, "amplexo": 65, "anexionismo": 65, "anexionista": 65, "axon": 65,
+      "exuvia": 85, "xantoma": 85, "anorexia": 85, "antoxantina": 85, "apoplejia": 85, "asfixiologo": 85, "ataxia": 85,
+      "axila": 85, "axioma": 85, "axiomatico": 85, "bauxita": 85, "boxear": 85, "calix": 85, "caquexia": 85,
+      "complexion": 85, "crucifijo": 85, "crucifixion": 85, "deixis": 85, "desintoxicar": 85, "dextrosa": 85, "dislexia": 85,
+      "dislexico": 85, "epistaxis": 85, "exantema": 85, "excomunion": 85, "excremento": 85, "abraxas": 85, "aldohexosa": 85,
+      "anafilaxis": 85, "axinita": 85, "bixaceo": 85, "exegesis": 85,
+      "xenon": 100, "xilografia": 100, "xeroftalmia": 100, "xilofago": 100, "xifoides": 100, "xerocopia": 100, "xiloprotector": 100,
+      "alexia": 100, "anfictionia": 100, "anfiction": 100, "antioxidante": 100, "antropotaxonomia": 100, "apirexia": 100, "autotoxemia": 100,
+      "axiopolis": 100, "cataplexia": 100
+    }
+  },
+  {
+    id: "gen-022", dailyId: "dia4-03", pack: "general",
+    texto: "Videojuego o saga de supervivencia, zombis o apocalipsis postapocalíptico",
+    ejemplo: "fallout",
+    answers: {
+      "the last of us": 10, "resident evil": 10, "fallout": 10, "the walking dead": 10,
+      "left 4 dead": 10, "dying light": 10, "days gone": 10, "metro": 10,
+      "rust": 10, "dayz": 10, "last of us": 10, "tlou": 10,
+      "project zomboid": 25, "stalker": 25, "7 days to die": 25, "state of decay": 25,
+      "dead island": 25, "dead rising": 25, "unturned": 25, "green hell": 25,
+      "the forest": 25, "sons of the forest": 25, "dead space": 25, "wasteland": 25,
+      "frostpunk": 25, "dont starve": 25, "subnautica": 25, "stalker 2": 25,
+      "fallout new vegas": 25, "fallout 3": 25, "fallout 4": 25, "fallout 76": 25,
+      "resident evil 2": 25, "resident evil 4": 25, "resident evil village": 25, "metro 2033": 25,
+      "metro exodus": 25, "state of decay 2": 25, "cataclysm dda": 45, "mist survival": 45,
+      "dead frontier": 45, "mad max": 45, "generation zero": 45, "this war of mine": 45,
+      "chernobylite": 45, "the long dark": 45, "conan exiles": 45, "scum": 45,
+      "dead by daylight": 45, "world war z": 45, "back 4 blood": 45, "killing floor": 45,
+      "killing floor 2": 45, "remnant from the ashes": 45, "remnant 2": 45, "terminator resistance": 45,
+      "encased": 45, "underrail": 45, "atom rpg": 45, "death stranding": 45,
+      "rage": 45, "rage 2": 45, "borderlands": 45, "enshrouded": 45,
+      "palworld": 45, "grounded": 45, "raft": 45, "stranded deep": 45,
+      "sunless sea": 45, "the flame in the flood": 45, "cataclysm dark days ahead": 65, "dead frontier 2": 65,
+      "s t a l k e r": 65, "stalker shadow of chernobyl": 65, "stalker call of pripyat": 65, "stalker clear sky": 65,
+      "metro last light": 65, "resident evil nemesis": 65, "resident evil 3": 65, "resident evil revelations": 65,
+      "dead rising 2": 65, "dead rising 3": 65, "dead rising 4": 65, "dead space 2": 65,
+      "dead space 3": 65, "how to survive": 65, "how to survive 2": 65, "sheltered": 65,
+      "sheltered 2": 65, "they are billions": 65, "infectonator": 65, "rebuild": 65,
+      "dead state": 65, "survivalist": 65, "survivalist invisible strain": 65, "i am alive": 65,
+      "zombi u": 65, "zombi": 65, "deadlight": 65, "lone survivor": 65,
+      "darkwood": 65, "signalist": 65, "surviving the aftermath": 85, "endzone a world apart": 85,
+      "frostpunk 2": 85, "flotsam": 85, "far lone sails": 85, "far changing tides": 85,
+      "convoy": 85, "bedlam": 85, "dead age": 85, "dead age 2": 85,
+      "judgment apocalypse survival simulation": 85, "overland": 85, "symbiosis": 85, "the infected": 85,
+      "night of the dead": 85, "subsistence": 85, "survive the nights": 85, "the front": 85,
+      "myth of empires": 85, "icarus": 85, "breathedge": 85, "forever skies": 85,
+      "pacific drive": 85, "planet crafter": 85, "bad mojo": 100, "burndead": 100,
+      "abomination the nemesis project": 100, "flesh feast": 100, "all hallows eve": 100, "zombie revenge": 100,
+      "onechanbara": 100, "stubbs the zombie": 100, "fort zombie": 100, "trapped dead": 100,
+      "dead horde": 100, "nation red": 100, "burn zombie burn": 100, "blood drive": 100,
+      "charlie murder": 100, "dead pixels": 100
+    }
+  },
+  {
+    id: "gen-023", dailyId: "dia4-04", pack: "general",
+    texto: "Plato de cuchara, potaje, sopa o guiso tradicional español",
+    ejemplo: "cocido",
+    answers: {
+      "lentejas": 10, "cocido madrileño": 10, "cocido": 10, "fabada asturiana": 10, "fabada": 10, "puchero": 10, "sopa de fideos": 10,
+      "gazpacho": 10, "salmorejo": 10, "lentejas con chorizo": 10, "paella": 10,
+      "pote gallego": 25, "caldereta": 25, "menestra": 25, "porrusalda": 25, "gachas": 25, "migas": 25, "ajoarriero": 25,
+      "sopa castellana": 25, "sopa de ajo": 25, "garbanzos con espinacas": 25, "judias con chorizo": 25, "alubias": 25, "patatas a la riojana": 25, "sancocho": 25,
+      "fabes": 25, "caldillo de perro": 25, "alubias con chorizo": 25, "olla podrida": 25, "puchero andaluz": 25, "escudella": 25, "garbanzos con chorizo": 25,
+      "sopa de picadillo": 25, "gazpacho andaluz": 25,
+      "patatas con costillas": 45, "guiso de patatas con carne": 45, "estofado de ternera": 45, "rabo de toro": 45, "callos a la madrileña": 45, "callos": 45, "sopa de marisco": 45,
+      "sopa de pescado": 45, "crema de verduras": 45, "crema de calabaza": 45, "crema de calabacin": 45, "ajoblanco": 45, "gazpacho manchego": 45, "suquet de peix": 45,
+      "suquet": 45, "zarzuela de marisco": 45, "arroz caldoso": 45, "arroz con bogavante": 45, "caldo gallego": 45, "caldo de pollo": 45, "crema de puerros": 45,
+      "vichyssoise": 45, "alubias de tolosa": 45, "fabes con almejas": 45, "alubias blancas con chorizo": 45, "potaje de vigilia": 45, "potaje de garbanzos": 45, "potaje de lentejas": 45,
+      "bacalao al ajoarriero": 65, "caldereta de cordero": 65, "caldereta de langosta": 65, "caldo de cocido": 65, "caldo tlalpeño": 65, "carcamusas": 65, "chilindron": 65,
+      "pollo al chilindron": 65, "cordero al chilindron": 65, "carrillada": 65, "carrillada iberica": 65, "guisantes con jamon": 65, "habas con jamon": 65, "alboronia": 65,
+      "boronias": 65, "berza jerezana": 65, "berza gaditana": 65, "olla gitana": 65, "empedrado": 65, "morteruelo": 65, "atascaburras": 65,
+      "ajopringue": 65, "tumbet": 65, "caldo con pelotas": 65, "cocido montañes": 65, "cocido lebaniego": 65, "cocido maragato": 65, "escudella i carn d olla": 65,
+      "sopa boba": 65, "sopas mallorquinas": 65, "caldo bordeles": 65,
+      "marmitako": 85, "pipirrana": 85, "gazpachuelo": 85, "andrajos": 85, "andrajos con liebre": 85, "gurullos": 85, "gurullos con conejo": 85,
+      "pericana": 85, "rin ran": 85, "mojete": 85, "cojondongo": 85, "zarangollo": 85, "frito mallorquin": 85, "porra antequerana": 85,
+      "zoque malagueño": 85, "salmorejo cordobes": 85, "caldereta de pescado": 85, "sopa de almendras": 85, "sopa de cebolla española": 85, "sopa de tomate extremeña": 85, "sopas de gato": 85,
+      "sopa campera": 85, "gazpacho de pastor": 85, "gachas manchegas": 85, "gachamiga": 85, "borona": 85, "borage con patatas": 85, "cardo con almendras": 85,
+      "habas a la catalana": 85, "faves a la catalana": 85, "fideua caldosa": 85,
+      "caldo de zopas": 100, "potaje de hinojos": 100, "potaje de jaramagos": 100, "potaje de tagarninas": 100, "berza de coles": 100, "berza de cardillos": 100, "caldillo de pintarroja": 100,
+      "sopa de maimones": 100, "sopa de galets": 100, "olluquiña": 100, "caldo de castañas": 100, "puchero canario": 100, "rancho canario": 100, "carne fiesta": 100,
+      "ropa vieja de puchero": 100, "pote asturiano": 100, "arroz con costra caldoso": 100, "guisado de trigo": 100, "olla de trigo": 100
+    }
+  },
+  {
+    id: "gen-024", dailyId: "dia4-05", pack: "general",
+    texto: "Raza canina (perro) de compañía, trabajo o pastoreo",
+    ejemplo: "pastor aleman",
+    answers: {
+      "pastor aleman": 10, "labrador": 10, "golden retriever": 10, "chihuahua": 10, "bulldog": 10, "caniche": 10, "yorkshire": 10,
+      "husky": 10, "boxer": 10, "pitbull": 10, "rottweiler": 10, "galgo": 10,
+      "podenco": 25, "mastin español": 25, "alano español": 25, "perro de agua español": 25, "bodeguero andaluz": 25, "mastin del pirineo": 25, "doberman": 25,
+      "border collie": 25, "beagle": 25, "teckel": 25, "carlino": 25, "pug": 25, "chow chow": 25, "shiba inu": 25,
+      "akita": 25, "dalmata": 25, "gran danes": 25, "san bernardo": 25, "terranova": 25, "samoyedo": 25, "lhasa apso": 25,
+      "bichon maltes": 25, "braco aleman": 25, "pastor belga": 25,
+      "pastor australiano": 45, "australian shepherd": 45, "shih tzu": 45, "bichon frise": 45, "bichon habanero": 45, "pomerania": 45, "jack russell": 45,
+      "jack russell terrier": 45, "bull terrier": 45, "staffordshire bull terrier": 45, "american stanfford": 45, "american staffordshire terrier": 45, "dogo de burdeos": 45, "mastin napolitano": 45,
+      "cane corso": 45, "pointer": 45, "setter irlandes": 45, "setter ingles": 45, "braco de weimar": 45, "weimaraner": 45, "galgo español": 45,
+      "podenco ibicenco": 45, "podenco canario": 45, "podenco andaluz": 45, "perro de agua": 45, "ratonero valenciano": 45, "ratonero bodeguero andaluz": 45, "sabueso español": 45,
+      "perdiguero de burgos": 45, "perro pastor vasco": 45, "euskal artzain txakurra": 45, "can de palleiro": 45,
+      "basset hound": 65, "bloodhound": 65, "sabueso de san huberto": 65, "greyhound": 65, "whippet": 65, "galgo afgano": 65, "saluki": 65,
+      "borzoi": 65, "wolfhound irlandes": 65, "lebrel escoces": 65, "deerhound": 65, "fox terrier": 65, "airedale terrier": 65, "boston terrier": 65,
+      "bullmastiff": 65, "fila brasileño": 65, "tosa inu": 65, "akita inu": 65, "akita americano": 65, "shiba": 65, "spitz japones": 65,
+      "spitz aleman": 65, "keeshond": 65, "eurasier": 65, "malamute": 65, "alaskan malamute": 65, "husky de alaska": 65, "laika de siberia": 65,
+      "pastor blanco suizo": 65, "pastor de beauce": 65,
+      "komondor": 85, "basenji": 85, "dogo del tibet": 85, "mastin tibetano": 85, "pastor tibetano": 85, "bobtail": 85, "antiguo perro pastor ingles": 85,
+      "collie de pelo largo": 85, "collie barbudo": 85, "bearded collie": 85, "sheltie": 85, "pastor de las islas shetland": 85, "welsh corgi": 85, "corgi pembroke": 85,
+      "corgi cardigan": 85, "cavalier king charles spaniel": 85, "king charles spaniel": 85, "pequines": 85, "papillon": 85, "phalene": 85, "perro crestado chino": 85,
+      "crestado chino": 85, "xoloitzcuintle": 85, "xoloitzcuintli": 85, "perro sin pelo del peru": 85, "affenfinscher": 85, "affenpinscher": 85, "pinscher miniatura": 85,
+      "dandie dinmont terrier": 85, "turco andaluz": 85, "perro turco andaluz": 85, "perro turco": 85,
+      "kuvasz": 100, "puli": 100, "mudi": 100, "bergamasco": 100, "pastor bergamasco": 100, "pastor de maremma": 100, "cane da pastore maremmano": 100,
+      "pastor del caucaso": 100, "pastor de asia central": 100, "alabai": 100, "pastor de anatolia": 100, "kangal": 100, "akbash": 100, "tornjak": 100,
+      "sarplaninac": 100, "pastor croata": 100
+    }
+  },
+  {
+    id: "gen-025", dailyId: "dia4-06", pack: "general",
+    texto: "Prenda de vestir, prenda de abrigo o calzado cotidiano o formal",
+    ejemplo: "pantalon",
+    answers: {
+      "pantalon": 10, "camiseta": 10, "camisa": 10, "sudadera": 10, "jersey": 10, "chaqueta": 10, "abrigo": 10,
+      "zapatillas": 10, "zapatos": 10, "calcetines": 10, "calzoncillos": 10, "bragas": 10,
+      "chandal": 25, "cazadora": 25, "vaqueros": 25, "tejanos": 25, "bermudas": 25, "bañador": 25, "americana": 25,
+      "blazer": 25, "chaleco": 25, "corbata": 25, "pajarita": 25, "polar": 25, "plumas": 25, "anorak": 25,
+      "botines": 25, "botas": 25, "chanclas": 25, "mocasines": 25, "alpargatas": 25, "zuecos": 25, "sandalias": 25,
+      "pijama": 25, "bata": 25, "albornoz": 25,
+      "shorts": 45, "pantalon corto": 45, "pantalon vaquero": 45, "pantalon de pinzas": 45, "pantalon de chandal": 45, "top": 45, "blusa": 45,
+      "polo": 45, "camiseta de tirantes": 45, "sueter": 45, "cardigan": 45, "rebeca": 45, "parka": 45, "trench": 45,
+      "sobretodo": 45, "levita": 45, "chaque": 45, "frac": 45, "traje": 45, "traje de chaqueta": 45, "mono": 45,
+      "peto": 45, "leggins": 45, "mallas": 45, "culotte": 45, "tanga": 45, "boxer": 45, "calzoncillo boxer": 45,
+      "biquini": 45, "bikini": 45, "triquini": 45, "pareo": 45,
+      "gabardina": 65, "esmoquin": 65, "miton": 65, "mitones": 65, "bailarinas": 65, "manoletinas": 65, "merceditas": 65,
+      "tacones": 65, "zapatos de tacon": 65, "stiletto": 65, "plataformas": 65, "botas de agua": 65, "katiuskas": 65, "botas militares": 65,
+      "zapatillas de deporte": 65, "bambas": 65, "tenis": 65, "playeras": 65, "chancletas": 65, "crocs": 65, "espardenyas": 65,
+      "avarcas": 65, "menorquinas": 65, "babuchas": 65, "pantuflas": 65, "zapatillas de estar por casa": 65, "escarpines": 65, "chubasquero": 65,
+      "impermeable": 65, "corta vientos": 65, "cortavientos": 65, "chaleco acolchado": 65, "bomber": 65, "chaqueta bomber": 65, "perfecto": 65,
+      "biker": 65,
+      "dunks": 85, "guardapolvos": 85, "pelliza": 85, "trenca": 85, "pellon": 85, "chilaba": 85, "caftan": 85,
+      "kimono": 85, "sari": 85, "poncho": 85, "capa": 85, "ruana": 85, "sarong": 85, "kilt": 85,
+      "falda escocesa": 85, "falda pantalon": 85, "minifalda": 85, "falda midi": 85, "falda de tubo": 85, "falda plisada": 85, "enagua": 85,
+      "cancan": 85, "corset": 85, "corse": 85, "faja": 85,
+      "fedora": 100, "panama": 100, "sombrero panama": 100, "canotier": 100, "pamela": 100, "trilby": 100, "chapka": 100,
+      "ushanka": 100, "sombrero cordobes": 100, "montera": 100, "barretina": 100, "txapela": 100, "birrete": 100, "turbante": 100,
+      "fez": 100, "balaclava": 100
+    }
+  },
+  {
+    id: "gen-026", dailyId: "dia4-07", pack: "general",
+    texto: "Elemento químico de la tabla periódica",
+    ejemplo: "oxigeno",
+    answers: {
+      "oro": 10, "plata": 10, "hierro": 10, "oxigeno": 10, "carbono": 10, "hidrogeno": 10, "helio": 10,
+      "cobre": 10, "plomo": 10, "mercurio": 10, "aluminio": 10, "nitrogeno": 10,
+      "sodio": 25, "potasio": 25, "cloro": 25, "fosforo": 25, "azufre": 25, "zinc": 25, "titanio": 25,
+      "estaño": 25, "niquel": 25, "magnesio": 25, "silicio": 25, "neon": 25, "argon": 25, "kripton": 25,
+      "xenon": 25, "radon": 25, "yodo": 25, "fluor": 25, "bromo": 25, "tungsteno": 25, "platino": 25,
+      "litio": 25, "berilio": 25, "boro": 25, "cobalto": 25,
+      "antimonio": 45, "astato": 45, "cadmio": 45, "cesio": 45, "circonio": 45, "cromo": 45, "escandio": 45,
+      "galio": 45, "germanio": 45, "hafnio": 45, "indio": 45, "iridio": 45, "manganeso": 45, "molibdeno": 45,
+      "niobio": 45, "osmio": 45, "paladio": 45, "renio": 45, "rodio": 45, "rubidio": 45, "rutenio": 45,
+      "talo": 45, "talio": 45, "tantalio": 45, "teluro": 45, "vanadio": 45, "zirconio": 45, "curio": 45,
+      "berkelio": 45, "californio": 45, "fermio": 45, "nobelio": 45,
+      "wolframio": 65, "lantano": 65, "cerio": 65, "praseodimio": 65, "neodimio": 65, "prometio": 65, "samario": 65,
+      "europio": 65, "gadolinio": 65, "terbio": 65, "disprosio": 65, "holmio": 65, "erbio": 65, "tulio": 65,
+      "iterbio": 65, "lutecio": 65, "actinio": 65, "torio": 65, "protactinio": 65, "neptunio": 65, "roentgenio": 65,
+      "copernicio": 65, "nihonio": 65, "flerovio": 65, "moscovio": 65, "livermorio": 65, "teneso": 65, "tennesino": 65,
+      "hidrogeno liquido": 65, "oxigeno gas": 65, "nitrogeno liquido": 65, "hielo seco": 65, "mercurio liquido": 65,
+      "natrium": 85, "kalium": 85, "stibium": 85, "hydrargyrum": 85, "argentum": 85, "aurum": 85, "ferrum": 85,
+      "cuprum": 85, "plumbum": 85, "wolfram": 85, "stannum": 85, "ununoctio": 85, "ununseptio": 85, "ununhexio": 85,
+      "ununpentio": 85, "ununquadio": 85, "ununtrio": 85, "ununbio": 85, "unununio": 85, "ununnilio": 85, "eka aluminio": 85,
+      "eka silicio": 85, "eka boro": 85, "eka manganeso": 85, "mendelevio": 85,
+      "kurchatovio": 100, "hahnio": 100, "nielsbohrio": 100, "anunio": 100, "eka yodo": 100, "eka radon": 100, "eka francio": 100,
+      "eka radio": 100, "eka actinio": 100, "eka torio": 100, "ununennio": 100, "unbinilio": 100, "unbiunio": 100, "unbibio": 100,
+      "unbitrio": 100, "unbiquadio": 100
     }
   }
 ];

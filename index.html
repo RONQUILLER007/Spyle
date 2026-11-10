@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>SPYLE</title>
-  <link rel="icon" type="image/png" href="favicon.jpg?v=1.1">
-  <link rel="stylesheet" href="style.css?v=1.1">
+  <link rel="icon" type="image/png" href="favicon.jpg?v=1.2">
+  <link rel="stylesheet" href="style.css?v=1.2">
 </head>
 <body>
   <!-- Canvas de partículas de polvo ambiental de baja intensidad -->
@@ -104,9 +104,9 @@
           <span class="btn-main-line">📡 Interrogatorio Diario</span>
           <small id="daily-status"></small>
         </button>
-        <button class="btn big calendar-action-btn calendar-locked" id="btn-calendar" type="button" style="display: none;">
-          <span class="btn-main-line">📅 Archivo Histórico de Misiones</span>
-          <small id="calendar-status">Expedientes desclasificados del calendario</small>
+        <button id="btn-archivo-historico" class="btn big btn-tactico btn-gold calendar-action-btn calendar-locked" type="button" style="display: none;">
+          <span class="btn-main-line">🗓️ ARCHIVO HISTÓRICO // CALENDARIO DE MISIONES [ACCESO CONCEDIDO]</span>
+          <small id="calendar-status">Expedientes desclasificados de inteligencia temporal</small>
         </button>
         <button class="btn big" id="btn-unlimited" type="button">
           <span class="btn-main-line">♾️ Simulacro Continuo (Unlimited)</span>
@@ -132,14 +132,14 @@
 
       <div class="calendar-terminal-panel">
         <div class="calendar-meta-bar">
-          <span class="meta-tag">// REGISTRO DE INTELIGENCIA RETROACTIVO</span>
+          <span class="meta-tag">// REGISTRO DE INTELIGENCIA TEMPORAL · ARCHIVO CLASIFICADO</span>
           <span id="calendar-summary-text" class="meta-info">Expedientes disponibles</span>
         </div>
         <div id="calendar-grid" class="calendar-grid"></div>
       </div>
 
       <div class="final-actions" style="margin-top: 24px;">
-        <button class="btn" type="button" data-goto="menu">← Volver al centro de mando</button>
+        <button class="btn btn-close-archivo" type="button" data-goto="menu">[ ✕ CERRAR ARCHIVO ]</button>
       </div>
     </section>
 
@@ -296,7 +296,10 @@
             </div>
             <div id="result-speed-bonus" class="speed-badge hidden"></div>
             <div id="result-wildcard-note" class="wc-note hidden"></div>
-            <button class="btn primary-action" type="button" id="btn-next">Siguiente consulta ➔</button>
+            <div class="result-actions-group">
+              <button class="btn primary-action" type="button" id="btn-next">Siguiente consulta ➔</button>
+              <button class="btn btn-claim-round hidden" type="button" id="btn-claim-round">[ 📡 RECLAMAR TÉRMINO A CONTRAINTELIGENCIA ]</button>
+            </div>
           </div>
         </div>
 
@@ -449,7 +452,11 @@
         <button id="btn-close-abort" type="button" class="modal-close" aria-label="Cancelar evacuación">✕</button>
       </div>
       <div class="abort-modal-body">
-        <p class="abort-warning-text">// ¿ABORTAR MISIÓN? El progreso no guardado de esta misión se perderá.</p>
+        <p class="abort-warning-text" id="abort-warning-msg">// ¿ABORTAR MISIÓN? El progreso no guardado de esta misión se perderá.</p>
+        <div id="abort-unrecognized-container" class="abort-unrecognized-container hidden">
+          <div class="unrecognized-label">// TÉRMINOS NO RECONOCIDOS DURANTE LA SESIÓN:</div>
+          <div id="abort-unrecognized-items" class="abort-unrecognized-items"></div>
+        </div>
         <div class="abort-actions">
           <button id="btn-confirm-abort" type="button" class="btn btn-abort-confirm">[ CONFIRMAR ]</button>
           <button id="btn-cancel-abort" type="button" class="btn btn-abort-cancel">[ CANCELAR ]</button>
@@ -490,7 +497,7 @@
     <div id="dev-audit-body" class="dev-audit-body"></div>
   </aside>
 
-  <script src="prompts.js?v=1.1" charset="UTF-8"></script>
-  <script src="app.js?v=1.1" charset="UTF-8"></script>
+  <script src="prompts.js?v=1.2" charset="UTF-8"></script>
+  <script src="app.js?v=1.2" charset="UTF-8"></script>
 </body>
 </html>
