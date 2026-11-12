@@ -37,6 +37,30 @@ function resolverPromptId(promptOrId) {
   return str.toLowerCase();
 }
 
+function resolverTituloCategoria(categoriaOrPrompt) {
+  if (!categoriaOrPrompt) return "";
+  if (typeof categoriaOrPrompt === "object") {
+    if (categoriaOrPrompt.texto) return categoriaOrPrompt.texto;
+    if (categoriaOrPrompt.promptTitle) return categoriaOrPrompt.promptTitle;
+    if (categoriaOrPrompt.categoria) return categoriaOrPrompt.categoria;
+    if (categoriaOrPrompt.id && typeof PROMPTS !== "undefined" && Array.isArray(PROMPTS)) {
+      const found = PROMPTS.find((pr) => pr && pr.id === categoriaOrPrompt.id);
+      if (found && found.texto) return found.texto;
+    }
+  }
+  const str = String(categoriaOrPrompt).trim();
+  if (/^[a-z0-9]+-[a-z0-9]+$/i.test(str) && typeof PROMPTS !== "undefined" && Array.isArray(PROMPTS)) {
+    const found = PROMPTS.find((pr) => pr && (pr.id.toLowerCase() === str.toLowerCase() || (pr.dailyId && pr.dailyId.toLowerCase() === str.toLowerCase())));
+    if (found && found.texto) return found.texto;
+  }
+  return str;
+}
+
+function obtenerClaveReclamacion(categoriaOrPrompt, palabra) {
+  const catTitulo = resolverTituloCategoria(categoriaOrPrompt);
+  return `${normalizarTexto(catTitulo)}::${normalizarTexto(palabra)}`;
+}
+
 function obtenerReclamacionesGlobales() {
   try {
     return new Set(JSON.parse(localStorage.getItem('spyle_reclamaciones_globales')) || []);
@@ -45,10 +69,9 @@ function obtenerReclamacionesGlobales() {
   }
 }
 
-function registrarReclamacionGlobal(promptId, palabra) {
-  const pId = resolverPromptId(promptId);
+function registrarReclamacionGlobal(categoriaOrPrompt, palabra) {
+  const clave = obtenerClaveReclamacion(categoriaOrPrompt, palabra);
   const globales = obtenerReclamacionesGlobales();
-  const clave = `${pId}::${normalizarTexto(palabra)}`;
   globales.add(clave);
   try {
     localStorage.setItem('spyle_reclamaciones_globales', JSON.stringify([...globales]));
@@ -57,17 +80,23 @@ function registrarReclamacionGlobal(promptId, palabra) {
   }
 }
 
-function yaFueReclamadaGlobalmente(promptId, palabra) {
-  const pId = resolverPromptId(promptId);
+function yaFueReclamadaGlobalmente(categoriaOrPrompt, palabra) {
+  const clave = obtenerClaveReclamacion(categoriaOrPrompt, palabra);
   const globales = obtenerReclamacionesGlobales();
-  const clave = `${pId}::${normalizarTexto(palabra)}`;
-  return globales.has(clave);
+  if (globales.has(clave)) return true;
+
+  // Compatibilidad con posibles claves históricas antiguas basadas en promptId
+  const pId = resolverPromptId(categoriaOrPrompt);
+  if (pId && globales.has(`${pId}::${normalizarTexto(palabra)}`)) return true;
+
+  return false;
 }
 
 function sincronizarReclamacionesDesdeExpedientes() {
   try {
     const globales = obtenerReclamacionesGlobales();
     let huboNuevas = false;
+    const palabrasExcluidas = ['pasta', 'spaghetti', 'iron lung', '3000 leguas', 'nemo', 'jaen'].map(normalizarTexto);
 
     // 1. Escanear todas las claves en localStorage
     for (let i = 0; i < localStorage.length; i++) {
@@ -82,13 +111,15 @@ function sincronizarReclamacionesDesdeExpedientes() {
           if (exp && Array.isArray(exp.rondas)) {
             exp.rondas.forEach((r) => {
               if (!r) return;
-              const pId = resolverPromptId(r.promptId || (r.prompt && r.prompt.id));
-              if (!pId) return;
+              const catTitulo = r.promptTitle || (r.prompt && r.prompt.texto) || resolverTituloCategoria(r.promptId);
+              if (!catTitulo) return;
 
               if (Array.isArray(r.reclamaciones)) {
                 r.reclamaciones.forEach((rc) => {
                   if (rc && rc.reclamada === true && rc.palabra) {
-                    const clave = `${pId}::${normalizarTexto(rc.palabra)}`;
+                    const pNorm = normalizarTexto(rc.palabra);
+                    if (palabrasExcluidas.includes(pNorm)) return;
+                    const clave = `${normalizarTexto(catTitulo)}::${pNorm}`;
                     if (!globales.has(clave)) {
                       globales.add(clave);
                       huboNuevas = true;
@@ -113,13 +144,15 @@ function sincronizarReclamacionesDesdeExpedientes() {
           if (exp && Array.isArray(exp.rondas)) {
             exp.rondas.forEach((r) => {
               if (!r) return;
-              const pId = resolverPromptId(r.promptId || (r.prompt && r.prompt.id));
-              if (!pId) return;
+              const catTitulo = r.promptTitle || (r.prompt && r.prompt.texto) || resolverTituloCategoria(r.promptId);
+              if (!catTitulo) return;
 
               if (Array.isArray(r.reclamaciones)) {
                 r.reclamaciones.forEach((rc) => {
                   if (rc && rc.reclamada === true && rc.palabra) {
-                    const clave = `${pId}::${normalizarTexto(rc.palabra)}`;
+                    const pNorm = normalizarTexto(rc.palabra);
+                    if (palabrasExcluidas.includes(pNorm)) return;
+                    const clave = `${normalizarTexto(catTitulo)}::${pNorm}`;
                     if (!globales.has(clave)) {
                       globales.add(clave);
                       huboNuevas = true;
@@ -139,9 +172,11 @@ function sincronizarReclamacionesDesdeExpedientes() {
       if (Array.isArray(logs)) {
         logs.forEach((item) => {
           if (item && item.suggestedWord) {
-            const pId = resolverPromptId(item.promptId || item.promptTitle);
-            if (pId) {
-              const clave = `${pId}::${normalizarTexto(item.suggestedWord)}`;
+            const pNorm = normalizarTexto(item.suggestedWord);
+            if (palabrasExcluidas.includes(pNorm)) return;
+            const catTitulo = item.promptTitle || resolverTituloCategoria(item.promptId);
+            if (catTitulo) {
+              const clave = `${normalizarTexto(catTitulo)}::${pNorm}`;
               if (!globales.has(clave)) {
                 globales.add(clave);
                 huboNuevas = true;
@@ -152,6 +187,25 @@ function sincronizarReclamacionesDesdeExpedientes() {
       }
     } catch {}
 
+    // 4. Migración de claves antiguas pId::palabra a tituloCategoria::palabra
+    for (const clave of [...globales]) {
+      const sepIdx = clave.indexOf("::");
+      if (sepIdx !== -1) {
+        const prefijo = clave.slice(0, sepIdx);
+        const palabra = clave.slice(sepIdx + 2);
+        if (/^[a-z0-9]+-[a-z0-9]+$/i.test(prefijo)) {
+          const tit = resolverTituloCategoria(prefijo);
+          if (tit && tit !== prefijo) {
+            const nuevaClave = `${normalizarTexto(tit)}::${palabra}`;
+            if (!globales.has(nuevaClave)) {
+              globales.add(nuevaClave);
+              huboNuevas = true;
+            }
+          }
+        }
+      }
+    }
+
     if (huboNuevas) {
       localStorage.setItem("spyle_reclamaciones_globales", JSON.stringify([...globales]));
       console.log(`// RECLAMACIONES GLOBALES: Sincronizadas ${globales.size} reclamaciones únicas.`);
@@ -161,30 +215,128 @@ function sincronizarReclamacionesDesdeExpedientes() {
   }
 }
 
+/* ==========================================================================
+   DESBLOQUEO DE RECLAMACIONES MARCADAS EN FALSO (LIMPIEZA PUNTUAL)
+   ========================================================================== */
+function sanearReclamacionesBloqueadas() {
+  const palabrasObjetivo = ['pasta', 'spaghetti', 'iron lung', '3000 leguas', 'nemo', 'jaen'];
+  const palabrasNormalizadas = palabrasObjetivo.map((w) => normalizarTexto(w));
+
+  // 1. Eliminar de spyle_reclamaciones_globales
+  try {
+    const globales = obtenerReclamacionesGlobales();
+    let modificado = false;
+    for (const clave of [...globales]) {
+      const sepIdx = clave.indexOf("::");
+      const palabraClave = sepIdx !== -1 ? clave.slice(sepIdx + 2) : clave;
+      if (palabrasNormalizadas.includes(normalizarTexto(palabraClave))) {
+        globales.delete(clave);
+        modificado = true;
+      }
+    }
+    if (modificado) {
+      localStorage.setItem('spyle_reclamaciones_globales', JSON.stringify([...globales]));
+      console.log('[SPYLE // SANEAMIENTO] 6 palabras desbloqueadas de spyle_reclamaciones_globales:', palabrasObjetivo);
+    }
+  } catch (err) {
+    console.warn("Error en sanearReclamacionesBloqueadas (globales):", err);
+  }
+
+  // 2. Marcar reclamada: false en todos los expedientes guardados
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!key) continue;
+      if (key.startsWith("spyle_expediente_") || key.startsWith("spyle_daily_state_")) {
+        try {
+          const raw = localStorage.getItem(key);
+          if (!raw) continue;
+          const exp = JSON.parse(raw);
+          let cambiado = false;
+          if (exp && Array.isArray(exp.rondas)) {
+            exp.rondas.forEach((r) => {
+              if (!r) return;
+              if (Array.isArray(r.reclamaciones)) {
+                r.reclamaciones.forEach((rc) => {
+                  if (rc && rc.palabra && palabrasNormalizadas.includes(normalizarTexto(rc.palabra))) {
+                    if (rc.reclamada === true) {
+                      rc.reclamada = false;
+                      cambiado = true;
+                    }
+                  }
+                });
+              }
+            });
+          }
+          if (cambiado) {
+            localStorage.setItem(key, JSON.stringify(exp));
+            console.log(`[SPYLE // SANEAMIENTO] Expediente ${key}: palabras desbloqueadas a reclamada: false.`);
+          }
+        } catch (e) {}
+      }
+    }
+  } catch (err) {
+    console.warn("Error en sanearReclamacionesBloqueadas (expedientes):", err);
+  }
+
+  // 3. Limpiar del registro histórico suggestions_log
+  try {
+    const logs = store.get("suggestions_log", []);
+    if (Array.isArray(logs) && logs.length > 0) {
+      const logsFiltrados = logs.filter((item) => {
+        if (!item || !item.suggestedWord) return true;
+        return !palabrasNormalizadas.includes(normalizarTexto(item.suggestedWord));
+      });
+      if (logsFiltrados.length !== logs.length) {
+        store.set("suggestions_log", logsFiltrados);
+      }
+    }
+  } catch (e) {}
+}
+
+/* ==========================================================================
+   FUNCIÓN ÚNICA Y CENTRALIZADA DE TRANSMISIÓN DE RECLAMACIONES
+   ========================================================================== */
+async function transmitirReclamacion(promptId, tituloCategoria, palabra) {
+  if (!palabra || !tituloCategoria) return false;
+  if (yaFueReclamadaGlobalmente(tituloCategoria, palabra)) return false;
+
+  if (!WEBHOOK_URL || !WEBHOOK_URL.startsWith('https://script.google.com')) {
+    console.error('[SPYLE // ERROR] URL del webhook inválida o ausente:', WEBHOOK_URL);
+    return false;
+  }
+
+  const payload = {
+    category: tituloCategoria,
+    categoria: tituloCategoria,
+    word: palabra.trim().toLowerCase(),
+    palabra: palabra.trim().toLowerCase()
+  };
+
+  try {
+    await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+
+    registrarReclamacionGlobal(tituloCategoria, palabra);
+    console.log('[SPYLE // TRANSMITIDO]', payload);
+    return true;
+  } catch (error) {
+    console.error('[SPYLE // FALLO DE TRANSMISIÓN]', error);
+    return false;
+  }
+}
+
+// Compatibilidad retroactiva
 function enviarSugerenciaAGoogle(promptIdOrTitle, palabraSugerida, optionalTitle = null) {
   const promptId = resolverPromptId(promptIdOrTitle);
   const promptTitulo = optionalTitle || (typeof promptIdOrTitle === "object" && promptIdOrTitle.texto)
     ? (optionalTitle || promptIdOrTitle.texto)
     : (typeof PROMPTS !== "undefined" && PROMPTS.find(pr => pr.id === promptId)?.texto || promptIdOrTitle);
-
-  // Barrera final en el webhook: rechazo absoluto de duplicados
-  if (yaFueReclamadaGlobalmente(promptId, palabraSugerida)) return Promise.resolve(null);
-  registrarReclamacionGlobal(promptId, palabraSugerida);
-
-  const payload = JSON.stringify({
-    promptId: promptId,
-    promptTitle: promptTitulo,
-    suggestedWord: palabraSugerida
-  });
-
-  return fetch(WEBHOOK_URL, {
-    method: 'POST',
-    mode: 'no-cors', // Evita bloqueos y redirecciones de Google Apps Script
-    headers: {
-      'Content-Type': 'text/plain;charset=utf-8'
-    },
-    body: payload
-  });
+  return transmitirReclamacion(promptId, promptTitulo, palabraSugerida);
 }
 
 const ROUNDS = 7;
@@ -1963,13 +2115,19 @@ function openAbortModal() {
 
           info.append(pText, wText);
 
+          const isClaimed = yaFueReclamadaGlobalmente(prompt.texto || prompt, word);
           const claimBtn = document.createElement("button");
-          claimBtn.className = "btn-claim-inline";
+          claimBtn.className = "btn-claim-inline" + (isClaimed ? " claimed" : "");
           claimBtn.type = "button";
-          claimBtn.textContent = "[ ✉️ Reclamar ]";
-          claimBtn.addEventListener("click", () => {
-            openSuggestionModal(prompt, word, claimBtn);
-          });
+          if (isClaimed) {
+            claimBtn.textContent = "[ ✓ Reclamada ]";
+            claimBtn.disabled = true;
+          } else {
+            claimBtn.textContent = "[ ✉️ Reclamar ]";
+            claimBtn.addEventListener("click", () => {
+              openSuggestionModal(prompt, word, claimBtn, null, game && game.day);
+            });
+          }
 
           row.append(info, claimBtn);
           unrecItems.appendChild(row);
@@ -2522,55 +2680,95 @@ function restoreDailyStateAndRender(day = dayNumber()) {
   return true;
 }
 
-function markWordAsClaimedInDailyState(word, roundIdx = null) {
+function markWordAsClaimedInDailyState(word, roundIdx = null, dayOverride = null, promptObj = null) {
   if (!word) return;
-  const targetDay = (game && game.day) ? game.day : dayNumber();
-  const state = getDailyState(targetDay);
-  if (!state || !Array.isArray(state.rondas)) return;
+  const cleanWord = String(word).trim();
+  const normWord = normalizarTexto(cleanWord);
+  const targetDay = dayOverride || ((game && game.day) ? game.day : dayNumber());
 
-  const cleanWord = word.trim().toLowerCase();
+  const pObj = promptObj || currentSuggestingPrompt;
+  const pId = pObj ? (pObj.id || pObj.promptId) : null;
+  const pTitle = pObj ? (pObj.texto || pObj.promptTitle) : null;
 
-  state.rondas.forEach((r, idx) => {
-    if (roundIdx !== null && roundIdx !== undefined && idx !== roundIdx) return;
-    const unrecList = r.intentosNoReconocidos || r.intentosFallidos || [];
-    if (!Array.isArray(r.reclamaciones)) {
-      r.reclamaciones = unrecList.map((w) => ({ palabra: w, reclamada: false }));
+  // Actualizar de forma exhaustiva las claves del expediente diario/histórico correspondiente
+  const keysToUpdate = new Set([
+    getExpedienteKey(targetDay),
+    "spyle_daily_state_dia" + targetDay
+  ]);
+
+  // Si se está reclamando desde informe histórico o visor, incluir todas las claves existentes en localStorage
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && (k.startsWith("spyle_expediente_dia") || k.startsWith("spyle_daily_state_dia"))) {
+      keysToUpdate.add(k);
     }
-    let found = false;
-    r.reclamaciones.forEach((item) => {
-      if (item && item.palabra && item.palabra.trim().toLowerCase() === cleanWord) {
-        item.reclamada = true;
-        found = true;
+  }
+
+  keysToUpdate.forEach((key) => {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return;
+      const state = JSON.parse(raw);
+      if (!state || !Array.isArray(state.rondas)) return;
+
+      let changed = false;
+      const isTargetDayKey = key.includes("dia" + targetDay);
+
+      state.rondas.forEach((r, idx) => {
+        if (!r) return;
+        const unrecList = r.intentosNoReconocidos || r.intentosFallidos || [];
+        const containsWord = unrecList.some((w) => normalizarTexto(w) === normWord);
+
+        const matchesIdx = isTargetDayKey && (roundIdx !== null && roundIdx !== undefined && idx === roundIdx);
+        const matchesPrompt = (pId && (r.promptId === pId || r.dailyId === pId)) ||
+                              (pTitle && normalizarTexto(r.promptTitle) === normalizarTexto(pTitle));
+
+        if (matchesIdx || (isTargetDayKey && matchesPrompt) || (isTargetDayKey && containsWord) || (matchesPrompt && containsWord)) {
+          if (!Array.isArray(r.reclamaciones)) {
+            r.reclamaciones = unrecList.map((w) => ({ palabra: w, reclamada: false }));
+          }
+          let found = false;
+          r.reclamaciones.forEach((item) => {
+            if (item && item.palabra && normalizarTexto(item.palabra) === normWord) {
+              item.reclamada = true;
+              found = true;
+              changed = true;
+            }
+          });
+          if (!found) {
+            r.reclamaciones.push({ palabra: cleanWord, reclamada: true });
+            changed = true;
+          }
+        }
+      });
+
+      if (changed) {
+        localStorage.setItem(key, JSON.stringify(state));
+        console.log(`[SPYLE // PERSISTENCIA] Expediente ${key} actualizado con reclamada: true para '${cleanWord}'.`);
       }
-    });
-    if (!found && unrecList.some((w) => w.trim().toLowerCase() === cleanWord)) {
-      r.reclamaciones.push({ palabra: word.trim(), reclamada: true });
+    } catch (err) {
+      console.warn("Error persistiendo reclamación en", key, err);
     }
   });
 
-  try {
-    const canonicalKey = getExpedienteKey(targetDay);
-    localStorage.setItem(canonicalKey, JSON.stringify(state));
-    localStorage.setItem("spyle_daily_state_dia" + targetDay, JSON.stringify(state));
-  } catch (err) {
-    console.warn("Error actualizando reclamación en expediente:", err);
-  }
-
   if (game && Array.isArray(game.results)) {
     game.results.forEach((res, idx) => {
-      if (roundIdx !== null && roundIdx !== undefined && idx !== roundIdx) return;
-      if (!Array.isArray(res.reclamaciones)) {
-        res.reclamaciones = (res.unrecognizedAttempts || []).map((w) => ({ palabra: w, reclamada: false }));
-      }
-      let f = false;
-      res.reclamaciones.forEach((item) => {
-        if (item && item.palabra && item.palabra.trim().toLowerCase() === cleanWord) {
-          item.reclamada = true;
-          f = true;
+      const isTargetRound = (roundIdx === null || roundIdx === undefined || idx === roundIdx);
+      const unrec = res.unrecognizedAttempts || [];
+      if (isTargetRound || unrec.some((w) => normalizarTexto(w) === normWord)) {
+        if (!Array.isArray(res.reclamaciones)) {
+          res.reclamaciones = unrec.map((w) => ({ palabra: w, reclamada: false }));
         }
-      });
-      if (!f && res.unrecognizedAttempts && res.unrecognizedAttempts.some((w) => w.trim().toLowerCase() === cleanWord)) {
-        res.reclamaciones.push({ palabra: word.trim(), reclamada: true });
+        let f = false;
+        res.reclamaciones.forEach((item) => {
+          if (item && item.palabra && normalizarTexto(item.palabra) === normWord) {
+            item.reclamada = true;
+            f = true;
+          }
+        });
+        if (!f) {
+          res.reclamaciones.push({ palabra: cleanWord, reclamada: true });
+        }
       }
     });
   }
@@ -3000,7 +3198,7 @@ function submitAnswer(timeout = false) {
       const currentUnrec = Array.isArray(intentosNoReconocidosPorRonda[rondaActual]) ? intentosNoReconocidosPorRonda[rondaActual] : [];
       if (currentUnrec.length > 0) {
         const lastWord = currentUnrec[currentUnrec.length - 1] || "";
-        const yaReclamada = lastWord ? yaFueReclamadaGlobalmente(p.id, lastWord) : false;
+        const yaReclamada = lastWord ? yaFueReclamadaGlobalmente(p.texto || p.id, lastWord) : false;
         if (yaReclamada) {
           btnClaimRound.textContent = "[ ✓ Ya enviada anteriormente ]";
           btnClaimRound.disabled = true;
@@ -3012,7 +3210,7 @@ function submitAnswer(timeout = false) {
           btnClaimRound.disabled = false;
           btnClaimRound.classList.remove("claimed", "hidden");
           btnClaimRound.onclick = () => {
-            openSuggestionModal(p, lastWord, btnClaimRound);
+            openSuggestionModal(p, lastWord, btnClaimRound, rondaActual, game && game.day);
           };
         }
       } else {
@@ -3094,7 +3292,7 @@ function submitAnswer(timeout = false) {
     const currentUnrec = Array.isArray(intentosNoReconocidosPorRonda[rondaActual]) ? intentosNoReconocidosPorRonda[rondaActual] : [];
     if (currentUnrec.length > 0) {
       const lastWord = currentUnrec[currentUnrec.length - 1] || "";
-      const yaReclamada = lastWord ? yaFueReclamadaGlobalmente(p.id, lastWord) : false;
+      const yaReclamada = lastWord ? yaFueReclamadaGlobalmente(p.texto || p.id, lastWord) : false;
       if (yaReclamada) {
         btnClaimRound.textContent = "[ ✓ Ya enviada anteriormente ]";
         btnClaimRound.disabled = true;
@@ -3106,7 +3304,7 @@ function submitAnswer(timeout = false) {
         btnClaimRound.disabled = false;
         btnClaimRound.classList.remove("claimed", "hidden");
         btnClaimRound.onclick = () => {
-          openSuggestionModal(p, lastWord, btnClaimRound);
+          openSuggestionModal(p, lastWord, btnClaimRound, rondaActual, game && game.day);
         };
       }
     } else {
@@ -3370,6 +3568,7 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
 
       const roundReclamaciones = Array.isArray(r.reclamaciones) ? r.reclamaciones : [];
       const promptId = r.promptId || (p && p.id) || (r.promptTitle ? resolverPromptId(r.promptTitle) : "");
+      const tituloCategoria = (p && p.texto) || r.promptTitle || "";
       unrecognized.forEach((palabra) => {
         const chip = document.createElement("span");
         chip.className = "unrecognized-chip";
@@ -3378,8 +3577,8 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
         wordSpan.className = "unrecognized-word";
         wordSpan.textContent = `[${palabra}]`;
 
-        const isClaimedLocal = roundReclamaciones.some((rc) => rc && rc.palabra && rc.palabra.trim().toLowerCase() === palabra.trim().toLowerCase() && rc.reclamada === true);
-        const isClaimedGlobal = yaFueReclamadaGlobalmente(promptId, palabra);
+        const isClaimedLocal = roundReclamaciones.some((rc) => rc && rc.palabra && normalizarTexto(rc.palabra) === normalizarTexto(palabra) && rc.reclamada === true);
+        const isClaimedGlobal = yaFueReclamadaGlobalmente(tituloCategoria || promptId, palabra);
         const isClaimed = isClaimedLocal || isClaimedGlobal;
 
         const claimBtn = document.createElement("button");
@@ -3390,7 +3589,7 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
           claimBtn.disabled = true;
         } else {
           claimBtn.textContent = "[ ✉️ Reclamar ]";
-          claimBtn.addEventListener("click", () => openSuggestionModal(p, palabra, claimBtn, i));
+          claimBtn.addEventListener("click", () => openSuggestionModal(p, palabra, claimBtn, i, game && game.day));
         }
 
         chip.append(wordSpan, claimBtn);
@@ -3428,22 +3627,25 @@ async function copyResult() {
 let currentSuggestingPrompt = null;
 let currentClaimButton = null;
 let currentClaimRoundIdx = null;
+let currentClaimDay = null;
 let suggestionCloseTimer = null;
 let modalHideTimer = null;
 
-function openSuggestionModal(prompt, initialWord = "", triggerBtn = null, roundIdx = null) {
+function openSuggestionModal(prompt, initialWord = "", triggerBtn = null, roundIdx = null, dayParam = null) {
   clearTimeout(suggestionCloseTimer);
   clearTimeout(modalHideTimer);
   $("modal-suggestion").classList.remove("closing");
   currentSuggestingPrompt = prompt;
   currentClaimButton = triggerBtn;
   currentClaimRoundIdx = (roundIdx !== null && roundIdx !== undefined) ? roundIdx : null;
+  currentClaimDay = dayParam || ((game && game.day) ? game.day : dayNumber());
 
   const promptEl = $("modal-prompt-text");
+  const promptText = (prompt && (prompt.texto || prompt.promptTitle)) || (typeof prompt === "string" ? prompt : "");
   if ("value" in promptEl) {
-    promptEl.value = prompt.texto;
+    promptEl.value = promptText;
   } else {
-    promptEl.textContent = prompt.texto;
+    promptEl.textContent = promptText;
   }
 
   const wordInput = $("sug-word");
@@ -3452,8 +3654,7 @@ function openSuggestionModal(prompt, initialWord = "", triggerBtn = null, roundI
   const submitBtn = $("btn-submit-sug");
   const statusEl = $("sug-status");
 
-  const promptId = resolverPromptId(prompt);
-  const yaReclamada = initialWord ? yaFueReclamadaGlobalmente(promptId, initialWord) : false;
+  const yaReclamada = initialWord ? yaFueReclamadaGlobalmente(promptText || prompt, initialWord) : false;
 
   if (yaReclamada) {
     wordInput.disabled = true;
@@ -3477,6 +3678,7 @@ function closeSuggestionModal() {
   const modal = $("modal-suggestion");
   currentSuggestingPrompt = null;
   currentClaimButton = null;
+  currentClaimDay = null;
   if (modal.classList.contains("hidden")) return;
   modal.classList.add("closing");
   clearTimeout(modalHideTimer);
@@ -3487,14 +3689,16 @@ function closeSuggestionModal() {
 }
 
 async function transmitirSugerencia(categoria, palabra) {
-  const cleanWord = palabra.trim();
+  const cleanWord = (palabra || "").trim();
   if (!cleanWord) {
     $("sug-word").focus();
     return;
   }
 
+  const promptTitulo = (currentSuggestingPrompt && (currentSuggestingPrompt.texto || currentSuggestingPrompt.promptTitle)) || (typeof categoria === "string" ? categoria : "");
   const promptId = (currentSuggestingPrompt && (currentSuggestingPrompt.id || currentSuggestingPrompt.promptId)) || resolverPromptId(categoria);
-  if (yaFueReclamadaGlobalmente(promptId, cleanWord)) {
+
+  if (yaFueReclamadaGlobalmente(promptTitulo || promptId, cleanWord)) {
     $("sug-word").disabled = true;
     $("btn-submit-sug").disabled = true;
     const statusEl = $("sug-status");
@@ -3513,50 +3717,52 @@ async function transmitirSugerencia(categoria, palabra) {
     return;
   }
 
-  // Desactivar controles para impedir envíos dobles
+  // Desactivar controles para impedir envíos dobles durante el vuelo del fetch
   $("sug-word").disabled = true;
   $("btn-submit-sug").disabled = true;
 
-  // Registrar globalmente de inmediato para prevenir duplicados locales o concurrentes
-  registrarReclamacionGlobal(promptId, cleanWord);
+  // Transmisión centralizada y exclusiva a través de transmitirReclamacion
+  const exito = await transmitirReclamacion(promptId, promptTitulo, cleanWord);
 
-  // Respaldo local opcional en localStorage
-  const localLog = store.get("suggestions_log", []);
-  localLog.push({
-    promptId: promptId,
-    promptTitle: categoria,
-    suggestedWord: cleanWord,
-    suggestedTier: "Sugerido por agente",
-    ts: new Date().toISOString()
-  });
-  store.set("suggestions_log", localLog.slice(-100));
+  if (exito) {
+    // Respaldo local en localStorage
+    const localLog = store.get("suggestions_log", []);
+    localLog.push({
+      promptId: promptId,
+      promptTitle: promptTitulo,
+      suggestedWord: cleanWord,
+      suggestedTier: "Sugerido por agente",
+      ts: new Date().toISOString()
+    });
+    store.set("suggestions_log", localLog.slice(-100));
 
-  if (WEBHOOK_URL && WEBHOOK_URL.trim() !== "") {
-    try {
-      await enviarSugerenciaAGoogle(promptId, cleanWord, categoria);
-    } catch {
-      /* Resiliencia ante modo offline o corte de red */
+    // Actualiza el botón en el DOM a [ ✓ Reclamada ] únicamente cuando transmitirReclamacion devuelva true
+    if (currentClaimButton) {
+      currentClaimButton.textContent = "[ ✓ Reclamada ]";
+      currentClaimButton.disabled = true;
+      currentClaimButton.classList.add("claimed");
+      currentClaimButton.onclick = null;
     }
+
+    markWordAsClaimedInDailyState(cleanWord, currentClaimRoundIdx, currentClaimDay, currentSuggestingPrompt);
+
+    const statusEl = $("sug-status");
+    statusEl.textContent = "// REPORTE TRANSMITIDO CON ÉXITO";
+    statusEl.classList.remove("hidden");
+    sound.playTone(760, "triangle", 0.08, 0.12);
+
+    clearTimeout(suggestionCloseTimer);
+    suggestionCloseTimer = setTimeout(() => {
+      closeSuggestionModal();
+    }, 1500);
+  } else {
+    // Si la transmisión falla, reactivar controles y notificar al agente
+    $("sug-word").disabled = false;
+    $("btn-submit-sug").disabled = false;
+    const statusEl = $("sug-status");
+    statusEl.textContent = "// ERROR EN LA TRANSMISIÓN. REINTENTAR.";
+    statusEl.classList.remove("hidden");
   }
-
-  if (currentClaimButton) {
-    currentClaimButton.textContent = "[ ✓ Reclamada ]";
-    currentClaimButton.disabled = true;
-    currentClaimButton.classList.add("claimed");
-    currentClaimButton.onclick = null;
-  }
-
-  markWordAsClaimedInDailyState(cleanWord, currentClaimRoundIdx);
-
-  const statusEl = $("sug-status");
-  statusEl.textContent = "// REPORTE TRANSMITIDO CON ÉXITO";
-  statusEl.classList.remove("hidden");
-  sound.playTone(760, "triangle", 0.08, 0.12);
-
-  clearTimeout(suggestionCloseTimer);
-  suggestionCloseTimer = setTimeout(() => {
-    closeSuggestionModal();
-  }, 1500);
 }
 
 /* ---------- Menú Principal ---------- */
@@ -4554,6 +4760,7 @@ if (localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
 
 sanearLogroOP06();
 sanearLogroOP10();
+sanearReclamacionesBloqueadas();
 sincronizarReclamacionesDesdeExpedientes();
 auditarLogrosRetroactivos();
 updateAchievementsStatus();
