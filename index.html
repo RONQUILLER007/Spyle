@@ -40,7 +40,7 @@
 
   <!-- Notificación táctica flotante de condecoración / archivo clasificado -->
   <div id="unlock-toast" class="unlock-toast hidden" role="status" aria-live="polite">
-    <div class="toast-kicker">// ARCHIVO CLASIFICADO DESBLOQUEADO</div>
+    <div class="toast-kicker" id="toast-kicker">// ARCHIVO CLASIFICADO DESBLOQUEADO</div>
     <div class="toast-content">
       <span class="toast-icon" id="toast-icon">🎖️</span>
       <div class="toast-body">
@@ -494,6 +494,43 @@
       <button id="btn-close-dev-audit" type="button" class="modal-close" aria-label="Cerrar">✕</button>
     </div>
     <div id="dev-audit-summary" class="dev-audit-summary"></div>
+    <div id="dev-audit-toolbar" class="dev-audit-toolbar">
+      <div class="dev-audit-control-group">
+        <label for="audit-sort" class="audit-label">ORDEN:</label>
+        <select id="audit-sort" class="audit-select" aria-label="Ordenar expedientes">
+          <option value="dia-asc">Día (01 ➔ 19)</option>
+          <option value="dia-desc">Día (19 ➔ 01)</option>
+          <option value="palabras-desc">Palabras (Mayor ➔ Menor)</option>
+          <option value="palabras-asc">Palabras (Menor ➔ Mayor)</option>
+          <option value="alfa-asc">Título (A ➔ Z)</option>
+          <option value="alfa-desc">Título (Z ➔ A)</option>
+          <option value="tematica">Dossier / Temática</option>
+        </select>
+      </div>
+      <div class="dev-audit-control-group">
+        <label for="audit-density" class="audit-label">DENSIDAD:</label>
+        <select id="audit-density" class="audit-select" aria-label="Filtrar por rango de densidad">
+          <option value="todas">Todas (133)</option>
+          <option value="completas">🟢 Completas (> 130)</option>
+          <option value="medias">🟡 Intermedias (100 - 130)</option>
+          <option value="bajas">🔴 Bajas (1 - 99)</option>
+          <option value="vacias">⚪ Vacías (0 palabras)</option>
+        </select>
+      </div>
+      <div class="dev-audit-control-group">
+        <label for="audit-theme" class="audit-label">DOSSIER:</label>
+        <select id="audit-theme" class="audit-select" aria-label="Filtrar por temática">
+          <option value="todas">Todos los Dossieres</option>
+          <option value="pel">🎬 Películas (pel-)</option>
+          <option value="dep">⚽ Deportes (dep-)</option>
+          <option value="geo">🌍 Geografía (geo-)</option>
+          <option value="mus">🎵 Música (mus-)</option>
+          <option value="pal">📖 Palabras y Lenguaje (pal-)</option>
+          <option value="gen">🗂️ General / Miscelánea (gen-)</option>
+        </select>
+      </div>
+    </div>
+    <div id="dev-audit-counter" class="dev-audit-counter">Mostrando: 133/133 expedientes</div>
     <div id="dev-audit-body" class="dev-audit-body"></div>
   </aside>
 

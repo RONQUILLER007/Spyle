@@ -1012,7 +1012,9 @@ h3 {
   flex-direction: column;
   gap: 8px;
   position: relative;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  will-change: transform, box-shadow, border-color;
   border-radius: 2px;
 }
 
@@ -1053,6 +1055,26 @@ h3 {
   color: var(--red-classified);
   text-transform: uppercase;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ach-multiplier-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.16);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
 }
 
 .achievement-card.locked .ach-code {
@@ -2902,7 +2924,7 @@ h3 {
   position: fixed;
   top: 12px;
   right: 12px;
-  width: min(460px, calc(100vw - 24px));
+  width: min(560px, calc(100vw - 24px));
   max-height: calc(100vh - 24px);
   display: flex;
   flex-direction: column;
@@ -2931,6 +2953,78 @@ h3 {
   font-size: 0.7rem;
   color: var(--fg-secondary);
   border-bottom: 1px solid var(--border);
+}
+
+/* Barra de herramientas superior del Auditor de Densidad */
+.dev-audit-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(14, 16, 22, 0.95);
+  border-bottom: 1px solid var(--border);
+}
+
+.dev-audit-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1 1 140px;
+}
+
+.audit-label {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-elite, #e5a93c);
+  text-transform: uppercase;
+}
+
+.audit-select {
+  width: 100%;
+  background: #11141a;
+  border: 1px solid #2d3748;
+  color: #cbd5e1;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  padding: 4px 6px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+
+.audit-select:hover {
+  border-color: var(--gold-elite, #e5a93c);
+  color: #f8fafc;
+  background: #151821;
+}
+
+.audit-select:focus {
+  border-color: var(--gold-elite, #e5a93c);
+  box-shadow: 0 0 8px rgba(229, 169, 60, 0.35);
+  color: #ffffff;
+}
+
+.audit-select option {
+  background: #11141a;
+  color: #cbd5e1;
+  font-family: var(--font-mono, monospace);
+  padding: 4px;
+}
+
+.dev-audit-counter {
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--gold-elite, #e5a93c);
+  background: rgba(229, 169, 60, 0.06);
+  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .dev-audit-body {
@@ -3072,7 +3166,9 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 4px;
   text-align: left;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  will-change: transform, box-shadow;
   position: relative;
   overflow: hidden;
 }
@@ -3449,4 +3545,245 @@ h3 {
   color: #ff8a80;
   font-weight: 700;
   word-break: break-word;
+}
+
+
+/* ==========================================================================
+   SISTEMA DE MICROINTERACCIONES TÁCTICAS (:HOVER) Y REACTIVIDAD FLUIDA (60 FPS)
+   ========================================================================== */
+
+/* --- 1. Reactividad Dinámica de Emojis e Iconos Tácticos --- */
+.round-emoji,
+.tactical-icon,
+.ach-icon,
+.icono-condecoracion,
+.key-icon,
+.toast-icon,
+.stamp-icon,
+.icon-btn,
+.btn-main-line > span.emoji,
+.cal-emoji-item,
+.unrec-item-icon {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.22s ease;
+  will-change: transform, filter;
+}
+
+/* Escalado elástico suave y resplandor táctico sutil */
+.round-emoji:hover,
+.tactical-icon:hover,
+.ach-icon:hover,
+.icono-condecoracion:hover,
+.toast-icon:hover,
+.stamp-icon:hover {
+  transform: scale(1.28) rotate(-4deg);
+  filter: drop-shadow(0 0 6px rgba(229, 169, 60, 0.75));
+}
+
+/* Destello dorado especial para llaves 🔑, medallas 🎖️ o iconos con clase gold */
+.gold-emoji:hover,
+.gold-icon:hover,
+.key-icon:hover,
+.round-emoji.gold-emoji:hover,
+.tactical-icon.gold-icon:hover,
+.ach-icon:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.92));
+}
+
+/* --- 2. Restauración de Hover en Condecoraciones (Desclasificadas y Bloqueadas) --- */
+.achievement-card,
+.tarjeta-condecoracion {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.achievement-card:hover,
+.tarjeta-condecoracion:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Tarjetas desclasificadas / desbloqueadas */
+.achievement-card.unlocked:hover,
+.achievement-card.desclasificado:hover,
+.achievement-card.condecoracion-desbloqueada:hover,
+.tarjeta-condecoracion.desclasificado:hover,
+.tarjeta-condecoracion.condecoracion-desbloqueada:hover {
+  border-color: #e5a93c !important;
+  box-shadow: 0 6px 20px rgba(229, 169, 60, 0.25), inset 0 0 15px rgba(229, 169, 60, 0.08) !important;
+}
+
+/* Tarjetas bloqueadas / clasificadas */
+.achievement-card.locked:hover,
+.tarjeta-condecoracion.locked:hover,
+.tarjeta-condecoracion.clasificado:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55), inset 0 0 10px rgba(255, 255, 255, 0.02);
+  opacity: 0.92;
+}
+
+/* Animación de la insignia / icono superior en hover */
+.achievement-card:hover .ach-icon,
+.achievement-card:hover .icono-condecoracion,
+.achievement-card:hover .key-icon,
+.tarjeta-condecoracion:hover .ach-icon,
+.tarjeta-condecoracion:hover .icono-condecoracion,
+.tarjeta-condecoracion:hover .key-icon {
+  transform: scale(1.25) rotate(8deg);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+  filter: drop-shadow(0 0 8px rgba(229, 169, 60, 0.8));
+}
+
+/* --- 3. Animación en Tarjetas del Archivo Histórico y Expedientes --- */
+.calendar-day-card,
+.card-dia {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.calendar-day-card:hover:not(.status-future),
+.card-dia:hover:not(.status-future) {
+  transform: translateY(-4px);
+  border-color: rgba(229, 169, 60, 0.65);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(229, 169, 60, 0.2);
+}
+
+.calendar-day-card.status-completed:hover,
+.card-dia.status-completed:hover {
+  border-color: #e5a93c !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65), 0 0 16px rgba(229, 169, 60, 0.28), inset 0 0 12px rgba(229, 169, 60, 0.05);
+}
+
+.calendar-day-card.status-pending:hover,
+.card-dia.status-pending:hover {
+  border-color: rgba(255, 170, 85, 0.65);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 12px rgba(255, 170, 85, 0.22);
+}
+
+/* Fila de 7 iconos de ronda con rebote táctico individual */
+.cal-day-emojis,
+#final-emojis {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-height: 1.4em;
+}
+
+.cal-day-emojis:hover .round-emoji,
+#final-emojis:hover .round-emoji {
+  opacity: 0.85;
+}
+
+.cal-day-emojis .round-emoji,
+#final-emojis .round-emoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  padding: 1px 2px;
+  cursor: pointer;
+  user-select: none;
+  transform-origin: center;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.22s ease, opacity 0.2s ease;
+  will-change: transform, filter;
+}
+
+.cal-day-emojis .round-emoji:hover,
+#final-emojis .round-emoji:hover {
+  opacity: 1 !important;
+  transform: scale(1.35) translateY(-2px);
+  filter: drop-shadow(0 0 6px rgba(229, 169, 60, 0.8));
+  z-index: 5;
+}
+
+.cal-day-emojis .round-emoji.gold-emoji:hover,
+#final-emojis .round-emoji.gold-emoji:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.95));
+}
+
+/* --- 4. Botones, Chips y Badges Tácticos --- */
+.cal-btn-action,
+.btn-claim-inline,
+.btn-claim-round,
+.btn-claim-submit,
+.btn-tactico,
+.btn.primary-action,
+.btn.big {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease, background 0.18s ease, color 0.18s ease;
+  will-change: transform, box-shadow;
+}
+
+.cal-btn-action:hover:not(:disabled),
+.btn-claim-inline:hover:not(:disabled),
+.btn-claim-round:hover:not(:disabled),
+.btn-tactico:hover:not(:disabled),
+.btn.primary-action:hover:not(:disabled),
+.btn.big:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.02);
+  filter: brightness(1.12);
+}
+
+.cal-btn-action.btn-view:hover {
+  background: #e5a93c !important;
+  color: #0b0c10 !important;
+  border-color: #ffd875 !important;
+  box-shadow: 0 0 14px rgba(229, 169, 60, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cal-btn-action.btn-infiltrate:hover {
+  background: #2ea043 !important;
+  color: #ffffff !important;
+  border-color: #69db7c !important;
+  box-shadow: 0 0 14px rgba(46, 160, 67, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-claim-inline:hover:not(:disabled) {
+  background: rgba(229, 169, 60, 0.22) !important;
+  border-color: #e5a93c !important;
+  color: #ffd875 !important;
+  box-shadow: 0 0 12px rgba(229, 169, 60, 0.38) !important;
+}
+
+.btn-claim-inline.claimed,
+.btn-claim-inline:disabled {
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.btn-claim-inline.claimed:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 0 8px rgba(46, 160, 67, 0.35);
+}
+
+/* Puntos totales, badges y sellos con iluminación perimetral sutil */
+.cal-badge,
+.ach-status-badge,
+.cal-day-score,
+.judge-seal,
+.side-telemetry-box,
+.ach-multiplier-badge,
+.unrecognized-chip {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.cal-badge:hover,
+.ach-status-badge:hover,
+.ach-multiplier-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(229, 169, 60, 0.45);
+  filter: brightness(1.15);
+}
+
+.cal-badge.completed:hover {
+  box-shadow: 0 0 12px rgba(229, 169, 60, 0.5);
+  border-color: #e5a93c;
+}
+
+.cal-day-score:hover {
+  transform: scale(1.08);
+  text-shadow: 0 0 10px rgba(255, 216, 117, 0.6);
+  display: inline-block;
+}
+
+.judge-seal:hover {
+  transform: scale(1.015);
+  box-shadow: 0 0 20px rgba(229, 169, 60, 0.25), inset 0 0 14px rgba(229, 169, 60, 0.08);
 }

@@ -6,8 +6,173 @@
    ========================================================================== */
 const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx9Supz_QAPtnOT0afclWaisYv-bA80Tx16GUlxI45xqGCjN21VwzvyPDVKF4bEJv4pIQ/exec';
 
-function enviarSugerenciaAGoogle(promptTitulo, palabraSugerida) {
+/* ==========================================================================
+   REGISTRO HISTÓRICO GLOBAL PERMANENTE DE RECLAMACIONES (ANTI-DUPLICADOS)
+   ========================================================================== */
+function normalizarTexto(palabra) {
+  if (!palabra) return "";
+  let s = String(palabra).toLowerCase().trim();
+  s = s.replace(/n\u0303/g, "\u0001").replace(/ñ/g, "\u0001");
+  s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  s = s.replace(/\u0001/g, "ñ");
+  s = s.replace(/[-_./\\]+/g, " ");
+  s = s.replace(/[^a-z0-9ñ\s]/g, " ").replace(/\s+/g, " ").trim();
+  return s;
+}
+
+function resolverPromptId(promptOrId) {
+  if (!promptOrId) return "";
+  if (typeof promptOrId === "object") {
+    if (promptOrId.id) return String(promptOrId.id).trim().toLowerCase();
+    if (promptOrId.promptId) return String(promptOrId.promptId).trim().toLowerCase();
+  }
+  const str = String(promptOrId).trim();
+  if (/^[a-z0-9]+-[a-z0-9]+$/i.test(str)) {
+    return str.toLowerCase();
+  }
+  if (typeof PROMPTS !== "undefined" && Array.isArray(PROMPTS)) {
+    const found = PROMPTS.find((pr) => pr && (pr.texto === str || pr.id === str));
+    if (found && found.id) return found.id.toLowerCase();
+  }
+  return str.toLowerCase();
+}
+
+function obtenerReclamacionesGlobales() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem('spyle_reclamaciones_globales')) || []);
+  } catch {
+    return new Set();
+  }
+}
+
+function registrarReclamacionGlobal(promptId, palabra) {
+  const pId = resolverPromptId(promptId);
+  const globales = obtenerReclamacionesGlobales();
+  const clave = `${pId}::${normalizarTexto(palabra)}`;
+  globales.add(clave);
+  try {
+    localStorage.setItem('spyle_reclamaciones_globales', JSON.stringify([...globales]));
+  } catch (err) {
+    console.warn("Error guardando spyle_reclamaciones_globales:", err);
+  }
+}
+
+function yaFueReclamadaGlobalmente(promptId, palabra) {
+  const pId = resolverPromptId(promptId);
+  const globales = obtenerReclamacionesGlobales();
+  const clave = `${pId}::${normalizarTexto(palabra)}`;
+  return globales.has(clave);
+}
+
+function sincronizarReclamacionesDesdeExpedientes() {
+  try {
+    const globales = obtenerReclamacionesGlobales();
+    let huboNuevas = false;
+
+    // 1. Escanear todas las claves en localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!key) continue;
+
+      if (key.startsWith("spyle_expediente_") || key.startsWith("spyle_daily_state_")) {
+        try {
+          const raw = localStorage.getItem(key);
+          if (!raw) continue;
+          const exp = JSON.parse(raw);
+          if (exp && Array.isArray(exp.rondas)) {
+            exp.rondas.forEach((r) => {
+              if (!r) return;
+              const pId = resolverPromptId(r.promptId || (r.prompt && r.prompt.id));
+              if (!pId) return;
+
+              if (Array.isArray(r.reclamaciones)) {
+                r.reclamaciones.forEach((rc) => {
+                  if (rc && rc.reclamada === true && rc.palabra) {
+                    const clave = `${pId}::${normalizarTexto(rc.palabra)}`;
+                    if (!globales.has(clave)) {
+                      globales.add(clave);
+                      huboNuevas = true;
+                    }
+                  }
+                });
+              }
+            });
+          }
+        } catch (e) {
+          console.warn("Error migrando reclamaciones de expediente:", key, e);
+        }
+      }
+    }
+
+    // 2. Escaneo explícito de seguridad para días 1 al 19
+    for (let d = 1; d <= 19; d++) {
+      const raw = localStorage.getItem(`spyle_expediente_dia${d}`) || localStorage.getItem(`spyle_daily_state_dia${d}`);
+      if (raw) {
+        try {
+          const exp = JSON.parse(raw);
+          if (exp && Array.isArray(exp.rondas)) {
+            exp.rondas.forEach((r) => {
+              if (!r) return;
+              const pId = resolverPromptId(r.promptId || (r.prompt && r.prompt.id));
+              if (!pId) return;
+
+              if (Array.isArray(r.reclamaciones)) {
+                r.reclamaciones.forEach((rc) => {
+                  if (rc && rc.reclamada === true && rc.palabra) {
+                    const clave = `${pId}::${normalizarTexto(rc.palabra)}`;
+                    if (!globales.has(clave)) {
+                      globales.add(clave);
+                      huboNuevas = true;
+                    }
+                  }
+                });
+              }
+            });
+          }
+        } catch {}
+      }
+    }
+
+    // 3. Escaneo de suggestions_log si existiese
+    try {
+      const logs = store.get("suggestions_log", []);
+      if (Array.isArray(logs)) {
+        logs.forEach((item) => {
+          if (item && item.suggestedWord) {
+            const pId = resolverPromptId(item.promptId || item.promptTitle);
+            if (pId) {
+              const clave = `${pId}::${normalizarTexto(item.suggestedWord)}`;
+              if (!globales.has(clave)) {
+                globales.add(clave);
+                huboNuevas = true;
+              }
+            }
+          }
+        });
+      }
+    } catch {}
+
+    if (huboNuevas) {
+      localStorage.setItem("spyle_reclamaciones_globales", JSON.stringify([...globales]));
+      console.log(`// RECLAMACIONES GLOBALES: Sincronizadas ${globales.size} reclamaciones únicas.`);
+    }
+  } catch (err) {
+    console.warn("Error en sincronizarReclamacionesDesdeExpedientes:", err);
+  }
+}
+
+function enviarSugerenciaAGoogle(promptIdOrTitle, palabraSugerida, optionalTitle = null) {
+  const promptId = resolverPromptId(promptIdOrTitle);
+  const promptTitulo = optionalTitle || (typeof promptIdOrTitle === "object" && promptIdOrTitle.texto)
+    ? (optionalTitle || promptIdOrTitle.texto)
+    : (typeof PROMPTS !== "undefined" && PROMPTS.find(pr => pr.id === promptId)?.texto || promptIdOrTitle);
+
+  // Barrera final en el webhook: rechazo absoluto de duplicados
+  if (yaFueReclamadaGlobalmente(promptId, palabraSugerida)) return Promise.resolve(null);
+  registrarReclamacionGlobal(promptId, palabraSugerida);
+
   const payload = JSON.stringify({
+    promptId: promptId,
     promptTitle: promptTitulo,
     suggestedWord: palabraSugerida
   });
@@ -637,23 +802,52 @@ let isShowingAchievementToast = false;
 let toastHideTimeout = null;
 
 function unlockAchievement(id) {
-  const ach = ACHIEVEMENTS.find((a) => a.id === id);
+  const ach = ACHIEVEMENTS.find((a) => a.id === id || a.codigo === id);
   if (!ach) return null;
 
   const current = getAchievements();
-  if (current[id] && current[id].unlocked) {
-    return null; // Ya obtenido previamente
+  const todayIso = (typeof getTodayISODate === "function") ? getTodayISODate() : new Date().toISOString().slice(0, 10);
+  const nowIso = new Date().toISOString();
+
+  let isRevalidation = false;
+  let entry = current[ach.id];
+
+  if (entry && (entry.unlocked || entry.desbloqueado)) {
+    // Ya obtenido previamente: revalidación acumulativa
+    isRevalidation = true;
+    entry.veces = (typeof entry.veces === "number" ? entry.veces : 1) + 1;
+    if (!Array.isArray(entry.historialFechas)) {
+      entry.historialFechas = entry.unlockedAt ? [entry.unlockedAt.slice(0, 10)] : [todayIso];
+    }
+    entry.historialFechas.push(todayIso);
+    entry.ultimoDesbloqueo = nowIso;
+    entry.desbloqueado = true;
+    entry.unlocked = true;
+  } else {
+    // Primer desbloqueo
+    entry = {
+      id: ach.codigo || ach.id,
+      unlocked: true,
+      desbloqueado: true,
+      veces: 1,
+      historialFechas: [todayIso],
+      unlockedAt: nowIso
+    };
+    current[ach.id] = entry;
   }
 
-  const unlockedAt = new Date().toISOString();
-  current[id] = { unlocked: true, unlockedAt };
   saveAchievements(current);
 
   // Alerta sonora táctica de condecoración
   sound.unlockSound();
 
   // Encolar y mostrar notificación flotante
-  achievementToastQueue.push({ ...ach, unlockedAt });
+  achievementToastQueue.push({
+    ...ach,
+    isRevalidation,
+    veces: entry.veces,
+    unlockedAt: nowIso
+  });
   processToastQueue();
 
   // Actualizar indicadores visuales de logros si están montados
@@ -674,13 +868,22 @@ function showAchievementToast(ach) {
   isShowingAchievementToast = true;
   if (toastHideTimeout) clearTimeout(toastHideTimeout);
 
+  const kickerEl = $("toast-kicker");
   const iconEl = $("toast-icon");
   const titleEl = $("toast-title");
   const descEl = $("toast-desc");
 
   if (iconEl) iconEl.textContent = ach.icono || "🎖️";
-  if (titleEl) titleEl.textContent = `CONDECORACIÓN: ${ach.titulo.toUpperCase()}`;
-  if (descEl) descEl.textContent = `${ach.codigo} · Desclasificado e incorporado a los Archivos`;
+
+  if (ach.isRevalidation) {
+    if (kickerEl) kickerEl.textContent = "// PROTOCOLO TÁCTICO REVALIDADO";
+    if (titleEl) titleEl.textContent = `// PROTOCOLO REVALIDADO: ${ach.titulo.toUpperCase()} (x${ach.veces})`;
+    if (descEl) descEl.textContent = `${ach.codigo} · Condecoración revalidada y acumulada en los archivos [x${ach.veces}]`;
+  } else {
+    if (kickerEl) kickerEl.textContent = "// ARCHIVO CLASIFICADO DESBLOQUEADO";
+    if (titleEl) titleEl.textContent = `CONDECORACIÓN: ${ach.titulo.toUpperCase()}`;
+    if (descEl) descEl.textContent = `${ach.codigo} · Desclasificado e incorporado a los Archivos`;
+  }
 
   toast.classList.remove("hidden", "toast-closing");
 
@@ -772,28 +975,95 @@ function verificarElegibilidadOP06(target) {
   return false;
 }
 
+/* ==========================================================================
+   FUNCIÓN CANÓNICA COMPARTIDA DE ICONOS DE EVALUACIÓN (CARD VS EXPEDIENTE)
+   ========================================================================== */
+function obtenerIconoRonda(ronda) {
+  if (!ronda) return "⬛";
+
+  // 1. 🔑 (Llave): Exclusivamente si la palabra introducida fue la clave de un Easter Egg
+  if (ronda.esEasterEgg === true || ronda.isEasterEgg === true) {
+    return "🔑";
+  }
+
+  const pts = typeof ronda.puntosObtenidos === "number"
+    ? ronda.puntosObtenidos
+    : (typeof ronda.points === "number" ? ronda.points : 0);
+
+  const isFail = ronda.tier === "fail" || pts === 0;
+  if (isFail) {
+    return "⬛";
+  }
+
+  // Puntos base antes de multiplicador de velocidad (+20%) o comodín
+  let basePts = typeof ronda.puntosBase === "number" ? ronda.puntosBase : null;
+  if (basePts === null) {
+    if (ronda.tier && TIERS[ronda.tier] && typeof TIERS[ronda.tier].pts === "number") {
+      basePts = TIERS[ronda.tier].pts;
+    } else if (ronda.speedBonus || ronda.bonusVelocidad) {
+      basePts = Math.round(pts / 1.2);
+    } else {
+      basePts = pts;
+    }
+  }
+
+  // 2. 🎖️ (Medalla de honor): Si la puntuación base fue de 100 pts (Agente Durmiente genuino) y NO era Easter Egg
+  if (basePts >= 100 || pts >= 100 || ronda.tier === "trillion") {
+    return "🎖️";
+  }
+
+  // 3. 📰 (Periódico): Rango obvio / 10 pts (incluye 12 pts por velocidad)
+  if (basePts === 10 || pts === 10 || pts === 12 || ronda.tier === "plankton") {
+    return "📰";
+  }
+
+  // 4. 📁 (Carpeta): Rango estándar / 45 pts (incluye 54 pts por velocidad)
+  if (basePts === 45 || pts === 45 || pts === 54 || ronda.tier === "schooler") {
+    return "📁";
+  }
+
+  // 5. 🎭 (Máscara): Si obtuvo entre 45 y 85 pts (o 25 pts según la escala de infiltración)
+  if (basePts === 25 || pts === 25 || pts === 30 || basePts === 65 || basePts === 85 ||
+      ronda.tier === "tooclever" || ronda.tier === "rare" || ronda.tier === "deepcut") {
+    return "🎭";
+  }
+
+  // Fallback escalonado
+  if (pts >= 45) return "📁";
+  if (pts >= 25) return "🎭";
+  return "📰";
+}
+
 function comprobarLogros() {
   if (!game || !Array.isArray(game.results)) return;
-  // Aislamiento total: estrictamente prohibido evaluar en modo lectura, histórico o restaurado
+  // Aislamiento total: estrictamente prohibido evaluar en modo lectura de expediente
   if (game._readOnly || game._isHistoricViewer || game._logrosEvaluados) return;
 
   const totalRounds = game.prompts ? game.prompts.length : ROUNDS;
   if (game.results.length < totalRounds) return;
 
-  // Marcar como evaluado para que solo se invoque una única vez en la partida en vivo
+  // Marcar como evaluado para que solo se invoque una única vez en la partida en vivo (diaria o histórica)
   game._logrosEvaluados = true;
 
   const pts = totalPoints();
 
+  // Función de tolerancia para términos de 100 pts (evita anulación por bonus de velocidad +20% -> 120 pts)
+  const isAgenteDurmiente100 = (r) => {
+    if (!r) return false;
+    const rPts = typeof r.points === "number" ? r.points : (r.puntosObtenidos || 0);
+    const basePts = typeof r.puntosBase === "number" ? r.puntosBase : (TIERS[r.tier]?.pts || Math.round(rPts / 1.2));
+    return basePts === 100 || rPts >= 100 || r.puntosBase === 100 || r.puntos >= 100 || (TIERS[r.tier] && TIERS[r.tier].pts === 100);
+  };
+
   // OP-01: Doble Agente Durmiente (al menos 2 rondas de 100 pts)
-  const count100 = game.results.filter((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100).length;
+  const count100 = game.results.filter(isAgenteDurmiente100).length;
   if (count100 >= 2) unlockAchievement("logro_doble_centenario");
 
   // OP-02: Umbral 500
   if (pts >= 500) unlockAchievement("logro_umbral_500");
 
   // OP-03: Operativo Impecable (7 rondas de 100 pts)
-  const isPleno700 = game.results.length === ROUNDS && game.results.every((r) => TIERS[r.tier] && TIERS[r.tier].pts === 100);
+  const isPleno700 = game.results.length === ROUNDS && game.results.every(isAgenteDurmiente100);
   if (isPleno700 && pts >= 700) unlockAchievement("logro_pleno_700");
 
   // OP-05: Carrera de Espías (velocidad en las 7 rondas)
@@ -826,7 +1096,7 @@ function comprobarLogros() {
     history[game.day] = {
       day: game.day,
       score: pts,
-      emojis: game.results.map((r) => TIERS[r.tier]?.emoji || "⬛").join(""),
+      emojis: game.results.map(obtenerIconoRonda).join(""),
       done: true,
       timestamp: Date.now()
     };
@@ -869,6 +1139,338 @@ function sanearLogroOP06() {
   }
 }
 
+// Rutina de saneamiento de OP-10 (Desclasificación Total) para corregir contadores inflados por recargas
+function sanearLogroOP10() {
+  try {
+    const achs = getAchievements();
+    if (!achs) return;
+
+    const op10 = achs["logro_criptografo"] || achs["CONDECORACIÓN // OP-10"] || achs["OP-10"];
+    if (!op10) return;
+
+    // Obtener lista previa de días descubiertos
+    let diasDescubiertos = [];
+    try {
+      const rawEE = localStorage.getItem("spyle_easter_eggs_descubiertos");
+      if (rawEE) diasDescubiertos = JSON.parse(rawEE);
+    } catch {}
+    if (!Array.isArray(diasDescubiertos)) diasDescubiertos = [];
+
+    const diasSet = new Set(diasDescubiertos);
+
+    // Inspeccionar expedientes de días guardados (1..19) para detectar días reales donde se jugó un Easter Egg
+    for (let d = 1; d <= 19; d++) {
+      const dayKey = "spyle_expediente_dia" + d;
+      const legacyKey = "spyle_daily_state_dia" + d;
+      let exp = null;
+      try {
+        const raw = localStorage.getItem(dayKey) || localStorage.getItem(legacyKey);
+        if (raw) exp = JSON.parse(raw);
+      } catch {}
+
+      if (exp && Array.isArray(exp.rondas)) {
+        const mission = (typeof DAILY_MISSIONS !== "undefined")
+          ? (DAILY_MISSIONS[d] || DAILY_MISSIONS[`dia_${d}`])
+          : null;
+        const eeWord = mission && mission.easterEgg ? normalize(mission.easterEgg.word) : null;
+
+        const jugoEasterEgg = exp.rondas.some((r) => {
+          if (!r) return false;
+          if (r.esEasterEgg === true || r.isEasterEgg === true) return true;
+          if (eeWord && r.respuestaDada && normalize(r.respuestaDada) === eeWord) return true;
+          return false;
+        });
+
+        if (jugoEasterEgg) {
+          diasSet.add("dia" + d);
+        }
+      }
+    }
+
+    // Si el archivo histórico fue desclasificado o existe expediente con 'malaui' (Día 4)
+    if (localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
+      diasSet.add("dia4");
+    }
+
+    const uniqueDays = Array.from(diasSet);
+    // Días reales únicos (actualmente solo el Día 4 con malaui)
+    const vecesReales = Math.max(1, uniqueDays.length);
+
+    let huboCambios = false;
+    if (typeof op10.veces === "number" && op10.veces > vecesReales) {
+      console.warn(`// AUDITORÍA DE CONDECORACIONES: OP-10 (Desclasificación Total) saneada de x${op10.veces} a x${vecesReales}.`);
+      op10.veces = vecesReales;
+      huboCambios = true;
+    } else if (op10.veces === undefined) {
+      op10.veces = vecesReales;
+      huboCambios = true;
+    }
+
+    localStorage.setItem("spyle_easter_eggs_descubiertos", JSON.stringify(uniqueDays));
+    op10.diasDescubiertos = uniqueDays;
+
+    if (huboCambios) {
+      achs["logro_criptografo"] = op10;
+      saveAchievements(achs);
+      updateAchievementsStatus();
+    }
+  } catch (err) {
+    console.warn("Error en saneamiento de OP-10:", err);
+  }
+}
+
+/* ==========================================================================
+   MOTOR DE ESCANEO HISTÓRICO GLOBAL Y VALIDACIÓN RETROACTIVA DE LOGROS
+   ========================================================================== */
+function auditarLogrosRetroactivos() {
+  try {
+    const achs = getAchievements() || {};
+    let huboCambios = false;
+
+    // 1. Recopilación de todos los expedientes guardados en localStorage
+    const expedientesMap = new Map();
+
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!key) continue;
+      if (key.startsWith("spyle_expediente_") || key.startsWith("spyle_daily_state_")) {
+        const dMatch = key.match(/(?:dia_?(\d+)|_(\d+))$/);
+        const dayNum = dMatch ? (dMatch[1] || dMatch[2]) : null;
+        const dayId = dayNum ? `dia${dayNum}` : key;
+        try {
+          const raw = localStorage.getItem(key);
+          if (raw) {
+            const exp = JSON.parse(raw);
+            if (exp && (exp.completado || exp.done || (Array.isArray(exp.rondas) && exp.rondas.length === 7))) {
+              if (dayNum && !exp.diaId) exp.diaId = `dia${dayNum}`;
+              if (!expedientesMap.has(dayId) || key.startsWith("spyle_expediente_")) {
+                expedientesMap.set(dayId, exp);
+              }
+            }
+          }
+        } catch (e) {
+          console.warn("Error parseando expediente en auditoría:", key, e);
+        }
+      }
+    }
+
+    // Escaneo explícito de seguridad para días 1 al 19
+    for (let d = 1; d <= 19; d++) {
+      const dayId = `dia${d}`;
+      if (!expedientesMap.has(dayId)) {
+        const raw = localStorage.getItem(`spyle_expediente_dia${d}`) || localStorage.getItem(`spyle_daily_state_dia${d}`);
+        if (raw) {
+          try {
+            const exp = JSON.parse(raw);
+            if (exp && (exp.completado || exp.done || (Array.isArray(exp.rondas) && exp.rondas.length === 7))) {
+              if (!exp.diaId) exp.diaId = dayId;
+              expedientesMap.set(dayId, exp);
+            }
+          } catch {}
+        }
+      }
+    }
+
+    const expedientes = Array.from(expedientesMap.values());
+
+    // Helper unificado de detección de términos de 100 pts (base o con bonus velocidad)
+    const isAgenteDurmiente100 = (r) => {
+      if (!r) return false;
+      const rPts = typeof r.puntosObtenidos === "number" ? r.puntosObtenidos : (typeof r.points === "number" ? r.points : 0);
+      const basePts = typeof r.puntosBase === "number" ? r.puntosBase : (TIERS[r.tier]?.pts || Math.round(rPts / 1.2));
+      if (basePts === 100 || rPts >= 100 || r.puntosBase === 100 || r.puntos >= 100 || (TIERS[r.tier] && TIERS[r.tier].pts === 100)) {
+        return true;
+      }
+      if (r.promptId && r.respuestaDada && typeof PROMPTS !== "undefined") {
+        const p = PROMPTS.find((pr) => pr.id === r.promptId);
+        if (p && p.answers) {
+          const norm = typeof normalize === "function" ? normalize(r.respuestaDada) : r.respuestaDada.trim().toLowerCase();
+          if (p.answers[norm] === 100 || p.answers[r.respuestaDada.trim().toLowerCase()] === 100) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+
+    // Helper: aplicar y registrar silenciosamente condecoraciones retroactivas
+    const aplicarLogro = (id, count, fechaRef = null) => {
+      const ach = ACHIEVEMENTS.find((a) => a.id === id || a.codigo === id);
+      if (!ach) return;
+      const todayIso = (typeof getTodayISODate === "function") ? getTodayISODate() : new Date().toISOString().slice(0, 10);
+      const fecha = fechaRef || todayIso;
+
+      let entry = achs[ach.id];
+      if (!entry) {
+        entry = {
+          id: ach.codigo || ach.id,
+          unlocked: true,
+          desbloqueado: true,
+          veces: count,
+          historialFechas: [fecha],
+          unlockedAt: fecha
+        };
+        achs[ach.id] = entry;
+        huboCambios = true;
+      } else {
+        let changed = false;
+        if (!entry.unlocked || !entry.desbloqueado) {
+          entry.unlocked = true;
+          entry.desbloqueado = true;
+          changed = true;
+        }
+        if (typeof entry.veces !== "number" || entry.veces < count) {
+          entry.veces = count;
+          changed = true;
+        }
+        if (!entry.unlockedAt) {
+          entry.unlockedAt = fecha;
+          changed = true;
+        }
+        if (changed) huboCambios = true;
+      }
+    };
+
+    // 2. Evaluación de las 10 condecoraciones (OP-01 a OP-10)
+
+    // OP-01 (logro_doble_centenario): Doble Agente Durmiente (>= 2 respuestas de 100 pts en una misma misión)
+    const misionesDobleDurmiente = expedientes.filter((exp) => {
+      if (!Array.isArray(exp.rondas)) return false;
+      const count100 = exp.rondas.filter(isAgenteDurmiente100).length;
+      return count100 >= 2;
+    });
+    if (misionesDobleDurmiente.length > 0) {
+      aplicarLogro("logro_doble_centenario", misionesDobleDurmiente.length, misionesDobleDurmiente[0].fecha || null);
+    }
+
+    // OP-02 (logro_umbral_500): Informe Sobresaliente (>= 500 puntos en una sola misión)
+    const misiones500 = expedientes.filter((exp) => {
+      const pts = typeof exp.puntosTotales === "number" ? exp.puntosTotales : (exp.puntosTotalesDia || 0);
+      return pts >= 500;
+    });
+    if (misiones500.length > 0) {
+      aplicarLogro("logro_umbral_500", misiones500.length, misiones500[0].fecha || null);
+    }
+
+    // OP-03 (logro_pleno_700): Operativo Impecable (7 rondas de 100 pts con >= 700 pts)
+    const misiones700 = expedientes.filter((exp) => {
+      if (!Array.isArray(exp.rondas) || exp.rondas.length < 7) return false;
+      const pts = typeof exp.puntosTotales === "number" ? exp.puntosTotales : (exp.puntosTotalesDia || 0);
+      return pts >= 700 && exp.rondas.every(isAgenteDurmiente100);
+    });
+    if (misiones700.length > 0) {
+      aplicarLogro("logro_pleno_700", misiones700.length, misiones700[0].fecha || null);
+    }
+
+    // OP-04 (logro_reflejos_frio): Gatillo Rápido (<2s)
+    const misionesReflejosFrio = expedientes.filter((exp) => {
+      if (!Array.isArray(exp.rondas)) return false;
+      return exp.rondas.some((r) => r.reflejosFrio || (typeof r.elapsedMs === "number" && r.elapsedMs < 2000 && r.puntosObtenidos > 0));
+    });
+    if (misionesReflejosFrio.length > 0) {
+      aplicarLogro("logro_reflejos_frio", misionesReflejosFrio.length, misionesReflejosFrio[0].fecha || null);
+    }
+
+    // OP-05 (logro_pleno_velocidad): Carrera de Espías (7/7 rondas con bonus de velocidad)
+    const misionesPlenoVelocidad = expedientes.filter((exp) => {
+      if (!Array.isArray(exp.rondas) || exp.rondas.length < 7) return false;
+      return exp.rondas.every((r) => Boolean(r.bonusVelocidad || r.speedBonus));
+    });
+    if (misionesPlenoVelocidad.length > 0) {
+      aplicarLogro("logro_pleno_velocidad", misionesPlenoVelocidad.length, misionesPlenoVelocidad[0].fecha || null);
+    }
+
+    // OP-06 (logro_tiro_limpio): Sin Rastro (7 rondas sin fallos, sin tiempo agotado y sin intentos no reconocidos)
+    const misionesTiroLimpio = expedientes.filter((exp) => verificarElegibilidadOP06(exp));
+    if (misionesTiroLimpio.length > 0) {
+      aplicarLogro("logro_tiro_limpio", misionesTiroLimpio.length, misionesTiroLimpio[0].fecha || null);
+    }
+
+    // OP-07 (logro_al_limite): Extracción In Extremis (acierto con <= 1,0s restante)
+    const misionesAlLimite = expedientes.filter((exp) => {
+      if (!Array.isArray(exp.rondas)) return false;
+      return exp.rondas.some((r) => r.alLimite || (typeof r.timeLeftMs === "number" && r.timeLeftMs <= 1000 && r.puntosObtenidos > 0));
+    });
+    if (misionesAlLimite.length > 0) {
+      aplicarLogro("logro_al_limite", misionesAlLimite.length, misionesAlLimite[0].fecha || null);
+    }
+
+    // OP-08 (logro_comodin_dorado): Infiltración Duplicada (comodín exitoso con >= 65 pts)
+    const misionesComodin = expedientes.filter((exp) => {
+      if (!Array.isArray(exp.rondas)) return false;
+      return exp.rondas.some((r) => r.wildcardDoubled || r.comodinDuplicado || (r.puntosObtenidos >= 130 && r.comodinUsado));
+    });
+    if (misionesComodin.length > 0) {
+      aplicarLogro("logro_comodin_dorado", misionesComodin.length, misionesComodin[0].fecha || null);
+    }
+
+    // OP-09 (logro_veterano_red): Red Durmiente (>= 5 misiones completas y >= 2.000 pts totales)
+    const stats = store.get("player_stats", { completedMissions: 0, totalHistoricalPoints: 0 });
+    const dailyHist = store.get("daily_history", {}) || {};
+    const ptsTotalesExpedientes = expedientes.reduce((acc, exp) => acc + (typeof exp.puntosTotales === "number" ? exp.puntosTotales : (exp.puntosTotalesDia || 0)), 0);
+    const totalMisiones = Math.max(expedientes.length, stats.completedMissions || 0, Object.keys(dailyHist).length);
+    const totalPuntos = Math.max(ptsTotalesExpedientes, getPuntosHistoricosTotales(), stats.totalHistoricalPoints || 0);
+    if (totalMisiones >= 5 && totalPuntos >= 2000) {
+      aplicarLogro("logro_veterano_red", 1);
+    }
+
+    // OP-10 (logro_criptografo): Desclasificación Total (Easter Eggs)
+    const diasEESet = new Set();
+    try {
+      const rawEE = localStorage.getItem("spyle_easter_eggs_descubiertos");
+      if (rawEE) JSON.parse(rawEE).forEach((d) => diasEESet.add(d));
+    } catch {}
+
+    expedientes.forEach((exp) => {
+      if (!Array.isArray(exp.rondas)) return;
+      const dNum = exp.diaId ? Number(String(exp.diaId).replace(/^dia_?/, "")) : null;
+      const mission = (dNum && typeof DAILY_MISSIONS !== "undefined")
+        ? (DAILY_MISSIONS[dNum] || DAILY_MISSIONS[`dia_${dNum}`])
+        : null;
+      const eeWord = mission && mission.easterEgg && typeof normalize === "function"
+        ? normalize(mission.easterEgg.word)
+        : (mission && mission.easterEgg ? mission.easterEgg.word.toLowerCase().trim() : null);
+
+      const jugoEE = exp.rondas.some((r) => {
+        if (!r) return false;
+        if (r.esEasterEgg === true || r.isEasterEgg === true) return true;
+        if (eeWord && r.respuestaDada) {
+          const wNorm = typeof normalize === "function" ? normalize(r.respuestaDada) : r.respuestaDada.toLowerCase().trim();
+          if (wNorm === eeWord) return true;
+        }
+        return false;
+      });
+
+      if (jugoEE && exp.diaId) {
+        diasEESet.add(exp.diaId);
+      }
+    });
+
+    if (localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
+      diasEESet.add("dia4");
+    }
+
+    const uniqueDays = Array.from(diasEESet);
+    if (uniqueDays.length > 0 || localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
+      localStorage.setItem("spyle_easter_eggs_descubiertos", JSON.stringify(uniqueDays));
+      const vecesEE = Math.max(1, uniqueDays.length);
+      aplicarLogro("logro_criptografo", vecesEE);
+      if (achs["logro_criptografo"]) {
+        achs["logro_criptografo"].diasDescubiertos = uniqueDays;
+      }
+    }
+
+    // 3. Persistir si hubo modificaciones
+    if (huboCambios) {
+      saveAchievements(achs);
+      updateAchievementsStatus();
+      console.log(`// MOTOR DE CONDECORACIONES: Auditoría histórica retroactiva completada sobre ${expedientes.length} expedientes.`);
+    }
+  } catch (err) {
+    console.warn("Error en auditarLogrosRetroactivos:", err);
+  }
+}
+
 function showUnlockToast(archive) {
   showAchievementToast(archive);
 }
@@ -893,6 +1495,8 @@ function updateAchievementsStatus() {
 
 function renderArchives() {
   sanearLogroOP06();
+  sanearLogroOP10();
+  auditarLogrosRetroactivos();
   const list = $("bestiary-list");
   if (!list) return;
   list.innerHTML = "";
@@ -906,7 +1510,7 @@ function renderArchives() {
 
     const card = document.createElement("div");
     const isElite = item.id === "logro_pleno_700" || item.id === "logro_criptografo";
-    card.className = `achievement-card ${isUnlocked ? "unlocked" : "locked"} ${isUnlocked && isElite ? "elite" : ""}`;
+    card.className = `achievement-card tarjeta-condecoracion ${isUnlocked ? "unlocked desclasificado condecoracion-desbloqueada" : "locked clasificado"} ${isUnlocked && isElite ? "elite" : ""}`;
 
     // Cabecera superior
     const top = document.createElement("div");
@@ -916,8 +1520,17 @@ function renderArchives() {
     code.className = "ach-code";
     code.textContent = item.codigo;
 
+    const achData = achs[item.id] || achs[item.codigo];
+    const veces = (achData && typeof achData.veces === "number") ? achData.veces : 1;
+    if (isUnlocked && veces > 1) {
+      const multBadge = document.createElement("span");
+      multBadge.className = "ach-multiplier-badge";
+      multBadge.textContent = `[ x${veces} ]`;
+      code.appendChild(multBadge);
+    }
+
     const icon = document.createElement("div");
-    icon.className = "ach-icon";
+    icon.className = `ach-icon icono-condecoracion ${item.id === "logro_criptografo" ? "key-icon" : ""}`;
     icon.textContent = isUnlocked ? item.icono : "🔒";
 
     top.append(code, icon);
@@ -1871,6 +2484,7 @@ function saveDailyState(day = null) {
       puntosObtenidos: rPts,
       bonusVelocidad: speed,
       referenciaDurmiente: durmienteRef,
+      esEasterEgg: Boolean(r.esEasterEgg !== undefined ? r.esEasterEgg : existingR.esEasterEgg),
       intentosNoReconocidos: unrec.slice(),
       intentosFallidos: unrec.slice(),
       reclamaciones: mergedReclamaciones
@@ -1985,7 +2599,7 @@ function saveDaily() {
     history[game.day] = {
       day: game.day,
       score: scoreVal,
-      emojis: game.results.map((r) => TIERS[r.tier]?.emoji || "⬛").join(""),
+      emojis: game.results.map(obtenerIconoRonda).join(""),
       done: true,
       timestamp: Date.now()
     };
@@ -2280,7 +2894,7 @@ function submitAnswer(timeout = false) {
     const t = TIERS[tier];
 
     // Interceptar condición Easter Egg de desbloqueo criptográfico
-    checkEasterEggUnlock(p, palabraEscrita);
+    const isEE = Boolean(checkEasterEggUnlock(p, palabraEscrita));
 
     input.disabled = true;
     $("btn-submit").disabled = true;
@@ -2333,6 +2947,7 @@ function submitAnswer(timeout = false) {
       speedBonus,
       meters: roundCover,
       wildcardDoubled: isWildcardDoubled,
+      esEasterEgg: isEE,
       unrecognizedAttempts: intentosNoReconocidosPorRonda[rondaActual].slice()
     });
     game.idx++;
@@ -2384,13 +2999,22 @@ function submitAnswer(timeout = false) {
     if (btnClaimRound) {
       const currentUnrec = Array.isArray(intentosNoReconocidosPorRonda[rondaActual]) ? intentosNoReconocidosPorRonda[rondaActual] : [];
       if (currentUnrec.length > 0) {
-        btnClaimRound.textContent = "[ 📡 RECLAMAR TÉRMINO A CONTRAINTELIGENCIA ]";
-        btnClaimRound.disabled = false;
-        btnClaimRound.classList.remove("claimed", "hidden");
-        btnClaimRound.onclick = () => {
-          const lastWord = currentUnrec[currentUnrec.length - 1] || "";
-          openSuggestionModal(p, lastWord, btnClaimRound);
-        };
+        const lastWord = currentUnrec[currentUnrec.length - 1] || "";
+        const yaReclamada = lastWord ? yaFueReclamadaGlobalmente(p.id, lastWord) : false;
+        if (yaReclamada) {
+          btnClaimRound.textContent = "[ ✓ Ya enviada anteriormente ]";
+          btnClaimRound.disabled = true;
+          btnClaimRound.classList.add("claimed");
+          btnClaimRound.classList.remove("hidden");
+          btnClaimRound.onclick = null;
+        } else {
+          btnClaimRound.textContent = "[ 📡 RECLAMAR TÉRMINO A CONTRAINTELIGENCIA ]";
+          btnClaimRound.disabled = false;
+          btnClaimRound.classList.remove("claimed", "hidden");
+          btnClaimRound.onclick = () => {
+            openSuggestionModal(p, lastWord, btnClaimRound);
+          };
+        }
       } else {
         btnClaimRound.classList.add("hidden");
       }
@@ -2468,13 +3092,26 @@ function submitAnswer(timeout = false) {
   const btnClaimRound = $("btn-claim-round");
   if (btnClaimRound) {
     const currentUnrec = Array.isArray(intentosNoReconocidosPorRonda[rondaActual]) ? intentosNoReconocidosPorRonda[rondaActual] : [];
-    btnClaimRound.textContent = "[ 📡 RECLAMAR TÉRMINO A CONTRAINTELIGENCIA ]";
-    btnClaimRound.disabled = false;
-    btnClaimRound.classList.remove("claimed", "hidden");
-    btnClaimRound.onclick = () => {
-      const lastWord = currentUnrec.length > 0 ? currentUnrec[currentUnrec.length - 1] : "";
-      openSuggestionModal(p, lastWord, btnClaimRound);
-    };
+    if (currentUnrec.length > 0) {
+      const lastWord = currentUnrec[currentUnrec.length - 1] || "";
+      const yaReclamada = lastWord ? yaFueReclamadaGlobalmente(p.id, lastWord) : false;
+      if (yaReclamada) {
+        btnClaimRound.textContent = "[ ✓ Ya enviada anteriormente ]";
+        btnClaimRound.disabled = true;
+        btnClaimRound.classList.add("claimed");
+        btnClaimRound.classList.remove("hidden");
+        btnClaimRound.onclick = null;
+      } else {
+        btnClaimRound.textContent = "[ 📡 RECLAMAR TÉRMINO A CONTRAINTELIGENCIA ]";
+        btnClaimRound.disabled = false;
+        btnClaimRound.classList.remove("claimed", "hidden");
+        btnClaimRound.onclick = () => {
+          openSuggestionModal(p, lastWord, btnClaimRound);
+        };
+      }
+    } else {
+      btnClaimRound.classList.add("hidden");
+    }
   }
 
   $("btn-next").textContent = game.idx >= game.prompts.length ? "Emitir expediente final ➔" : "Siguiente consulta ➔";
@@ -2535,7 +3172,7 @@ function finish() {
 /* ---------- Tarjeta Final de Misión Compartible y Desglose ---------- */
 function shareText() {
   const pts = totalPoints();
-  const emojis = game.results.map((r) => TIERS[r.tier].emoji).join("");
+  const emojis = game.results.map(obtenerIconoRonda).join("");
   return `SPYLE #${game.day || dayNumber()} 🗂️\nAptitud de Infiltración: ${pts} pts\n${emojis}\nspyle.app`;
 }
 
@@ -2656,9 +3293,13 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
     title += pts >= CHAPTER_PASS_POINTS ? " — [CAPÍTULO AUTORIZADO]" : " — [ACCESO DENEGADO: <250 PTS]";
   }
   $("final-title").textContent = title;
-  $("final-head").textContent = `SPYLE #${game.day || dayNumber()} 🗂️`;
+  $("final-head").innerHTML = `SPYLE #${game.day || dayNumber()} <span class="tactical-icon">🗂️</span>`;
   $("final-score").textContent = `${pts} pts`;
-  $("final-emojis").textContent = game.results.map((r) => TIERS[r.tier]?.emoji || "⬛").join("");
+  $("final-emojis").innerHTML = game.results.map((r) => {
+    const icon = obtenerIconoRonda(r);
+    const isGold = icon === "🔑" || icon === "🎖️";
+    return `<span class="round-emoji${isGold ? " gold-emoji" : ""}">${icon}</span>`;
+  }).join("");
   $("final-depth").textContent = `Índice de Cobertura Operativa: ${fmt(cover)} uds.${cover > pts * COVER_UNITS_PER_POINT ? " · [Doble Fondo x2 aplicado]" : ""}`;
   $("copy-msg").textContent = "";
 
@@ -2687,7 +3328,12 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
       r.speedBonus ? "⚡ +20% velocidad" : "",
       r.wildcardDoubled ? "🃏 x2 Doble Fondo" : ""
     ].filter(Boolean).join(" · ");
-    head.textContent = `${t.emoji} ${p.texto} — ${rPts} pts${tags ? ` [${tags}]` : ""}`;
+    const rIcon = obtenerIconoRonda(r);
+    const isGold = rIcon === "🔑" || rIcon === "🎖️";
+    const iconSpan = document.createElement("span");
+    iconSpan.className = `tactical-icon${isGold ? " gold-icon" : ""}`;
+    iconSpan.textContent = rIcon;
+    head.append(iconSpan, ` ${p.texto} — ${rPts} pts${tags ? ` [${tags}]` : ""}`);
     headWrap.appendChild(head);
 
     const mine = document.createElement("div");
@@ -2723,6 +3369,7 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
       unrecItems.className = "unrecognized-items";
 
       const roundReclamaciones = Array.isArray(r.reclamaciones) ? r.reclamaciones : [];
+      const promptId = r.promptId || (p && p.id) || (r.promptTitle ? resolverPromptId(r.promptTitle) : "");
       unrecognized.forEach((palabra) => {
         const chip = document.createElement("span");
         chip.className = "unrecognized-chip";
@@ -2731,7 +3378,9 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
         wordSpan.className = "unrecognized-word";
         wordSpan.textContent = `[${palabra}]`;
 
-        const isClaimed = roundReclamaciones.some((rc) => rc && rc.palabra && rc.palabra.trim().toLowerCase() === palabra.trim().toLowerCase() && rc.reclamada === true);
+        const isClaimedLocal = roundReclamaciones.some((rc) => rc && rc.palabra && rc.palabra.trim().toLowerCase() === palabra.trim().toLowerCase() && rc.reclamada === true);
+        const isClaimedGlobal = yaFueReclamadaGlobalmente(promptId, palabra);
+        const isClaimed = isClaimedLocal || isClaimedGlobal;
 
         const claimBtn = document.createElement("button");
         claimBtn.className = "btn-claim-inline" + (isClaimed ? " claimed" : "");
@@ -2799,14 +3448,24 @@ function openSuggestionModal(prompt, initialWord = "", triggerBtn = null, roundI
 
   const wordInput = $("sug-word");
   wordInput.value = initialWord || "";
-  wordInput.disabled = false;
 
   const submitBtn = $("btn-submit-sug");
-  submitBtn.disabled = false;
-
   const statusEl = $("sug-status");
-  statusEl.textContent = "";
-  statusEl.classList.add("hidden");
+
+  const promptId = resolverPromptId(prompt);
+  const yaReclamada = initialWord ? yaFueReclamadaGlobalmente(promptId, initialWord) : false;
+
+  if (yaReclamada) {
+    wordInput.disabled = true;
+    submitBtn.disabled = true;
+    statusEl.textContent = "// TÉRMINO YA RECLAMADO ANTERIORMENTE";
+    statusEl.classList.remove("hidden");
+  } else {
+    wordInput.disabled = false;
+    submitBtn.disabled = false;
+    statusEl.textContent = "";
+    statusEl.classList.add("hidden");
+  }
 
   $("modal-suggestion").classList.remove("hidden");
   wordInput.focus();
@@ -2834,13 +3493,37 @@ async function transmitirSugerencia(categoria, palabra) {
     return;
   }
 
+  const promptId = (currentSuggestingPrompt && (currentSuggestingPrompt.id || currentSuggestingPrompt.promptId)) || resolverPromptId(categoria);
+  if (yaFueReclamadaGlobalmente(promptId, cleanWord)) {
+    $("sug-word").disabled = true;
+    $("btn-submit-sug").disabled = true;
+    const statusEl = $("sug-status");
+    statusEl.textContent = "// TÉRMINO YA RECLAMADO ANTERIORMENTE";
+    statusEl.classList.remove("hidden");
+    if (currentClaimButton) {
+      currentClaimButton.textContent = "[ ✓ Reclamada ]";
+      currentClaimButton.disabled = true;
+      currentClaimButton.classList.add("claimed");
+      currentClaimButton.onclick = null;
+    }
+    clearTimeout(suggestionCloseTimer);
+    suggestionCloseTimer = setTimeout(() => {
+      closeSuggestionModal();
+    }, 1500);
+    return;
+  }
+
   // Desactivar controles para impedir envíos dobles
   $("sug-word").disabled = true;
   $("btn-submit-sug").disabled = true;
 
+  // Registrar globalmente de inmediato para prevenir duplicados locales o concurrentes
+  registrarReclamacionGlobal(promptId, cleanWord);
+
   // Respaldo local opcional en localStorage
   const localLog = store.get("suggestions_log", []);
   localLog.push({
+    promptId: promptId,
     promptTitle: categoria,
     suggestedWord: cleanWord,
     suggestedTier: "Sugerido por agente",
@@ -2850,7 +3533,7 @@ async function transmitirSugerencia(categoria, palabra) {
 
   if (WEBHOOK_URL && WEBHOOK_URL.trim() !== "") {
     try {
-      await enviarSugerenciaAGoogle(categoria, cleanWord);
+      await enviarSugerenciaAGoogle(promptId, cleanWord, categoria);
     } catch {
       /* Resiliencia ante modo offline o corte de red */
     }
@@ -2860,6 +3543,7 @@ async function transmitirSugerencia(categoria, palabra) {
     currentClaimButton.textContent = "[ ✓ Reclamada ]";
     currentClaimButton.disabled = true;
     currentClaimButton.classList.add("claimed");
+    currentClaimButton.onclick = null;
   }
 
   markWordAsClaimedInDailyState(cleanWord, currentClaimRoundIdx);
@@ -2937,9 +3621,12 @@ function startDaily() {
 }
 
 
-/* ---------- Sistema de Desbloqueo por Easter Egg ---------- */
+/* ---------- Sistema de Desbloqueo por Easter Egg (Estricto en Envío en Vivo) ---------- */
 function checkEasterEggUnlock(prompt, word) {
   if (!prompt || !word) return false;
+  // Aislamiento: estrictamente prohibido evaluar en modo visor o solo lectura
+  if (!game || game._readOnly || game._isHistoricViewer) return false;
+
   const clean = normalize(word);
   const cleanRaw = normalizeInput(word);
   const lowerWord = word.toLowerCase().trim();
@@ -2966,15 +3653,49 @@ function checkEasterEggUnlock(prompt, word) {
   }
 
   if (isMatch) {
-    triggerEasterEggUnlock();
+    const currentDayId = (game && (game.diaId || (game.day ? ("dia" + game.day) : null))) || ("dia" + dayNumber());
+
+    let diasDescubiertos = [];
+    try {
+      const rawEE = localStorage.getItem("spyle_easter_eggs_descubiertos");
+      if (rawEE) diasDescubiertos = JSON.parse(rawEE);
+    } catch {}
+    if (!Array.isArray(diasDescubiertos)) diasDescubiertos = [];
+
+    // Si ya se había descubierto en esta partida o día, NO incrementar veces ni volver a disparar alerta
+    if (diasDescubiertos.includes(currentDayId)) {
+      return true;
+    }
+
+    // Solo se incrementa el contador veces y muestra la alerta si es la primera vez que se descubre en sesión real de juego
+    diasDescubiertos.push(currentDayId);
+    try {
+      localStorage.setItem("spyle_easter_eggs_descubiertos", JSON.stringify(diasDescubiertos));
+    } catch {}
+
+    triggerEasterEggUnlock(diasDescubiertos);
     return true;
   }
   return false;
 }
 
-function triggerEasterEggUnlock() {
+function triggerEasterEggUnlock(diasDescubiertos = null) {
   localStorage.setItem("spyle_archivo_desbloqueado", "true");
+
+  // Desbloqueo / revalidación en vivo de OP-10
   unlockAchievement("logro_criptografo");
+
+  // Sincronizar contador de veces estrictamente con los días únicos descubiertos
+  if (Array.isArray(diasDescubiertos) && diasDescubiertos.length > 0) {
+    const achs = getAchievements();
+    const op10 = achs["logro_criptografo"];
+    if (op10) {
+      op10.veces = diasDescubiertos.length;
+      op10.diasDescubiertos = diasDescubiertos;
+      saveAchievements(achs);
+    }
+  }
+
   updateCalendarVisibility();
 
   const modal = $("modal-easter-egg");
@@ -3070,7 +3791,7 @@ function renderCalendar() {
     if (isFuture) statusClass = "status-future";
     else if (isPastUnplayed) statusClass = "status-pending";
 
-    card.className = `calendar-day-card ${statusClass}${d === today ? " current-day" : ""}`;
+    card.className = `calendar-day-card card-dia ${statusClass}${d === today ? " current-day" : ""}`;
 
     const header = document.createElement("div");
     header.className = "cal-day-header";
@@ -3121,7 +3842,20 @@ function renderCalendar() {
     const emojisDiv = document.createElement("div");
     emojisDiv.className = "cal-day-emojis";
     if (isCompleted) {
-      emojisDiv.textContent = (hist && hist.emojis) || "🟩🟩🟩🟩🟩🟩🟩";
+      if (persistentState && Array.isArray(persistentState.rondas) && persistentState.rondas.length > 0) {
+        emojisDiv.innerHTML = persistentState.rondas.map((r) => {
+          const icon = obtenerIconoRonda(r);
+          const isGold = icon === "🔑" || icon === "🎖️";
+          return `<span class="round-emoji${isGold ? " gold-emoji" : ""}">${icon}</span>`;
+        }).join("");
+      } else if (hist && hist.emojis) {
+        emojisDiv.innerHTML = Array.from(hist.emojis).map((icon) => {
+          const isGold = icon === "🔑" || icon === "🎖️";
+          return `<span class="round-emoji${isGold ? " gold-emoji" : ""}">${icon}</span>`;
+        }).join("");
+      } else {
+        emojisDiv.textContent = "—";
+      }
     } else if (isPastUnplayed) {
       emojisDiv.textContent = "—";
     } else {
@@ -3378,42 +4112,108 @@ $("suggestion-form").addEventListener("submit", (e) => {
 /* ---------- Auditor de Densidad Oculto (EXCLUSIVO DESARROLLADOR) ---------- */
 const DEV_TIERS = [10, 25, 45, 65, 85, 100];
 
+let auditFilterState = {
+  sort: "dia-asc",
+  density: "todas",
+  theme: "todas"
+};
+
 function auditPrompts() {
   return PROMPTS.map((p) => {
     const values = Object.values(p.answers || {});
     const byTier = {};
     DEV_TIERS.forEach((t) => { byTier[t] = values.filter((v) => v === t).length; });
     const total = Object.keys(p.answers || {}).length;
-    const light = total >= 130 ? "🟢" : total >= 70 ? "🟡" : "🔴";
-    return { id: p.id, dailyId: p.dailyId || "", title: p.texto, titulo: p.texto, total, byTier, light };
+    const light = total > 130 ? "🟢" : total >= 100 ? "🟡" : total > 0 ? "🔴" : "⚪";
+    return {
+      id: p.id,
+      dailyId: p.dailyId || "",
+      title: p.texto,
+      titulo: p.texto,
+      total,
+      byTier,
+      light,
+      answers: p.answers || {}
+    };
   });
 }
 
-function logAuditToConsole() {
-  const table = {};
-  const categoriasOrdenadas = [...auditPrompts()].sort((a, b) =>
-    a.id.localeCompare(b.id, 'es', { numeric: true, sensitivity: 'base' })
-  );
-  categoriasOrdenadas.forEach((a) => {
-    table[a.id] = { titulo: a.titulo, total: a.total, ...a.byTier, estado: a.light };
-  });
-  console.table(table);
-}
+function filtrarYOrdenarAuditor() {
+  const bancoCategorias = auditPrompts();
+  const totalExpedientes = bancoCategorias.length;
 
-function renderDevAudit() {
+  const sortSelect = $("audit-sort");
+  const densitySelect = $("audit-density");
+  const themeSelect = $("audit-theme");
+
+  if (sortSelect) auditFilterState.sort = sortSelect.value;
+  if (densitySelect) auditFilterState.density = densitySelect.value;
+  if (themeSelect) auditFilterState.theme = themeSelect.value;
+
+  let categoriasFiltradas = [...bancoCategorias];
+
+  // 1. Filtrar por rango de palabras (densidad)
+  if (auditFilterState.density === "completas") {
+    categoriasFiltradas = categoriasFiltradas.filter((c) => Object.keys(c.answers || {}).length > 130);
+  } else if (auditFilterState.density === "medias") {
+    categoriasFiltradas = categoriasFiltradas.filter((c) => {
+      const l = Object.keys(c.answers || {}).length;
+      return l >= 100 && l <= 130;
+    });
+  } else if (auditFilterState.density === "bajas") {
+    categoriasFiltradas = categoriasFiltradas.filter((c) => {
+      const l = Object.keys(c.answers || {}).length;
+      return l > 0 && l < 100;
+    });
+  } else if (auditFilterState.density === "vacias") {
+    categoriasFiltradas = categoriasFiltradas.filter((c) => Object.keys(c.answers || {}).length === 0);
+  }
+
+  // 2. Filtrar por temática / dossier
+  if (auditFilterState.theme !== "todas") {
+    categoriasFiltradas = categoriasFiltradas.filter((c) => c.id.startsWith(auditFilterState.theme));
+  }
+
+  // 3. Ordenar
+  categoriasFiltradas.sort((a, b) => {
+    const lenA = Object.keys(a.answers || {}).length;
+    const lenB = Object.keys(b.answers || {}).length;
+    const diaA = parseInt((a.dailyId || "dia999").replace(/\D/g, "")) || 999;
+    const diaB = parseInt((b.dailyId || "dia999").replace(/\D/g, "")) || 999;
+
+    if (auditFilterState.sort === "dia-asc") return diaA - diaB || a.id.localeCompare(b.id, "es", { numeric: true });
+    if (auditFilterState.sort === "dia-desc") return diaB - diaA || b.id.localeCompare(a.id, "es", { numeric: true });
+    if (auditFilterState.sort === "palabras-desc") return lenB - lenA || a.id.localeCompare(b.id, "es", { numeric: true });
+    if (auditFilterState.sort === "palabras-asc") return lenA - lenB || a.id.localeCompare(b.id, "es", { numeric: true });
+    if (auditFilterState.sort === "alfa-asc") return (a.title || a.titulo || "").localeCompare(b.title || b.titulo || "", "es");
+    if (auditFilterState.sort === "alfa-desc") return (b.title || b.titulo || "").localeCompare(a.title || a.titulo || "", "es");
+    if (auditFilterState.sort === "tematica") return a.id.localeCompare(b.id, "es", { numeric: true });
+    return 0;
+  });
+
+  // Actualizar indicador numérico de resultados visibles
+  const counterEl = $("dev-audit-counter");
+  if (counterEl) {
+    counterEl.textContent = `Mostrando: ${categoriasFiltradas.length}/${totalExpedientes} expedientes`;
+  }
+
+  // Renderizar filas en el body
   const body = $("dev-audit-body");
   if (!body) return;
   body.innerHTML = "";
-  const bancoCategorias = auditPrompts();
-  const categoriasOrdenadas = [...bancoCategorias].sort((a, b) =>
-    a.id.localeCompare(b.id, 'es', { numeric: true, sensitivity: 'base' })
-  );
-  const totalExpedientes = categoriasOrdenadas.length;
-  const diasCompletos = Math.floor(totalExpedientes / ROUNDS);
-  const count = (l) => categoriasOrdenadas.filter((a) => a.light === l).length;
-  $("dev-audit-summary").innerHTML = `<div style="font-weight:700;letter-spacing:0.04em;color:var(--gold-elite, #e5a93c);margin-bottom:3px;">RESERVA OPERATIVA: ${diasCompletos} DÍAS COMPLETOS (${totalExpedientes} EXPEDIENTES TOTALES)</div><div>${totalExpedientes} categorías · 🟢 ${count("🟢")} · 🟡 ${count("🟡")} · 🔴 ${count("🔴")}</div>`;
 
-  categoriasOrdenadas.forEach((a) => {
+  if (categoriasFiltradas.length === 0) {
+    const emptyRow = document.createElement("div");
+    emptyRow.style.padding = "24px 10px";
+    emptyRow.style.textAlign = "center";
+    emptyRow.style.color = "var(--fg-muted)";
+    emptyRow.style.fontSize = "0.72rem";
+    emptyRow.textContent = "// NO SE ENCONTRARON EXPEDIENTES CON ESTOS CRITERIOS DE BÚSQUEDA";
+    body.appendChild(emptyRow);
+    return;
+  }
+
+  categoriasFiltradas.forEach((a) => {
     const row = document.createElement("div");
     row.className = "dev-row";
 
@@ -3429,6 +4229,53 @@ function renderDevAudit() {
     row.append(head, stats);
     body.appendChild(row);
   });
+}
+
+function initAuditControls() {
+  const sortSelect = $("audit-sort");
+  const densitySelect = $("audit-density");
+  const themeSelect = $("audit-theme");
+
+  if (sortSelect && !sortSelect._hasAuditListener) {
+    sortSelect._hasAuditListener = true;
+    sortSelect.value = auditFilterState.sort;
+    sortSelect.addEventListener("change", () => filtrarYOrdenarAuditor());
+  }
+  if (densitySelect && !densitySelect._hasAuditListener) {
+    densitySelect._hasAuditListener = true;
+    densitySelect.value = auditFilterState.density;
+    densitySelect.addEventListener("change", () => filtrarYOrdenarAuditor());
+  }
+  if (themeSelect && !themeSelect._hasAuditListener) {
+    themeSelect._hasAuditListener = true;
+    themeSelect.value = auditFilterState.theme;
+    themeSelect.addEventListener("change", () => filtrarYOrdenarAuditor());
+  }
+}
+
+function logAuditToConsole() {
+  const table = {};
+  const categoriasOrdenadas = [...auditPrompts()].sort((a, b) =>
+    a.id.localeCompare(b.id, 'es', { numeric: true, sensitivity: 'base' })
+  );
+  categoriasOrdenadas.forEach((a) => {
+    table[a.id] = { titulo: a.titulo, total: a.total, ...a.byTier, estado: a.light };
+  });
+  console.table(table);
+}
+
+function renderDevAudit() {
+  initAuditControls();
+
+  const bancoCategorias = auditPrompts();
+  const totalExpedientes = bancoCategorias.length;
+  const diasCompletos = Math.floor(totalExpedientes / ROUNDS);
+  const count = (l) => bancoCategorias.filter((a) => a.light === l).length;
+  const countVacias = bancoCategorias.filter((a) => a.total === 0).length;
+
+  $("dev-audit-summary").innerHTML = `<div style="font-weight:700;letter-spacing:0.04em;color:var(--gold-elite, #e5a93c);margin-bottom:3px;">RESERVA OPERATIVA: ${diasCompletos} DÍAS COMPLETOS (${totalExpedientes} EXPEDIENTES TOTALES)</div><div>${totalExpedientes} categorías · 🟢 ${count("🟢")} · 🟡 ${count("🟡")} · 🔴 ${count("🔴")}${countVacias > 0 ? ` · ⚪ ${countVacias}` : ""}</div>`;
+
+  filtrarYOrdenarAuditor();
 }
 
 function toggleDevAudit(force = null) {
@@ -3496,9 +4343,20 @@ if (modalEasterEggEl) {
 }
 
 updateCalendarVisibility();
-// Comprobación de desbloqueos previos (ej. Easter Egg ya activado)
+// Si el archivo histórico ya estaba desbloqueado previamente, sincronizar silenciosamente sin disparar toasts ni incrementar veces
 if (localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
-  unlockAchievement("logro_criptografo");
+  const achs = getAchievements();
+  if (!achs["logro_criptografo"] || !achs["logro_criptografo"].unlocked) {
+    achs["logro_criptografo"] = {
+      id: "CONDECORACIÓN // OP-10",
+      unlocked: true,
+      desbloqueado: true,
+      veces: 1,
+      historialFechas: [new Date().toISOString().slice(0, 10)],
+      unlockedAt: new Date().toISOString()
+    };
+    saveAchievements(achs);
+  }
 }
 // Sincronizar estadísticas iniciales y marcador persistente con historial previo
 (function syncInitialPlayerStats() {
@@ -3530,10 +4388,174 @@ if (localStorage.getItem("spyle_archivo_desbloqueado") === "true") {
   actualizarMarcadorPuntosTotales(currentSavedPoints, false);
 
   if (stats.completedMissions >= 5 && currentSavedPoints >= 2000) {
-    unlockAchievement("logro_veterano_red");
+    if (!isAchievementUnlocked("logro_veterano_red")) {
+      const achs = getAchievements();
+      achs["logro_veterano_red"] = {
+        id: "CONDECORACIÓN // OP-09",
+        unlocked: true,
+        desbloqueado: true,
+        veces: 1,
+        historialFechas: [new Date().toISOString().slice(0, 10)],
+        unlockedAt: new Date().toISOString()
+      };
+      saveAchievements(achs);
+    }
   }
 })();
+/* ==========================================================================
+   RECONSTRUCCIÓN DEL EXPEDIENTE REAL DEL DÍA 4 (7 RONDAS AUTÉNTICAS)
+   ========================================================================== */
+(function asegurarExpedienteRealDia4() {
+  const canonicalKey = "spyle_expediente_dia4";
+  const legacyKey = "spyle_daily_state_dia4";
+
+  let exp = null;
+  try {
+    const raw = localStorage.getItem(canonicalKey) || localStorage.getItem(legacyKey);
+    if (raw) exp = JSON.parse(raw);
+  } catch {}
+
+  const necesitaInyeccion = !exp ||
+    !Array.isArray(exp.rondas) ||
+    exp.rondas.length < 7 ||
+    exp.rondas.some((r) => r && r.respuestaDada === "(Registro consolidado)") ||
+    (exp.puntosTotalesDia === 151 && (!exp.rondas[0] || !exp.rondas[0].respuestaDada));
+
+  if (necesitaInyeccion) {
+    const realDia4 = {
+      diaId: "dia4",
+      fecha: "2026-11-10",
+      completado: true,
+      puntosTotales: 151,
+      puntosTotalesDia: 151,
+      rondas: [
+        {
+          promptId: "gen-027",
+          dailyId: "dia4-01",
+          promptTitle: "País o territorio soberano que tenga un sol en su bandera",
+          respuestaDada: "malaui",
+          puntosObtenidos: 54,
+          puntosBase: 45,
+          bonusVelocidad: true,
+          esEasterEgg: false,
+          referenciaDurmiente: "nepal",
+          intentosNoReconocidos: [],
+          intentosFallidos: [],
+          reclamaciones: []
+        },
+        {
+          promptId: "gen-028",
+          dailyId: "dia4-02",
+          promptTitle: "Palabra que contenga la letra «X» y empiece por vocal",
+          respuestaDada: "excelso",
+          puntosObtenidos: 25,
+          puntosBase: 25,
+          bonusVelocidad: false,
+          esEasterEgg: false,
+          referenciaDurmiente: "exuvia",
+          intentosNoReconocidos: [],
+          intentosFallidos: [],
+          reclamaciones: []
+        },
+        {
+          promptId: "gen-022",
+          dailyId: "dia4-03",
+          promptTitle: "Videojuego o saga de temática zombi o supervivencia",
+          respuestaDada: "dying light",
+          puntosObtenidos: 10,
+          puntosBase: 10,
+          bonusVelocidad: false,
+          esEasterEgg: false,
+          referenciaDurmiente: "project zomboid",
+          intentosNoReconocidos: [],
+          intentosFallidos: [],
+          reclamaciones: []
+        },
+        {
+          promptId: "gen-023",
+          dailyId: "dia4-04",
+          promptTitle: "Plato o receta tradicional de cuchara de la gastronomía española",
+          respuestaDada: "puchero",
+          puntosObtenidos: 12,
+          puntosBase: 10,
+          bonusVelocidad: true,
+          esEasterEgg: false,
+          referenciaDurmiente: "morteruelo",
+          intentosNoReconocidos: [],
+          intentosFallidos: [],
+          reclamaciones: []
+        },
+        {
+          promptId: "gen-024",
+          dailyId: "dia4-05",
+          promptTitle: "Raza de perro reconocida oficialmente",
+          respuestaDada: "",
+          puntosObtenidos: 0,
+          puntosBase: 0,
+          bonusVelocidad: false,
+          esEasterEgg: false,
+          referenciaDurmiente: "alano español",
+          intentosNoReconocidos: ["miton", "mongol", "exegesis"],
+          intentosFallidos: ["miton", "mongol", "exegesis"],
+          reclamaciones: [
+            { palabra: "miton", reclamada: false },
+            { palabra: "mongol", reclamada: false },
+            { palabra: "exegesis", reclamada: false }
+          ]
+        },
+        {
+          promptId: "gen-025",
+          dailyId: "dia4-06",
+          promptTitle: "Prenda de ropa o calzado de invierno",
+          respuestaDada: "botas",
+          puntosObtenidos: 25,
+          puntosBase: 25,
+          bonusVelocidad: false,
+          esEasterEgg: false,
+          referenciaDurmiente: "pasamontañas",
+          intentosNoReconocidos: [],
+          intentosFallidos: [],
+          reclamaciones: []
+        },
+        {
+          promptId: "gen-026",
+          dailyId: "dia4-07",
+          promptTitle: "Elemento químico de la tabla periódica con símbolo de una o dos letras",
+          respuestaDada: "wolframio",
+          puntosObtenidos: 25,
+          puntosBase: 25,
+          bonusVelocidad: false,
+          esEasterEgg: false,
+          referenciaDurmiente: "oganeson",
+          intentosNoReconocidos: [],
+          intentosFallidos: [],
+          reclamaciones: []
+        }
+      ]
+    };
+
+    try {
+      localStorage.setItem(canonicalKey, JSON.stringify(realDia4));
+      localStorage.setItem(legacyKey, JSON.stringify(realDia4));
+      const hist = store.get("daily_history", {}) || {};
+      hist[4] = {
+        day: 4,
+        score: 151,
+        emojis: realDia4.rondas.map(obtenerIconoRonda).join(""),
+        done: true,
+        timestamp: Date.now()
+      };
+      store.set("daily_history", hist);
+    } catch (e) {
+      console.warn("Error inyectando expediente real Día 4:", e);
+    }
+  }
+})();
+
 sanearLogroOP06();
+sanearLogroOP10();
+sincronizarReclamacionesDesdeExpedientes();
+auditarLogrosRetroactivos();
 updateAchievementsStatus();
 checkFirstVisitBriefing();
 
