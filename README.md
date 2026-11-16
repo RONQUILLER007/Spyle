@@ -131,7 +131,7 @@ El proyecto está diseñado para ejecutarse de forma estática en **GitHub Pages
 
 ## ⚖️ Reconocimiento, Autoría y Disclaimer
 
-Este proyecto constituye una **adaptación cultural independiente al español y una reimaginación temática/narrativa** del concepto original creado en el juego de navegador **Tinkle** ([tinle.day](https://tinkle.day/)), ideado y publicado por el usuario **u/Longjumping-Yam-6532** en la comunidad **r/wordgames** de Reddit.
+Este proyecto constituye una **adaptación cultural independiente al español y una reimaginación temática/narrativa** del concepto original creado en el juego de navegador **Tinkle** ([tinkle.day](https://tinkle.day/)), ideado y publicado por el usuario **u/Longjumping-Yam-6532** en la comunidad **r/wordgames** de Reddit.
 
 - **Sin suplantación:** Este proyecto **no** pretende suplantar la identidad del autor original, ni atribuirse la autoría de la mecánica conceptual de trivia inversa (*Reverse-Trivia / Pointless scoring*).
 - **Código y Arquitectura Propios:** Toda la implementación técnica (interfaz gráfica de terminal de inteligencia, motor de normalización diacrítica con preservación de la `ñ`, penalizaciones por fallo de disparo, persistencia de telemetría y condecoraciones, auditor de densidad e integración serverless con Google Sheets) ha sido desarrollada desde cero sin emplear código fuente propietario ni recursos gráficos de la obra de referencia.
