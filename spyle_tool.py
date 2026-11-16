@@ -14,6 +14,7 @@ Protocolo de seguridad e integridad en cada escritura:
      rollback automático restaurando el backup y abortando con código 1.
 
 Ejemplos de uso:
+  python spyle_tool.py bulk lote.json --cleanup
   python spyle_tool.py importar lote.json --cleanup
   python spyle_tool.py importar lote.json --overwrite
   python spyle_tool.py sheets reclamaciones.csv
@@ -545,13 +546,25 @@ def apply_category_updates(content, cats, updates_by_cat_id, overwrite=False):
     return new_content, summary_rows, len(replacements)
 
 
-def cmd_importar(args):
-    """python spyle_tool.py importar <archivo.json> [--overwrite] [--cleanup]"""
+def _extract_word_score_pairs(words_obj):
+    """Convierte {puntuacion: [palabras]} o {palabra: puntuacion} en lista de pares (palabra, puntuacion)."""
+    pairs = []
+    for key, val in words_obj.items():
+        if isinstance(val, list):
+            for word in val:
+                pairs.append((word, key))
+        else:
+            pairs.append((key, val))
+    return pairs
+
+
+def _run_json_import(args, cmd_name, expected_desc):
+    """Flujo compartido para importar o hacer bulk desde JSON con backup, normalizacion y rollback."""
     overwrite = "--overwrite" in args
     cleanup = "--cleanup" in args
     pos_args = [a for a in args if not a.startswith("--")]
     if not pos_args:
-        print("Uso: python spyle_tool.py importar <archivo.json> [--overwrite] [--cleanup]", file=sys.stderr)
+        print(f"Uso: python spyle_tool.py {cmd_name} <archivo.json> [--overwrite] [--cleanup]", file=sys.stderr)
         sys.exit(1)
 
     json_path = pos_args[0]
@@ -563,7 +576,7 @@ def cmd_importar(args):
         data = json.load(f)
 
     if not isinstance(data, dict):
-        print("[ERROR] El JSON debe ser un objeto { categoria: { palabra: puntos } }", file=sys.stderr)
+        print(f"[ERROR] El JSON debe ser un objeto {expected_desc}", file=sys.stderr)
         sys.exit(1)
 
     prompts_path = locate_prompts_js()
@@ -581,10 +594,9 @@ def cmd_importar(args):
             print(f"[AVISO] Categoria no encontrada en prompts.js: '{cat_key}'")
             continue
         if not isinstance(words_obj, dict):
-            print(f"[AVISO] Formato invalido para '{cat_key}': se esperaba un objeto {{palabra: puntos}}")
+            print(f"[AVISO] Formato invalido para '{cat_key}': se esperaba {expected_desc}")
             continue
-        items = list(words_obj.items())
-        updates.setdefault(cat["id"], []).extend(items)
+        updates.setdefault(cat["id"], []).extend(_extract_word_score_pairs(words_obj))
 
     if not updates:
         print("[AVISO] No hay categorias validas que procesar.")
@@ -605,6 +617,16 @@ def cmd_importar(args):
             print(f"[CLEANUP] Archivo temporal eliminado: {json_path}")
         except OSError as exc:
             print(f"[AVISO] No se pudo eliminar {json_path}: {exc}")
+
+
+def cmd_bulk(args):
+    """python spyle_tool.py bulk <archivo.json> [--overwrite] [--cleanup]"""
+    _run_json_import(args, "bulk", "{ categoria: { puntuacion: [palabras] } }")
+
+
+def cmd_importar(args):
+    """python spyle_tool.py importar <archivo.json> [--overwrite] [--cleanup]"""
+    _run_json_import(args, "importar", "{ categoria: { palabra: puntos } }")
 
 
 def cmd_sheets(args):
@@ -905,6 +927,7 @@ def main():
     args = sys.argv[2:]
 
     commands = {
+        "bulk": cmd_bulk,
         "importar": cmd_importar,
         "sheets": cmd_sheets,
         "auditar": cmd_auditar,

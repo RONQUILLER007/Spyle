@@ -31,6 +31,74 @@ function normalizarTexto(palabra) {
   return s;
 }
 
+function quitarArticulosIniciales(textoNorm) {
+  if (!textoNorm) return '';
+  const sinArticulo = textoNorm.replace(
+    /^(?:el|la|los|las|un|una|unos|unas|al|del|the|a|an)\s+(?=\S{2,})/i,
+    ''
+  ).trim();
+  return sinArticulo || textoNorm;
+}
+
+function generarVariantesNumero(textoNorm) {
+  const variantes = new Set([textoNorm]);
+  if (!textoNorm || textoNorm.length < 4) return variantes;
+
+  // De plural a singular
+  if (textoNorm.endsWith('ces') && textoNorm.length > 4) {
+    variantes.add(textoNorm.slice(0, -3) + 'z');
+  }
+  if (textoNorm.endsWith('es') && textoNorm.length > 4) {
+    variantes.add(textoNorm.slice(0, -2));
+  }
+  if (textoNorm.endsWith('s') && !textoNorm.endsWith('ss') && textoNorm.length > 3) {
+    variantes.add(textoNorm.slice(0, -1));
+  }
+
+  // De singular a plural
+  if (textoNorm.endsWith('z')) {
+    variantes.add(textoNorm.slice(0, -1) + 'ces');
+  } else if (/[aeiou]$/.test(textoNorm)) {
+    variantes.add(textoNorm + 's');
+  } else if (/[dlnrj]$/.test(textoNorm)) {
+    variantes.add(textoNorm + 'es');
+  }
+
+  return variantes;
+}
+
+function obtenerFormaCanonica(texto) {
+  return quitarArticulosIniciales(normalizarTexto(texto));
+}
+
+function permiteVariantesNumero(prompt) {
+  const tituloNorm = normalizarTexto(
+    prompt && (prompt.texto || prompt.title || prompt.promptTitle || "")
+  );
+  if (!tituloNorm) return true;
+  return !/\b(?:en\s+infinitivo|verbo\s+en\s+infinitivo|en\s+singular|en\s+plural)\b/i.test(tituloNorm);
+}
+
+function generarFormasCandidatas(textoNorm, incluirNumero = true) {
+  const formas = new Set();
+  if (!textoNorm) return formas;
+  const sinArt = quitarArticulosIniciales(textoNorm);
+  formas.add(textoNorm);
+  if (sinArt) formas.add(sinArt);
+
+  if (incluirNumero) {
+    for (const base of [textoNorm, sinArt]) {
+      if (!base) continue;
+      for (const v of generarVariantesNumero(base)) {
+        formas.add(v);
+        const vSinArt = quitarArticulosIniciales(v);
+        if (vSinArt) formas.add(vSinArt);
+      }
+    }
+  }
+  return formas;
+}
+
 function resolverPromptId(promptOrId) {
   if (!promptOrId) return "";
   if (typeof promptOrId === "object") {
@@ -92,13 +160,33 @@ function registrarReclamacionGlobal(categoriaOrPrompt, palabra) {
 }
 
 function yaFueReclamadaGlobalmente(categoriaOrPrompt, palabra) {
-  const clave = obtenerClaveReclamacion(categoriaOrPrompt, palabra);
   const globales = obtenerReclamacionesGlobales();
-  if (globales.has(clave)) return true;
-
-  // Compatibilidad con posibles claves históricas antiguas basadas en promptId
+  const norm = normalizarTexto(palabra);
+  const sinArt = quitarArticulosIniciales(norm);
   const pId = resolverPromptId(categoriaOrPrompt);
-  if (pId && globales.has(`${pId}::${normalizarTexto(palabra)}`)) return true;
+  const catNorm = normalizarTexto(resolverTituloCategoria(categoriaOrPrompt));
+
+  for (const variante of new Set([norm, sinArt].filter(Boolean))) {
+    const clave = obtenerClaveReclamacion(categoriaOrPrompt, variante);
+    if (globales.has(clave)) return true;
+
+    // Compatibilidad con posibles claves históricas antiguas basadas en promptId
+    if (pId && globales.has(`${pId}::${variante}`)) return true;
+  }
+
+  // Comprobar también si en globales quedó guardada una versión con artículo inicial de la misma palabra
+  if (sinArt) {
+    for (const claveGuardada of globales) {
+      const sepIdx = claveGuardada.indexOf("::");
+      if (sepIdx === -1) continue;
+      const prefijoGuardado = claveGuardada.slice(0, sepIdx);
+      const palabraGuardada = claveGuardada.slice(sepIdx + 2);
+      if ((prefijoGuardado === catNorm || (pId && prefijoGuardado === pId)) &&
+          quitarArticulosIniciales(palabraGuardada) === sinArt) {
+        return true;
+      }
+    }
+  }
 
   return false;
 }
@@ -146,8 +234,9 @@ function sincronizarReclamacionesDesdeExpedientes() {
       }
     }
 
-    // 2. Escaneo explícito de seguridad para días 1 al 19
-    for (let d = 1; d <= 19; d++) {
+    // 2. Escaneo explícito de seguridad para días del calendario (manuales y mixtos)
+    const maxScanDayRecl = Math.max(19, typeof dayNumber === "function" ? dayNumber() : 19);
+    for (let d = 1; d <= maxScanDayRecl; d++) {
       const raw = localStorage.getItem(`spyle_expediente_dia${d}`) || localStorage.getItem(`spyle_daily_state_dia${d}`);
       if (raw) {
         try {
@@ -317,11 +406,12 @@ async function transmitirReclamacion(promptId, tituloCategoria, palabra) {
     return false;
   }
 
+  const cleanTerm = palabra.trim();
   const payload = {
     category: tituloCategoria,
     categoria: tituloCategoria,
-    word: palabra.trim().toLowerCase(),
-    palabra: palabra.trim().toLowerCase()
+    word: cleanTerm,
+    palabra: cleanTerm
   };
 
   try {
@@ -727,42 +817,14 @@ const sound = {
    - Estrategia de Búsqueda Dual: con espacios y colapsado sin espacios
    - Fuzzy Matching (Levenshtein === 1) para entradas de 5 o más letras
    ========================================================================== */
-const ARTICLES = ["el", "la", "los", "las", "un", "una"];
+const ARTICLES = ["el", "la", "los", "las", "un", "una", "unos", "unas", "al", "del", "the", "a", "an"];
 
 function normalizeInput(str) {
-  if (str == null) return "";
-
-  // 1. Convertir siempre a minúsculas ('BYD', 'Byd' -> 'byd', 'Ñ' -> 'ñ')
-  let s = String(str).toLowerCase();
-
-  // 2. Proteger 'ñ' tanto precompuesta (U+00F1) como descompuesta NFD ('n' + U+0303)
-  s = s
-    .replace(/n\u0303/g, "\u0001")
-    .replace(/ñ/g, "\u0001");
-
-  // 3. Eliminar tildes/diéresis de las vocales (á, é, í, ó, ú, ü -> a, e, i, o, u)
-  s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-  // 4. Restaurar 'ñ' intacta
-  s = s.replace(/\u0001/g, "ñ");
-
-  // 5. Convertir separadores (-, _, ., /) en espacios
-  s = s.replace(/[-_./\\]+/g, " ");
-
-  // 6. Limpiar otros signos de puntuación conservando letras, dígitos, 'ñ' y espacios
-  s = s.replace(/[^a-z0-9ñ\s]/g, " ").replace(/\s+/g, " ").trim();
-
-  return s;
+  return normalizarTexto(str);
 }
 
 function stripLeadingArticle(spaced) {
-  for (const art of ARTICLES) {
-    if (spaced.startsWith(art + " ")) {
-      const rest = spaced.slice(art.length + 1).trim();
-      if (rest) return rest;
-    }
-  }
-  return spaced;
+  return quitarArticulosIniciales(spaced);
 }
 
 function collapseSpaces(str) {
@@ -806,79 +868,92 @@ function pickHigherTier(tierA, tierB) {
 
 const indexCache = new Map();
 
-function registerKeyInMaps(spacedMap, collapsedMap, rawAns, tier) {
+function registerKeyInMaps(directMap, spacedMap, collapsedMap, rawAns, tier, incluirNumero = true) {
   if (!tier || tier === "fail") return;
-  const spaced = normalizeInput(rawAns);
-  if (!spaced) return;
+  const claveNorm = normalizarTexto(rawAns);
+  if (!claveNorm) return;
 
-  const noArt = stripLeadingArticle(spaced);
-  const collapsed = collapseSpaces(spaced);
-  const collapsedNoArt = collapseSpaces(noArt);
+  // Prioridad 1 (Exacta directa): solo la clave normalizada tal cual figura en prompt.answers
+  directMap.set(claveNorm, pickHigherTier(directMap.get(claveNorm), tier));
 
-  spacedMap.set(spaced, pickHigherTier(spacedMap.get(spaced), tier));
-  if (noArt && noArt !== spaced) {
-    spacedMap.set(noArt, pickHigherTier(spacedMap.get(noArt), tier));
-  }
-
-  if (collapsed) {
-    collapsedMap.set(collapsed, pickHigherTier(collapsedMap.get(collapsed), tier));
-  }
-  if (collapsedNoArt && collapsedNoArt !== collapsed) {
-    collapsedMap.set(collapsedNoArt, pickHigherTier(collapsedMap.get(collapsedNoArt), tier));
+  // Prioridad 2 (Flexible por artículo o número) y versión colapsada
+  const formasClave = generarFormasCandidatas(claveNorm, incluirNumero);
+  for (const forma of formasClave) {
+    spacedMap.set(forma, pickHigherTier(spacedMap.get(forma), tier));
+    const collapsed = collapseSpaces(forma);
+    if (collapsed) {
+      collapsedMap.set(collapsed, pickHigherTier(collapsedMap.get(collapsed), tier));
+    }
   }
 }
 
 function getIndex(p) {
-  if (!p) return { spacedMap: new Map(), collapsedMap: new Map() };
+  if (!p) return { directMap: new Map(), spacedMap: new Map(), collapsedMap: new Map(), permitirNumero: true };
   if (!indexCache.has(p.id)) {
+    const directMap = new Map();
     const spacedMap = new Map();
     const collapsedMap = new Map();
+    const permitirNumero = permiteVariantesNumero(p);
 
     if (p.answers && typeof p.answers === "object") {
       for (const [ans, pts] of Object.entries(p.answers)) {
         const tier = PTS_TO_TIER[pts] || "fail";
-        registerKeyInMaps(spacedMap, collapsedMap, ans, tier);
+        registerKeyInMaps(directMap, spacedMap, collapsedMap, ans, tier, permitirNumero);
       }
     } else if (p.respuestas && typeof p.respuestas === "object") {
       for (const [tier, list] of Object.entries(p.respuestas)) {
         if (Array.isArray(list)) {
           for (const ans of list) {
-            registerKeyInMaps(spacedMap, collapsedMap, ans, tier);
+            registerKeyInMaps(directMap, spacedMap, collapsedMap, ans, tier, permitirNumero);
           }
         }
       }
     }
 
-    indexCache.set(p.id, { spacedMap, collapsedMap });
+    indexCache.set(p.id, { directMap, spacedMap, collapsedMap, permitirNumero });
   }
   return indexCache.get(p.id);
 }
 
 function evaluate(prompt, input) {
   if (!prompt) return "fail";
-  const spaced = normalizeInput(input);
-  if (!spaced) return "fail";
+  const normInput = normalizarTexto(input);
+  if (!normInput) return "fail";
 
-  const noArt = stripLeadingArticle(spaced);
-  const collapsed = collapseSpaces(spaced);
+  const { directMap, spacedMap, collapsedMap, permitirNumero } = getIndex(prompt);
+
+  // Prioridad 1 (Exacta directa): coincidencia literal tras normalizar texto
+  if (directMap.has(normInput)) {
+    return directMap.get(normInput);
+  }
+
+  // Prioridad 2 (Flexible por artículo/determinante inicial o singular/plural)
+  const formasCandidatas = generarFormasCandidatas(normInput, permitirNumero);
+  let flexTier = null;
+  for (const forma of formasCandidatas) {
+    if (directMap.has(forma)) flexTier = pickHigherTier(flexTier, directMap.get(forma));
+    if (spacedMap.has(forma)) flexTier = pickHigherTier(flexTier, spacedMap.get(forma));
+  }
+  if (flexTier) return flexTier;
+
+  let flexCollapsedTier = null;
+  for (const forma of formasCandidatas) {
+    const collapsed = collapseSpaces(forma);
+    if (collapsed && collapsedMap.has(collapsed)) {
+      flexCollapsedTier = pickHigherTier(flexCollapsedTier, collapsedMap.get(collapsed));
+    }
+  }
+  if (flexCollapsedTier) return flexCollapsedTier;
+
+  // Prioridad 3: Fuzzy Matching (Levenshtein === 1 para entradas de 5 o más caracteres útiles)
+  const noArt = quitarArticulosIniciales(normInput);
+  const collapsedBase = collapseSpaces(normInput);
   const collapsedNoArt = collapseSpaces(noArt);
 
-  const { spacedMap, collapsedMap } = getIndex(prompt);
-
-  // 1. Búsqueda Dual Exacta (con espacios y colapsada sin espacios)
-  let exactTier = null;
-  if (spacedMap.has(spaced)) exactTier = pickHigherTier(exactTier, spacedMap.get(spaced));
-  if (spacedMap.has(noArt)) exactTier = pickHigherTier(exactTier, spacedMap.get(noArt));
-  if (collapsedMap.has(collapsed)) exactTier = pickHigherTier(exactTier, collapsedMap.get(collapsed));
-  if (collapsedMap.has(collapsedNoArt)) exactTier = pickHigherTier(exactTier, collapsedMap.get(collapsedNoArt));
-
-  if (exactTier) return exactTier;
-
-  // 2. Fuzzy Matching (Levenshtein === 1 para palabras de 5 o más letras/caracteres útiles)
-  if (collapsed.length >= 5 || collapsedNoArt.length >= 5) {
+  if (collapsedBase.length >= 5 || collapsedNoArt.length >= 5) {
     let best = null;
 
-    const candidatesSpaced = noArt !== spaced ? [spaced, noArt] : [spaced];
+    const candidatesSpaced = noArt !== normInput ? [normInput, noArt] : [normInput];
     for (const cand of candidatesSpaced) {
       if (collapseSpaces(cand).length < 5) continue;
       for (const [k, tier] of spacedMap) {
@@ -888,7 +963,7 @@ function evaluate(prompt, input) {
       }
     }
 
-    const candidatesCollapsed = collapsedNoArt !== collapsed ? [collapsed, collapsedNoArt] : [collapsed];
+    const candidatesCollapsed = collapsedNoArt !== collapsedBase ? [collapsedBase, collapsedNoArt] : [collapsedBase];
     for (const cand of candidatesCollapsed) {
       if (cand.length < 5) continue;
       for (const [k, tier] of collapsedMap) {
@@ -1321,8 +1396,9 @@ function sanearLogroOP10() {
 
     const diasSet = new Set(diasDescubiertos);
 
-    // Inspeccionar expedientes de días guardados (1..19) para detectar días reales donde se jugó un Easter Egg
-    for (let d = 1; d <= 19; d++) {
+    // Inspeccionar expedientes de días guardados para detectar días reales donde se jugó un Easter Egg
+    const maxScanDayOP10 = Math.max(19, typeof dayNumber === "function" ? dayNumber() : 19);
+    for (let d = 1; d <= maxScanDayOP10; d++) {
       const dayKey = "spyle_expediente_dia" + d;
       const legacyKey = "spyle_daily_state_dia" + d;
       let exp = null;
@@ -1332,9 +1408,9 @@ function sanearLogroOP10() {
       } catch {}
 
       if (exp && Array.isArray(exp.rondas)) {
-        const mission = (typeof DAILY_MISSIONS !== "undefined")
-          ? (DAILY_MISSIONS[d] || DAILY_MISSIONS[`dia_${d}`])
-          : null;
+        const mission = typeof obtenerMisionManual === "function"
+          ? obtenerMisionManual(d)
+          : ((typeof DAILY_MISSIONS !== "undefined") ? (DAILY_MISSIONS[d] || DAILY_MISSIONS[`dia_${d}`]) : null);
         const eeWord = mission && mission.easterEgg ? normalize(mission.easterEgg.word) : null;
 
         const jugoEasterEgg = exp.rondas.some((r) => {
@@ -1417,8 +1493,9 @@ function auditarLogrosRetroactivos() {
       }
     }
 
-    // Escaneo explícito de seguridad para días 1 al 19
-    for (let d = 1; d <= 19; d++) {
+    // Escaneo explícito de seguridad para días del calendario (manuales y mixtos)
+    const maxScanDayAudit = Math.max(19, typeof dayNumber === "function" ? dayNumber() : 19);
+    for (let d = 1; d <= maxScanDayAudit; d++) {
       const dayId = `dia${d}`;
       if (!expedientesMap.has(dayId)) {
         const raw = localStorage.getItem(`spyle_expediente_dia${d}`) || localStorage.getItem(`spyle_daily_state_dia${d}`);
@@ -1587,9 +1664,9 @@ function auditarLogrosRetroactivos() {
     expedientes.forEach((exp) => {
       if (!Array.isArray(exp.rondas)) return;
       const dNum = exp.diaId ? Number(String(exp.diaId).replace(/^dia_?/, "")) : null;
-      const mission = (dNum && typeof DAILY_MISSIONS !== "undefined")
-        ? (DAILY_MISSIONS[dNum] || DAILY_MISSIONS[`dia_${dNum}`])
-        : null;
+      const mission = (dNum && typeof obtenerMisionManual === "function")
+        ? obtenerMisionManual(dNum)
+        : ((dNum && typeof DAILY_MISSIONS !== "undefined") ? (DAILY_MISSIONS[dNum] || DAILY_MISSIONS[`dia_${dNum}`]) : null);
       const eeWord = mission && mission.easterEgg && typeof normalize === "function"
         ? normalize(mission.easterEgg.word)
         : (mission && mission.easterEgg ? mission.easterEgg.word.toLowerCase().trim() : null);
@@ -1759,35 +1836,182 @@ function renderArchives() {
 /* Calendario del reto diario: ids que abren la jornada de un día concreto.
    El resto de huecos hasta completar ROUNDS se rellena con el algoritmo clásico. */
 /* ===================== ESTRUCTURA DE RETOS DIARIOS Y CALENDARIO ===================== */
+const PREFIJOS_EXPEDIENTE_MIXTO = ["pel", "dep", "geo", "mus", "pal", "gen"];
+const VENTANA_ANTIRREPETICION_DIAS = 7;
+const cacheExpedientesMixtos = new Map();
+
+function normalizarNumeroDia(day = dayNumber()) {
+  if (typeof day === "number") return Number.isFinite(day) && day > 0 ? Math.floor(day) : 1;
+  const parsed = Number(String(day || "").replace(/^dia_?/i, ""));
+  return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : 1;
+}
+
+function obtenerMisionManual(day = dayNumber()) {
+  if (typeof DAILY_MISSIONS === "undefined" || !DAILY_MISSIONS) return null;
+  const d = normalizarNumeroDia(day);
+  const mission = DAILY_MISSIONS[d] || DAILY_MISSIONS[`dia_${d}`] || DAILY_MISSIONS[`dia${d}`] || null;
+  if (mission && Array.isArray(mission.prompts) && mission.prompts.length >= ROUNDS) {
+    return mission;
+  }
+  return null;
+}
+
+function esDiaArchivoMixto(day = dayNumber()) {
+  return !obtenerMisionManual(day);
+}
+
+function obtenerEtiquetaDia(day = dayNumber()) {
+  const d = normalizarNumeroDia(day);
+  return esDiaArchivoMixto(d)
+    ? `[ ARCHIVO MIXTO // DÍA ${d} ]`
+    : `Expediente Diario #${d}`;
+}
+
 function dateForDay(d) {
   const dt = new Date(EPOCH.getTime() + (d - 1) * 86400000);
   return dt.toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" });
 }
 
+function _construirExpedienteMixtoUnico(d) {
+  const completas = (typeof PROMPTS !== "undefined" ? PROMPTS : []).filter(esCategoriaCompleta);
+  if (completas.length === 0) {
+    const emptyMix = {
+      dia: d,
+      id: `dia_${d}`,
+      nombre: `[ ARCHIVO MIXTO // DÍA ${d} ]`,
+      codigo: `[ ARCHIVO MIXTO // DÍA ${d} ]`,
+      esArchivoMixto: true,
+      prompts: [],
+      promptObjects: []
+    };
+    cacheExpedientesMixtos.set(d, emptyMix);
+    return emptyMix;
+  }
+
+  // PRNG determinista con semilla basada en el número de día (compartido por todos los jugadores)
+  const seed = (d * 2654435761) >>> 0;
+  const rnd = mulberry32(seed);
+
+  // Recopilar categorías aparecidas en los últimos 7 días (N-1 hasta N-7)
+  const excluidasRecientes = new Set();
+  const minPrev = Math.max(1, d - VENTANA_ANTIRREPETICION_DIAS);
+  for (let prev = minPrev; prev < d; prev++) {
+    const manualPrev = obtenerMisionManual(prev);
+    const cachedPrev = !manualPrev ? cacheExpedientesMixtos.get(prev) : null;
+    const prevIds = manualPrev ? manualPrev.prompts : (cachedPrev ? cachedPrev.prompts : []);
+    prevIds.forEach((id) => excluidasRecientes.add(id));
+  }
+
+  // Registrar firmas de combinaciones históricas para no recrear ningún día previo completo
+  const firmasDiasPasados = new Set();
+  for (let prev = 1; prev < d; prev++) {
+    const manualPrev = obtenerMisionManual(prev);
+    const cachedPrev = !manualPrev ? cacheExpedientesMixtos.get(prev) : null;
+    const prevIds = manualPrev ? manualPrev.prompts : (cachedPrev ? cachedPrev.prompts : []);
+    if (Array.isArray(prevIds) && prevIds.length >= ROUNDS) {
+      firmasDiasPasados.add(prevIds.slice(0, ROUNDS).slice().sort().join(","));
+    }
+  }
+
+  const seleccionadas = [];
+  const usadosHoy = new Set();
+
+  // Rondas 1-6: 1 categoría completa por cada prefijo principal (pel-, dep-, geo-, mus-, pal-, gen-)
+  for (const pref of PREFIJOS_EXPEDIENTE_MIXTO) {
+    const delPrefijo = completas.filter((p) => String(p.id).startsWith(pref + "-") && !usadosHoy.has(p.id));
+    let pool = delPrefijo.filter((p) => !excluidasRecientes.has(p.id));
+    if (pool.length === 0) pool = delPrefijo;
+    if (pool.length === 0) {
+      const restantes = completas.filter((p) => !usadosHoy.has(p.id));
+      const restantesNoRecientes = restantes.filter((p) => !excluidasRecientes.has(p.id));
+      pool = restantesNoRecientes.length > 0 ? restantesNoRecientes : restantes;
+    }
+    if (pool.length > 0) {
+      const elegido = pool[Math.floor(rnd() * pool.length)];
+      seleccionadas.push(elegido);
+      usadosHoy.add(elegido.id);
+    }
+  }
+
+  // Ronda 7: 1 categoría comodín de cualquier temática (evitando últimos 7 días y combinaciones pasadas)
+  while (seleccionadas.length < ROUNDS) {
+    const disponibles = completas.filter((p) => !usadosHoy.has(p.id));
+    if (disponibles.length === 0) break;
+
+    let poolComodin = disponibles.filter((p) => !excluidasRecientes.has(p.id));
+    if (poolComodin.length === 0) poolComodin = disponibles;
+
+    const baseIds = seleccionadas.map((p) => p.id);
+    const sinClonarDia = poolComodin.filter((cand) => {
+      const firma = baseIds.concat(cand.id).sort().join(",");
+      return !firmasDiasPasados.has(firma);
+    });
+    if (sinClonarDia.length > 0) {
+      poolComodin = sinClonarDia;
+    }
+
+    const elegido = poolComodin[Math.floor(rnd() * poolComodin.length)];
+    seleccionadas.push(elegido);
+    usadosHoy.add(elegido.id);
+  }
+
+  const promptsFinales = shuffle(seleccionadas, rnd);
+  const expedienteMixto = {
+    dia: d,
+    id: `dia_${d}`,
+    nombre: `[ ARCHIVO MIXTO // DÍA ${d} ]`,
+    codigo: `[ ARCHIVO MIXTO // DÍA ${d} ]`,
+    esArchivoMixto: true,
+    prompts: promptsFinales.map((p) => p.id),
+    promptObjects: promptsFinales
+  };
+  cacheExpedientesMixtos.set(d, expedienteMixto);
+  return expedienteMixto;
+}
+
+function generarExpedienteMixto(day = dayNumber()) {
+  const d = normalizarNumeroDia(day);
+  // Precalcular en orden ascendente para respetar la ventana de anti-repetición de los últimos 7 días
+  for (let k = 1; k <= d; k++) {
+    if (obtenerMisionManual(k)) {
+      cacheExpedientesMixtos.delete(k);
+    } else if (!cacheExpedientesMixtos.has(k)) {
+      _construirExpedienteMixtoUnico(k);
+    }
+  }
+  return cacheExpedientesMixtos.get(d) || _construirExpedienteMixtoUnico(d);
+}
+
+function obtenerMisionDelDia(day = dayNumber()) {
+  const d = normalizarNumeroDia(day);
+  return obtenerMisionManual(d) || generarExpedienteMixto(d);
+}
+
 /* Lista original (sin sustituciones) de las 7 categorías asignadas a un día */
 function dailyPromptsRaw(day = dayNumber()) {
-  const mission = (typeof DAILY_MISSIONS !== "undefined")
-    ? (DAILY_MISSIONS[day] || DAILY_MISSIONS[`dia_${day}`] || DAILY_MISSIONS[((day - 1) % (typeof DAILY_MISSIONS !== 'undefined' ? Object.keys(DAILY_MISSIONS).filter(k => !isNaN(k)).length : 3)) + 1])
-    : null;
-
-  if (mission && Array.isArray(mission.prompts) && mission.prompts.length >= ROUNDS) {
-    const list = mission.prompts
+  const d = normalizarNumeroDia(day);
+  const manual = obtenerMisionManual(d);
+  if (manual) {
+    const list = manual.prompts
       .map((id) => PROMPTS.find((p) => p.id === id))
       .filter(Boolean);
     if (list.length >= ROUNDS) return list.slice(0, ROUNDS);
   }
 
-  // Fallback seguro: bloques cerrados secuenciales de 7 categorías
-  const generals = PROMPTS.filter((p) => p.pack === "general");
-  const total = generals.length;
-  if (total >= ROUNDS) {
-    const startIdx = ((day - 1) * ROUNDS) % total;
-    const selected = [];
-    for (let i = 0; i < ROUNDS; i++) {
-      selected.push(generals[(startIdx + i) % total]);
-    }
-    return selected;
+  const mixto = generarExpedienteMixto(d);
+  if (mixto && Array.isArray(mixto.promptObjects) && mixto.promptObjects.length >= ROUNDS) {
+    return mixto.promptObjects.slice(0, ROUNDS);
   }
+  if (mixto && Array.isArray(mixto.prompts) && mixto.prompts.length >= ROUNDS) {
+    const list = mixto.prompts
+      .map((id) => PROMPTS.find((p) => p.id === id))
+      .filter(Boolean);
+    if (list.length >= ROUNDS) return list.slice(0, ROUNDS);
+  }
+
+  // Fallback seguro en caso de banco incompleto
+  const completas = PROMPTS.filter(esCategoriaCompleta);
+  if (completas.length >= ROUNDS) return completas.slice(0, ROUNDS);
   return PROMPTS.slice(0, ROUNDS);
 }
 
@@ -2767,7 +2991,8 @@ function markWordAsClaimedInDailyState(word, roundIdx = null, dayOverride = null
       if (!state || !Array.isArray(state.rondas)) return;
 
       let changed = false;
-      const isTargetDayKey = key.includes("dia" + targetDay);
+      const targetDayStr = String(targetDay).replace(/^dia_?/i, "");
+      const isTargetDayKey = key === getExpedienteKey(targetDay) || key === "spyle_daily_state_dia" + targetDayStr;
 
       state.rondas.forEach((r, idx) => {
         if (!r) return;
@@ -2966,6 +3191,26 @@ function toggleWildcard() {
 }
 
 /* ---------- Flujo de Partida ---------- */
+function yaUsadaEnSesionActual(palabra, gameObj = game) {
+  const canon = obtenerFormaCanonica(palabra);
+  if (!canon || !gameObj) return false;
+
+  if (gameObj.usedCanonicalAnswers instanceof Set && gameObj.usedCanonicalAnswers.has(canon)) {
+    return true;
+  }
+
+  if (Array.isArray(gameObj.results)) {
+    return gameObj.results.some((r) => {
+      if (!r || !r.answer || r.tier === "fail") return false;
+      const rPts = typeof r.points === "number" ? r.points : (r.puntosObtenidos || 0);
+      if (rPts <= 0) return false;
+      return obtenerFormaCanonica(r.answer) === canon;
+    });
+  }
+
+  return false;
+}
+
 function startGame(mode, prompts, extra = {}) {
   intentosNoReconocidosPorRonda = prompts.map(() => []);
   rondaLimpia = true;
@@ -2974,6 +3219,7 @@ function startGame(mode, prompts, extra = {}) {
     mode,
     prompts,
     results: [],
+    usedCanonicalAnswers: new Set(),
     idx: 0,
     started: false,
     answered: false,
@@ -3030,7 +3276,13 @@ function startRound() {
   // Actualizar telemetría lateral de escritorio
   const sideMissionDate = $("side-mission-date");
   if (sideMissionDate) {
-    sideMissionDate.textContent = game.day ? `EXPEDIENTE #${game.day}` : "SIMULACRO CONTINUO";
+    if (game.mode === "daily" && game.day) {
+      sideMissionDate.textContent = esDiaArchivoMixto(game.day)
+        ? obtenerEtiquetaDia(game.day)
+        : `EXPEDIENTE #${game.day}`;
+    } else {
+      sideMissionDate.textContent = game.day ? `EXPEDIENTE #${game.day}` : "SIMULACRO CONTINUO";
+    }
   }
   renderSideDossier();
 
@@ -3103,10 +3355,12 @@ function submitAnswer(timeout = false) {
     }
 
     const candidateTier = evaluate(p, palabraEscrita);
+    const canonEscrita = obtenerFormaCanonica(palabraEscrita);
+
     if (candidateTier === "fail") {
       // El temporizador NO se detiene: registrar palabra no reconocida y mostrar en #intentos-en-vivo
       const bucket = intentosNoReconocidosPorRonda[rondaActual];
-      if (!bucket.some((w) => w.toLowerCase() === palabraEscrita.toLowerCase())) {
+      if (!bucket.some((w) => (obtenerFormaCanonica(w) || normalizarTexto(w)) === (canonEscrita || normalizarTexto(palabraEscrita)))) {
         intentosNoReconocidosPorRonda[rondaActual].push(palabraEscrita);
       }
       renderLiveAttempts(rondaActual);
@@ -3135,6 +3389,22 @@ function submitAnswer(timeout = false) {
         triggerRejectFeedback();
       }
       return;
+    }
+
+    // Evitar puntuar dos veces por la misma palabra canónica (con/sin artículo o variante ya usada en sesión)
+    if (yaUsadaEnSesionActual(palabraEscrita, game)) {
+      input.value = "";
+      input.focus({ preventScroll: true });
+      sound.rejectBeep();
+      triggerRejectFeedback("// Término ya utilizado en esta sesión - Prueba otro");
+      return;
+    }
+
+    if (canonEscrita) {
+      if (!(game.usedCanonicalAnswers instanceof Set)) {
+        game.usedCanonicalAnswers = new Set();
+      }
+      game.usedCanonicalAnswers.add(canonEscrita);
     }
 
     // Acierto (> 0 pts): detener inmediatamente el temporizador y puntuar
@@ -3492,7 +3762,7 @@ function renderizarInformeEvaluacion(expedienteParam = null, dayParam = null) {
     game = {
       mode: "daily",
       day: dNum,
-      label: `Expediente Diario #${dNum}`,
+      label: obtenerEtiquetaDia(dNum),
       prompts: prompts,
       results: results,
       idx: prompts.length,
@@ -3824,9 +4094,13 @@ async function transmitirSugerencia(categoria, palabra) {
 function refreshMenu() {
   const d = store.get("daily", null);
   const day = dayNumber();
+  const isMixto = esDiaArchivoMixto(day);
+  const prefixLabel = isMixto ? `[ ARCHIVO MIXTO // DÍA ${day} ]` : `Expediente #${day}`;
   $("daily-status").textContent = d && d.day === day
-    ? (d.done ? `Expediente #${day} completado ✔ — ver informe` : `Interrogatorio en curso (${d.results.length}/${ROUNDS})`)
-    : `Expediente #${day} — listo para evaluación`;
+    ? (d.done
+      ? `${prefixLabel} completado ✔ — ver informe`
+      : `${isMixto ? prefixLabel : "Interrogatorio"} en curso (${d.results.length}/${ROUNDS})`)
+    : `${prefixLabel} — listo para evaluación`;
 
   updateAchievementsStatus();
 }
@@ -3835,18 +4109,29 @@ function startDaily() {
   const day = dayNumber();
   const prompts = dailyPrompts(day);
   const saved = store.get("daily", null);
-  const extra = { day, label: `Expediente Diario #${day}` };
+  const extra = { day, label: obtenerEtiquetaDia(day) };
 
   if (saved && saved.day === day) {
     intentosNoReconocidosPorRonda = Array.isArray(saved.unrecognizedByRound)
       ? prompts.map((_, idx) => Array.isArray(saved.unrecognizedByRound[idx]) ? saved.unrecognizedByRound[idx].slice() : [])
       : prompts.map((_, idx) => (saved.results[idx] && Array.isArray(saved.results[idx].unrecognizedAttempts)) ? saved.results[idx].unrecognizedAttempts.slice() : []);
 
+    const usedCanonSet = new Set();
+    if (Array.isArray(saved.results)) {
+      saved.results.forEach((r) => {
+        if (r && r.answer && r.tier !== "fail" && (r.points > 0 || r.puntosObtenidos > 0)) {
+          const canon = obtenerFormaCanonica(r.answer);
+          if (canon) usedCanonSet.add(canon);
+        }
+      });
+    }
+
     rondaLimpia = true;
     game = {
       mode: "daily",
       prompts,
       results: saved.results,
+      usedCanonicalAnswers: usedCanonSet,
       idx: saved.idx,
       started: false,
       answered: false,
@@ -3903,8 +4188,8 @@ function checkEasterEggUnlock(prompt, word) {
   }
 
   // 2. Metadatos de la misión del día
-  if (!isMatch && typeof DAILY_MISSIONS !== "undefined" && game && game.day) {
-    const mission = DAILY_MISSIONS[game.day] || DAILY_MISSIONS[`dia_${game.day}`] || DAILY_MISSIONS[dayNumber()];
+  if (!isMatch && game && game.day) {
+    const mission = obtenerMisionManual(game.day);
     if (mission && mission.easterEgg && mission.easterEgg.promptId === prompt.id) {
       const eeNorm = normalize(mission.easterEgg.word);
       if (clean === eeNorm || cleanRaw === eeNorm || lowerWord === mission.easterEgg.word.toLowerCase().trim()) {
@@ -4014,7 +4299,15 @@ function renderCalendar() {
 
   const today = dayNumber();
   const maxConfiguredDay = (typeof DAILY_MISSIONS !== "undefined")
-    ? Math.max(...Object.keys(DAILY_MISSIONS).map(Number).filter((n) => !isNaN(n) && n > 0), 19)
+    ? Math.max(
+        ...Object.keys(DAILY_MISSIONS)
+          .map((k) => {
+            const m = String(k).match(/^(?:dia_?)?(\d+)$/i);
+            return m ? Number(m[1]) : NaN;
+          })
+          .filter((n) => !isNaN(n) && n > 0),
+        19
+      )
     : 19;
   const totalDays = Math.max(today, maxConfiguredDay);
   const history = store.get("daily_history", {}) || {};
@@ -4069,12 +4362,10 @@ function renderCalendar() {
 
     header.append(num, dtSpan);
 
-    const mission = (typeof DAILY_MISSIONS !== "undefined")
-      ? (DAILY_MISSIONS[d] || DAILY_MISSIONS[`dia_${d}`] || DAILY_MISSIONS[((d - 1) % 19) + 1])
-      : null;
+    const mission = obtenerMisionDelDia(d);
     const titleDiv = document.createElement("div");
     titleDiv.className = "cal-day-title";
-    titleDiv.textContent = mission ? mission.nombre : `Misión Clasificada #${d}`;
+    titleDiv.textContent = mission ? mission.nombre : `[ ARCHIVO MIXTO // DÍA ${d} ]`;
 
     const statusRow = document.createElement("div");
     statusRow.className = "cal-day-status-row";
@@ -4166,9 +4457,13 @@ function renderCalendar() {
       actionBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         const dStr = dateForDay(d);
-        openDeployModal(`ENTRENAMIENTO HISTÓRICO: DÍA #${d} (${dStr.toUpperCase()})`, () => {
+        const labelDia = obtenerEtiquetaDia(d);
+        const deployTitle = esDiaArchivoMixto(d)
+          ? `ENTRENAMIENTO HISTÓRICO: ${labelDia} (${dStr.toUpperCase()})`
+          : `ENTRENAMIENTO HISTÓRICO: DÍA #${d} (${dStr.toUpperCase()})`;
+        openDeployModal(deployTitle, () => {
           const prompts = dailyPrompts(d);
-          startGame("daily", prompts, { day: d, label: `Expediente Diario #${d}` });
+          startGame("daily", prompts, { day: d, label: labelDia });
         });
       });
     } else {
@@ -4202,7 +4497,10 @@ function requestDailyStart() {
     renderFinal();
     return;
   }
-  openDeployModal("MODO DIARIO: OPERACIÓN ACTIVA", () => {
+  const deploySubtitle = esDiaArchivoMixto(day)
+    ? `MODO DIARIO: ${obtenerEtiquetaDia(day)}`
+    : "MODO DIARIO: OPERACIÓN ACTIVA";
+  openDeployModal(deploySubtitle, () => {
     startDaily();
   });
 }

@@ -1,6 +1,10 @@
 # Instrucciones Permanentes para Agentes (Spyle / Contrainteligencia)
 
-> **REGLA OBLIGATORIA:** Está prohibido crear scripts Python temporales para leer, auditar o editar `prompts.js`. Para cualquier inserción masiva o puntual de palabras, genera un JSON temporal y ejecuta `python spyle_tool.py importar lote.json --cleanup`. Para importar reclamos calibrados de Google Sheets, usa `python spyle_tool.py sheets archivo.csv`.
+> **REGLA OBLIGATORIA:** Está prohibido crear scripts Python temporales para leer, auditar o editar `prompts.js`. Para cualquier inserción masiva o puntual de palabras, genera un JSON temporal agrupado por puntuación y ejecuta `python spyle_tool.py bulk lote.json --cleanup`. Para importar reclamos calibrados de Google Sheets, usa `python spyle_tool.py sheets archivo.csv`.
+>
+> **REGLA ESTRICTA DE EFICIENCIA:**
+> - **PROHIBIDO leer o abrir `prompts.js` antes de importar**, ya que `spyle_tool.py` descarta duplicados automáticamente.
+> - Usa siempre el formato agrupado **`bulk`** con `--cleanup` (`python spyle_tool.py bulk lote.json --cleanup`) para ahorrar tokens y tiempo de ejecución.
 >
 > **OBJETIVO MÍNIMO POR CATEGORÍA (`>= 250`):** El umbral mínimo para que una categoría esté **🟢 Completa / Activa** y quede habilitada en todos los modos de juego (`MIN_PALABRAS_CATEGORIA = 250` / `MIN_ACTIVE_WORDS = 250`) es alcanzar **al menos 250 palabras únicas** en su objeto `answers` (incluyendo respuestas de `10 pts` y de `100 pts`).
 
@@ -19,7 +23,23 @@
 
 Todos los comandos aplican respaldo automático previo en `.backups/`, normalización estricta (minúsculas, sin tildes vocálicas, conservando la `ñ`), validación de puntuaciones `{10, 25, 45, 65, 85, 100}`, regla anti-duplicados y rollback automático si falla la validación sintáctica.
 
-- **Importar JSON (crea el JSON y limpia automáticamente al finalizar):**
+- **Importación masiva optimizada (`bulk`) — formato recomendado (agrupado por puntuación):**
+  ```bash
+  python spyle_tool.py bulk lote.json --cleanup
+  ```
+  *Formato JSON agrupado admitido (por `id` o por `texto` exacto/normalizado):*
+  ```json
+  {
+    "pel-001": {
+      "10": ["el rey leon", "toy story", "nemo"],
+      "25": ["coco", "up", "wall e"],
+      "100": ["el planeta del tesoro", "atlantis"]
+    }
+  }
+  ```
+  Añade `--overwrite` solo si se solicita explícitamente sobrescribir puntuaciones existentes.
+
+- **Importar JSON individual (crea el JSON y limpia automáticamente al finalizar):**
   ```bash
   python spyle_tool.py importar lote.json --cleanup
   ```
