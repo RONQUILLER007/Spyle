@@ -20,6 +20,7 @@ function esCategoriaCompleta(prompt) {
 /* ==========================================================================
    REGISTRO HISTÓRICO GLOBAL PERMANENTE DE RECLAMACIONES (ANTI-DUPLICADOS)
    ========================================================================== */
+/** Normaliza a minúsculas sin tildes vocálicas ni signos, preservando la letra 'ñ'. */
 function normalizarTexto(palabra) {
   if (!palabra) return "";
   let s = String(palabra).toLowerCase().trim();
@@ -31,6 +32,7 @@ function normalizarTexto(palabra) {
   return s;
 }
 
+/** Retira artículos/determinantes iniciales (ES/EN) seguidos de una palabra de >= 2 caracteres. */
 function quitarArticulosIniciales(textoNorm) {
   if (!textoNorm) return '';
   const sinArticulo = textoNorm.replace(
@@ -40,6 +42,7 @@ function quitarArticulosIniciales(textoNorm) {
   return sinArticulo || textoNorm;
 }
 
+/** Genera equivalencias regulares de singular y plural (-s, -es, -z <-> -ces) para términos >= 4 chars. */
 function generarVariantesNumero(textoNorm) {
   const variantes = new Set([textoNorm]);
   if (!textoNorm || textoNorm.length < 4) return variantes;
@@ -67,10 +70,12 @@ function generarVariantesNumero(textoNorm) {
   return variantes;
 }
 
+/** Devuelve la forma canónica (normalizada y sin artículo inicial) para control anti-duplicados. */
 function obtenerFormaCanonica(texto) {
   return quitarArticulosIniciales(normalizarTexto(texto));
 }
 
+/** Indica si una categoría permite variantes de número (desactivado en infinitivo/singular/plural estricto). */
 function permiteVariantesNumero(prompt) {
   const tituloNorm = normalizarTexto(
     prompt && (prompt.texto || prompt.title || prompt.promptTitle || "")
@@ -79,6 +84,7 @@ function permiteVariantesNumero(prompt) {
   return !/\b(?:en\s+infinitivo|verbo\s+en\s+infinitivo|en\s+singular|en\s+plural)\b/i.test(tituloNorm);
 }
 
+/** Construye el conjunto de formas candidatas combinando artículos iniciales y variantes de número. */
 function generarFormasCandidatas(textoNorm, incluirNumero = true) {
   const formas = new Set();
   if (!textoNorm) return formas;
@@ -523,13 +529,13 @@ const PTS_TO_TIER = {
   25: "tooclever",
   45: "schooler",
   50: "schooler",
+  55: "rare",
   65: "rare",
   70: "rare",
   85: "deepcut",
   100: "trillion"
 };
 
-/* ---------- Cámara de Archivos Clasificados (Guerra Fría) ---------- */
 /* ---------- Catálogo Oficial de Condecoraciones Tácticas (10 Logros Clasificados) ---------- */
 const ACHIEVEMENTS = [
   {
@@ -915,6 +921,7 @@ function getIndex(p) {
   return indexCache.get(p.id);
 }
 
+/** Evalúa la respuesta del jugador en 3 prioridades: directa exacta, flexible (artículo/número) y Levenshtein = 1. */
 function evaluate(prompt, input) {
   if (!prompt) return "fail";
   const normInput = normalizarTexto(input);
@@ -1008,7 +1015,6 @@ function shuffle(arr, rnd = Math.random) {
   return a;
 }
 
-/* ---------- Gestión de Archivos Clasificados (Coleccionables) ---------- */
 /* ==========================================================================
    SISTEMA DE LOGROS Y ARCHIVOS CLASIFICADOS (localStorage: spyle_logros)
    ========================================================================== */
@@ -1832,10 +1838,7 @@ function renderArchives() {
   }
 }
 
-/* ---------- Selección de Prompts: Diaria e Unlimited ---------- */
-/* Calendario del reto diario: ids que abren la jornada de un día concreto.
-   El resto de huecos hasta completar ROUNDS se rellena con el algoritmo clásico. */
-/* ===================== ESTRUCTURA DE RETOS DIARIOS Y CALENDARIO ===================== */
+/* ===================== ESTRUCTURA DE RETOS DIARIOS, GENERADOR INFINITO Y CALENDARIO ===================== */
 const PREFIJOS_EXPEDIENTE_MIXTO = ["pel", "dep", "geo", "mus", "pal", "gen"];
 const VENTANA_ANTIRREPETICION_DIAS = 7;
 const cacheExpedientesMixtos = new Map();
@@ -1969,6 +1972,7 @@ function _construirExpedienteMixtoUnico(d) {
   return expedienteMixto;
 }
 
+/** Genera de forma determinista con mulberry32 el Archivo Mixto de 7 rondas y ventana anti-repetición de 7 días. */
 function generarExpedienteMixto(day = dayNumber()) {
   const d = normalizarNumeroDia(day);
   // Precalcular en orden ascendente para respetar la ventana de anti-repetición de los últimos 7 días
@@ -1982,6 +1986,7 @@ function generarExpedienteMixto(day = dayNumber()) {
   return cacheExpedientesMixtos.get(d) || _construirExpedienteMixtoUnico(d);
 }
 
+/** Prioriza la misión manual de DAILY_MISSIONS y recurre a generarExpedienteMixto si no existe entrada manual. */
 function obtenerMisionDelDia(day = dayNumber()) {
   const d = normalizarNumeroDia(day);
   return obtenerMisionManual(d) || generarExpedienteMixto(d);
@@ -2034,8 +2039,8 @@ function dailyPrompts(day = dayNumber()) {
   const raw = dailyPromptsRaw(day);
   if (raw.every(esCategoriaCompleta)) return raw;
 
-  // Sustitución dinámica de huecos incompletos por categorías aleatorias >= 130 palabras del mismo prefijo
-  // que no se hayan jugado en la sesión
+  // Sustitución dinámica de huecos incompletos por categorías aleatorias activas (>= MIN_PALABRAS_CATEGORIA = 250)
+  // del mismo prefijo que no se hayan jugado en la sesión
   const usados = new Set(raw.filter(esCategoriaCompleta).map((p) => p.id));
   return raw.map((p) => {
     if (esCategoriaCompleta(p)) return p;
@@ -3191,6 +3196,7 @@ function toggleWildcard() {
 }
 
 /* ---------- Flujo de Partida ---------- */
+/** Comprueba por raíz canónica (sin artículo inicial) si un término ya puntuó en la sesión activa. */
 function yaUsadaEnSesionActual(palabra, gameObj = game) {
   const canon = obtenerFormaCanonica(palabra);
   if (!canon || !gameObj) return false;

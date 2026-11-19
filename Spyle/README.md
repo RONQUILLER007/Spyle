@@ -25,8 +25,8 @@ El sistema utiliza una función canónica compartida de iconos tanto en las tarj
 - ⬛ **0 pts** · Delatado / Misión Fallida (Término no catalogado o tiempo agotado).
 - 📰 **10 pts** · Registro Turístico (Respuesta evidente y masiva que cualquier forastero sabría).
 - 🎭 **25 pts** · Tapadera Chapucera / Gesto Delatador (*Too Clever*: el cliché rebuscado que levanta sospechas).
-- 🗂️ **45–50 pts** · Conocimiento de Campo (Creíble, fluido y natural en conversación habitual).
-- 🕵️ **65–70 pts** · Infiltración Profunda (Nivel de residente veterano).
+- 🗂️ **45 pts** · Conocimiento de Campo (Creíble, fluido y natural en conversación habitual).
+- 🕵️ **65 pts** · Infiltración Profunda (Nivel de residente veterano).
 - 🗝️ **85 pts** · Alto Secreto / Archivo Reservado (Microcultura, marcas o datos de archivo).
 - 🎖️ **100 pts** · Agente Durmiente Perfecto (Nicho extremo / 1 en un billón).
 - 🔑 **Easter Egg** · Clave Oculta de Desclasificación (Término secreto del día que desbloquea el Archivo Histórico).
@@ -35,9 +35,12 @@ El sistema utiliza una función canónica compartida de iconos tanto en las tarj
 
 ## 🛠️ Modos de Juego y Navegación
 
-1. **Expediente Diario:** Los mismos 7 retos equilibrados para toda la comunidad cada 24 horas, sincronizados con la fecha del calendario y con rotación aleatoria de slots diarios. Una vez completado, el acceso directo abre el expediente persistido del día sin pérdida de datos.
-2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente del catálogo global de preguntas (con comodín deshabilitado para entrenamiento puro).
-3. **Dossieres de Campo Temáticos:** Expedientes clasificados agrupados por áreas específicas del conocimiento:
+1. **Expediente Diario e Infinito Determinista (`[ ARCHIVO MIXTO // DÍA X ]`):**
+   - Cada jornada fija en `DAILY_MISSIONS` ofrece los 7 retos curados para toda la comunidad cada 24 horas.
+   - Una vez superados los días manuales, un **generador determinista con semilla por día (`mulberry32`)** construye automáticamente jornadas infinitas (`Día 20`, `Día 21`, etc.) etiquetadas como `[ ARCHIVO MIXTO // DÍA X ]`, seleccionando 1 categoría activa ($\ge 250$ palabras) de cada prefijo (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín, excluyendo las usadas en los **últimos 7 días (`N-1` a `N-7`)** y sin clonar ningún día pasado. Si en el futuro se añade una misión manual para ese día, tiene prioridad automática.
+   - Tanto los días manuales como los autogenerados guardan progreso, puntuación y estado de reclamaciones en `localStorage`.
+2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre categorías activas ($\ge 250$ palabras), con comodín deshabilitado para entrenamiento puro.
+3. **Dossieres de Campo Temáticos:** Expedientes clasificados agrupados por áreas específicas del conocimiento (requieren categorías activas $\ge 250$ palabras):
    - *Palabras y Lenguaje* (`pal-`)
    - *Películas y Cine* (`pel-`)
    - *Deportes y Competición* (`dep-`)
@@ -46,7 +49,7 @@ El sistema utiliza una función canónica compartida de iconos tanto en las tarj
    - *General y Miscelánea* (`gen-`)
 4. **Archivo Histórico de Misiones:** Registro cronológico desbloqueable mediante Easter Egg diario. Permite inspeccionar expedientes completados (`[ VER EXPEDIENTE ]`) o infiltrarse en misiones anteriores no jugadas (`[ INFILTRARSE ]`).
 5. **Protocolo de Despliegue Operativo:** Ventana de confirmación táctica previa a cualquier partida con el resumen de reglas y advertencias antes de iniciar el cronómetro.
-6. **Briefing Inicial:** Al acceder por primera vez a la terminal, se despliega automáticamente la *Directiva de Operaciones // Briefing*. Puede reabrirse en cualquier momento mediante el botón `[ ? ]` de la cabecera. El botón de estado de cabecera (`// EN ESPERA DE INTERROGATORIO`) permite abortar la misión activa y regresar al Cuartel General.
+6. **Briefing Inicial:** Al acceder por primera vez a la terminal, se despliega automáticamente la *Directiva de Operaciones // Briefing*. Puede reabrirse en cualquier momento mediante el botón `[ ? ]` de la cabecera.
 
 ---
 
@@ -59,7 +62,7 @@ Sistema integrado de condecoraciones persistentes en `localStorage` con notifica
 3. **Operativo Impecable (`OP-03`):** Logra un pleno perfecto de 700 puntos base en las 7 rondas.
 4. **Gatillo Rápido (`OP-04`):** Responde de forma válida en menos de $2,0\text{ segundos}$ en cualquier ronda.
 5. **Carrera de Espías (`OP-05`):** Consigue la bonificación de velocidad (+20%) en las 7 rondas de una misión.
-6. **Sin Rastro (`OP-06`):** Completa una misión de 7 rondas con un 100% de efectividad al primer intento (0 fallos y ninguna ronda agotada).
+6. **Sin Rastro (`OP-06`):** Completa una misión de 7 rondas con un 100 % de efectividad al primer intento (0 fallos y ninguna ronda agotada).
 7. **Extracción In Extremis (`OP-07`):** Acierta una palabra válida quedando menos de $1,0\text{ segundo}$ en el temporizador.
 8. **Infiltración Duplicada (`OP-08`):** Activa el comodín y duplica con éxito una puntuación de $\ge 65\text{ pts}$.
 9. **Red Durmiente (`OP-09`):** Acumula un mínimo de 2.000 puntos históricos totales en el expediente.
@@ -67,32 +70,40 @@ Sistema integrado de condecoraciones persistentes en `localStorage` con notifica
 
 ---
 
-## 📊 Telemetría, Persistencia e Interfaz Reactiva
+## 🔍 Auditor de Densidad y Escala de 4 Niveles ($\ge 250$)
 
-- **Persistencia Integral de Expedientes (`spyle_expediente_*`):** Cada misión diaria o histórica guarda en `localStorage` el desglose íntegro de las 7 rondas (respuestas validadas, puntos base, bonus de velocidad, referencia de Agente Durmiente e intentos fallidos/reclamados), permitiendo cerrar o recargar el navegador sin perder el informe de evaluación.
-- **Marcador Histórico Acumulado:** Insignia táctica en la barra superior que suma y preserva todos los puntos obtenidos en partidas diarias, ilimitadas y dossieres (`spyle_puntos_totales`), con animación de pulso tras cada cierre de sesión.
-- **Monitor de Enlace / Cobertura:** Indicador en tiempo real del estado de red del dispositivo (`navigator.onLine`), alertando si la estación opera en modo autónomo local o enlazada para reportes.
-- **Microinteracciones Aceleradas por Hardware:** Respuesta visual fluida a 60 FPS en emojis tácticos, tarjetas de archivo, sellos de condecoraciones y botones operativos mediante transformaciones CSS.
+El umbral mínimo oficial para habilitar una categoría en juego es **`MIN_PALABRAS_CATEGORIA = 250`** (`MIN_ACTIVE_WORDS = 250` en `spyle_tool.py`), evaluado en el panel de desarrollador (`Alt + D` o `?dev=1`) según la escala de 4 niveles:
 
----
+- 🟢 **Completo / Activo ($\ge 250$ palabras):** Habilitada en Modo Ilimitado, Dossieres, Expediente Diario y Archivo Histórico.
+- 🟡 **Intermedio ($130\text{--}249$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego).
+- 🔴 **Baja ($50\text{--}129$ palabras):** Base inicial insuficiente (bloqueada en juego).
+- ⚪ **Crítica / Vacía ($0\text{--}49$ palabras):** Categoría sin poblar o en esqueleto (bloqueada en juego).
 
-## 🔍 Auditor de Densidad y Control de Catálogo
-
-Herramienta integrada de diagnóstico y gestión de expedientes (`prompts.js`) diseñada para supervisar la reserva operativa de misiones:
-
-- **Filtrado Multidimensional:** Permite segmentar el catálogo por umbrales de densidad (`> 130 palabras`, `100–130 palabras`, `1–99 palabras` y `0 palabras / vacías`) y por dossier temático (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`).
-- **Ordenación Bidireccional:** Clasificación instantánea por orden cronológico de día (`Día 01` $\leftrightarrow$ `Día 19+`), densidad de respuestas (mayor a menor y viceversa), orden alfabético (`A–Z` / `Z–A`) o agrupación por dossier.
+Incluye filtrado por rango de densidad y dossier (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`), además de ordenación bidireccional por día, cantidad de palabras, título o temática.
 
 ---
 
-## ⚙️ Motor de Normalización y Búsqueda Dual
+## ⚙️ Motor de Normalización, Flexibilidad Morfológica y Búsqueda Dual
 
-Para garantizar una evaluación justa y tolerante a la ortografía digital y el habla real en español:
+Para garantizar una evaluación justa, rápida y tolerante al español e inglés reales sin necesidad de duplicar entradas en `prompts.js`:
 
-- **Tratamiento Estricto de la 'Ñ':** Limpieza sistemática de tildes vocálicas ($á, é, í, ó, ú, ü \to a, e, i, o, u$), garantizando que la letra **`ñ`** / **`Ñ`** jamás sea descompuesta o convertida en `n`.
-- **Estrategia Dual (Espacios vs. Colapso):** Evaluación simultánea con espacios normalizados y en formato colapsado (ej. `half-life` $\to$ `half life` y `halflife`).
-- **Fuzzy Matching:** Distancia Levenshtein con tolerancia de 1 carácter tipográfico para términos de 5 o más letras.
-- **Ampliación Coloquial:** Diccionarios reforzados con jerga callejera, marcas de consumidor, acrónimos cotidianos y expresiones habladas.
+- **Tratamiento Estricto de la 'Ñ':** Limpieza sistemática de tildes vocálicas y diéresis ($á, é, í, ó, ú, ü \to a, e, i, o, u$), preservando intacta la letra **`ñ`**.
+- **Despojo de Artículos y Determinantes Iniciales (`quitarArticulosIniciales`):** Acepta automáticamente entradas con o sin artículo/determinante inicial en español e inglés (`el`, `la`, `los`, `las`, `un`, `una`, `unos`, `unas`, `al`, `del`, `the`, `a`, `an`) cuando va seguido de una palabra de $\ge 2$ caracteres.
+- **Equivalencias de Singular y Plural (`generarVariantesNumero`):** Acepta variantes regulares `-s`, `-es` y `-z` ↔ `-ces` en términos de $\ge 4$ caracteres. Se desactiva automáticamente si el enunciado de la categoría exige explícitamente `"en singular"`, `"en plural"` o `"en infinitivo"`.
+- **Validación en Prioridades y Control Anti-Doble Puntuación:** Prioriza coincidencias exactas directas (`directMap`) sobre coincidencias morfológicas flexibles (`spacedMap` y versión colapsada `collapsedMap`) y mantiene distancia de Levenshtein `1` para erratas tipográficas ($\ge 5$ caracteres). Registra la raíz canónica (`obtenerFormaCanonica`) para impedir puntuar dos veces por el mismo término con y sin artículo en una sesión.
+
+---
+
+## 🧰 Herramienta CLI Oficial (`spyle_tool.py`)
+
+Utilidad reutilizable para gestionar `prompts.js` con backup automático previo en `.backups/`, normalización estricta, validación contra `{10, 25, 45, 65, 85, 100}`, regla anti-duplicados y rollback automático si falla la verificación sintáctica/estructural:
+
+- `python spyle_tool.py bulk lote.json --cleanup` *(formato agrupado por puntuación recomendado)*
+- `python spyle_tool.py importar lote.json --cleanup`
+- `python spyle_tool.py sheets reclamaciones.csv`
+- `python spyle_tool.py auditar --incompletas --dias`
+- `python spyle_tool.py normalizar`
+- `python spyle_tool.py buscar "<termino>"`
 
 ---
 
@@ -100,32 +111,22 @@ Para garantizar una evaluación justa y tolerante a la ortografía digital y el 
 
 Cuando un jugador introduce un término no reconocido que considera válido:
 
-1. **Reclamación Unificada (En Vivo y Post-Partida):** El jugador puede remitir la palabra mediante `[ ✉️ Reclamar ]` tanto en el momento tras acertar la ronda como en el resumen final de resultados.
-2. **Bloqueo Global Anti-Duplicados (`spyle_reclamaciones_globales`):** Un registro persistente entre sesiones impide volver a enviar la misma combinación `categoría::palabra` si ya fue reclamada anteriormente en la partida actual o en días pasados.
+1. **Reclamación Unificada (En Vivo y Post-Partida):** El jugador puede remitir la palabra mediante `[ ✉️ Reclamar ]` tanto al instante tras finalizar la ronda como en el resumen final, enviando el término limpio introducido por el jugador sin alterar.
+2. **Bloqueo Global Anti-Duplicados (`spyle_reclamaciones_globales`):** Impide volver a enviar la misma combinación `categoría::palabra` (considerando también variantes con o sin artículo inicial).
 3. **Transmisión Serverless:** El cliente envía la sugerencia a un webhook en **Google Apps Script** mediante `fetch` con cabecera `text/plain` y modo `no-cors`.
-4. **Hoja de Inteligencia:** Google Sheets registra automáticamente:
-   - **Columna A:** Fecha y hora.
-   - **Columna B:** Categoría / Expediente.
-   - **Columna C:** Palabra sugerida.
-   - **Columna D:** Puntos Asignados (calibrados manualmente por el equipo de inteligencia).
-   - **Columna E:** Fórmula matricial automática (`ARRAYFORMULA`) que redacta la orden directa lista para procesar:
-     `En la categoría "[Categoría]" añade la palabra "[Palabra]" con [Puntos] puntos en prompts.js.`
+4. **Hoja de Inteligencia:** Google Sheets registra fecha/hora, categoría, palabra sugerida y puntuación calibrada para reimportación directa con `python spyle_tool.py sheets`.
 
 ---
 
 ## 🚀 Despliegue y Control de Caché
 
-El proyecto está diseñado para ejecutarse de forma estática en **GitHub Pages** o **Cloudflare Pages**:
+El proyecto se ejecuta de forma estática en **GitHub Pages** o **Cloudflare Pages** con cache-busting en `Spyle/index.html`:
 
-- **Cache-Busting:** Para forzar a los navegadores a recibir las ampliaciones del diccionario `prompts.js` sin requerir que los usuarios borren su historial, se emplean parámetros de versión en los recursos:
-
-  ```html
-  <link rel="stylesheet" href="style.css?v=1.0">
-  <script src="prompts.js?v=1.0" charset="UTF-8"></script>
-  <script src="app.js?v=1.0" charset="UTF-8"></script>
-  ```
-
-  Incrementar el sufijo `?v=X.X` en `index.html` despliega los cambios a toda la base de jugadores de manera inmediata.
+```html
+<link rel="stylesheet" href="style.css?v=1.2">
+<script src="prompts.js?v=1.2" charset="UTF-8"></script>
+<script src="app.js?v=1.2" charset="UTF-8"></script>
+```
 
 ---
 
@@ -134,4 +135,4 @@ El proyecto está diseñado para ejecutarse de forma estática en **GitHub Pages
 Este proyecto constituye una **adaptación cultural independiente al español y una reimaginación temática/narrativa** del concepto original creado en el juego de navegador **Spyle** ([spyle.day](https://spyle.day)), ideado y publicado por el usuario **u/Longjumping-Yam-6532** en la comunidad **r/wordgames** de Reddit.
 
 - **Sin suplantación:** Este proyecto **no** pretende suplantar la identidad del autor original, ni atribuirse la autoría de la mecánica conceptual de trivia inversa (*Reverse-Trivia / Pointless scoring*).
-- **Código y Arquitectura Propios:** Toda la implementación técnica (interfaz gráfica de terminal de inteligencia, motor de normalización diacrítica con preservación de la `ñ`, penalizaciones por fallo de disparo, persistencia de telemetría y condecoraciones, auditor de densidad e integración serverless con Google Sheets) ha sido desarrollada desde cero sin emplear código fuente propietario ni recursos gráficos de la obra de referencia.
+- **Código y Arquitectura Propios:** Toda la implementación técnica (interfaz gráfica de terminal de inteligencia, motor de normalización y flexibilidad morfológica, generador diario determinista, persistencia de telemetría y condecoraciones, auditor de densidad, CLI `spyle_tool.py` e integración serverless con Google Sheets) ha sido desarrollada desde cero sin emplear código fuente propietario ni recursos gráficos de la obra de referencia.

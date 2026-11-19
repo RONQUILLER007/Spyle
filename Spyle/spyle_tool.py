@@ -3,15 +3,21 @@
 """
 spyle_tool.py — Herramienta CLI oficial y reutilizable para gestionar `prompts.js` en Spyle.
 
+Escala oficial de densidad (MIN_ACTIVE_WORDS = 250):
+  - 🟢 Completo (>= 250 palabras): Categoria activa en todos los modos de juego.
+  - 🟡 Intermedio (130 - 249 palabras): Avanzada en desarrollo.
+  - 🔴 Baja (50 - 129 palabras): Base inicial insuficiente.
+  - ⚪ Critica / Vacia (0 - 49 palabras): Sin poblar o en esqueleto.
+
 Protocolo de seguridad e integridad en cada escritura:
   1. Backup automático previo en `.backups/prompts_YYYYMMDD_HHMMSS.js` (mantiene últimas 10 copias).
   2. Normalización estricta de claves: minúsculas, colapso de espacios, eliminación de tildes
      vocálicas y diéresis (áéíóúü -> aeiouu) preservando intacta la letra "ñ".
   3. Validación estricta de puntuaciones contra la escala oficial: {10, 25, 45, 65, 85, 100}.
   4. Regla anti-duplicados por defecto (omite existentes salvo `--overwrite`).
-  5. Verificación sintáctica tras escribir (`node -c prompts.js` cuando Node está disponible +
-     validador estructural de llaves/comillas/pares en Python). Ante cualquier error, ejecuta
-     rollback automático restaurando el backup y abortando con código 1.
+  5. Verificación sintáctica tras escribir (`node -c` cuando Node está disponible +
+     validador estructural de llaves/corchetes/paréntesis/comillas en Python). Ante cualquier
+     error, ejecuta rollback automático restaurando el backup y abortando con código 1.
 
 Ejemplos de uso:
   python spyle_tool.py bulk lote.json --cleanup
@@ -46,19 +52,39 @@ MIN_ACTIVE_WORDS = 250
 MAX_BACKUPS = 10
 
 
-def locate_prompts_js():
-    """Localiza prompts.js desde el directorio actual o junto al script."""
+def _locate_asset(filename, not_found_msg):
+    """Localiza un archivo del proyecto buscando en el directorio actual, spyle/, Spyle/ y Tinkle/."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    candidates = [
-        os.path.join(os.getcwd(), "prompts.js"),
-        os.path.join(os.getcwd(), "Spyle", "prompts.js"),
-        os.path.join(script_dir, "prompts.js"),
-        os.path.join(script_dir, "Spyle", "prompts.js"),
-    ]
+    roots = []
+    for base in (os.getcwd(), script_dir):
+        abs_base = os.path.abspath(base)
+        if abs_base not in roots:
+            roots.append(abs_base)
+
+    candidates = []
+    for base in roots:
+        for rel in (
+            filename,
+            os.path.join("spyle", filename),
+            os.path.join("Spyle", filename),
+            os.path.join("Tinkle", filename),
+        ):
+            candidates.append(os.path.join(base, rel))
+
     for path in candidates:
         if os.path.isfile(path):
             return os.path.abspath(path)
-    raise FileNotFoundError("No se encontro el archivo prompts.js en el proyecto.")
+    raise FileNotFoundError(not_found_msg)
+
+
+def locate_prompts_js():
+    """Localiza prompts.js en raiz, spyle/, Spyle/ o Tinkle/."""
+    return _locate_asset("prompts.js", "No se encontro el archivo prompts.js en el proyecto.")
+
+
+def locate_app_js():
+    """Localiza app.js en raiz, spyle/, Spyle/ o Tinkle/."""
+    return _locate_asset("app.js", "No se encontro el archivo app.js en el proyecto.")
 
 
 def normalizar_clave(texto):
@@ -381,6 +407,32 @@ def create_backup(prompts_path):
     return backup_path
 
 
+def check_js_syntax(js_path, content=None):
+    """
+    Valida la sintaxis de un archivo JavaScript mediante `node -c` (si Node.js esta disponible)
+    y el validador estructural de llaves, corchetes, parentesis y comillas en Python.
+    Retorna (ok, node_used, message).
+    """
+    if content is None:
+        with open(js_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+    node_used = False
+    node_bin = find_node_executable()
+    if node_bin:
+        res = subprocess.run([node_bin, "-c", js_path], capture_output=True, text=True)
+        node_used = True
+        if res.returncode != 0:
+            err = res.stderr.strip() if res.stderr else f"`node -c` fallo en {os.path.basename(js_path)}"
+            return False, node_used, err
+
+    ok, msg = validate_js_brackets(content)
+    if not ok:
+        return False, node_used, msg
+
+    return True, node_used, "OK"
+
+
 def guardar_prompts_seguro(prompts_path, new_content):
     """
     Aplica el protocolo de escritura segura:
@@ -400,23 +452,12 @@ def guardar_prompts_seguro(prompts_path, new_content):
         print(f"[ERROR CRITICO] Fallo escribiendo prompts.js ({exc}). Rollback ejecutado.", file=sys.stderr)
         sys.exit(1)
 
-    # Validacion sintactica con node -c si esta disponible
-    node_bin = find_node_executable()
-    if node_bin:
-        res = subprocess.run([node_bin, "-c", prompts_path], capture_output=True, text=True)
-        if res.returncode != 0:
-            shutil.copy2(backup_path, prompts_path)
-            print("[ERROR SINTACTICO] `node -c prompts.js` fallo. Rollback restaurado.", file=sys.stderr)
-            if res.stderr:
-                print(res.stderr.strip(), file=sys.stderr)
-            sys.exit(1)
-    else:
+    ok, node_used, msg = check_js_syntax(prompts_path, new_content)
+    if not node_used:
         print("[AVISO] Node.js no encontrado en el sistema; se ejecuta validacion sintactica estructural en Python.")
-
-    ok, msg = validate_js_brackets(new_content)
     if not ok:
         shutil.copy2(backup_path, prompts_path)
-        print(f"[ERROR ESTRUCTURAL] {msg}. Rollback restaurado.", file=sys.stderr)
+        print(f"[ERROR SINTACTICO/ESTRUCTURAL] {msg}. Rollback restaurado.", file=sys.stderr)
         sys.exit(1)
 
     try:
@@ -620,12 +661,12 @@ def _run_json_import(args, cmd_name, expected_desc):
 
 
 def cmd_bulk(args):
-    """python spyle_tool.py bulk <archivo.json> [--overwrite] [--cleanup]"""
+    """Importa palabras desde un JSON agrupado por puntuacion (`{ cat: { "10": [...] } }`) con --overwrite / --cleanup."""
     _run_json_import(args, "bulk", "{ categoria: { puntuacion: [palabras] } }")
 
 
 def cmd_importar(args):
-    """python spyle_tool.py importar <archivo.json> [--overwrite] [--cleanup]"""
+    """Importa palabras desde un JSON plano (`{ cat: { palabra: puntos } }`) con --overwrite / --cleanup."""
     _run_json_import(args, "importar", "{ categoria: { palabra: puntos } }")
 
 
@@ -728,7 +769,14 @@ def cmd_sheets(args):
 
 
 def cmd_auditar(args):
-    """python spyle_tool.py auditar [--incompletas] [--dias]"""
+    """
+    Audita el banco de categorias (`prompts.js`) y la sintaxis de `prompts.js` / `app.js`:
+      - Escala oficial de 4 niveles (MIN_ACTIVE_WORDS = 250).
+      - Unicidad de IDs en PROMPTS, integridad de DAILY_MISSIONS, validez de {10,25,45,65,85,100}
+        y ausencia de claves vacias.
+      - Equilibrio de dificultad (tramos 10 pts y 100 pts en todas las categorias completas).
+      - Validacion estructural y sintactica de prompts.js y app.js.
+    """
     show_incompletas = "--incompletas" in args
     show_dias = "--dias" in args
 
@@ -743,11 +791,27 @@ def cmd_auditar(args):
     rojas = []
     vacias = []
     alerts_balance = []
+    seen_ids = set()
+    duplicate_ids = []
+    invalid_scores = []
+    empty_keys = []
 
     for c in cats:
+        cid = c["id"]
+        if cid in seen_ids:
+            duplicate_ids.append(cid)
+        seen_ids.add(cid)
+
         pairs = c["pairs"]
         total = len(pairs)
-        scores = {v for _, v in pairs}
+        scores = set()
+        for k, v in pairs:
+            if not normalizar_clave(k):
+                empty_keys.append(cid)
+            if v not in VALID_SCORES:
+                invalid_scores.append((cid, k, v))
+            scores.add(v)
+
         if total >= MIN_ACTIVE_WORDS:
             activas.append(c)
             missing = []
@@ -756,7 +820,7 @@ def cmd_auditar(args):
             if 100 not in scores:
                 missing.append("100 pts (Agente Durmiente)")
             if missing:
-                alerts_balance.append((c["id"], c["texto"], missing))
+                alerts_balance.append((cid, c["texto"], missing))
         elif total >= 130:
             amarillas.append(c)
         elif total >= 50:
@@ -785,6 +849,42 @@ def cmd_auditar(args):
     for pref in sorted(by_prefix):
         info = by_prefix[pref]
         print(f"  - {pref:<4}: {info['activas']:>2}/{info['total']:<2} activas (>={MIN_ACTIVE_WORDS})")
+
+    # Integridad estructural del banco
+    missing_daily_ids = []
+    if daily_missions:
+        cats_map = {c["id"]: len(c["pairs"]) for c in cats}
+        for dm in daily_missions:
+            for pid in dm["prompts"]:
+                if pid not in cats_map:
+                    missing_daily_ids.append((f"dia{dm['dia']}", pid))
+
+    print("\nIntegridad estructural del banco:")
+    print(f"  - IDs duplicados en PROMPTS     : {'0 (OK)' if not duplicate_ids else f'ALERTA: {duplicate_ids}'}")
+    print(f"  - Referencias huerfanas diarias : {'0 (OK)' if not missing_daily_ids else f'ALERTA: {missing_daily_ids}'}")
+    print(f"  - Puntuaciones fuera de escala  : {'0 (OK)' if not invalid_scores else f'ALERTA: {len(invalid_scores)}'}")
+    if invalid_scores:
+        by_score = {}
+        for cid, k, v in invalid_scores:
+            by_score.setdefault(v, []).append((cid, k))
+        for sv in sorted(by_score):
+            sample = ", ".join(f"{cid}:'{k}'" for cid, k in by_score[sv][:5])
+            extra = f" (+{len(by_score[sv]) - 5} mas)" if len(by_score[sv]) > 5 else ""
+            print(f"      * Valor {sv} ({len(by_score[sv])} casos): {sample}{extra}")
+    print(f"  - Claves vacias detectadas      : {'0 (OK)' if not empty_keys else f'ALERTA: {empty_keys}'}")
+
+    ok_prompts, node_prompts, msg_prompts = check_js_syntax(prompts_path, content)
+    prompts_mode = "node -c + Python" if node_prompts else "Python estructural"
+    print(f"  - Sintaxis prompts.js ({prompts_mode}): {'OK' if ok_prompts else f'ERROR: {msg_prompts}'}")
+
+    app_ok = True
+    try:
+        app_path = locate_app_js()
+        app_ok, node_app, msg_app = check_js_syntax(app_path)
+        app_mode = "node -c + Python" if node_app else "Python estructural"
+        print(f"  - Sintaxis app.js ({app_mode})    : {'OK' if app_ok else f'ERROR: {msg_app}'}")
+    except FileNotFoundError:
+        print("  - Sintaxis app.js               : (No localizado en este directorio)")
 
     # Equilibrio de dificultad en activas
     print(f"\nEquilibrio de dificultad (tramos 10 pts y 100 pts en activas):")
@@ -826,9 +926,16 @@ def cmd_auditar(args):
             icon = "🟡" if cnt >= 130 else ("🔴" if cnt >= 50 else "⚪")
             print(f"  {icon} {c['id']:<8} | {cnt:>3} palabras | {c['texto']}")
 
+    if duplicate_ids or missing_daily_ids or invalid_scores or empty_keys or not ok_prompts or not app_ok:
+        sys.exit(1)
+
 
 def cmd_normalizar(_args):
-    """python spyle_tool.py normalizar"""
+    """
+    Normaliza todas las claves de prompts.js (minusculas, sin tildes vocalicas, ñ intacta,
+    colapso de espacios), descarta claves vacias, ajusta puntuaciones fuera de escala
+    al tramo oficial mas cercano y fusiona duplicados conservando la maxima puntuacion valida.
+    """
     prompts_path = locate_prompts_js()
     with open(prompts_path, "r", encoding="utf-8") as f:
         content = f.read()
@@ -838,6 +945,8 @@ def cmd_normalizar(_args):
     dirty_cats = 0
     merged_dups = 0
     normalized_keys = 0
+    empty_removed = 0
+    fixed_scores = 0
 
     for c in cats:
         seen = {}
@@ -846,16 +955,24 @@ def cmd_normalizar(_args):
         for raw_k, score in c["pairs"]:
             nk = normalizar_clave(raw_k)
             if not nk:
+                empty_removed += 1
                 cat_changed = True
                 continue
             if nk != raw_k:
                 normalized_keys += 1
                 cat_changed = True
+            clean_score = score
+            if clean_score not in VALID_SCORES:
+                clean_score = min(VALID_SCORES, key=lambda s: (abs(s - score), -s))
+                fixed_scores += 1
+                cat_changed = True
             if nk in seen:
                 merged_dups += 1
+                if clean_score > seen[nk]:
+                    seen[nk] = clean_score
                 cat_changed = True
             else:
-                seen[nk] = score
+                seen[nk] = clean_score
                 ordered.append(nk)
 
         if cat_changed:
@@ -864,7 +981,7 @@ def cmd_normalizar(_args):
             replacements.append((c["answers_start"], c["answers_end"], format_answers_block(new_pairs)))
 
     if not replacements:
-        print("[OK] Todas las claves de prompts.js estan perfectamente normalizadas y sin duplicados ocultos.")
+        print("[OK] Todas las claves de prompts.js estan perfectamente normalizadas, con puntuaciones validas y sin duplicados ocultos (0 normalizadas, 0 fusionadas, 0 puntuaciones corregidas).")
         return
 
     new_content = rebuild_prompts_content(content, replacements)
@@ -872,6 +989,8 @@ def cmd_normalizar(_args):
     print(f"[OK] Normalizacion completada en {dirty_cats} categoria(s):")
     print(f"  - Claves limpiadas (espacios/tildes/mayusculas): {normalized_keys}")
     print(f"  - Duplicados ocultos fusionados: {merged_dups}")
+    print(f"  - Claves vacias eliminadas: {empty_removed}")
+    print(f"  - Puntuaciones fuera de escala corregidas al tramo oficial: {fixed_scores}")
 
 
 def cmd_buscar(args):
