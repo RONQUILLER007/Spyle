@@ -39,14 +39,14 @@ El sistema utiliza una función canónica compartida de iconos tanto en las tarj
    - `DAILY_MISSIONS` ofrece **30 jornadas fijas curadas (`dia1` a `dia30`)** con 7 retos temáticos cada 24 horas para toda la comunidad.
    - A partir del **`Día 31`** (superados los 30 días manuales), un **generador determinista con semilla por día (`mulberry32`)** construye automáticamente jornadas infinitas (`Día 31`, `Día 32`, etc.) etiquetadas como `[ ARCHIVO MIXTO // DÍA X ]`, seleccionando 1 categoría activa ($\ge 250$ palabras) de cada prefijo (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín, excluyendo las usadas en los **últimos 7 días (`N-1` a `N-7`)** y sin clonar ningún día pasado. Si se añade una misión manual futura para ese día, tiene prioridad automática.
    - Tanto los 30 días manuales como los autogenerados guardan progreso, puntuación y estado de reclamaciones en `localStorage`.
-2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **200 categorías activas** ($\ge 250$ palabras), con comodín deshabilitado para entrenamiento puro.
-3. **Dossieres de Campo Temáticos (200 categorías en 6 áreas):** Expedientes clasificados agrupados por áreas específicas del conocimiento (todas activas con $\ge 250$ palabras):
-   - *General y Miscelánea* (`gen-`): 40 categorías
-   - *Palabras y Lenguaje* (`pal-`): 32 categorías
-   - *Películas y Cine* (`pel-`): 32 categorías
-   - *Deportes y Competición* (`dep-`): 32 categorías
-   - *Geografía y Territorio* (`geo-`): 32 categorías
-   - *Música y Acústica* (`mus-`): 32 categorías
+2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **200 categorías activas** ($\ge 250$ palabras únicas), con comodín deshabilitado para entrenamiento puro.
+3. **Dossieres de Campo Temáticos (200 categorías · 64.151 palabras calibradas):** Expedientes clasificados agrupados en **6 áreas** del conocimiento (100 % activas con **mínimo 281**, **media 320,75** y **máximo 587** palabras por categoría):
+   - *General y Miscelánea* (`gen-`): 40 categorías (`gen-001` a `gen-040`)
+   - *Palabras y Lenguaje* (`pal-`): 32 categorías (`pal-001` a `pal-032`)
+   - *Películas y Cine* (`pel-`): 32 categorías (`pel-001` a `pel-032`)
+   - *Deportes y Competición* (`dep-`): 32 categorías (`dep-001` a `dep-032`)
+   - *Geografía y Territorio* (`geo-`): 32 categorías (`geo-001` a `geo-032`)
+   - *Música y Acústica* (`mus-`): 32 categorías (`mus-001` a `mus-032`)
 4. **Archivo Histórico de Misiones:** Registro cronológico desbloqueable mediante Easter Egg diario. Permite inspeccionar expedientes completados (`[ VER EXPEDIENTE ]`) o infiltrarse en misiones anteriores no jugadas (`[ INFILTRARSE ]`).
 5. **Protocolo de Despliegue Operativo:** Ventana de confirmación táctica previa a cualquier partida con el resumen de reglas y advertencias antes de iniciar el cronómetro.
 6. **Briefing Inicial:** Al acceder por primera vez a la terminal, se despliega automáticamente la *Directiva de Operaciones // Briefing*. Puede reabrirse en cualquier momento mediante el botón `[ ? ]` de la cabecera.
@@ -70,9 +70,28 @@ Sistema integrado de condecoraciones persistentes en `localStorage` con notifica
 
 ---
 
-## 🔍 Auditor de Densidad y Escala de 4 Niveles ($\ge 250$)
+## 🖥️ Experiencia de Usuario (UX), Visualización Táctica y Ergonomía Móvil
 
-El umbral mínimo oficial para habilitar una categoría en juego es **`MIN_PALABRAS_CATEGORIA = 250`** (`MIN_ACTIVE_WORDS = 250` en `spyle_tool.py`), evaluado en el panel de desarrollador (`Alt + D` o `?dev=1`) según la escala de 4 niveles (**actualmente `200/200` categorías en estado Completo / Activo**):
+- **Animaciones progresivas en `#depth-gauge` (`10` → `100` pts):**
+  - La función `animarSubidaPuntuacion` en `Spyle/app.js` clasifica cada acierto dentro de la escala de 6 tramos (`10`, `25`, `45`, `65`, `85`, `100`) en cuatro intensidades visuales (`tier-low` para `10–25`, `tier-mid` para `45–65`, `tier-high` para `85` y `tier-100` para `100` pts).
+  - Ajusta progresivamente duración y curva de transición (`--gauge-dur`, `--gauge-ease`), destellos en `.gauge-track` (`gaugeFlashMid`, `gaugeFlashHigh`, `gaugeFlash100`), pulso numérico en `#score-label` (`scoreBump*`) y etiqueta flotante `#gauge-gain`.
+  - Al clavar **100 pts** (`tier-100`), dispara sacudida breve (`gaugeShake`), resplandor dorado, **estela luminosa ascendente** (`#depthfill::after` con `gaugeTrail`) y el rótulo destacado **`★ +<pts> · AGENTE DURMIENTE`**. Respeta la preferencia del sistema `@media (prefers-reduced-motion: reduce)`.
+- **Encuadre dinámico para teclado virtual (`visualViewport` + `--keyboard-offset`):**
+  - En móviles y tablets, `ajustarEncuadreTeclado` calcula la altura ocupada por el teclado virtual a partir de `window.visualViewport`, actualiza en `:root` la variable CSS `--keyboard-offset` y alterna `body.keyboard-open` sobre `#screen-game`.
+  - Desplaza suavemente la ventana cuando hace falta para mantener siempre visibles la tarjeta del expediente (`.prompt-container`) y el formulario de respuesta (`#answer-form`), además de configurar `#answer-input` con `enterkeyhint="send"`, `autocapitalize="off"`, `autocorrect="off"` y `font-size: 16px` bajo `@media (pointer: coarse)` para evitar el zoom automático en iOS.
+
+---
+
+## 🔍 Auditor de Densidad, Métricas del Banco y Escala de 4 Niveles ($\ge 250$)
+
+El umbral mínimo oficial para habilitar una categoría en juego es **`MIN_PALABRAS_CATEGORIA = 250`** (`MIN_ACTIVE_WORDS = 250` en `spyle_tool.py`), evaluado en el panel de desarrollador (`Alt + D` o `?dev=1`) según la escala de 4 niveles:
+
+- **Estado actual verificado del banco (`200/200` categorías activas):**
+  - **Mínimo por categoría:** `281` palabras únicas (`0` categorías por debajo de `255`)
+  - **Media global:** `320,75` palabras por categoría
+  - **Máximo por categoría:** `587` palabras únicas
+  - **Total acumulado en `PROMPTS`:** `64.151` respuestas calibradas en español/inglés
+  - **Integridad estructural y DOM:** `0` IDs duplicados, `0` referencias huérfanas en `30/30` días fijos (`dia1`–`dia30`), `0` días consecutivos repetidos o clonados y **`115/115` IDs DOM** verificados entre `app.js` e `index.html`.
 
 - 🟢 **Completo / Activo ($\ge 250$ palabras):** Habilitada en Modo Ilimitado, Dossieres, Expediente Diario y Archivo Histórico.
 - 🟡 **Intermedio ($130\text{--}249$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego).
@@ -96,14 +115,14 @@ Para garantizar una evaluación justa, rápida y tolerante al español e inglés
 
 ## 🧰 Herramienta CLI Oficial (`spyle_tool.py`)
 
-Utilidad reutilizable para gestionar `prompts.js` con backup automático previo en `.backups/`, normalización estricta, validación contra `{10, 25, 45, 65, 85, 100}`, regla anti-duplicados y rollback automático si falla la verificación sintáctica/estructural:
+Utilidad única y reutilizable para gestionar `prompts.js` con respaldo automático previo en `.backups/`, normalización estricta (`ñ` intacta, sin tildes vocálicas), validación de puntuaciones `{10, 25, 45, 65, 85, 100}`, regla anti-duplicados y rollback automático si falla la verificación sintáctica o estructural:
 
-- `python spyle_tool.py bulk lote.json --cleanup` *(formato agrupado por puntuación recomendado)*
-- `python spyle_tool.py importar lote.json --cleanup`
-- `python spyle_tool.py sheets reclamaciones.csv`
-- `python spyle_tool.py auditar --incompletas --dias`
-- `python spyle_tool.py normalizar`
-- `python spyle_tool.py buscar "<termino>"`
+- `python -B spyle_tool.py auditar` *(y `auditar --incompletas --dias`)*: audita las 200 categorías, estadísticas `min / media / max / total`, las 15 categorías de menor densidad, integridad de los 30 días, sintaxis de `prompts.js` y `app.js` y coincidencia de los `115/115` IDs DOM con `index.html`.
+- `python -B spyle_tool.py normalizar`: normaliza claves, corrige puntuaciones heredadas fuera de escala y fusiona duplicados preservando la `ñ`.
+- `python -B spyle_tool.py bulk lote.json --cleanup`: importación masiva agrupada por puntuación (formato recomendado) con borrado automático del lote temporal al finalizar.
+- `python -B spyle_tool.py importar lote.json --cleanup`: importación por mapa palabra→puntuación y limpieza automática del JSON.
+- `python -B spyle_tool.py sheets reclamaciones.csv`: incorpora reclamaciones calibradas exportadas desde Google Sheets (`CSV` o `TSV`).
+- `python -B spyle_tool.py buscar "<termino>"`: busca un término normalizado en todo el banco `PROMPTS`.
 
 ---
 
@@ -118,17 +137,33 @@ Cuando un jugador introduce un término no reconocido que considera válido:
 
 ---
 
-## 🚀 Despliegue, Sincronización Git y Control de Caché
+## 🚀 Arquitectura del Repositorio, Flujo Git Automático y Despliegue
 
-El repositorio oficial del proyecto se encuentra en `https://github.com/RONQUILLER007/Spyle.git` (rama principal `main`), preparado para publicación estática directa mediante **GitHub Pages** (`Settings -> Pages -> Build and deployment -> Deploy from a branch -> main / (root)`) o **Cloudflare Pages**, con cache-busting en `Spyle/index.html`:
+### Estructura limpia del repositorio (`Spyle/`)
+
+| Archivo | Función |
+| :--- | :--- |
+| `index.html` | Terminal táctica, cabecera, modales y recursos con cache-busting (`?v=1.2`) |
+| `style.css` | Estética Guerra Fría, animaciones de `#depth-gauge` (`tier-*`) y soporte `--keyboard-offset` |
+| `app.js` | Motor de juego, normalización morfológica, generador diario (`Día 31+`), logros y UX |
+| `prompts.js` | Banco `PROMPTS` (200 categorías, 64.151 respuestas) y `DAILY_MISSIONS` (`dia1`–`dia30`) |
+| `favicon.jpg` | Recurso gráfico e icono de la aplicación |
+| `spyle_tool.py` | CLI oficial de auditoría, normalización, búsqueda e importación masiva |
+| `AGENTS.md` | Reglas operativas permanentes para agentes y protocolo obligatorio de cierre Git |
+| `README.md` | Documentación técnica y operativa del proyecto |
+| `.gitignore` | Excluye `.backups/`, `.archive/`, `__pycache__/`, `*.pyc`, `lote*.json`, `temp*.json`, `.DS_Store`, `Thumbs.db` |
+
+### Flujo automático en Git y publicación continua (GitHub Pages)
+
+- **Repositorio remoto:** `https://github.com/RONQUILLER007/Spyle.git` (rama principal `main`).
+- **Automatización Git (`AGENTS.md`):** tras cualquier modificación, adición o eliminación dentro de `Spyle/` y una vez superada la auditoría (`python -B spyle_tool.py auditar` con `0` errores), se ejecuta automáticamente `git status`, `git add -A`, `git commit -m "<mensaje descriptivo>"` y `git push origin main` respetando `.gitignore`. Si un `push` fallara por red o credenciales, los cambios permanecen confirmados localmente sin archivos temporales y se notifica el fallo.
+- **GitHub Pages (sin workflow YAML):** al tratarse de una aplicación estática pura en la raíz del repositorio (sin carpeta `.github/workflows`), el despliegue continuo se habilita en GitHub desde **Settings → Pages → Build and deployment → Source: `Deploy from a branch` → Branch: `main` / `(root)`**; cada `git push origin main` actualiza el sitio automáticamente, manteniendo control de caché en `Spyle/index.html`:
 
 ```html
 <link rel="stylesheet" href="style.css?v=1.2">
 <script src="prompts.js?v=1.2" charset="UTF-8"></script>
 <script src="app.js?v=1.2" charset="UTF-8"></script>
 ```
-
-Cualquier cambio en `Spyle/` debe superar `python -B spyle_tool.py auditar` y sincronizarse en `origin main` respetando las exclusiones de `.gitignore` (`.backups/`, `.archive/`, `__pycache__/`, `*.pyc`, `lote*.json`, `temp*.json`, `.DS_Store`, `Thumbs.db`).
 
 ---
 
