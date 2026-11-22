@@ -118,15 +118,17 @@ Cuando un jugador introduce un término no reconocido que considera válido:
 
 ---
 
-## 🚀 Despliegue y Control de Caché
+## 🚀 Despliegue, Sincronización Git y Control de Caché
 
-El proyecto se ejecuta de forma estática en **GitHub Pages** o **Cloudflare Pages** con cache-busting en `Spyle/index.html`:
+El repositorio oficial del proyecto se encuentra en `https://github.com/RONQUILLER007/Spyle.git` (rama principal `main`), preparado para publicación estática directa mediante **GitHub Pages** (`Settings -> Pages -> Build and deployment -> Deploy from a branch -> main / (root)`) o **Cloudflare Pages**, con cache-busting en `Spyle/index.html`:
 
 ```html
 <link rel="stylesheet" href="style.css?v=1.2">
 <script src="prompts.js?v=1.2" charset="UTF-8"></script>
 <script src="app.js?v=1.2" charset="UTF-8"></script>
 ```
+
+Cualquier cambio en `Spyle/` debe superar `python -B spyle_tool.py auditar` y sincronizarse en `origin main` respetando las exclusiones de `.gitignore` (`.backups/`, `.archive/`, `__pycache__/`, `*.pyc`, `lote*.json`, `temp*.json`, `.DS_Store`, `Thumbs.db`).
 
 ---
 

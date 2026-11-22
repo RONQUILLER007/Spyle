@@ -7,6 +7,8 @@
 > - Usa siempre el formato agrupado **`bulk`** con `--cleanup` (`python spyle_tool.py bulk lote.json --cleanup`) para ahorrar tokens y tiempo de ejecución.
 >
 > **OBJETIVO MÍNIMO POR CATEGORÍA (`>= 250`):** El umbral mínimo para que una categoría esté **🟢 Completa / Activa** y quede habilitada en todos los modos de juego (`MIN_PALABRAS_CATEGORIA = 250` en `app.js` / `MIN_ACTIVE_WORDS = 250` en `spyle_tool.py`) es alcanzar **al menos 250 palabras únicas** en su objeto `answers` (incluyendo respuestas de `10 pts` y de `100 pts`).
+>
+> **REGLA OBLIGATORIA DE CIERRE GIT:** Siempre que se modifique, añada o elimine cualquier archivo dentro de `Documents\Antigravity\Spyle` (sin tocar proyectos hermanos como `Lokal` o `Inglés Sara`), y tras superar sin errores `python -B spyle_tool.py auditar`, ejecuta automáticamente `git status`, `git add -A`, `git commit -m "<mensaje descriptivo>"` y `git push origin main` (ver detalles en el protocolo de cierre al final de este documento).
 
 ---
 
@@ -104,3 +106,24 @@ Todos los comandos aplican respaldo automático previo en `.backups/`, normaliza
   ```bash
   python spyle_tool.py buscar "fernando tejero"
   ```
+
+---
+
+## Protocolo Obligatorio de Cierre y Sincronización Git (`RONQUILLER007/Spyle`)
+
+Al finalizar **cualquier tarea** en la que se modifique, añada o elimine algún archivo dentro de `Documents\Antigravity\Spyle`:
+
+1. **Aislamiento estricto:** Trabaja exclusivamente dentro de `Documents\Antigravity\Spyle`, sin alterar carpetas hermanas (`Lokal`, `Inglés Sara`) ni dejar archivos temporales colgados (`lote*.json`, `temp*.json`, `__pycache__/`, etc.).
+2. **Auditoría previa obligatoria (`0` errores):**
+   ```bash
+   python -B spyle_tool.py auditar
+   ```
+3. **Commit y Push automáticos a `origin main`:** Si la auditoría termina con código `0`, ejecuta de forma automática:
+   ```bash
+   git status
+   git add -A
+   git commit -m "<mensaje descriptivo>"
+   git push origin main
+   ```
+   - Respeta estrictamente `Spyle/.gitignore` para garantizar que nunca se suban `.backups/`, `.archive/`, `__pycache__/`, `*.pyc`, `lote*.json`, `temp*.json`, `.DS_Store` ni `Thumbs.db`.
+4. **Contingencia ante fallo de red o credenciales:** Si `git push origin main` falla por falta de credenciales o conectividad, asegúrate de que los cambios queden confirmados localmente (`git commit` hecho), elimina cualquier residuo temporal y **informa claramente al usuario** del motivo exacto del fallo en el `push`.
