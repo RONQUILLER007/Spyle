@@ -1,0 +1,9 @@
+# Copias de seguridad, archivos temporales y caché
+.backups/
+.archive/
+__pycache__/
+*.pyc
+lote*.json
+temp*.json
+.DS_Store
+Thumbs.db
