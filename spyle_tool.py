@@ -660,6 +660,11 @@ EXTRA_DAILY_MISSIONS_20_25 = [
         "fecha": "6 dic 2026",
         "prompts": ["pel-013", "geo-013", "mus-012", "dep-013", "pal-012", "gen-013", "mus-013"],
     }),
+    (31, {
+        "nombre": "Operación Faro",
+        "fecha": "7 dic 2026",
+        "prompts": ["pel-024", "dep-022", "geo-022", "mus-022", "pal-022", "gen-029", "gen-031"],
+    }),
 ]
 
 
@@ -1224,7 +1229,7 @@ def _run_json_import(args, cmd_name, expected_desc):
     if modified_blocks > 0 or dm_modified or cats_added:
         guardar_prompts_seguro(prompts_path, new_content)
         if dm_modified:
-            print("[OK] Se incorporaron/actualizaron las jornadas dia20-dia30 en DAILY_MISSIONS.")
+            print("[OK] Se incorporaron/actualizaron las jornadas en DAILY_MISSIONS.")
         if cats_added:
             print("[OK] Se añadieron nuevas categorias en PROMPTS.")
         if modified_blocks > 0:

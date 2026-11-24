@@ -230,6 +230,13 @@ const DAILY_MISSIONS = {
     nombre: "Operación Corona",
     fecha: "6 dic 2026",
     prompts: ["pel-013", "geo-013", "mus-012", "dep-013", "pal-012", "gen-013", "mus-013"]
+  },
+  31: {
+    id: "dia_31",
+    dia: 31,
+    nombre: "Operación Faro",
+    fecha: "7 dic 2026",
+    prompts: ["pel-024", "dep-022", "geo-022", "mus-022", "pal-022", "gen-029", "gen-031"]
   }
 };
 DAILY_MISSIONS.dia_1 = DAILY_MISSIONS[1];
@@ -273,6 +280,8 @@ DAILY_MISSIONS.dia_29 = DAILY_MISSIONS[29];
 DAILY_MISSIONS.dia29 = DAILY_MISSIONS[29];
 DAILY_MISSIONS.dia_30 = DAILY_MISSIONS[30];
 DAILY_MISSIONS.dia30 = DAILY_MISSIONS[30];
+DAILY_MISSIONS.dia_31 = DAILY_MISSIONS[31];
+DAILY_MISSIONS.dia31 = DAILY_MISSIONS[31];
 if (typeof window !== "undefined") window.DAILY_MISSIONS = DAILY_MISSIONS;
 
 
@@ -10681,7 +10690,7 @@ const PROMPTS = [
       "fisterra": 100, "verin": 100, "xinzo de limia": 100, "telde": 100, "arona": 100, "adeje": 100,
       "puerto de la cruz": 100, "san cristobal de la laguna": 100, "la laguna": 100, "la orotava": 100, "garachico": 100, "los llanos de aridane": 100,
       "yaiza": 100, "teguise": 100, "pajara": 100, "la oliva": 100, "manacor": 100, "ibiza": 100,
-      "mahon": 100, "ciutadella": 100
+      "mahon": 100, "ciutadella": 100, "olmedo": 85, "sos del rey catolico": 100
     }
   },
   {
@@ -11914,7 +11923,7 @@ const PROMPTS = [
       "triquiñuela": 100, "uñero": 100, "uñeta": 100, "vicuña": 100, "viñador": 100, "viñeta": 100,
       "albañileria": 100, "alfeñique": 100, "alcañiz": 100, "almuñecar": 100, "aliñar": 100, "añagaza": 100,
       "apiñado": 100, "arrebañar": 100, "bisoño": 100, "borgoña": 100, "buñuelo": 100, "garrapiñada": 100,
-      "morriña": 100, "muñequera": 100
+      "morriña": 100, "muñequera": 100, "ceñidor": 65, "arrebatiña": 100
     }
   },
   {
