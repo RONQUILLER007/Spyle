@@ -6623,18 +6623,4276 @@ DENSITY_BATCH_1_FINAL = {
     },
 }
 
+DENSITY_BATCH_2_DATA = {
+    "geo-022": {
+        25: [
+            "alcala de henares", "mostoles", "fuenlabrada", "leganes", "getafe", "alcorcon",
+            "torrejon de ardoz", "parla", "alcobendas", "las rozas", "pozuelo de alarcon",
+            "majadahonda", "marbella", "jerez de la frontera", "algeciras", "dos hermanas",
+            "elche", "torrevieja", "benidorm", "orihuela", "gandia", "paterna", "sagunto",
+            "badalona", "sabadell", "terrassa", "hospitalet de llobregat", "mataro", "reus", "vigo", "gijon"
+        ],
+        45: [
+            "cartagena", "lorca", "molina de segura", "yecla", "jumilla", "talavera de la reina",
+            "puertollano", "tomelloso", "alcazar de san juan", "valdepeñas", "almansa", "hellin",
+            "villarrobledo", "aranda de duero", "miranda de ebro", "ponferrada", "san andres del rabanedo",
+            "medina del campo", "laguna de duero", "bejar", "ciudad rodrigo", "benavente", "toro",
+            "plasencia", "merida", "don benito", "villanueva de la serena", "almendralejo", "zafra"
+        ],
+        65: [
+            "avilés", "aviles", "langreo", "mieres", "cangas de onis", "llanes", "ribadesella",
+            "torrelavega", "castro urdiales", "laredo", "santoña", "barakaldo", "getxo", "irun",
+            "errenteria", "eibar", "zarautz", "mondragon", "durango", "gernika", "tudela",
+            "estella", "tafalla", "calahorra", "haro", "arnedo", "jaca", "barbastro", "monzon",
+            "fraga", "calatayud", "ejea de los caballeros", "alcañiz", "tarazona", "sabiñanigo"
+        ],
+        85: [
+            "figueres", "blanes", "lloret de mar", "sitges", "vilanova i la geltru", "vic",
+            "manresa", "granollers", "igualada", "tortosa", "cambrils", "salou", "amposta",
+            "viladecans", "castelldefels", "el prat de llobregat", "sant cugat del valles",
+            "cornella de llobregat", "rubi", "granollers", "mollet del valles", "cerdanyola del valles",
+            "manacor", "inca", "ibiza", "eivissa", "ciutadella", "mahon", "mao", "telde",
+            "arrecife", "puerto del rosario", "san cristobal de la laguna", "la laguna", "arona", "adeje"
+        ],
+        100: [
+            "puerto de la cruz", "la orotava", "los llanos de aridane", "ferrol", "santiago de compostela",
+            "vilagarcia de arousa", "narón", "naron", "oleiros", "carballo", "arteixo", "redondela",
+            "cangas", "marin", "sanxenxo", "monforte de lemos", "viveiro", "verin", "el ejido",
+            "roquetas de mar", "nijar", "velez malaga", "mijas", "fuengirola", "torremolinos",
+            "benalmadena", "estepona", "ronda", "antequera", "nerja", "motril", "almuñecar",
+            "baza", "guadix", "linares", "andujar", "ubeda", "baeza", "lucena", "puente genil",
+            "montilla", "priego de cordoba", "utrera", "mairena del aljarafe", "ecija", "carmona",
+            "san fernando", "el puerto de santa maria", "chiclana de la frontera", "sanlucar de barrameda",
+            "la linea de la concepcion", "rota", "lepe", "almonte", "ayamonte", "vila real", "vinaros"
+        ],
+    },
+    "geo-029": {
+        25: [
+            "la concha", "playa de la concha", "las canteras", "playa de las canteras",
+            "bolonia", "playa de bolonia", "la barrosa", "zahara de los atunes", "tarifa",
+            "los caños de meca", "el palmar", "sanlucar", "matalascañas", "punta umbria",
+            "la malagueta", "nerja", "marbella", "benidorm", "playa de levante", "playa de poniente"
+        ],
+        45: [
+            "la malvarrosa", "playa de la malvarrosa", "el saler", "playa de san juan",
+            "calpe", "javea", "cala granadella", "moraira", "la manga", "los alcazares",
+            "aguilas", "mojacar", "playa de los muertos", "monsul", "genoveses", "cabo de gata",
+            "ses illetes", "cala conta", "cala saladeta", "cala macarella", "cala macarelleta",
+            "cala mitjana", "cala turqueta", "es trenc", "playa de muro", "formentor", "cala millor"
+        ],
+        65: [
+            "sitges", "tossa de mar", "cala sa tuna", "aiguablava", "begur", "cadaques",
+            "empuriabrava", "roses", "cambrils", "salou", "la pineda", "peñiscola",
+            "playa de las catedrales", "as catedrais", "rodas", "islas cies", "playa de rodas",
+            "a lanzada", "samil", "playa de riazor", "orzan", "pantín", "pantin", "valdoviño",
+            "gulpiyuri", "ribadesella", "santa marina", "llanes", "torimbia", "barro", "poo",
+            "rodiles", "san lorenzo", "playa de san lorenzo", "salinas", "el sardinero", "somo", "laredo", "liencres"
+        ],
+        85: [
+            "zarautz", "hendaya", "biarritz", "sopelana", "bakio", "mundaka", "plentzia",
+            "laida", "laga", "maspalomas", "playa del ingles", "amadores", "sotavento",
+            "corralejo", "cofete", "famara", "papagayo", "las teresitas", "el medano",
+            "benijo", "copacabana", "ipanema", "leblon", "bondi beach", "waikiki",
+            "miami beach", "south beach", "santa monica", "venice beach", "malibu", "tulum"
+        ],
+        100: [
+            "playa del carmen", "cancun", "varadero", "punta cana", "bavaro", "negril",
+            "grace bay", "maya bay", "phi phi", "railay", "whitehaven beach", "byron bay",
+            "surfers paradise", "navagio", "playa del naufragio", "elafonisi", "balos",
+            "myrtos", "positano", "amalfi", "tropea", "cala goloritze", "cala mariolu",
+            "la pelosa", "palombaggia", "santa giulia", "saint tropez", "pampelonne",
+            "etretat", "omaha beach", "nazare", "praia da marinha", "benagil", "praia da rocha",
+            "comporta", "costa vicentina", "anjuna", "baga", "boracay", "el nido", "siargao",
+            "bora bora", "matira", "anse source d argent", "cayos cochinos", "los roques",
+            "costa brava", "costa del sol", "costa blanca", "costa dorada", "costa de la luz",
+            "costa tropical", "costa da morte", "costa verde", "costa vasca", "costa azahar"
+        ],
+    },
+    "mus-026": {
+        25: [
+            "my heart will go on", "eye of the tiger", "i will always love you", "let it go",
+            "sueltalo", "hakuna matata", "un mundo ideal", "a whole new world", "shallow",
+            "skyfall", "lose yourself", "stayin alive", "ghostbusters", "time of my life",
+            "i ve had the time of my life", "take my breath away", "danger zone", "footloose"
+        ],
+        45: [
+            "tema de star wars", "la marcha imperial", "imperial march", "tema de indiana jones",
+            "raiders march", "tema de jurassic park", "hedwig s theme", "tema de harry potter",
+            "piratas del caribe", "he s a pirate", "now we are free", "tema de gladiator",
+            "time", "tema de origen", "cornfield chase", "tema de interstellar", "duel of the fates",
+            "concerning hobbits", "the shire", "chariots of fire", "carros de fuego", "conquest of paradise"
+        ],
+        65: [
+            "the lonely shepherd", "ecstasy of gold", "el bueno el feo y el malo", "cinema paradiso",
+            "gabriel s oboe", "la mision", "tema de la lista de schindler", "tiburon", "jaws theme",
+            "psicosis", "tema de psicosis", "el padrino", "speak softly love", "the godfather waltz",
+            "as time goes by", "over the rainbow", "singin in the rain", "moon river", "desayuno con diamantes",
+            "mrs robinson", "the sound of silence", "born to be wild", "california dreamin",
+            "misirlou", "pulp fiction", "you never can tell", "stuck in the middle with you"
+        ],
+        85: [
+            "bella ciao", "la casa de papel", "i ll be there for you", "friends", "where everybody knows your name",
+            "verano azul", "verano del 82", "el coche fantastico", "knight rider theme",
+            "el equipo a", "the a team", "mision imposible", "mission impossible theme",
+            "james bond theme", "goldfinger", "live and let die", "no time to die",
+            "goldeneye", "don t you forget about me", "el club de los cinco", "the power of love",
+            "regreso al futuro", "back in time", "johnny b goode", "flashdance", "what a feeling",
+            "maniac", "fame", "calling you", "bagdad cafe", "falling", "twin peaks"
+        ],
+        100: [
+            "the x files theme", "expediente x", "game of thrones theme", "rains of castamere",
+            "stranger things theme", "running up that hill", "master of puppets", "the mandalorian",
+            "the last of us", "succession theme", "narcos", "tuyo", "peaky blinders", "red right hand",
+            "the sopranos", "woke up this morning", "mad men", "a beautiful mine", "the office theme",
+            "breaking bad theme", "baby blue", "bohemian rhapsody", "we will rock you",
+            "summer nights", "you re the one that i want", "greased lightnin", "hopelessly devoted to you",
+            "beauty and the beast", "circle of life", "el ciclo sin fin", "can you feel the love tonight",
+            "under the sea", "bajo del mar", "part of your world", "parte de el", "colores en el viento",
+            "colors of the wind", "yo soy tu amigo fiel", "you ve got a friend in me", "recuerdame",
+            "remember me", "no se habla de bruno", "we don t talk about bruno", "city of stars",
+            "another day of sun", "rewrite the stars", "this is me", "never enough", "a million dreams",
+            "lux aeterna", "requiem for a dream", "comptine d un autre ete", "amelie", "merry christmas mr lawrence"
+        ],
+    },
+    "mus-028": {
+        25: [
+            "vetusta morla", "izAl" if False else "izal", "love of lesbian", "lori meyers",
+            "supersubmarina", "viva suecia", "arda bogota", "arda", "ardea" if False else "ardabogota",
+            "shinova", "sidonie", "dorian", "fangoria", "leiva", "pereza", "fito y fitipaldis",
+            "amaral", "la oreja de van gogh", "el canto del loco", "dani martin", "melendi"
+        ],
+        45: [
+            "ardaa bogota" if False else "arde bogota", "carolina durante", "la casa azul",
+            "los planetas", "nacho vegas", "sen senra", "c tangana", "rosalia", "rigoberta bandini",
+            "zahara", "alizzz", "amaia", "aitana", "lola indigo", "natalia lacunza", "guitarricadelafuente",
+            "valeria castro", "maria jose llergo", "silvia perez cruz", "judit neddermann",
+            "the tyets", "oques grasses", "zoo", "la raiz", "txarango", "buhos"
+        ],
+        65: [
+            "sexys zebras", "sexy zebras", "gini" if False else "ginebras", "cariño", "hinds",
+            "mourn", "belako", "triangulo de amor bizarro", "cala vento", "biznaga", "camellos",
+            "los punsetes", "la bien querida", "rusos blancos", "el columpio asesino", "leon benavente",
+            "ruffus" if False else "rufus t firefly", "varry brava", "miss caffeina", "la habitacion roja",
+            "magna" if False else "maga", "niños mutantes", "segundo premio", "standstill", "astrud", "hidrogenesse"
+        ],
+        85: [
+            "joan dausa", "manel", "els amics de les arts", "mishima", "el petit de cal eril",
+            "ferran palau", "pau vallve", "la pegatina", "estopa", "jarabe de palo", "la fuga",
+            "marea", "extremoduro", "platero y tu", "fito", "barricada", "los suaves", "la polla records",
+            "ska p", "boikot", "reincidentes", "los secretos", "hombres g", "mecano", "nacha pop",
+            "radio futura", "el ultimo de la fila", "heroes del silencio", "bunbury", "loqui" if False else "loquillo"
+        ],
+        100: [
+            "alcalá norte", "alcala norte", "shego", "depresion sonora", "parquesvr", "la elite",
+            "vvv trippin you", "cupido", "pimp flaco", "rory" if False else "la plata", "mujeres",
+            "novedades carminha", "el mato a un policia motorizado" if False else "pablo und destruktion",
+            "tulsa", "maria rodés", "maria rodes", "anari", "berri txarrak", "zeze" if False else "izaki gardenak",
+            "verde prato", "rodrigo cuevas", "baiuca", "tanxugueiras", "furious monkey house",
+            "xoel lopez", "deluxe", "ivan ferreiro", "los piratas", "coque malla", "los ronaldos",
+            "m clan", "los rodriguez", "ariel rot", "andres calamaro", "quique gonzalez",
+            "diego vasallo", "mikel erentxun", "duncan dhu", "la union", "tino casal", "alaska",
+            "pedro guerra", "antonio vega", "cafe quijano", "la cabra mecanica", "el bicho",
+            "o funkillo", "chambao", "delinquentes", "los delinqüentes", "kiko veneno", "pata negra",
+            "taburete", "dvicio", "morat" if False else "marlon", "veintiuno", "siloé", "siloe",
+            "la la love you", "morgan", "nina de juan", "maika makovski", "christina rosenvinge",
+            "sr chinarro", "australia" if False else "austral", "second", "full", "neuman", "sexy sadie",
+            "sunday drivers", "the sunday drivers", "australian blonde", "nosotrash", "le mans", "family"
+        ],
+    },
+    "mus-030": {
+        25: [
+            "soda stereo", "mana", "juanes", "shakira", "cafe tacvba", "molotov", "caifanes",
+            "heroes del silencio" if False else "enanitos verdes", "los enanitos verdes",
+            "los fabulosos cadillacs", "andres calamaro", "gustavo cerati", "charly garcia",
+            "fito paez", "los prisioneros", "la ley", "babasónicos", "babasonicos", "zoe"
+        ],
+        45: [
+            "porter", "enigma" if False else "enjambre", "leon larregui", "natalia lafourcade",
+            "julieta venegas", "mon laferte", "jorge drexler", "cuarteto de nos", "el cuarteto de nos",
+            "la vela puerca", "no te va gustar", "ntvg", "callejeros", "patricio rey y sus redonditos de ricota",
+            "los redondos", "indio solari", "sui generis", "seru giran", "almendra", "pescado rabioso",
+            "invisible", "luis alberto spinetta", "spinetta", "ataque 77", "los autenticos decadentes"
+        ],
+        65: [
+            "bersuit vergarabat", "virus", "sumo", "divididos", "las pelotas", "los piojos",
+            "ciro y los persas", "la renga", "almafuerte", "hermetica", "ratablanca", "rata blanca",
+            "los tipitos", "los pericos", "los cafres", "gondwana", "cultura profetica",
+            "aterciopelados", "bomba estereo", "morat", "juanes pop", "carlos vives", "bacilos",
+            "monsieur perine", "porter mexico", "panda", "pxndx", "fobia", "maldita vecindad"
+        ],
+        85: [
+            "el tri", "alex lora", "inspector", "panteon rococo", "los estramboticos",
+            "plastilina mosh", "kinky", "belanova", "jesse y joy", "reik", "camila", "sin bandera",
+            "miranda", "bandalos chinos", "conociendo rusia", "el mato a un policia motorizado",
+            "wos", "catriel y paco amoroso", "bajo fondo", "bajofondo", "gotan project",
+            "caramelos de cianuro", "los amigos invisibles", "rAwayana", "rawayana", "zapato 3"
+        ],
+        100: [
+            "desorden publico", "sentimiento muerto", "la vida boheme", "viniloversus",
+            "los bunkers", "chancho en piedra", "lucybell", "javiera mena", "alex anwandter",
+            "gepe", "pedropiedra", "congresso", "congreso", "los jaivas", "illapu", "inti illimani",
+            "quilapayun", "pedro aznar", "david lebon", "león gieco", "leon gieco", "nito mestre",
+            "miguel mateos", "zas", "git", "los abuelos de la nada", "los twist", "fabiana cantilo",
+            "celeste carballo", "hilda lizarazu", "marilina bertoldi", "eruca sativa", "airbag argentina",
+            "tan bionica", "chandeliers" if False else "calamaro", "estelares", "turf", "guasones",
+            "la beriso", "kapanga", "arbol", "cabezones", "carajo", "a n i m a l", "animal",
+            "todos tus muertos", "fabulosos cadillacs", "santa sabina", "tijuana no", "cuca",
+            "el gran silencio", "jumbo", "zurdok", "division minuscula", "dld", "little jesus",
+            "siddhartha", "camilo septimo", "foster" if False else "o disonante" if False else "motel",
+            "moderatto", "timbiriche", "mecano latam" if False else "rio roma", "matisse", "ha ash",
+            "aleks syntek", "miguel bose" if False else "fey", "kabah", "ov7", "belinda", "danna paola",
+            "gloria trevi", "alejandra guzman", "paulina rubio", "thalia", "luis miguel", "cristian castro"
+        ],
+    },
+    "pal-022": {
+        45: [
+            "niño", "niña", "niños", "niñas", "español", "española", "españoles", "españolas",
+            "año", "años", "baño", "baños", "daño", "daños", "paño", "paños", "caña", "cañas",
+            "araña", "arañas", "montaña", "montañas", "mañana", "mañanas", "señor", "señora",
+            "señores", "señoras", "señorita", "señoritas", "sueño", "sueños", "dueño", "dueña",
+            "dueños", "dueñas", "otoño", "otoños", "puño", "puños", "uñas", "uña", "piña", "piñas"
+        ],
+        65: [
+            "cabaña", "cabañas", "campaña", "campañas", "castaña", "castañas", "lasaña", "lasañas",
+            "pestaña", "pestañas", "entraña", "entrañas", "hazaña", "hazañas", "maraña", "marañas",
+            "cizaña", "piraña", "pirañas", "peña", "peñas", "seña", "señas", "señal", "señales",
+            "leño", "leños", "leña", "leñas", "moño", "moños", "cuñado", "cuñada", "cuñados",
+            "cuñadas", "puñado", "puñados", "puñal", "puñales", "puñetazo", "puñetazos",
+            "cañon", "cañones", "riñon", "riñones", "muñeca", "muñecas", "muñeco", "muñecos"
+        ],
+        85: [
+            "pañuelo", "pañuelos", "buñuelo", "buñuelos", "engaño", "engaños", "amaño", "amaños",
+            "tamaño", "tamaños", "peldaño", "peldaños", "escaño", "escaños", "estaño", "castaño",
+            "castaños", "teñir", "reñir", "ceñir", "gruñir", "bruñir", "tañer", "añadir",
+            "añejo", "añeja", "añorar", "añoranza", "soñar", "enseñar", "enseñanza", "diseñar",
+            "diseño", "diseños", "empeñar", "empeño", "desempeñar", "desempeño", "desdeñar",
+            "reseñar", "reseña", "reseñas", "acompañar", "engañar", "dañar", "bañar", "arañar"
+        ],
+        100: [
+            "apiñar", "aliñar", "aliño", "cariño", "cariños", "cariñoso", "cariñosa",
+            "desaliñado", "guiño", "guiños", "guiñar", "piñon", "piñones", "viña", "viñas",
+            "viñedo", "viñedos", "viñeta", "viñetas", "riña", "riñas", "tiña", "niñera",
+            "niñeras", "niñez", "niñeria", "niñato", "niñatos", "muñon", "muñones",
+            "gruñon", "gruñona", "soñador", "soñadora", "leñador", "leñadora", "diseñador",
+            "diseñadora", "albañil", "albañiles", "albañileria", "compañero", "compañera",
+            "compañeros", "compañeras", "compañia", "compañias", "montañismo", "montañero",
+            "montañera", "montañoso", "montañosa", "extraño", "extraña", "extraños", "extrañas",
+            "extrañar", "entrañable", "madrileño", "madrileña", "navideño", "navideña",
+            "risueño", "risueña", "halagueño", "halagueña", "pequeño", "pequeña", "pequeños",
+            "pequeñas", "pequeñez", "ceño", "cigüeña", "cigueña", "cigüeñas", "morriña",
+            "guadaña", "guadañas", "telaraña", "telarañas", "patraña", "patrañas", "legaña",
+            "lagaña", "sabañon", "sabañones", "garrapiñada", "piñata", "piñatas", "pezuña",
+            "pezuñas", "carroña", "ponzoña", "zampoña", "roña", "roñoso", "ñoñeria", "ñoqui",
+            "ñoquis", "greña", "greñas", "breña", "breñas", "peñasco", "peñascos", "artimaña",
+            "artimañas", "despeñadero", "despeñar", "brasileño", "extremeño", "malagueño", "isleño", "costeño"
+        ],
+    },
+    "pel-014": {
+        25: [
+            "shrek", "shrek 2", "el viaje de chihiro", "mi vecino totoro", "como entrenar a tu dragon",
+            "kung fu panda", "madagascar", "ice age", "gru mi villano favorito", "minions",
+            "spider man un nuevo universo", "spider man cruzando el multiverso", "el gato con botas",
+            "el gato con botas el ultimo deseo", "klaus", "pesadilla antes de navidad", "la novia cadaver"
+        ],
+        45: [
+            "la princesa mononoke", "el castillo ambulante", "ponyo", "el castillo en el cielo",
+            "la tumba de las luciernagas", "porco rosso", "nicky la aprendiz de bruja",
+            "el viento se levanta", "el chico y la garza", "arrietty", "your name", "suzume",
+            "el tiempo contigo", "akira", "ghost in the shell", "perfect blue", "paprika",
+            "el principe de egipto", "la ruta hacia el dorado", "spirit", "simbad", "wallace y gromit"
+        ],
+        65: [
+            "chicken run", "evasion en la granja", "piratas", "la oveja shaun", "los mundos de coraline",
+            "coraline", "kubo y las dos cuerdas magicas", "paranorman", "los boxtrolls", "pinocho de guillermo del toro",
+            "el gigante de hierro", "anastasia", "titan ae", "en busca del valle encantado",
+            "todos los perros van al cielo", "fievel y el nuevo mundo", "nimh el mundo secreto de la sra brisby",
+            "el ultimo unicornio", "tadeo jones", "las aventuras de tadeo jones", "atrampa la bandera",
+            "atrapa la bandera", "planet 51", "chico y rita", "arrugas", "robot dreams", "momias"
+        ],
+        85: [
+            "megamind", "el origen de los guardianes", "los croods", "el espantatiburones",
+            "vecinos invasores", "ratonpolis", "monstruos contra alienigenas", "turbo", "trolls",
+            "el bebe jefazo", "los tipos malos", "the bad guys", "robot salvaje", "wild robot",
+            "gru 2", "gru 3", "canta", "sing", "mascotas", "the secret life of pets",
+            "lorax", "horton", "rio", "rio 2", "espies con disfraz", "nimona", "mitchell contra las maquinas"
+        ],
+        100: [
+            "la familia mitchell contra las maquinas", "el monstruo marino", "pollo para linda",
+            "persepolis", "vals con bashir", "el ilusionista", "bienvenidos a belleville",
+            "la tortuga roja", "mi vida de calabacin", "la cancion del mar", "el secreto del libro de kells",
+            "wolfwalkers", "el pan de la guerra", "mary and max", "isla de perros", "fantastic mr fox",
+            "fantastico sr fox", "flow", "memorias de un caracol", "el planeta salvaje",
+            "la colina de watership", "watership down", "perros de la plaga", "felidae",
+            "cuando el viento sopla", "heavy metal", "fire and ice", "el señor de los anillos 1978",
+            "el hobbit 1977", "astérix", "asterix las doce pruebas", "asterix y obelix", "tintin",
+            "el pequeño principe", "ernest y celestine", "un monstruo en paris", "el libro de la vida",
+            "la lego pelicula", "lego batman", "happy feet", "colegas en el bosque", "lluvia de albondigas",
+            "hotel transilvania", "las aventuras de peabody y sherman", "capitan calzoncillos", "el camino hacia el dorado"
+        ],
+    },
+    "gen-031": {
+        25: [
+            "mortadelo y filemon", "mortadelo", "filemon", "superlopez", "zipi y zape",
+            "carpanta", "rompetechos", "13 rue del percebe", "el botones sacarino", "pepe gotera y otilio",
+            "anacleto agente secreto", "el capitan trueno", "tintin", "asterix", "obelix",
+            "lucky luke", "los pitufos", "mafalda", "spiderman", "batman", "superman"
+        ],
+        45: [
+            "watchmen", "v de vendetta", "the sandman", "sandman", "maus", "persepolis",
+            "the walking dead", "los muertos vivientes", "sin city", "300", "hellboy",
+            "scott pilgrim", "invencible", "the boys", "akira", "dragon ball", "naruto",
+            "one piece", "bleach", "death note", "ataque a los titanes", "berserk",
+            "fullmetal alchemist", "hunter x hunter", "demon slayer", "jujutsu kaisen"
+        ],
+        65: [
+            "chainsaw man", "one punch man", "tokyo ghoul", "my hero academia", "slam dunk",
+            "oliver y benji", "captain tsubasa", "doraemon", "shin chan", "detective conan",
+            "ranma", "inuyasha", "sailor moon", "caballeros del zodiaco", "saint seiya",
+            "mazinger z", "astro boy", "monster", "20th century boys", "pluto", "vagabond",
+            "vinland saga", "kingdom", "gantz", "jojo s bizarre adventure", "evangelion"
+        ],
+        85: [
+            "corto maltes", "blacksad", "arrugas", "el invierno del dibujante", "la casa",
+            "el abismo del olvido", "el artefacto" if False else "el eternauta", "el incal", "los metabarones",
+            "valerian", "moebius", "el garaje hermetico", "arzach", "blueberry", "thorgal",
+            "spirou y fantasio", "spirou", "marsupilami", "gaston lagaffe", "tomas el gafe",
+            "blake y mortimer", "largo winch", "xiii", "tex", "dylan dog", "diabolik", "ranxerox"
+        ],
+        100: [
+            "from hell", "la liga de los hombres extraordinarios", "batman año uno",
+            "el regreso del caballero oscuro", "la broma asesina", "the killing joke",
+            "all star superman", "kingdom come", "marvels", "born again", "la ultima caceria de kraven",
+            "dias del futuro pasado", "saga de fenix oscura", "civil war", "guantelete del infinito",
+            "predicador", "preacher", "transmetropolitan", "y el ultimo hombre", "saga",
+            "fables", "fabulas", "locke and key", "umbrella academy", "kick ass", "kingsman",
+            "oldboy", "akira toriyama", "paco roca", "ibañez", "francisco ibañez", "jan",
+            "escobar", "vazquez", "anacleto", "pulgarcito", "tbo", "el vibora", "makoki",
+            "peter pan", "el jabato", "el guerrero del antifaz", "roberto alcazar y pedrin",
+            "condorito", "inodoro pereyra", "boogie el aceitoso", "garfield", "snoopy", "peanuts", "calvin y hobbes"
+        ],
+    },
+    "gen-035": {
+        25: [
+            "zeus", "poseidon", "hades", "atenea", "apolo", "artemisa", "ares", "afrodita",
+            "hefesto", "hermes", "hera", "demeter", "dioniso", "hestia", "cronos", "hercules",
+            "heracles", "aquiles", "ulises", "odiseo", "perseo", "teseo", "medusa", "minotauro",
+            "pegaso", "cerbero", "cancerbero", "odin", "thor", "loki", "freya", "ra", "anubis", "osiris", "isis", "horus"
+        ],
+        45: [
+            "centauro", "ciclope", "sirena", "hidra", "quimera", "grifo", "fenix", "esfinge",
+            "harpia", "arpia", "gorgona", "satire" if False else "satiro", "fauno", "ninfa",
+            "triton", "kraken", "valquiria", "valkyria", "fenrir", "jormungandr", "sleipnir",
+            "heimdall", "baldur", "tyr", "frigga", "frigg", "hel", "hela", "ymir", "nornas",
+            "thot", "seth", "bastet", "sekhmet", "ptah", "amon", "aton", "sobek", "hathor"
+        ],
+        65: [
+            "ma'at" if False else "maat", "nephtys", "neftis", "khepri", "jepry", "apophis", "apep",
+            "prometheus", "prometeo", "atlas", "epimeteo", "pandora", "icarus", "icaro", "dedalo",
+            "midas", "sisifo", "tantalo", "orfeo", "euridice", "persefone", "proserpina",
+            "caronte", "morfeo", "hipnos", "tanatos", "nike", "iris", "hecate", "pan",
+            "eros", "cupido", "psique", "helios", "selene", "eos", "boreas", "cefireo" if False else "cefiro"
+        ],
+        85: [
+            "jupiter", "neptuno", "pluton", "minerva", "febo", "diana", "marte", "venus",
+            "vulcano", "mercurio", "juno", "ceres", "baco", "vesta", "saturno", "urano", "gea",
+            "gaia", "caos", "rea", "oceano", "tetis", "hiperion", "mnemosine", "temis",
+            "nemesis", "moiras", "parcas", "furias", "erinias", "musas", "caliope", "clio",
+            "erato", "euterpe", "melpomene", "polimnia", "terpsicore", "talia", "urania", "gracias"
+        ],
+        100: [
+            "belona", "jano", "quirino", "pomona", "flora", "silvano", "priapo", "asclepio",
+            "esculapio", "higia", "circe", "calipso", "polifemo", "quiron", "tifon", "equidna",
+            "ladon", "ortro", "esfinge de tebas", "estinfalo", "aves del estinfalo", "leon de nemea",
+            "hidra de lerna", "jabali de erimanto", "toro de creta", "belerofronte", "jasón" if False else "jason",
+            "medea", "andromeda", "ariadna", "elena de troya", "hector", "paris", "agamemnon",
+            "idun", "bragi", "njord", "skadi", "freyr", "ullr", "forseti", "vidar", "vali",
+            "hodr", "surtr", "ratatoskr", "nidhogg", "hugin", "munin", "mjolnir", "gungnir",
+            "bifrost", "yggdrasil", "valhalla", "ragnarok", "berserker", "troll", "elfo", "enano",
+            "nut", "geb", "shu", "tefnut", "khonsu", "hapi", "serapis", "bes", "taweret", "ammit", "esfinge egipcia"
+        ],
+    },
+    "geo-008": {
+        45: [
+            "comunidad de madrid", "principado de asturias", "region de murcia",
+            "comunidad valenciana", "comunidad foral de navarra", "pais vasco", "euskadi",
+            "castilla y leon", "castilla la mancha", "islas baleares", "illes balears",
+            "islas canarias", "extremadura", "galicia", "andalucia", "aragon", "cantabria",
+            "cataluña", "catalunya", "la rioja", "ceuta", "melilla"
+        ],
+        65: [
+            "la coruña", "a coruña", "lugo", "orense", "ourense", "pontevedra", "asturias",
+            "cantabria", "vizcaya", "bizkaia", "guipuzcoa", "gipuzkoa", "alava", "araba",
+            "navarra", "la rioja", "huesca", "zaragoza", "teruel", "lleida", "lerida",
+            "girona", "gerona", "tarragona", "barcelona", "castellon", "valencia", "alicante",
+            "murcia", "almeria", "granada", "malaga", "cadiz", "huelva", "sevilla", "cordoba",
+            "jaen", "badajoz", "caceres", "toledo", "ciudad real", "cuenca", "guadalajara",
+            "albacete", "madrid", "segovia", "avila", "salamanca", "zamora", "leon", "palencia",
+            "valladolid", "burgos", "soria", "las palmas", "santa cruz de tenerife", "baleares"
+        ],
+        85: [
+            "el bierzo", "la alcarria", "la mancha", "las alpujarras", "las hurdes", "la vera",
+            "valle del jerte", "la serena", "tierra de campos", "tierra de barros", "los pedroches",
+            "los monegros", "campo de gibraltar", "costa del sol", "rias baixas", "rias altas",
+            "ribeira sacra", "costa da morte", "terra cha", "valle de aran", "val d aran",
+            "emporda", "ampurdan", "garrotxa", "osona", "cerdanya", "cerdaña", "priorat",
+            "penedes", "sobrarbe", "somontano", "ribagorza", "matarraña", "maestrazgo"
+        ],
+        100: [
+            "campo de calatrava", "campo de montiel", "campo de cartagena", "campo de borja",
+            "cinco villas", "jiloca", "gudar javalambre", "sierra de albarracin", "bajo aragon",
+            "tierra estella", "valle de baztan", "roncal", "salazar", "liebana", "valles pasiegos",
+            "campoo", "trasmiera", "las merindades", "bureba", "ribera del duero", "arribes del duero",
+            "sanabria", "maragateria", "babia", "laciana", "ancares", "o courel", "valdeorras",
+            "la janda", "aljarafe", "condado de huelva", "axarquia", "subbetica", "sierra sur",
+            "los velez", "mar menor", "la safor", "marina alta", "marina baja", "vega baja",
+            "vega alta", "rioja alta", "rioja baja", "rioja alavesa", "llanada alavesa",
+            "busturialdea", "duranguesado", "goierri", "tolosaldea", "urola kosta", "bidasoa",
+            "marisma de doñana", "doñana", "serrania de ronda", "serrania de cuenca", "la sagra"
+        ],
+    },
+    "geo-021": {
+        25: [
+            "estrecho de gibraltar", "canal de panama", "canal de suez", "canal de la mancha",
+            "estrecho de bering", "estrecho de magallanes", "bosforo", "estrecho del bosforo",
+            "dardanelos", "estrecho de los dardanelos", "estrecho de ormuz", "estrecho de malaca",
+            "paso de drake", "cabo de hornos", "estrecho de mesina", "estrecho de cook"
+        ],
+        45: [
+            "gibraltar", "panama", "suez", "la mancha", "bering", "magallanes", "ormuz",
+            "malaca", "babelmandeb", "bab el mandeb", "estrecho de bab el mandeb",
+            "estrecho de taiwan", "estrecho de formosa", "estrecho de corea", "estrecho de tsushima",
+            "estrecho de florida", "canal de yucatan", "estrecho de yucatan", "paso de los vientos",
+            "canal de la mona", "estrecho de danemark", "estrecho de dinamarca", "skagerrak", "kattegat"
+        ],
+        65: [
+            "canal de kiel", "canal de corinto", "estrecho de bonifacio", "canal de otranto",
+            "estrecho de kerch", "estrecho de torres", "estrecho de bass", "estrecho de la sonda",
+            "estrecho de lombok", "estrecho de makassar", "estrecho de singapur", "estrecho de johor",
+            "estrecho de luzon", "estrecho de tsugaru", "estrecho de la perouse", "estrecho de tartaria",
+            "estrecho de tiran", "estrecho de palk", "estrecho de davis", "estrecho de hudson"
+        ],
+        85: [
+            "paso del noroeste", "paso del nordeste", "ruta del mar del norte", "canal de mozambique",
+            "paso de calais", "estrecho de dover", "paso de pas de calais", "canal de san jorge",
+            "canal del norte", "estrecho de menai", "pentland firth", "oresund", "estrecho de oresund",
+            "gran belt", "pequeño belt", "estrecho de irbe", "estrecho de kara", "estrecho de vilkitsky",
+            "estrecho de dimitri laptev", "estrecho de sarychev", "estrecho de juan de fuca"
+        ],
+        100: [
+            "estrecho de georgia", "estrecho de johnstone", "pasaje interior", "inside passage",
+            "estrecho de le maire", "canal beagle", "beagle", "estrecho de nelson", "canal chacao",
+            "paso de barlovento", "pasaje de anegada", "canal de san vicente", "canal de santa lucia",
+            "estrecho de la guadalupe", "estrecho de la dominica", "estrecho de la martinica",
+            "canal de sicilia", "estrecho de sicilia", "estrecho de malta", "canal de piombino",
+            "canal de corcega", "estrecho de euripo", "estrecho de rhion", "estrecho de kithira",
+            "estrecho de karpathos", "estrecho de rodas", "estrecho de quios", "estrecho de mitilene",
+            "estrecho de balabac", "estrecho de mindoro", "estrecho de san bernardino", "estrecho de surigao",
+            "estrecho de wetar", "estrecho de ombai", "estrecho de karimata", "estrecho de gaspar",
+            "estrecho de bangka", "estrecho de bali", "estrecho de alas", "estrecho de sape",
+            "estrecho de dampier", "estrecho de vitiaz", "estrecho de bougainville", "estrecho de fiji",
+            "estrecho de foyeaux", "estrecho de foveaux", "canal du midi", "canal de castilla",
+            "canal de gotha", "canal del mar blanco al baltico", "canal volga don", "canal de erie",
+            "canal de san lorenzo", "canal de welland", "estrecho de mackinac", "estrecho de belle isle",
+            "estrecho de cabot", "estrecho de canso", "estrecho de northumberland", "estrecho de smith",
+            "estrecho de nares", "estrecho de fury y hecla", "estrecho de lancaster", "estrecho de mcclure",
+            "estrecho de victoria", "estrecho de deber" if False else "estrecho de bransfield", "estrecho de gerlache"
+        ],
+    },
+    "pel-024": {
+        25: [
+            "titanic", "pretty woman", "el diario de noa", "the notebook", "notting hill",
+            "love actually", "la la land", "dirty dancing", "ghost", "cuando harry encontro a sally",
+            "orgullo y prejuicio", "pride and prejudice", "algo pasa con mary", "10 razones para odiarte",
+            "diez razones para odiarte", "antes del amanecer", "antes del atardecer", "antes del anochecer"
+        ],
+        45: [
+            "vacaciones en roma", "desayuno con diamantes", "casablanca", "lo que el viento se llevo",
+            "el apartamento", "con faldas y a lo loco", "cuatro bodas y un funeral", "el diario de bridget jones",
+            "the holiday", "vacaciones", "crazy stupid love", "500 dias juntos", "500 days of summer",
+            "olvidate de mi", "eternal sunshine of the spotless mind", "una cuestion de tiempo", "about time",
+            "bajo la misma estrella", "a todos los chicos de los que me enamore", "yo antes de ti", "me before you"
+        ],
+        65: [
+            "la boda de mi mejor amigo", "my best friend s wedding", "novia a la fuga", "runaway bride",
+            "como perder a un chico en 10 dias", "alguien como tu", "she s all that", "clueless",
+            "fuera de onda", "una rubia muy legal", "13 going on 30", "el sueño de mi vida",
+            "tienes un e mail", "you ve got mail", "algo para recordar", "sleepless in seattle",
+            "mientras dormias", "while you were sleeping", "serendipity", "la proposicion", "the proposal",
+            "27 vestidos", "cartas a julieta", "posdata te quiero", "p s i love you", "querido john", "un paseo para recordar"
+        ],
+        85: [
+            "amelie", "deseando amar", "in the mood for love", "call me by your name", "vidas pasadas",
+            "past lives", "retrato de una mujer en llamas", "la peor persona del mundo",
+            "annie hall", "manhattan", "medianoche en paris", "vicky cristina barcelona",
+            "sentido y sensibilidad", "emma", "jane eyre", "cumbres borrascosas", "doctor zhivago",
+            "memorias de africa", "los puentes de madison", "oficial y caballero", "an officer and a gentleman"
+        ],
+        100: [
+            "un gran amor", "say anything", "jerry maguire", "hechizo de luna", "moonstruck",
+            "la princesa prometida", "the princess bride", "stardust", "wall e", "up",
+            "cinderella", "la bella y la bestia", "ocho apellidos vascos", "palmeras en la nieve",
+            "tres metros sobre el cielo", "tengo ganas de ti", "perdoname si te llamo amor",
+            "el otro lado de la cama", "primos", "culpa mia", "a traves de mi ventana",
+            "un cuento perfecto", "palm springs", "alguien a quien solia conocer", "anyone but you",
+            "cualquiera menos tu", "la idea de tenerte", "the idea of you", "loco y estupido amor",
+            "crazy rich amazons" if False else "crazy rich asians", "locamente millonarios",
+            "la gran enfermedad del amor", "the big sick", "silver linings playbook", "el lado bueno de las cosas",
+            "la forma del agua", "her", "lost in translation", "punch drunk love", "embriagado de amor",
+            "shortbus" if False else "breves encuentros", "breve encuentro", "brief encounter",
+            "los paraguas de cherburgo", "cantando bajo la lluvia", "sucedio una noche", "historias de filadelfia"
+        ],
+    },
+    "pel-030": {
+        25: [
+            "leonardo dicaprio", "brad pitt", "tom cruise", "tom hanks", "johnny depp",
+            "robert downey jr", "keanu reeves", "will smith", "denzel washington", "meryl streep",
+            "scarlett johansson", "jennifer lawrence", "emma stone", "margot robbie",
+            "natalie portman", "anne hathaway", "penelope cruz", "javier bardem", "antonio banderas"
+        ],
+        45: [
+            "christian bale", "matthew mcconaughey", "joaquin phoenix", "ryan gosling", "ryan reynolds",
+            "hugh jackman", "chris hemsworth", "chris evans", "chris pratt", "mark ruffalo",
+            "benedict cumberbatch", "tom holland", "timothee chalamet", "zendaya", "florence pugh",
+            "anya taylor joy", "saoirse ronan", "cate blanchett", "kate winslet", "nicole kidman",
+            "julia roberts", "sandra bullock", "angelina jolie", "charlize theron", "halle berry"
+        ],
+        65: [
+            "nicolas cage", "matt damon", "ben affleck", "george clooney", "morgan freeman",
+            "samuel l jackson", "liam neeson", "ralph fiennes", "gary oldman", "anthony hopkins",
+            "daniel day lewis", "daniel craig", "javier" if False else "cillian murphy", "colin farrell",
+            "ewan mcgregor", "jude law", "robert pattinson", "andrew garfield", "adam driver",
+            "oscar isaac", "pedro pascal", "jake gyllenhaal", "edward norton", "mark wahlberg",
+            "dwayne johnson", "la roca", "the rock", "jason statham", "vin diesel", "harrison ford"
+        ],
+        85: [
+            "mel gibson", "kevin costner", "bruce willis", "arnold schwarzenegger", "sylvester stallone",
+            "jean claude van damme", "jackie chan", "jim carrey", "adam sandler", "ben stiller",
+            "steve carell", "jack black", "robin williams", "bill murray", "eddie murphy",
+            "salma hayek", "sofia vergara", "cameron diaz", "reese witherspoon", "jennifer aniston",
+            "amy adams", "jessica chastain", "emily blunt", "rachel mcadams", "emma watson",
+            "kirsten dunst", "winona ryder", "uma thurman", "helena bonham carter", "tilda swinton"
+        ],
+        100: [
+            "sigourney weaver", "jodie foster", "julianne moore", "frances mcdormand", "viola davis",
+            "octavia spencer", "lupita nyong o", "michelle yeoh", "zoe saldana", "gal gadot",
+            "brie larson", "elizabeth olsen", "jenna ortega", "sydney sweeney", "austin butler",
+            "jacob elordi", "barry keoghan", "paul mescal", "jeremy allen white", "glen powell",
+            "michael b jordan", "chadwick boseman", "idris elba", "mahershala ali", "jamie foxx",
+            "forest whitaker", "don cheadle", "chiwetel ejiofor", "dev patel", "riz ahmed",
+            "john boyega", "daniel kaluuya", "lakeith stanfield", "willem dafoe", "christoph waltz",
+            "mads mikkelsen", "viggo mortensen", "javier camara", "luis tosar", "mario casas",
+            "eduard fernandez", "jose coronado", "raúl arevalo", "raul arevalo", "belen rueda",
+            "maribel verdu", "carmen maura", "victoria abril", "rossy de palma", "paz vega",
+            "elsa pataky", "ursula corbero", "ana de armas", "esther exposito", "alba flores",
+            "maggie smith", "judi dench", "helen mirren", "olivia colman", "emma thompson", "carey mulligan"
+        ],
+    },
+    "gen-038": {
+        25: [
+            "julio cesar", "cleopatra", "alejandro magno", "napoleon bonaparte", "napoleon",
+            "cristobal colon", "albert einstein", "isaac newton", "leonardo da vinci",
+            "galileo galilei", "charles darwin", "marie curie", "nikola tesla", "thomas edison",
+            "william shakespeare", "miguel de cervantes", "pablo picasso", "wolfgang amadeus mozart",
+            "ludwig van beethoven", "abraham lincoln", "george washington", "mahatma gandhi",
+            "nelson mandela", "martin luther king", "winston churchill"
+        ],
+        45: [
+            "augusto", "marco aurelio", "trajano", "anibal barca", "anibal", "espartaco",
+            "socrates", "platon", "aristoteles", "arquimedes", "pitagoras", "euclides", "hipocrates",
+            "homero", "virgilio", "dante alighieri", "nicolas maquiavelo", "johannes gutenberg",
+            "nicolas copernico", "johannes kepler", "rene descartes", "blaisepascal", "blaise pascal",
+            "voltaire", "rousseau", "montesquieu", "immanuel kant", "karl marx", "friedrich nietzsche", "sigmund freud"
+        ],
+        65: [
+            "los reyes catolicos", "isabel la catolica", "fernando el catolico", "carlos i",
+            "carlos v", "felipe ii", "el cid", "rodrigo diaz de vivar", "hernan cortes",
+            "francisco pizarro", "blas de lezo", "fernando de magallanes", "juan sebastian elcano",
+            "diego velazquez", "francisco de goya", "salvador dali", "antoni gaudi",
+            "federico garcia lorca", "santiago ramon y cajal", "severo ochoa", "marguerita salas",
+            "margarita salas", "clara campoamor", "juana de arco", "catalina la grande", "isabel i"
+        ],
+        85: [
+            "reina victoria", "isabel ii", "enrique viii", "carloman" if False else "carlomagno",
+            "ricardo corazon de leon", "saladino", "gengis kan", "kublai kan", "tamerlan",
+            "suleiman el magnifico", "soliman el magnifico", "ataturk", "mustafa kemal ataturk",
+            "pedro el grande", "ivan el terrible", "luis xiv", "el rey sol", "maria antonieta",
+            "otto von bismarck", "garibaldi", "simon bolivar", "jose de san martin", "benito juarez",
+            "emiliano zapata", "pancho villa", "che guevara", "fidel castro", "franklin d roosevelt"
+        ],
+        100: [
+            "john f kennedy", "jfk", "rosa parks", "malcolm x", "neil armstrong", "yuri gagarin",
+            "alan turing", "ada lovelace", "grace hopper", "tim berners lee", "steve jobs",
+            "alexander fleming", "louis pasteur", "edward jenner", "gregor mendel", "rosalind franklin",
+            "stephen hawking", "carl sagan", "richard feynman", "max planck", "niels bohr",
+            "werner heisenberg", "erwin schrodinger", "michael faraday", "james clerk maxwell",
+            "miguel servet", "emilia pardo bazan", "rosalia de castro", "sor juana ines de la cruz",
+            "frida kahlo", "diego rivera", "gabriel garcia marquez", "jorge luis borges", "pablo neruda",
+            "leon tolstoi", "fiodor dostoievski", "victor hugo", "charles dickens", "jane austen",
+            "virginia woolf", "vincent van gogh", "claude monet", "michelangelo", "miguel angel",
+            "rafael sanzio", "donatello", "sandro botticelli", "rembrandt", "johannes vermeer",
+            "johann sebastian bach", "antonio vivaldi", "frederic chopin", "tchaikovsky", "confucio", "buda", "tutankamon", "ramses ii", "nefertiti"
+        ],
+    },
+    "pel-007": {
+        25: [
+            "los vengadores", "vengadores endgame", "vengadores infinity war", "iron man",
+            "capitan america", "el soldado de invierno", "civil war", "spider man no way home",
+            "el caballero oscuro", "batman begins", "the batman", "joker", "deadpool",
+            "skyfall", "casino royale", "sin tiempo para morir", "mision imposible",
+            "top gun", "top gun maverick", "john wick", "fast and furious", "a todo gas",
+            "ocean s eleven", "oceans eleven", "heat", "the town", "origen", "inception"
+        ],
+        45: [
+            "la jungla de cristal", "jungla de cristal", "arma letal", "speed", "cara a cara",
+            "face off", "la roca", "the rock", "con air", "mentiras arriesgadas", "true lies",
+            "terminator 2", "depredador", "predator", "robocop", "matrix", "kill bill",
+            "mad max furia en la carretera", "venganza", "taken", "el caso bourne",
+            "el mito de bourne", "el ultimatum de bourne", "el protector", "the equalizer",
+            "nadie", "nobody", "atómica", "atomica", "atomic blonde", "kingsman", "servicio secreto"
+        ],
+        65: [
+            "la casa de papel" if False else "plan oculto", "inside man", "baby driver",
+            "los sospechosos habituales", "sospechosos habituales", "reservoir dogs",
+            "italian job", "the italian job", "un trabajo en italia", "tarde de perros",
+            "dog day afternoon", "el golpe", "the sting", "atraco perfecto", "rififi",
+            "el circulo rojo", "el samurai", "ronin", "driver", "drive", "collateral",
+            "sicario", "la noche mas oscura", "zero dark thirty", "13 horas", "extraction", "tyler rake"
+        ],
+        85: [
+            "logan", "x men", "dias del futuro pasado", "x men primera generacion",
+            "guardianes de la galaxia", "black panther", "doctor strange", "thor ragnarok",
+            "spider man 2", "spider man un nuevo universo", "spider man cruzando el multiverso",
+            "los increibles", "watchmen", "v de vendetta", "blade", "blade ii", "hellboy",
+            "el cuervo", "sin city", "300", "gladiator", "troya", "john wick 2", "john wick 3", "john wick 4"
+        ],
+        100: [
+            "mision imposible protocolo fantasma", "mision imposible nacion secreta",
+            "mision imposible fallout", "mision imposible sentencia mortal", "goldeneye",
+            "goldfinger", "desde rusia con amor", "al servicio secreto de su majestad",
+            "la espia que me amo", "operacion trueno", "quantum of solace", "spectre",
+            "la gran evasion", "doce del patibulo", "los siete samurais", "los siete magnificos",
+            "el bueno el feo y el malo", "grupo salvaje", "bullet train", "el especialista",
+            "the fall guy", "tenet", "red notice", "alerta roja", "el agente invisible",
+            "the gray man", "triple frontera", "den of thieves", "juego de ladrones", "la estafa de los logan",
+            "logan lucky", "ahora me ves", "now you see me", "celda 211", "el niño", "cien años de perdon", "hasta el cielo", "sky high"
+        ],
+    },
+    "dep-014": {
+        25: [
+            "esqui", "el esqui", "esqui alpino", "esqui de fondo", "esqui nordico", "snowboard",
+            "el snowboard", "patinaje sobre hielo", "patinaje artistico", "patinaje de velocidad",
+            "hockey sobre hielo", "hockey hielo", "bobsleigh", "luge", "skeleton", "curling", "el curling"
+        ],
+        45: [
+            "biatlon", "el biatlon", "salto de esqui", "saltos de esqui", "combinada nordica",
+            "esqui acrobatico", "freestyle", "slalom", "eslalon", "slalom gigante", "supergigante",
+            "super g", "descenso", "descenso alpino", "halfpipe", "slopestyle", "big air",
+            "moguls", "baches", "skicross", "ski cross", "snowboard cross", "boardercross"
+        ],
+        65: [
+            "short track", "patinaje de velocidad en pista corta", "danza sobre hielo",
+            "patinaje sincronizado", "bobsleigh a 2", "bobsleigh a 4", "monobob", "luge individual",
+            "luge dobles", "esqui de travesia", "esqui de montaña", "skimo", "telemark",
+            "esqui nautico" if False else "snowkite", "ice cross", "crashed ice", "bandy", "ringette"
+        ],
+        85: [
+            "broomball", "curling dobles mixtos", "mushing", "carrera de trineos con perros",
+            "skijoring", "biatlon de verano" if False else "esqui de velocidad", "kilometro lanzado",
+            "speed skiing", "heliesqui", "heli ski", "freeride", "snowshoeing", "raquetas de nieve",
+            "escalada en hielo", "alpinismo invernal", "patinaje nordico", "speed skating",
+            "salto con esquis en trampolin grande", "trampolin normal", "vuelo con esquis", "ski flying"
+        ],
+        100: [
+            "para esqui alpino", "para snowboard", "para biatlon", "para esqui de fondo",
+            "hockey sobre trineo", "para ice hockey", "sledge hockey", "curling en silla de ruedas",
+            "bobsleigh adaptado", "yukigassen", "polo sobre nieve", "snow polo", "golf sobre nieve",
+            "triatlon de invierno", "patinaje extremo", "ice yachting", "vela sobre hielo",
+            "eslalon paralelo", "descenso paralelo", "esqui artistico", "ballet de esqui",
+            "aerials", "saltos aereos", "esqui acuatico" if False else "snowbike", "snowscoot", "fat bike en nieve",
+            "esqui fuera de pista", "esqui nordico clasico", "esqui estilo libre", "esqui patinador",
+            "relevo de biatlon", "persecucion de biatlon", "salida en masa", "sprint de biatlon", "combinada alpina"
+        ],
+    },
+    "dep-026": {
+        25: [
+            "leo messi", "lionel messi", "messi", "cristiano ronaldo", "cr7", "pele",
+            "diego maradona", "maradona", "johan cruyff", "cruyff", "zinedine zidane", "zidane",
+            "ronaldo nazario", "ronaldo", "ronaldinho", "neymar", "kylian mbappe", "mbappe",
+            "franz beckenbauer", "beckenbauer", "michel platini", "platini", "alfredo di stefano"
+        ],
+        45: [
+            "marco van basten", "van basten", "ruud gullit", "frank rijkaard", "paolo maldini",
+            "maldini", "franco baresi", "roberto baggio", "alessandro del piero", "francesco totti",
+            "andrea pirlo", "gianluigi buffon", "buffon", "fabio cannavaro", "lothar matthaus",
+            "gerd muller", "karl heinz rummenigge", "oliver kahn", "manuel neuer", "toni kroos",
+            "luka modric", "modric", "robert lewandowski", "karim benzema", "thierry henry", "henry"
+        ],
+        65: [
+            "patrick vieira", "claude makelele", "eric cantona", "raymond kopa", "just fontaine",
+            "david beckham", "steven gerrard", "frank lampard", "wayne rooney", "paul scholes",
+            "ryan giggs", "gareth bale", "george best", "bobby charlton", "bobby moore",
+            "gary lineker", "alan shearer", "harry kane", "jude bellingham", "eusebio",
+            "luis figo", "figo", "rui costa", "deco", "kaka", "rivaldo", "romario", "bebeto"
+        ],
+        85: [
+            "zico", "socrates", "garrincha", "nilton santos", "carlos alberto", "cafu",
+            "roberto carlos", "dani alves", "marcelo", "thiago silva", "vinicius jr",
+            "mario kempes", "daniel passarella", "gabriel batistuta", "batistuta", "hernan crespo",
+            "juan roman riquelme", "riquelme", "javier zanetti", "pablo aimar", "angel di maria",
+            "sergio aguero", "kun aguero", "luis suarez", "edinson cavani", "diego forlan",
+            "enzo francescoli", "hugo sanchez", "rafael marquez", "carlos valderrama", "radamel falcao"
+        ],
+        100: [
+            "james rodriguez", "elias figueroa", "ivan zamorano", "marcelo salas", "alexis sanchez",
+            "arturo vidal", "teofilo cubillas", "jose luis chilavert", "george weah", "didier drogba",
+            "samuel eto o", "roger milla", "mohamed salah", "sadio mane", "riyad mahrez",
+            "achraf hakimi", "ferenc puskas", "puskas", "sandor kocsis", "laszlo kubala",
+            "lev yashin", "oleg blokhin", "igor belanov", "andriy shevchenko", "hristo stoichkov",
+            "gheorghe hagi", "pavel nedved", "josef masopust", "allan simonsen", "michael laudrup",
+            "peter schmeichel", "zlatan ibrahimovic", "ibrahimovic", "gunnar nordahl", "erling haaland",
+            "haaland", "kevin de bruyne", "eden hazard", "dennis bergkamp", "arjen robben",
+            "wesley sneijder", "virgil van dijk", "clarence seedorf", "edgar davids", "giuseppe meazza",
+            "dino zoff", "gaetano scirea", "sandro mazzola", "gianni rivera", "luigi riva",
+            "matthias sammer", "fritz walter", "uwe seeler", "miroslav klose", "bastian schweinsteiger", "thomas muller"
+        ],
+    },
+    "gen-008": {
+        25: [
+            "mercadona", "carrefour", "lidl", "aldi", "dia", "alcampo", "eroski", "el corte ingles",
+            "hipercor", "supercor", "consum", "ahorramas", "caprabo", "bonpreu", "esclat",
+            "gadisa", "gadis", "froiz", "lupa", "coviran", "spar", "condis", "bm", "masymas"
+        ],
+        45: [
+            "prica", "continente", "pryca", "simago", "galerias primero", "sabeco", "simply",
+            "champion", "caprabo eroski", "hiperdino", "dino", "superdino", "dinosol",
+            "maskom", "piedra", "deza", "el jamon", "supermercados el jamon", "mas", "supermercados mas",
+            "cash fresh", "la despensa", "hiper usera", "sanchez romero", "alimerka", "familia"
+        ],
+        65: [
+            "bonarea", "sorli", "plusfresc", "valvi", "valvi spar", "supeco", "carrefour express",
+            "carrefour market", "dia market", "dia maxi", "la plaza de dia", "clarel",
+            "alcampo mi", "mi alcampo", "eroski city", "eroski center", "hiperber", "dialprix",
+            "economy cash", "kuups", "vidal", "tifer", "unide", "uda", "udaco", "gama", "maxcoop"
+        ],
+        85: [
+            "veritas", "herbolario navarro", "biosphere", "naturitas", "costco", "makro",
+            "cash diplomas", "la sirena", "hiper asia", "lidl plus", "primaprix", "dealz",
+            "action", "tedi", "pepco", "normal", "alcampo hipermercado", "leclerc", "e leclerc",
+            "intermarche", "auchan", "cora", "casino", "picard", "u express", "netto"
+        ],
+        100: [
+            "tesco", "sainsbury s", "asda", "morrisons", "waitrose", "marks and spencer",
+            "iceland", "edeka", "rewe", "kaufland", "penny", "albert heijn", "jumbo",
+            "delhaize", "colruyt", "pingo doce", "pingo", "minipreco", "migros", "coop",
+            "walmart", "target", "kroger", "whole foods", "trader joe s", "albertsons",
+            "publix", "safeway", "7 eleven", "familymart", "lawson", "don quijote",
+            "hipercor sanchinarro" if False else "el arbol", "supermercados el arbol", "cayo" if False else "galerias preciados",
+            "sears", "champion españa", "supersol", "cash and carry", "eurospar", "interspar",
+            "supeco españa", " charter", "charter", "consum charter", "sorli discau", "lupa supermercados",
+            "gadis supermercados", "froiz supermercados", "alimerka asturias", "mas y mas"
+        ],
+    },
+    "gen-039": {
+        25: [
+            "apple", "samsung", "sony", "microsoft", "google", "lg", "xiaomi", "huawei",
+            "nintendo", "playstation", "xbox", "hp", "dell", "lenovo", "asus", "acer",
+            "intel", "amd", "nvidia", "philips", "bosch", "siemens", "panasonic", "canon", "nikon"
+        ],
+        45: [
+            "logitech", "razer", "corsair", "msi", "gigabyte", "honor", "oppo", "realme",
+            "oneplus", "vivo", "motorola", "nokia", "ericsson", "sony ericsson", "blackberry",
+            "htc", "garmin", "fitbit", "bose", "jbl", "sennheiser", "audio technica", "sonos",
+            "bang and olufsen", "marshal" if False else "marshall", "beats", "beats by dre",
+            "dyson", "roomba", "irobot", "cecotec", "taurus", "balay", "teka", "fagor"
+        ],
+        65: [
+            "sega", "atari", "capcom", "konami", "square enix", "bandai namco", "namco",
+            "electronic arts", "ea", "ubisoft", "activision", "blizzard", "valve", "steam",
+            "epic games", "rockstar games", "bethesda", "cd projekt", "fromsoftware",
+            "riot games", "tencent", "supercell", "rovio", "mojäng", "mojang", "roblox",
+            "ibm", "oracle", "cisco", "qualcomm", "tsmc", "arm", "western digital", "seagate", "sandisk", "kingston"
+        ],
+        85: [
+            "crucial", "lexar", "toshiba", "hitachi", "fujitsu", "sharp", "sanyo", "jvc",
+            "kenwood", "pioneer", "denon", "yamaha", "onkyo", "marantz", "technics", "casio",
+            "seiko", "citizen", "polaroid", "kodak", "fujifilm", "leica", "hasselblad",
+            "gopro", "dji", "insta360", "kindle", "kobo", "bq", "spc", "wolder", "energy sistem"
+        ],
+        100: [
+            "amstrad", "sinclair", "zx spectrum", "commodore", "commodore 64", "amiga",
+            "msx", "olivetti", "compaq", "packard bell", "gateway", "sun microsystems",
+            "silicon graphics", "next", "palm", "siemens mobile", "alcatel", "tcl", "hisense",
+            "haier", "midea", "beko", "whirlpool", "indesit", "ariston", "electrolux", "aeg",
+            "miele", "zanussi", "candy", "smeg", "krups", "nespresso", "delonghi", "braun",
+            "remington", "babyliss", "moulinex", "rowenta", "tefal", "oster", "kitchenaid",
+            "epson", "brother", "lexmark", "xerox", "ricoh", "wacom", "tp link", "netgear",
+            "d link", "linksys", "ubiquiti", "synology", "qnap", "raspberry pi", "arduino",
+            "steelseries", "hyperx", "elgato", "astro", "turtle beach", "thrustmaster", "fanatec",
+            "nothing", "fairphone", "framework", "valve corporation", "steam deck", "meta", "oculus"
+        ],
+    },
+    "mus-025": {
+        25: [
+            "bohemian rhapsody", "imagine", "yesterday", "hey jude", "let it be", "like a rolling stone",
+            "hotel california", "stairway to heaven", "smells like teen spirit", "billie jean",
+            "thriller", "beat it", "sweet child o mine", "november rain", "livin on a prayer",
+            "we will rock you", "we are the champions", "i will always love you", "my heart will go on"
+        ],
+        45: [
+            "shape of you", "blinding lights", "rolling in the deep", "someone like you", "hello",
+            "uptown funk", "bad romance", "poker face", "shallow", "toxic", "baby one more time",
+            "like a prayer", "material girl", "vogue", "purple rain", "when doves cry",
+            "born to run", "dancing in the dark", "born in the usa", "summer of 69",
+            "africa", "take on me", "sweet dreams", "every breath you take", "roxanne"
+        ],
+        65: [
+            "with or without you", "sunday bloody sunday", "one", "beautiful day", "wonderwall",
+            "don t look back in anger", "champagne supernova", "creep", "karma police",
+            "paranoid android", "yellow", "fix you", "viva la vida", "clocks", "the scientist",
+            "mr brightside", "seven nation army", "numb", "in the end", "bring me to life",
+            "zombie", "linger", "dreams", "losing my religion", "everybody hurts", "bitter sweet symphony"
+        ],
+        85: [
+            "paint it black", "satisfaction", "gimme shelter", "sympathy for the devil",
+            "angie", "start me up", "light my fire", "riders on the storm", "break on through",
+            "wish you were here", "comfortably numb", "another brick in the wall", "money",
+            "smoke on the water", "highway star", "paranoid", "iron man", "back in black",
+            "highway to hell", "thunderstruck", "you shook me all night long", "enter sandman",
+            "nothing else matters", "master of puppets", "one metallica", "fade to black"
+        ],
+        100: [
+            "purple haze", "all along the watchtower", "hey joe", "little wing", "voodoo child",
+            "johnny b goode", "jailhouse rock", "hound dog", "cant help falling in love",
+            "suspicious minds", "my way", "fly me to the moon", "new york new york",
+            "what a wonderful world", "respect", "superstition", "i just called to say i love you",
+            "whats going on", "let s get it on", "sittin on the dock of the bay", "stand by me",
+            "dancing queen", "mamma mia", "waterloo", "fernando", "gimme gimme gimme",
+            "stayin alive", "night fever", "i will survive", "ymca", "september", "boogie wonderland",
+            "don t stop me now", "somebody to love", "killer queen", "under pressure", "radio ga ga",
+            "heroes", "starman", "space oddity", "life on mars", "rebel rebel", "rocket man",
+            "tiny dancer", "your song", "candle in the wind", "piano man", "uptown girl",
+            "careless whisper", "wake me up before you go go", "last christmas", "faith",
+            "time after time", "girls just want to have fun", "total eclipse of the heart",
+            "the final countdown", "i want to know what love is", "eye of the tiger",
+            "another one bites the dust", "the show must go on", "enjoy the silence", "personal jesus",
+            "blue monday", "tainted love", "don t you want me", "rio", "hungry like the wolf",
+            "karma chameleon", "relax", "take my breath away", "holding out for a hero",
+            "purple rain prince", "kiss", "1999", "don t stop believin", "africa toto", "hold the line",
+            "californication", "under the bridge", "scar tissue", "by the way", "otherside",
+            "everlong", "the pretender", "learn to fly", "black hole sun", "alive", "jeremy", "even flow"
+        ],
+    },
+    "pal-015": {
+        25: [
+            "mentira", "la mentira", "estafa", "la estafa", "fraude", "el fraude", "timo", "el timo",
+            "trampa", "la trampa", "trola", "la trola", "bulo", "el bulo", "patraña", "la patraña",
+            "farsa", "la farsa", "embuste", "el embuste", "falsedad", "la falsedad", "chanchullo"
+        ],
+        45: [
+            "el chanchullo", "tongo", "el tongo", "pucherazo", "amaño", "el amaño", "triquiñuela",
+            "artimaña", "argucia", "treta", "ardid", "truco", "estratagema", "añagaza", "cebo",
+            "trampa mortal", "cama", "encerrona", "celada", "emboscada", "zancadilla", "traicion",
+            "felonia", "perfidia", "alevosia", "deslealtad", "doblez", "hipocresia", "fingimiento"
+        ],
+        65: [
+            "simulacion", "ficcion", "invencion", "fabula", "cuento", "cuento chino", "milonga",
+            "pelicula", "camelo", "el camelo", "paripé", "paripe", "teatro", "comedia", "pantomima",
+            "montaje", "el montaje", "chivatazo" if False else "burla", "mofa", "escarnio", "guasa",
+            "choteo", "pitorreo", "vacile", "tomadura de pelo", "inocentada", "broma pesada",
+            "calumnia", "infamia", "difamacion", "injuria", "insidia", "falacia", "sofisma"
+        ],
+        85: [
+            "espejismo", "ilusion", "fantasmagoria", "quimera", "utopia", "falacia", "subterfugio",
+            "evasiva", "excusa", "pretexto", "coartada", "tapadera", "pantalla", "careta", "mascara",
+            "disfraz", "camuflaje", "simulacro", "remedo", "impostura", "usurpacion", "suplantacion",
+            "falsificacion", "adulteracion", "trucaje", "manipulacion", "tergiversacion", "distorsion",
+            "desinformacion", "intoxicacion", "propaganda", "demagogia", "charlataneria", "palabrería", "palabreria"
+        ],
+        100: [
+            "filfa", "bola", "coba", "bolazo", "gansada", "paparrucha", "pamema", "pamplina",
+            "zarandaja", "patarata", "jarabe de pico", "cháchara", "chachara", "cantinela", "retahila",
+            "cuento de la lechera", "castillos en el aire", "gato por liebre", "pufo", "sablazo",
+            "clavada", "atraco", "robo", "hurto", "latrocinio", "expolio", "saqueo", "desfalco",
+            "malversacion", "cohecho", "soborno", "mordida", "prevaricacion", "corrupcion",
+            "trapisonda", "enredo", "chisme", "embrollo", "follon", "marron", "galimatias",
+            "enjuague", "manejo", "intriga", "maquinacion", "conspiracion", "confabulacion",
+            "conjura", "complot", "seduccion" if False else "señuelo", "trampantojo", "truco de magia",
+            "prestidigitacion", "escamoteo", "escabullida", "esquiva", "mentiras", "estafas", "fraudes", "timos", "trampas", "bulos"
+        ],
+    },
+    "geo-009": {
+        25: [
+            "sevilla", "malaga", "cordoba", "granada", "cadiz", "huelva", "jaen", "almeria",
+            "jerez de la frontera", "marbella", "algeciras", "dos hermanas", "linares", "ubeda",
+            "baeza", "ronda", "antequera", "nerja", "estepona", "fuengirola", "torremolinos"
+        ],
+        45: [
+            "benalmadena", "mijas", "velez malaga", "motril", "almuñecar", "salobreña", "guadix",
+            "baza", "loja", "el ejido", "roquetas de mar", "nijar", "mojacar", "vera", "garrucha",
+            "huercal overa", "adra", "berja", "andujar", "martos", "alcala la real", "bailen",
+            "la carolina", "cazorla", "lucena", "puente genil", "montilla", "priego de cordoba",
+            "cabra", "baena", "palma del rio", "pozoblanco", "peñarroya pueblonuevo", "ecija", "carmona"
+        ],
+        65: [
+            "utrera", "osuna", "marchena", "moron de la frontera", "estepa", "lepe", "almonte",
+            "ayamonte", "isla cristina", "moguer", "palos de la frontera", "aracena", "valverde del camino",
+            "cartaya", "punta umbria", "san fernando", "el puerto de santa maria", "chiclana de la frontera",
+            "sanlucar de barrameda", "la linea de la concepcion", "rota", "conil de la frontera",
+            "barbate", "tarifa", "vejer de la frontera", "arcos de la frontera", "medina sidonia",
+            "ubrique", "grazalema", "setenil de las bodegas", "olvera", "chipiona", "zahara de los atunes"
+        ],
+        85: [
+            "alcala de guadaira", "mairena del aljarafe", "la rinconada", "los palacios y villafranca",
+            "coria del rio", "camas", "tomares", "bormujos", "san juan de aznalfarache", "espartinas",
+            "lebrija", "las cabezas de san juan", "lora del rio", "cantillana", "cazalla de la sierra",
+            "constantina", "santiponce", "bollullos par del condado", "la palma del condado", "niebla",
+            "minas de riotinto", "nerva", "cortegana", "alajar", "jabugo", "el rocio",
+            "jerez", "el puerto", "chiclana", "sanlucar", "la linea", "conil", "vejer", "arcos",
+            "jimena de la frontera", "castellar de la frontera", "san roque", "los barrios"
+        ],
+        100: [
+            "alhaurin de la torre", "alhaurin el grande", "coin", "cartama", "alora", "ardales",
+            "frigiliana", "torrox", "rincon de la victoria", "competa", "casares", "manilva",
+            "ojen", "istan", "benahavis", "juzcar", "gaucín", "gaucin", "archidona", "mollina",
+            "campillos", "teba", "pampaneira", "bubion", "capileira", "trevelez", "orgiva",
+            "lanjaron", "alhama de granada", "montefrio", "priego", "santa fe", "atarfe",
+            "armilla", "maracena", "las gabias", "albolote", "almuñecar granada", "cuevas del almanzora",
+            "pulpí", "pulpi", "carboneras", "sorbas", "tabernas", "albox", "macael", "olula del rio",
+            "velez rubio", "velez blanco", "laujar de andarax", "canjayar", "fiñana", "seron",
+            "peal de becerro", "quesada", "torredonjimeno", "torredelcampo", "mengibar", "jodar",
+            "mancha real", "vilches", "santisteban del puerto", "hornachos" if False else "hornos",
+            "segura de la sierra", "rute", "iznajar", "aguilar de la frontera", "fernan nuñez",
+            "la rambla", "montoro", "bujalance", "castro del rio", "espejo", "belalcazar", "hinojosa del duque"
+        ],
+    },
+    "geo-024": {
+        25: [
+            "amazonas", "rio amazonas", "nilo", "rio nilo", "misisipi", "rio misisipi", "misuri",
+            "yangtse", "rio yangtse", "rio amarillo", "huang he", "ganges", "rio ganges",
+            "orinoco", "rio orinoco", "parana", "rio parana", "congo", "rio congo", "niger",
+            "rio niger", "zambeze", "rio zambeze", "mekong", "rio mekong", "eufrates", "tigris"
+        ],
+        45: [
+            "rio grande", "rio bravo", "colorado", "rio colorado", "columbia", "rio columbia",
+            "yukon", "rio yukon", "mackenzie", "san lorenzo", "rio san lorenzo", "hudson",
+            "ohio", "arkansas", "tennessee", "potomac", "delaware", "magdalena", "rio magdalena",
+            "cauca", "atrato", "uruguay", "rio uruguay", "paraguay", "rio paraguay", "pilcomayo",
+            "bermejo", "salado", "rio de la plata", "sao francisco", "tocantins", "araguaia"
+        ],
+        65: [
+            "madeira", "rio madeira", "negro", "rio negro", "purus", "jurua", "tapajos",
+            "xingu", "marañon", "ucayali", "urubamba", "madre de dios", "desaguadero", "biobio",
+            "loa", "maipo", "maule", "limpopo", "rio limpopo", "orange", "rio orange", "senegal",
+            "rio senegal", "gambia", "volta", "benue", "ubangi", "kasai", "okavango", "chari"
+        ],
+        85: [
+            "limon" if False else "tana", "juba", "shabelle", "nilo blanco", "nilo azul",
+            "jordan", "rio jordan", "orontes", "indo", "rio indo", "brahmaputra", "yamuna",
+            "godavari", "krishna", "narmada", "iraouadi", "irrawaddy", "saluen", "salween",
+            "chao phraya", "rio rojo", "rio perla", "amoor" if False else "amur", "lena",
+            "yenisei", "obi", "irtish", "kolyma", "syr daria", "amu daria", "tarim"
+        ],
+        100: [
+            "shinano", "tone", "han", "nakdong", "yalu", "tumen", "pasig", "cagayan",
+            "kapuas", "mahakam", "barito", "musi", "bengawan solo", "brantas", "sepik", "fly",
+            "murray" if False else "tigris y eufrates", "shatt al arab", "karun", "helmand",
+            "kabul", "kura", "araks", "kizilirmak", "sakarya", "gediz", "meandro",
+            "lerma", "santiago mexico", "balsas", "panuco", "grijalva", "usumacinta", "papaloapan",
+            "motagua", "ulua", "coco", "san juan nicaragua", "chagres", "cauto", "artibonito",
+            "esequibo", "surinam", "maroni", "oyapock", "apat" if False else "iguazu", "rio iguazu",
+            "tepic" if False else "jacui", "tiete", "doce", "paraiba do sul", "parnaiba", "itapecuru",
+            "chubut", "limay", "neuquen", "deseado", "gallegos", "santa cruz argentina",
+            "sacramento", "san joaquin", "snake", "platte", "red river", "brazos", "trinity",
+            "sabine", "suwannee", "savannah", "james", "susquehanna", "connecticut", "charles",
+            "nelson", "churchill", "saskatchewan", "athabasca", "peace", "fraser", "ottawa"
+        ],
+    },
+    "dep-012": {
+        45: [
+            "rodri", "rodrigo hernandez", "aitana bonmati", "alexia putellas", "karim benzema",
+            "luka modric", "ronaldinho", "kaka", "zinedine zidane", "luis figo", "ronaldo nazario",
+            "rivaldo", "fabio cannavaro", "andriy shevchenko", "pavel nedved", "michael owen"
+        ],
+        65: [
+            "roberto baggio", "marco van basten", "ruud gullit", "lothar matthaus", "jean pierre papin",
+            "george weah", "hristo stoichkov", "matthias sammer", "michel platini", "paolo rossi",
+            "karl heinz rummenigge", "kevin keegan", "johan cruyff", "franz beckenbauer", "gerd muller",
+            "eusebio", "bobby charlton", "denis law", "george best", "stanley matthews", "alfredo di stefano"
+        ],
+        85: [
+            "raymond kopa", "luis suarez", "omar sivori", "josef masopust", "lev yashin",
+            "florian albert", "gianni rivera", "allan simonsen", "oleg blokhin", "igor belanov",
+            "megan rapinoe", "ada hegerberg", "ousmane dembele", "pele", "diego maradona", "garrincha",
+            "mario kempes", "romario", "socrates", "zico", "romario de souza", "el fenomento"
+        ],
+        100: [
+            "rodrigo hernandez cascante", "rodri hernandez", "aitana bonmati conca", "alexia putellas segura",
+            "karim mostafa benzema", "luka modric croacia", "lionel messi argentina", "cristiano ronaldo portugal",
+            "johan cruyff holanda", "michel platini francia", "marco van basten holanda",
+            "franz beckenbauer alemania", "alfredo di stefano españa", "kevin keegan inglaterra",
+            "karl heinz rummenigge alemania", "ronaldo luis nazario de lima", "zinedine yazid zidane",
+            "luis filipe madeira caeiro figo", "rivaldo vitor borba ferreira", "ricardo izecson dos santos leite",
+            "fabio cannavaro italia", "pavel nedved republica checa", "andriy shevchenko ucrania",
+            "michael owen inglaterra", "matthias sammer alemania", "hristo stoichkov bulgaria",
+            "george weah liberia", "roberto baggio italia", "jean pierre papin francia",
+            "lothar matthaus alemania", "ruud gullit holanda", "igor belanov urss",
+            "paolo rossi italia", "oleg blokhin urss", "gerd muller alemania", "gianni rivera italia",
+            "george best irlanda del norte", "florian albert hungria", "eusebio portugal",
+            "bobby charlton inglaterra", "lev yashin urss", "denis law escocia", "josef masopust checoslovaquia",
+            "omar sivori italia", "luis suarez miramontes españa", "raymond kopa francia",
+            "stanley matthews inglaterra", "messi 8", "ronaldo 5", "cruyff 3", "platini 3", "van basten 3",
+            "bonmati", "putellas", "hegerberg", "rapinoe", "shevchenko", "nedved", "cannavaro",
+            "stoichkov", "weah", "papin", "gullit", "baggio", "rossi", "keegan", "rummenigge",
+            "yashin", "best", "charlton", "di stefano", "kopa", "matthews", "sivori", "masopust"
+        ],
+    },
+    "gen-004": {
+        45: [
+            "real madrid cf", "futbol club barcelona", "club atletico de madrid", "sevilla futbol club",
+            "valencia club de futbol", "real betis balompie", "athletic club", "athletic de bilbao",
+            "real sociedad", "villarreal cf", "rcd espanyol", "espanyol", "rc celta de vigo", "celta de vigo",
+            "real zaragoza", "rc deportivo", "deportivo de la coruña", "real sporting", "sporting de gijon",
+            "real oviedo", "ca osasuna", "osasuna", "real valladolid", "getafe cf", "rayo vallecano"
+        ],
+        65: [
+            "girona fc", "ud las palmas", "cd tenerife", "rcd mallorca", "real racing club",
+            "racing de santander", "elche cf", "real murcia", "cadiz cf", "granada cf",
+            "malaga cf", "cd malaga", "ud almeria", "recreativo de huelva", "xerez cd", "cordoba cf",
+            "hercules cf", "cd castellon", "levante ud", "ud salamanca", "cd numancia", "sd eibar",
+            "deportivo alaves", "cd leganes", "sd huesca", "albacete balompie", "real burgos"
+        ],
+        85: [
+            "burgos cf", "real union", "arenas de getxo", "cd europa", "ce sabadell", "gimnastic de tarragona",
+            "nastic", "nastic de tarragona", "ue lleida", "cd alcoyano", "sd compostela",
+            "cp merida", "cf extremadura", "cd logrones", "ad almeria", "cultural leonesa",
+            "pontevedra cf", "cd condal", "atletico tetuan", "real jaen", "ad rayo vallecano",
+            "ud levante", "cd Castellon", "cd legares", "cd mirandes", "sd ponferradina"
+        ],
+        100: [
+            "merengues", "cule", "colchoneros", "leones de san mames", "txuri urdin", "periquitos",
+            "submarino amarillo", "groguets", "che", "nervionenses", "palanganas", "verdiblancos",
+            "betis", "sporting", "oviedo", "zaragoza", "depor", "celta", "coruña", "gijon",
+            "santander", "racing", "pamplona", "rojillos", "pucela", "pucelanos", "valladolid",
+            "vallecas", "rayo", "franjirrojos", "azulones", "getafe", "bermellones", "mallorca",
+            "pio pio", "las palmas", "chicharreros", "tenerife", "babazorros", "alaves",
+            "nazaríes", "nazaries", "boquerones", "malaga", "cadiz", "amarillos", "submarino",
+            "granotas", "levante", "ilicitanos", "elche", "pimentoneros", "murcia",
+            "albacete", "queso mecanico", "numancia", "soria", "huesca", "alcoraz", "anduva",
+            "leganes", "butarque", "ipuruA", "eibar", "almeria", "indalicos", "cordoba", "califas",
+            "recre", "recreativo", "decano del futbol español", "xerez", "jerez", "salamanca",
+            "charros", "sabadell", "nastic", "tarragona", "lleida", "compostela", "san lazaro",
+            "logroñes", "las gaunas", "hercules", "rico perez", "alcoyano", "castellon", "castalia"
+        ],
+    },
+    "geo-017": {
+        25: [
+            "sahara", "el sahara", "desierto del sahara", "gobi", "desierto de gobi",
+            "atacama", "desierto de atacama", "kalahari", "desierto del kalahari",
+            "tabernas", "desierto de tabernas", "salar de uyuni", "uyuni", "mojave", "desierto de mojave",
+            "sonora", "desierto de sonora", "arabia", "desierto de arabia", "rub al jali"
+        ],
+        45: [
+            "namib", "desierto del namib", "patagonia", "desierto de la patagonia", "estepa patagonica",
+            "estepa euroasiatica", "estepa rusa", "estepa mongola", "estepa kazaja", "karakum",
+            "kizilkum", "taklamakan", "desierto de taklamakan", "thar", "desierto de thar",
+            "gran desierto de victoria", "gran desierto arenoso", "gibson", "simpson", "tanami",
+            "chihuahua", "desierto de chihuahua", "gran cuenca", "valle de la muerte", "death valley"
+        ],
+        65: [
+            "desierto pintado", "desierto blanco", "desierto negro", "wadi rum", "negev",
+            "desierto del neguev", "desierto de judea", "sinai", "desierto del sinai",
+            "desierto de siria", "desierto de lut", "dasht e lut", "dasht e kavir", "registan",
+            "desierto de danakil", "depresion de danakil", "chalbi", "nyiri", "ogaden",
+            "sechura", "desierto de sechura", "la guajira", "tatacoa", "desierto de la tatacoa", "medanos de coro"
+        ],
+        85: [
+            "salar de atacama", "salar de coipasa", "salar del hombre muerto", "salinas grandes",
+            "salar de arizaro", "chott el djerid", "mar salado de bonneville", "salinas de bonneville",
+            "bardenas reales", "monegros", "desierto de los monegros", "tenerife cañadas",
+            "estepa de la serena", "tierra de campos", "alentejo estepa", "puszta", "hortobagy",
+            "baragan", "estepa pontica", "estepa kalmuka", "desierto de rynn", "betpak dala"
+        ],
+        100: [
+            "uysturt", "meseta de ustyurt", "desierto de moyunkum", "saryesik atyrau",
+            "lop nor", "badain jaran", "tengger", "ordos", "gurbantunggut", "mu us",
+            "kubuchi", "horqin", "estepa de baraba", "estepa de kulunda", "estepa de chuya",
+            "karoo", "gran karoo", "pequeño karoo", "richtersveld", "kaokoland", "desierto de bodele",
+            "tenere", "el tenere", "desierto de libia", "gran mar de arena", "erg chebbi",
+            "erg chigaga", "merzouga", "tanezrouft", "grand erg occidental", "grand erg oriental",
+            "desierto de mauritania", "adrar", "tiris", "nubia", "desierto de nubia",
+            "bayuda", "desierto arabigo", "desierto oriental", "desierto occidental de egipto",
+            "nefud", "an nafud", "ad dahna", "wahiba", "arenas de wahiba", "rub al khali",
+            "cholistan", "thal", "rann de kutch", "gran rann de kutch", "salar de etosha", "makgadikgadi",
+            "colorado plateau", "red desert", "black rock desert", "algodones dunes", "yuma",
+            "vizcaino", "desierto del vizcaino", "altar", "gran desierto de altar", "bolson de mapimi",
+            "salinas de san luis", "pampa seca", "monte argentino", "monte desert", "puna de atacama",
+            "sturt stony desert", "strzelecki", "tirari", "pedirka", "nullarbor", "llanura de nullarbor"
+        ],
+    },
+    "pal-016": {
+        45: [
+            "zapato", "zapatos", "zapatilla", "zapatillas", "zapateria", "zapatero", "zapatera",
+            "zanahoria", "zanahorias", "zona", "zonas", "zorro", "zorra", "zorros", "zorras",
+            "zumo", "zumos", "zumbido", "zumbidos", "zumbar", "zafiro", "zafiros", "zanja", "zanjas"
+        ],
+        65: [
+            "zarza", "zarzas", "zarzamora", "zarzamoras", "zarzuela", "zarzuelas", "zarpazo", "zarpazos",
+            "zarpa", "zarpas", "zarpar", "zangano", "zanganos", "zanco", "zancos", "zancada", "zancadas",
+            "zancadilla", "zancadillas", "zapatilla", "zapateado", "zapatazo", "zape", "zarandeo",
+            "zarandear", "zarcillo", "zarcillos", "zarco", "zarca", "zarzaparilla", "zarzaparrilla"
+        ],
+        85: [
+            "zeus", "zigzag", "zigzaguear", "zinc", "cinc", "zip", "zocalo", "zocalos", "zodiaco",
+            "zodiacal", "zombie", "zombies", "zombi", "zombis", "zona franca", "zoologia",
+            "zoologico", "zoologo", "zoologa", "zopenco", "zopenca", "zoquete", "zorrillo",
+            "zorzal", "zorzales", "zote", "zozobra", "zozobrar", "zueco", "zuecos", "zulo", "zulos"
+        ],
+        100: [
+            "zumba", "zumbon", "zumbona", "zumbador", "zumbadora", "zurcido", "zurcir",
+            "zurda", "zurdo", "zurdos", "zurdas", "zurra", "zurrar", "zurriagazo", "zurron",
+            "zurrones", "zutano", "zutana", "zuzon", "zabache", "zabra", "zacate", "zafarrancho",
+            "zafiedad", "zafio", "zafia", "zafra", "zaga", "zagal", "zagala", "zagales",
+            "zaguero", "zaguera", "zahori", "zahorí", "zahurda", "zaino", "zaina", "zalagarda",
+            "zalameria", "zalamero", "zalamera", "zalea", "zamarra", "zambo", "zamba",
+            "zambomba", "zambombazo", "zambullida", "zambullir", "zampabollos", "zampar",
+            "zampoña", "zana", "zanca", "zancajo", "zanganear", "zanguango", "zanjon",
+            "zapallo", "zapatiesta", "zapote", "zaque", "zar", "zara", "zarabanda", "zaragata",
+            "zaragüelles", "zarajo", "zarajos", "zarandaja", "zarigüeya", "zarigueya", "zarina",
+            "zarrapastroso", "zascandil", "zejel", "zenit", "cenit", "zepelin", "zeta", "zigoto"
+        ],
+    },
+    "gen-027": {
+        45: [
+            "bandera de argentina", "bandera de uruguay", "bandera de japon", "bandera de filipinas",
+            "bandera de taiwan", "bandera de nepal", "bandera de macedonia del norte",
+            "bandera de kazajistan", "bandera de kirguistan", "bandera de ruanda",
+            "bandera de namibia", "bandera de niger", "bandera de malaui", "bandera de banglades",
+            "bandera de antigua y barbuda", "bandera de kiribati", "bandera de ecuador",
+            "bandera de peru", "bandera de bolivia", "bandera de costa rica", "bandera de el salvador", "bandera de nicaragua"
+        ],
+        65: [
+            "sol de mayo", "republica argentina", "republica oriental del uruguay", "estado del japon",
+            "republica de filipinas", "republica de china taiwan", "republica federal democratica de nepal",
+            "republica de macedonia del norte", "republica de kazajistan", "republica kirguisa",
+            "republica de ruanda", "republica de namibia", "republica del niger", "republica de malaui",
+            "republica popular de banglades", "republica de kiribati", "republica del ecuador",
+            "republica del peru", "estado plurinacional de bolivia", "republica de el salvador",
+            "republica de nicaragua", "republica de costa rica", "republica de guinea bisau"
+        ],
+        85: [
+            "argentine", "uruguayan", "japanese", "philippine", "taiwanese", "nepali", "nepalese",
+            "kazakh", "kyrgyz", "rwandan", "namibian", "malawian", "bangladeshi", "kiribati republic",
+            "antigua and barbuda", "north macedonia", "malawi", "bangladesh", "rwanda",
+            "kurdistan", "tibet", "greenland", "groenlandia", "polinesia francesa", "french polynesia",
+            "nuevo mexico", "new mexico", "arizona", "nueva caledonia", "new caledonia", "niue"
+        ],
+        100: [
+            "republic of argentina", "oriental republic of uruguay", "japan", "nippon", "nihon",
+            "the philippines", "republic of the philippines", "taiwan", "formosa", "nepal",
+            "kazakhstan", "kyrgyzstan", "republic of rwanda", "republic of namibia",
+            "republic of niger", "republic of malawi", "people s republic of bangladesh",
+            "republic of kiribati", "republic of ecuador", "republic of peru", "plurinational state of bolivia",
+            "republic of el salvador", "republic of nicaragua", "republic of costa rica",
+            "guinea bissau", "guinea bisau", "republic of guinea bissau", "somalia" if False else "somaliland",
+            "somalilandia", "republika makedonija", "macedonia", "sol naciente", "tierra del sol naciente",
+            "sol de vergina", "bandera del sol naciente", "bandera de nuevo mexico", "bandera de arizona",
+            "bandera de groenlandia", "bandera de polinesia francesa", "bandera de kurdistan",
+            "bandera del tibet", "bandera de somalilandia", "bandera de niue", "bandera de nueva caledonia",
+            "republica de china", "reino de nepal", "kazajstan", "kirguizia", "malawi africa",
+            "namibia africa", "niger africa", "ruanda africa", "antigua barbuda", "islas gilbert",
+            "kalmykia", "calmuquia", "buryatia", "buriatia", "tuvá", "tuva", "sakha", "yakutia",
+            "bashkortostan", "baskortostan", "mordovia", "udmurtia", "chuvashia", "mari el",
+            "region de kurdistan", "region autonoma del tibet", "estado de arizona", "estado de nuevo mexico"
+        ],
+    },
+    "geo-012": {
+        25: [
+            "doñana", "picos de europa", "teide", "el teide", "ordesa", "ordesa y monte perdido",
+            "timanfaya", "garajonay", "caldera de taburiente", "aiguestortes", "monfrague",
+            "cabañeros", "tablas de daimiel", "sierra nevada", "sierra de guadarrama",
+            "islas atlanticas", "archipielago de cabrera", "sierra de las nieves", "cazorla"
+        ],
+        45: [
+            "parque nacional de doñana", "parque nacional picos de europa", "parque nacional del teide",
+            "parque nacional de ordesa", "parque nacional de timanfaya", "parque nacional de garajonay",
+            "parque nacional caldera de taburiente", "parque nacional de aiguestortes",
+            "parque nacional de monfrague", "parque nacional de cabañeros",
+            "parque nacional tablas de daimiel", "parque nacional de sierra nevada",
+            "parque nacional sierra de guadarrama", "parque nacional islas atlanticas",
+            "parque nacional de cabrera", "parque nacional sierra de las nieves",
+            "cazorla segura y las villas", "cabo de gata", "cabo de gata nijar", "sierra de grazalema"
+        ],
+        65: [
+            "los alcornocales", "estrecho de gibraltar", "bahia de cadiz", "breña y marismas de barbate",
+            "sierra norte de sevilla", "sierra de aracena", "doñana entorno", "sierras subbeticas",
+            "sierra de hornachuelos", "sierra de cardeña y montoro", "sierra de andujar",
+            "despeñaperros", "sierra magina", "sierra de baza", "sierra de huetor",
+            "sierras de tejeda almijara y alhama", "torcal de antequera", "montes de malaga",
+            "sierra maria los velez", "lagunas de ruidera", "alto tajo", "serrania de cuenca",
+            "hoces del cabriel", "hoces del duraton", "hoces del riaza", "cañon del rio lobos"
+        ],
+        85: [
+            "laguna negra y circos glaciares de urbion", "lago de sanabria", "fuentes del narcea",
+            "somiedo", "redes", "ponga", "las ubiñas la mesa", "oyambre", "dunas de liencres",
+            "saja besaya", "collados del ason", "urdaibai", "gorbeia", "aizkorri aratz",
+            "aralar", "pagoeta", "izki", "valderejo", "bardenas reales", "urbasa y andia",
+            "señorio de bertiz", "sierra y cañones de guara", "posets maladeta", "valles occidentales",
+            "moncayo", "montserrat", "montseny", "cap de creus", "aiguamolls de l emporda",
+            "zona volcanica de la garrotxa", "delta del ebro", "delta de l ebre", "ports", "els ports"
+        ],
+        100: [
+            "albufera de valencia", "serra d irta", "peñon de ifach", "montgo", "font roja",
+            "sierra de mariola", "serra calderona", "sierra de espadan", "chicharra" if False else "carrascal de la font roja",
+            "lagunas de la mata y torrevieja", "salinas de santa pola", "sierra espuña",
+            "calblanque", "salinas de san pedro del pinatar", "cornalvo", "tajo internacional",
+            "garganta de los infiernos", "baixa limia serra do xures", "fragas do eume",
+            "o invernadeiro", "serra da enciña da lastra", "complexo dunar de corrubedo",
+            "monte aloia", "sierra de iruelas", "pinares de rodeno", "sierra de gata",
+            "batuecas sierra de francia", "arribas del duero", "arribes del duero",
+            "serra de tramuntana", "s albufera de mallorca", "mondrago", "ses salines",
+            "s albufera des grau", "anaga", "teno", "corona forestal", "jandia",
+            "archipielago chinijo", "los volcanes", "jable", "tamadaba", "pilancones",
+            "cumbre vieja", "las nieves la palma", "majona", "valle gran rey", "el sabinal",
+            "isla de cortegada", "isla de ons", "isla de salvora", "islas cies"
+        ],
+    },
+    "gen-003": {
+        45: [
+            "sabadell", "sagunto", "salamanca", "salou", "salt", "san bartolome de tirajana",
+            "san cristobal de la laguna", "san fernando", "san fernando de henares", "san javier",
+            "san juan de aznalfarache", "san lorenzo de el escorial", "san sebastian",
+            "san sebastian de los reyes", "san vicente del raspeig", "sanlucar de barrameda",
+            "sant adria de besos", "sant boi de llobregat", "sant cugat del valles",
+            "sant feliu de llobregat", "sant joan despi", "sant just desvern", "sant pere de ribes",
+            "sant vicenc dels horts", "santa coloma de gramenet", "santa cruz de la palma"
+        ],
+        65: [
+            "santa cruz de tenerife", "santa eulalia del rio", "santa lucia de tirajana",
+            "santa marta de tormes", "santa pola", "santa perpetua de mogoda", "santander",
+            "santiago de compostela", "santiago del teide", "santurtzi", "santurce", "sarria",
+            "segovia", "seron", "sestao", "sevilla", "siguenza", "silla", "sitges", "siero",
+            "soller", "sonseca", "soria", "sotillo de la adrada", "suances", "sueca",
+            "salobreña", "saldaña", "salas", "sallent", "salvatierra", "samaniego", "san adrian"
+        ],
+        85: [
+            "san agustin del guadalix", "san andres del rabanedo", "san asensio", "san bartolome",
+            "san carlos de la rapita", "san clemente", "san esteban de gormaz", "san felices de buelna",
+            "san fulgencio", "san jose del valle", "san juan de alicante", "san juan del puerto",
+            "sanlucar la mayor", "san martin de la vega", "san martin de valdeiglesias",
+            "san mateo de gallego", "san miguel de abona", "san miguel de salinas",
+            "san pedro del pinatar", "san roque", "san sadurni d anoia", "san sebastian de la gomera",
+            "san silvestre de guzman", "san vicente de la barquera", "sant celoni", "sanguesa",
+            "sanxenxo", "sangenjo", "santacara", "santa barbara", "santa brigida", "santa comba"
+        ],
+        100: [
+            "santa cristina d aro", "santa cruz de bezana", "santa cruz de mudela",
+            "santa cruz del retamar", "santa cruz de la zarza", "santa fe", "santa margalida",
+            "santa maria de cayon", "santa maria de guia", "santa maria del cami",
+            "santa maria del paramo", "santa olalla", "santa ursula", "santo domingo de la calzada",
+            "santo tome", "santoña", "santovenia de pisuerga", "sa pobla", "sabiñanigo",
+            "sacramenia", "sada", "saelices", "sahagun", "salas de los infantes", "salceda de caselas",
+            "salmeron", "salvaterra de miño", "santpedor", "sariñena", "sariegos", "sastago",
+            "saucelle", "sax", "sedavi", "segorbe", "segura de la sierra", "sellent", "selva",
+            "senija", "sepulveda", "seros", "serrada", "setenil de las bodegas", "seu d urgell",
+            "sierra de yeguas", "siete aguas", "silleda", "simancas", "sineu", "siruela", "sisante",
+            "sober", "socuellamos", "solana del pino", "solsona", "somiedo", "son servera",
+            "sondika", "soneja", "sorbas", "sort", "sot de chera", "soto del barco", "soto del real", "sumacarcer", "suria"
+        ],
+    },
+    "gen-005": {
+        45: [
+            "seat", "cupra", "renault", "peugeot", "citroen", "ds", "opel", "ford", "volkswagen",
+            "audi", "bmw", "mercedes", "mercedes benz", "porsche", "fiat", "alfa romeo", "lancia",
+            "ferrari", "lamborghini", "maserati", "toyota", "honda", "nissan", "mazda", "hyundai", "kia"
+        ],
+        65: [
+            "volvo", "polestar", "skoda", "dacia", "mini", "land rover", "range rover", "jaguar",
+            "aston martin", "bentley", "rolls royce", "mclaren", "lotus", "mg", "suzuki",
+            "mitsubishi", "subaru", "lexus", "infiniti", "acura", "tesla", "chevrolet", "cadillac",
+            "buick", "chrysler", "dodge", "jeep", "ram", "gmc", "lincoln", "pontiac", "oldsmobile"
+        ],
+        85: [
+            "saab", "koenigsegg", "pagani", "bugatti", "rimac", "alpine", "smart", "maybach",
+            "abarth", "iveco", "isuzu", "daihatsu", "ssangyong", "kg mobility", "byd", "mg motor",
+            "lynk and co", "nio", "xpeng", "zeekr", "omoda", "jaecoo", "chery", "geely", "great wall",
+            "ebro", "hispano suiza", "pegaso", "santana", "hurtan", "gta motor", "spania gta", "tauro"
+        ],
+        100: [
+            "barreiros", "avisa", "kaiser", "studebaker", "packard", "delorean", "dmc", "hummer",
+            "saturn", "mercury", "plymouth", "amc", "scion", "fisker", "lucid", "rivian",
+            "karma", "hennessey", "ssc", "saleen", "noble", "caterham", "morgan", "tvr",
+            "vauxhall", "rover", "austin", "morris", "triumph", "mg cars", "hillman", "sunbeam",
+            "bristol", "jensen", "ariel", "bac", "ginetta", "radical", "spyker", "donkervoort",
+            "ktm", "gumpert", "apollo", "wiesmann", "borgward", "trabant", "wartburg", "lada",
+            "avtovaz", "uaz", "gaz", "moskvitch", "marussia", "tatra", "zastava", "yugo",
+            "proton", "perodua", "mahindra", "tata", "maruti", "maruti suzuki", "hindustan",
+            "holden", "hsv", "daewoo", "datsun", "prince", "hino", "mitsuoka", "venturi",
+            "simca", "talbot", "matra", "panhard", "delahaye", "delage", "facel vega", "de tomaso",
+            "iso", "bizzarrini", "autobiachi", "autobianchi", "innocenti", "cisitalia", "oscA", "osca", "zagato", "pininfarina"
+        ],
+    },
+    "gen-006": {
+        45: [
+            "as bestas", "alcarras", "el buen patron", "las niñas", "dolor y gloria", "campeones",
+            "la libreria", "tarde para la ira", "truman", "la isla minima", "vivir es facil con los ojos cerrados",
+            "blancanieves", "no habra paz para los malvados", "pa negre", "celda 211", "camino",
+            "la soledad", "volver", "la vida secreta de las palabras", "mar adentro", "te doy mis ojos"
+        ],
+        65: [
+            "los lunes al sol", "los otros", "el bola", "solas", "todo sobre mi madre",
+            "la niña de tus ojos", "la buena estrella", "tesis", "nadie hablara de nosotras cuando hayamos muerto",
+            "dias contados", "todos a la carcel", "belle epoque", "amantes", "ay carmela",
+            "el niño de barro", "mujeres al borde de un ataque de nervios", "el bosque animado",
+            "el viaje a ninguna parte", "la sociedad de la nieve", "el 47", "la infiltrada"
+        ],
+        85: [
+            "ocho apellidos vascos", "ocho apellidos catalanes", "lo imposible", "un monstruo viene a verme",
+            "el orfanato", "el laberinto del fauno", "los abrazos rotos", "hable con ella",
+            "la piel que habito", "julieta", "madres paralelas", "el hoyo", "rec", "abre los ojos",
+            "los cronocrimenes", "mientras dure la guerra", "agora", "el niño", "la isla",
+            "grupo 7", "el autor", "el reino", "modelo 77", "20000 especies de abejas"
+        ],
+        100: [
+            "padre no hay mas que uno", "campeonex", "a todo tren", "tadeo jones",
+            "las aventuras de tadeo jones", "planet 51", "mortadelo y filemon", "torrente",
+            "torrente el brazo tonto de la ley", "el dia de la bestia", "airbag", "el milagro de p tinto",
+            "amanecen que no es poco", "amanece que no es poco", "la comunidad", "crimen ferpecto",
+            "las brujas de zugarramurdi", "perfectos desconocidos", "almodovar" if False else "atame",
+            "la mala educacion", "carne tremula", "la flor de mi secreto", "tacones lejanos",
+            "kika", "lucia y el sexo", "los amantes del circulo polar", "tierra", "vacas",
+            "el abuelo", "secretos del corazon", "barrio", "familia", "el perro del hortelano",
+            "la lengua de las mariposas", "el sur", "los santos inocentes", "viridiana",
+            "bienvenido mister marshall", "el verdugo", "plácido", "atraco a las tres",
+            "alguien volo" if False else "cinco lobitos", "robot dreams", "el maestro que prometio el mar",
+            "casa en flames", "casa en llamas", "segundo premio", "marco", "soy nevenka",
+            "volveréis", "volvereis", "salve maria", "la estrella azul", "tardes de soledad", "sirat" if False else "romeria"
+        ],
+    },
+    "gen-034": {
+        45: [
+            "seat 600", "seat 127", "seat panda", "seat ibiza", "seat leon", "renault 4",
+            "renault 5", "renault 4l", "citroen 2cv", "citroen ds", "tiburon", "volkswagen escarabajo",
+            "vw golf", "volkswagen golf", "golf gti", "ford fiesta", "ford mustang", "ford t",
+            "ford focus", "opel corsa", "peugeot 205", "mini cooper", "fiat 500", "vespa", "lambretta"
+        ],
+        65: [
+            "bultaco", "montesa", "ossa", "derbi", "rieju", "sanglas", "puch", "mobylette",
+            "vespino", "honda cbr", "yamaha r1", "kawasaki ninja", "suzuki gsxr", "ducati monster",
+            "harley davidson", "indian", "triumph bonneville", "bmw gs", "ktm duke",
+            "aprilia", "mv agusta", "moto guzzi", "benelli", "norton", "bsa", "royal enfield", "husqvarna"
+        ],
+        85: [
+            "seat 124", "seat 1430", "seat 850", "seat 1500", "seat fura", "seat ritmo",
+            "seat ronda", "seat malaga", "seat toledo", "renault 6", "renault 7", "renault 8",
+            "renault 12", "renault 18", "renault 19", "renault 21", "renault clio", "renault megane",
+            "citroen dyane 6", "citroen mehari", "citroen gs", "citroen cx", "citroen bx",
+            "citroen ax", "citroen zx", "citroen xsara", "simca 1000", "simca 1200", "talbot horizon"
+        ],
+        100: [
+            "peugeot 205 gti", "peugeot 405", "peugeot 504", "peugeot 505", "ford escort",
+            "ford sierra", "ford capri", "ford taunus", "opel kadett", "opel manta", "opel astra",
+            "porsche 911", "porsche 356", "ferrari f40", "ferrari testarossa", "ferrari 250 gto",
+            "lamborghini countach", "lamborghini miura", "lamborghini diablo", "lancia delta integrale",
+            "lancia stratos", "audi quattro", "bmw m3 e30", "bmw e30", "mercedes 190e", "mercedes alas de gaviota",
+            "delorean dmc 12", "jaguar e type", "aston martin db5", "land rover defender", "jeep willys",
+            "hispano suiza h6", "pegaso z 102", "bultaco sherpa", "bultaco lobito", "bultaco pursang",
+            "montesa cota", "montesa impala", "montesa cappra", "ossa yankee", "derbi variant",
+            "derbi antorcha", "honda africa twin", "honda goldwing", "honda cb750", "yamaha rd350",
+            "yamaha tmax", "suzuki katana", "suzuki hayabusa", "kawasaki z900", "ducati 916",
+            "piaggio vespa", "vespa primavera", "honda cub", "super cub", "moto guzzi v7", "vincent black shadow"
+        ],
+    },
+    "pel-011": {
+        25: [
+            "salvar al soldado ryan", "apocalypse now", "platoon", "la chaqueta metalica",
+            "1917", "dunkerque", "hasta el ultimo hombre", "el francotirador", "malditos bastardos",
+            "la lista de schindler", "el pianista", "la vida es bella", "corazones de acero", "fury"
+        ],
+        45: [
+            "senderos de gloria", "sin novedad en el frente", "el puente sobre el rio kwai",
+            "la gran evasion", "doce del patibulo", "patton", "el dia mas largo",
+            "un puente lejano", "los cañones de navarone", "el desafio de las aguilas",
+            "black hawk derribado", "en tierra hostil", "the hurt locker", "jarhead",
+            "tres reyes", "lagrimas del sol", "el unico superviviente", "la delgada linea roja"
+        ],
+        65: [
+            "nacido el cuatro de julio", "el cazador", "good morning vietnam", "la colina de la hamburguesa",
+            "cuando eramos soldados", "cartas desde iwo jima", "banderas de nuestros padres",
+            "el hundimiento", "das boot", "el submarino", "stalingrado", "enemigo a las puertas",
+            "valquiria", "la zona de interes", "jojo rabbit", "el niño con el pijama de rayas"
+        ],
+        85: [
+            "ven y mira", "la infancia de ivan", "masacre ven y mira", "la batalla de argel",
+            "gallipoli", "senderos", "johhny cogio su fusil", "johnny cogio su fusil",
+            "el imperio del sol", "la cruz de hierro", "los violentos de kelly", "tora tora tora",
+            "midway", "pearl harbor", "master and commander", "glory", "tiempos de gloria",
+            "el patriota", "braveheart", "el ultimo mohicano", "gettyburg" if False else "gettysburg"
+        ],
+        100: [
+            "diario de un rebelde" if False else "el puente", "die brucke", "feliz navidad joyeux noel",
+            "caballo de batalla", "war horse", "zona hostil", "1898 los ultimos de filipinas",
+            "la vaquilla", "tierra y libertad", "soldados de salamina", "mientras dure la guerra",
+            "silencio" if False else "el año que vivimos peligrosamente", "los gritos del silencio",
+            "the killing fields", "hotel rwanda", "hotel ruanda", "tierras de nadie", "no man s land",
+            "vals con bashir", "incendies", "la batalla de inglaterra", "un puente demasiado lejos",
+            "casablanca", "de aqui a la eternidad", "objetivo birmania", "las arenas de iwo jima",
+            "sargento york", "el gran desfile", "alas", "top gun", "el vuelo del intruder",
+            "u 571", "la caza del octubre rojo", "marea roja", "courage under fire",
+            "en honor a la verdad", "algunos hombres buenos", "k 19", "greyhound", "sisu",
+            "napoleon", "el ultimo duelo", "dunkirk", "saving private ryan", "full metal jacket", "the thin red line"
+        ],
+    },
+    "gen-026": {
+        45: [
+            "hydrogen", "helium", "lithium", "beryllium", "boron", "carbon", "nitrogen", "oxygen",
+            "fluorine", "neon", "sodium", "magnesium", "aluminium", "aluminum", "silicon",
+            "phosphorus", "sulfur", "chlorine", "argon", "potassium", "calcium", "iron", "copper",
+            "silver", "gold", "mercury", "lead", "uranium", "platinum", "titanium", "nickel", "zinc"
+        ],
+        65: [
+            "scandium", "vanadium", "chromium", "manganese", "cobalt", "gallium", "germanium",
+            "arsenic", "selenium", "bromine", "krypton", "rubidium", "strontium", "yttrium",
+            "zirconium", "niobium", "molybdenum", "technetium", "ruthenium", "rhodium",
+            "palladium", "cadmium", "indium", "tin", "antimony", "tellurium", "iodine", "xenon",
+            "cesium", "barium", "lanthanum", "cerium", "tungsten", "osmium", "iridium", "bismuth"
+        ],
+        85: [
+            "escandio", "titanio", "vanadio", "cromo", "manganeso", "cobalto", "niquel", "galio",
+            "germanio", "arsenico", "selenio", "bromo", "cripton", "kripton", "rubidio", "estroncio",
+            "itrio", "circonio", "niobio", "molibdeno", "tecnecio", "rutenio", "rodio", "paladio",
+            "cadmio", "indio", "estaño", "antimonio", "telurio", "teluro", "yodo", "xenon",
+            "cesio", "bario", "lantano", "cerio", "praseodimio", "neodimio", "prometio", "samario",
+            "europio", "gadolinio", "terbio", "disprosio", "holmio", "erbio", "tulio", "iterbio", "lutecio"
+        ],
+        100: [
+            "hafnio", "tantalio", "tantalo", "wolframio", "tungsteno", "renio", "osmio", "iridio",
+            "platino", "talio", "bismuto", "polonio", "astato", "radon", "francio", "radio",
+            "actinio", "torio", "protactinio", "uranio", "neptunio", "plutonio", "americio",
+            "curio", "berkelio", "californio", "einstenio", "fermio", "mendelevio", "nobelio",
+            "laurencio", "rutherfordio", "dubnio", "seaborgio", "bohrio", "hasio", "meitnerio",
+            "darmstatio", "roentgenio", "copernicio", "nihonio", "flerovio", "moscovio",
+            "livermorio", "teneso", "oganeson", "azogue", "natrium", "kalium", "ferrum",
+            "cuprum", "argentum", "aurum", "hydrargyrum", "plumbum", "stannum", "stibium", "wolfram",
+            "praseodymium", "neodymium", "promethium", "samarium", "europium", "gadolinium",
+            "terbium", "dysprosium", "holmium", "erbium", "thulium", "ytterbium", "lutetium",
+            "hafnium", "tantalum", "rhenium", "thallium", "polonium", "astatine", "radon",
+            "francium", "radium", "actinium", "thorium", "protactinium", "neptunium", "plutonium",
+            "americium", "curium", "berkelium", "californium", "einsteinium", "fermium", "mendelevium",
+            "nobelium", "lawrencium", "rutherfordium", "dubnium", "seaborgium", "bohrium", "hassium",
+            "meitnerium", "darmstadtium", "roentgenium", "copernicium", "nihonium", "flerovium",
+            "moscovium", "livermorium", "tennessine", "oganesson"
+        ],
+    },
+    "pel-004": {
+        25: [
+            "star wars", "la guerra de las galaxias", "el imperio contraataca", "el retorno del jedi",
+            "blade runner", "blade runner 2049", "matrix", "the matrix", "interstellar", "interestelar",
+            "origen", "inception", "2001 una odisea del espacio", "alien", "aliens", "terminator",
+            "terminator 2", "regreso al futuro", "et", "e t el extraterrestre", "dune", "dune parte dos"
+        ],
+        45: [
+            "la llegada", "arrival", "marte", "the martian", "gravity", "wall e", "ex machina",
+            "her", "distrito 9", "district 9", "hijos de los hombres", "children of men",
+            "gattaca", "el show de truman", "12 monos", "doce monos", "looper", "al filo del mañana",
+            "edge of tomorrow", "minority report", "inteligencia artificial", "a i", "la guerra de los mundos",
+            "encuentros en la tercera fase", "el quinto elemento", "desafio total", "total recall", "starship troopers"
+        ],
+        65: [
+            "robocop", "mad max", "mad max 2", "mad max furia en la carretera", "furiosa",
+            "akira", "ghost in the shell", "metropolis", "solaris", "stalker", "el planeta de los simios",
+            "escape de nueva york", "1997 rescate en nueva york", "la cosa", "the thing",
+            "horizontes" if False else "horizonte final", "event horizon", "sunshine", "moon",
+            "oblivion", "elysium", "chappie", "ready player one", "avatar", "donnie darko"
+        ],
+        85: [
+            "primer", "coherence", "predestination", "codigo fuente", "source code", "aniquilacion",
+            "annihilation", "under the skin", "tenet", "ad astra", "first man", "apollo 13",
+            "contact", "esfera", "abyss", "el abismo", "tron", "tron legacy", "juegos de guerra",
+            "wargames", "cortocircuito", "baterias no incluidas", "cocoon", "starman", "el gigante de hierro"
+        ],
+        100: [
+            "brazil", "1984", "un mundo feliz", "fahrenheit 451", "la naranja mecanica",
+            "soylent green", "cuando el destino nos alcance", "la fuga de logan", "logan s run",
+            "thx 1138", "naves misteriosas", "silent running", "planeta prohibido", "forbidden planet",
+            "ultimatum a la tierra", "the day the earth stood still", "la invasion de los ladrones de cuerpos",
+            "la jetee", "alphaville", "el hombre que cayo a la tierra", "dark city", "nivel 13",
+            "existenz", "el congreso", "snowpiercer", "rompenieves", "okja", "upgrade", "possessor",
+            "high life", "aniara", "la fuente de la vida", "el atlas de las nubes", "mr nobody",
+            "alita angel de combate", "valerian y la ciudad de los mil planetas", "jupiter ascending",
+            "pacific rim", "el juego de ender", "el corredor del laberinto", "los juegos del hambre",
+            "el dador", "the giver", "divergente", "equilibrium", "v de vendetta", "aeon flux",
+            "ultraviolet", "riddick", "pitch black", "las cronicas de riddick", "serenity", "star trek",
+            "star trek ii la ira de khan", "en la oscuridad", "mas alla", "rogue one", "solo", "el despertar de la fuerza"
+        ],
+    },
+    "geo-010": {
+        25: [
+            "ebro", "rio ebro", "tajo", "rio tajo", "duero", "rio duero", "guadalquivir",
+            "rio guadalquivir", "guadiana", "rio guadiana", "miño", "rio miño", "jucar", "rio jucar",
+            "segura", "rio segura", "turia", "rio turia", "piscuerga" if False else "pisuerga", "genil"
+        ],
+        45: [
+            "manzanares", "rio manzanares", "jarama", "henares", "alberche", "tietar", "alagon",
+            "tormes", "esla", "carrion", "arlanzon", "arlanza", "adaja", "eresma", "cinca",
+            "segre", "gallego", "aragon", "jalon", "jiloca", "guadalope", "huerva", "llobregat",
+            "ter", "besos", "francoli", "fluvià", "fluvia", "bidasoa", "nervion", "ibaizabal"
+        ],
+        65: [
+            "nalon", "narcea", "sella", "navia", "eo", "deva", "cares", "besaya", "pas", "ason",
+            "sil", "cabe", "ulloa" if False else "ulla", "tambre", "eume", "mandeo", "verdugo",
+            "avento" if False else "avia", "arnoia", "limia", "guadalete", "barbate", "guadiaro",
+            "guadalhorce", "andarax", "almanzora", "guadalimar", "jandula", "guadiato", "bembezar",
+            "tinto", "odiel", "piedras", "chanca", "cabriel", "magro", "mijares", "palancia", "vinalopo", "mundo"
+        ],
+        85: [
+            "zujar", "jabalon", "ciguela", "zancara", "bullaque", "matachel", "ardila", "guadajoz",
+            "corbones", "guadaira", "viaras" if False else "viar", "hueznar", "rivera de huelva",
+            "guadalentin", "mula", "quipar", "argos", "alhambra" if False else "alhama", "cidacos",
+            "iruela" if False else "iregua", "najerilla", "oja", "tiron", "zadorra", "bayas",
+            "omillo" if False else "omegac" if False else "arga", "ega", "aragón subordan", "esera",
+            "noguera ribagorzana", "noguera pallaresa", "valira", "cardener", "anoia", "tordera", "onyar"
+        ],
+        100: [
+            "mondego", "sado", "cavado", "ave", "lisa" if False else "lima", "vouga", "tamega",
+            "corgo", "tuA", "tua", "sabor", "coa", "zezere", "sorraia", "mira", "guadiana menor",
+            "fardes", "darro", "monachil", "dilar", "izbor", "guadalfeo", "verde", "ojén",
+            "guadaiza", "palmones", "guadarranque", "salado de moro" if False else "majaceite",
+            "guadalporeun", "guadamez", "ortiga", "almonte", "salor", "sever", "gévora", "gevora",
+            "caia", "chama", "tietar caceres", "jerte", "ambroz", "arrago", "eljas", "agueda",
+            "huebra", "yeltes", "trabancos", "guareña", "zapardiel", "cega", "duraton", "riaza",
+            "lobos", "ucero", "tera", "orbigo", "bernesga", "torio", "porma", "curueño", "cea",
+            "valderaduey", "sequillo", "esgueva", "ubierna", "nela", "trueba", "jerea", "omillos"
+        ],
+    },
+    "pal-010": {
+        25: [
+            "pasta", "la pasta", "pavos", "lereles", "parne", "guita", "tela", "viruta",
+            "mosca", "lana", "plata", "cuartos", "perras", "calderilla", "suelto", "cambio",
+            "chavos", "duros", "pesetas", "euros", "leuros", "napos", "boniatos", "lagartos"
+        ],
+        45: [
+            "efectivo", "metalico", "cash", "billetes", "monedas", "morlacos", "machacantes",
+            "verdes", "papeles", "talon", "cheque", "calas", "perra gorda", "perra chica",
+            "real", "reales", "maravedies", "doblones", "escudos", "moneda", "divisa", "capital",
+            "caudal", "fortuna", "riqueza", "botin", "recompensa", "propina", "aguinaldo", "paga"
+        ],
+        65: [
+            "paguita", "nomina", "sueldo", "salario", "jornal", "finiquito", "ahorros",
+            "hucha", "fondo", "fondos", "bolsa", "cartera", "billetera", "billetero", "monedero",
+            "peculio", "pecunia", "caudales", "patrimonio", "hacienda", "bienes", "rentas",
+            "dividendos", "beneficio", "ganancia", "lucro", "plusvalia", "comision", "mordida", "soborno"
+        ],
+        85: [
+            "untar", "sobre", "sobres", "maletin", "negro", "dinero negro", "dinero b",
+            "b", "en b", "caja b", "calentito", "fresquito", "cash flow", "liquidez",
+            "solvencia", "credito", "prestamo", "hipoteca", "aval", "fianza", "deposito",
+            "pella", "trampa", "pufo", "deuda", "saldo", "importe", "cuantia", "montante", "tarifa"
+        ],
+        100: [
+            "maravedi", "centimos", "centimo", "chavo", "ochavo", "blanca", "sin blanca",
+            "pelas", "cinco mil pelas", "mil pelas", "cien pavos", "talegos", "talego",
+            "kilos", "kilo", "millon", "millones", "kilos de pesetas", "duro", "veinte duros",
+            "cien duros", "libra", "libras", "dolares", "dolar", "bucks", "pan", "panes",
+            "masa", "harina", "manteca", "mantequilla", "unto", "pronto", "tostones",
+            "morlaco", "pela", "pavo", "lerel", "leuro", "napo", "boniato", "lagarto",
+            "billete", "billete verde", "papel moneda", "calderilla suelta", "menudo", "feria", "raya"
+        ],
+    },
+    "pel-001": {
+        25: [
+            "el rey leon", "toy story", "buscando a nemo", "monstruos sa", "los increibles",
+            "up", "coco", "del reves", "inside out", "frozen", "frozen 2", "la bella y la bestia",
+            "aladdin", "la sirenita", "mulan", "hercules", "tarzan", "el libro de la selva",
+            "cenicienta", "blancanieves", "pinocho", "dumbo", "bambi", "peter pan", "el jorobado de notre dame"
+        ],
+        45: [
+            "ratatouille", "wall e", "cars", "cars 2", "cars 3", "bichos", "monstruos university",
+            "buscando a dory", "brave", "indomable", "del reves 2", "inside out 2", "soul",
+            "luca", "red", "turning red", "onward", "el viaje de arlo", "elemental",
+            "toy story 2", "toy story 3", "toy story 4", "lightyear", "los increibles 2",
+            "enredados", "tangled", "vaiana", "moana", "vaiana 2", "encanto", "zootropolis", "zootopia"
+        ],
+        65: [
+            "pocahontas", "lilo y stitch", "atlantis", "el imperio perdido", "el planeta del tesoro",
+            "el emperador y sus locuras", "hermano oso", "zafarrancho en el rancho", "chicken little",
+            "descubriendo a los robinsons", "bolt", "tiana y el sapo", "la princesa y el sapo",
+            "rompe ralph", "ralph rompe internet", "big hero 6", "raya y el ultimo dragon",
+            "mundo extraño", "strange world", "wish", "merlin el encantador", "robin hood"
+        ],
+        85: [
+            "los rescatadores", "los rescatadores en cangurolandia", "tod y toby", "basil el raton superdetective",
+            "oliver y su pandilla", "taron y el caldero magico", "los aristogatos", "101 dalmatas",
+            "la dama y el vagabundo", "la bella durmiente", "alicia en el pais de las maravillas",
+            "fantasia", "fantasia 2000", "los tres caballeros", "saludos amigos", "dinosaurio",
+            "el dragon chiflado", "musica maestro", "tiempo de melodia", "las aventuras de ichabod y el señor sapo"
+        ],
+        100: [
+            "winni the pooh", "winnie the pooh", "la pelicula de tigger", "la gran pelicula de piglet",
+            "tarzan 2", "el rey leon 2", "el rey leon 3", "mulan 2", "aladdin y el rey de los ladrones",
+            "el retorno de jafar", "la sirenita 2", "la cenicienta 2", "peter pan en regreso al pais de nunca jamas",
+            "el libro de la selva 2", "101 dalmatas 2", "bambi 2", "hermano oso 2", "el jorobado de notre dame 2",
+            "kronk y su nueva locura", "aviones", "planes", "campanilla", "tinker bell",
+            "pesadilla antes de navidad", "frankie" if False else "frankenweenie", "goofy e hijo",
+            "patoaventuras la pelicula", "el oso" if False else "el pato lucas" if False else "mary poppins",
+            "la bruja novata", "pedro y el dragon elliot", "quien engaño a roger rabbit",
+            "enchanted", "encantada", "elio", "the lion king", "beauty and the beast", "finding nemo", "the incredibles"
+        ],
+    },
+    "gen-032": {
+        25: [
+            "churros", "porras", "torrijas", "tarta de santiago", "crema catalana", "natillas",
+            "arroz con leche", "flan", "flan de huevo", "tocinillo de cielo", "ensaimada",
+            "roscon de reyes", "polvorones", "mantecados", "turron", "mazapan", "pestiños",
+            "buñuelos", "buñuelos de viento", "magdalenas", "sobaos", "sobaos pasiegos", "palmeritas"
+        ],
+        45: [
+            "quesada pasiega", "tarta de queso", "tarta de la viña", "tarta de manzana",
+            "tarta de chocolate", "tarta sacher", "tiramisu", "panna cotta", "brownie", "cookie",
+            "galletas", "donut", "donuts", "berlina", "berlinesa", "croissant", "cruasan",
+            "napolitana", "palmera de chocolate", "caña de chocolate", "milhojas", "petisu",
+            "profiteroles", "eclair", "macaron", "macarons", "muffin", "cupcake", "gofre", "crepe"
+        ],
+        65: [
+            "leche frita", "rosquillas", "rosquillas de san isidro", "rosquillas listas", "rosquillas tontas",
+            "huesos de santo", "panellet", "panellets", "mona de pascua", "coca de san juan",
+            "coca de llavaneres", "xuixo", "xuxo", "brazo de gitano", "pionono", "piononos",
+            "yemas de santa tera", "yemas de santa teresa", "yemas de avila", "alfajores",
+            "hojaldre", "miguelitos de la roda", "miguelitos", "flores manchegas", "bartolillos"
+        ],
+        85: [
+            "casadielles", "frixuelos", "filloas", "bica", "larpeira", "tarta de mondoñedo",
+            "pantxineta", "goxua", "pastel vasco", "bollo de mantequilla", "carolina de bilbao",
+            "canutillos de bilbao", "adoquines del pilar", "frutas de aragon", "trenza de almudevar",
+            "guirlache", "paparajotes", "tocino de cielo", "bienmesabe", "frangollo", "quesillo",
+            "polvoron de estepa", "mantecado de estepa", "cortadillos", "perrunillas", "tecula mecula"
+        ],
+        100: [
+            "sapillo", "borrachos de guadalajara", "alaju", "arrope", "arrope y calabazate",
+            "cabello de angel", "membrillo", "dulce de membrillo", "turron de jijona", "turron de alicante",
+            "turron de yema tostada", "peladillas", "piñonate", "almojabanos", "almojabana",
+            "hornazo dulce", "perronilla", "coquillos", "farton", "fartons", "arnadi", "pastissets",
+            "rubiol", "crespells", "greixonera", "flaó", "flao", "orelletes", "churros con chocolate",
+            "chucho", "suspiros de amante", "colinetas", "tejas de tolosa", "cigarrillos de tolosa",
+            "moscovitas", "carbayones", "marañuelas", "letuario", "compota", "mermelada",
+            "strudel", "apfelstrudel", "baklava", "cannoli", "sfogliatella", "panettone", "pandoro",
+            "pastéis de nata", "pasteis de belem", "brigadeiro", "dulce de leche", "alfajor",
+            "churro", "torrija", "buñuelo", "polvoron", "mantecado", "rosquilla", "magdalena", "sobao", "pestiño"
+        ],
+    },
+    "gen-001": {
+        45: [
+            "danone griego", "griego danone", "activia natural", "activia fresa", "activia kiwi",
+            "actimel natural", "actimel fresa", "danonino fresa", "petit suisse", "petit suisse fresa",
+            "danet chocolate", "danet vainilla", "vitalinea natural", "oikos natural", "oikos stracciatella",
+            "central lechera asturiana", "asturiana", "la fageda", "fageda", "pastoret",
+            "postres reina", "reina", "dhul", "flan dhul", "nestle", "la lechera", "yopro", "yo pro", "hipro"
+        ],
+        65: [
+            "hacendado", "yogur hacendado", "milbona", "lidl milbona", "milsani", "aldi milsani",
+            "carrefour", "dia", "eroski", "consum", "alcampo", "auchan", "el corte ingles", "aliada",
+            "covap", "kaiku", "kaiku sin lactosa", "benecol", "kaiku benecol", "danacol",
+            "flora proactiv", "larsa", "casa grande de xanceda", "xanceda", "feiraco", "celta",
+            "puleva", "ram", "ato", "clesa", "clet", "chamburcy", "yoco", "sveltesse", "muller"
+        ],
+        85: [
+            "alpro", "sojasun", "savoi" if False else "savia", "savya", "alpro soja", "alpro coco",
+            "alpro avena", "yoplait", "yoplait petit", "yolado", "dan up", "danup", "copa danone",
+            "danone copa", "copa chocolate y nata", "mi primer danone", "danet caramelo",
+            "danet natillas", "natillas danet", "natillas reina", "arroz con leche reina",
+            "crema catalana dhul", "tocinillo de cielo dhul", "flan de huevo dhul", "flan de vainilla dhul",
+            "flan royal", "natillas royal", "cuajada royal", "cuajada ultzama", "cuajada goshua", "goshua", "ultzama"
+        ],
+        100: [
+            "kalekoi", "las nieves", "granier" if False else "granja armengol", "armengol",
+            "cantero de letur", "el cantero de letur", "letur", "ecocesta", "biocop",
+            "las tres brujas" if False else "los combes", "los combes", "el pastor", "lácteas" if False else "valle de los pedroches",
+            "pascual", "bifrutas" if False else "yogures pascual", "yogu", "la lechera nestle",
+            "nestle gold", "nestle lindahls", "lindahls", "ehrmann", "zott", "zott monte", "monte",
+            "kinder pingui", "kinder delice", "kinder milk slice", "kinder paradiso",
+            "gerber", "hero baby", "bledina", "almiron", "alnatura", "provamel", "oatly",
+            "yoggi", "arla", "arla skyr", "siggi s", "siggis", "fage", "fage total",
+            "chobani", "bonne maman", "mamie nova", "la fermiere", "andros", "senoble",
+            "riansen", "rianzes", "la vaca que rie", "philadelphia" if False else "queso fresco burgos",
+            "arias", "burguillos", "el ventero" if False else "garcia baquero" if False else "caserio" if False else "danone natural",
+            "danone azucarado", "danone limon", "danone fresa", "danone coco", "danone macedonia",
+            "danone platano", "danone stracciatella", "danone galleta", "oikos caramelo", "oikos limon",
+            "oikos miel", "activia cereales", "activia ciruela", "activia avena", "activia bifidus",
+            "vitalinea 0", "vitalinea fresa", "vitalinea piña", "proteina hacendado", "kefir hacendado",
+            "skyr hacendado", "skyr lidl", "kefir lidl", "copa choco", "mousse dhul", "gelatina reina", "gelatina royal"
+        ],
+    },
+    "pal-024": {
+        25: [
+            "paraguas", "sacacorchos", "lavavajillas", "lavaplatos", "abrelatas", "abrebotellas",
+            "cortaunas", "cortauñas", "corta cesped", "cortacesped", "parabrisas", "parachoques",
+            "paracaidas", "pararrayos", "rascacielos", "rompecabezas", "espantapajaros",
+            "cumpleaños", "pasatiempo", "telaraña", "girasol", "mediodia", "medianoche", "ciempiés", "ciempies"
+        ],
+        45: [
+            "aguafiestas", "altoparlante", "altavoz", "bajamar", "pleamar", "baloncesto",
+            "balonmano", "bienvenida", "bienvenido", "bocacalle", "bocamanga", "botamanga",
+            "buscavidas", "cabezabuque", "cama" if False else "caradura", "cascarrabias",
+            "cascanueces", "catalejo", "cazafantasmas", "cazamariposas", "cazarrecompensas",
+            "cegatón" if False else "chupacabras", "chupatintas", "coliflor", "comecocos",
+            "contrarreloj", "contratiempo", "contraventana", "correcaminos", "cortafuegos", "cortapizzas"
+        ],
+        65: [
+            "cortafríos", "cortafrios", "coscorrón" if False else "cubreobjetos", "cuentacuentos",
+            "cuentagotas", "cuentakilometros", "cuentapersonas", "desayuno", "enhorabuena",
+            "entrecomillas", "entresuelo", "entretiempo", "escurreplatos", "estiramiento" if False else "ferrocarril",
+            "filo" if False else "fotomontaje", "fotonovela", "fuegos artificiales" if False else "guardarropa",
+            "guardabarros", "guardabosques", "guardacostas", "guardaespaldas", "guardameta",
+            "guardapolvo", "guardia" if False else "hazmerreir", "hierbabuena", "hispanohablante", "hojalata"
+        ],
+        85: [
+            "hombre rana" if False else "lavacoches", "lavamanos", "lavanotas" if False else "limpiabotas",
+            "limpiacristales", "limpiaparabrisas", "malabarista" if False else "malhumor",
+            "malentendido", "malestar", "malgastar", "malpensado", "maltrato", "malvivir",
+            "mandamas", "maniatar", "manicura", "manirroto", "matamoscas", "matarratas",
+            "matasanos", "matasuegras", "menosprecio", "metomentodo", "microondas", "milhojas",
+            "monedero" if False else "mondadientes", "montacargas", "mordaza" if False else "motocarro",
+            "nochebuena", "nochevieja", "ojinegro", "pachamanca" if False else "pajarraco" if False else "palabrota" if False else "papanatas",
+            "papelera" if False else "parabien", "paracaidista", "parachoque", "paraguas"
+        ],
+        100: [
+            "parapente", "parasol", "pasacalles", "pasamanos", "pasamontañas", "pasaporte",
+            "pasapuré", "pasapures", "pasa" if False else "patilargo", "patitieso", "pelagatos",
+            "pelirrojo", "pellizco" if False else "perdonavidas", "picahielos", "picapedrero",
+            "picapleitos", "picaflor", "pichabrava", "pisapapeles", "portalámparas", "portalamparas",
+            "portaaviones", "portabebes", "portaequipajes", "portafolios", "portamonedas",
+            "portapapeles", "portarrollos", "portavelas", "portavoz", "posavasos", "prelavado",
+            "puntapie", "quebradero", "quehacer", "quema" if False else "quemarropa", "quitasol",
+            "quitamanchas", "quitanieves", "quitapenas", "radiotelefono", "radioterapia",
+            "recogepelotas", "recogedor" if False else "reloj de sol" if False else "rompeolas",
+            "rompehielos", "rompecorazones", "salvaconducto", "salvamanteles", "salvavidas",
+            "sabelotodo", "sacabocados", "sacamuelas", "sacapuntas", "saltamontes", "sinfín", "sinfin",
+            "sinsabor", "sinverguenza", "sobrecama", "sobrecargo", "sobredosis", "sobremesa",
+            "sobrenombre", "sobrepeso", "sobresaliente", "sobresalto", "sobretodo", "soplagaitas",
+            "subibaja", "sujetapapeles", "tentempié", "tentempie", "tiovivo", "tiralineas",
+            "tirachinas", "tragaluz", "tragamonedas", "tragaperras", "tragicomedia", "trabalenguas",
+            "vaiven", "valemadrismo" if False else "vanagloria", "videoconsola", "videojuego",
+            "viaducto", "zarzamora", "zigzag", "zampabollos", "aguardiente", "agridulce",
+            "altibajo", "altibajos", "arcoiris", "avinagrado" if False else "blanquiazul", "rojiblanco", "verdiblanco"
+        ],
+    },
+    "dep-003": {
+        45: [
+            "atletismo", "natacion", "gimnasia artistica", "gimnasia ritmica", "ciclismo en ruta",
+            "ciclismo en pista", "baloncesto", "futbol", "balonmano", "voleibol", "voley playa",
+            "tenis", "tenis de mesa", "badminton", "judo", "boxeo", "taekwondo", "esgrima",
+            "halterofilia", "remo", "piraguismo", "vela", "triatlon", "tiro con arco", "tiro olimpico"
+        ],
+        65: [
+            "equitacion", "hipica", "pentatlon moderno", "lucha libre", "lucha grecorromana",
+            "waterpolo", "natacion artistica", "natacion sincronizada", "saltos de trampolin",
+            "aguas abiertas", "escalada deportiva", "skateboarding", "surf", "breaking", "breakdance",
+            "golf", "rugby a 7", "hockey sobre hierba", "baloncesto 3x3", "bmx racing", "bmx freestyle",
+            "ciclismo de montaña", "mountain bike", "salto ecuestre", "doma clasica", "concurso completo"
+        ],
+        85: [
+            "100 metros lisos", "200 metros lisos", "400 metros lisos", "800 metros lisos",
+            "1500 metros", "5000 metros", "10000 metros", "maraton", "marcha atletica",
+            "salto de longitud", "salto de altura", "salto con pertiga", "triple salto",
+            "lanzamiento de peso", "lanzamiento de disco", "lanzamiento de jabalina",
+            "lanzamiento de martillo", "decatlon", "heptatlon", "110 metros vallas",
+            "100 metros vallas", "400 metros vallas", "3000 metros obstaculos", "relevos 4x100", "relevos 4x400"
+        ],
+        100: [
+            "100 metros libres", "200 metros libres", "400 metros libres", "800 metros libres",
+            "1500 metros libres", "50 metros libres", "100 metros espalda", "200 metros espalda",
+            "100 metros braza", "200 metros braza", "100 metros mariposa", "200 metros mariposa",
+            "200 metros estilos", "400 metros estilos", "relevo 4x100 libres", "relevo 4x200 libres",
+            "relevo 4x100 estilos", "trampolin 3 metros", "plataforma 10 metros", "slalom en aguas bravas",
+            "piraguismo en esprint", "kayak", "canoa", "skiff", "ocho con timonel", "doble scull",
+            "cuatro sin timonel", "laser", "ilca", "470", "49er", "nacra 17", "iqfoil", "formula kite",
+            "florete individual", "espada individual", "sable individual", "keirin", "omnium",
+            "madison", "persecucion por equipos", "velocidad por equipos", "contrarreloj individual",
+            "gimnasia en trampolin", "cama elastica", "suelo", "salto de potro", "anillas",
+            "barra fija", "barras paralelas", "potro con arcos", "barra de equilibrio", "barras asimetricas",
+            "aro", "pelota", "mazas", "cinta", "foso olimpico", "skeet", "pistola aire comprimido",
+            "carabina 3 posiciones", "esqui alpino", "esqui de fondo", "biatlon", "curling",
+            "hockey sobre hielo", "patinaje artistico", "patinaje de velocidad", "bobsleigh",
+            "luge", "skeleton", "snowboard", "salto de esqui", "combinada nordica", "esqui acrobatico", "short track", "esqui de montaña"
+        ],
+    },
+    "mus-012": {
+        45: [
+            "la la la", "massiel", "vivo cantando", "salome", "eres tu", "mocedades",
+            "europe s living a celebration", "rosa lopez", "rosa", "dime", "beth",
+            "bailar pegados", "sergio dalma", "chiki chiki", "baila el chiki chiki",
+            "rodolfo chikilicuatre", "slomo", "chanel", "eaea", "blanca paloma", "zorra", "nebulossa"
+        ],
+        65: [
+            "en un mundo nuevo", "karina", "amanecer", "edurne", "say yay", "barei",
+            "la venda", "miki", "miki nuñez", "algo pequeñito", "daniel diges",
+            "quedate conmigo", "pastora soler", "contigo hasta el final", "el sueño de morfeo",
+            "dancing in the rain", "ruth lorenzo", "do it for your lover", "manel navarro",
+            "tu cancion", "amaia y alfred", "voy a quedarme", "blas canto", "universo"
+        ],
+        85: [
+            "bandido", "azucar moreno", "la fiesta termino", "paloma san basilio",
+            "el hombre del piano", "ana gabriel" if False else "conchita bautista",
+            "estando contigo", "llueve", "llueve en mi corazon", "algo prodigioso", "raphael",
+            "yo soy aquel", "hablemos del amor", "gwendolyne", "julio iglesias",
+            "amaneció" if False else "su cancion", "peret", "canta y se feliz", "tu volveras",
+            "sergio y estibaliz", "señora", "braulio", "enseñame a cantar", "micky",
+            "bailemos un vals", "jose velez", "su cancion betty missiego", "betty missiego", "quien maneja mi barca", "remedios amaya"
+        ],
+        100: [
+            "la decada prodigiosa", "la chica que yo quiero", "made in spain", "nina", "nacida para amar",
+            "vuelve conmigo", "anabel conde", "sin rencor", "marcos llunas", "que voy a hacer sin ti",
+            "mikel herzog", "no quiero escuchar", "lydia", "colgado de un sueño", "serafin zubiri",
+            "todo esto es la musica", "david civera", "dile que la quiero", "ramon", "para llenarme de ti",
+            "brujeria", "son de sol", "bloody mary", "las ketchup", "un blodymary",
+            "i love you mi vida", "d nash", "nash", "la noche es para mi", "soraya", "soraya arnelas",
+            "que me quiten lo bailao", "lucia perez", "contigo", "el remedio", "valiente",
+            "la dama de hierro" if False else "lady lady", "bravo", "vuelve", "valentino", "cadillac",
+            "no estas solo", "patricia kraus", "eva santamaria", "hombres", "alejandro abad",
+            "ella no es ella", "antonio carbonell", "ay que deseo", "el tiempo pasara",
+            "es solo musica", "laura" if False else "caramelos" if False else "melody", "esa diva",
+            "conchita bautista estando contigo", "victor balaguer", "llaman a la puerta",
+            "josé guardiola", "jose guardiola", "algo prodigioso", "los tnt", "caracola",
+            "conchita bautista que bueno que bueno", "massiel la la la", "salome vivo cantando",
+            "mocedades eres tu", "chanel slomo", "rosa europe s living a celebration", "sergio dalma bailar pegados"
+        ],
+    },
+    "mus-009": {
+        45: [
+            "bad bunny", "daddy yankee", "rosalia", "c tangana", "quevedo", "rauw alejandro",
+            "feid", "karol g", "j balvin", "maluma", "ozuna", "anuel aa", "myke towers",
+            "nicky jam", "don omar", "wisin y yandel", "eladio carrion", "saiko", "omar montes",
+            "rvfv", "morad", "beny jr", "bad gyal", "lola indigo", "aitana", "rels b", "cruz cafune"
+        ],
+        65: [
+            "duki", "bizarrap", "bizarrap" if False else "trueno", "wos", "tiago pzk", "nicki nicole",
+            "maria becerra", "emilia", "tini", "cazzu", "paulo londra", "khea", "ysy a", "milo j",
+            "peso pluma", "natanael cano", "sech", "manuel turizo", "mora", "young miko",
+            "tainy", "farruko", "arcangel", "cosculluela", "tego calderon", "de la ghetto",
+            "jhayco", "jhay cortez", "lunay", "chencho corleone", "plan b", "zion y lennox"
+        ],
+        85: [
+            "ñengo flow", "bryant myers", "darell", "noriel", "justin quiles", "lenny tavarez",
+            "dalex", "boza", "beele", "blessd", "ryan castro", "floyymenor", "cris mj", "pailita",
+            "polima westcoast", "nathy peluso", "tokischa", "el alfa", "chimbala", "yailin",
+            "maikel delacalle", "bejo", "kidd keo", "yung beef", "kaydy cain", "pimp flaco",
+            "kinder malo", "cecilio g", "delaossa", "foyone", "natos y waor", "ayax y prok", "fernandocosta"
+        ],
+        100: [
+            "recycled j", "hard gz", "kase o", "nach", "toteking", "sfdk", "mala rodriguez",
+            "judeline", "la zowi", "ms nina", "jedet", "samantha hudson", "bb trickz", "mushkaa",
+            "julieta", "cheti" if False else "abraham mateo", "beret", "lérica", "lerica", "nyno vargas",
+            "moncho chavea", "original elias", "el jincho", "al safir", "jarfaiter", "israel b",
+            "sticky m a", "dano", "camin", "cano", "ivan cano", "de la rose", "yan block",
+            "dei v", "omar courtz", "alvaro diaz", "micro tdh", "danny ocean", "lasso",
+            "piso 21", "cali y el dandee", "sebastian yatra", "camilo", "becky g", "natti natasha",
+            "anitta", "luisa sonza", "jowell y randy", "alexis y fido", "yaga y mackie",
+            "hector el father", "tito el bambino", "ivy queen", "vico c", "residente", "calle 13",
+            "canserbero", "rkm y ken y", "tony dize", "magnate y valentino", "eddie dee", "tempo"
+        ],
+    },
+    "pel-010": {
+        45: [
+            "campeones", "campeonex", "padre no hay mas que uno", "ocho apellidos vascos",
+            "ocho apellidos catalanes", "resacon en las vegas", "resacon 2", "superbad", "supersalidos",
+            "american pie", "algo pasa con mary", "dos tontos muy tontos", "la mascara",
+            "mentiroso compulsivo", "como dios", "ace ventura", "solo en casa", "zoolander", "borat"
+        ],
+        65: [
+            "aterriza como puedas", "agarralo como puedas", "top secret", "la vida de brian",
+            "los caballeros de la mesa cuadrada", "atrapado en el tiempo", "cazafantasmas",
+            "superdetective en hollywood", "el show de truman", "un pez llamado wanda",
+            "hermanos por pelotas", "tropic thunder", "virgen a los 40", "juerga hasta el fin",
+            "despedida de soltera", "la boda de mi mejor amiga", "el reportero", "anchorman"
+        ],
+        85: [
+            "torrente", "airbag", "el milagro de p tinto", "amanecen que no es poco",
+            "la escopeta nacional", "patrimonio nacional", "bienvenido mister marshall",
+            "el verdugo", "atraco a las tres", "la vaquilla", "mujeres al borde de un ataque de nervios",
+            "el dia de la bestia", "la comunidad", "crimen ferpecto", "pagafantas", "primos",
+            "tres bodas de mas", "kiki el amor se hace", "señor dame paciencia", "es por tu bien"
+        ],
+        100: [
+            "con faldas y a lo loco", "el apartamento", "tiempos modernos", "el gran dictador",
+            "la fiera de mi niña", "arsenico por compasion", "una noche en la opera", "sopa de ganso",
+            "el guateque", "la pantera rosa", "el jovencito frankenstein", "spaceballs",
+            "intocable", "bienvenidos al norte", "el gran hotel budapest", "jojo rabbit",
+            "lo que hacemos en las sombras", "zombies party", "arma fatal", "infiltrados en clase",
+            "22 jump street", "noche de juegos", "palm springs", "little miss sunshine", "juno",
+            "napoleon dinamita", "cuatro bodas y un funeral", "notting hill", "love actually",
+            "el diario de bridget jones", "full monty", "un funeral de muerte", "mejor imposible",
+            "cuando harry encontro a sally", "el otro lado de la cama", "dias de futbol",
+            "fuga de cerebros", "perdiendo el norte", "villaviciosa de al lado", "si yo fuera rico"
+        ],
+    },
+    "pal-025": {
+        45: [
+            "amable", "amables", "simpatico", "simpatica", "simpaticos", "simpaticas",
+            "generoso", "generosa", "generosos", "generosas", "honesto", "honesta", "honestos",
+            "sincero", "sincera", "sinceros", "leal", "leales", "valiente", "valientes",
+            "inteligente", "inteligentes", "alegre", "alegres", "divertido", "divertida"
+        ],
+        65: [
+            "cariñoso", "cariñosa", "atento", "atenta", "respetuoso", "respetuosa",
+            "educado", "educada", "trabajador", "trabajadora", "responsable", "responsables",
+            "paciente", "pacientes", "empatico", "empatica", "solidario", "solidaria",
+            "comprensivo", "comprensiva", "humilde", "humildes", "modesto", "modesta",
+            "fiel", "fieles", "noble", "nobles", "justo", "justa", "bondadoso", "bondadosa"
+        ],
+        85: [
+            "altruista", "altruistas", "cortes", "caballeroso", "afable", "cordial",
+            "cercano", "cercana", "hospitalario", "hospitalaria", "optimista", "optimistas",
+            "positivo", "positiva", "entusiasta", "creativo", "creativa", "ingenioso", "ingeniosa",
+            "brillante", "brillantes", "capaz", "capaces", "resolutivo", "resolutiva",
+            "constante", "perseverante", "tenaz", "decidido", "decidida", "valeroso", "valerosa"
+        ],
+        100: [
+            "magnanimo", "magnanima", "benigno", "benigna", "benevolente", "compasivo", "compasiva",
+            "indulgente", "tolerante", "abierto", "abierta", "transparente", "integro", "integra",
+            "incorruptible", "honrado", "honrada", "virtuoso", "virtuosa", "ejemplar",
+            "admirable", "entrañable", "encantador", "encantadora", "fascinante", "carismatico", "carismatica",
+            "gracioso", "graciosa", "ocurrente", "espontaneo", "espontanea", "natural",
+            "sensato", "sensata", "prudente", "sabio", "sabia", "culto", "culta", "lucido", "lucida",
+            "perspicaz", "astuto", "astuta", "sagaz", "agudo", "aguda", "despierto", "despierta",
+            "habil", "diestro", "diestra", "mañoso", "mañosa", "detallista", "servicial",
+            "agradecido", "agradecida", "apacible", "sereno", "serena", "calmado", "calmada", "pacifico", "pacifica"
+        ],
+    },
+    "gen-012": {
+        45: [
+            "veloz", "veloces", "ligero", "ligera", "ligeros", "agil", "agiles", "raudo", "rauda",
+            "presto", "presta", "pronto", "pronta", "inmediato", "inmediata", "instantaneo",
+            "instantanea", "fugaz", "fugaces", "acelerado", "acelerada", "apresurado", "apresurada"
+        ],
+        65: [
+            "vertiginoso", "vertiginosa", "fulminante", "fulgurante", "relampago", "expedito", "expedita",
+            "diligente", "diligentes", "solito" if False else "solícito", "solicito", "solicita",
+            "activo", "activa", "dinamico", "dinamica", "energico", "energica", "vivaz", "vivo", "viva",
+            "suelto", "suelta", "desenvuelto", "desenvuelta", "despejado", "diestro", "destro" if False else "mañoso"
+        ],
+        85: [
+            "aerodinamico", "supersónico" if False else "supersonico", "supersonica", "hipersonico",
+            "meteorico", "meteorica", "galopante", "frenetico", "frenetica", "trepidante",
+            "vertiginosamente", "rapidamente", "velozmente", "agilmente", "prestamente",
+            "de prisa", "deprisa", "a toda pastilla", "a todo gas", "a toda leche", "a toda mecha",
+            "a toda velocidad", "a todo trapo", "viento en popa", "en un santiamen", "en un periquete"
+        ],
+        100: [
+            "en un abrir y cerrar de ojos", "en un suspiro", "en cero coma", "como un rayo",
+            "como una bala", "como una exhalacion", "como alma que lleva el diablo", "pisando el acelerador",
+            "corta" if False else "al instante", "acto seguido", "ipso facto", "sin dilacion",
+            "sin demora", "sin perdida de tiempo", "subito", "subita", "repentino", "repentina",
+            "brusco", "brusca", "abrupto", "abrupta", "corte" if False else "flechado", "flechada",
+            "embalado", "embalada", "lanzado", "lanzada", "disparado", "disparada", "volando",
+            "a escape", "a la carrera", "a matacaballo", "a toda prisa", "a toda maquina",
+            "al vuelo", "sobre la marcha", "vertigo", "celeridad", "prontitud", "rapidez",
+            "velocidad", "ligereza", "agilidad", "premura", "urgencia", "inmediatez", "presteza", "diligencia"
+        ],
+    },
+    "gen-016": {
+        45: [
+            "mcdonalds", "mcdonald s", "burger king", "kfc", "telepizza", "domino s pizza",
+            "dominos", "papa johns", "pizza hut", "popeyes", "five guys", "goiko", "goiko grill",
+            "100 montaditos", "vips", "foster s hollywood", "fosters hollywood", "gino s", "ginos",
+            "taco bell", "subway", "pans and company", "rodilla", "starbucks", "dunkin", "tim hortons"
+        ],
+        65: [
+            "la tagiatella" if False else "la tagliatella", "tagliatella", "tgb", "the good burger",
+            "la sureña", "cerveceria la sureña", "lizarran", "lateral", "udón", "udon",
+            "go sushing", "sushita", "miss sushi", "sushiwakka", "krunch", "jamaica",
+            "café y te", "cafe y te", "granier", "santagloria", "manolo bakes", "viena capellanes",
+            "mallorca", "nostrum", "konbini" if False else "wok to walk", "padthaiwok"
+        ],
+        85: [
+            "vicio", "vicio burgers", "vic" if False else "deleito", "bacoa", "timesburg",
+            "hamburguesa nostra", "la pepita", "tierra burrito", "tierra burrito bar", "gonzalez y co",
+            "chipotle", "carl s jr", "carls jr", "wendy s", "wendys", "shake shack", "in n out",
+            "krispy kreme", "llao llao", "llaollao", "smoy", "smöoy", "amorino", "haagen dazs",
+            "baskin robbins", "ben and jerrys", "valor", "chocolaterias valor", "san gines"
+        ],
+        100: [
+            "telepollo", "pizzamovil", "speed rabbit", "telepizza españa", "little caesars",
+            "spizzico", "pomodoro", "il temino" if False else "la mafia se sienta a la mesa",
+            "ditaly", "grosso napoletano", "brasa y leña", "asador de aranda", "museo del jamon",
+            "enrique tomas", "cruz blanca", "tapa tapa", "txapela", "sagardi", "osaka" if False else "sibuya",
+            "kamado", "missao" if False else "honest greens", "healthy hunters", "flax and kale",
+            "poke house", "aloha poke", "mahalo poke", "delicious Martha" if False else "fitzgerald",
+            "the fitzgerald", "jenkins", "hundred burgers", "hundred", "la birra bar",
+            "burger king españa", "mcdonalds españa", "domino s", "papa john s", "pepe taco",
+            "cantina mariachi", "chili s", "tgi fridays", "fridays", "hard rock cafe",
+            "tony roma s", "tony romas", "ribs", "peggy sue s", "peggy sues", "tommy mel s", "tommy mels",
+            "foster hollywood", "cambalache", "muerde la pasta", "woks" if False else "la andaluza",
+            "taberna del volapie", "mercado de la reina", "pans & company", "bocatta",
+            "burger king drive", "kfc españa", "popeyes louisiana kitchen", "wingstop", "pret a manger", "costa coffee"
+        ],
+    },
+    "pal-009": {
+        45: [
+            "molesto", "molesta", "molestos", "molestas", "irritado", "irritada", "irritados",
+            "enojado", "enojada", "enojados", "furioso", "furiosa", "furiosos", "colerico",
+            "colerica", "indignado", "indignada", "indignados", "rabioso", "rabiosa", "rabiosos",
+            "enfurecido", "enfurecida", "encolerizado", "encolerizada", "exasperado", "exasperada"
+        ],
+        65: [
+            "frustrado", "frustrada", "disgustado", "disgustada", "contrariado", "contrariada",
+            "fastidiado", "fastidiada", "harto", "harta", "hartos", "quemado", "quemada",
+            "picado", "picada", "mosqueado", "mosqueada", "mosca", "cruzao", "cruzado", "cruzada",
+            "rebotado", "rebotada", "subido por las paredes", "echando chispas", "echando humo",
+            "hecho una fiera", "hecho un basilisco", "sacado de quicio", "fuera de si", "fuera de sus casillas"
+        ],
+        85: [
+            "iracundo", "iracunda", "airado", "airada", "ceñudo", "ceñuda", "hosco", "hosca",
+            "arisco", "arisca", "malhumorado", "malhumorada", "destemplado", "destemplada",
+            "agrio", "agria", "avinagrado", "avinagrada", "atacado", "atacada", "alterado", "alterada",
+            "exaltado", "exaltada", "crispado", "crispada", "tenso", "tensa", "encendido", "encendida",
+            "acalorado", "acalorada", "resentido", "resentida", "dolido", "dolida", "ofendido", "ofendida"
+        ],
+        100: [
+            "ultraja" if False else "ultrajado", "ultrajada", "agraviado", "agraviada",
+            "humillado", "humillada", "herido", "herida", "chinado", "chinada", "rayado", "rayada",
+            "rallado", "rallada", "de mala uva", "de mala leche", "de mal humor", "de morros",
+            "con la mosca detras de la oreja", "con los pelos de punta", "hasta las narices",
+            "hasta el moño", "hasta los mismisimos", "hasta la coronilla", "negro", "negra",
+            "morado", "verde de rabia", "rojo de ira", "colerico perdido", "ciego de ira",
+            "poseso", "energúmeno", "energumeno", "enajenado", "desquiciado", "desquiciada",
+            "trastornado", "enfadadisimo", "enfadadisima", "cabreadisimo", "cabreadisima",
+            "empujado" if False else "empotrado" if False else "encabritado", "encabritada",
+            "amargado", "amargada", "gruñon", "gruñona", "cascarrabias", "bufando", "echando pestes", "trinando"
+        ],
+    },
+    "dep-009": {
+        45: [
+            "michael jordan", "lebron james", "kobe bryant", "magic johnson", "larry bird",
+            "kareem abdul jabbar", "shaquille o neal", "stephen curry", "kevin durant", "tim duncan",
+            "pau gasol", "marc gasol", "juan carlos navarro", "rudy fernandez", "sergio llull",
+            "sergio rodriguez", "ricky rubio", "felipe reyes", "jose manuel calderon", "jorge garbajosa"
+        ],
+        65: [
+            "dirk nowitzki", "kevin garnett", "allen iverson", "steve nash", "dwyane wade",
+            "charles barkley", "karl malone", "john stockton", "hakeem olajuwon", "david robinson",
+            "scottie pippen", "dennis rodman", "isiah thomas", "julius erving", "wilt chamberlain",
+            "bill russell", "oscar robertson", "jerry west", "patrick ewing", "reggie miller",
+            "fernando martin", "epi", "juan antonio san epifanio", "fernando romay", "jordi villacampa"
+        ],
+        85: [
+            "alberto herreros", "carlos jimenez", "raul lopez", "alex mumbru", "fran vazquez",
+            "victor claver", "willy hernangomez", "juancho hernangomez", "usman garuba", "santi aldama",
+            "clifford luyk", "wayne brabender", "emiliano rodriguez", "nino buscato", "chicho sibilio",
+            "andres jimenez", "nacho solozabal", "rafa jofresa", "tomas jofresa", "ferran martinez",
+            "chechu biriukov", "jose birukov" if False else "audie norris", "arvydas sabonis",
+            "drazen petrovic", "toni kukoc", "vlade divac", "dejan bodiroga", "sarunas jasikevicius"
+        ],
+        100: [
+            "vassilis spanoulis", "dimitris diamantidis", "nikos galis", "tony parker", "manu ginobili",
+            "luis scola", "andres nocioni", "pablo prigioni", "facundo campazzo", "walter tavares",
+            "nikola mirotic", "luka doncic", "nikola jokic", "giannis antetokounmpo", "joel embiid",
+            "jayson tatum", "shai gilgeous alexander", "anthony edwards", "victor wembanyama",
+            "james harden", "russell westbrook", "kawhi leonard", "kyrie irving", "chris paul",
+            "carmelo anthony", "dwight howard", "tracy mcgrady", "vince carter", "jason kidd",
+            "gary payton", "ray allen", "paul pierce", "klay thompson", "draymond green",
+            "anthony davis", "damian lillard", "devin booker", "yao ming", "peja stojakovic",
+            "andrei kirilenko", "milos teodosic", "nando de colo", "mike james", "shane larkin",
+            "kostas sloukas", "serge ibaka", "nikola vucevic", "bojan bogdanovic", "tornike shengelia",
+            "elmer bennett", "velimir perasovic", "oscarr schmidt" if False else "oscar schmidt",
+            "dino meneghin", "bob cousy", "george mikan", "pete maravich", "moses malone", "dominique wilkins"
+        ],
+    },
+    "gen-007": {
+        45: [
+            "manzana verde", "pera", "kiwi", "uva verde", "uvas verdes", "aguacate", "lima",
+            "melon", "sandia", "lechuga", "espinaca", "espinacas", "acelga", "acelgas",
+            "brocoli", "coliflor verde", "romanesco", "calabacin", "pepino", "pimiento verde",
+            "judia verde", "judias verdes", "guisante", "guisantes", "haba", "habas", "alcachofa", "alcachofas"
+        ],
+        65: [
+            "esparrago verde", "esparragos verdes", "esparrago triguero", "apio", "rucula", "canonigos",
+            "berro", "berros", "endibia", "escarola", "repollo", "col", "col verde", "coles de bruselas",
+            "col rizada", "kale", "grelo", "grelos", "borraja", "cardo", "puerro", "cebolleta",
+            "cebollino", "perejil", "cilantro", "albahaca", "menta", "hierbabuena", "oregano", "romero"
+        ],
+        85: [
+            "tomillo", "eneldo", "estragon", "laurel", "salvia", "edamame", "okra", "quimbombo",
+            "chayote", "nopales", "nopal", "tomatillo", "tomate verde", "aceituna verde",
+            "oliva verde", "alcaparra", "alcaparras", "pepinillo", "pepinillos", "jalapeño",
+            "chile verde", "guindilla verde", "pimiento de padron", "pimiento italiano", "bimi",
+            "pak choi", "bok choy", "tirabeque", "tirabeques", "bisalto", "soja verde"
+        ],
+        100: [
+            "feijoa", "carambola", "chirimoya", "guanabana", "limon verde", "pomelo verde",
+            "higo verde", "breva", "ciruela claudia", "ciruela verde", "pistacho", "pistachos",
+            "pipas de calabaza", "calabaza verde", "plátano macho verde", "platano verde",
+            "mango verde", "papaya verde", "grosella verde", "uva espina", "ruibarbo",
+            "verdolaga", "diente de leon", "ortiga", "alga wakame", "alga nori", "espirulina",
+            "esparragos", "aguacates", "kiwis", "peras", "limas", "calabacines", "pepinos",
+            "pimientos verdes", "puerros", "brocolis", "lechugas", "coles", "repollo verde",
+            "escarolas", "endibias", "acelga verde", "hoja de parra", "corazon de alcachofa", "palta", "paltas"
+        ],
+    },
+    "dep-002": {
+        45: [
+            "real madrid", "fc barcelona", "atletico de madrid", "sevilla fc", "valencia cf",
+            "real betis", "athletic club", "real sociedad", "villarreal cf", "rcd espanyol",
+            "celta de vigo", "real zaragoza", "deportivo de la coruña", "sporting de gijon",
+            "real oviedo", "osasuna", "real valladolid", "getafe cf", "rayo vallecano", "girona fc"
+        ],
+        65: [
+            "ud las palmas", "cd tenerife", "rcd mallorca", "racing de santander", "elche cf",
+            "real murcia", "cadiz cf", "granada cf", "malaga cf", "ud almeria", "recreativo de huelva",
+            "xerez cd", "cordoba cf", "hercules cf", "cd castellon", "levante ud", "ud salamanca",
+            "cd numancia", "sd eibar", "deportivo alaves", "cd leganes", "sd huesca", "albacete balompie"
+        ],
+        85: [
+            "burgos cf", "real burgos", "cd mirandes", "sd ponferradina", "cultural leonesa",
+            "fc cartagena", "racing de ferrol", "sd amorebieta", "fc andorra", "cd eldense",
+            "alcorcon", "ad alcorcon", "fuenlabrada", "cf fuenlabrada", "ud ibiza", "cd lugo",
+            "cd badajoz", "merida", "extremadura", "real union", "ce sabadell", "gimnastic de tarragona",
+            "ue lleida", "cd alcoyano", "sd compostela", "pontevedra cf", "real jaen", "cd logrones"
+        ],
+        100: [
+            "ud logrones", "sd logrones", "barakaldo cf", "arenas club", "sestao river",
+            "bilbao athletic", "real madrid castilla", "castilla", "barcelona atletic", "barca b",
+            "atletico madrileño", "sevilla atletico", "valencia mestalla", "villarreal b",
+            "real sociedad b", "sanse", "celta fortuna", "deportivo aragon", "rayo majadahonda",
+            "san sebastian de los reyes", "unionistas de salamanca", "salamanca cf", "real avila",
+            "palencia", "real balompedica linense", "algeciras cf", "atletico sanluqueño",
+            "recreativo granada", "antequera cf", "marbella fc", "linares deportivo", "real murcia cf",
+            "ucam murcia", "lorca fc", "aguilas fc", "yeclano deportivo", "cd toledo", "cf talavera",
+            "cd guadalajara", "ub conquense", "calvo sotelo puertollano", "cd manchego", "cacereño",
+            "cp cacereño", "villanovense", "cd don benito", "cd coria", "atletico baleares",
+            "ud poblense", "cd ibiza", "penya deportiva", "cd mensajero", "ud lanzarote",
+            "marino de luanco", "real aviles", "up langreo", "caudal deportivo", "gimnastica de torrelavega",
+            "laredo", "racing rioja", "calahorra", "cd alfaro", "sd tarazona", "cd tudelano", "cd teruel",
+            "ue olot", "ce europa", "ue sant andreu", "cf badalona", "terrassA fc", "terrassa fc", "ue figueres", "palamos cf"
+        ],
+    },
+    "gen-015": {
+        25: [
+            "tortilla de patatas", "tortilla española", "paella", "jamon iberico", "jamon serrano",
+            "croquetas", "patatas bravas", "bravas", "gazpacho", "salmorejo", "pulpo a la gallega",
+            "pulpo a feira", "calamares a la romana", "rabas", "boquerones en vinagre", "gambas al ajillo"
+        ],
+        45: [
+            "pimientos de padron", "ensaladilla rusa", "huevos rotos", "huevos estrellados",
+            "callos a la madrileña", "fabada asturiana", "cocido madrileño", "pisto manchego",
+            "migas", "migas extremeñas", "cochinillo asado", "cordero asado", "lechazo",
+            "rabo de toro", "carrillada", "carrilleras", "solomillo al whisky", "flamenquin", "cachopo"
+        ],
+        65: [
+            "pescaito frito", "bienmesabe", "cazon en adobo", "adobo", "puntillitas", "chopitos",
+            "chipirones", "sepia a la plancha", "navajas", "mejillones al vapor", "tigres",
+            "berberechos", "almejas a la marinera", "coquinas", "espetos", "espeto de sardinas",
+            "torreznos", "torreznos de soria", "morcilla de burgos", "chorizo a la sidra", "chistorra"
+        ],
+        85: [
+            "lacón con grelos", "lacon con grelos", "empanada gallega", "caldo gallego",
+            "pote asturiano", "marmitako", "bacalao al pil pil", "bacalao a la vizcaina",
+            "txangurro", "kokotxas", "gilda", "pincho moruno", "montadito de pringa", "pringa",
+            "serranito", "bocadillo de calamares", "zarangollo", "michirones", "marinera",
+            "papas arrugadas", "papas con mojo", "mojo picon", "almogrote", "ropa vieja canaria"
+        ],
+        100: [
+            "fideua", "arroz a banda", "arroz negro", "arroz caldoso", "arroz al horno",
+            "esgarraet", "espencat", "all i pebre", "calçots", "pan tumaca", "pa amb tomaquet",
+            "escalivada", "esqueixada", "samfaina", "trinxat", "suquet de peix", "escudella",
+            "butifarra con mongetes", "ternasco de aragon", "chilindron", "pollo al chilindron",
+            "huevos a la flamenca", "ajo blanco", "ajoblanco", "porra antequerana", "atascaburras",
+            "morteruelo", "zarajos", "duelos y quebrantos", "gachas manchegas", "caldereta de cordero",
+            "chanfaina", "torta del casar", "patatas meneas", "patatas revolconas", "horno" if False else "hornazo",
+            "sopa de ajo", "sopa castellana", "oreja a la plancha", "gallinejas", "entresijos",
+            "caracoles", "cabrillas", "soldaditos de pavia", "revuelto de gulas", "angulas", "percebes", "necoras", "centollo"
+        ],
+    },
+    "mus-011": {
+        45: [
+            "david guetta", "calvin harris", "martin garrix", "tiesto", "armin van buuren",
+            "avicii", "daft punk", "swedish house mafia", "skrillex", "diplo", "marshmello",
+            "deadmau5", "zekk" if False else "zedd", "kygo", "alan walker", "dj snake",
+            "major lazer", "steve aoki", "hardwell", "afrojack", "dimitri vegas", "like mike"
+        ],
+        65: [
+            "carl cox", "richie hawtin", "sven vath", "solomun", "tale of us", "pegasus" if False else "peggy gou",
+            "charlotte de witte", "amelie lens", "nina kraviz", "adam beyer", "marco carola",
+            "joseph capriati", "jamie jones", "maceo plex", "dixon", "ame", "stephan bodzin",
+            "boris brejcha", "paul kalkbrenner", "paco osuna", "fatima hajji", "oscar mulero", "wade"
+        ],
+        85: [
+            "fred again", "disclosure", "jamie xx", "four tet", "caribou", "bicep", "floating points",
+            "bonobo", "kaytranada", "flume", "odesza", "porter robinson", "madeon", "illenium",
+            "reputation" if False else "rl grime", "baauer", "alison wonderland", "zhu", "rufus du sol",
+            "dom dolla", "john summit", "fisher", "chris lake", "gorgon city", "camelphat"
+        ],
+        100: [
+            "the chemical brothers", "chemical brothers", "prodigy", "the prodigy", "fatboy slim",
+            "moby", "underworld", "orbital", "leftfield", "faithless", "aphex twin", "boards of canada",
+            "autechre", "squarepusher", "flying lotus", "burial", "jon hopkins", "nicolas jaar",
+            "dj shadow", "justice", "gesaffelstein", "kavinsky", "sebastiAn", "sebastian",
+            "mr oizo", "laurent garnier", "jeff mills", "derrick may", "juan atkins", "kevin saunderson",
+            "larry levan", "frankie knuckles", "marshall jefferson", "kerri chandler", "dennis ferrer",
+            "black coffee", "keinemusik", "rampa", "adam port", "andme", "mochakk", "vintage culture",
+            "alok", "paul van dyk", "ferry corsten", "above and beyond", "eric prydz", "pryda",
+            "cirez d", "kaskade", "nicky romero", "don diablo", "oliver heldens", "tchami", "malaa",
+            "alesso", "robin schulz", "felix jaehn", "lost frequencies", "purple disco machine",
+            "dj nano", "brian cross", "wally lopez", "cristian varela", "edu imbernon", "cuartero",
+            "dennis cruz", "andres campo", "hector oaks", "regal", "indira paganotto", "the martinez brothers"
+        ],
+    },
+    "mus-014": {
+        45: [
+            "mecano", "hombres g", "alaska y dinarama", "alaska y los pegamoides", "fangoria",
+            "radio futura", "nacha pop", "los secretos", "gabinete caligari", "la union",
+            "duncan dhu", "el ultimo de la fila", "heroes del silencio", "loquillo", "loquillo y los trogloditas",
+            "baron rojo", "obús", "obus", "leño", "rosendo", "barricada", "la polla records"
+        ],
+        65: [
+            "paralisis permanente", "kaka de luxe", "siniestro total", "os resentidos",
+            "golpes bajos", "aerolineas federales", "los elegants", "los elegantes", "los rebeldes",
+            "los nikis", "los inhumanos", "peters" if False else "los toreros muertos", "las vulpess",
+            "eskorbuto", "cicatriz", "kortatu", "negu gorriak", "la guardia", "danza invisible",
+            "seguridad social", "los rodriguez", "celtas cortos", "revolver", "el norte", "modestia aparte"
+        ],
+        85: [
+            "tino casal", "antonio vega", "enrique urquijo", "santiago auseron", "carlos berlanga",
+            "olivido gara", "alaska", "ana torroja", "nacho cano", "jose maria cano",
+            "jaime urrutia", "mikel erentxun", "manolo garcia", "quimi portet", "pablo carbonell",
+            "javier gurruchaga", "orquesta mondragon", "azul y negro", "aviones" if False else "aviador dro",
+            "esclarecidos", "decima victima", "derribos arias", "glutamato ye ye", "las chinas"
+        ],
+        100: [
+            "bernardo bonezzi", "zombies", "la mode", "paraíso", "paraiso", "burnin" if False else "burning",
+            "topolino radio orquesta", "mamá", "mama", "los bólidos", "pistones", "los pistones",
+            "rubi y los casinos", "ciudad jardin", "objetivo birmania", "ole ole", "vicky larraz",
+            "marta sanchez", "presuntos implicados", "complices", "luz casal", "amaral" if False else "tam tam go",
+            "the refrescos", "los refrescos", "un pingüino en mi ascensor", "la frontera", "091",
+            "enemics" if False else "los enemigos", "surfin bichos", "el niño gusano", "los sencillos",
+            "ellas bailan solas" if False else "ella baila sola", "amigos" if False else "la trampa",
+            "greta y los garbo", "viceversa", "camela", "azucar moreno", "kiko veneno", "pata negra",
+            "ketama", "raya real", "alerta" if False else "tequila", "moris", "miguel rios",
+            "joaquin sabina y viceversa", "ramoncín", "ramoncin", "coz", "topo", "asfalto", "triana", "medina azahara"
+        ],
+    },
+    "pel-013": {
+        45: [
+            "humphrey bogart", "cary grant", "james stewart", "clark gable", "john wayne",
+            "marlon brando", "james dean", "paul newman", "gregory peck", "gary cooper",
+            "henry fonda", "kirk douglas", "burt lancaster", "charlton heston", "spencer tracy",
+            "laurence olivier", "gene kelly", "fred astaire", "charles chaplin", "charlie chaplin"
+        ],
+        65: [
+            "marilyn monroe", "audrey hepburn", "grace kelly", "ingrid bergman", "katharine hepburn",
+            "bette davis", "elizabeth taylor", "ava gardner", "rita hayworth", "lauren bacall",
+            "vivien leigh", "joan crawford", "greta garbo", "marlene dietrich", "judy garland",
+            "sofia loren", "sophia loren", "gina lollobrigida", "brigitte bardot", "catherine deneuve"
+        ],
+        85: [
+            "buster keaton", "harold lloyd", "orson welles", "al pacino", "robert de niro",
+            "jack nicholson", "dustin hoffman", "robert redford", "clint eastwood", "steve mcqueen",
+            "sean connery", "richard burton", "peter o toole", "alec guinness", "david niven",
+            "rex harrison", "errol flynn", "tyrone power", "rock hudson", "tony curtis",
+            "jack lemmon", "walter matthau", "yul brynner", "anthony quinn", "omar sharif"
+        ],
+        100: [
+            "marcello mastroianni", "alain delon", "jean paul belmondo", "toshirô mifune", "toshiro mifune",
+            "fernando fernan gomez", "paco rabal", "jose luis lopez vazquez", "fernando rey",
+            "sara montiel", "carmen sevilla", "lola flores", "concha velasco", "amparo rivelles",
+            "shirley maclaine", "faye dunaway", "jane fonda", "natalie wood", "deborah kerr",
+            "maureen o hara", "olivia de havilland", "joan fontaine", "barbara stanwyck", "ginger rogers",
+            "claudette colbert", "carole lombard", "mae west", "gene tierney", "veronica lake",
+            "lana turner", "hedy lamarr", "doris day", "julie andrews", "kim novak", "tippi hedren",
+            "eva marie saint", "janet leigh", "anne bancroft", "gloria swanson", "william holden",
+            "montgomery clift", "robert mitchum", "lee marvin", "charles bronson", "james coburn",
+            "eli wallach", "peter sellers", "sidney poitier", "harry belafonte", "sammy davis jr",
+            "dean martin", "bing crosby", "frank sinatra", "buster" if False else "boris karloff", "bela lugosi", "vincent price"
+        ],
+    },
+    "dep-001": {
+        45: [
+            "tenis", "el tenis", "padel", "el padel", "badminton", "el badminton", "voleibol",
+            "el voleibol", "voley playa", "tenis de mesa", "ping pong", "pickleball", "fronton",
+            "pelota vasca", "squash", "sepak takraw", "footvolley", "futvoley"
+        ],
+        65: [
+            "tenis en silla de ruedas", "voley sentado", "voleibol sentado", "voley nieve",
+            "snow volleyball", "tenis playa", "beach tennis", "padel playa", "touchtennis",
+            "speedminton", "crossminton", "indiaca", "peteca", "frescobol", "matkot",
+            "bossaball", "ecua voley", "ecuavoley", "teqball", "padbol", "faustball", "fistball"
+        ],
+        85: [
+            "jianzi", "shuttlecock", "chinlone", "sipa", "kicking birdie", "wallyball",
+            "platform tennis", "paddle tennis", "pop tennis", "real tennis", "jeu de paume",
+            "frontenis", "xare", "paleta goma", "pala", "pelota a mano", "minitenis",
+            "tenis sobre hierba", "tenis en tierra batida", "tenis en pista dura", "tenis indoor"
+        ],
+        100: [
+            "tenis dobles", "tenis mixto", "dobles masculinos", "dobles femeninos", "ping pong adaptado",
+            "badminton adaptado", "parabadminton", "pickleball dobles", "tenis de mesa en silla",
+            "biribol", "cachibol", "newcom", "hooverball", "footbag net", "jokari", "swingball",
+            "spirobole", "roundnet", "spikeball", "tamburello", "tambeach", "pallone col bracciale",
+            "longue paume", "pelota valenciana con red", "llargues", "galotxa", "escala i corda",
+            "voleibol playa", "voley sala", "voley pista", "voley cuatro", "voley mixto",
+            "padel masculino", "padel femenino", "padel mixto", "badminton dobles", "badminton individual",
+            "squash doble", "raquetbol" if False else "paddleball", "soft tennis", "soft tenis",
+            "tenis de mesa dobles", "korfball" if False else "footennis", "futtenis", "futenis",
+            "futbol tenis", "tenis futbol", "volley", "voley", "la pelota vasca", "tenis playa dobles"
+        ],
+    },
+    "geo-004": {
+        45: [
+            "everest", "monte everest", "himalaya", "los andes", "alpes", "los alpes",
+            "pirineos", "los pirineos", "montañas rocosas", "kilimanjaro", "fuji", "monte fuji",
+            "vesubio", "etna", "teide", "el teide", "k2", "aconcagua", "mont blanc", "cervino"
+        ],
+        65: [
+            "karakorum", "hindu kush", "pamir", "tian shan", "altai", "urales", "montes urales",
+            "caucaso", "carpatos", "los carpatos", "apalpaches" if False else "apalaches", "montes apalaches",
+            "sierra madre", "sierra nevada", "sierra morena", "picos de europa", "cordillera cantabrica",
+            "sistema central", "sistema iberico", "atlas", "cordillera del atlas", "drakensberg"
+        ],
+        85: [
+            "annapurna", "kangchenjunga", "lhotse", "makalu", "cho oyu", "dhaulagiri", "manaslu",
+            "nanga parbat", "gasherbrum", "broad peak", "shishapangma", "denali", "mckinley",
+            "monte logan", "pico de orizaba", "popocatepetl", "iztaccihuatl", "cotopaxi",
+            "chimborazo", "huascaran", "fitz roy", "cerro torre", "ojos del salado", "llullaillaco"
+        ],
+        100: [
+            "krakatoa", "tambora", "mauna loa", "mauna kea", "kilauea", "monte santa helena",
+            "rainier", "monte shasta", "eyjafjallajokull", "hekla", "katla", "stromboli",
+            "vulcano", "santorini", "olimpo", "monte olimpo", "ararat", "monte ararat",
+            "elbrus", "kazbek", "elbrus caucaso", "toubkal", "monte kenya", "ruwenzori",
+            "monte camerun", "nyiragongo", "meru", "kosciuszko", "monte cook", "aoraki",
+            "vinson", "macizo vinson", "erebus", "monte erebus", "mulhacen", "aneto",
+            "veleta", "monte perdido", "posets", "almanzor", "peñalara", "naranjo de bulnes",
+            "torre cerredo", "pico viejo", "roque de los muchachos", "garajonay", "moncayo",
+            "aitana", "puig major", "sierra de tramuntana", "dolomitas", "matterhorn", "eiger", "jungfrau"
+        ],
+    },
+    "pal-014": {
+        25: [
+            "guau", "miau", "pio", "mu", "be", "kikiriki", "quiquiriqui", "croac", "oink",
+            "bum", "boom", "bang", "zas", "pum", "crash", "splash", "tic tac", "ring", "ring ring", "toc toc"
+        ],
+        45: [
+            "achis", "atachis" if False else "ajaja", "jajaja", "jejeje", "jijiji", "jojojo",
+            "buaj", "puaj", "aj", "ay", "uy", "uf", "uff", "shh", "chist", "chitón", "chiton",
+            "psst", "ehm", "mmm", "ñam", "ñam ñam", "glup", "gulp", "slurp", "cof cof"
+        ],
+        65: [
+            "bzzz", "zzz", "snif", "mua", "muac", "muak", "chuik", "smack", "plas", "plaf",
+            "cataplum", "catacrac", "crac", "crack", "cricri", "cri cri", "cuac", "cua cua",
+            "clo", "cloc", "clop", "trote", "chof", "plof", "chop", "chup", "fiu", "fiuf"
+        ],
+        85: [
+            "fush", "whoosh", "zium", "brrr", "brum", "run run", "rum rum", "pii", "piii",
+            "bip", "bip bip", "beee", "meee", "auuu", "grrr", "grr", "argh", "puaf",
+            "guau guau", "miau miau", "pio pio", "muu", "beee", "oink oink", "croac croac",
+            "din don", "ding dong", "talán", "talan", "tolon", "tilin", "tin", "clin", "clink"
+        ],
+        100: [
+            "tacata", "taca taca", "chucu chucu", "ratatatata", "pam", "pim pam pum",
+            "pim", "paf", "paff", "puf", "puff", "plis", "plas plas", "clap", "clap clap",
+            "snap", "pop", "boing", "boing boing", "zing", "zap", "zapp", "pow", "kaboom",
+            "ka boom", "slam", "wham", "thud", "bonk", "boink", "dink", "honk", "toot",
+            "beep", "buzz", "hiss", "ssss", "zzzz", "hip", "hic", "burp", "eructo" if False else "achoo",
+            "jaja", "jeje", "jiji", "jojo", "juju", "ua", "uau", "guauu", "oh", "ah", "eh", "bah"
+        ],
+    },
+    "geo-006": {
+        45: [
+            "oceano atlantico", "oceano pacifico", "oceano indico", "oceano artico", "oceano antartico",
+            "mar mediterraneo", "mar cantabrico", "mar caribe", "mar rojo", "mar negro", "mar muerto",
+            "mar caspio", "mar del norte", "mar baltico", "mar egeo", "mar adriatico", "mar jonico",
+            "mar tirreno", "golfo de mexico", "golfo de vizcaya", "golfo persico", "estrecho de gibraltar"
+        ],
+        65: [
+            "mar de alboran", "mar balear", "mar de cortez", "golfo de california", "golfo de cadiz",
+            "golfo de valencia", "golfo de leon", "golfo de genova", "golfo de bengala",
+            "golfo de guinea", "golfo de aden", "golfo de oman", "golfo de alaska", "golfo de san lorenzo",
+            "bahia de hudson", "bahia de fundy", "bahia de la concha", "bahia de cadiz", "mar de china meridional"
+        ],
+        85: [
+            "mar de china oriental", "mar amarillo", "mar de japon", "mar de ojotsk", "mar de bering",
+            "mar de tasmania", "mar de coral", "mar de java", "mar de andaman", "mar arabigo",
+            "mar de barents", "mar de kara", "mar blanco", "mar de noruega", "mar de groenlandia",
+            "mar de labrador", "mar de los sargazos", "mar de azov", "mar de marmara", "mar de creta"
+        ],
+        100: [
+            "mar de liguria", "mar de cerdeña", "mar de irlanda", "mar celtico", "mar de las hebridas",
+            "mar de frisia", "mar de wadden", "mar de laptev", "mar de siberia oriental", "mar de chukotka",
+            "mar de beaufort", "mar de lincoln", "mar de baffin", "mar de ross", "mar de weddell",
+            "mar de amundsen", "mar de bellingshausen", "mar de sulu", "mar de celebes", "mar de banda",
+            "mar de flores", "mar de timor", "mar de arafura", "mar de bismarck", "mar de salomon",
+            "golfo de tailandia", "golfo de tonkin", "golfo de carpentaria", "golfo de bohai",
+            "golfo de botnia", "golfo de finlandia", "golfo de riga", "golfo de taranto",
+            "golfo de sirte", "golfo de gabes", "golfo de aqaba", "golfo de suez",
+            "golfo de darien", "golfo de venezuela", "golfo de paria", "golfo de guayaquil",
+            "golfo de fonseca", "golfo de tehuantepec", "lago superior", "lago victoria",
+            "mar de aral", "golfo de maine", "bahia de chesapeake", "bahia de san francisco", "bahia de tokio"
+        ],
+    },
+    "pel-015": {
+        45: [
+            "la infiltrada", "el 47", "la sociedad de la nieve", "as bestas", "el buen patron",
+            "las niñas", "dolor y gloria", "campeones", "la libreria", "tarde para la ira",
+            "truman", "la isla minima", "vivir es facil con los ojos cerrados", "blancanieves",
+            "no habra paz para los malvados", "pa negre", "celda 211", "camino", "la soledad"
+        ],
+        65: [
+            "volver", "la vida secreta de las palabras", "mar adentro", "te doy mis ojos",
+            "los lunes al sol", "los otros", "el bola", "solas", "todo sobre mi madre",
+            "la niña de tus ojos", "la buena estrella", "tesis", "nadie hablara de nosotras cuando hayamos muerto",
+            "dias contados", "todos a la carcel", "belle epoque", "amantes", "ay carmela"
+        ],
+        85: [
+            "el rey pasmado", "las cosas del querer" if False else "el niño de barro" if False else "el viaje a ninguna parte",
+            "el bosque animado", "mujeres al borde de un ataque de nervios", "la noche mas larga" if False else "el espiritu de la colmena" if False else "pan negro",
+            "el 47 2024", "la infiltrada 2024", "la sociedad de la nieve 2023", "as bestas 2022",
+            "el buen patron 2021", "las niñas 2020", "dolor y gloria 2019", "campeones 2018",
+            "la libreria 2017", "tarde para la ira 2016", "truman 2015", "la isla minima 2014"
+        ],
+        100: [
+            "vivir es facil con los ojos cerrados 2013", "blancanieves 2012",
+            "no habra paz para los malvados 2011", "pa negre 2010", "celda 211 2009",
+            "camino 2008", "la soledad 2007", "volver 2006", "la vida secreta de las palabras 2005",
+            "mar adentro 2004", "te doy mis ojos 2003", "los lunes al sol 2002", "los otros 2001",
+            "el bola 2000", "solas 1999", "la niña de tus ojos 1998", "la buena estrella 1997",
+            "tesis 1996", "nadie hablara de nosotras 1995", "dias contados 1994",
+            "todos a la carcel 1993", "belle epoque 1992", "amantes 1991", "ay carmela 1990",
+            "el sueño del mono loco", "mujeres al borde", "el bosque animado 1987",
+            "el viaje a ninguna parte 1986", "tengamos la fiesta en paz" if False else "the bookshop",
+            "pain and glory", "society of the snow", "the beasts", "the good boss", "the others",
+            "marshland", "all about my mother", "the sea inside", "mondays in the sun",
+            "take my eyes", "cell 211", "black bread", "the secret life of words",
+            "the girl of your dreams", "counted days", "everyone off to jail",
+            "goya a mejor pelicula", "mejor pelicula goya", "20000 especies de abejas" if False else "las ninas",
+            "el buen patrón" if False else "la libreria de isabel coixet", "as bestas sorogoyen",
+            "el buen patron fernando leon", "dolor y gloria almodovar", "mar adentro amenabar",
+            "los otros amenabar", "tesis amenabar", "volver almodovar", "todo sobre mi madre almodovar",
+            "celda 211 daniel monzon", "la isla minima alberto rodriguez", "tarde para la ira raul arevalo"
+        ],
+    },
+    "gen-018": {
+        45: [
+            "triangulos", "triangulos de emergencia", "chaleco reflectante", "baliza v16",
+            "luz de emergencia", "gato", "llave de ruedas", "rueda de repuesto", "kit antipinchazos",
+            "botiquin", "linterna", "rascador de hielo", "parasol", "documentacion", "papeles del coche",
+            "permiso de circulacion", "tarjeta itv", "poliza del seguro", "parte amistoso", "boligrafo"
+        ],
+        65: [
+            "pinzas de bateria", "cables de arranque", "arrancador", "compresor de aire",
+            "manometro", "fusibles", "bombillas de repuesto", "fusibles de repuesto", "guantes",
+            "guantes de trabajo", "trapo", "bayeta", "papel de cocina", "pañuelos", "toallitas",
+            "gafas de sol", "cargador de coche", "cable usb", "soporte de movil", "monedas"
+        ],
+        85: [
+            "caramelos", "chicles", "agua", "botella de agua", "paraguas", "cadenas",
+            "cadenas de nieve", "fundas de nieve", "cuerda", "pulpos elasticos", "cinchas",
+            "eslinga", "aceite de motor", "anticongelante", "liquido limpiaparabrisas",
+            "embudo", "destornillador", "llave inglesa", "alicates", "navaja multiusos", "cinta americana"
+        ],
+        100: [
+            "bridas", "alcoholimetro", "martillo de emergencia", "cortacinturones", "extintor",
+            "manta", "manta termica", "chubasquero", "bolsa de la compra", "bolsas reutilizables",
+            "ambientador", "ambientador de pino", "mando del garaje", "llave del garaje",
+            "tarjeta de parking", "ticket de aparcamiento", "disco horario", "llave de seguridad",
+            "tuerca antirrobo", "adaptador de mechero", "transmisor fm", "llave torx",
+            "medidor de presion", "inflador portatil", "agua destilada", "limpiacristales",
+            "spray descongelante", "toalla", "parasol delantero", "parasol trasero",
+            "red de maletero", "organizador de maletero", "funda del coche", "pinza" if False else "pinzas de arranque",
+            "llave cruz", "llave de cruz", "chaleco", "triangulo", "manual del coche", "libro de mantenimiento"
+        ],
+    },
+    "pal-004": {
+        45: [
+            "ara", "asa", "ata", "ava", "aya", "aba", "aca", "ada", "eje", "ele", "eme", "ene",
+            "ere", "ese", "oro", "oso", "ojo", "oto", "ala", "ama", "ana", "sus", "non"
+        ],
+        65: [
+            "ecce", "elle", "erre", "esse", "otto", "abba", "anna", "hannah", "kayak", "radar",
+            "level", "madam", "civic", "tenet", "refer", "minim", "stats", "noon", "deed",
+            "peep", "poop", "toot", "boob", "kook", "naan", "bob", "dad", "did", "dud",
+            "eve", "ewe", "eye", "gag", "gig", "hah", "heh", "huh", "mam", "mom", "mum",
+            "nan", "nun", "oho", "pap", "pep", "pip", "pop", "pup", "sis", "tat", "tit", "tot", "tut", "wow", "yay"
+        ],
+        85: [
+            "sometemos", "reconocer", "arenera", "arepera", "narran", "nadan", "rajar", "ralar",
+            "rapar", "rayar", "reler", "rever", "rojor", "rotor", "sagas", "salas", "sanas",
+            "saras", "sebes", "sedes", "seles", "semes", "senes", "seres", "seses", "setes",
+            "siris", "sisis", "solos", "somos", "sosos", "sotos", "aviva", "anana", "arara",
+            "amama", "alala", "alula", "neuquen", "oruro", "menem", "malayalam", "rotavator"
+        ],
+        100: [
+            "aibofobia", "sugus", "deified", "repaper", "reviver", "redder", "rotator",
+            "pullup", "racecar", "tacocat", "detartrated", "redivider", "kinnikinnik",
+            "tattarrattat", "releveler", "evitative", "succus", "sulus", "sumus", "neven",
+            "acaca", "atata", "asasa", "aziza", "ibibi" if False else "ihi", "isi", "iti",
+            "obo", "oco", "odo", "olo", "omo", "ono", "ovo", "oxo", "ozo", "ubu", "ucu",
+            "uhu", "uju", "ulu", "unu", "uru", "usu", "utu", "uzu"
+        ],
+    },
+    "pel-008": {
+        45: [
+            "mar adentro", "todo sobre mi madre", "volver", "hable con ella", "dolor y gloria",
+            "el laberinto del fauno", "los otros", "el orfanato", "lo imposible", "un monstruo viene a verme",
+            "tesis", "abre los ojos", "rec", "celda 211", "la isla minima", "as bestas",
+            "alcarras", "el buen patron", "campeones", "ocho apellidos vascos", "la sociedad de la nieve"
+        ],
+        65: [
+            "los santos inocentes", "viridiana", "el verdugo", "bienvenido mister marshall",
+            "plácido", "atraco a las tres", "la vaquilla", "amanecen que no es poco",
+            "la escopeta nacional", "el viaje a ninguna parte", "la lengua de las mariposas",
+            "el sur", "el espiritu de la colmena", "cria cuervos", "las bicicletas son para el verano",
+            "belle epoque", "amantes", "ay carmela", "dias contados", "el dia de la bestia"
+        ],
+        85: [
+            "airbag", "el milagro de p tinto", "torrente", "muertos de risa", "la comunidad",
+            "crimen ferpecto", "los lunes al sol", "te doy mis ojos", "el bola", "solas",
+            "barrio", "historias del kronen", "la buena estrella", "secretos del corazon",
+            "lucia y el sexo", "los amantes del circulo polar", "tierra", "vacas",
+            "mujeres al borde de un ataque de nervios", "atame", "tacones lejanos", "la mala educacion"
+        ],
+        100: [
+            "el 47", "la infiltrada", "casa en flames", "segundo premio", "cinco lobitos",
+            "20000 especies de abejas", "las niñas", "robot dreams", "tarde para la ira", "truman",
+            "que dios nos perdone", "el reino", "modelo 77", "mientras dure la guerra", "agora",
+            "el hoyo", "los cronocrimenes", "veronica", "paco plaza" if False else "mientras duermes",
+            "la piel que habito", "madres paralelas", "julieta", "pa negre", "camino",
+            "la soledad", "vivir es facil con los ojos cerrados", "blancanieves", "no habra paz para los malvados",
+            "la vida secreta de las palabras", "grupo 7", "el niño", "ocho apellidos catalanes",
+            "padre no hay mas que uno", "perfectos desconocidos", "las brujas de zugarramurdi",
+            "balada triste de trompeta", "arrebato", "el crack", "volver a empezar", "asignatura pendiente",
+            "la caza", "la prima angelica", "tristana", "el angel exterminador", "calabuch",
+            "surcos", "muerte de un ciclista", "calle mayor", "marcelino pan y vino", "historias de la radio"
+        ],
+    },
+    "dep-008": {
+        45: [
+            "fernando alonso", "carlos sainz", "carlos sainz jr", "marc marquez", "jorge martin",
+            "valentino rossi", "michael schumacher", "lewis hamilton", "max verstappen",
+            "ayrton senna", "alain prost", "niki lauda", "sebastian vettel", "pedro de la rosa",
+            "jorge lorenzo", "dani pedrosa", "alex criville", "angel nieto", "joan mir"
+        ],
+        65: [
+            "charles leclerc", "lando norris", "oscar piastri", "george russell", "sergio perez",
+            "kimi raikkonen", "mika hakkinen", "jenson button", "nico rosberg", "damon hill",
+            "nigel mansell", "nelson piquet", "juan manuel fangio", "jim clark", "jackie stewart",
+            "emerson fittipaldi", "jochen rindt", "james hunt", "gilles villeneuve", "jacques villeneuve",
+            "daniel ricciardo", "valtteri bottas", "pierre gasly", "esteban ocon", "alex albon", "yuki tsunoda"
+        ],
+        85: [
+            "alex rins", "aleix espargaro", "pol espargaro", "maverick viñales", "pedro acosta",
+            "alex marquez", "raul fernandez", "augusto fernandez", "sete gibernau", "carlos checa",
+            "toni elias", "alvaro bautista", "hector barbera", "tito rabat", "nico terol",
+            "sito pons", "joan garriga", "champi herreros", "jorge martinez aspar", "ricardo tormo",
+            "pecco bagnaia", "francesco bagnaia", "fabio quartararo", "enea bastianini", "marco bezzecchi"
+        ],
+        100: [
+            "casey stoner", "nicky hayden", "mick doohan", "wayne rainey", "kevin schwantz",
+            "eddie lawson", "freddie spencer", "wayne gardner", "barry sheene", "giacomo agostini",
+            "mike hailwood", "john surtees", "kenny roberts", "andrea dovizioso", "marco simoncelli",
+            "loris capirossi", "max biaggi", "brad binder", "jack miller", "miguel oliveira", "johann zarco",
+            "alonso", "sainz", "verstappen", "hamilton", "leclerc", "norris", "piastri", "russell",
+            "vettel", "schumacher", "senna", "prost", "lauda", "raikkonen", "hakkinen", "fangio",
+            "marquez", "rossi", "lorenzo", "pedrosa", "martin", "bagnaia", "quartararo", "nieto", "criville",
+            "nico hulkenberg", "kevin magnussen", "lance stroll", "oliver bearman", "franco colapinto",
+            "rubens barrichello", "felipe massa", "juan pablo montoya", "david coulthard", "mark webber",
+            "jarno trulli", "giancarlo fisichella", "jean alesi", "gerhard berger", "keke rosberg",
+            "alberto ascari", "stirling moss", "jack brabham", "graham hill", "mario andretti"
+        ],
+    },
+    "dep-013": {
+        45: [
+            "mundial de futbol", "copa del mundo", "eurocopa", "champions league", "liga de campeones",
+            "europa league", "copa america", "juegos olimpicos", "olimpiadas", "tour de francia",
+            "giro de italia", "vuelta a españa", "wimbledon", "roland garros", "us open",
+            "open de australia", "copa davis", "super bowl", "nba", "formula 1", "motogp"
+        ],
+        65: [
+            "seis naciones", "torneo de las seis naciones", "copa del mundo de rugby", "mundobasket",
+            "eurobasket", "euroliga", "copa del rey", "supercopa de españa", "liga española",
+            "la liga", "premier league", "serie a", "bundesliga", "ligue 1", "copa libertadores",
+            "mundial de clubes", "nations league", "liga de naciones", "copa confederaciones", "ryder cup"
+        ],
+        85: [
+            "masters de augusta", "the open", "abierto britanico", "pga championship", "solheim cup",
+            "copa america de vela", "america s cup", "paris roubaix", "milan san remo", "tour de flandes",
+            "lieja bastona lieja", "giro de lombardia", "paris niza", "criterium del dauphine",
+            "vuelta al pais vasco", "itzulia", "volta a catalunya", "24 horas de le mans", "rally dakar",
+            "500 millas de indianapolis", "indy 500", "gran premio de monaco", "gran premio de españa"
+        ],
+        100: [
+            "gran premio de silverstone", "gran premio de monza", "gran premio de spa",
+            "billie jean king cup", "fed cup", "laver cup", "atp finals", "wta finals",
+            "indian wells", "miami open", "mutua madrid open", "madrid open", "masters de roma",
+            "montecarlo", "conde de godo", "gran slam", "grand slam", "diamond league", "liga de diamante",
+            "maraton de nueva york", "maraton de boston", "maraton de londres", "maraton de berlin",
+            "maraton de chicago", "maraton de tokio", "ironman de hawai", "ironman de kona",
+            "copa del mundo de balonmano", "ehf champions league", "vuelta a españa femenina",
+            "tour de france femmes", "mundial femenino", "eurocopa femenina", "champions femenina",
+            "serie mundial", "world series", "stanley cup", "finales de la nba", "march madness",
+            "copa sudamericana", "recopa sudamericana", "concachampions", "copa oro", "copa africa",
+            "copa asia", "juegos paralimpicos", "juegos olimpicos de invierno", "juegos panamericanos"
+        ],
+    },
+}
+
+DENSITY_BATCH_2_EXTRA = {
+    "pel-010": {
+        100: [
+            "cuerpo de elite", "lo dejo cuando quiera", "bajo el mismo techo", "hasta que la boda nos separe",
+            "si yo fuera rico", "ahora o nunca", "tres bodas de mas", "a todo tren 2", "vacaciones de verano",
+            "padre no hay mas que uno 2", "padre no hay mas que uno 3", "campeonex 2023",
+            "el buen patron", "toc toc", "perfectos desconocidos", "camara cafe", "superlopez"
+        ],
+    },
+    "gen-001": {
+        100: [
+            "activia mango", "activia piña", "activia muesli", "activia nueces", "danone fresa platano",
+            "danone vainilla", "danone albaricoque", "oikos fresa", "oikos frutos del bosque",
+            "oikos galleta", "oikos cafe", "actimel fresa platano", "actimel multifrutas",
+            "actimel 0", "danonino platano", "danonino chocolate", "vitalinea cremoso",
+            "yopro vainilla", "yopro chocolate", "yopro fresa", "flan de queso reina", "arroz con leche dhul"
+        ],
+    },
+    "gen-006": {
+        100: [
+            "palmeras en la nieve", "tres metros sobre el cielo", "tengo ganas de ti",
+            "el tiempo entre costuras" if False else "el bola", "los girasoles ciegos", "las trece rosas",
+            "alguien como tu" if False else "juerga" if False else "isidro" if False else "el otro lado de la cama",
+            "los dos lados de la cama", "dias de futbol", "fuga de cerebros", "perdiendo el norte",
+            "que se mueran los feos", "villaviciosa de al lado", "si yo fuera rico", "lo dejo cuando quiera",
+            "es por tu bien", "señor dame paciencia", "bajo el mismo techo", "hasta que la boda nos separe",
+            "a todo tren destino asturias", "padre no hay mas que uno 2", "padre no hay mas que uno 3", "padre no hay mas que uno 4"
+        ],
+    },
+    "pel-004": {
+        100: [
+            "alien el octavo pasajero", "aliens el regreso", "alien 3", "alien romulus", "prometheus",
+            "alien covenant", "predator", "depredador", "prey", "star wars episodio iv",
+            "una nueva esperanza", "la amenaza fantasma", "el ataque de los clones", "la venganza de los sith",
+            "el despertar de la fuerza", "los ultimos jedi", "el ascenso de skywalker", "matrix reloaded",
+            "matrix revolutions", "animatrix", "terminator 3", "terminator salvation", "terminator genesis",
+            "regreso al futuro ii", "regreso al futuro iii", "jurassic park", "parque jurasico", "jurassic world"
+        ],
+    },
+    "pel-024": {
+        100: [
+            "pretty woman 1990", "notting hill 1999", "love actually 2003", "titanic 1997",
+            "el diario de noa 2004", "antes del amanecer 1995", "la la land 2016", "ghost mas alla del amor",
+            "dirty dancing 1987", "oficial y caballero 1982", "cuando harry encontro a sally 1989",
+            "tienes un email", "algo para recordar", "algo pasa con mary 1998", "cuatro bodas y un funeral 1994",
+            "bridget jones", "el diario de bridget jones 2", "orgullo y prejuicio 2005", "sentido y sensibilidad 1995",
+            "lo que queda del dia", "el paciente ingles", "memorias de africa 1985", "romeo y julieta"
+        ],
+    },
+    "pel-014": {
+        100: [
+            "ice age 2", "ice age 3", "madagascar 2", "madagascar 3", "kung fu panda 2",
+            "kung fu panda 3", "kung fu panda 4", "como entrenar a tu dragon 2", "como entrenar a tu dragon 3",
+            "shrek 2", "shrek tercero", "shrek felices para siempre", "minions el origen de gru",
+            "gru 4", "mascotas 2", "canta 2", "hotel transilvania 2", "hotel transilvania 3",
+            "trolls 2", "trolls 3", "la oveja shaun la pelicula", "wallace y gromit la maldicion de las verduras",
+            "el secreto de nimh", "anastasia 1997", "el principe de egipto 1998", "spirit el corcel indomable",
+            "sinbad la leyenda de los siete mares", "las aventuras de tintin el secreto del unicornio"
+        ],
+    },
+    "pel-008": {
+        100: [
+            "el bola 2000", "mar adentro 2004", "volver 2006", "todo sobre mi madre 1999",
+            "hable con ella 2002", "dolor y gloria 2019", "los otros 2001", "el orfanato 2007",
+            "el laberinto del fauno 2006", "lo imposible 2012", "un monstruo viene a verme 2016",
+            "tesis 1996", "abre los ojos 1997", "celda 211 2009", "la isla minima 2014",
+            "as bestas 2022", "alcarras 2022", "el buen patron 2021", "campeones 2018",
+            "ocho apellidos vascos 2014", "la sociedad de la nieve 2023", "rec 2007", "rec 2",
+            "el dia de la bestia 1995", "airbag 1997", "torrente 1998", "el milagro de p tinto 1998",
+            "los santos inocentes 1984", "el verdugo 1963", "bienvenido mister marshall 1953", "viridiana 1961"
+        ],
+    },
+    "pel-007": {
+        100: [
+            "fast five", "fast and furious 7", "fast x", "hobbs and shaw", "bad boys",
+            "dos policias rebeldes", "dos policias rebeldes ii", "bad boys for life", "hora punta",
+            "hora punta 2", "rush hour", "el transportador", "transporter", "crank", "a todo gas 2",
+            "a todo gas tokyo race", "the expendables", "los mercenarios", "los mercenarios 2",
+            "rambo", "acoralado", "acorralado", "first blood", "commando", "comando", "desafío total",
+            "depredador 2", "arma letal 2", "arma letal 3", "arma letal 4", "la jungla 2",
+            "la jungla de cristal la venganza", "jungla de cristal 4 0", "superdetective en hollywood",
+            "ocean s twelve", "ocean s thirteen", "ocean s 8", "el caso thomas crown", "ahora me ves 2",
+            "los angeles de charlie", "salt", "red", "red 2", "mr and mrs smith", "sr y sra smith"
+        ],
+    },
+    "pel-001": {
+        100: [
+            "frozen el reino del hielo", "frozen ii", "vaiana 2016", "vaiana 2", "moana 2",
+            "encanto 2021", "coco 2017", "up 2009", "wall e 2008", "ratatouille 2007",
+            "buscando a nemo 2003", "buscando a dory 2016", "monstruos sa 2001", "monstruos university 2013",
+            "los increibles 2004", "los increibles 2 2018", "toy story 1995", "toy story 2 1999",
+            "toy story 3 2010", "toy story 4 2019", "cars 2006", "cars 2 2011", "cars 3 2017",
+            "bichos una aventura en miniatura", "brave indomable", "del reves 2015", "del reves 2 2024",
+            "soul 2020", "luca 2021", "red 2022", "elemental 2023", "onward 2020",
+            "el viaje de arlo 2015", "el rey leon 1994", "el rey leon 2019", "la bella y la bestia 1991",
+            "aladdin 1992", "la sirenita 1989", "mulan 1998", "hercules 1997", "tarzan 1999",
+            "pocahontas 1995", "el jorobado de notre dame 1996", "enredados 2010", "zootropolis 2016",
+            "big hero 6 2014", "rompe ralph 2012", "ralph rompe internet 2018", "lilo y stitch 2002",
+            "el planeta del tesoro 2002", "atlantis el imperio perdido 2001", "el emperador y sus locuras 2000"
+        ],
+    },
+    "pal-014": {
+        100: [
+            "gluglu", "glu glu", "ñiki ñiki", "triqui traque", "tic tac toc", "chas", "chass",
+            "zasca", "pum pum", "cataplam", "catapun", "plaf plaf", "chof chof", "chop chop",
+            "clap", "slap", "smack", "muack", "muak", "achis", "achu", "hachis", "sniff",
+            "snif snif", "cof", "ajam", "ejem", "psst psst", "shhh", "chit", "uf", "ufff",
+            "puajj", "ajj", "agg", "arghh", "grrr", "grr", "grog", "glup", "gulp",
+            "slurp", "munch", "crunch", "croc", "cruj", "ric rac", "zig zag", "din don dan",
+            "tolon tolon", "tilin tilin", "tin tin", "ringgg", "riiiing", "brrr", "brummm",
+            "vroom", "vrooom", "runrun", "piii", "pi pi", "pipi", "honk honk", "meec",
+            "mec mec", "cuac", "cua", "quack", "oink", "oinc", "oinc oinc", "beee", "baaa",
+            "meee", "muuu", "kikiriki", "quiquiriqui", "cocoroco", "cloc cloc", "pio", "pia",
+            "guau", "guauu", "arf", "woof", "miau", "miauu", "marramiau", "ronron", "purr",
+            "croac", "ribbit", "cri cri", "bzzz", "zzz", "auuu", "aullido" if False else "auu",
+            "plop", "splish", "splash", "drip", "drop", "plic", "plac", "fiuuu", "whew", "whoosh"
+        ],
+    },
+    "pal-004": {
+        100: [
+            "anilina", "anona", "amama", "amuma", "alala", "kajak", "nisin", "tevet", "tebet",
+            "maam", "degged", "denned", "hallah", "lemel", "marram", "reifier", "stots",
+            "seces", "sexes", "murum", "aitia", "aibohphobia", "oppo", "xanax", "pip",
+            "babab", "cac", "ded", "fof", "geg", "jej", "kfk" if False else "kik", "lul",
+            "nen", "nun", "rar", "rer", "rir", "ror", "rur", "ses", "vev", "xex",
+            "yiy", "yoy", "zuz", "ababa", "alula", "aviva", "aziza", "hanah", "sagas",
+            "salas", "sanas", "saras", "sebes", "sedes", "seles", "semes", "senes", "seres",
+            "seses", "setes", "siris", "sisis", "solos", "somos", "sosos", "sotos", "succus",
+            "sulus", "sumus", "neven", "neuquen", "oruro", "menem", "malayalam", "rotavator",
+            "sometemos", "reconocer", "arenera", "arepera", "narran", "nadan", "rajar", "ralar",
+            "rapar", "rayar", "reler", "rever", "rojor", "rotor", "aibofobia"
+        ],
+    },
+    "gen-027": {
+        100: [
+            "bandera de kazajstan", "bandera de kirguizia", "bandera de antigua",
+            "bandera de ruanda africa", "bandera de namibia africa", "bandera de niger africa",
+            "bandera de malaui africa", "bandera de taiwan asia", "bandera de filipinas asia",
+            "bandera de japon asia", "bandera de nepal asia", "bandera de banglades asia",
+            "bandera de argentina america", "bandera de uruguay america", "bandera de ecuador america",
+            "bandera de peru america", "bandera de bolivia america", "bandera de el salvador america",
+            "bandera de nicaragua america", "bandera de costa rica america", "bandera de macedonia europa",
+            "republica argentina america", "republica oriental uruguay", "estado de japon",
+            "republica china taiwan", "republica de filipinas asia", "reino de nepal asia",
+            "macedonia del norte europa", "republica de kazajstan", "kirguistan republica",
+            "namibia suroeste", "malaui republica", "niger republica", "ruanda republica",
+            "kiribati oceania", "bangladesh republica", "guinea bisau africa", "antigua y barbuda caribe",
+            "sol de mayo argentina", "sol de mayo uruguay", "sol naciente japon", "sol de vergina macedonia",
+            "sol de taiwan", "sol de filipinas", "sol de nepal", "sol de kazajistan", "sol de kirguistan",
+            "sol de namibia", "sol de ruanda", "sol de niger", "sol de malaui", "sol de kiribati",
+            "sol de ecuador", "sol de peru", "sol de bolivia", "sol de el salvador", "sol de nicaragua", "sol de costa rica"
+        ],
+    },
+    "gen-031": {
+        100: [
+            "capitan america", "iron man", "thor", "hulk", "viuda negra", "ojo de halcon",
+            "lobezno", "wolverine", "patrulla x", "x men", "los cuatro fantasticos", "4 fantasticos",
+            "daredevil", "punisher", "el castigador", "doctor extraño", "doctor strange",
+            "pantera negra", "deadpool", "masacre", "flash", "linterna verde", "aquaman",
+            "wonder woman", "mujer maravilla", "joker", "el joker", "harley quinn", "catwoman",
+            "liga de la justicia", "jovenes titanes", "teen titans", "spawn", "the crow", "el cuervo",
+            "judge dredd", "juez dredd", "conan", "conan el barbaro", "el guerrero del antifaz",
+            "el corsario de hierro", "trueno", "el principe valiente", "flash gordon", "mandrake",
+            "the phantom", "el hombre enmascarado", "tarzan", "dick tracy", "popeye",
+            "felix el gato", "betty boop", "krazy kat", "little nemo", "spirit", "the spirit",
+            "akira comic", "ghost in the shell manga", "dragon ball z", "one punch man manga",
+            "my hero academia manga", "haikyuu", "captain tsubasa", "saint seiya", "sailor moon",
+            "ranma 1 2", "inuyasha", "doraemon", "shin chan", "detective conan", "eva",
+            "el principe y la modista", "heartstopper", "solo leveling", "chainsaw man", "spy x family",
+            "el bosque de los suicidas" if False else "el vecindario", "paracuellos", "carlos gimenez",
+            "makoki", "el vibora", "anacleto agente secreto", "zipi y zape", "mortadelo y filemon",
+            "13 rue del percebe", "pepe gotera y otilio", "el botones sacarino", "rompetechos", "carpanta", "superlopez"
+        ],
+    },
+    "gen-035": {
+        100: [
+            "isis egipcia", "osiris egipcio", "horus egipcio", "anubis egipcio", "ra dios del sol",
+            "amun", "amun ra", "amon ra", "ptah dios", "thot dios", "seth dios", "bastet diosa",
+            "sekhmet diosa", "hathor diosa", "sobek dios", "maat diosa", "neftis diosa",
+            "apofis", "khepri", "khnum", "jnum", "khonsu", "min", "montu", "mut", "neith",
+            "nut diosa", "geb dios", "shu dios", "tefnut diosa", "bes dios", "taweret",
+            "zeus griego", "hera griega", "poseidon griego", "hades griego", "demeter griega",
+            "hestia griega", "atenea griega", "apolo griego", "artemisa griega", "ares griego",
+            "afrodita griega", "hefesto griego", "hermes griego", "dioniso griego", "persefone griega",
+            "odin nordico", "thor nordico", "loki nordico", "freya nordica", "freyr nordico",
+            "frigg nordica", "tyr nordico", "heimdall nordico", "baldur nordico", "hel nordica",
+            "fenrir lobo", "jormungandr serpiente", "sleipnir caballo", "valquirias", "einherjar",
+            "kraken monstruo", "ymir gigante", "surtr gigante", "mimir", "kvasir", "aegir",
+            "ran", "skadi", "njord", "idunn", "bragi", "ullr", "forseti", "vidar", "vali",
+            "quetzalcoatl", "tezcatlipoca", "huitzilopochtli", "tlaloc", "coatlicue", "inti",
+            "viracocha", "pachamama", "amaterasu", "susanoo", "tsukuyomi", "izanagi", "izanami",
+            "shiva", "vishnu", "brahma", "ganesha", "kali", "durga", "indra", "krishna", "rama",
+            "gilgamesh", "enkidu", "ishtar", "marduk", "tiamat", "anunnaki", "dagda", "morrigan", "lugh", "cuchulainn"
+        ],
+    },
+    "gen-038": {
+        100: [
+            "reyes catolicos", "isabel i de castilla", "fernando ii de aragon", "carlos v de alemania",
+            "felipe ii de españa", "felipe iv", "carlos iii", "isabel ii de españa", "alfonso xii",
+            "alfonso xiii", "juan carlos i", "cid campeador", "pelayo", "don pelayo",
+            "almanzor", "abderraman iii", "boabdil", "gonzalo fernandez de cordoba", "el gran capitan",
+            "alvaro de bazan", "miguel de cervantes saavedra", "lope de vega", "francisco de quevedo",
+            "luis de gongora", "calderon de la barca", "tirso de molina", "benito perez galdos",
+            "miguel de unamuno", "antonio machado", "juan ramon jimenez", "pablo neruda",
+            "gabriel garcia marquez", "mario vargas llosa", "octavio paz", "ernest hemingway",
+            "george orwell", "aldous huxley", "fyodor dostoevsky", "leo tolstoy", "franz kafka",
+            "marcel proust", "james joyce", "oscar wilde", "mary shelley", "edgar allan poe",
+            "mark twain", "julio verne", "jules verne", "h g wells", "agatha christie",
+            "arthur conan doyle", "j r r tolkien", "tolkien", "c s lewis", "stan lee",
+            "walt disney", "alfred hitchcock", "stanley kubrick", "steven spielberg", "martin scorsese",
+            "luis buñuel", "pedro almodovar", "akira kurosawa", "hayao miyazaki", "elvis presley",
+            "john lennon", "paul mccartney", "freddie mercury", "michael jackson", "david bowie",
+            "frank sinatra", "ludwig van beethoven", "wolfgang amadeus mozart", "johann sebastian bach",
+            "antonio vivaldi", "tchaikovsky", "chopin", "giuseppe verdi", "richard wagner",
+            "pablo picasso", "salvador dali", "joan miro", "diego velazquez", "francisco de goya",
+            "el greco", "bartolome esteban murillo", "joaquin sorolla", "vincent van gogh", "claude monet"
+        ],
+    },
+    "geo-029": {
+        100: [
+            "playa de bolonia", "playa de zahara", "playa del palmar", "playa de la barrosa",
+            "playa de los alemanes", "playa de valdevaqueros", "playa de los lances", "playa de la victoria",
+            "playa de la caleta", "playa de camposoto", "playa de sancti petri", "playa de roche",
+            "playa de reglan" if False else "playa de regla", "playa de bajo de guia", "playa de matalascañas",
+            "playa de mazagon", "playa de punta umbria", "playa de la antilla", "playa de islantilla",
+            "playa de isla canela", "playa de el rompido", "playa de calahonda", "playa de burriana",
+            "playa de maro", "playa de la herradura", "playa de salobreña", "playa de torrenueva",
+            "playa de aguadulce", "playa de san jose", "playa de las negras", "playa de aguamarga",
+            "playa de los genoveses", "playa de monsul", "playa de el playazo", "playa de vera",
+            "playa de bolnuevo", "playa de calblanque", "playa de san juan alicante", "playa del postiguet",
+            "playa de altea", "playa de moraira", "playa de denia", "playa de las marinas",
+            "playa de oliva", "playa de gandia", "playa de cullera", "playa de la patacona",
+            "playa de benicassim", "playa de oropesa", "playa de peñiscola", "playa del trabucador",
+            "playa de la pineda", "playa de altafulla", "playa de castelldefels", "playa de gava",
+            "playa de la barceloneta", "playa de nova icaria", "playa de bogatel", "playa de ocata",
+            "playa de calella", "playa de fenals", "playa de lloret", "playa de platja d aro",
+            "playa de palamos", "playa de tamariu", "playa de llafranc", "playa de calella de palafrugell",
+            "playa de aigua blava", "playa de sa tuna", "playa de pals", "playa de l escala", "playa de empuriabrava"
+        ],
+    },
+    "dep-001": {
+        100: [
+            "tenis individual", "tenis femenino", "tenis masculino", "tenis en pista cubierta",
+            "tenis sobre cesped", "padel indoor", "padel outdoor", "badminton femenino", "badminton masculino",
+            "voleibol femenino", "voleibol masculino", "voley playa masculino", "voley playa femenino",
+            "ping pong individual", "ping pong dobles", "tenis de mesa masculino", "tenis de mesa femenino",
+            "pickleball individual", "squash individual", "squash dobles", "fronton a mano",
+            "pelota a mano individual", "pelota a mano parejas", "cesta punta", "remonte", "pala corta",
+            "paleta cuero", "paleta goma maciza", "frontenis olimpico", "frontenis preolimpico",
+            "trinquete", "raspall", "cepillo", "escala y corda", "llargues valencianas",
+            "sepak takraw regu", "sepak takraw dobles", "hooverball", "peteca brasil", "indiaca alemana",
+            "frescobol playa", "matkot israel", "bossaball playa", "footvolley playa", "futvoley playa",
+            "teqball individual", "teqball dobles", "padbol individual", "padbol parejas",
+            "crossminton dobles", "speed badminton", "touch tennis", "platform tennis usa", "deck tennis",
+            "ring tennis", "tennikoit", "fistball femenino", "fistball masculino", "faustball alemania"
+        ],
+    },
+    "dep-013": {
+        100: [
+            "liga f", "copa de la reina", "supercopa de españa femenina", "supercopa de europa",
+            "europa conference league", "conference league", "coppa italia", "fa cup", "carabao cup",
+            "efl cup", "dfb pokal", "copa de francia", "coupe de france", "taca de portugal",
+            "copa del rey de baloncesto", "supercopa endesa", "liga endesa", "acb", "liga acb",
+            "euroliga femenina", "eurocup", "basketball champions league", "fiba world cup",
+            "mundial de baloncesto", "eurobasket femenino", "nba finals", "playoffs nba",
+            "world baseball classic", "serie del caribe", "major league soccer", "mls",
+            "copa de campeones de concacaf", "copa sudamericana conmebol", "finalissima",
+            "the championship", "torneo de seis naciones femenino", "super rugby", "top 14",
+            "premiership rugby", "champions cup de rugby", "world rugby sevens", "tour de flandes",
+            "amstel gold race", "flecha valona", "strade bianche", "tirreno adriatico",
+            "tour down under", "uae tour", "tour de romandia", "tour de suiza", "clasica de san sebastian",
+            "vuelta a burgos", "vuelta a andalucia", "ruta del sol", "gran premio de australia",
+            "gran premio de bahrein", "gran premio de miami", "gran premio de las vegas",
+            "gran premio de abu dabi", "gran premio de brasil", "gran premio de interlagos",
+            "gran premio de japon", "gran premio de suzuka", "gran premio de austria", "gran premio de hungria",
+            "gran premio de belgica", "gran premio de italia", "gran premio de los paises bajos", "rally de montecarlo"
+        ],
+    },
+    "gen-008": {
+        100: [
+            "mercadona sa", "carrefour españa", "lidl españa", "aldi españa", "dia españa",
+            "alcampo sa", "eroski s coop", "hipercor sa", "supercor sa", "el corte ingles supermercado",
+            "consum s coop", "ahorramas sa", "caprabo sa", "bonpreu esport" if False else "bonpreu esclat",
+            "supermercados gadisa", "supermercados froiz", "supermercados lupa", "coviran sca",
+            "spar españa", "condis supermercats", "supermercados bm", "bm supermercados", "uve",
+            "supermercados masymas", "hiperdino las palmas", "supermercados spar gran canaria",
+            "dino express", "hiperber alicante", "supermercados piedra", "supermercados deza",
+            "supermercados el jamon", "supermercados mas", "supermercados la despensa",
+            "supermercados sanchez romero", "supermercados alimerka", "supermercados familia",
+            "supermercados bonarea", "supermercados sorli", "supermercados plusfresc",
+            "supermercados valvi", "supermercados supeco", "supermercados charter",
+            "supermercados unide", "supermercados maxima" if False else "maxcoop españa",
+            "primaprix españa", "la sirena congelados", "hiper usera madrid", "supermercados gama",
+            "supermercados udaco", "supermercados clarel", "supermercados dialprix",
+            "supermercados economy cash", "supermercados vidal", "supermercados tifer",
+            "cash fresh andalucia", "makro españa", "costco españa", "costco madrid", "costco sevilla"
+        ],
+    },
+    "geo-024": {
+        100: [
+            "rio misuri", "rio orinoco", "rio parana", "rio zambeze", "rio mekong", "rio eufrates",
+            "rio tigris", "rio bravo", "rio grande", "rio columbia", "rio yukon", "rio mackenzie",
+            "rio san lorenzo", "rio hudson", "rio ohio", "rio arkansas", "rio tennessee",
+            "rio potomac", "rio delaware", "rio magdalena", "rio cauca", "rio atrato",
+            "rio uruguay", "rio paraguay", "rio pilcomayo", "rio bermejo", "rio salado",
+            "rio sao francisco", "rio tocantins", "rio araguaia", "rio madera", "rio purus",
+            "rio jurua", "rio tapajos", "rio xingu", "rio marañon", "rio ucayali", "rio urubamba",
+            "rio madre de dios", "rio desaguadero", "rio biobio", "rio loa", "rio maipo",
+            "rio maule", "rio limpopo", "rio orange", "rio senegal", "rio gambia", "rio volta",
+            "rio benue", "rio ubangi", "rio kasai", "rio okavango", "rio chari", "rio tana",
+            "rio juba", "rio shabelle", "rio jordan", "rio orontes", "rio indo", "rio brahmaputra",
+            "rio yamuna", "rio godavari", "rio krishna", "rio narmada", "rio irrawaddy",
+            "rio salween", "rio chao phraya", "rio amur", "rio lena", "rio yenisei", "rio obi",
+            "rio irtish", "rio kolyma", "rio syr daria", "rio amu daria", "rio tarim",
+            "rio shinano", "rio tone", "rio han", "rio yalu", "rio pasig", "rio murray", "rio darling"
+        ],
+    },
+    "geo-010": {
+        100: [
+            "rio duero", "rio tajo", "rio ebro", "rio guadalquivir", "rio guadiana", "rio miño",
+            "rio jucar", "rio segura", "rio turia", "rio pisuerga", "rio genil", "rio manzanares",
+            "rio jarama", "rio henares", "rio alberche", "rio tietar", "rio alagon", "rio tormes",
+            "rio esla", "rio carrion", "rio arlanzon", "rio arlanza", "rio adaja", "rio eresma",
+            "rio cinca", "rio segre", "rio gallego", "rio aragon", "rio jalon", "rio jiloca",
+            "rio guadalope", "rio huerva", "rio llobregat", "rio ter", "rio besos", "rio francoli",
+            "rio fluvia", "rio bidasoa", "rio nervion", "rio ibaizabal", "rio nalon", "rio narcea",
+            "rio sella", "rio navia", "rio eo", "rio deva", "rio cares", "rio besaya", "rio pas",
+            "rio ason", "rio sil", "rio cabe", "rio ulla", "rio tambre", "rio eume", "rio mandeo",
+            "rio limia", "rio guadalete", "rio barbate", "rio guadiaro", "rio guadalhorce",
+            "rio andarax", "rio almanzora", "rio guadalimar", "rio jandula", "rio guadiato",
+            "rio tinto", "rio odiel", "rio cabriel", "rio magro", "rio mijares", "rio palancia",
+            "rio vinalopo", "rio mundo", "rio zujar", "rio jabalon", "rio ciguela", "rio zancara",
+            "rio bullaque", "rio matachel", "rio ardila", "rio guadajoz", "rio corbones", "rio guadaira"
+        ],
+    },
+    "mus-028": {
+        100: [
+            "supersubmarina indie", "vetusta morla indie", "love of lesbian indie", "lori meyers indie",
+            "viva suecia indie", "arde bogota indie", "shinova indie", "sidonie indie", "dorian indie",
+            "izAl indie" if False else "second indie", "niños mutantes indie", "la habitacion roja indie",
+            "miss caffeina indie", "varry brava indie", "rufus t firefly indie", "leon benavente indie",
+            "el columpio asesino", "los punsetes", "la bien querida", "triangulo de amor bizarro",
+            "belako", "hinds", "cariño", "ginebras", "sexy zebras", "cala vento", "biznaga",
+            "camellos", "carolina durante", "alcala norte", "shego", "depresion sonora",
+            "parquesvr", "la plata", "mujeres", "novedades carminha", "cupido", "sen senra",
+            "rigoberta bandini", "zahara", "alizzz", "amaia romero", "natalia lacunza",
+            "maria arnal", "silvia perez cruz", "judit neddermann", "valeria castro",
+            "guitarricadelafuente", "baiuca", "rodrigo cuevas", "tanxugueiras", "xoel lopez",
+            "ivan ferreiro", "carlos sadness", "danny ocean" if False else "rayden", "marlon",
+            "veintiuno", "siloe", "la la love you", "morgan", "maika makovski", "tulsa",
+            "maria rodes", "anari", "delafe y las flores azules", "las flores azules",
+            "mishima", "manel", "els amics de les arts", "the tyets", "oques grasses", "figa flawas",
+            "mushka", "bad gyal" if False else "julieta", "siddhartha" if False else "el kanka",
+            "rozalen", "andres suarez", "marwan", "sidecars", "pereza", "leiva", "danza invisible" if False else "fito y fitipaldis"
+        ],
+    },
+    "geo-017": {
+        100: [
+            "desierto de namib", "desierto de kalahari", "desierto de atacama", "desierto de mojave",
+            "desierto de sonora", "desierto de chihuahua", "desierto de tabernas", "desierto de gobi",
+            "desierto de taklamakan", "desierto de thar", "desierto de arabia", "desierto de siria",
+            "desierto de judea", "desierto de negev", "desierto de sinai", "desierto de lut",
+            "desierto de karakum", "desierto de kizilkum", "desierto de sechura", "desierto de la tatacoa",
+            "desierto de la guajira", "desierto de danakil", "desierto de nubia", "desierto de libia",
+            "desierto de tenere", "desierto de bodele", "desierto de bayuda", "desierto de registan",
+            "desierto de cholistan", "desierto de simpson", "desierto de gibson", "desierto de tanami",
+            "gran desierto arenoso", "gran desierto de victoria", "desierto de sturt",
+            "desierto pintado", "desierto blanco", "desierto negro", "desierto de los monegros",
+            "desierto de las bardenas", "estepa de patagonia", "estepa de mongolia", "estepa de rusia",
+            "estepa de kazajistan", "estepa de ucrania", "estepa de hungria", "salar de uyuni",
+            "salar de atacama", "salar de coipasa", "salar del hombre muerto", "salar de arizaro",
+            "salar de etosha", "salar de makgadikgadi", "salar de bonneville", "salinas grandes",
+            "karoo", "nullarbor", "ordos", "badain jaran", "tengger", "algodones", "yuma",
+            "vizcaino", "altar", "mapimi", "patagonia arida", "puna de atacama", "monte desert",
+            "gran cuenca", "valle de la muerte", "wadi rum", "rub al jali", "nefud", "ad dahna",
+            "wahiba", "dasht e kavir", "dasht e lut", "rann de kutch", "erg chebbi", "erg chigaga"
+        ],
+    },
+    "dep-012": {
+        100: [
+            "stanley matthews 1956", "alfredo di stefano 1957", "raymond kopa 1958",
+            "alfredo di stefano 1959", "luis suarez 1960", "omar sivori 1961", "josef masopust 1962",
+            "lev yashin 1963", "denis law 1964", "eusebio 1965", "bobby charlton 1966",
+            "florian albert 1967", "george best 1968", "gianni rivera 1969", "gerd muller 1970",
+            "johan cruyff 1971", "franz beckenbauer 1972", "johan cruyff 1973", "johan cruyff 1974",
+            "oleg blokhin 1975", "franz beckenbauer 1976", "allan simonsen 1977", "kevin keegan 1978",
+            "kevin keegan 1979", "karl heinz rummenigge 1980", "karl heinz rummenigge 1981",
+            "paolo rossi 1982", "michel platini 1983", "michel platini 1984", "michel platini 1985",
+            "igor belanov 1986", "ruud gullit 1987", "marco van basten 1988", "marco van basten 1989",
+            "lothar matthaus 1990", "jean pierre papin 1991", "marco van basten 1992",
+            "roberto baggio 1993", "hristo stoichkov 1994", "george weah 1995", "matthias sammer 1996",
+            "ronaldo 1997", "zinedine zidane 1998", "rivaldo 1999", "luis figo 2000",
+            "michael owen 2001", "ronaldo 2002", "pavel nedved 2003", "andriy shevchenko 2004",
+            "ronaldinho 2005", "fabio cannavaro 2006", "kaka 2007", "cristiano ronaldo 2008",
+            "lionel messi 2009", "lionel messi 2010", "lionel messi 2011", "lionel messi 2012",
+            "cristiano ronaldo 2013", "cristiano ronaldo 2014", "lionel messi 2015",
+            "cristiano ronaldo 2016", "cristiano ronaldo 2017", "luka modric 2018",
+            "lionel messi 2019", "lionel messi 2021", "karim benzema 2022", "lionel messi 2023",
+            "rodri 2024", "ousmane dembele 2025", "ada hegerberg 2018", "megan rapinoe 2019",
+            "alexia putellas 2021", "alexia putellas 2022", "aitana bonmati 2023",
+            "aitana bonmati 2024", "aitana bonmati 2025", "rodrigo hernandez balon de oro"
+        ],
+    },
+    "gen-016": {
+        100: [
+            "100 montaditos españa", "vips españa", "foster hollywood españa", "ginos españa",
+            "la tagliatella españa", "tgb españa", "the good burger españa", "goiko españa",
+            "telepizza domicilio", "dominos pizza españa", "papa johns españa", "pizza hut españa",
+            "burger king auto", "mcdonalds auto", "kfc auto", "popeyes españa", "five guys españa",
+            "taco bell españa", "subway españa", "pans & company españa", "rodilla españa",
+            "starbucks españa", "dunkin coffee españa", "tim hortons españa", "costa coffee españa",
+            "santagloria coffee and bakery", "granier panaderia", "manolo bakes madrid",
+            "la sureña españa", "cerveceria lizarran", "udon noodle bar", "miss sushi españa",
+            "go sushing españa", "sushita cafe", "sibuya urban sushi", "kamado asian food",
+            "honest greens españa", "aloha poke españa", "poke house españa", "llaollao yogur",
+            "smooy yogur", "amorino helados", "haagen dazs españa", "baskin robbins españa",
+            "chocolaterias valor", "san gines chocolateria", "vicio burgers españa", "bacoa burger",
+            "timesburg barcelona", "hamburguesa nostra madrid", "the fitzgerald burger",
+            "hundred burgers valencia", "la pepita burger bar", "tierra burrito madrid",
+            "pepe taco", "cantina mariachi españa", "muerde la pasta buffet", "brasa y leña rodizio",
+            "grosso napoletano pizzeria", "ditaly pizzeria", "la mafia se sienta a la mesa",
+            "pomodoro pizza pasta", "little caesars españa", "carl s jr españa", "wendy s españa",
+            "shake shack", "in n out burger", "krispy kreme", "pret a manger", "wingstop", "nando s"
+        ],
+    },
+    "dep-002": {
+        100: [
+            "real madrid cf", "futbol club barcelona", "club atletico de madrid", "sevilla futbol club",
+            "valencia club de futbol", "real betis balompie", "athletic club bilbao", "real sociedad de futbol",
+            "villarreal club de futbol", "rcd espanyol de barcelona", "real club celta de vigo",
+            "real zaragoza sad", "real club deportivo de la coruña", "real sporting de gijon",
+            "real oviedo sad", "club atletico osasuna", "real valladolid cf", "getafe club de futbol",
+            "rayo vallecano de madrid", "girona futbol club", "union deportiva las palmas",
+            "club deportivo tenerife", "real club deportivo mallorca", "real racing club de santander",
+            "elche club de futbol", "real murcia club de futbol", "cadiz club de futbol",
+            "granada club de futbol", "malaga club de futbol", "union deportiva almeria",
+            "real club recreativo de huelva", "xerez club deportivo", "cordoba club de futbol",
+            "hercules de alicante", "club deportivo castellon", "levante union deportiva",
+            "union deportiva salamanca", "club deportivo numancia", "sociedad deportiva eibar",
+            "deportivo alaves", "club deportivo leganes", "sociedad deportiva huesca",
+            "albacete balompie", "burgos club de futbol", "club deportivo mirandes",
+            "sociedad deportiva ponferradina", "cultural y deportiva leonesa", "futbol club cartagena",
+            "racing club de ferrol", "sociedad deportiva amorebieta", "futbol club andorra",
+            "club deportivo eldense", "agrupacion deportiva alcorcon", "club de futbol fuenlabrada",
+            "union deportiva ibiza", "club deportivo lugo", "club deportivo badajoz",
+            "real union club", "centre d esports sabadell", "gimnastic de tarragona",
+            "unio esportiva lleida", "club deportivo alcoyano", "sociedad deportiva compostela",
+            "pontevedra club de futbol", "real jaen club de futbol", "club deportivo logrones",
+            "union deportiva logrones", "sociedad deportiva logrones", "barakaldo club de futbol",
+            "arenas club de getxo", "sestao river club", "unionistas de salamanca cf",
+            "real balompedica linense", "algeciras club de futbol", "atletico sanluqueño",
+            "antequera club de futbol", "marbella futbol club", "linares deportivo",
+            "ucam murcia cf", "yeclano deportivo", "club deportivo toledo", "club de futbol talavera",
+            "club deportivo guadalajara", "union balompédica conquense", "ub conquense", "atletico baleares"
+        ],
+    },
+    "mus-009": {
+        100: [
+            "don omar", "daddy yankee el cangri", "wisin", "yandel", "tegor" if False else "hector y tito",
+            "baby rasta y gringo", "trebol clan", "divino", "rakim y ken y", "nicky jam fenix",
+            "j balvin colores", "maluma papi juancho", "ozuna odisea", "karol g bichota",
+            "feid ferxxo", "ferxxo", "rauw alejandro saturno", "bad bunny yhlqmdlg",
+            "anuel aa real hasta la muerte", "myke towers easy money", "eladio carrion sauce boyz",
+            "bryant myers", "almighty", "miky woodz", "lary over", "kevin roldan", "reykon",
+            "andy rivera", "golpe a golpe", "wolfine", "manual turizo", "feid mor",
+            "quevedo donde quiero estar", "saiko sakura", "rvfv natsu", "omar montes la vida martir",
+            "morad mdlr", "beny jr", "kidd keo", "yung beef", "kaydy cain", "khaled",
+            "steve lean", "pimp flaco", "kinder malo", "cecilio g", "delaossa", "foyone",
+            "recycled j", "hard gz", "fernandocosta", "natos y waor", "ayax y prok",
+            "bad gyal", "la zowi", "ms nina", "judeline", "bb trickz", "mushkaa",
+            "ptazeta", "nicki nicole", "cazzu", "maria becerra", "emilia mernes", "tini stoessel",
+            "duki ssj", "ysy a", "neo pistea", "bhavi", "seven kayne", "lit killah",
+            "tiago pzk", "rusherking", "milo j", "trueno", "wos", "paulo londra", "khea",
+            "santa fe klan", "aleman", "gera mx", "peso pluma", "natanael cano", "junior h",
+            "fuerza regida", "grupo frontera", "eslabon armado", "oscar maydon", "gabito ballesteros"
+        ],
+    },
+    "geo-012": {
+        100: [
+            "parque natural de cazorla", "parque natural sierra de grazalema",
+            "parque natural cabo de gata nijar", "parque natural los alcornocales",
+            "parque natural del estrecho", "parque natural bahia de cadiz",
+            "parque natural breña y marismas de barbate", "parque natural sierra norte de sevilla",
+            "parque natural sierra de aracena y picos de aroche", "parque natural sierras subbeticas",
+            "parque natural sierra de hornachuelos", "parque natural sierra de cardeña y montoro",
+            "parque natural sierra de andujar", "parque natural despeñaperros",
+            "parque natural sierra magina", "parque natural sierra de baza",
+            "parque natural sierra de huetor", "parque natural sierras de tejeda almijara y alhama",
+            "parque natural montes de malaga", "parque natural sierra maria los velez",
+            "parque natural lagunas de ruidera", "parque natural alto tajo",
+            "parque natural serrania de cuenca", "parque natural hoces del cabriel",
+            "parque natural hoces del duraton", "parque natural hoces del riaza",
+            "parque natural cañon del rio lobos", "parque natural laguna negra",
+            "parque natural lago de sanabria", "parque natural fuentes del narcea",
+            "parque natural de somiedo", "parque natural de redes", "parque natural de ponga",
+            "parque natural las ubiñas la mesa", "parque natural de oyambre",
+            "parque natural dunas de liencres", "parque natural saja besaya",
+            "parque natural collados del ason", "parque natural de gorbeia",
+            "parque natural aizkorri aratz", "parque natural de aralar",
+            "parque natural de izki", "parque natural de valderejo",
+            "parque natural bardenas reales", "parque natural urbasa y andia",
+            "parque natural señorio de bertiz", "parque natural sierra y cañones de guara",
+            "parque natural posets maladeta", "parque natural valles occidentales",
+            "parque natural del moncayo", "parque natural de montserrat",
+            "parque natural del montseny", "parque natural cap de creus",
+            "parque natural aiguamolls de l emporda", "parque natural zona volcanica de la garrotxa",
+            "parque natural delta del ebro", "parque natural dels ports",
+            "parque natural de l albufera", "parque natural serra d irta",
+            "parque natural peñon de ifach", "parque natural del montgo",
+            "parque natural sierra de mariola", "parque natural serra calderona",
+            "parque natural sierra de espadan", "parque natural sierra espuña",
+            "parque natural calblanque", "parque natural fragas do eume",
+            "parque natural monte aloia", "parque natural baix limia serra do xures",
+            "parque natural arribes del duero", "parque natural batuecas sierra de francia",
+            "parque natural s albufera de mallorca", "parque natural de mondrago",
+            "parque natural ses salines", "parque natural s albufera des grau",
+            "parque rural de anaga", "parque rural de teno", "parque natural de jandia"
+        ],
+    },
+    "geo-009": {
+        100: [
+            "aguadulce almeria", "albolote", "albuñol", "alcala del valle", "alcaudete",
+            "alcolea", "alcolea del rio", "alfarnate", "algarrobo", "alhaurin de la torre malaga",
+            "alhendin", "aljaraque", "almargen", "almedinilla", "almendral" if False else "almogia",
+            "almonte huelva", "alora malaga", "alpandeire", "alquife", "arboleas",
+            "arcos de la frontera cadiz", "ardales malaga", "arenas del rey", "arjonilla",
+            "arjona", "armilla granada", "aroche", "arroyo del ojanco", "atalaya" if False else "atarfe granada",
+            "baeza jaen", "bailen jaen", "baena cordoba", "barbate cadiz", "beas", "beas de segura",
+            "bedmar", "begijar", "belmez cordoba", "benacazon", "benalup", "benalup casas viejas",
+            "benamaurel", "benamocarra", "benaojan", "benarraba", "benameji", "bormujos sevilla",
+            "bornos", "brenes", "burguillos sevilla", "cabra cordoba", "cala", "calañas",
+            "campillo de arenas", "campillos malaga", "caniles", "canyete" if False else "cañete la real",
+            "carcabuey", "cardeña", "carmona sevilla", "carrion de los cespedes", "casabermeja",
+            "casariche", "casares malaga", "castellar jaen", "castilblanco de los arroyos",
+            "castilleja de la cuesta", "castillo de locubin", "castril", "cazalilla", "chiclana de segura",
+            "chilluevar", "churriana de la vega", "cullar", "cullar vega", "doña mencia", "durcal",
+            "el bosque", "el campillo", "el coronil", "el cuervo de sevilla", "el gastor",
+            "el granado", "el madroño", "el pedroso", "el real de la jara", "el ronquillo",
+            "el rubio", "el saucejo", "el viso del alcor", "encinas reales", "espartinas sevilla",
+            "espejo cordoba", "espiel", "estepa sevilla", "fuengirola malaga", "fuente obejuna",
+            "fuente palmera", "fuente vaqueros", "galaroza", "gelves", "gerena", "gibraleon",
+            "gilena", "gines", "gorafe", "guadalcanal", "guadahortuna", "guaro", "herrera",
+            "higuera de la sierra", "hinojos", "huelma", "huetor santillan", "huetor tajar",
+            "huetor vega", "ibros", "illora", "iznalloz", "iznatoraf", "jimena jaen", "jodar jaen"
+        ],
+    },
+    "pel-013": {
+        100: [
+            "spencer tracy", "fredric march", "paul muni", "wallace beery", "victor mclaglen",
+            "emil jannings", "warner baxter", "george arliss", "lionel barrymore", "charles laughton",
+            "robert donat", "ray milland", "ronald colman", "broderick crawford", "jose ferrer",
+            "ernest borgnine", "rod steiger", "cliff robertson", "george c scott", "gene hackman",
+            "art carney", "peter finch", "jon voight", "claudette colbert", "ginger rogers",
+            "janet gaynor", "mary pickford", "norma shearer", "marie dressler", "helen hayes",
+            "luise rainer", "loretta young", "jane wyman", "judy holliday", "shirley booth",
+            "anna magnani", "joanne woodward", "susan hayward", "simone signoret", "patricia neal",
+            "julie christie", "louise fletcher", "diane keaton", "sally field", "sissy spacek",
+            "jessica lange", "cher", "shirley temple", "deanna durbin", "sonja henie",
+            "clara bow", "louise brooks", "rudolph valentino", "lon chaney", "john barrymore",
+            "douglas fairbanks", "roland young" if False else "leslie howard", "basil rathbone",
+            "claude rains", "peter lorre", "conrad veidt", "sydney greenstreet", "ward bond",
+            "walter brennan", "thomas mitchell", "van heflin", "karl malden", "edmond o brien",
+            "anthony franciosa", "lee j cobb", "e g marshall", "martin balsam", "jack warden",
+            "gene tierney", "ida lupino", "jean arthur", "irene dunne", "miriam hopkins",
+            "merle oberon", "rosalind russell", "myrna loy", "kay francis", "ann sheridan",
+            "yvonne de carlo", "paulette goddard", "rita hayworth", "cyd charisse", "eleanor powell"
+        ],
+    },
+    "gen-034": {
+        100: [
+            "seat 600 d", "seat 600 e", "seat 850 coupe", "seat 124 sport", "seat 127 cl",
+            "seat panda marbella", "seat marbella", "seat ibiza cupra", "seat leon cupra",
+            "renault 5 turbo", "renault 5 gt turbo", "renault clio williams", "renault alpine a110",
+            "alpine a110", "peugeot 205 turbo 16", "peugeot 205 rallye", "citroen 2cv charleston",
+            "citroen tiburon", "citroen ds 21", "citroen ax gt", "citroen saxo vts",
+            "volkswagen golf gti", "vw escarabajo", "volkswagen transporter", "vw t1", "vw t2",
+            "ford fiesta xr2", "ford escort cosworth", "ford sierra cosworth", "ford mustang fastback",
+            "ford gt40", "opel manta gte", "opel kadett gsi", "opel corsa gsi", "alfa romeo giulia",
+            "alfa romeo spider", "lancia delta hf integrale", "lancia 037", "fiat 500 abarth",
+            "fiat panda 4x4", "fiat uno turbo", "mini morris", "austin mini", "mini cooper s",
+            "bmw 2002", "bmw m3 e36", "bmw m3 e46", "bmw z3", "bmw r80gs", "bmw r1200gs",
+            "mercedes sl 300", "mercedes 300 sl", "mercedes w123", "porsche 911 carrera",
+            "porsche 911 turbo", "porsche 944", "porsche 928", "ferrari 288 gto", "ferrari f50",
+            "ferrari enzo", "lamborghini murcielago", "lamborghini gallardo", "bugatti type 35",
+            "bugatti veyron", "aston martin db4", "aston martin vantage", "jaguar xj220",
+            "toyota supra", "toyota celica", "toyota corolla ae86", "ae86", "toyota land cruiser",
+            "nissan skyline gt r", "nissan gtr", "nissan 350z", "mazda mx 5", "mazda rx 7",
+            "honda civic type r", "honda nsx", "honda s2000", "subaru impreza wrx",
+            "mitsubishi lancer evo", "suzuki samurai", "suzuki vitara", "harley davidson sportster",
+            "harley davidson fat boy", "vespa 150 s", "vespa px", "lambretta li 150",
+            "bultaco metralla", "bultaco frontera", "montesa enduro", "derbi fds", "derbi senda",
+            "rieju drac", "honda nsr 125", "yamaha tzr", "yamaha dt 80", "ducati 996", "ducati panigale"
+        ],
+    },
+    "mus-012": {
+        100: [
+            "chanel terrero", "blanca paloma ramos", "nebulossa zorra", "miki nunez",
+            "alfred y amaia", "amaia romero y alfred garcia", "ruth lorenzo dancing in the rain",
+            "pastora soler quedate conmigo", "edurne amanecer", "barei say yay",
+            "manel navarro do it for your lover", "blas canto voy a quedarme", "daniel diges algo pequeñito",
+            "soraya arnelas la noche es para mi", "rodolfo chikilicuatre baila el chiki chiki",
+            "d nash i love you mi vida", "las ketchup un blodymary", "son de sol brujeria",
+            "ramon del castillo", "beth rodellas" if False else "beth dime", "rosa lopez europe s living a celebration",
+            "david civera dile que la quiero", "serafin zubiri colgado de un sueño",
+            "lydia no quiero escuchar", "mikel herzog que voy a hacer sin ti",
+            "marcos llunas sin rencor", "carbonell" if False else "antonio carbonell ay que deseo",
+            "anabel conde vuelve conmigo", "alejandro abad ella no es ella",
+            "eva santamaria hombres", "serafin zubiri todo esto es la musica",
+            "sergio dalma bailar pegados", "azucar moreno bandido", "nina nacida para amar",
+            "la decada prodigiosa made in spain", "patricia kraus no estas solo",
+            "cadillac valentino", "paloma san basilio la fiesta termino", "bravo lady lady",
+            "remedios amaya quien maneja mi barca", "lucia el", "bacchelli y solo tu",
+            "trigo limpio quedate esta noche", "betty missiego su cancion", "jose velez bailemos un vals",
+            "micky enseñame a cantar", "braulio sobran las palabras", "sobran las palabras",
+            "sergio y estibaliz tu volveras", "peret canta y se feliz", "mocedades eres tu",
+            "jaime morey amanece", "amanece", "karina en un mundo nuevo", "julio iglesias gwendolyne",
+            "salome vivo cantando", "massiel la la la", "raphael hablemos del amor",
+            "raphael yo soy aquel", "conchita bautista que bueno que bueno", "los tnt caracola",
+            "victor balaguer llaman a la puerta", "conchita bautista estando contigo",
+            "la venda miki", "eaea blanca paloma", "zorra nebulossa", "slomo chanel",
+            "es solo musica", "esa diva melody", "melody esa diva", "dime beth", "eres tu mocedades",
+            "bailar pegados sergio dalma", "vivo cantando salome", "la la la massiel",
+            "bandido azucar moreno", "la fiesta termino paloma san basilio", "yo soy aquel raphael",
+            "gwendolyne julio iglesias", "en un mundo nuevo karina", "quien maneja mi barca remedios amaya"
+        ],
+    },
+    "mus-011": {
+        100: [
+            "tiesto", "armin van buuren", "paul oakenfold", "sasha", "john digweed", "hernan cattaneo",
+            "nick warren", "james zabiela", "danny tenaglia", "sander kleinenberg", "steve lawler",
+            "hot since 82", "patrick topping", "green velvet", "claude vonstroke", "justin martin",
+            "shiba san", "claptone", "purple disco machine", "bob sinclar", "martin solveig",
+            "roger sanchez", "erick morillo", "axwell", "sebastian ingrosso", "steve angello",
+            "eric prydz", "deadmau5", "kaskade", "porter robinson", "madeon", "zedd", "galantis",
+            "clean bandit", "rudimental", "pendulum", "chase and status", "andy c", "sub focus",
+            "wilkinson", "netsky", "noisia", "calyx y teebee", "goldie", "ltj bukem", "roni size",
+            "shy fx", "dillinja", "high contrast", "hybrid minds", "camo y krooked", "knife party",
+            "excision", "subtronics", "svdden death", "marshmello", "slushii", "jauz", "nghtmre",
+            "slander", "seven lions", "illenium", "griz", "gramatik", "pretty lights", "bassnectar",
+            "tipper", "shpongle", "infected mushroom", "vini vici", "astrix", "neelix", "paul van dyk",
+            "markus schulz", "aly and fila", "gareth emery", "andrew rayel", "ilan bluestone",
+            "ben bohmer", "christian loffler", "kiasmos", "olafur arnalds" if False else "moderat",
+            "apparat", "modeselektor", "ellen allien", "miss kittin", "the hacker", "boys noize",
+            "tiga", "ete" if False else "etienne de crecy", "cassius", "alan braxe", "fred falke",
+            "dj falcon", "tomas bangalter", "thomas bangalter", "guy manuel de homem christo"
+        ],
+    },
+    "mus-030": {
+        100: [
+            "enanitos verdes", "soda stereo argentina", "mana mexico", "caifanes mexico",
+            "cafe tacvba mexico", "molotov mexico", "babasonicos argentina", "zoe mexico",
+            "fobia mexico", "maldita vecindad", "panteon rococo", "inspector mexico",
+            "los autenticos decadentes", "los fabulosos cadillacs", "patricio rey", "indio solari",
+            "skay beilinson", "gustavo cerati", "zeta bosio", "charly alberti", "charly garcia",
+            "fito paez", "andres calamaro", "luis alberto spinetta", "leon gieco", "pedro aznar",
+            "seru giran", "sui generis", "almendra", "pescado rabioso", "vox dei", "manal",
+            "los gatos", "papo" if False else "pappo", "riff", "v8", "hermetica", "almafuerte",
+            "rata blanca", "horcas", "a n i m a l", "carajo", "catupecu machu", "massacre",
+            "peligrosos gorriones", "brujeria" if False else "babasónicos", "el otro yo", "fun people",
+            "todos tus muertos", "actitud maria marta", "illya kuryaki and the valderramas",
+            "ikv", "dante spinetta", "emmanuel horvilleur", "vicentico", "kevin johansen",
+            "el mato a un policia motorizado", "bandalos chinos", "ustedes señamelon" if False else "ustedes señalenlo",
+            "conociendo rusia", "indios", "peces raros", "marilina bertoldi", "eruca sativa",
+            "barbi recanati", "juanse", "ratones paranoicos", "turf", "viejas locas", "intoxicados",
+            "callejeros", "la renga", "los piojos", "ciro y los persas", "divididos", "las pelotas",
+            "sumo", "luca prodan", "virus", "federico moura", "abuelos de la nada", "miguel abuelo",
+            "los prisioneros", "jorge gonzalez", "la ley", "beto cuevas", "los tres", "los bunkers",
+            "chancho en piedra", "lucybell", "pettinnellis" if False else "pettinellis",
+            "gepe", "javiera mena", "alex anwandter", "francisca valenzuela", "mon laferte",
+            "camila moreno", "cuarteto de nos", "la vela puerca", "no te va gustar", "buitres",
+            "los estomagos", "el peyote asesino", "aterciopelados", "juanes", "shakira",
+            "carlos vives", "fonseca", "bomba estereo", "superlitio", "1280 almas", "la derecha",
+            "morat", "monsieur perine", "rawayana", "caramelos de cianuro", "desorden publico"
+        ],
+    },
+    "pel-030": {
+        100: [
+            "robert downey junior", "chris pine", "zachary quinto", "karl urban", "simon pegg",
+            "nick frost", "edgar wright" if False else "martin freeman", "richard armitage",
+            "orlando bloom", "viggo mortensen", "sean bean", "sean astin", "elijah wood",
+            "andy serkis", "ian mckellen", "christopher lee", "hugo weaving", "cate blanchett",
+            "liv tyler", "miranda otto", "daniel radcliffe", "rupert grint", "emma watson",
+            "tom felton", "gary oldman", "alan rickman", "maggie smith", "helena bonham carter",
+            "kenneth branagh", "jason isaacs", "david tennant", "matt smith", "karen gillan",
+            "brie larson", "scarlett johansson", "elizabeth olsen", "jeremy renner", "paul rudd",
+            "evangeline lilly", "sebastian stan", "anthony mackie", "tom hiddleston", "benedict wong",
+            "jon bernthal", "charlie cox", "vincent d onofrio", "krysten ritter", "david harbour",
+            "millie bobby brown", "finn wolfhard", "sadie sink", "joe keery", "natalia dyer",
+            "pedro pascal", "bella ramsey", "oscar isaac", "diego luna", "gael garcia bernal",
+            "diego boneta", "salma hayek", "eiza gonzalez", "demian bichir", "benicio del toro",
+            "ricardo darin", "leonardo sbaraglia", "guillermo francella", "peter lanzani",
+            "chino darin", "tomas fonzi" if False else "rodrigo de la serna", "eduardo noriega",
+            "fele martinez", "ernesto alterio", "malena alterio", "najwa nimri", "alberto ammann",
+            "karra elejalde", "antonio de la torre", "javier gutierrez", "hovik keuchkerian",
+            "anna castillo", "macarena gomez", "inma cuesta", "aura garrido", "veronica echegui",
+            "clara lago", "blanca suarez", "maria valverde", "adriana ugarte", "alba flores",
+            "itziar ituño", "alvaro morte", "jaime lorente", "miguel herran", "aron piper"
+        ],
+    },
+    "mus-025": {
+        100: [
+            "smells like teen spirit nirvana", "come as you are", "lithium", "heart shaped box",
+            "in bloom", "bohemian rhapsody queen", "another one bites the dust", "we will rock you",
+            "imagine john lennon", "hey jude beatles", "let it be beatles", "yesterday beatles",
+            "come together", "here comes the sun", "help", "twist and shout", "stairway to heaven",
+            "whole lotta love", "kashmir", "black dog", "immigrant song", "hotel california eagles",
+            "sweet child o mine", "welcome to the jungle", "paradise city", "knockin on heaven s door",
+            "november rain", "billie jean michael jackson", "thriller michael jackson",
+            "beat it michael jackson", "smooth criminal", "bad", "black or white", "man in the mirror",
+            "like a prayer madonna", "material girl", "vogue madonna", "hung up", "la isla bonita",
+            "i will always love you", "i wanna dance with somebody", "greatest love of all",
+            "my heart will go on", "because you loved me", "the power of love",
+            "rolling in the deep", "someone like you", "set fire to the rain", "skyfall", "hello adele",
+            "shape of you", "perfect", "thinking out loud", "bad habits", "castle on the hill",
+            "blinding lights", "starboy", "save your tears", "the hills", "cant feel my face",
+            "uptown funk", "24k magic", "just the way you are", "grenade", "locked out of heaven",
+            "poker face", "bad romance", "just dance", "born this way", "shallow", "telephone",
+            "toxic", "baby one more time", "oops i did it again", "gimme more", "womanizer",
+            "crazy in love", "single ladies", "halo", "formation", "irreplaceable",
+            "umbrella", "diamonds", "we found love", "only girl", "work", "rude boy",
+            "shake it off", "blank space", "love story", "anti hero", "you belong with me", "cruel summer",
+            "levitating", "dont start now", "new rules", "physical", "houdini",
+            "flowers", "wrecking ball", "party in the usa", "we cant stop",
+            "drivers license", "good 4 u", "vampire", "bad guy", "happier than ever", "birds of a feather",
+            "as it was", "watermelon sugar", "sign of the times", "adore you", "golden"
+        ],
+    },
+    "gen-003": {
+        100: [
+            "sabadell barcelona", "sagunto valencia", "salamanca ciudad", "salou tarragona",
+            "salt girona", "san bartolome lanzarote", "san fernando cadiz", "san javier murcia",
+            "san sebastian donostia", "sanlucar de barrameda cadiz", "sant boi", "sant cugat",
+            "sant feliu de guixols", "sant joan d alacant", "sant joan de vilatorrada",
+            "sant pere pescador", "sant pol de mar", "sant quirze del valles", "sant vicenc de montalt",
+            "santa coloma de farners", "santa coloma de queralt", "santa cristina de la polvorosa",
+            "santa cruz de la palma", "santa cruz de mudela ciudad real", "santa cruz de tenerife",
+            "santa eularia des riu", "santa lucia de tirajana", "santa margarida de montbui",
+            "santa maria de palautordera", "santa perpètua" if False else "santa susanna",
+            "santander cantabria", "santiago de alcantara", "santiago de calatrava",
+            "santiago de la espada", "santiago del teide tenerife", "santiago millan" if False else "santillana del mar",
+            "santisteban del puerto", "santo domingo de silos", "santo estevo de ribas de sil" if False else "santona",
+            "santpedor barcelona", "santurtzi vizcaya", "sanxenxo pontevedra", "sariñena huesca",
+            "sarria lugo", "sastago zaragoza", "saucelle salamanca", "sax alicante", "sedavi valencia",
+            "segorbe castellon", "segovia capital", "sellent", "selva mallorca", "senija",
+            "sepulveda segovia", "seron almeria", "seros lleida", "serrada valladolid",
+            "sestao vizcaya", "setenil de las bodegas cadiz", "sevilla capital", "siero asturias",
+            "siguenza guadalajara", "silla valencia", "silleda pontevedra", "simancas valladolid",
+            "sineu mallorca", "siruela badajoz", "sisante cuenca", "sitges barcelona",
+            "soba cantabria", "sober lugo", "socovos albacete", "socuellamos ciudad real",
+            "solana de los barros", "solares", "soller mallorca", "solsona lleida", "somiedo asturias",
+            "son servera mallorca", "sondika vizcaya", "soneja castellon", "sonseca toledo",
+            "sorbas almeria", "soria capital", "sort lleida", "sot de chera", "sotillo de la adrada",
+            "soto del barco", "soto del real madrid", "suances cantabria", "sueca valencia",
+            "sumacarcer valencia", "suria barcelona", "sabiote", "sacramenia segovia",
+            "sada a coruña", "saelices cuenca", "sahagun leon", "salas asturias", "salas de los infantes",
+            "salceda de caselas pontevedra", "saldaña palencia", "salinas asturias", "sallent de gallego",
+            "salmeron guadalajara", "salobreña granada", "salvaterra de miño pontevedra",
+            "salvatierra alava", "samaniego alava", "san adrian navarra", "san agustin del guadalix",
+            "san andres del rabanedo leon", "san asensio la rioja", "san clemente cuenca"
+        ],
+    },
+    "mus-014": {
+        100: [
+            "nacha pop la chica de ayer", "alaska y los pegamoides", "alaska y dinarama",
+            "radio futura escuela de calor", "mecano hoy no me puedo levantar", "hombres g devuelveme a mi chica",
+            "los secretos dejame", "gabinete caligari camino soria", "la union lobo hombre en paris",
+            "duncan dhu cien gaviotas", "el ultimo de la fila insurrecion", "heroes del silencio entre dos tierras",
+            "loquillo cadillac solitario", "baron rojo los rockeros van al infierno",
+            "obus va a estallar el obus", "leño maneras de vivir", "rosendo mercado",
+            "barricada en blanco y negro", "la polla records ellos dicen mierda", "siniestro total",
+            "golpes bajos malos tiempos para la lirica", "aerolineas federales", "paralisis permanente",
+            "kaka de luxe", "os resentidos", "los elegantes", "los rebeldes", "los nikis",
+            "los inhumanos", "los toreros muertos", "las vulpes", "eskorbuto", "cicatriz",
+            "kortatu", "negu gorriak", "la guardia cuando brille el sol", "danza invisible sabor de amor",
+            "seguridad social chiquilla", "los rodriguez sin documentos", "celtas cortos 20 de abril",
+            "revolver el roce de tu piel", "modestia aparte", "tino casal eloisa", "antonio vega",
+            "enrique urquijo", "santiago auseron", "carlos berlanga", "olivido gara", "ana torroja",
+            "nacho cano", "jose maria cano", "jaime urrutia", "mikel erentxun", "manolo garcia",
+            "quimi portet", "pablo carbonell", "javier gurruchaga", "orquesta mondragon",
+            "azul y negro", "aviador dro", "esclarecidos", "decima victima", "derribos arias",
+            "glutamato ye ye", "las chinas", "bernardo bonezzi", "zombies groenlandia", "la mode",
+            "paraiso para ti", "burning que hace una chica como tu", "mama chicas de colegio",
+            "pistones el pistolero", "rubi y los casinos", "ciudad jardin", "objetivo birmania",
+            "ole ole no controles", "vicky larraz", "marta sanchez desesperada", "presuntos implicados",
+            "sole gimenez", "complices es por ti", "luz casal pienso en ti", "tam tam go",
+            "los refrescos aqui no hay playa", "un pingüino en mi ascensor", "la frontera el limite",
+            "091", "los enemigos", "surfin bichos", "el niño gusano", "los sencillos", "ella baila sola",
+            "greta y los garbo", "viceversa", "camela lagrimas de amor", "tequila salta", "miguel rios bienvenidos"
+        ],
+    },
+    "dep-026": {
+        100: [
+            "maradona el pibe", "pele o rei", "cruyff el flaco", "zidane zizou", "ronaldo o fenomeno",
+            "messi la pulga", "cristiano ronaldo bicho", "mbappe tortuga", "neymar jr",
+            "benzema karim", "modric luka", "kroos toni", "lewandowski robert", "suarez luis",
+            "aguero kun", "di maria angel", "tevez carlos", "mascherano javier", "veron juan sebastian",
+            "crespo hernan", "saviola javier", "ortega ariel", "redondo fernando", "simeone diego",
+            "zanetti javier", "ayala roberto", "samuel walter", "sorin juan pablo", "cambiaso" if False else "cambiasso esteban",
+            "milito diego", "higuain gonzalo", "dybala paulo", "lautaro martinez", "julian alvarez",
+            "enzo fernandez", "mac allister alexis", "emiliano martinez", "dibu martinez",
+            "romario farias", "bebeto", "taffarel", "dida", "julio cesar", "alisson", "ederson",
+            "lucio", "juan", "maicon", "gilberto silva", "ze roberto", "juninho pernambucano",
+            "emerson", "adriano", "robinho", "alexandre pato", "casemiro", "fabinho", "marquinhos",
+            "rodrygo", "raphinha", "alisson becker", "vini jr", "roberto firmino", "gabriel jesus",
+            "philippe coutinho", "thiago silva", "neymar da silva", "david luiz", "dunga", "careca",
+            "falcao paulo roberto", "cerezo toninho", "eder", "jairzinho", "tostao", "rivelino",
+            "gerson", "didí", "didi", "vava", "zagallo", "gilmar", "djalma santos", "bellini",
+            "francescoli enzo", "recoba alvaro", "montero paolo", "lugano diego", "godin diego",
+            "gimenez jose maria", "valverde fede", "darwin nuñez", "obdulio varela", "schiaffino",
+            "ghiggia", "alcides ghiggia", "hector scarone", "pedro rocha", "ruben sosa",
+            "valderrama pibe", "asprilla faustino", "higuita rene", "cordoba oscar", "yepes mario",
+            "cuadrado juan", "luis diaz", "navas keylor", "chicharito hernandez", "blanco cuauhtemoc"
+        ],
+    },
+    "dep-009": {
+        100: [
+            "kobe", "jordan", "lebron", "magic", "bird", "kareem", "shaq", "curry", "durant",
+            "duncan", "nowitzki", "garnett", "iverson", "nash", "wade", "barkley", "malone",
+            "stockton", "olajuwon", "robinson", "pippen", "rodman", "isiah thomas", "dr j",
+            "chamberlain", "russell", "oscar robertson", "jerry west", "ewing", "reggie miller",
+            "clyde drexler", "dominique wilkins", "chris mullin", "tim hardaway", "mitch richmond",
+            "grant hill", "penny hardaway", "alonzo mourning", "dikembe mutombo", "chris webber",
+            "gary payton", "shawn kemp", "kevin johnson", "dan majerle", "mark price", "brad daugherty",
+            "glen rice", "larry johnson", "steve smith", "detlef schrempf", "rik smits",
+            "tony kukoc", "vlade divac", "peja stojakovic", "drazen petrovic", "arvydas sabonis",
+            "dino radja", "zarko paspalj", "aleksandar djordjevic", "predrag danilovic",
+            "dejan bodiroga", "zeljko rebraca", "sarunas marciulionis", "arturas karnisovas",
+            "ricardo pittis", "gregor fucka", "carlton myers", "andrea meneghin", "danilo gallinari",
+            "marco belinelli", "luigi datome", "nicolo melli", "antoine rigaudeau", "boris diaw",
+            "mickael pietrus", "nicolas batum", "evan fournier", "rudy gobert", "victor wembanyama",
+            "tony parker", "nando de colo", "thomas heurtel", "guerschon yabusele",
+            "nikola jokic", "luka doncic", "goran dragic", "bogdan bogdanovic", "vasilije micic",
+            "milos teodosic", "giannis antetokounmpo", "nikos galis", "panagiotis giannakis",
+            "theodoros papaloukas", "dimitris diamantidis", "vassilis spanoulis", "georgios printezis",
+            "kostas sloukas", "pau gasol", "marc gasol", "juan carlos navarro", "rudy fernandez",
+            "sergio llull", "sergio rodriguez", "ricky rubio", "felipe reyes", "jose manuel calderon"
+        ],
+    },
+    "dep-008": {
+        100: [
+            "max verstappen", "lewis hamilton", "fernando alonso", "charles leclerc", "carlos sainz",
+            "lando norris", "oscar piastri", "george russell", "kimi antonelli", "sergio perez",
+            "pierre gasly", "esteban ocon", "alex albon", "yuki tsunoda", "liam lawson",
+            "nico hulkenberg", "gabriel bortoleto", "oliver bearman", "isack hadjar", "jack doohan",
+            "franco colapinto", "lance stroll", "valtteri bottas", "kevin magnussen", "zhou guanyu",
+            "daniel ricciardo", "sebastian vettel", "kimi raikkonen", "jenson button", "nico rosberg",
+            "michael schumacher", "ayrton senna", "alain prost", "niki lauda", "nelson piquet",
+            "nigel mansell", "damon hill", "jacques villeneuve", "mika hakkinen", "juan manuel fangio",
+            "jim clark", "jackie stewart", "emerson fittipaldi", "jochen rindt", "james hunt",
+            "gilles villeneuve", "marc marquez", "jorge martin", "pecco bagnaia", "fabio quartararo",
+            "pedro acosta", "alex marquez", "maverick viñales", "aleix espargaro", "joan mir",
+            "alex rins", "enea bastianini", "marco bezzecchi", "brad binder", "jack miller",
+            "miguel oliveira", "johann zarco", "raul fernandez", "augusto fernandez", "fermin aldeguer",
+            "valentino rossi", "jorge lorenzo", "dani pedrosa", "casey stoner", "nicky hayden",
+            "sete gibernau", "alex criville", "carlos checa", "toni elias", "angel nieto",
+            "mick doohan", "wayne rainey", "kevin schwantz", "eddie lawson", "freddie spencer",
+            "giacomo agostini", "mike hailwood", "john surtees", "barry sheene", "kenny roberts",
+            "loris capirossi", "max biaggi", "marco simoncelli", "andrea dovizioso", "alvaro bautista"
+        ],
+    },
+    "geo-021": {
+        100: [
+            "canal de suez egipto", "canal de panama america", "estrecho de gibraltar españa",
+            "estrecho del bosforo turquia", "estrecho de dardanelos", "estrecho de ormuz iran",
+            "estrecho de malaca asia", "estrecho de bering rusia", "estrecho de magallanes chile",
+            "canal de la mancha europa", "paso de drake antartida", "estrecho de bab el mandeb",
+            "estrecho de taiwan china", "estrecho de corea", "estrecho de tsushima", "estrecho de mesina italia",
+            "estrecho de bonifacio", "canal de otranto", "estrecho de kerch", "canal de corinto grecia",
+            "canal de kiel alemania", "estrecho de skagerrak", "estrecho de kattegat", "estrecho de oresund",
+            "estrecho de dinamarca", "estrecho de davis", "estrecho de hudson", "estrecho de florida",
+            "canal de yucatan", "paso de los vientos", "canal de la mona", "canal de mozambique",
+            "estrecho de tiran", "estrecho de palk", "estrecho de torres", "estrecho de bass",
+            "estrecho de cook nueva zelanda", "estrecho de foveaux", "estrecho de la sonda",
+            "estrecho de lombok", "estrecho de makassar", "estrecho de singapur", "estrecho de luzon",
+            "estrecho de tsugaru", "estrecho de la perouse", "estrecho de tartaria", "paso de calais",
+            "estrecho de dover", "canal de san jorge", "canal del norte irlanda", "estrecho de menai",
+            "pentland firth escocia", "gran belt dinamarca", "pequeño belt", "estrecho de irbe",
+            "estrecho de kara", "estrecho de vilkitsky", "estrecho de juan de fuca", "canal beagle chile",
+            "estrecho de le maire", "canal chacao", "canal de sicilia", "estrecho de malta",
+            "canal de castilla", "canal du midi", "canal de erie", "canal de san lorenzo",
+            "canal de welland", "estrecho de mackinac", "estrecho de cabot", "estrecho de belle isle",
+            "estrecho de lancaster", "estrecho de nares", "estrecho de mcclure", "canal imperial de aragon",
+            "canal de isabel ii" if False else "estrecho de rande", "estrecho de rande vigo",
+            "estrecho de tirreno" if False else "canal de piombino", "canal de elba", "canal de santa barbara",
+            "estrecho de georgia canada", "estrecho de johnstone", "estrecho de hecate", "estrecho de shelikof"
+        ],
+    },
+    "geo-004": {
+        100: [
+            "cordillera de los andes", "cordillera del himalaya", "cordillera de los alpes",
+            "cordillera de los pirineos", "montañas rocosas america", "cordillera del caucaso",
+            "cordillera del karakorum", "cordillera del atlas", "montes urales rusia",
+            "montes carpatos", "montes apalaches", "montes escandinavos", "alpes suizos",
+            "alpes franceses", "alpes italianos", "alpes austriacos", "alpes julianos",
+            "alpes dinaricos", "montes balcanes", "montes rodope", "montes tauro", "montes ponticos",
+            "montes zagros", "montes elburz", "altai mongolia", "tian shan asia", "pamir asia",
+            "kunlun", "montes kunlun", "ghats occidentales", "ghats orientales", "drakensberg africa",
+            "gran cordillera divisoria", "alpes del sur", "alpes neozelandeses", "montañas transantarticas",
+            "sierra madre occidental", "sierra madre oriental", "sierra madre del sur",
+            "cordillera de las cascadas", "sierra nevada california", "cordillera de alaska",
+            "cordillera brooks", "montes apeninos", "apeninos", "macizo central frances",
+            "vosgos", "selva negra", "jura", "montes tatras", "tatras", "monte blanc",
+            "pico everest", "pico k2", "monte kangchenjunga", "monte lhotse", "monte makalu",
+            "monte cho oyu", "monte dhaulagiri", "monte manaslu", "monte nanga parbat",
+            "monte annapurna", "monte shishapangma", "monte aconcagua", "monte ojos del salado",
+            "monte pissis", "monte mercedario", "monte huascaran", "monte illimani", "monte sajama",
+            "monte chimborazo", "volcan cotopaxi", "volcan popocatepetl", "volcan iztaccihuatl",
+            "pico de orizaba", "citlaltepetl", "monte denali", "monte mckinley", "monte logan",
+            "monte elbrus", "monte kilimanjaro", "monte kenya", "monte meru", "monte toubkal",
+            "volcan teide", "pico del teide", "pico mulhacen", "pico aneto", "monte perdido",
+            "pico veleta", "pico almanzor", "torre cerredo", "naranjo de bulnes", "picu urriellu",
+            "volcan vesubio", "volcan etna", "volcan stromboli", "volcan krakatoa", "volcan tambora",
+            "volcan fuji", "monte fuji", "volcan kilauea", "volcan mauna loa", "volcan mauna kea"
+        ],
+    },
+    "geo-006": {
+        100: [
+            "oceano atlantico norte", "oceano atlantico sur", "oceano pacifico norte",
+            "oceano pacifico sur", "oceano indico sur", "oceano glacial artico", "oceano glacial antartico",
+            "oceano austral", "mar mediterraneo occidental", "mar mediterraneo oriental",
+            "mar de alboran españa", "mar balear españa", "mar cantabrico españa",
+            "golfo de vizcaya españa", "golfo de leon francia", "golfo de genova italia",
+            "golfo de napoles", "golfo de salerno", "golfo de taranto italia", "golfo de venecia",
+            "golfo de trieste", "golfo de corinto", "golfo saronico", "golfo de salónica",
+            "golfo de esmirna", "golfo de antalya", "golfo de alejandreta", "golfo de sirte libia",
+            "golfo de gabes tunez", "golfo de rosas", "golfo de valencia españa", "golfo de alicante",
+            "golfo de mazarron", "golfo de almeria", "golfo de cadiz españa", "golfo de artabro",
+            "golfo de guinea africa", "golfo de aden yemen", "golfo de oman", "golfo persico asia",
+            "golfo de bengala india", "golfo de tailandia asia", "golfo de tonkin vietnam",
+            "golfo de carpentaria australia", "golfo de spencer", "gran bahia australiana",
+            "golfo de alaska america", "golfo de california mexico", "mar de cortez mexico",
+            "golfo de tehuantepec mexico", "golfo de mexico america", "golfo de honduras",
+            "golfo de fonseca", "golfo de panama", "golfo de uraba", "golfo de darien",
+            "golfo de venezuela", "golfo de paria", "golfo de guayaquil", "golfo de penas",
+            "golfo san matias", "golfo san jorge", "golfo de san lorenzo canada", "bahia de hudson canada",
+            "bahia de james", "bahia de unGava", "bahia de fundy canada", "bahia de baffin",
+            "mar de labrador", "mar de irminger", "mar de groenlandia", "mar de noruega",
+            "mar de barents", "mar blanco rusia", "mar de kara rusia", "mar de laptev rusia",
+            "mar de siberia oriental", "mar de chukotka", "mar de beaufort", "mar de bering",
+            "mar de ojotsk", "mar del japon", "mar amarillo", "mar de china oriental",
+            "mar de china meridional", "mar de filipinas", "mar de sulu", "mar de celebes",
+            "mar de molucas", "mar de banda", "mar de flores", "mar de java", "mar de timor", "mar de arafura"
+        ],
+    },
+    "geo-022": {
+        100: [
+            "alcala de guadaira", "alcantarilla", "alcañiz", "alcobendas", "alcorcon", "alcoy",
+            "algeciras", "algemesi", "alhaurin de la torre", "almansa", "almendralejo", "almonte",
+            "almuñecar", "alzira", "amposta", "andujar", "antequera", "aranjuez", "aranda de duero",
+            "arcos de la frontera", "arganda del rey", "arona", "arrecife", "artà", "arta",
+            "astorga", "aviles", "ayamonte", "azpeitia", "badalona", "baeza", "baena",
+            "barakaldo", "barbate", "barbastro", "basauri", "baza", "beasain", "bejar",
+            "benalmadena", "benavente", "benicarlo", "benidorm", "bergara", "betanzos",
+            "blanes", "boadilla del monte", "bormujos", "burriana", "cabra", "calafell",
+            "calahorra", "calatayud", "calp", "calpe", "camargo", "cambrils", "cangas",
+            "cangas de onis", "caravaca de la cruz", "carballo", "carmona", "cartagena",
+            "casares", "castelldefels", "castro urdiales", "catarroja", "cerdanyola del valles",
+            "chiclana de la frontera", "cieza", "ciudad rodrigo", "ciutadella", "collado villalba",
+            "colmenar viejo", "conil de la frontera", "coria del rio", "cornella de llobregat",
+            "coslada", "crevillent", "cullera", "daimiel", "denia", "don benito", "dos hermanas",
+            "durango", "ecija", "eibar", "ejea de los caballeros", "el ejido", "el prat de llobregat",
+            "el puerto de santa maria", "el vendrell", "elche", "elda", "elx", "errenteria",
+            "esplugues de llobregat", "estella", "estepona", "ferrol", "figueres", "fuengirola",
+            "fuenlabrada", "galdakao", "gandia", "gava", "gernika", "getafe", "getxo",
+            "gijon", "granollers", "guadix", "haro", "hellin", "hospitalet de llobregat",
+            "ibiza", "igualada", "inca", "irun", "jaca", "jativa", "javea", "jerez de la frontera",
+            "jumilla", "la laguna", "la linea de la concepcion", "la orotava", "langreo",
+            "laredo", "las rozas", "leganes", "leioa", "lepe", "linares", "llanes", "lliria", "lloret de mar"
+        ],
+    },
+    "gen-039": {
+        100: [
+            "acer", "activision", "adobe", "amd", "amazon", "amstrad", "anker", "aoc", "apple",
+            "archos", "arduino", "arm", "asrock", "asus", "atari", "audio technica", "aukey",
+            "bang and olufsen", "beats", "be quiet", "belkin", "benq", "bethesda", "biostar",
+            "blackberry", "blizzard", "bosch", "bose", "bq", "brother", "canon", "capcom",
+            "casio", "cd projekt", "cecotec", "cisco", "citizen", "cooler master", "corsair",
+            "creative", "crucial", "cyberpower", "d link", "dahua", "deepcool", "dell", "denon",
+            "dji", "dyson", "ea", "electronic arts", "elgato", "energy sistem", "epic games",
+            "epson", "ericsson", "evga", "fairphone", "fanatec", "fractal design", "framework",
+            "fromsoftware", "fujifilm", "fujitsu", "garmin", "gateway", "gigabyte", "google",
+            "gopro", "grundig", "haier", "harman kardon", "hasselblad", "hisense", "hitachi",
+            "honor", "hp", "htc", "huawei", "hyperx", "ibm", "iiyama", "indesit", "infinix",
+            "insta360", "intel", "irobot", "jbl", "jvc", "kef", "kenwood", "kingston",
+            "klipsch", "kobo", "kodak", "konami", "koss", "lacie", "leica", "lenovo", "lexar",
+            "lexmark", "lg", "linksys", "loewe", "logitech", "marshall", "marantz", "meizu",
+            "meta", "microsoft", "miele", "mihoyo", "hoyoverse", "mitsubishi electric", "mojang",
+            "motorola", "msi", "nakamichi", "namco", "bandai namco", "nec", "netgear", "nikon",
+            "nintendo", "noctua", "nokia", "nothing", "nvidia", "nzxt", "oculus", "olivetti",
+            "olympus", "oneplus", "onkyo", "oppo", "oracle", "palm", "panasonic", "pentax",
+            "philips", "pioneer", "playstation", "pny", "polar", "polaroid", "qnap", "qualcomm",
+            "raspberry pi", "razer", "realme", "redmagic", "ricoh", "riot games", "roccat",
+            "rockstar", "rode", "roku", "roland", "roomba", "rovio", "samsung", "sandisk",
+            "sanyo", "sapphire", "seagate", "sega", "sennheiser", "sharp", "shure", "siemens",
+            "sinclair", "sonos", "sony", "square enix", "steam", "steelseries", "suunto",
+            "synology", "tcl", "tecno", "thermaltake", "thrustmaster", "tp link", "toshiba",
+            "turtle beach", "ubiquiti", "ubisoft", "ulefone", "umidigi", "valve", "viewsonic",
+            "vivo", "wacom", "western digital", "xiaomi", "xbox", "yamaha", "zotac", "zte"
+        ],
+    },
+    "gen-004": {
+        100: [
+            "real madrid cf", "futbol club barcelona", "club atletico de madrid", "sevilla futbol club",
+            "valencia club de futbol", "real betis balompie", "athletic club bilbao", "real sociedad de futbol",
+            "villarreal club de futbol", "rcd espanyol de barcelona", "real club celta de vigo",
+            "real zaragoza sad", "real club deportivo de la coruña", "real sporting de gijon",
+            "real oviedo sad", "club atletico osasuna", "real valladolid cf", "getafe club de futbol",
+            "rayo vallecano de madrid", "girona futbol club", "union deportiva las palmas",
+            "club deportivo tenerife", "real club deportivo mallorca", "real racing club de santander",
+            "elche club de futbol", "real murcia club de futbol", "cadiz club de futbol",
+            "granada club de futbol", "malaga club de futbol", "union deportiva almeria",
+            "real club recreativo de huelva", "xerez club deportivo", "cordoba club de futbol",
+            "hercules de alicante", "club deportivo castellon", "levante union deportiva",
+            "union deportiva salamanca", "club deportivo numancia", "sociedad deportiva eibar",
+            "deportivo alaves", "club deportivo leganes", "sociedad deportiva huesca",
+            "albacete balompie", "real burgos club de futbol", "burgos club de futbol",
+            "real union club", "arenas club de getxo", "centre d esports sabadell",
+            "gimnastic de tarragona", "unio esportiva lleida", "club deportivo alcoyano",
+            "sociedad deportiva compostela", "pontevedra club de futbol", "club polideportivo merida",
+            "club de futbol extremadura", "club deportivo logrones", "agrupacion deportiva almeria",
+            "cultural y deportiva leonesa", "real jaen club de futbol", "club deportivo condal",
+            "atletico tetuan", "cd mirandes", "sd ponferradina", "atletico de bilbao", "espayol" if False else "espanyol de barcelona",
+            "racing santander", "deportivo coruña", "sporting gijon", "celta vigo", "betis balompie",
+            "real zaragoza club", "osasuna pamplona", "valladolid cf", "rayo vallecano cf",
+            "alaves deportivo", "tenerife cd", "mallorca rcd", "las palmas ud", "murcia real",
+            "elche cf", "cadiz cf", "granada cf", "malaga cf", "almeria ud", "leganes cd",
+            "huesca sd", "eibar sd", "numancia cd", "salamanca ud", "levante ud", "castellon cd",
+            "hercules cf", "cordoba cf", "xerez cd", "recreativo huelva", "burgos cf", "sabadell ce",
+            "lleida ue", "alcoyano cd", "compostela sd", "pontevedra cf", "merida cp", "extremadura cf",
+            "logrones cd", "cultural leonesa", "real jaen", "arenas getxo", "real union irun", "club deportivo europa"
+        ],
+    },
+    "geo-008": {
+        100: [
+            "comunidad de madrid", "comunidad autonoma de andalucia", "comunidad autonoma de aragon",
+            "comunidad autonoma de cantabria", "comunidad autonoma de castilla y leon",
+            "comunidad autonoma de castilla la mancha", "comunidad autonoma de cataluña",
+            "comunidad autonoma de extremadura", "comunidad autonoma de galicia",
+            "comunidad autonoma de las islas baleares", "comunidad autonoma de canarias",
+            "comunidad autonoma de la rioja", "comunidad autonoma del pais vasco",
+            "principado de asturias", "region de murcia", "comunidad valenciana",
+            "comunidad foral de navarra", "ciudad autonoma de ceuta", "ciudad autonoma de melilla",
+            "provincia de alava", "provincia de albacete", "provincia de alicante",
+            "provincia de almeria", "provincia de asturias", "provincia de avila",
+            "provincia de badajoz", "provincia de barcelona", "provincia de burgos",
+            "provincia de caceres", "provincia de cadiz", "provincia de cantabria",
+            "provincia de castellon", "provincia de ciudad real", "provincia de cordoba",
+            "provincia de cuenca", "provincia de girona", "provincia de granada",
+            "provincia de guadalajara", "provincia de guipuzcoa", "provincia de huelva",
+            "provincia de huesca", "provincia de jaen", "provincia de la coruña",
+            "provincia de la rioja", "provincia de las palmas", "provincia de leon",
+            "provincia de lleida", "provincia de lugo", "provincia de madrid",
+            "provincia de malaga", "provincia de murcia", "provincia de navarra",
+            "provincia de ourense", "provincia de palencia", "provincia de pontevedra",
+            "provincia de salamanca", "provincia de santa cruz de tenerife", "provincia de segovia",
+            "provincia de sevilla", "provincia de soria", "provincia de tarragona",
+            "provincia de teruel", "provincia de toledo", "provincia de valencia",
+            "provincia de valladolid", "provincia de vizcaya", "provincia de zamora", "provincia de zaragoza",
+            "comarca del bierzo", "comarca de la alcarria", "comarca de la mancha",
+            "comarca de las alpujarras", "comarca de las hurdes", "comarca de la vera",
+            "comarca del valle del jerte", "comarca de la serena", "comarca tierra de campos",
+            "comarca de los pedroches", "comarca de los monegros", "comarca campo de gibraltar",
+            "comarca de la janda", "comarca de la axarquia", "comarca de la safor",
+            "comarca de la ribera del duero", "comarca de osona", "comarca del emporda"
+        ],
+    },
+    "dep-014": {
+        100: [
+            "esqui alpino descenso", "esqui alpino slalom", "esqui alpino slalom gigante",
+            "esqui alpino supergigante", "esqui alpino combinada", "esqui de fondo clasico",
+            "esqui de fondo libre", "esqui de fondo esprint", "esqui de fondo relevos",
+            "esqui de fondo skiatlon", "biatlon individual", "biatlon esprint", "biatlon persecucion",
+            "biatlon salida en masa", "biatlon relevos", "biatlon relevo mixto",
+            "salto de esqui trampolin normal", "salto de esqui trampolin grande",
+            "salto de esqui por equipos", "combinada nordica individual", "combinada nordica equipos",
+            "snowboard halfpipe", "snowboard slopestyle", "snowboard big air",
+            "snowboard cross", "snowboard eslalon gigante paralelo", "esqui acrobatico moguls",
+            "esqui acrobatico aerials", "esqui acrobatico skicross", "esqui acrobatico halfpipe",
+            "esqui acrobatico slopestyle", "esqui acrobatico big air", "patinaje artistico individual",
+            "patinaje artistico parejas", "patinaje artistico danza", "patinaje de velocidad 500m",
+            "patinaje de velocidad 1000m", "patinaje de velocidad 1500m", "patinaje de velocidad 5000m",
+            "patinaje de velocidad 10000m", "patinaje de velocidad persecucion", "short track 500m",
+            "short track 1000m", "short track 1500m", "short track relevos", "hockey hielo masculino",
+            "hockey hielo femenino", "bobsleigh dos hombres", "bobsleigh dos mujeres",
+            "bobsleigh cuatro hombres", "bobsleigh monobob femenino", "luge individual masculino",
+            "luge individual femenino", "luge dobles", "skeleton masculino", "skeleton femenino",
+            "curling masculino", "curling femenino", "curling dobles mixtos",
+            "esqui de travesia esprint", "esqui de travesia relevos", "skiatlon", "supergigante",
+            "eslalon especial", "kilometro lanzado en nieve", "esqui nautico" if False else "snowboard alpino",
+            "freeride world tour", "trineo de perros", "mushing sobre nieve", "carrera con raquetas de nieve",
+            "alpinismo en hielo", "escalada en cascada de hielo", "patinaje extremo sobre hielo",
+            "esqui nordico de fondo", "esqui freestyle", "half pipe", "slope style", "big air nieve",
+            "patinaje en hielo", "hockey sobre hielo 3x3", "para hockey", "esqui adaptado"
+        ],
+    },
+    "dep-003": {
+        100: [
+            "atletismo olimpico", "natacion olimpica", "gimnasia artistica femenina",
+            "gimnasia artistica masculina", "gimnasia ritmica conjuntos", "gimnasia ritmica individual",
+            "ciclismo en ruta masculino", "ciclismo en ruta femenino", "ciclismo en pista masculino",
+            "ciclismo en pista femenino", "mountain bike masculino", "mountain bike femenino",
+            "bmx racing masculino", "bmx freestyle parque", "baloncesto masculino", "baloncesto femenino",
+            "baloncesto 3x3 masculino", "baloncesto 3x3 femenino", "futbol masculino", "futbol femenino",
+            "balonmano masculino", "balonmano femenino", "voleibol masculino", "voleibol femenino",
+            "voley playa masculino", "voley playa femenino", "waterpolo masculino", "waterpolo femenino",
+            "rugby 7 masculino", "rugby 7 femenino", "hockey hierba masculino", "hockey hierba femenino",
+            "tenis individual masculino", "tenis individual femenino", "tenis dobles masculinos",
+            "tenis dobles femeninos", "tenis dobles mixtos", "tenis de mesa individual",
+            "tenis de mesa por equipos", "badminton individual", "badminton dobles",
+            "judo masculino", "judo femenino", "judo por equipos mixtos", "boxeo masculino",
+            "boxeo femenino", "taekwondo masculino", "taekwondo femenino", "lucha libre olimpica",
+            "lucha grecorromana olimpica", "esgrima florete", "esgrima espada", "esgrima sable",
+            "halterofilia masculina", "halterofilia femenina", "remo masculino", "remo femenino",
+            "piraguismo esprint", "piraguismo slalom", "kayak cross", "vela olimpica",
+            "triatlon masculino", "triatlon femenino", "triatlon relevo mixto", "pentatlon moderno olimpico",
+            "tiro con arco individual", "tiro con arco por equipos", "tiro olimpico pistola",
+            "tiro olimpico carabina", "tiro al plato foso", "tiro al plato skeet",
+            "escalada velocidad", "escalada bloque y dificultad", "skateboarding street",
+            "skateboarding park", "surf olimpico", "golf masculino", "golf femenino",
+            "equitacion doma", "equitacion salto", "equitacion concurso completo",
+            "natacion en aguas abiertas 10 km", "natacion artistica duo", "natacion artistica equipo",
+            "saltos sincronizados", "trampolin gimnasia"
+        ],
+    },
+    "gen-005": {
+        100: [
+            "ac", "acura", "aiways", "aixam", "alfa romeo", "alpina", "alpine", "amc", "apollo",
+            "ariel", "aro", "artega", "ascari", "aston martin", "audi", "austin", "austin healey",
+            "autobianchi", "baic", "bac", "barreiros", "bentley", "bertone", "bizzarrini", "bmw",
+            "borgward", "brabham", "brilliance", "bristol", "bugatti", "buick", "byd", "cadillac",
+            "caterham", "changan", "chery", "chevrolet", "chrysler", "citroen", "cupra", "dacia",
+            "daewoo", "daf", "daihatsu", "daimler", "datsun", "de tomaso", "delage", "delahaye",
+            "delorean", "dfsk", "dkw", "dodge", "dongfeng", "donkervoort", "ds automobiles", "ebro",
+            "excalibur", "facel vega", "faw", "ferrari", "fiat", "fisker", "ford", "foton",
+            "gac", "gaz", "geely", "genesis", "ginetta", "gmc", "gordon murray", "great wall",
+            "gta motor", "gumpert", "haval", "hennessey", "hillman", "hindustan", "hispano suiza",
+            "holden", "honda", "hongqi", "horch", "hummer", "hurtan", "hyundai", "ineos",
+            "infiniti", "innocenti", "invicta", "isdera", "iso", "isuzu", "iveco", "jac",
+            "jaecoo", "jaguar", "jeep", "jensen", "karma", "kg mobility", "kia", "koenigsegg",
+            "ktm", "lada", "lagonda", "lamborghini", "lancia", "land rover", "leapmotor", "lexus",
+            "ligier", "lincoln", "lotus", "lucid", "lynk and co", "mahindra", "marcos", "marussia",
+            "maruti", "maserati", "matra", "maybach", "mazda", "mclaren", "mercedes benz", "mercury",
+            "mg", "microcar", "mini", "mitsubishi", "mitsuoka", "morgan", "morris", "moskvitch",
+            "nio", "nissan", "noble", "nsu", "oldsmobile", "omoda", "opel", "ora", "osca",
+            "packard", "pagani", "panhard", "pegaso", "perodua", "peugeot", "pininfarina",
+            "plymouth", "polestar", "pontiac", "porsche", "proton", "radical", "ram", "range rover",
+            "reliant", "renault", "rimac", "rivian", "rolls royce", "rover", "ruf", "saab",
+            "saleen", "samsung motors", "santana", "saturn", "scion", "seat", "seres", "shelby",
+            "simca", "skoda", "skywell", "smart", "spyker", "ssangyong", "ssc", "studebaker",
+            "subaru", "sunbeam", "suzuki", "swm", "talbot", "tata", "tatra", "tauro", "tesla",
+            "toyota", "trabant", "triumph", "tucker", "tvr", "uaz", "vanderhall", "vauxhall",
+            "venturi", "vinfast", "volkswagen", "volvo", "voyah", "wartburg", "wey", "wiesmann",
+            "willys", "wuling", "xpeng", "yugo", "zagato", "zastava", "zeekr", "zenvo"
+        ],
+    },
+}
+
+
+DENSITY_BATCH_2_TOPUP = {
+    "gen-006": {
+        10: ["mar adentro", "volver", "dolor y gloria", "campeones", "campeonex", "padre no hay mas que uno"],
+        25: ["el bola", "te doy mis ojos", "celda 211", "la isla minima", "isla minima", "as bestas", "alcarras", "la sociedad de la nieve", "sociedad de la nieve", "el 47"],
+        45: ["tesis", "truman", "tarde para la ira", "verano 1993", "los lunes al sol", "lunes al sol", "las trece rosas", "todo sobre mi madre", "hable con ella", "la mala educacion", "mala educacion"],
+        65: ["dias contados", "los santos inocentes", "santos inocentes", "la lengua de las mariposas", "lengua de las mariposas", "solas", "la buena estrella", "buena estrella", "belle epoque", "amantes", "barrio", "la niña de tus ojos", "niña de tus ojos"],
+        85: ["el abuelo", "el viaje a ninguna parte", "viaje a ninguna parte", "el bosque animado", "bosque animado", "mujeres al borde de un ataque de nervios", "ay carmela", "el rey pasmado", "rey pasmado", "la vaquilla", "vaquilla", "amanece que no es poco", "nadie hablara de nosotras cuando hayamos muerto"],
+    },
+    "pel-014": {
+        10: ["gru mi villano favorito", "mi villano favorito", "los minions", "minions", "kung fu panda", "como entrenar a tu dragon"],
+        25: ["el viaje de chihiro", "viaje de chihiro", "mi vecino totoro", "vecino totoro", "el castillo ambulante", "castillo ambulante", "la princesa mononoke", "princesa mononoke"],
+        45: ["your name", "el tiempo contigo", "suzume", "spiderman un nuevo universo", "spiderman cruzando el multiverso", "el chico y la garza", "chico y la garza"],
+        65: ["robot dreams", "arrugas", "klaus", "tadeo jones", "las aventuras de tadeo jones", "el gigante de hierro", "gigante de hierro", "coraline", "los mundos de coraline"],
+        85: ["la tumba de las luciernagas", "tumba de las luciernagas", "porco rosso", "nausicaa del valle del viento", "ponyo en el acantilado", "ponyo", "persépolis" if False else "persepolis", "el ilusionista", "bienvenidos a belleville"],
+    },
+    "geo-008": {
+        10: ["costa brava", "rias baixas", "valle del jerte", "costa del sol", "la alcarria", "alcarria"],
+        25: ["el bierzo", "las alpujarras", "la alpujarra", "valle de aran", "las merindades", "campo de gibraltar", "la manchuela"],
+        45: ["tierra de campos", "los pedroches", "la axarquia", "la janda", "los monegros", "el somontano", "garrotxa", "la garrotxa", "alt emporda", "baix emporda", "costa da morte", "las hurdes", "la vera"],
+        65: ["sobrarbe", "ribagorza", "osona", "bages", "penedes", "campo de calatrava", "montes de toledo", "vega baja", "marina alta", "marina baja", "horta nord", "horta sud", "ribera alta", "ribera baja", "la safor"],
+        85: ["los serranos", "el maestrazgo", "matarraña", "cinco villas", "valle de alcudia", "sierra norte", "la sagra", "tierra de barros", "la serena", "los oscos", "valle del baztan", "baztan"],
+    },
+    "gen-016": {
+        10: ["telepizza", "dominos pizza", "kfc", "vips", "fosters hollywood", "100 montaditos", "cien montaditos", "starbucks"],
+        25: ["papa johns", "ginos", "la tagliatella", "tagliatella", "taco bell", "popeyes", "five guys", "goiko", "goiko grill", "rodilla", "pans and company", "pans"],
+        45: ["the good burger", "tgb", "granier", "santagloria", "manolo bakes", "dunkin", "carls jr", "tony romas", "ribs", "lateral", "lizarran"],
+        65: ["cerveceria 100 montaditos", "taberna del volapie", "volapie", "pomodoro", "udon", "sushita", "tim hortons", "costa coffee", "honest greens", "vicio"],
+        85: ["saona", "grupo saona", "grosso napoletano", "fratelli figurato", "bacoa", "la sureña", "cerveceria la sureña", "montaditos", "corte y cata", "brasayleña"],
+    },
+    "dep-003": {
+        10: ["maraton", "salto de longitud", "salto de altura", "lanzamiento de peso", "lanzamiento de jabalina", "100 metros lisos"],
+        25: ["triple salto", "salto con pertiga", "lanzamiento de disco", "lanzamiento de martillo", "marcha atletica", "natacion artistica", "natacion sincronizada", "tiro con arco", "halterofilia"],
+        45: ["decatlon", "heptatlon", "200 metros lisos", "400 metros lisos", "800 metros", "1500 metros", "5000 metros", "10000 metros", "110 metros vallas", "400 metros vallas", "3000 metros obstaculos"],
+        65: ["relevos 4x100", "relevos 4x400", "aguas abiertas", "saltos de trampolin", "plataforma 10 metros", "pentatlon moderno", "tiro olimpico", "ciclismo en pista", "ciclismo en ruta", "escalada deportiva"],
+        85: ["esgrima florete", "esgrima espada", "esgrima sable", "bmx freestyle", "bmx racing", "piraguismo eslalon", "piraguismo en aguas tranquilas", "remo olimpico", "breaking", "skateboard", "vela olimpica"],
+    },
+    "gen-008": {
+        10: ["carrefour express", "carrefour market", "hipercor", "supercor", "el corte ingles supermercado", "la plaza de dia"],
+        25: ["simply", "caprabo", "consum", "ahorramas", "coviran", "spar", "makro", "costco"],
+        45: ["charter", "bm supermercados", "gadis", "froiz", "lupa", "bonpreu", "esclat", "condis", "bonarea", "hiperdino", "pryca", "continente"],
+        65: ["sanchez romero", "sorli", "eurospar", "interspar", "unide", "masymas", "supermercados mas", "supermercados el jamon", "supeco", "simago", "sabeco"],
+        85: ["deza", "piedra", "dinoexpress", "spar gran canaria", "alteza", "tu alteza", "dinosol", "supermercados dani", "galerias primero", "familia", "hiper usera", "la despensa", "cash fresh"],
+    },
+    "geo-004": {
+        10: ["sierra nevada", "sierra de guadarrama", "sierra de gredos", "sierra morena", "sistema central", "cordillera cantabrica", "andes", "alpes", "himalaya"],
+        25: ["sierra de cazorla", "sierra de tramuntana", "sistema iberico", "montañas rocosas", "rocosas", "etna", "vesubio", "kilimanjaro", "mont blanc", "k2", "fuji", "monte fuji"],
+        45: ["moncayo", "peñalara", "almanzor", "naranjo de bulnes", "picu urriellu", "veleta", "monte perdido", "pedraforca", "montserrat", "timanfaya", "aconcagua", "denali", "mckinley", "krakatoa", "caucaso", "urales", "atlas"],
+        65: ["montes de leon", "macizo galaico", "montes vascos", "torre cerredo", "vignemale", "posets", "pico viejo", "roque de los muchachos", "stromboli", "cervino", "matterhorn", "eiger", "jungfrau", "elbrus", "cotopaxi", "chimborazo", "popocatepetl", "apeninos", "carpatos"],
+        85: ["ojos del salado", "huascaran", "orizaba", "monte rainier", "monte santa helena", "kangchenjunga", "lhotse", "makalu", "cho oyu", "dhaulagiri", "manaslu", "nanga parbat", "annapurna", "tambora", "mauna loa", "kilauea", "monte olimpo", "drakensberg", "karakorum"],
+    },
+    "gen-038": {
+        10: ["isabel la catolica", "fernando el catolico", "reyes catolicos", "miguel de cervantes", "cervantes", "leonardo da vinci", "albert einstein", "marie curie"],
+        25: ["carlos v", "felipe ii", "el cid", "cid campeador", "hernan cortes", "francisco pizarro", "francisco de goya", "diego velazquez", "velazquez", "pablo picasso", "salvador dali", "isaac newton", "charles darwin", "galileo galilei"],
+        45: ["carlos iii", "alfonso x el sabio", "federico garcia lorca", "garcia lorca", "antoni gaudi", "aristoteles", "platon", "socrates", "miguel angel", "abraham lincoln", "george washington", "winston churchill", "nelson mandela", "mahatma gandhi", "martin luther king"],
+        65: ["rodrigo diaz de vivar", "blas de lezo", "santiago ramon y cajal", "ramon y cajal", "severo ochoa", "clara campoamor", "simon bolivar", "juarez", "juicio" if False else "benito juarez", "tomas alva edison", "nikola tesla"],
+        85: ["victoria kent", "maria zambrano", "emilia pardo bazan", "rosalia de castro", "juana la loca", "pelayo", "don pelayo", "almanzor", "averroes", "maimonides"],
+    },
+    "gen-031": {
+        10: ["asterix", "obelix", "tintin", "los pitufos", "mafalda", "goku", "dragon ball", "bola de dragon", "naruto", "one piece", "doraemon", "shin chan"],
+        25: ["zipi y zape", "superlopez", "rompetechos", "13 rue del percebe", "anacleto agente secreto", "el capitan trueno", "capitan trueno", "lucky luke", "vegeta", "luffy", "oliver y benji", "death note", "ataque a los titanes"],
+        45: ["pepe gotera y otilio", "el botones sacarino", "carpanta", "capitan haddock", "condorito", "ranma", "sailor moon", "akira", "watchmen", "sandman", "hellboy", "sin city"],
+        65: ["el jabato", "guerrero del antifaz", "roberto alcazar y pedrin", "maus", "arrugas", "paco roca", "blacksad", "corto maltes", "persépolis" if False else "persepolis", "v de vendetta"],
+        85: ["calvin y hobbes", "peanuts", "snoopy", "garfield", "popeye", "flash gordon", "el principe valiente", "principe valiente", "injustice", "invencible", "the walking dead"],
+    },
+    "dep-001": {
+        10: ["tenis de mesa", "ping pong", "voley playa", "voleibol de playa", "tenis individual", "tenis dobles"],
+        25: ["pin pon", "padel adaptado", "badminton individual", "badminton dobles", "voleibol masculino", "voleibol femenino", "tenis mixto"],
+        45: ["pickleball", "tenis playa", "beach tennis", "voley sentado", "futvoley", "footvolley", "tenis en silla de ruedas", "parabadminton"],
+        65: ["sepak takraw", "takraw", "padel individual", "padel profesional", "ping pong profesional", "voley pista", "teqball", "tenis sobre hierba", "tenis en tierra batida", "tenis en pista dura"],
+        85: ["bossaball", "ecuavoley", "ecua voley", "fistball", "faustball", "indiaca", "peteca", "ringtennis", "hooverball", "biribol", "catchball", "newcom", "headis", "mintonette", "wallyball", "snow volleyball", "voley nieve", "pickleball dobles", "pickleball individual"],
+    },
+    "pal-004": {
+        10: ["ala", "alla", "ama", "ana", "ara", "asa", "ata", "eje", "ele", "eme", "ene", "ere", "ese", "oro", "sus"],
+        25: ["aviva", "anilina", "arenera", "sometemos", "salas", "sagas", "sanas", "sedes", "seres", "solos", "sosos", "sotos"],
+        45: ["acurruca", "anana", "rallar", "rapar", "rayar", "kayak", "civic", "madam", "level", "refer", "tenet", "rotator", "otto", "hannah"],
+        65: ["ababa", "amama", "apa", "ava", "axa", "aya", "aza", "aziza", "ewe", "gag", "gig", "mam", "mem", "minim", "mom", "mum", "naan", "nan", "nen", "non", "noon", "nun"],
+        85: ["deified", "elle", "malayalam", "oho", "olo", "omo", "ono", "opo", "oyo", "ozo", "pap", "peep", "pep", "pip", "poop", "pop", "pup", "redder", "redivider", "reviver", "saras", "sayas", "stats", "tat", "tit", "tot", "tut", "ulu", "umu", "unu", "uru", "usu", "uvu", "yay"],
+    },
+    "dep-014": {
+        10: ["esqui alpino", "esqui de fondo", "patinaje artistico", "hockey sobre hielo", "hockey hielo", "curling", "bobsleigh"],
+        25: ["esqui nordico", "biatlon", "salto de esqui", "saltos de esqui", "patinaje de velocidad", "luge", "skeleton", "raquetas de nieve", "eslalon", "descenso"],
+        45: ["esqui acrobatico", "esqui de travesia", "esqui de montaña", "combinada nordica", "halfpipe", "slopestyle", "big air", "patinaje en pista corta", "short track", "danza sobre hielo", "eslalon gigante", "supergigante"],
+        65: ["snowboard cross", "patinaje sincronizado", "trineo", "mushing", "trineo de perros", "escalada en hielo", "alpinismo invernal", "telemark", "monoesqui", "bob"],
+        85: ["esqui de velocidad", "bandy", "ringette", "skibob", "velero sobre hielo", "ice yachting", "pesca en hielo", "voley nieve", "snow volleyball", "polo sobre nieve", "snow polo"],
+    },
+    "pel-030": {
+        10: ["robert downey jr", "scarlett johansson", "chris hemsworth", "chris evans", "tom holland", "zendaya", "margot robbie", "ryan gosling", "emma stone", "jennifer lawrence", "keanu reeves", "denzel washington", "morgan freeman", "meryl streep"],
+        25: ["mark ruffalo", "jeremy renner", "timothee chalamet", "florence pugh", "anya taylor joy", "natalie portman", "anne hathaway", "samuel l jackson", "matt damon", "ben affleck", "christian bale", "joaquin phoenix", "hugh jackman", "ryan reynolds", "nicole kidman", "julia roberts", "angelina jolie", "penelope cruz", "javier bardem", "antonio banderas"],
+        45: ["cillian murphy", "pedro pascal", "oscar isaac", "adam driver", "jake gyllenhaal", "cate blanchett", "kate winslet", "charlize theron", "sandra bullock", "salma hayek", "daniel craig", "viggo mortensen", "mads mikkelsen", "ricardo darin", "gael garcia bernal", "diego luna"],
+        65: ["ethan hawke", "willem dafoe", "edward norton", "gary oldman", "colin firth", "benedict cumberbatch", "martin freeman", "henry cavill", "idris elba", "mahershala ali", "viola davis", "jessica chastain", "amy adams", "emily blunt", "rachel weisz", "marion cotillard"],
+        85: ["saoirse ronan", "jodie comer", "carey mulligan", "michelle williams", "michelle yeoh", "dev patel", "riz ahmed", "steven yeun", "paul mescal", "barry keoghan", "austin butler", "jacob elordi", "jenna ortega", "sydney sweeney"],
+    },
+    "geo-006": {
+        10: ["oceano pacifico", "pacifico", "oceano indico", "indico", "oceano artico", "oceano antartico", "mar cantabrico", "cantabrico", "mar caribe", "mar rojo", "mar muerto", "mar negro", "canal de la mancha"],
+        25: ["oceano austral", "mar de alboran", "mar balear", "mar adriatico", "mar egeo", "mar tirreno", "mar caspio", "mar del norte", "mar baltico", "golfo de vizcaya", "golfo de cadiz", "golfo de valencia", "golfo de mexico", "golfo persico", "mar menor"],
+        45: ["mar jonico", "mar de azov", "mar arabigo", "mar de noruega", "mar de barents", "mar blanco", "mar de bering", "mar del japon", "mar amarillo", "mar de la china meridional", "mar de coral", "mar de tasmania", "mar de cortez", "golfo de leon", "golfo de bengala", "golfo de guinea", "golfo de california"],
+        65: ["mar de kara", "mar de laptev", "mar de ojotsk", "mar de la china oriental", "mar de filipinas", "mar de java", "mar de banda", "mar de los sargazos", "golfo de aden", "golfo de oman", "golfo de alaska", "golfo de finlandia", "golfo de botnia", "bahia de hudson", "bahia de baffin", "lago baikal", "lago victoria", "lago titicaca"],
+        85: ["mar de weddell", "mar de ross", "lago tanganica", "mar de andaman", "mar de timor", "mar de arafura", "mar de cebu", "mar de sulu", "mar de celebes", "mar de beaufort", "mar de chukchi", "mar de groenlandia", "mar de irlanda", "mar de marmara"],
+    },
+    "geo-010": {
+        10: ["miño", "rio miño", "duero", "rio duero", "guadiana", "rio guadiana", "jucar", "rio jucar", "segura", "rio segura", "turia", "rio turia", "manzanares", "rio manzanares"],
+        25: ["ter", "rio ter", "llobregat", "rio llobregat", "nervion", "rio nervion", "bidasoa", "rio bidasoa", "nalon", "rio nalon", "sella", "rio sella", "sil", "rio sil", "pisuerga", "rio pisuerga", "tormes", "rio tormes", "jarama", "rio jarama", "genil", "rio genil", "segre", "rio segre"],
+        45: ["narcea", "rio narcea", "navia", "rio navia", "eo", "rio eo", "esla", "rio esla", "adaja", "rio adaja", "eresma", "rio eresma", "aragon", "rio aragon", "gallego", "rio gallego", "cinca", "rio cinca", "jalon", "rio jalon", "henares", "rio henares", "tajuña", "rio tajuña", "guadarrama", "rio guadarrama", "alberche", "rio alberche", "tietar", "rio tietar"],
+        65: ["jiloca", "rio jiloca", "huerva", "rio huerva", "alagon", "rio alagon", "guadalete", "rio guadalete", "odiel", "rio odiel", "tinto", "rio tinto", "guadalhorce", "rio guadalhorce", "almanzora", "rio almanzora", "vinalopo", "rio vinalopo", "mijares", "rio mijares", "palancia", "rio palancia", "cabriel", "rio cabriel", "mundo", "rio mundo", "mondego", "rio mondego", "sado", "rio sado", "lima", "rio lima"],
+        85: ["ciguela", "rio ciguela", "zancara", "rio zancara", "jabalon", "rio jabalon", "matachel", "rio matachel", "zujar", "rio zujar", "cavado", "rio cavado", "tamega", "rio tamega", "ulla", "rio ulla", "tambre", "rio tambre", "eume", "rio eume", "deva", "rio deva", "pas", "rio pas", "besaya", "rio besaya", "ason", "rio ason", "urumea", "rio urumea", "oria", "rio oria", "ibaizabal", "rio ibaizabal"],
+    },
+}
+
+
+DENSITY_BATCH_2_TOPUP2 = {
+    "mus-011": {
+        10: ["tiesto", "armin van buuren", "martin garrix", "calvin harris", "skrillex", "daft punk", "diplo", "zedd", "kygo", "steve aoki"],
+        25: ["deadmau5", "hardwell", "afrojack", "alesso", "the chemical brothers", "chemical brothers", "the prodigy", "prodigy", "fatboy slim", "moby", "carl cox", "dj snake", "major lazer", "swedish house mafia"],
+        45: ["dimitri vegas", "like mike", "fisher", "fred again", "peggy gou", "charlotte de witte", "amelie lens", "disclosure", "flume", "eric prydz", "paul van dyk", "juan magan", "dj nano"],
+        65: ["richie hawtin", "solomun", "bicep", "kaytranada", "porter robinson", "madeon", "above and beyond", "axwell", "sebastian ingrosso", "steve angello", "paco osuna", "wally lopez", "chimo bayo"],
+        85: ["wade", "brian cross", "laurent garnier", "jeff mills", "sven vath", "sasha", "john digweed", "nicky romero", "oliver heldens", "don diablo", "kshmr", "r3hab", "illenium"],
+    },
+    "pel-013": {
+        10: ["clark gable", "cary grant", "james stewart", "charlie chaplin", "grace kelly", "elizabeth taylor", "sophia loren"],
+        25: ["gary cooper", "gregory peck", "marlon brando", "james dean", "charlton heston", "kirk douglas", "john wayne", "bette davis", "katharine hepburn", "ingrid bergman", "rita hayworth", "paul newman", "clint eastwood"],
+        45: ["burt lancaster", "henry fonda", "spencer tracy", "gene kelly", "fred astaire", "liz taylor", "ava gardner", "lauren bacall", "vivien leigh", "brigitte bardot", "judy garland", "steve mcqueen", "robert redford", "orson welles"],
+        65: ["jimmy stewart", "gina lollobrigida", "natalie wood", "debbie reynolds", "doris day", "shirley temple", "jack lemmon", "walter matthau", "tony curtis", "rock hudson", "montgomery clift", "peter o toole", "omar sharif", "buster keaton"],
+        85: ["alec guinness", "errol flynn", "fredric march", "yul brynner", "william holden", "tyrone power", "alan ladd", "glenn ford", "joan crawford", "barbara stanwyck", "lana turner", "veronica lake", "hedy lamarr"],
+    },
+    "mus-009": {
+        10: ["daddy yankee", "don omar", "j balvin", "maluma", "ozuna", "nicky jam", "anuel aa", "rauw alejandro", "feid", "bizarrap", "morad"],
+        25: ["wisin y yandel", "wisin", "yandel", "anuel", "myke towers", "eladio carrion", "farruko", "manuel turizo", "camilo", "sebastian yatra", "duki", "nicki nicole", "maria becerra", "lola indigo", "bad gyal"],
+        45: ["tego calderon", "ferxxo", "jhayco", "jhay cortez", "arcangel", "plan b", "chencho corleone", "sech", "tiago pzk", "trueno", "khea", "young miko", "natti natasha", "becky g", "tini", "saiko", "mora", "omar montes"],
+        65: ["de la ghetto", "boza", "bzrp", "lit killah", "cazzu", "emilia mernes", "dei v", "ryan castro", "blessd", "rvfv", "maikel delacalle", "kidd keo", "yung beef", "relsb", "natos y waor"],
+        85: ["zion y lennox", "ivy queen", "vico c", "wos", "ysy a", "paulo londra", "milo j", "la joaqui", "kaleb di masi", "bryant myers", "noriel", "alvaro diaz", "micro tdh", "piso 21"],
+    },
+    "mus-030": {
+        10: ["luis miguel", "chayanne", "ricky martin", "marc anthony", "morat", "carlos vives", "juan luis guerra", "camilo" if False else "reik"],
+        25: ["los enanitos verdes", "enanitos verdes", "los fabulosos cadillacs", "fabulosos cadillacs", "cafe tacvba", "molotov", "fito paez", "los rodriguez", "julieta venegas", "mon laferte", "jorge drexler", "sin bandera", "jesse y joy"],
+        45: ["caifanes", "zoe", "charly garcia", "babasonicos", "los autenticos decadentes", "vicentico", "diego torres", "natalia lafourcade", "bacilos", "aterciopelados", "bomba estereo", "camila", "miranda", "ricardo arjona"],
+        65: ["luis alberto spinetta", "spinetta", "ariel rot", "cultura profetica", "el cuarteto de nos", "cuarteto de nos", "no te va gustar", "la vela puerca", "rata blanca", "los prisioneros", "los bunkers", "la ley", "franco de vita", "alejandro lerner"],
+        85: ["bersuit vergarabat", "los tres", "beto cuevas", "caramelos de cianuro", "amigos invisibles", "los amigos invisibles", "belanova", "divididos", "sumo", "virus", "ataque 77", "los pericos", "gondwana", "mana" if False else "panteon rococo"],
+    },
+    "dep-009": {
+        10: ["kobe bryant", "magic johnson", "larry bird", "shaquille o neal", "stephen curry", "luka doncic", "ricky rubio", "sergio llull", "rudy fernandez", "juan carlos navarro"],
+        25: ["kareem abdul jabbar", "shaq", "tim duncan", "dirk nowitzki", "allen iverson", "charles barkley", "scottie pippen", "dennis rodman", "kevin durant", "giannis antetokounmpo", "nikola jokic", "felipe reyes", "sergio rodriguez", "jose manuel calderon"],
+        45: ["kevin garnett", "steve nash", "karl malone", "john stockton", "hakeem olajuwon", "patrick ewing", "david robinson", "wilt chamberlain", "bill russell", "doncic", "llull", "chacho rodriguez", "jorge garbajosa", "fernando martin", "epi"],
+        65: ["isiah thomas", "julius erving", "dr j", "jerry west", "oscar robertson", "curry", "la bomba navarro", "juan antonio san epifanio", "jordi villacampa", "andres jimenez", "arvydas sabonis", "drazen petrovic", "toni kukoc", "manu ginobili", "tony parker"],
+        85: ["chicho sibilio", "oscar schmidt", "luis scola", "willy hernangomez", "juancho hernangomez", "victor wembanyama", "alberto herreros", "dejan bodiroga", "nikola mirotic", "eddy tavares", "walter tavares", "serge ibaka", "alex abrines", "victor claver", "raul lopez"],
+    },
+    "mus-014": {
+        10: ["nacha pop", "los secretos", "heroes del silencio", "el ultimo de la fila", "alejandro sanz", "estopa", "jarabe de palo", "la oreja de van gogh", "el canto del loco", "amaral"],
+        25: ["antonio vega", "gabinete caligari", "loquillo", "loquillo y los trogloditas", "la union", "duncan dhu", "enrique bunbury", "extremoduro", "fito y fitipaldis", "celtas cortos", "sergio dalma", "luz casal", "ana torroja", "camela"],
+        45: ["enrique urquijo", "siniestro total", "mikel erentxun", "manolo garcia", "barricada", "platero y tu", "seguridad social", "revolver", "presuntos implicados", "ole ole", "marta sanchez", "tino casal", "pau dones", "modestia aparte"],
+        65: ["paralisis permanente", "golpes bajos", "os resentidos", "los nikis", "la polla records", "azul y negro", "aviador dro", "el aviador dro", "los inhumanos", "los toreros muertos", "toreros muertos", "pablo carbonell", "quimi portet", "german coppini"],
+        85: ["kaka de luxe", "aerolineas federales", "derribos arias", "esclarecidos", "los elegantes", "pistones", "un pinguino en mi ascensor", "no me pises que llevo chanclas", "la guardia", "danza invisible", "tam tam go", "greta y los garbo", "las vulpes", "el norte"],
+    },
+    "mus-028": {
+        10: ["melendi", "pablo alboran", "manuel carrasco", "vanesa martin", "dani martin", "leiva", "pereza", "amaia", "rigoberta bandini", "rozalen", "arde bogota"],
+        25: ["lori meyers", "supersubmarina", "los planetas", "sidonie", "dorian", "ivan ferreiro", "zahara", "fangoria", "taburete", "dvicio", "ana mena", "abraham mateo", "guitarricadelafuente"],
+        45: ["carolina durante", "la casa azul", "miss caffeina", "viva suecia", "shinova", "xoel lopez", "leon benavente", "la moda", "la m o d a", "amaia romero", "vicco", "nil moliner", "alvaro de luna", "marlon", "silvia perez cruz"],
+        65: ["novedades carminha", "cariño", "la bien querida", "el columpio asesino", "triangulo de amor bizarro", "second", "varry brava", "siloe", "morgan", "niños mutantes", "la habitacion roja", "manel", "natalia lacunza", "alba reche", "pol granch"],
+        85: ["guille milkyway", "hinds", "mourn", "standstill", "mishima", "oques grasses", "the tyets", "sen senra", "cupido", "rusowsky", "ralphie choo", "judeline", "valeria castro", "el kanka", "depol", "veintiuno"],
+    },
+    "mus-012": {
+        10: ["raphael", "julio iglesias", "salome", "vivo cantando", "david civera", "rosa lopez", "beth", "rodolfo chikilicuatre", "baila el chiki chiki", "chanel", "nebulossa", "zorra", "melody", "esa diva"],
+        25: ["yo soy aquel", "karina", "en un mundo nuevo", "azucar moreno", "bandido", "bailar pegados", "sergio dalma", "dime", "dile que la quiero", "pastora soler", "quedate conmigo", "ruth lorenzo", "edurne", "blas canto", "blanca paloma", "ea ea"],
+        45: ["conchita bautista", "estando contigo", "hablemos del amor", "gwendolyne", "peret", "canta y se feliz", "sergio y estibaliz", "baccara", "betty missiego", "remedios amaya", "quien maneja mi barca", "paloma san basilio", "soraya arnelas", "daniel diges", "alfred y amaia", "miki nuñez", "la venda"],
+        65: ["jaime morey", "braulio", "micky", "trigo limpio", "lucia", "bravo", "lady lady", "nina", "serafin zubiri", "anabel conde", "vuelve conmigo", "ramon", "las ketchup", "dnash", "lucia perez", "el sueño de morfeo", "barei", "manel navarro"],
+        85: ["tu volveras", "sobran las palabras", "enseñame a cantar", "su cancion", "quedate esta noche", "bacchelli", "la fiesta termino", "cadillac", "patricia kraus", "la decada prodigiosa", "nacida para amar", "eva santamaria", "alejandro abad", "antonio carbonell", "marcos llunas", "mikel herzog", "lydia", "son de sol", "la noche es para mi", "algo pequeñito", "que me quiten lo bailao", "contigo hasta el final", "dancing in the rain", "say yay", "do it for your lover", "tu cancion", "voy a quedarme", "europes living a celebration"],
+    },
+    "geo-017": {
+        10: ["desierto de kalahari", "kalahari", "desierto del namib", "namib", "desierto de mojave", "mojave", "desierto de sonora", "sonora", "valle de la muerte", "desierto de tabernas", "tabernas", "salar de uyuni", "uyuni"],
+        25: ["desierto de chihuahua", "chihuahua", "bardenas reales", "desierto de los monegros", "salar de atacama", "salinas grandes", "desierto de arabia", "desierto del neguev", "neguev", "wadi rum", "pampa", "serengueti", "llanura del serengueti"],
+        45: ["gran cuenca", "desierto de la gran cuenca", "desierto pintado", "gran desierto de victoria", "desierto de simpson", "desierto de gibson", "gran desierto arenoso", "desierto de karakum", "karakum", "desierto de kizilkum", "kizilkum", "taklamakan", "desierto de taklamakan", "desierto de thar", "thar", "desierto sirio", "desierto de libia", "desierto de nubia"],
+        65: ["salar del hombre muerto", "salar de coipasa", "desierto de tanami", "rub al jali", "desierto blanco", "desierto negro", "tenere", "erg chebbi", "desierto de sechura", "sechura", "desierto de nazca", "desierto de la tatacoa", "tatacoa", "desierto de la guajira", "estepa euroasiatica", "estepa patagonica"],
+        85: ["estepa kazaja", "estepa pontica", "chott el djerid", "etosha", "salar de makgadikgadi", "bonneville", "salinas de bonneville", "badwater", "desierto de lut", "dasht e kavir", "dasht e lut", "desierto de judia", "desierto de judea", "desierto de ogaden", "desierto de danakil", "danakil", "desierto de atacama norte", "desierto de mojave alto"],
+    },
+    "gen-004": {
+        10: ["athletic club", "athletic de bilbao", "real sociedad", "real betis", "betis", "sevilla fc", "sevilla", "valencia cf", "valencia", "villarreal", "rcd espanyol", "espanyol", "celta de vigo", "osasuna", "getafe", "rayo vallecano", "girona", "mallorca"],
+        25: ["villarreal cf", "español", "celta", "ca osasuna", "rayo", "rcd mallorca", "deportivo alaves", "alaves", "ud las palmas", "las palmas", "leganes", "real valladolid", "valladolid", "real zaragoza", "zaragoza", "deportivo de la coruña", "depor", "sporting de gijon", "sporting", "real oviedo", "oviedo"],
+        45: ["racing de santander", "racing", "malaga cf", "malaga", "granada cf", "granada", "cadiz cf", "cadiz", "elche cf", "elche", "levante ud", "levante", "cd tenerife", "tenerife", "ud almeria", "almeria", "sd eibar", "eibar", "sd huesca", "huesca", "real murcia", "murcia"],
+        65: ["numancia", "hercules", "recreativo de huelva", "recreativo", "albacete balompie", "albacete", "cordoba", "xerez", "gimnastic de tarragona", "nastic", "ud salamanca", "salamanca", "compostela", "cd logroñes", "logroñes", "real burgos", "burgos", "lleida", "merida"],
+        85: ["extremadura", "castellon", "sabadell", "pontevedra", "real jaen", "alcoyano", "arenas de getxo", "real union", "ce europa", "europa", "atletico tetuan", "cultural leonesa", "condal", "ad almeria", "real aviles" if False else "rcd cordoba", "union deportiva salamanca"],
+    },
+    "geo-022": {
+        10: ["alcala de henares", "mostoles", "fuenlabrada", "leganes", "getafe", "alcorcon", "hospitalet de llobregat", "badalona", "sabadell", "terrassa", "cartagena", "algeciras", "benidorm", "santiago de compostela", "merida"],
+        25: ["torrejon de ardoz", "parla", "alcobendas", "las rozas", "san sebastian de los reyes", "pozuelo de alarcon", "mataro", "reus", "dos hermanas", "san fernando", "el puerto de santa maria", "mijas", "fuengirola", "torremolinos", "marbella" if False else "estepona", "benalmadena", "ponferrada", "talavera de la reina", "ferrol", "barakaldo", "getxo", "irun", "torrevieja", "gandia"],
+        45: ["rivas vaciamadrid", "majadahonda", "valdemoro", "collado villalba", "aranjuez", "arganda del rey", "boadilla del monte", "coslada", "santa coloma de gramenet", "sant cugat del valles", "cornella de llobregat", "manresa", "figueres", "lloret de mar", "lorca", "ecija", "chiclana de la frontera", "sanlucar de barrameda", "la linea de la concepcion", "ronda", "roquetas de mar", "el ejido", "motril", "linares", "aviles", "torrelavega", "tudela", "orihuela", "alcoy", "denia", "paterna", "torrent", "sagunto", "san cristobal de la laguna", "la laguna", "telde"],
+        65: ["colmenar viejo", "pinto", "san fernando de henares", "sant boi de llobregat", "rubi", "vilanova i la geltru", "viladecans", "castelldefels", "granollers", "el prat de llobregat", "mollet del valles", "esplugues de llobregat", "vic", "blanes", "molina de segura", "alcala de guadaira", "utrera", "mairena del aljarafe", "velez malaga", "antequera", "almuñecar", "ubeda", "baeza", "lucena", "puente genil", "puertollano", "tomelloso", "alcazar de san juan", "valdepeñas", "hellin", "miranda de ebro", "aranda de duero", "plasencia", "almendralejo"],
+        85: ["don benito", "villanueva de la serena", "naron", "vilagarcia de arousa", "langreo", "mieres", "castro urdiales", "portugalete", "santurtzi", "basauri", "errenteria", "eibar", "zarautz", "calahorra", "elda", "petrer", "san vicente del raspeig", "javea", "alzira", "mislata", "burjassot", "ontinyent", "xativa", "vila real", "villarreal", "burriana", "la vall d uixo", "vinaros", "manacor", "inca", "eivissa", "calvia", "llucmajor", "arona", "adeje", "santa lucia de tirajana", "san bartolome de tirajana", "arrecife", "puerto del rosario"],
+    },
+    "geo-021": {
+        10: ["estrecho de bering", "bering", "estrecho de malaca", "malaca", "estrecho de ormuz", "ormuz", "estrecho de magallanes", "magallanes", "paso de drake", "estrecho del bosforo", "bosforo"],
+        25: ["estrecho de bab el mandeb", "bab el mandeb", "canal de beagle", "beagle", "estrecho de dover", "paso de calais", "canal de kiel", "kiel", "canal de corinto", "corinto", "estrecho de los dardanelos", "dardanelos", "estrecho de mesina", "mesina", "paso del noroeste", "canal de mozambique"],
+        45: ["mar de hoces", "estrecho de kerch", "kerch", "estrecho de bonifacio", "bonifacio", "estrecho de otranto", "otranto", "estrecho de cook", "cook", "estrecho de bass", "bass", "estrecho de torres", "torres", "estrecho de taiwan", "estrecho de formosa", "estrecho de corea", "corea", "estrecho de florida", "canal de yucatan", "skagerrak", "kattegat", "oresund", "canal de castilla"],
+        65: ["estrecho de sunda", "sunda", "estrecho de lombok", "lombok", "estrecho de tsushima", "tsushima", "estrecho de tsugaru", "estrecho de juan de fuca", "paso del nordeste", "mozambique", "estrecho de dinamarca", "estrecho de davis", "estrecho de hudson", "canal de la mona", "paso de los vientos", "estrecho de palk", "estrecho de tiran", "tiran", "canal de san jorge", "canal del norte", "canal del midi"],
+        85: ["estrecho de la perouse", "estrecho de tartaria", "estrecho de georgia", "gran belt", "pequeño belt", "canal de welland", "canal de erie", "canal de gota", "canal blanco", "canal moscu volga", "estrecho de le maire", "estrecho de makassar", "estrecho de luzon", "estrecho de nares", "estrecho de kara", "estrecho de vilkitsky", "estrecho de la florida"],
+    },
+    "gen-039": {
+        10: ["lg", "hp", "dell", "lenovo", "xiaomi", "huawei", "nokia", "philips", "canon", "nikon", "playstation", "xbox", "intel", "amd", "nvidia", "amazon", "meta", "bosch", "dyson"],
+        25: ["asus", "acer", "msi", "razer", "logitech", "oppo", "oneplus", "motorola", "panasonic", "toshiba", "fujifilm", "gopro", "dji", "garmin", "bose", "jbl", "ibm", "valve", "steam", "sega", "atari", "ubisoft", "electronic arts", "ea", "siemens", "casio"],
+        45: ["corsair", "steelseries", "hyperx", "vivo", "realme", "honor", "sharp", "fujitsu", "olympus", "leica", "tomtom", "fitbit", "sonos", "sennheiser", "marshall", "beats", "yamaha", "pioneer", "qualcomm", "oracle", "cisco", "capcom", "konami", "square enix", "activision", "blizzard", "rockstar games", "epic games", "riot games", "sandisk", "kingston", "western digital", "seagate", "braun", "miele", "balay", "cecotec"],
+        65: ["ericsson", "nec", "hitachi", "bang and olufsen", "audio technica", "shure", "harman kardon", "denon", "onkyo", "marantz", "arm", "bandai namco", "bethesda", "fromsoftware", "cd projekt", "crucial", "tp link", "netgear", "synology", "irobot", "roomba", "teka", "hisense", "tcl", "epson", "brother", "xerox", "polar", "suunto"],
+        85: ["klipsch", "bq", "spc", "energy sistem", "texas instruments", "ricoh", "kioxia", "micron", "tsmc", "asml", "broadcom", "mediatek", "loewe", "aoc", "benq", "viewsonic", "nzxt", "thermaltake", "noctua", "keychron", "elgato", "rode", "focusrite", "wacom", "huion", "anker", "belkin", "ugreen"],
+    },
+    "dep-008": {
+        10: ["michael schumacher", "schumacher", "lewis hamilton", "hamilton", "max verstappen", "verstappen", "ayrton senna", "senna", "alain prost", "prost", "niki lauda", "lauda", "sebastian vettel", "vettel", "valentino rossi", "rossi", "jorge lorenzo", "lorenzo", "dani pedrosa", "pedrosa", "angel nieto", "nieto"],
+        25: ["kimi raikkonen", "raikkonen", "mika hakkinen", "hakkinen", "nigel mansell", "mansell", "nelson piquet", "piquet", "juan manuel fangio", "fangio", "charles leclerc", "leclerc", "lando norris", "norris", "george russell", "russell", "sergio perez", "checo perez", "alex criville", "criville", "jorge martin", "pedro acosta", "francesco bagnaia", "pecco bagnaia", "bagnaia", "fabio quartararo", "quartararo", "casey stoner", "stoner"],
+        45: ["jackie stewart", "stewart", "jim clark", "clark", "graham hill", "damon hill", "emerson fittipaldi", "mario andretti", "gilles villeneuve", "jacques villeneuve", "jenson button", "button", "nico rosberg", "rosberg", "daniel ricciardo", "ricciardo", "oscar piastri", "piastri", "valtteri bottas", "bottas", "rubens barrichello", "barrichello", "felipe massa", "massa", "pedro de la rosa", "sete gibernau", "gibernau", "maverick viñales", "viñales", "aleix espargaro", "pol espargaro", "joan mir", "alex rins", "alex marquez", "giacomo agostini", "agostini"],
+        65: ["jochen rindt", "mark webber", "david coulthard", "juan pablo montoya", "marc gene", "jaime alguersuari", "carlos checa", "jorge martinez aspar", "aspar", "sito pons", "ricardo tormo", "martin", "acosta", "enea bastianini", "nicky hayden", "hayden", "mick doohan", "doohan", "wayne rainey", "kevin schwantz", "eddie lawson", "freddie spencer", "kenny roberts", "john surtees", "marco simoncelli", "andrea dovizioso", "dovizioso", "max biaggi", "biaggi"],
+        85: ["alfonso de portago", "luis perez sala", "mike hailwood", "barry sheene", "loris capirossi", "marco melandri", "franco morbidelli", "johann zarco", "jack miller", "brad binder", "miguel oliveira", "raul fernandez", "augusto fernandez", "fermin aldeguer", "nico hulkenberg", "kevin magnussen", "pierre gasly", "esteban ocon", "yuki tsunoda", "alexander albon", "lance stroll", "tito rabat", "toni elias", "alvaro bautista"],
+    },
+    "gen-005": {
+        10: ["opel", "peugeot", "citroen", "fiat", "ferrari", "lamborghini", "porsche", "audi", "bmw", "mercedes benz", "mercedes", "mini", "land rover", "range rover", "nissan", "honda", "mazda", "hyundai", "kia", "dacia", "skoda", "cupra"],
+        25: ["alfa romeo", "lancia", "maserati", "bugatti", "smart", "jaguar", "aston martin", "bentley", "rolls royce", "mclaren", "volvo", "mitsubishi", "lexus", "suzuki", "chevrolet", "cadillac", "jeep", "dodge", "chrysler", "byd", "ds", "alpine"],
+        45: ["lotus", "mg", "rover", "saab", "koenigsegg", "polestar", "genesis", "ssangyong", "infiniti", "acura", "isuzu", "daihatsu", "buick", "gmc", "ram", "lincoln", "hummer", "rivian", "lucid", "nio", "omoda", "jaecoo", "ebro", "hispano suiza", "pegaso", "santana", "pagani", "maybach", "daewoo", "lada"],
+        65: ["morgan", "austin", "morris", "kg mobility", "pontiac", "oldsmobile", "plymouth", "chery", "geely", "li auto", "delorean", "rimac", "fisker", "datsun", "scion", "saturn", "mercury", "simca", "talbot lago", "dkw", "nsu", "horch", "caterham", "alpina", "ktm", "pininfarina", "bertone"],
+        85: ["hurtan", "spania gta", "tramontana", "studebaker", "packard", "nash", "hudson", "duesenberg", "cord", "tucker", "spyker", "autobianchi", "innocenti", "panhard", "delage", "delahaye", "borgward", "glas", "wanderer", "gumpert", "apollo", "bristol", "jensen", "reliant", "marcos", "ginetta", "ariel", "noble", "radical", "donkervoort", "ruf", "italdesign"],
+    },
+}
+
+
+DENSITY_BATCH_2_TOPUP3 = {
+    "gen-016": {
+        45: ["viena capellanes", "la mallorquina", "subway", "la mafia se sienta a la mesa", "museo del jamon"],
+        65: ["bombon boss", "sibuya", "miss sushi", "padthaiwok", "aloha poke", "healthy poke", "tierra burrito", "tierra burrito bar"],
+        85: ["burro canaglia", "kilometros de pizza", "new york burger", "timesburg", "cruz blanca", "cerveceria cruz blanca", "pastelerias mallorca", "viena"],
+    },
+    "pel-014": {
+        45: ["shrek 4", "shrek felices para siempre", "el gato con botas", "el gato con botas el ultimo deseo", "madagascar 3", "los pinguinos de madagascar"],
+        65: ["trolls", "los croods", "megamind", "el espantatiburones", "hormigaz", "antz", "el principe de egipto", "la ruta hacia el dorado", "spirit el corcel indomable"],
+        85: ["wallace y gromit", "chicken run", "evasion en la granja", "kubo y las dos cuerdas magicas", "el alucinante mundo de norman", "la novia cadaver", "isla de perros", "fantastic mr fox", "el principito", "planet 51", "atrapa la bandera", "momias"],
+    },
+    "dep-003": {
+        45: ["gimnasia ritmica", "gimnasia artistica", "gimnasia en trampolin", "baloncesto 3x3", "rugby a 7", "hockey sobre hierba", "hockey hierba"],
+        65: ["lucha grecorromana", "lucha libre olimpica", "natacion mariposa", "natacion espalda", "natacion braza", "natacion estilos", "salto de potro", "barras asimetricas", "barra de equilibrio", "anillas"],
+        85: ["potro con arcos", "ciclismo btt", "mountain bike", "ciclismo contrarreloj", "ciclismo keirin", "ciclismo omnium", "ciclismo madison", "foso olimpico", "skeet", "triatlon relevo mixto"],
+    },
+    "gen-038": {
+        25: ["tutankamon", "marco polo", "mozart", "beethoven", "william shakespeare", "shakespeare", "alan turing"],
+        45: ["juan sebastian elcano", "elcano", "fernando de magallanes", "magallanes", "juana de arco", "nicolas copernico", "copernico", "rene descartes", "descartes", "karl marx", "sigmund freud", "alexander fleming"],
+        65: ["vasco da gama", "ramses ii", "nefertiti", "anibal barca", "marco aurelio", "carlomagno", "johannes gutenberg", "johannes kepler", "adam smith", "louis pasteur", "ada lovelace", "rosalind franklin"],
+        85: ["bach", "vivaldi", "chopin", "dante alighieri", "homero", "virgilio", "lope de vega", "calderon de la barca", "miguel de unamuno", "antonio machado"],
+    },
+    "gen-008": {
+        45: ["el arbol", "supermercados el arbol", "alimerka", "ametller origen", "veritas", "family cash", "el corte ingles"],
+        65: ["plusfresc", "dialprix", "maskom", "syp", "hiperber", "super amara", "supermercado el corte ingles", "alcampo supermercado", "dia market"],
+        85: ["dia maxi", "eroski center", "eroski city", "simply market", "simply city", "consum basic", "claudio", "supermercados claudio", "primaprix", "ecoveritas", "casa ametller"],
+    },
+    "dep-001": {
+        45: ["tenis masculino", "tenis femenino", "padel masculino", "padel femenino", "padel mixto", "voley playa masculino", "voley playa femenino"],
+        65: ["voley playa mixto", "voleibol mixto", "tenis de mesa individual", "tenis de mesa dobles", "tenis de mesa mixto", "ping pong dobles", "ping pong individual", "padbol"],
+        85: ["badminton mixto", "tenis adaptado", "tenis indoor", "tenis en pista cubierta", "padel en silla de ruedas", "tenis de mesa adaptado", "footbag net", "mamanet", "cachibol", "throwball", "deck tennis"],
+    },
+    "geo-004": {
+        45: ["monte ararat", "ararat", "sierra de albarracin", "sierra de gata", "sierra de francia", "serrania de ronda", "serrania de cuenca", "picos de urbion", "sierra de la demanda"],
+        65: ["monte kenya", "toubkal", "jbel toubkal", "monte camerun", "monte erebus", "monte cook", "monte kosciuszko", "zugspitze", "gran sasso", "damavand", "pinatubo", "merapi"],
+        85: ["nyiragongo", "ruwenzori", "aoraki", "monte rosa", "dufourspitze", "grossglockner", "marmolada", "kazbek", "sakurajima", "mayon", "taal", "sierra de segura", "sierra de aracena", "sierra de espadan", "sierra calderona", "peña santa", "peña prieta", "peña ubiña", "sierra de guara", "pica d estats"],
+    },
+    "pal-004": {
+        45: ["eñe", "erre", "dad", "did", "sos", "wow", "sis"],
+        65: ["apocopa", "arara", "oruro", "soros", "racecar", "rotavator", "xanax", "kajak"],
+        85: ["ollo", "soños", "repaper", "pullup", "sememes", "kanak", "navan", "oddo", "reler", "esse", "lemel", "vav", "waw", "saippuakivikauppias", "tattarrattat", "kinnikinnik", "dud"],
+    },
+    "gen-031": {
+        25: ["berserk", "fullmetal alchemist", "my hero academia", "demon slayer", "kimetsu no yaiba", "jujutsu kaisen", "chainsaw man", "spy x family", "bleach"],
+        45: ["captain tsubasa", "saint seiya", "caballeros del zodiaco", "los caballeros del zodiaco", "evangelion", "neon genesis evangelion", "hunter x hunter", "detective conan", "mazinger z"],
+        65: ["vinland saga", "vagabond", "slam dunk", "haikyuu", "fairy tail", "inuyasha", "dr slump", "arale", "astroboy", "astro boy", "gaston el gafe", "spirou", "blake y mortimer"],
+        85: ["jojos bizarre adventure", "yu yu hakusho", "marsupilami", "blueberry", "thorgal", "xiii", "largo winch", "paracuellos", "el eternauta", "dylan dog", "tex"],
+    },
+    "dep-014": {
+        45: ["combinada alpina", "esqui cross", "ski cross", "eslalon paralelo", "freeride", "curling dobles mixto", "monobob"],
+        65: ["patinaje artistico sobre hielo", "esqui fuera de pista", "heliesqui", "heli ski", "splitboard", "skimo", "moguls", "aerials", "snowboard paralelo"],
+        85: ["relevo biatlon", "persecucion biatlon", "sprint biatlon", "curling masculino", "curling femenino", "bobsleigh a dos", "bobsleigh a cuatro", "luge individual", "luge dobles", "skeleton masculino", "skeleton femenino", "para hockey sobre hielo"],
+    },
+    "pel-030": {
+        25: ["jude law", "ewan mcgregor", "liam neeson", "ralph fiennes", "hugh grant", "colin farrell", "tom hardy", "robert pattinson", "emma watson", "keira knightley"],
+        45: ["james mcavoy", "michael fassbender", "andrew garfield", "tobey maguire", "daniel radcliffe", "olivia colman", "emma thompson", "reese witherspoon", "cameron diaz", "uma thurman", "winona ryder", "kirsten dunst"],
+        65: ["luis tosar", "mario casas", "blanca suarez", "ursula corbero", "alvaro morte", "najwa nimri", "maribel verdu", "carmen maura", "juliette binoche", "omar sy", "vincent cassel", "jean reno", "monica bellucci"],
+        85: ["jeremy strong", "kieran culkin", "brian cox", "bill skarsgard", "rebecca ferguson", "alicia vikander", "song kang ho", "lee jung jae", "tony leung", "donnie yen", "hiroyuki sanada", "jeremy allen white", "glen powell"],
+    },
+    "mus-011": {
+        45: ["boris brejcha", "tale of us", "anyma", "lost frequencies", "robin schulz", "purple disco machine", "claptone", "aphex twin", "oscar mulero", "fatima hajji", "indira paganotto"],
+        65: ["ben klock", "marcel dettmann", "dixon", "stephan bodzin", "maceo plex", "marco carola", "jamie jones", "michael bibi", "the martinez brothers", "loco dice", "black coffee", "dom dolla", "john summit", "camelphat", "four tet"],
+        85: ["joseph capriati", "keinemusik", "rampa", "adam port", "chris lake", "gorgon city", "ben bohmer", "rufus du sol", "odesza", "lane 8", "ferry corsten", "markus schulz", "felix jaehn", "kungs", "moderat", "floating points", "caribou", "jon hopkins", "bonobo", "nina kraviz", "cristian varela", "andres campo"],
+    },
+    "pel-013": {
+        45: ["olivia de havilland", "joan fontaine", "greta garbo", "marlene dietrich", "laurence olivier", "frank sinatra", "dean martin", "jerry lewis", "groucho marx", "harold lloyd"],
+        65: ["gene tierney", "myrna loy", "william powell", "jean harlow", "carole lombard", "claudette colbert", "ginger rogers", "maureen o hara", "mae west", "mary pickford", "lillian gish", "gloria swanson", "rudolph valentino", "douglas fairbanks"],
+        85: ["lon chaney", "bela lugosi", "boris karloff", "peter lorre", "charles laughton", "edward g robinson", "james cagney", "joseph cotten", "robert mitchum", "anthony quinn", "bing crosby", "bob hope", "stan laurel", "oliver hardy", "kim novak", "janet leigh", "anne bancroft", "deborah kerr", "david niven", "richard burton"],
+    },
+    "geo-006": {
+        25: ["bahia de algeciras", "bahia de cadiz", "bahia de la concha", "ria de vigo", "ria de arousa", "albufera de valencia", "lago de sanabria", "lago ness", "loch ness"],
+        45: ["lago de bañolas", "lago di como", "lago de garda", "lago maggiore", "lago leman", "lago de ginebra", "lago de constanza", "lago superior", "lago michigan", "lago huron", "lago erie", "lago ontario", "grandes lagos"],
+        65: ["mar de galilea", "lago tiberiades", "lago turkana", "lago malawi", "lago chad", "lago eyre", "lago ladoga", "lago onega", "lago balaton", "ria de pontevedra", "laguna de gallocanta", "mar de liguria", "mar de creta"],
+        85: ["mar de chukotka", "mar de siberia oriental", "mar de cerdeña", "mar de tracia", "mar de levante", "golfo de taranto", "golfo de genova", "golfo de napoles", "golfo de corinto", "golfo de riga", "golfo de san lorenzo", "golfo de carpentaria", "golfo de tailandia", "golfo de tonkin", "bahia de san francisco", "fiordo de geiranger", "fiordo de sogne"],
+    },
+    "mus-030": {
+        45: ["el mato a un policia motorizado", "la renga", "indio solari", "patricio rey y sus redonditos de ricota", "los redondos", "ciro y los persas", "los piojos", "mercedes sosa", "silvio rodriguez", "pablo milanes", "carlos baute", "ricardo montaner"],
+        65: ["nathy peluso", "lali", "kevin johansen", "leon gieco", "las pelotas", "estelares", "turf", "kapanga", "catupecu machu", "sui generis", "seru giran", "almendra", "los abuelos de la nada", "miguel mateos", "vilma palma e vampiros"],
+        85: ["la mosca tse tse", "los cafres", "dread mar i", "javiera mena", "gepe", "alex anwandter", "francisca valenzuela", "illapu", "inti illimani", "quilapayun", "los jaivas", "violeta parra", "victor jara", "monsieur perine", "fonseca", "andres cepeda", "el tri", "alex lora", "jaguares", "kinky", "enjambre", "carla morrison", "ximena sariñana", "paulina rubio", "thalia", "gloria trevi", "alejandra guzman", "chavela vargas", "lila downs"],
+    },
+    "mus-014": {
+        25: ["joaquin sabina", "sabina", "joan manuel serrat", "victor manuel", "ana belen", "miguel rios", "miguel bose", "camaron", "paco de lucia", "camilo sesto", "nino bravo", "mocedades", "rocio jurado", "isabel pantoja"],
+        45: ["kiko veneno", "pata negra", "raimundo amador", "ketama", "antonio carmona", "tequila", "alejo stivel", "leño", "rosendo", "rosendo mercado", "baron rojo", "obus", "medina azahara", "triana", "burning", "ella baila sola", "monica naranjo", "los del rio", "el fary", "manolo escobar"],
+        65: ["santiago auseron", "carlos berlanga", "nacho canut", "nacho cano", "jose maria cano", "david summers", "la frontera", "los rebeldes", "carlos segarra", "091", "los enemigos", "complices", "sole gimenez", "el barrio", "niña pastori", "los chichos", "los chunguitos", "cristina del valle", "amistades peligrosas"],
+        85: ["angeles del infierno", "alameda", "asfalto", "topo", "ñu", "mermelada", "los sencillos", "josele santiago", "zombies", "bernardo bonezzi", "objetivo birmania", "teo cardalda", "las hijas del sol", "carlos goñi", "diego vasallo", "los limones", "los refrescos", "javier ojeda", "bordon 4", "manzanita"],
+    },
+    "mus-009": {
+        25: ["residente", "calle 13", "luis fonsi", "kase o", "violadores del verso", "sfdk", "tote king", "nach", "don patricio", "beret", "peso pluma"],
+        45: ["alexis y fido", "jowell y randy", "zion", "lennox", "tony dize", "tito el bambino", "cosculluela", "ñengo flow", "justin quiles", "guaynaa", "lunay", "jay wheeler", "el alfa", "tokischa", "tainy", "luny tunes", "cruz cafune", "bejo", "ayax y prok"],
+        65: ["baby rasta y gringo", "rkm y ken y", "hector el father", "kendo kaponi", "lenny tavarez", "dalex", "brytiago", "darell", "nio garcia", "chimbala", "sky rompiendo", "natanael cano", "fuerza regida", "cartel de santa", "zatu", "el chojin", "falsalarma", "rapsusklei", "shotta"],
+        85: ["ptazeta", "kaydy cain", "khaled", "la zowi", "ms nina", "cecilio g", "soto asa", "rojuu", "ben yart", "prok", "ayax", "fernandocosta", "hard gz", "recycled j", "hijos de la ruina", "nikone", "nyno vargas", "moncho chavea", "maka", "demarco flamenco", "l gante", "callejero fino"],
+    },
+    "mus-028": {
+        25: ["david bisbal", "david bustamante", "chenoa", "pablo lopez", "antonio orozco", "malu", "india martinez", "aitana", "beret", "chambao", "macaco"],
+        45: ["la la love you", "ginebras", "alcala norte", "sexy zebras", "sidecars", "carlos sadness", "m clan", "carlos tarque", "ismael serrano", "pedro guerra", "bebe", "nacho vegas", "tanxugueiras", "rodrigo cuevas", "la pegatina", "funambulista", "efecto pasillo"],
+        65: ["los punsetes", "punsetes", "camellos", "biznaga", "melenas", "joe crepusculo", "depedro", "andres suarez", "conchita", "russian red", "christina rosenvinge", "estrella morente", "solea morente", "niño de elche", "baiuca", "txarango", "buhos", "els amics de les arts", "sopa de cabra", "antonia font"],
+        85: ["ginesta", "shego", "las dianas", "tarque", "maika makovski", "chucho", "surfin bichos", "hidrogenesse", "la prohibida", "putochinomaricon", "samantha hudson", "maria arnal", "maria jose llergo", "fillas de cassandra", "cala vento", "belako", "izaro", "berri txarrak", "gorka urbizu", "gatibu", "marlena", "zoo", "la raiz", "els catarres", "blaumut", "rayden", "los delincuentes", "el canijo de jerez", "albert pla"],
+    },
+    "dep-009": {
+        25: ["kyrie irving", "james harden", "russell westbrook", "kawhi leonard", "paul george", "anthony davis", "damian lillard", "klay thompson", "draymond green", "chris paul", "carmelo anthony", "dwyane wade", "pau gasol", "marc gasol", "lebron james", "michael jordan"],
+        45: ["chris bosh", "dwight howard", "ray allen", "paul pierce", "tracy mcgrady", "vince carter", "grant hill", "jason kidd", "gary payton", "reggie miller", "yao ming", "jayson tatum", "jaylen brown", "joel embiid", "jimmy butler", "facundo campazzo", "campazzo"],
+        65: ["clyde drexler", "dominique wilkins", "alonzo mourning", "dikembe mutombo", "chris webber", "ben wallace", "chauncey billups", "joe dumars", "kevin mchale", "robert parish", "james worthy", "moses malone", "george gervin", "pete maravich", "bob cousy", "elgin baylor", "bill walton"],
+        85: ["shai gilgeous alexander", "anthony edwards", "devin booker", "ja morant", "karl anthony towns", "trae young", "donovan mitchell", "demar derozan", "santi aldama", "usman garuba", "pau ribas", "alberto abalde", "alberto diaz", "dario brizuela", "juan antonio corbalan", "corbalan", "wayne brabender", "clifford luyk", "emiliano rodriguez", "rafael rullan", "juanma iturriaga", "ignacio solozabal", "audie norris", "darryl middleton", "carlos jimenez", "fran vazquez", "fernando san emeterio", "carlos cabezas", "bojan dubljevic", "gabriel deck", "nicolas laprovittola", "marcelinho huertas", "tiago splitter", "ante tomic", "sarunas jasikevicius", "dimitris diamantidis", "vassilis spanoulis", "vlade divac", "predrag stojakovic", "andrei kirilenko", "rudy gobert"],
+    },
+    "geo-022": {
+        25: ["sitges", "salou", "cambrils", "igualada", "tortosa", "jaca", "calatayud", "estella", "haro", "laredo", "santoña", "monforte de lemos", "ribadeo", "cangas de onis", "llanes", "ribadesella", "medina del campo", "astorga", "ciudad rodrigo", "bejar", "aranda de duero", "trujillo", "zafra", "almagro", "peñiscola", "benicasim"],
+        45: ["castellar del valles", "cerdanyola del valles", "gava", "calella", "tossa de mar", "roses", "cadaques", "palafrugell", "palamos", "sant feliu de guixols", "banyoles", "olot", "vilafranca del penedes", "el vendrell", "calafell", "amposta", "tarrega", "balaguer", "la seu d urgell", "puigcerda", "vielha", "barbastro", "monzon", "fraga", "alcañiz", "tafalla", "arnedo", "viveiro", "baiona", "sanxenxo", "o grove", "betanzos", "arteixo", "carballo", "cangas del narcea"],
+        65: ["ripollet", "montcada i reixac", "premia de mar", "pineda de mar", "malgrat de mar", "berga", "mollerussa", "sabiñanigo", "ejea de los caballeros", "tarazona", "caspe", "alsasua", "najera", "alfaro", "suances", "reinosa", "camargo", "el astillero", "potes", "sarria", "chantada", "verin", "tui", "marin", "cambados", "a estrada", "lalin", "redondela", "o porriño", "ponteareas", "oleiros", "culleredo", "noia", "ribeira", "boiro", "villaviciosa", "luarca", "siero", "laviana", "laguna de duero", "tordesillas", "peñafiel", "benavente", "toro", "la bañeza", "bembibre", "briviesca", "lerma", "cuellar", "arevalo", "almazan", "el burgo de osma", "aguilar de campoo"],
+        85: ["azpeitia", "azkoitia", "bergara", "arrasate", "mondragon", "tolosa", "hondarribia", "pasaia", "ordizia", "beasain", "zumarraga", "zumaia", "getaria", "gernika", "bermeo", "durango", "amorebieta", "galdakao", "leioa", "erandio", "sestao", "ermua", "llodio", "amurrio", "navalmoral de la mata", "coria", "miajadas", "jerez de los caballeros", "llerena", "villafranca de los barros", "olivenza", "montijo", "azuaga", "almansa", "villarrobledo", "la roda", "caudete", "manzanares", "daimiel", "socuellamos", "campo de criptana", "miguelturra", "tarancon", "las pedroñeras", "quintanar de la orden", "illescas", "madridejos", "consuegra", "sonseca", "torrijos", "ocaña", "villacañas", "azuqueca de henares", "siguenza", "molina de aragon"],
+    },
+    "geo-017": {
+        45: ["desierto de black rock", "black rock", "desierto de yuma", "desierto de colorado", "desierto de gorafe", "gorafe", "desierto de las palmas", "estepa aragonesa", "estepa castellana", "pampa humeda", "pampa seca", "sahel", "puszta", "estepa de hungria"],
+        65: ["desierto de baja california", "desierto de siloli", "desierto de salvador dali", "pampa del tamarugal", "puna de atacama", "salar de arizaro", "medanos de coro", "desierto de ica", "desierto de paracas", "depresion de qattara", "qattara", "karoo", "gran karoo", "pequeño karoo", "costa de los esqueletos", "sossusvlei", "deadvlei", "desierto de nefud", "desierto de cholistan", "desierto de lop", "lop nur", "llanura de nullarbor", "nullarbor"],
+        85: ["desierto de alvord", "desierto de owyhee", "desierto de anza borrego", "desierto de altar", "bolson de mapimi", "salar del rincon", "salar de pocitos", "salar de ollague", "salar de surire", "salar de tara", "salar de pedernales", "salar de maricunga", "salar de ascotan", "estepa magallanica", "llanura pampeana", "tanezrouft", "tassili n ajjer", "fezzan", "desierto de murzuq", "desierto de ubari", "desierto de bayuda", "gran mar de arena", "richtersveld", "an nafud", "ad dahna", "arenas de wahiba", "desierto de kharan", "desierto de registan", "desierto de dasht e margo", "badain jaran", "tengger", "cuenca de qaidam", "meseta de ustyurt", "estepa de baraba", "estepa de kulunda", "estepa calmuca", "desierto de strzelecki", "desierto de sturt", "desierto de tirari", "dunas de tottori", "arenas de oleshky", "desierto de bledow", "salinas de torrevieja", "salinas de santa pola"],
+    },
+    "geo-010": {
+        45: ["cares", "rio cares", "deba", "rio deba", "urola", "rio urola", "zadorra", "rio zadorra", "ega", "rio ega", "arga", "rio arga", "irati", "rio irati", "arlanza", "rio arlanza", "arlanzon", "rio arlanzon", "carrion", "rio carrion", "orbigo", "rio orbigo", "bernesga", "rio bernesga", "jerte", "rio jerte"],
+        65: ["cabe", "dobra", "rio dobra", "piloña", "caudal", "rio caudal", "aller", "trubia", "tiron", "rio tiron", "oja", "rio oja", "najerilla", "rio najerilla", "iregua", "cidacos", "alhama", "salazar", "arba", "piedra", "rio piedra", "guadalope", "rio guadalope", "esera", "rio esera", "besos", "rio besos", "tordera", "rio tordera", "fluvia", "rio fluvia", "muga", "rio muga", "francoli", "rio francoli"],
+        85: ["bibei", "lor", "ibias", "pigueña", "cadagua", "rio cadagua", "butron", "artibai", "bayas", "nela", "trueba", "leza", "esca", "huecha", "queiles", "mesa", "martin", "rio martin", "bergantes", "matarraña", "rio matarraña", "noguera pallaresa", "noguera ribagorzana", "vero", "alcanadre", "flumen", "isuela", "valira", "anoia", "cardener", "onyar", "gaia", "rio foix", "rudron", "oca", "cea", "porma", "tera", "duraton", "rio duraton", "cega", "agueda", "rio agueda", "coa", "vouga", "zezere", "rio zezere", "sorraia", "almonte", "ardila", "guadiaro", "rio guadiaro", "guadalfeo", "andarax", "guadalentin", "serpis", "rio serpis", "magro", "bembezar", "guadiamar", "sorbe", "gallo", "guadiela", "ambroz"],
+    },
+    "mus-012": {
+        25: ["victor balaguer", "llamame", "jose guardiola", "algo prodigioso", "los tnt", "caracola", "que bueno que bueno", "jose velez", "bailemos un vals", "y solo tu", "colgado de un sueño", "universo", "antes muerta que sencilla", "maria isabel"],
+        45: ["maria de los angeles santamaria", "maria rosa marco", "maribel llaudes", "pedro pubill calaf", "sergio blanco", "estibaliz uranga", "braulio garcia", "miguel angel carreño", "beatriz missiego", "jose maria bacchelli", "amaya saizar", "made in spain", "la chica que yo quiero made in spain", "anna maria agusti", "encarna y toñi salazar", "josep sergi capdevila", "rosa de españa", "europe is living a celebration", "beth rodergas", "ramon del castillo"],
+        65: ["un blodymary", "un bloody mary", "blodymary", "d nash", "david fernandez", "chiki chiki", "el chiki chiki", "chikichiki", "baila el chikichiki", "pilar sanchez luque", "esdm", "raquel del rosario", "edurne garcia", "barbara reyzabal", "amaia y alfred", "alfred garcia", "la venda ya cayo", "chanel terrero", "eaea", "maria bas", "mark dasousa", "melodia ruiz"],
+        85: ["tim nelly y tony", "la decada", "civera", "rosa", "soraya", "diges", "miki", "que me quiten lo bailado", "algo chiquitito", "juan carlos calderon", "duo dinamico", "dime beth", "eres tu mocedades", "la la la massiel", "vivo cantando salome", "yo soy aquel raphael", "bailar pegados sergio dalma", "slomo chanel", "zorra nebulossa", "esa diva melody", "eaea blanca paloma", "melani garcia", "solea", "carlos higes", "sandra valero"],
+    },
+    "geo-021": {
+        45: ["estrecho de hormuz", "canal de chacao", "canal del chacao", "canal de bristol", "gran canal de china", "gran canal", "canal grande", "canal de venecia", "canal de sicilia", "estrecho de sicilia", "canal de malta", "puget sound", "long island sound"],
+        65: ["estrecho de singapur", "estrecho de johor", "estrecho de bali", "estrecho de sumba", "estrecho de mindoro", "estrecho de surigao", "canal de bashi", "estrecho de belle isle", "estrecho de cabot", "estrecho de barrow", "estrecho de lancaster", "estrecho de mcclure", "canal de nicaragua", "canal alberto", "canal de caledonia", "canal volga don"],
+        85: ["estrecho de qiongzhou", "estrecho de hainan", "estrecho de kanmon", "estrecho de akashi", "estrecho de naruto", "estrecho de karimata", "estrecho de bangka", "estrecho de ombai", "estrecho de wetar", "estrecho de foveaux", "estrecho de dampier", "estrecho de san bernardino", "estrecho de balabac", "estrecho de pamban", "canal moraleda", "canal messier", "estrecho de vilkitsky", "estrecho de anadyr", "estrecho de canso", "estrecho de northumberland", "estrecho de fury y hecla", "canal de foxe", "estrecho de nantucket", "the solent", "minch", "little minch", "canal de menai", "estrecho de kalmar", "estrecho de irbe", "estrecho de jubal", "canal de gozo", "canal de crinan", "canal del danubio al mar negro", "estrecho de zanzibar", "canal de pemba", "paso de anegada", "bocas del dragon", "boca de la serpiente"],
+    },
+    "gen-004": {
+        25: ["real madrid cf", "real madrid club de futbol", "futbol club barcelona", "barsa", "atletico madrid", "atleti", "club atletico de madrid", "la real", "real sociedad de futbol", "real betis balompie", "sevilla futbol club", "valencia club de futbol", "villarreal club de futbol", "real club deportivo espanyol"],
+        45: ["espanyol de barcelona", "real club celta de vigo", "celta vigo", "club atletico osasuna", "getafe cf", "getafe club de futbol", "rayo vallecano de madrid", "ad rayo vallecano", "girona fc", "girona futbol club", "real club deportivo mallorca", "deportivo alaves sad", "union deportiva las palmas", "cd leganes", "club deportivo leganes", "real valladolid cf", "real zaragoza sad"],
+        65: ["real club deportivo de la coruña", "rc deportivo", "deportivo la coruña", "real sporting de gijon", "sporting gijon", "real oviedo sad", "real racing club de santander", "racing santander", "malaga club de futbol", "cd malaga", "club deportivo malaga", "granada club de futbol", "cadiz club de futbol", "elche club de futbol", "levante union deportiva", "club deportivo tenerife", "union deportiva almeria", "sociedad deportiva eibar", "sociedad deportiva huesca", "cd numancia", "numancia de soria"],
+        85: ["real murcia cf", "hercules cf", "hercules de alicante", "real club recreativo de huelva", "recre", "albacete balompie sad", "cordoba cf", "xerez cd", "nastic de tarragona", "gimnastic", "union deportiva salamanca", "sd compostela", "club deportivo logroñes", "burgos cf", "real burgos cf", "ue lleida", "lerida", "ud lleida", "cp merida", "cf extremadura", "cd castellon", "ce sabadell", "pontevedra cf", "real jaen cf", "cd alcoyano", "arenas club", "real union de irun", "club esportiu europa", "club atletico de tetuan", "cultural y deportiva leonesa", "cd condal", "agrupacion deportiva almeria", "atletico aviacion", "atletico de bilbao", "espanya industrial", "el barca", "el barsa", "el madrid", "el atleti", "el betis", "el sevilla", "el valencia", "el athletic", "la real sociedad", "el espanyol", "el celta", "el rayo", "el getafe", "el mallorca", "el girona", "el alaves", "el villarreal", "el osasuna", "el valladolid", "el zaragoza", "el depor", "el sporting", "el oviedo", "el racing", "el malaga", "el granada", "el cadiz", "el elche", "el levante", "el tenerife", "el almeria", "el eibar", "el huesca", "el murcia", "el hercules", "el recreativo", "el albacete", "el cordoba", "el xerez", "el nastic"],
+    },
+    "gen-039": {
+        25: ["gigabyte", "asrock", "google pixel", "nothing", "whirlpool", "electrolux", "aeg", "beko", "grundig", "fagor", "smeg", "delonghi", "nespresso", "moulinex", "rowenta", "tefal", "kodak", "adobe", "spotify", "netflix", "twitch", "paypal"],
+        45: ["aorus", "zotac", "sapphire", "cooler master", "fractal design", "lian li", "ubiquiti", "linksys", "d link", "trust", "mars gaming", "secretlab", "thrustmaster", "fairphone", "zte", "haier", "daikin", "indesit", "ariston", "candy", "hoover", "zanussi", "edesa", "cata", "liebherr", "kenwood", "krups", "taurus", "ufesa", "orbegozo", "jvc", "roland", "korg", "fender", "gibson", "pentax", "sigma", "zeiss", "polaroid", "insta360", "amazfit", "ring", "eufy", "roborock", "dreame", "karcher", "makita", "dewalt", "autodesk"],
+        65: ["evga", "powercolor", "palit", "pny", "seasonic", "be quiet", "phanteks", "deepcool", "arctic", "g skill", "lexar", "transcend", "verbatim", "lacie", "qnap", "mikrotik", "zyxel", "tenda", "avm", "fritzbox", "kensington", "targus", "hama", "hori", "fanatec", "8bitdo", "steam deck", "rog ally", "medion", "packard bell", "compaq", "vaio", "nubia", "redmagic", "meizu", "midea", "gree", "franke", "neff", "gaggenau", "kitchenaid", "akg", "beyerdynamic", "focal", "kef", "bowers and wilkins", "devialet", "edifier", "creative", "zoom", "tascam", "behringer", "hasselblad", "tamron", "manfrotto", "wahoo", "withings", "nest", "netatmo", "shelly", "sonoff", "aqara", "nanoleaf", "govee", "tapo", "ecovacs", "bissell", "milwaukee", "dremel", "ryobi", "einhell"],
+        85: ["commodore", "amiga", "sinclair", "zx spectrum", "amstrad", "neo geo", "snk", "naughty dog", "santa monica studio", "insomniac games", "guerrilla games", "polyphony digital", "kojima productions", "remedy", "larian studios", "obsidian", "bioware", "bungie", "id software", "arkane", "gearbox", "take two", "2k games", "thq nordic", "paradox interactive", "atlus", "team17", "devolver digital", "annapurna interactive", "mercurysteam", "tequila works", "nomada studio", "sap", "salesforce", "atlassian", "jetbrains", "github", "gitlab", "cloudflare", "digitalocean", "ovhcloud", "hetzner", "dropbox", "notion", "figma", "canva", "slack", "discord", "tiktok", "bytedance", "tencent", "alibaba", "rakuten", "stripe", "revolut"],
+    },
+    "dep-008": {
+        25: ["keke rosberg", "alan jones", "jody scheckter", "james hunt", "clay regazzoni", "ronnie peterson", "carlos reutemann", "denny hulme", "alberto ascari", "stirling moss", "jack brabham", "bruce mclaren", "gerhard berger", "jean alesi", "giancarlo fisichella", "jarno trulli", "ralf schumacher", "heinz harald frentzen", "marco bezzecchi", "luca marini"],
+        45: ["francois cevert", "phil hill", "mike hawthorn", "nino farina", "giuseppe farina", "pedro rodriguez", "ricardo rodriguez", "jacky ickx", "patrick depailler", "didier pironi", "rene arnoux", "michele alboreto", "riccardo patrese", "elio de angelis", "alessandro nannini", "martin brundle", "johnny herbert", "eddie irvine", "olivier panis", "takuma sato", "kamui kobayashi", "romain grosjean", "pastor maldonado", "heikki kovalainen", "robert kubica", "nick heidfeld", "adrian sutil", "paul di resta", "roberto merhi", "adrian campos", "maria de villota", "emilio de villota", "franco colapinto", "oliver bearman", "kimi antonelli", "liam lawson", "isack hadjar", "gabriel bortoleto", "jack doohan", "guanyu zhou", "logan sargeant"],
+        65: ["nyck de vries", "mick schumacher", "nicholas latifi", "antonio giovinazzi", "daniil kvyat", "brendon hartley", "stoffel vandoorne", "marcus ericsson", "pascal wehrlein", "jean eric vergne", "sebastien buemi", "bruno senna", "vitaly petrov", "narain karthikeyan", "tiago monteiro", "jos verstappen", "kazuki nakajima", "nelson piquet jr", "alex wurz", "kenny roberts jr", "alex barros", "norick abe", "daijiro kato", "luca cadalora", "john kocinski", "colin edwards", "ben spies", "cal crutchlow", "bradley smith", "scott redding", "danilo petrucci", "andrea iannone", "stefan bradl", "hector barbera", "emilio alzamora", "manuel poggiali", "julian simon", "nico terol"],
+        85: ["efren vazquez", "ana carrasco", "jorge navarro", "aron canet", "albert arenas", "izan guevara", "jaume masia", "sergio garcia", "alonso lopez", "celestino vietti", "tony arbolino", "fabio di giannantonio", "somkiat chantra", "ai ogura", "takaaki nakagami", "darryn binder", "remy gardner", "randy de puniet", "santi herrero", "benjamin grau", "carlos cardus", "joan garriga", "champi herreros", "alex debon", "fonsi nieto", "pablo nieto", "ruben xaus", "marco lucchinelli", "franco uncini", "carlo ubbiali", "geoff duke", "phil read", "jarno saarinen", "anton mang", "randy mamola", "paco godia", "alex soler roig", "de cesaris", "andrea de cesaris", "capelli", "ivan capelli"],
+    },
+    "gen-005": {
+        25: ["abarth", "mercedes", "vw", "chevy", "alfa", "aston", "rolls", "man", "scania", "irizar", "urovesa", "uro"],
+        45: ["biscuter", "goggomobil", "messerschmitt", "steyr puch", "puch", "fso", "volga", "alvis", "humber", "wolseley", "riley", "singer", "kaiser", "desoto", "edsel", "rambler", "checker", "maxus", "roewe", "denza", "aion", "hino", "fuso", "elizalde", "ptv", "kapi"],
+        65: ["eucort", "ricart", "nacional pescara", "clua", "baltasar", "liux", "heinkel", "karmann", "bitter", "hanomag", "lloyd", "goliath", "adler", "steyr", "praga", "polonez", "zil", "zaz", "kamaz", "armstrong siddeley", "allard", "frazer nash", "vanden plas", "lanchester", "westfield", "ultima", "zenos", "panoz", "vector", "mosler", "cizeta", "mazzanti", "siata", "cisitalia", "moretti", "vignale", "ghia", "dallara", "isotta fraschini", "hotchkiss", "salmson", "avions voisin", "berliet", "bellier", "chatenet", "casalini", "secma", "pgo", "auburn", "pierce arrow", "stutz", "frazer", "imperial", "lasalle", "merkur", "eagle", "geo"],
+        85: ["faraday future", "canoo", "lordstown", "mullen", "nikola", "bollinger", "aptera", "czinger", "lister", "puma", "troller", "mastretta", "vuhl", "iran khodro", "saipa", "togg", "anadol", "otokar", "karsan", "w motors", "laraki", "force motors", "ashok leyland", "maruti suzuki", "dome", "tommykaira", "ud trucks", "luxgen", "yulon", "xiaomi auto", "avatr", "deepal", "yangwang", "fangchengbao", "arcfox", "neta", "aito", "luxeed", "tank", "zotye", "lifan", "landwind", "qoros", "sinotruk", "kenworth", "peterbilt", "freightliner", "western star", "mack", "navistar", "oshkosh", "am general", "auto union", "david", "comarth", "aspid", "loryc", "castrosua", "ayats", "sunsundegui", "velantur", "meyers manx", "callaway", "american motors", "kaiser jeep", "henry j", "international harvester", "bricklin", "kimera", "giannini", "diatto", "de dion bouton", "chenard walcker", "tazzari", "heuliez"],
+    },
+}
+
+
+DENSITY_BATCH_2_TOPUP4 = {
+    "pel-014": {
+        45: ["anastasia", "el libro de la vida", "paranorman", "los boxtrolls"],
+        65: ["el camino hacia el dorado", "titan ae", "simbad la leyenda de los siete mares", "joseph el rey de los sueños"],
+        85: ["el corral", "barnyard", "la familia mitchell contra las maquinas", "los mitchell contra las maquinas", "nimona", "pinocho de guillermo del toro"],
+    },
+    "dep-014": {
+        45: ["esqui de baches", "snowboard eslalon gigante paralelo", "esqui alpino eslalon"],
+        65: ["esqui de travesia individual", "esqui de travesia sprint", "patinaje artistico parejas", "danza ritmica sobre hielo", "danza libre sobre hielo"],
+        85: ["curling en silla de ruedas", "biatlon adaptado", "esqui nordico adaptado", "patinaje de velocidad 500 metros", "patinaje de velocidad 1000 metros"],
+    },
+    "gen-008": {
+        45: ["supercor expres", "supercor express", "carrefour bio", "alcampo city"],
+        65: ["el jamon", "supermercados consum", "supermercados lupa", "supermercados gadis", "supermercados froiz"],
+        85: ["supermercados ahorramas", "supermercados caprabo", "hipermercado alcampo", "hipermercado carrefour", "hipermercado eroski", "supermercados el corte ingles", "supermercado dia", "supermercado lidl", "supermercado aldi", "supermercado mercadona", "gadisa", "uvesco", "supermercados plaza", "hipercor supermercado"],
+    },
+    "gen-004": {
+        45: ["atletico de madrid sad", "real betis balompie sad", "valencia club de futbol sad", "sevilla fc sad"],
+        65: ["villarreal cf sad", "rcd espanyol de barcelona", "celta de vigo sad", "real sociedad sad", "deportivo de la coruña sad"],
+        85: ["real racing club sad", "real sporting de gijon sad", "sporting de gijon sad", "ud las palmas sad", "elche cf sad", "levante ud sad", "cadiz cf sad", "granada cf sad", "malaga cf sad", "real valladolid sad"],
+    },
+    "gen-031": {
+        25: ["deadpool", "wolverine", "lobezno", "iron man", "capitan america", "thor", "hulk"],
+        45: ["x men", "patrulla x", "los cuatro fantasticos", "daredevil", "joker", "harley quinn", "los vengadores", "vengadores"],
+        65: ["liga de la justicia", "punisher", "el castigador", "spawn", "invincible", "el motorista fantasma"],
+        85: ["linterna verde", "aquaman", "doctor strange", "doctor extraño", "pantera negra", "viuda negra", "gambit", "ciclope", "tormenta", "magneto", "profesor x", "duende verde", "doctor octopus", "venom", "carnage", "ant man", "ojo de halcon", "bruja escarlata"],
+    },
+    "gen-038": {
+        25: ["julio verne", "confucio", "buda", "gengis kan", "genghis khan"],
+        45: ["benito perez galdos", "perez galdos", "francisco de quevedo", "luis de gongora", "miguel servet", "isaac peral"],
+        65: ["juan de la cierva", "agustina de aragon", "sor juana ines de la cruz", "atila", "saladino", "cardenal richelieu"],
+        85: ["otto von bismarck", "bismarck", "emilio herrera", "juana ines de la cruz", "richelieu", "pericles"],
+    },
+    "dep-001": {
+        45: ["tenis en silla", "badminton en silla de ruedas", "padel por parejas"],
+        65: ["padel individual masculino", "padel individual femenino", "voley playa adaptado", "voleibol sentado masculino", "voleibol sentado femenino"],
+        85: ["tenis de mesa por equipos", "ping pong por equipos", "tenis en pista de hierba", "tenis en moqueta", "newcomb ball", "shuttlecock", "jianzi"],
+    },
+    "geo-010": {
+        45: ["rio sil", "rio cabe", "rio porma", "rio tera", "rio cega", "rio coa", "rio vouga", "rio sorraia"],
+        65: ["rio bibei", "rio lor", "rio ibias", "rio pigueña", "rio bayas", "rio nela", "rio trueba", "rio leza", "rio esca", "rio huecha", "rio queiles"],
+        85: ["rio mesa", "rio bergantes", "rio vero", "rio alcanadre", "rio flumen", "rio isuela", "rio valira", "rio anoia", "rio cardener", "rio onyar", "rio gaia", "rio rudron", "rio oca", "rio cea", "rio almonte", "rio ardila", "rio guadalfeo", "rio andarax", "rio guadalentin", "rio magro", "rio bembezar", "rio guadiamar", "rio sorbe", "rio gallo", "rio guadiela", "rio ambroz"],
+    },
+    "mus-012": {
+        25: ["bautista", "balaguer", "guardiola", "massiel la la la", "salome vivo cantando", "mocedades eres tu"],
+        45: ["julio iglesias gwendolyne", "karina en un mundo nuevo", "peret canta y se feliz", "sergio y estibaliz tu volveras", "braulio sobran las palabras", "micky enseñame a cantar"],
+        65: ["jose velez bailemos un vals", "betty missiego su cancion", "trigo limpio quedate esta noche", "remedios amaya quien maneja mi barca", "bravo lady lady", "paloma san basilio la fiesta termino"],
+        85: ["cadillac valentino", "nina nacida para amar", "azucar moreno bandido", "david civera dile que la quiero", "pastora soler quedate conmigo", "ruth lorenzo dancing in the rain", "edurne amanecer", "barei say yay", "blas canto universo", "blas canto voy a quedarme", "miki nuñez la venda", "augusto alguero", "ramon arcusa", "manuel de la calva", "manolo diaz", "rafael trabucchelli", "jose maria puron", "chema puron", "fernando arbex", "juan pardo", "serafin zubiri todo esto es la musica", "daniel diges algo pequeñito", "soraya la noche es para mi"],
+    },
+    "pel-030": {
+        25: ["george clooney", "bradley cooper", "matthew mcconaughey", "chris pratt", "brie larson", "elizabeth olsen", "zoe saldana"],
+        45: ["chris pine", "dave bautista", "sebastian stan", "michael b jordan", "chadwick boseman", "woody harrelson", "jared leto", "christoph waltz", "daniel bruhl", "eduardo noriega", "jose coronado", "belen rueda"],
+        65: ["karen gillan", "paul bettany", "anthony mackie", "tessa thompson", "jonah hill", "seth rogen", "bill hader", "steve buscemi", "john goodman", "jeff bridges", "kurt russell", "michael keaton", "val kilmer"],
+        85: ["ernesto alterio", "alberto ammann", "raul arevalo", "antonio de la torre", "javier gutierrez", "karra elejalde", "inma cuesta", "marta etura", "veronica echegui", "anna castillo", "milena smit", "greta fernandez"],
+    },
+    "mus-009": {
+        25: ["luis fonsi", "danny ocean", "cali y el dandee", "pedro capo", "juan magan", "cris mj", "floyymenor"],
+        45: ["jowell", "randy", "alexis", "fido", "baby rasta", "gringo", "rakim", "ken y", "hector", "tito", "magnate", "valentino", "maldy", "chencho", "nengo flow", "pablo chill e", "polima westcoast"],
+        65: ["standly", "pailita", "young cister", "julianno sosa", "yovngchimi", "omar courtz", "danny romero", "jose de rico", "henry mendez", "dasoul", "acru", "dillom", "ca7riel", "paco amoroso"],
+        85: ["abhir hathi", "ill pekeño", "ergo pro", "lucho rk", "la pantera", "juseph", "pedro ladroga", "leiti sene", "sticky m a", "pimp flaco", "kinder malo", "el jincho", "hades66", "yan block", "clarent"],
+    },
+    "geo-017": {
+        45: ["desierto del sinai", "sinai", "desierto de white sands", "white sands", "arenas blancas", "monument valley", "desierto de monument valley", "badlands", "grandes llanuras"],
+        65: ["desierto de merzouga", "merzouga", "desierto de zagora", "zagora", "desierto de agafay", "agafay", "desierto de juda", "depresion de afar", "afar", "salar de assal", "lago assal", "lago natron", "estepa siberiana", "estepa de mongolia"],
+        85: ["erg chigaga", "desierto de tademait", "tademait", "desierto de paran", "desierto de zin", "depresion de danakil", "salar de kavir", "desierto de saryesik", "desierto de muyunkum", "muyunkum", "desierto de betpak dala", "betpak dala", "estepa de manchuria", "desierto de ordos", "meseta de ordos", "desierto de gurbantunggut", "gurbantunggut", "desierto de mu us", "mu us", "cuenca del tarim", "depresion de turpan", "salinas de maras", "maras", "llano estacado"],
+    },
+    "mus-028": {
+        25: ["dani fernandez", "alvaro soler", "aitana ocaña", "marta soto", "pignoise", "maldita nerea", "despistaos", "la fuga", "rulo", "rulo y la contrabanda", "love of lesbian"],
+        45: ["agoney", "roi mendez", "leo rizzi", "belen aguilera", "samurai", "los zigarros", "santi balmes", "vetusta morla", "izal", "mikel izal", "rufus t firefly", "delafe", "stay homas", "dellafuente"],
+        65: ["miriam rodriguez", "alfred garcia", "ricky merino", "juanjo bona", "naiara", "ruslana", "paul thin", "martin urrutia", "chiara oliver", "violeta hodar", "paula koops", "marta sango", "chica sobresalto", "maialen gurbindo", "noan"],
+        85: ["noni lopez", "pucho", "the new raemon", "tachenko", "maga", "delafe y las flores azules", "tulsa", "anari", "mursego", "verde prato", "chill mafia", "zetak", "bulego", "en tol sarmiento", "huntza", "figa flawas", "mushka", "31 fam", "suu", "guillem gisbert", "la ludwig band", "ferran palau", "el petit de cal eril", "ortiga", "mr kilombo", "tu otra bonita", "antilopez", "maria pelae", "califato 3 4", "derby motoretas burrito kachimba", "la plazuela"],
+    },
+    "geo-006": {
+        45: ["mar celtico", "mar de las hebridas", "mar de sargazos", "mar de flores", "mar de sulawesi", "golfo de gascuña", "golfo de venecia", "golfo de suez", "golfo de aqaba", "gran lago salado"],
+        65: ["mar de savu", "mar de molucas", "mar de halmahera", "mar de ceram", "mar de bismarck", "mar de salomon", "mar de fiyi", "mar de scotia", "golfo de mazarron", "golfo de almeria", "golfo de rosas", "golfo de santa pola", "golfo de alicante", "golfo de artabro", "golfo de trieste", "golfo de sirte", "golfo de gabes"],
+        85: ["mar de koro", "mar de amundsen", "mar de bellingshausen", "mar de davis", "mar de pechora", "mar de lincoln", "mar de wandel", "golfo de kutch", "golfo de khambhat", "golfo de mannar", "golfo de martaban", "golfo de siam", "golfo de bohai", "golfo de liaodong", "golfo de corea", "golfo de papua", "golfo de spencer", "golfo de darien", "golfo de venezuela", "golfo de paria", "golfo de fonseca", "golfo de panama", "golfo de guayaquil", "lago maracaibo", "lago de maracaibo", "lago poopo", "lago nicaragua", "lago ohrid", "lago urmia", "lago issyk kul", "lago biwa", "lago taupo", "lago winnipeg", "gran lago del oso", "gran lago del esclavo"],
+    },
+    "mus-030": {
+        25: ["alejandro fernandez", "vicente fernandez", "juan gabriel", "jose jose", "marco antonio solis", "gloria estefan", "celia cruz", "aventura", "romeo santos", "prince royce"],
+        45: ["calamaro", "gustavo cerati", "zeta bosio", "charly alberti", "miguel abuelo", "luca prodan", "armando manzanero", "christian nodal", "elvis crespo", "olga tañon", "ruben blades", "willie colon", "hector lavoe", "oscar d leon"],
+        65: ["pappo", "rodrigo bueno", "la beriso", "las pastillas del abuelo", "guasones", "ratones paranoicos", "fabiana cantilo", "bandalos chinos", "conociendo rusia", "el kuelgue", "los palmeras", "banda el recodo", "los tigres del norte", "los bukis", "pepe aguilar", "angela aguilar", "belinda", "danna paola", "ha ash", "yuridia"],
+        85: ["la vida boheme", "rawayana", "lasso", "mau y ricky", "desorden publico", "zapato 3", "ana tijoux", "alcolirykoz", "systema solar", "fonseca", "greeicy", "silvestre dangond", "jorge celedon", "el gran combo", "gilberto santa rosa", "victor manuelle", "jerry rivera", "tito nieves", "eddie palmieri", "4 40", "moderatto", "moenia", "timbiriche", "ov7", "kabah", "eruca sativa", "marilina bertoldi"],
+    },
+    "mus-011": {
+        45: ["orbital", "underworld", "leftfield", "faithless", "groove armada", "basement jaxx", "royksopp", "justice", "kavinsky", "bob sinclar", "martin solveig", "paul oakenfold", "pete tong", "adam beyer"],
+        65: ["vitalic", "gesaffelstein", "mr oizo", "etienne de crecy", "cassius", "parov stelar", "infected mushroom", "duke dumont", "sonny fodera", "patrick topping", "green velvet", "kolsch", "hernan cattaneo", "nick warren", "henry saiz", "edu imbernon"],
+        85: ["excision", "subtronics", "rezz", "gryffin", "san holo", "alison wonderland", "troyboi", "rl grime", "baauer", "hudson mohawke", "cashmere cat", "mura masa", "sophie", "arca", "squarepusher", "amon tobin", "flying lotus", "noisia", "chase and status", "rudimental", "dimension", "high contrast", "ellen allien", "miss kittin", "trentemoller", "booka shade", "ofenbach", "bakermat", "klangkarussell", "astrix", "vini vici", "annie mac", "dennis ferrer", "solardo", "claude vonstroke", "alan fitzpatrick", "pan pot", "monika kruse", "chris liebing", "dubfire", "guy j"],
+    },
+    "dep-009": {
+        25: ["kyrie irving", "james harden", "russell westbrook", "anthony davis", "paul george", "damian lillard", "klay thompson", "draymond green", "carmelo anthony", "dwyane wade", "derrick rose", "rajon rondo", "kyle lowry"],
+        45: ["chris paul", "dwight howard", "blake griffin", "kevin love", "lamarcus aldridge", "al horford", "shawn kemp", "tim hardaway", "chris mullin", "mitch richmond", "mark price", "detlef schrempf", "horace grant", "steve kerr", "jamal murray", "domantas sabonis", "kristaps porzingis"],
+        65: ["jermaine o neal", "zach randolph", "mike conley", "brook lopez", "nikola vucevic", "jonas valanciunas", "bojan bogdanovic", "bogdan bogdanovic", "lauri markkanen", "paolo banchero", "pascal siakam", "bam adebayo", "tyrese haliburton", "jalen brunson", "de aaron fox", "elmer bennett", "dejan tomasevic", "louis bullock", "juan antonio orenga", "alfonso reyes"],
+        85: ["iñaki de miguel", "roger esteller", "nacho azofra", "nacho rodriguez", "roberto dueñas", "dueñas", "ferran martinez", "pablo laso", "chechu biriukov", "biriukov", "rimas kurtinaitis", "arturas karnisovas", "velimir perasovic", "zoran savic", "andres nocioni", "nocioni", "pablo prigioni", "prigioni", "walter herrmann", "fabricio oberto", "pete mickeal", "joan creus", "chichi creus", "rafa jofresa", "tomas jofresa", "joe arlauckas", "johnny rogers", "shane larkin", "vasilije micic", "mike james", "nando de colo", "tornike shengelia", "jan vesely", "kyle hines", "kostas sloukas", "nick calathes", "ioannis bourousis", "victor sada"],
+    },
+    "pel-013": {
+        45: ["john huston", "anouk aimee", "jeanne moreau", "catherine deneuve", "alain delon", "jean paul belmondo", "yves montand", "simone signoret", "claudia cardinale", "monica vitti", "marcello mastroianni", "vittorio gassman", "anna magnani", "toshiro mifune"],
+        65: ["patricia neal", "shelley winters", "lee remick", "eleanor parker", "jean simmons", "stewart granger", "peter finch", "trevor howard", "dirk bogarde", "fred macmurray", "rex harrison", "farley granger", "robert walker", "cyd charisse", "betty grable", "paul muni", "walter huston"],
+        85: ["lionel barrymore", "john barrymore", "ethel barrymore", "wallace beery", "charles coburn", "edmund gwenn", "barry fitzgerald", "thomas mitchell", "walter brennan", "ward bond", "ben johnson", "victor mclaglen", "maureen o sullivan", "johnny weissmuller", "robert taylor", "van heflin", "jose ferrer", "mel ferrer", "louis jourdan", "charles boyer", "maurice chevalier", "jean gabin", "gerard philipe", "silvana mangano", "melina mercouri", "irene papas", "takashi shimura", "claire trevor", "ann sheridan", "miriam hopkins"],
+    },
+    "geo-021": {
+        45: ["english channel", "panama canal", "suez canal", "strait of gibraltar", "strait of hormuz", "strait of malacca", "bering strait", "drake passage", "beagle channel", "kiel canal", "corinth canal", "canal de san lorenzo", "via maritima del san lorenzo", "estrecho de la florida", "estrecho de yucatan"],
+        65: ["bosporus", "dardanelles", "magellan strait", "strait of dover", "bass strait", "cook strait", "torres strait", "davis strait", "denmark strait", "hudson strait", "yucatan channel", "mozambique channel", "taiwan strait", "tsushima strait", "tsugaru strait", "messina strait", "bonifacio strait", "otranto strait", "florida strait"],
+        85: ["canal de saimaa", "canal de gota", "canal de trolhattan", "canal de telemark", "canal de corfu", "estrecho de corfu", "estrecho de cerdeña", "canal de cerdeña", "canal de otranto", "estrecho de smith", "canal de robeson", "canal de kennedy", "canal de kane", "estrecho de jones", "estrecho del principe de gales", "estrecho de viscount melville", "estrecho de pentland", "pentland firth", "firth of forth", "firth of clyde", "canal de nueve grados", "canal de diez grados", "canal de ocho grados", "estrecho de timor", "estrecho de soya", "estrecho de kamchatka", "canal de uraga", "estrecho de cebu", "estrecho de tablas", "estrecho de penghu", "tacoma narrows", "canal de carquinez", "estrecho de carquinez", "canal ballenero", "canal de moscu", "canal blanco mar baltico", "canal de las feroe", "north channel", "bristol channel", "st georges channel", "limfjord"],
+    },
+}
+
+
 STRIP_ARTICLE_ALLOWED = {
     "pel-023", "gen-030", "gen-033", "gen-036", "gen-040", "pel-022", "gen-037",
     "pel-027", "pel-029", "pel-032", "pel-026", "pel-028", "dep-011", "dep-029",
     "gen-010", "geo-020", "mus-020", "mus-031", "pel-025", "dep-015", "dep-030",
     "dep-031", "geo-025", "geo-030", "geo-031", "geo-032", "mus-032", "pal-028",
     "dep-032", "gen-029", "pal-027", "pel-003", "pel-006", "dep-028", "geo-013",
+    "geo-029", "mus-026", "pel-014", "gen-031", "gen-035", "geo-021", "pel-024",
+    "pel-007", "dep-014", "geo-017", "geo-012", "gen-006", "pel-011", "pel-004",
+    "geo-010", "pal-010", "pel-001", "gen-032", "dep-003", "mus-012", "pel-010",
+    "gen-007", "gen-015", "dep-001", "geo-004", "geo-006", "pel-015", "gen-018",
+    "pel-008", "dep-013",
 }
 
 NUMBER_VARIANT_ALLOWED = {
     "gen-033", "gen-036", "gen-040", "gen-037", "gen-002", "pal-002", "dep-011",
     "dep-029", "dep-030", "dep-031", "mus-020", "mus-032", "pal-006", "pal-023",
     "pal-028", "dep-032", "pal-026", "pal-027", "pal-030", "pal-031",
+    "pal-022", "pal-016", "pal-015", "pal-010", "gen-032", "pal-024", "pal-025",
+    "gen-012", "pal-009", "gen-007", "gen-015", "gen-018",
 }
 
 
@@ -6652,12 +10910,20 @@ def _valid_for_category(cid, nk):
         return nk[0] in ("k", "w")
     if cid == "pal-023":
         return nk.startswith("h")
+    if cid == "pal-022":
+        return "ñ" in nk
+    if cid == "pal-016":
+        return nk.startswith("z")
+    if cid == "gen-003":
+        return nk.startswith("s")
+    if cid == "pal-004":
+        return (" " not in nk) and (nk == nk[::-1])
     return True
 
 
 def cmd_generar_lote(args):
     """
-    python spyle_tool.py generar-lote <salida.json> [--lote 1] [--min 405]
+    python spyle_tool.py generar-lote <salida.json> [--lote 1|2] [--min 405]
     Genera un lote JSON en formato bulk para las 67 categorias de menor densidad del lote indicado.
     """
     out_path = None
@@ -6679,11 +10945,11 @@ def cmd_generar_lote(args):
             i += 1
 
     if not out_path:
-        print("Uso: python spyle_tool.py generar-lote <salida.json> [--lote 1] [--min 405]", file=sys.stderr)
+        print("Uso: python spyle_tool.py generar-lote <salida.json> [--lote 1|2] [--min 405]", file=sys.stderr)
         sys.exit(1)
 
-    if lote_num != 1:
-        print(f"[ERROR] Solo esta habilitado --lote 1 en esta fase (solicitado: {lote_num}).", file=sys.stderr)
+    if lote_num not in (1, 2):
+        print(f"[ERROR] Solo estan habilitados --lote 1 o 2 (solicitado: {lote_num}).", file=sys.stderr)
         sys.exit(1)
 
     prompts_path = locate_prompts_js()
@@ -6724,6 +10990,12 @@ def cmd_generar_lote(args):
             DENSITY_BATCH_1_EXTRA.get(cid, {}),
             DENSITY_BATCH_1_TOPUP.get(cid, {}),
             DENSITY_BATCH_1_FINAL.get(cid, {}),
+            DENSITY_BATCH_2_DATA.get(cid, {}),
+            DENSITY_BATCH_2_EXTRA.get(cid, {}),
+            DENSITY_BATCH_2_TOPUP.get(cid, {}),
+            DENSITY_BATCH_2_TOPUP2.get(cid, {}),
+            DENSITY_BATCH_2_TOPUP3.get(cid, {}),
+            DENSITY_BATCH_2_TOPUP4.get(cid, {}),
         ):
             for score_val in sorted(pool.keys()):
                 for w in pool[score_val]:
