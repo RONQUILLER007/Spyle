@@ -1192,21 +1192,97 @@ EXTRA_PROMPTS_CATEGORIES = [
         "texto": "Expresión, refrán corto o modismo coloquial de España",
         "ejemplo": "de higos a brevas",
     },
+    {
+        "id": "vid-01",
+        "pack": "videojuegos",
+        "texto": "Videojuegos que se pueden jugar en la PlayStation 4",
+        "ejemplo": "bloodborne",
+    },
+    {
+        "id": "vid-02",
+        "pack": "videojuegos",
+        "texto": "Consolas de sobremesa y portátiles de la historia",
+        "ejemplo": "dreamcast",
+    },
+    {
+        "id": "vid-03",
+        "pack": "videojuegos",
+        "texto": "Sagas de videojuegos de fútbol y deportes",
+        "ejemplo": "pc futbol",
+    },
+    {
+        "id": "vid-04",
+        "pack": "videojuegos",
+        "texto": "Videojuegos de supervivencia, zombis y mundo abierto",
+        "ejemplo": "project zomboid",
+    },
+    {
+        "id": "vid-05",
+        "pack": "videojuegos",
+        "texto": "Videojuegos de rol (RPG), acción y aventura",
+        "ejemplo": "chrono trigger",
+    },
+    {
+        "id": "vid-06",
+        "pack": "videojuegos",
+        "texto": "Videojuegos de carreras, conducción y simulación vehicular",
+        "ejemplo": "assetto corsa",
+    },
+    {
+        "id": "vid-07",
+        "pack": "videojuegos",
+        "texto": "Videojuegos de estrategia, gestión y simulación espacial",
+        "ejemplo": "stellaris",
+    },
+    {
+        "id": "vid-08",
+        "pack": "videojuegos",
+        "texto": "Personajes icónicos y protagonistas de videojuegos",
+        "ejemplo": "solid snake",
+    },
+    {
+        "id": "vid-09",
+        "pack": "videojuegos",
+        "texto": "Estudios desarrolladores y marcas míticas del gaming",
+        "ejemplo": "fromsoftware",
+    },
+    {
+        "id": "vid-10",
+        "pack": "videojuegos",
+        "texto": "Mecánicas, modos de juego y términos clásicos de videojuegos",
+        "ejemplo": "roguelike",
+    },
 ]
 
 
 def ensure_extra_prompt_categories(content):
-    """Asegura que las categorias de EXTRA_PROMPTS_CATEGORIES existan en PROMPTS dentro de prompts.js."""
-    prompts_arr_match = re.search(r"const\s+PROMPTS\s*=\s*\[", content)
+    """Asegura que PACKS incluya videojuegos y que EXTRA_PROMPTS_CATEGORIES existan en PROMPTS."""
+    updated = content
+    modified = False
+
+    packs_match = re.search(r"const\s+PACKS\s*=\s*\[", updated)
+    if packs_match:
+        packs_open = packs_match.end() - 1
+        packs_close = find_matching_brace(updated, packs_open, "[", "]")
+        if packs_close != -1:
+            packs_block = updated[packs_open:packs_close + 1]
+            if not re.search(r'\bid\s*:\s*"videojuegos"', packs_block):
+                inner_p = updated[packs_open + 1:packs_close].rstrip()
+                sep_p = "\n" if inner_p.endswith(",") else ",\n"
+                vid_pack = '  { id: "videojuegos", nombre: "Videojuegos",        icono: "🎮" }'
+                updated = updated[:packs_open] + "[" + inner_p + sep_p + vid_pack + "\n]" + updated[packs_close + 1:]
+                modified = True
+
+    prompts_arr_match = re.search(r"const\s+PROMPTS\s*=\s*\[", updated)
     if not prompts_arr_match:
         raise ValueError("No se encontro 'const PROMPTS = [' en prompts.js")
 
     arr_open = prompts_arr_match.end() - 1
-    arr_close = find_matching_brace(content, arr_open, "[", "]")
+    arr_close = find_matching_brace(updated, arr_open, "[", "]")
     if arr_close == -1:
         raise ValueError("Corchete sin cerrar en const PROMPTS = [ de prompts.js")
 
-    prompts_block = content[arr_open:arr_close + 1]
+    prompts_block = updated[arr_open:arr_close + 1]
     new_blocks = []
     for spec in EXTRA_PROMPTS_CATEGORIES:
         cid = spec["id"]
@@ -1222,12 +1298,12 @@ def ensure_extra_prompt_categories(content):
         )
 
     if not new_blocks:
-        return content, False
+        return updated, modified
 
-    inner = content[arr_open + 1:arr_close].rstrip()
+    inner = updated[arr_open + 1:arr_close].rstrip()
     sep = "\n" if inner.endswith(",") else ",\n"
     replacement = "[" + inner + sep + ",\n".join(new_blocks) + "\n]"
-    updated = content[:arr_open] + replacement + content[arr_close + 1:]
+    updated = updated[:arr_open] + replacement + updated[arr_close + 1:]
     return updated, True
 
 
@@ -11412,6 +11488,933 @@ DENSITY_BATCH_3_TOPUP = {
 }
 
 
+DENSITY_VID_1_A = {
+    "vid-01": {
+        10: [
+            "god of war", "god of war ragnarok", "the last of us remastered", "the last of us parte 2",
+            "spiderman", "marvels spiderman", "spiderman miles morales", "uncharted 4", "horizon zero dawn",
+            "horizon forbidden west", "ghost of tsushima", "bloodborne", "grand theft auto v", "gta v",
+            "gta 5", "red dead redemption 2", "fifa 23", "ea sports fc 24", "ea sports fc 25",
+            "fortnite", "minecraft", "call of duty warzone", "call of duty black ops 3", "elden ring",
+            "the witcher 3", "witcher 3", "cyberpunk 2077", "resident evil 4", "resident evil 2",
+            "resident evil village", "hogwarts legacy", "gran turismo sport", "gran turismo 7",
+            "rocket league", "apex legends", "overwatch 2", "fall guys", "among us",
+            "genshin impact", "roblox", "dark souls 3", "sekiro", "death stranding",
+            "detroit become human", "days gone", "until dawn"
+        ],
+        25: [
+            "uncharted el legado perdido", "uncharted the nathan drake collection", "god of war 3 remastered",
+            "infamous second son", "infamous first light", "killzone shadow fall", "knack", "knack 2",
+            "the order 1886", "the last guardian", "shadow of the colossus", "driveclub",
+            "littlebigplanet 3", "tearaway unfolded", "gravity rush remastered", "gravity rush 2",
+            "ratchet and clank", "crash bandicoot n sane trilogy", "crash team racing nitro fueled",
+            "crash bandicoot 4", "spyro reignited trilogy", "medievil", "concrete genie", "dreams",
+            "sackboy a big adventure", "nioh", "nioh 2", "persona 5", "persona 5 royal",
+            "final fantasy vii remake", "final fantasy xv", "final fantasy x", "kingdom hearts 3",
+            "nier automata", "nier replicant", "yakuza 0", "yakuza kiwami", "yakuza kiwami 2",
+            "yakuza like a dragon", "like a dragon infinite wealth", "judgment", "lost judgment",
+            "monster hunter world", "monster hunter rise", "resident evil 7", "resident evil 3",
+            "devil may cry 5", "street fighter 6", "street fighter v", "tekken 7",
+            "mortal kombat 11", "mortal kombat x", "dragon ball fighterz", "dragon ball z kakarot",
+            "dragon ball xenoverse 2", "naruto shippuden ultimate ninja storm 4", "one piece pirate warriors 4",
+            "hollow knight", "celeste", "hades", "cuphead", "stardew valley", "terraria",
+            "subnautica", "no mans sky", "it takes two", "a way out", "unravel", "unravel two",
+            "overcooked", "overcooked 2", "moving out", "gang beasts", "human fall flat",
+            "tetris effect", "beat saber", "astro bot rescue mission", "resident evil 6", "resident evil 5"
+        ],
+        45: [
+            "dark souls remastered", "dark souls 2", "sekiro shadows die twice", "armored core vi",
+            "lies of p", "lords of the fallen", "star wars jedi fallen order", "star wars battlefront",
+            "star wars battlefront 2", "star wars squadrons", "titanfall 2", "battlefield 1",
+            "battlefield 4", "battlefield v", "battlefield 2042", "call of duty wwii",
+            "call of duty modern warfare", "call of duty modern warfare ii", "call of duty modern warfare iii",
+            "call of duty cold war", "call of duty vanguard", "call of duty ghosts",
+            "call of duty advanced warfare", "call of duty infinite warfare", "destiny", "destiny 2",
+            "borderlands 3", "borderlands the handsome collection", "tiny tinas wonderlands",
+            "bioshock the collection", "bioshock infinite", "dishonored 2", "prey", "doom",
+            "doom eternal", "wolfenstein the new order", "wolfenstein ii", "fallout 4", "fallout 76",
+            "skyrim", "the elder scrolls v skyrim", "the elder scrolls online", "dragon age inquisition",
+            "mass effect legendary edition", "mass effect andromeda", "assassins creed unity",
+            "assassins creed syndicate", "assassins creed origins", "assassins creed odyssey",
+            "assassins creed valhalla", "assassins creed mirage", "assassins creed the ezio collection",
+            "assassins creed iv black flag", "far cry 4", "far cry 5", "far cry 6", "far cry primal",
+            "far cry new dawn", "watch dogs", "watch dogs 2", "watch dogs legion",
+            "rainbow six siege", "ghost recon wildlands", "ghost recon breakpoint", "the division",
+            "the division 2", "for honor", "steep", "riders republic", "the crew", "the crew 2",
+            "the crew motorfest", "just dance 2022", "rayman legends", "immortals fenyx rising",
+            "prince of persia the lost crown", "beyond good and evil 20th anniversary"
+        ],
+        65: [
+            "batman arkham knight", "batman arkham collection", "la tierra media sombras de mordor",
+            "sombras de guerra", "lego star wars la saga skywalker", "lego marvel super heroes",
+            "lego harry potter collection", "injustice", "injustice 2", "mortal kombat xl",
+            "soulcalibur vi", "guilty gear strive", "the king of fighters xv", "tales of arise",
+            "tales of berseria", "tales of vesperia", "ni no kuni", "ni no kuni ii",
+            "dragon quest xi", "octopath traveler ii", "sea of stars", "chained echoes",
+            "diablo iii", "diablo iv", "path of exile", "divinity original sin",
+            "divinity original sin 2", "pillars of eternity", "disco elysium", "wasteland 3",
+            "xcom 2", "civilization vi", "stellaris", "crusader kings iii", "cities skylines",
+            "tropico 6", "two point hospital", "two point campus", "planet coaster",
+            "jurassic world evolution", "jurassic world evolution 2", "farming simulator 22",
+            "snowrunner", "mudrunner", "assetto corsa", "assetto corsa competizione",
+            "project cars", "project cars 2", "dirt rally", "dirt rally 2 0", "dirt 5",
+            "wrc generations", "f1 2020", "f1 23", "f1 24", "need for speed heat",
+            "need for speed payback", "need for speed rivals", "need for speed hot pursuit remastered",
+            "burnout paradise remastered", "wipeout omega collection", "ctr nitro fueled",
+            "team sonic racing", "sonic frontiers", "sonic mania", "sonic x shadow generations",
+            "resident evil revelations", "resident evil revelations 2", "alan wake remastered",
+            "control", "heavy rain", "beyond dos almas", "life is strange",
+            "life is strange before the storm", "life is strange 2", "life is strange true colors",
+            "the wolf among us", "tales from the borderlands", "man of medan", "little hope",
+            "house of ashes", "the devil in me", "the quarry", "outlast", "outlast 2",
+            "alien isolation", "soma", "amnesia collection", "layers of fear",
+            "little nightmares", "little nightmares 2", "limbo", "inside", "dead cells",
+            "blasphemous", "blasphemous 2", "shovel knight", "enter the gungeon",
+            "the binding of isaac", "dead by daylight", "friday the 13th", "dying light",
+            "dying light 2", "dead island", "dead island 2", "metro redux", "metro exodus",
+            "mad max", "just cause 3", "just cause 4", "hitman", "hitman 2", "hitman 3",
+            "hitman world of assassination", "sniper elite 4", "sniper elite 5",
+            "metal gear solid v", "metal gear solid v the phantom pain", "sleeping dogs",
+            "yakuza 3", "yakuza 4", "yakuza 5", "yakuza 6", "shenmue iii", "okami hd",
+            "shadow of the tomb raider", "rise of the tomb raider", "tomb raider definitive edition"
+        ],
+        85: [
+            "odin sphere leifthrasir", "13 sentinels aegis rim", "dragons crown pro", "sakura wars",
+            "resogun", "nex machina", "alienation", "matterfall", "dead nation apocalypse edition",
+            "flower", "journey", "abzu", "gris", "neva", "rime", "the witness",
+            "the talos principle", "outer wilds", "return of the obra dinn",
+            "what remains of edith finch", "firewatch", "gone home", "oxenfree",
+            "night in the woods", "undertale", "deltarune", "omori", "slay the spire",
+            "balatro", "vampire survivors", "brotato", "dave the diver", "dredge", "stray",
+            "kena bridge of spirits", "sifu", "tunic", "deaths door", "salt and sanctuary",
+            "ender lilies", "aeterna noctis", "chivalry 2", "for the king", "warframe",
+            "brawlhalla", "multiversus", "overwatch", "paladins", "smite", "war thunder",
+            "world of tanks", "world of warships", "pubg", "playerunknowns battlegrounds",
+            "dayz", "rust", "ark survival evolved", "conan exiles", "the forest", "green hell",
+            "stranded deep", "7 days to die", "the long dark", "frostpunk", "this war of mine",
+            "kerbal space program", "elite dangerous", "ace combat 7", "tony hawks pro skater 1 plus 2",
+            "session skate sim", "ea sports ufc 4", "nba 2k24", "nba 2k23", "nba 2k22",
+            "efootball", "pes 2021", "fifa 22", "fifa 21", "fifa 20", "fifa 19",
+            "fifa 18", "fifa 17", "fifa 16", "fifa 15", "fifa 14",
+            "captain tsubasa rise of new champions", "super meat boy", "spelunky", "spelunky 2",
+            "rain world", "darkest dungeon", "dont starve", "dont starve together", "slime rancher",
+            "overcooked all you can eat", "patapon remastered", "locoroco remastered",
+            "parappa the rapper remastered", "everybodys golf", "puyo puyo tetris",
+            "catherine full body", "persona 3 reload", "persona 4 golden", "persona 5 strikers",
+            "metaphor refantazio", "shin megami tensei iii nocturne", "final fantasy vii",
+            "final fantasy viii remastered", "final fantasy ix", "final fantasy xii the zodiac age",
+            "world of final fantasy", "stranger of paradise", "crisis core final fantasy vii reunion",
+            "trials of mana", "secret of mana", "legend of mana", "chrono cross",
+            "grandia hd collection", "star ocean the second story r", "tactics ogre reborn",
+            "disgaea 5", "disgaea 7", "like a dragon ishin", "the man who erased his name",
+            "one piece odyssey", "demon slayer hinokami chronicles", "my hero ones justice 2",
+            "attack on titan 2", "saint seiya soldiers soul", "jojos bizarre adventure all star battle r",
+            "dragon ball xenoverse", "jump force", "god eater 3", "code vein", "scarlet nexus",
+            "tales of zestiria", "granblue fantasy relink", "atelier ryza",
+            "ys viii lacrimosa of dana", "ys ix monstrum nox", "trails of cold steel",
+            "bloodstained ritual of the night", "castlevania requiem", "mega man 11",
+            "phoenix wright ace attorney trilogy", "danganronpa", "ai the somnium files",
+            "steins gate elite", "katamari damacy reroll", "klonoa phantasy reverie series",
+            "pac man world re pac", "tricky towers", "devil may cry hd collection",
+            "shenmue i y ii", "tomb raider i iii remastered", "dragon quest builders 2",
+            "dragon ball z xenoverse 2", "street fighter 30th anniversary collection"
+        ],
+        100: [
+            "knack", "gravity rush remastered", "concrete genie", "the order 1886",
+            "resogun", "alienation", "matterfall", "nex machina", "odin sphere leifthrasir",
+            "13 sentinels aegis rim", "dragons crown pro", "patapon remastered", "locoroco remastered",
+            "fist of the north star lost paradise", "everybodys gone to the rapture", "until dawn rush of blood",
+            "driveclub bikes", "rigS mechanized combat league", "here they lie", "starblood arena",
+            "firewall zero hour", "blood and truth", "farpoint", "moss", "super stardust ultra"
+        ],
+    },
+    "vid-02": {
+        10: [
+            "playstation", "ps1", "playstation 2", "ps2", "playstation 3", "ps3",
+            "playstation 4", "ps4", "playstation 5", "ps5", "psp", "ps vita",
+            "nintendo switch", "switch", "wii", "wii u", "nintendo ds", "3ds", "nintendo 3ds",
+            "game boy", "game boy color", "game boy advance", "super nintendo", "snes",
+            "nintendo 64", "n64", "nes", "gamecube", "xbox", "xbox 360", "xbox one",
+            "xbox series x", "xbox series s", "mega drive", "dreamcast", "sega saturn",
+            "game gear", "master system", "atari 2600", "steam deck"
+        ],
+        25: [
+            "psx", "psone", "ps2 slim", "ps3 slim", "ps3 super slim", "ps4 slim", "ps4 pro",
+            "ps5 slim", "ps5 pro", "ps5 digital", "playstation portable", "psp go", "psp street",
+            "playstation vita", "playstation portal", "nintendo entertainment system", "famicom",
+            "super famicom", "nintendo gamecube", "nintendo wii", "wii mini", "nintendo wii u",
+            "switch lite", "nintendo switch lite", "switch oled", "nintendo switch oled",
+            "nintendo switch 2", "switch 2", "gameboy", "game boy pocket", "gbc", "gba",
+            "game boy advance sp", "gba sp", "game boy micro", "nds", "nintendo ds lite",
+            "dsi", "nintendo dsi", "nintendo dsi xl", "nintendo 3ds xl", "nintendo 2ds",
+            "2ds", "new nintendo 3ds", "new 3ds", "new nintendo 2ds xl", "game and watch",
+            "sega master system", "sega mega drive", "sega genesis", "genesis", "mega cd",
+            "sega cd", "saturn", "sega dreamcast", "sega game gear", "xbox clasica",
+            "xbox original", "xbox one s", "xbox one x", "xbox series", "neo geo",
+            "atari 5200", "atari 7800", "atari jaguar", "atari lynx", "asus rog ally",
+            "rog ally", "lenovo legion go", "msi claw", "virtual boy", "nes mini",
+            "super nintendo mini", "snes mini"
+        ],
+        45: [
+            "ps tv", "playstation tv", "pocketstation", "game boy light", "color tv game",
+            "nintendo classic mini", "xbox 360 slim", "xbox 360 arcade", "xbox 360 elite",
+            "master system ii", "sg 1000", "mega drive ii", "sega 32x", "32x", "nomad",
+            "sega nomad", "sega pico", "mega drive mini", "atari vcs", "jaguar", "lynx",
+            "atari pong", "magnavox odyssey", "odyssey", "magnavox odyssey 2", "colecovision",
+            "intellivision", "vectrex", "pc engine", "turbografx 16", "turbografx",
+            "neo geo aes", "neo geo cd", "neo geo pocket", "neo geo pocket color",
+            "neo geo mini", "wonderswan", "wonderswan color", "3do", "panasonic 3do",
+            "philips cdi", "cd i", "amiga cd32", "commodore 64", "zx spectrum", "msx",
+            "n gage", "nokia n gage", "ouya", "stadia", "steam deck oled", "rog ally x",
+            "legion go", "ayaneo", "playdate", "analogue pocket", "evercade", "evercade exp"
+        ],
+        65: [
+            "satellaview", "64dd", "ique player", "pico", "atari xe", "philips videopac",
+            "fairchild channel f", "bally astrocade", "arcadia 2001", "pc engine gt",
+            "turboexpress", "pc fx", "supergrafx", "swan crystal", "commodore 64 gs",
+            "amstrad gx4000", "amstrad cpc", "msx2", "n gage qd", "gizmondo",
+            "tapwave zodiac", "gp32", "gp2x", "dingoo", "nvidia shield", "gpd win",
+            "polymega", "apple pippin", "pippin", "casio loopy", "fm towns marty",
+            "mattel hyperscan", "game com", "watara supervision", "supervision", "megaduck",
+            "gamate", "zeebo", "steam machine", "atari 2600 plus", "mega sg", "super nt",
+            "atari jaguar cd", "sega multi mega", "wondermega", "panasonic q", "famicom disk system",
+            "super nintendo jr", "creativision", "philips g7000", "sinclair zx81", "dragon 32",
+            "oric 1", "bbc micro", "acorn electron", "epoch cassette vision",
+            "super cassette vision", "sega sc 3000", "sega mark iii", "bandai playdia",
+            "casio pv 1000", "microvision", "adventure vision", "nec pc engine duo",
+            "pc engine duo", "playstation classic", "ps classic", "mega drive mini 2",
+            "pc engine mini", "sega astro city mini", "taito egret ii mini", "retroid pocket",
+            "anbernic", "miyoo mini", "odyssey 2", "atari flashback", "nintendo 2ds xl"
+        ],
+        85: [
+            "fujitsu fm towns marty", "tiger game com", "emerson arcadia 2001", "interton vc 4000",
+            "milton bradley microvision", "entex adventure vision", "commodore max",
+            "schneider cpc", "tomy tutor", "mattel aquarius", "r zone", "onlive", "the c64",
+            "the a500 mini", "amiga 500 mini", "neo geo arcade stick pro", "capcom home arcade",
+            "logitech g cloud", "razer edge", "abxylute", "trimui", "coleco telestar",
+            "magnavox odyssey 100", "fairchild channel f ii", "nes top loader", "psx dvr",
+            "xbox series x digital", "xbox one all digital", "ps4 fat", "ps3 fat",
+            "wii family edition", "psp 1000", "psp 2000", "psp 3000", "ps vita slim",
+            "game boy advance micro", "intellivision amico", "consolas", "videoconsolas",
+            "videoconsola", "portatiles", "consola portatil", "consola de sobremesa"
+        ],
+        100: [
+            "fairchild channel f", "magnavox odyssey", "apple pippin", "casio loopy",
+            "bandai playdia", "nec pc fx", "pc fx", "sega nomad", "sega 32x",
+            "amstrad gx4000", "atari jaguar cd", "tapwave zodiac", "nokia n gage",
+            "gizmondo", "tiger game com", "watara supervision", "famicom titler",
+            "sharp twin famicom", "sega teradrive", "pioneer laseractive", "halcyon",
+            "action max", "nuon", "v flash", "xavixport"
+        ],
+    },
+    "vid-03": {
+        10: [
+            "fifa", "ea sports fc", "fc 24", "fc 25", "pro evolution soccer", "pes",
+            "efootball", "pc futbol", "football manager", "fifa street", "nba 2k",
+            "nba live", "madden", "madden nfl", "wwe 2k", "mario kart" if False else "mario strikers",
+            "mario tennis", "inazuma eleven", "captain tsubasa", "rocket league",
+            "wii sports", "tony hawks pro skater", "skate", "f1", "motogp", "gran turismo"
+        ],
+        25: [
+            "fifa 23", "fifa 22", "fifa 21", "fifa 20", "fifa 19", "fifa 18", "fifa 17",
+            "fifa 15", "fifa 14", "fifa 12", "fifa 10", "fifa 08", "fifa 98", "fifa 2000",
+            "pes 6", "pes 5", "pes 4", "pes 2013", "pes 2021", "winning eleven",
+            "international superstar soccer", "iss", "pc futbol 5", "pc futbol 6",
+            "pc futbol 7", "pc futbol 2000", "pc futbol 2001", "pc basket", "pc ciclismo",
+            "championship manager", "sensible soccer", "nba jam", "nba street", "nba 2k24",
+            "nba 2k25", "nba 2k16", "nba 2k11", "ufc", "ea sports ufc", "fight night",
+            "punch out", "top spin", "virtua tennis", "mario golf", "pga tour",
+            "tiger woods pga tour", "everybodys golf", "ssx", "ssx tricky", "ssx 3",
+            "wrc", "dirt", "colin mcrae rally", "wii sports resort", "nintendo switch sports",
+            "mario y sonic en los juegos olimpicos", "pro cycling manager", "tour de france"
+        ],
+        45: [
+            "fifa 94", "fifa 95", "fifa 96", "fifa 97", "fifa 99", "fifa 2002",
+            "fifa 06", "fifa 07", "fifa 09", "fifa 11", "fifa 13", "fifa 16",
+            "fifa street 2", "fifa street 3", "fifa manager", "fifa world cup",
+            "pes 2008", "pes 2010", "pes 2017", "pes 2020", "pc futbol 4", "pc seleccion",
+            "total club manager", "actua soccer", "sensible world of soccer", "kick off",
+            "emilio butragueno futbol", "virtua striker", "dream league soccer", "top eleven",
+            "score hero", "new star soccer", "inazuma eleven 2", "inazuma eleven 3",
+            "inazuma eleven go", "super mario strikers", "mario strikers charged",
+            "mario strikers battle league", "nba 2k14", "nba 2k20", "nba street vol 2",
+            "nba ballers", "nfl blitz", "nfl street", "blood bowl", "mlb the show",
+            "nhl", "wwe smackdown", "smackdown vs raw", "wwe 2k24", "fight night champion",
+            "fight night round 3", "ufc undisputed", "mike tysons punch out", "top spin 4",
+            "topspin 2k25", "virtua tennis 2", "virtua tennis 3", "virtua tennis 4",
+            "mario tennis aces", "mario power tennis", "pga tour 2k", "hot shots golf",
+            "mario golf super rush", "tony hawk", "tony hawks underground", "skate 2",
+            "skate 3", "riders republic", "steep", "f1 manager", "ea sports wrc",
+            "track and field", "california games", "windjammers", "supercampeones"
+        ],
+        65: [
+            "fifa international soccer", "uefa euro", "uefa champions league", "world cup 98",
+            "euro 2004", "euro 2008", "euro 2012", "2010 fifa world cup", "ufl",
+            "rematch", "kopanito all stars soccer", "pure football", "red card",
+            "urban freestyle soccer", "sega worldwide soccer", "super sidekicks",
+            "tecmo world cup", "nintendo world cup", "kick off 2", "match day",
+            "world cup italia 90", "michel futbol super skills", "pro basketball manager",
+            "international basketball manager", "ncaa football", "college football", "nfl 2k",
+            "tecmo bowl", "tecmo super bowl", "mutant football league", "mvp baseball",
+            "rbi baseball", "baseball stars", "super mega baseball", "nhl 94", "nhl hitz",
+            "blades of steel", "wwf no mercy", "wwf wrestlemania", "fire pro wrestling",
+            "def jam", "knockout kings", "ready 2 rumble", "super punch out", "undisputed",
+            "ao tennis", "tiebreak", "tennis world tour", "grand slam tennis",
+            "smash court tennis", "pangya", "links", "golden tee", "session",
+            "skater xl", "olliolli", "olliolli world", "dave mirra freestyle bmx",
+            "mat hoffmans pro bmx", "descenders", "cool boarders", "1080 snowboarding",
+            "amped", "london 2012", "beijing 2008", "athens 2004", "sydney 2000",
+            "hyper sports", "winter games", "summer games", "decathlete", "golf story",
+            "sports story", "ea sports rugby", "rugby 08", "jonah lomu rugby"
+        ],
+        85: [
+            "emlyn hughes international soccer", "super soccer", "super formation soccer",
+            "goal", "striker", "fifa online", "hattrick", "nba hangtime", "nba inside drive",
+            "wayne gretzky hockey", "creed rise to glory", "kelly slaters pro surfer",
+            "transworld surf", "mario sports mix", "don bradman cricket", "ashes cricket",
+            "ihf handball challenge", "brunswick pro bowling", "snooker 19", "pure pool",
+            "virtual pool", "pdc world championship darts", "speedball", "speedball 2",
+            "super dodge ball", "knockout city", "lethal league", "pyre", "arch rivals",
+            "goal 3", "kunio kun", "disc jam", "forza motorsport", "f1 23", "f1 24",
+            "f1 2020", "wii sports club", "mario tennis open", "mario super sluggers",
+            "mario hoops 3 on 3", "mario sports superstars", "sega superstars tennis",
+            "sonic at the olympic games", "hyper bishi bashi", "world rally", "power drift",
+            "ridge racer", "test drive"
+        ],
+        100: [
+            "emilio butragueno futbol", "michel futbol super skills", "pc seleccion",
+            "pc futbol 4", "pc ciclismo", "international basketball manager", "super sidekicks",
+            "emlyn hughes international soccer", "jonah lomu rugby", "speedball 2",
+            "world cup italia 90", "actua soccer", "sensible world of soccer", "kopanito",
+            "urban freestyle soccer", "red card", "fire pro wrestling", "blades of steel",
+            "tecmo super bowl", "wayne gretzky hockey", "pangya", "windjammers",
+            "california games", "arch rivals", "super dodge ball"
+        ],
+    },
+    "vid-04": {
+        10: [
+            "red dead redemption 2", "red dead redemption", "gta v", "grand theft auto v",
+            "gta san andreas", "minecraft", "the legend of zelda breath of the wild",
+            "breath of the wild", "tears of the kingdom", "the witcher 3", "skyrim",
+            "elden ring", "cyberpunk 2077", "horizon zero dawn", "ghost of tsushima",
+            "days gone", "dying light", "dying light 2", "the last of us", "resident evil",
+            "left 4 dead", "rust", "dayz", "subnautica", "palworld", "no mans sky"
+        ],
+        25: [
+            "red dead undead nightmare", "gta iv", "gta vice city", "gta iii",
+            "horizon forbidden west", "dead rising", "dead island", "dead island 2",
+            "project zomboid", "state of decay", "state of decay 2", "world war z",
+            "back 4 blood", "valheim", "the forest", "sons of the forest", "green hell",
+            "raft", "stranded deep", "the long dark", "dont starve", "far cry 3",
+            "far cry 4", "far cry 5", "far cry 6", "assassins creed black flag",
+            "assassins creed origins", "assassins creed odyssey", "assassins creed valhalla",
+            "just cause 3", "just cause 4", "watch dogs", "watch dogs 2",
+            "sleeping dogs", "bully", "spiderman", "batman arkham city",
+            "batman arkham knight", "hogwarts legacy", "death stranding",
+            "metal gear solid v", "forza horizon 4", "forza horizon 5"
+        ],
+        45: [
+            "oblivion", "morrowind", "just cause 2", "saints row", "saints row 2",
+            "saints row the third", "la noire", "mafia ii", "burnout paradise",
+            "the phantom pain", "mad max", "shadow of mordor", "sombras de guerra",
+            "dragons dogma", "dragons dogma 2", "kingdom come deliverance",
+            "mount and blade", "bannerlord", "kenshi", "outer wilds", "slime rancher",
+            "astroneer", "v rising", "enshrouded", "nightingale", "once human",
+            "pacific drive", "grounded", "smalland", "lego fortnite", "terraria",
+            "ark survival ascended", "ark survival evolved", "conan exiles", "frostpunk",
+            "7 days to die", "scum", "unturned", "killing floor", "killing floor 2"
+        ],
+        65: [
+            "fallout 3", "fallout 4", "fallout new vegas", "fallout 76", "metro exodus",
+            "stalker 2", "chernobylite", "generation zero", "the division", "the division 2",
+            "zombie army 4", "stubbs the zombie", "zombiu", "dead nation", "deadlight",
+            "how to survive", "state of decay year one", "into the dead", "untreated" if False else "dead trigger",
+            "last day on earth", "rimworld", "oxygen not included", "surviving mars",
+            "this war of mine", "60 seconds", "sunless sea", "sunkenland", "icarus",
+            "forever skies", "mist survival", "fade to silence", "banished", "dune awakening"
+        ],
+        85: [
+            "stalker shadow of chernobyl", "stalker call of pripyat", "cataclysm dark days ahead",
+            "caves of qud", "neo scavenger", "the flame in the flood", "darkwood",
+            "pathologic 2", "sunless skies", "dread hunger", "the wild eight",
+            "lonely mountains downhill" if False else "windbound", "saints row iv",
+            "sunset overdrive", "infamous", "infamous 2", "prototype", "prototype 2",
+            "mercenaries", "saboteur", "the saboteur", "scarface the world is yours",
+            "true crime streets of la", "true crime new york city", "driver san francisco",
+            "the godfather", "gun", "kingdoms of amalur", "risen", "gothic", "elex"
+        ],
+        100: [
+            "cataclysm dark days ahead", "neo scavenger", "pathologic 2", "the saboteur",
+            "mercenaries 2", "gun", "darkwood", "fade to silence", "dread hunger",
+            "caves of qud", "mist survival", "forever skies", "sunkenland", "sunless sea",
+            "zombiu", "deadlight", "the flame in the flood", "how to survive", "elex", "gothic"
+        ],
+    },
+    "vid-05": {
+        10: [
+            "baldurs gate 3", "elden ring", "the witcher 3", "skyrim", "cyberpunk 2077",
+            "final fantasy vii", "final fantasy vii remake", "final fantasy x",
+            "chrono trigger", "persona 5", "persona 5 royal", "god of war",
+            "god of war ragnarok", "the last of us", "the last of us 2", "uncharted 4",
+            "red dead redemption 2", "grand theft auto v", "zelda ocarina of time",
+            "zelda breath of the wild", "zelda tears of the kingdom", "horizon zero dawn",
+            "ghost of tsushima", "bloodborne", "dark souls", "dark souls 3", "sekiro",
+            "hollow knight", "diablo ii", "diablo iv", "mass effect", "bioshock"
+        ],
+        25: [
+            "final fantasy vii rebirth", "chrono cross", "persona 4 golden", "persona 3 reload",
+            "metaphor refantazio", "dragon quest xi", "dragon quest viii", "kingdom hearts",
+            "kingdom hearts 2", "tales of arise", "tales of symphonia", "octopath traveler",
+            "xenoblade chronicles", "fire emblem three houses", "mass effect 2",
+            "dragon age origins", "knights of the old republic", "divinity original sin 2",
+            "disco elysium", "fallout new vegas", "uncharted 2", "tomb raider",
+            "rise of the tomb raider", "zelda majoras mask", "zelda twilight princess",
+            "zelda wind waker", "zelda a link to the past", "demons souls", "lies of p",
+            "blasphemous", "metroid prime", "super metroid", "castlevania symphony of the night",
+            "devil may cry 3", "devil may cry 5", "bayonetta", "nier automata",
+            "yakuza 0", "yakuza like a dragon", "metal gear solid", "metal gear solid 3",
+            "monkey island", "okami", "shadow of the colossus", "batman arkham asylum",
+            "spiderman", "control", "alan wake", "alan wake 2", "dishonored",
+            "resident evil 4", "silent hill 2"
+        ],
+        45: [
+            "planescape torment", "fallout 2", "the secret of monkey island", "grim fandango",
+            "day of the tentacle", "broken sword", "ico", "deus ex", "baldurs gate 2",
+            "neverwinter nights", "icewind dale", "pillars of eternity", "pathfinder",
+            "tyranny", "torment tides of numenera", "golden sun", "earthbound", "mother 3",
+            "secret of mana", "trials of mana", "suikoden ii", "xenogears", "parasite eve",
+            "vagrant story", "final fantasy vi", "final fantasy ix", "final fantasy xii",
+            "final fantasy tactics", "ni no kuni", "yakuza kiwami", "shenmue",
+            "legacy of kain soul reaver", "prince of persia las arenas del tiempo",
+            "beyond good and evil", "psychonauts", "ori and the blind forest",
+            "ori and the will of the wisps", "dead cells", "hades", "tunic", "deaths door",
+            "kameo", "fable", "star wars jedi fallen order", "star wars jedi survivor"
+        ],
+        65: [
+            "jade empire", "vampire the masquerade bloodlines", "arcanum", "ultima vii",
+            "wizardry", "might and magic", "gothic ii", "risen", "dragons dogma",
+            "mount and blade warband", "kingdom come deliverance", "kotor 2",
+            "alpha protocol", "shadowrun returns", "wargroove", "unicorn overlord",
+            "live a live", "radiant historia", "skies of arcadia", "grandia",
+            "breath of fire", "phantasy star iv", "shining force ii", "lunar",
+            "wild arms", "shadow hearts", "valkyrie profile", "tactics ogre",
+            "lost odyssey", "blue dragon", "infinite undiscovery", "baten kaitos",
+            "pandoras tower", "the last story", "syberia", "the longest journey",
+            "gabriel knight", "indiana jones and the fate of atlantis", "full throttle",
+            "sam and max hit the road", "monkey island 2", "runaway a road adventure",
+            "hollywood monsters", "la abadia del crimen"
+        ],
+        85: [
+            "la abadia del crimen", "runaway", "hollywood monsters", "blacksad under the skin",
+            "gylt", "rime", "nomada" if False else "gris", "neva", "moonlighter", "temtem",
+            "blasphemous 2", "aeterna noctis", "unmetal", "unepec" if False else "unepic",
+            "ghost 1 0", "commandos" if False else "blade the edge of darkness", "severance blade of darkness",
+            "terrania" if False else "terranigma", "illusion of time", "illusion of gaia",
+            "secret of evermore", "lufia ii", "alundra", "landstalker", "soleil",
+            "crusader of centy", "beyond oasis", "story of thor", "panzer dragoon saga",
+            "koudelka", "legend of dragoon", "the legend of dragoon", "brave fencer musashi",
+            "threads of fate", "dragon quest v", "shin megami tensei iv", "digital devil saga"
+        ],
+        100: [
+            "panzer dragoon saga", "la abadia del crimen", "severance blade of darkness",
+            "terranigma", "planescape torment", "koudelka", "vagrant story", "radiant historia",
+            "skies of arcadia", "baten kaitos", "pandoras tower", "the last story",
+            "arcanum", "vampire the masquerade bloodlines", "shadow hearts", "alundra",
+            "crusader of centy", "the story of thor", "unepic", "hollywood monsters"
+        ],
+    },
+}
+DENSITY_VID_1_B = {
+    "vid-06": {
+        10: [
+            "gran turismo", "gran turismo 7", "gran turismo sport", "forza horizon", "forza horizon 5",
+            "forza horizon 4", "forza motorsport", "mario kart", "mario kart 8", "mario kart 8 deluxe",
+            "mario kart wii", "need for speed", "need for speed underground", "need for speed underground 2",
+            "need for speed most wanted", "crash team racing", "f1", "f1 24", "motogp", "burnout",
+            "burnout 3", "burnout paradise", "assetto corsa", "dirt rally", "colin mcrae rally",
+            "euro truck simulator 2", "euro truck simulator", "trackmania", "crazy taxi", "outrun"
+        ],
+        25: [
+            "gran turismo 2", "gran turismo 3", "gran turismo 4", "gran turismo 5", "gran turismo 6",
+            "forza horizon 2", "forza horizon 3", "forza motorsport 7", "forza motorsport 4",
+            "super mario kart", "mario kart 64", "mario kart double dash", "mario kart ds",
+            "mario kart 7", "ctr", "crash team racing nitro fueled", "need for speed carbon",
+            "need for speed carbono", "need for speed heat", "need for speed hot pursuit",
+            "need for speed payback", "need for speed unbound", "nfs underground", "nfs most wanted",
+            "assetto corsa competizione", "iracing", "rfactor", "rfactor 2", "project cars",
+            "project cars 2", "dirt", "dirt 2", "dirt 3", "dirt rally 2 0", "wrc", "ea sports wrc",
+            "sega rally", "burnout 3 takedown", "burnout revenge", "midnight club",
+            "midnight club 3", "midnight club los angeles", "test drive", "test drive unlimited",
+            "the crew", "the crew 2", "the crew motorfest", "ridge racer", "daytona usa",
+            "wipeout", "f zero", "f zero gx", "driver", "driver san francisco",
+            "american truck simulator", "snowrunner", "mudrunner", "wreckfest", "beamng drive",
+            "simpsons hit and run", "the simpsons hit and run", "diddy kong racing", "modnation racers",
+            "sonic and sega all stars racing", "team sonic racing", "trials rising", "trials fusion"
+        ],
+        45: [
+            "need for speed pro street", "need for speed shift", "need for speed the run",
+            "need for speed rivals", "nfs", "crash nitro kart", "sonic all stars racing transformed",
+            "hot wheels unleashed", "hot wheels unleashed 2", "automobilista", "automobilista 2",
+            "project cars 3", "raceroom", "toca race driver", "toca race driver 3", "grid",
+            "race driver grid", "grid 2", "grid autosport", "grid legends", "le mans ultimate",
+            "f1 2010", "f1 2020", "f1 2021", "f1 22", "f1 23", "colin mcrae rally 2",
+            "dirt 4", "dirt 5", "wrc generations", "richard burns rally", "sega rally championship",
+            "v rally", "v rally 2", "art of rally", "motorstorm", "motorstorm pacific rift",
+            "motorstorm apocalypse", "burnout 2", "midnight club 2", "test drive unlimited 2",
+            "test drive unlimited solar crown", "outrun 2", "outrun 2006", "ridge racer type 4",
+            "ridge racer 7", "driver 2", "driv3r", "carmageddon", "carmageddon ii",
+            "twisted metal", "twisted metal black", "flatout", "flatout 2", "beamng",
+            "split second", "blur", "tokyo xtreme racer", "initial d", "wipeout 2097",
+            "wipeout omega collection", "f zero x", "star wars episode i racer", "trackmania nations",
+            "trackmania turbo", "micro machines", "re volt", "revolt", "road rash",
+            "motogp 24", "ride", "ride 4", "ride 5", "tourist trophy", "trials",
+            "trials evolution", "excitebike", "excitebike 64", "ets2", "ats", "spintires",
+            "farming simulator", "my summer car", "pacific drive", "car mechanic simulator"
+        ],
+        65: [
+            "assetto corsa evo", "live for speed", "gtr", "gtr 2", "gt legends", "race 07",
+            "rennsport", "nascar heat", "nascar thunder", "indycar racing", "grand prix legends",
+            "f1 challenge", "grand prix 4", "rally cross", "fuel", "baja edge of control",
+            "mx vs atv", "pure", "naild", "scud race", "sega touring car", "cruisn usa",
+            "cruisn world", "california speed", "san francisco rush", "rush 2049",
+            "crazy taxi 2", "simpsons road rage", "vigilante 8", "interstate 76", "juiced",
+            "street racing syndicate", "wangan midnight", "wipeout hd", "fast rmx", "redout",
+            "ballisticng", "pod", "rollcage", "grip", "micro machines v3", "mashed",
+            "rc revenge", "super off road", "super sprint", "spy hunter", "pole position",
+            "hang on", "super hang on", "tt isle of man", "mxgp", "monster energy supercross",
+            "excitetruck", "wave race 64", "hydro thunder", "18 wheels of steel", "expeditions",
+            "construction simulator", "bus simulator", "fernbus simulator", "train sim world",
+            "train simulator", "microsoft flight simulator", "flight simulator", "dcs world",
+            "ace combat 7", "jalopy", "automation", "the long drive", "garfield kart",
+            "chocobo gp", "disney speedstorm", "littlebigplanet karting", "jak x", "lego 2k drive"
+        ],
+        85: [
+            "f1 2019", "f1 2018", "f1 2016", "wrc 10", "wrc 9", "wrc 8", "ride 3", "ride 2",
+            "mx vs atv legends", "sbk 22", "dakar desert rally", "dakar 18", "pacific drive",
+            "distance", "nitronic rush", "inertial drift", "horizon chase turbo", "horizon chase 2",
+            "slipstream", "top gear", "top gear 2", "lotus turbo challenge", "lotus ii",
+            "stunts", "hard drivin", "race drivin", "virtua racing", "power drift",
+            "super hang on", "chase hq", "special criminal investigation", "carmageddon max damage",
+            "destructive derby", "destruction derby", "destruction derby 2", "smugglers run",
+            "midnight club dub edition", "auto modellista", "enthusia professional racing",
+            "metropolis street racer", "project gotham racing", "project gotham racing 2",
+            "project gotham racing 4", "rallisport challenge", "rallisport challenge 2",
+            "toca touring car championship", "grand prix 2", "grand prix 3", "f1 world grand prix",
+            "need for speed porsche unleashed", "need for speed high stakes", "nfs heat",
+            "nfs payback", "nfs rivals", "forza motorsport 6", "forza motorsport 5",
+            "forza horizon", "mario kart tour", "crash tag team racing", "nicktoons racers",
+            "simulador de conduccion", "simuladores de conduccion", "juegos de carreras"
+        ],
+        100: [
+            "grand prix legends", "richard burns rally", "enthusia professional racing",
+            "auto modellista", "metropolis street racer", "stunts", "chase hq", "virtua racing",
+            "top gear", "lotus turbo challenge", "f zero gx", "ballisticng", "interstate 76",
+            "pod", "rollcage", "re volt", "san francisco rush", "scud race",
+            "richard burns", "gt legends", "live for speed", "grand prix 4", "race 07",
+            "tokyo xtreme racer", "wangan midnight"
+        ],
+    },
+    "vid-07": {
+        10: [
+            "age of empires", "age of empires ii", "age of empires 2", "age of empires iv",
+            "starcraft", "starcraft ii", "warcraft iii", "warcraft 3", "civilization",
+            "civilization vi", "civilization v", "total war", "command and conquer",
+            "red alert", "simcity", "cities skylines", "rollercoaster tycoon", "football manager",
+            "pc futbol", "xcom", "xcom 2", "stellaris", "hearts of iron iv", "crusader kings iii",
+            "europa universalis iv", "no mans sky", "kerbal space program", "elite dangerous",
+            "star citizen", "eve online", "factorio", "rimworld", "frostpunk", "plants vs zombies"
+        ],
+        25: [
+            "age of empires iii", "age of mythology", "rise of nations", "empire earth",
+            "starcraft brood war", "warcraft", "warcraft ii", "red alert 2", "red alert 3",
+            "command and conquer generals", "homeworld", "company of heroes", "company of heroes 2",
+            "dawn of war", "stronghold", "stronghold crusader", "anno 1800", "imperivm",
+            "commandos", "commandos 2", "civilization iv", "civilization iii", "rome total war",
+            "medieval ii total war", "shogun 2", "total war warhammer", "europa universalis",
+            "crusader kings ii", "victoria 3", "hoi4", "ck3", "eu4", "xcom enemy unknown",
+            "ftl", "faster than light", "advance wars", "fire emblem", "final fantasy tactics",
+            "darkest dungeon", "slay the spire", "balatro", "manor lords", "banished",
+            "surviving mars", "dwarf fortress", "simcity 4", "cities skylines ii", "tropico",
+            "tropico 6", "planet coaster", "planet zoo", "zoo tycoon", "theme hospital",
+            "two point hospital", "two point campus", "prison architect", "satisfactory",
+            "oxygen not included", "lemmings", "worms", "worms armageddon", "starfield",
+            "outer wilds", "dune spice wars", "northgard", "they are billions", "spores" if False else "spore",
+            "heroes of might and magic iii", "heroes iii"
+        ],
+        45: [
+            "supreme commander", "total annihilation", "planetary annihilation", "homeworld 2",
+            "homeworld deserts of kharak", "company of heroes 3", "dawn of war ii", "men of war",
+            "sins of a solar empire", "tiberian sun", "dune 2", "dune ii", "dune 2000",
+            "settlers", "the settlers", "anno 1404", "anno 2070", "anno 2205", "cossacks",
+            "imperivm ii", "imperivm iii", "praetorians", "commandos 3", "desperados",
+            "desperados iii", "shadow tactics", "blades of the shogun", "civilization ii",
+            "civilization vii", "alpha centauri", "beyond earth", "humankind", "old world",
+            "endless space", "endless space 2", "endless legend", "age of wonders",
+            "age of wonders 4", "master of orion", "total war rome ii", "shogun total war",
+            "empire total war", "napoleon total war", "total war warhammer iii",
+            "total war three kingdoms", "imperator rome", "victoria 2", "into the breach",
+            "wargroove", "tactics ogre", "valkyria chronicles", "mario plus rabbids",
+            "triangle strategy", "unicorn overlord", "midnight suns", "battle brothers",
+            "mount and blade", "frostpunk 2", "simcity 2000", "tropico 4", "tropico 5",
+            "patrician iii", "port royale", "railway empire", "transport tycoon", "openttd",
+            "rollercoaster tycoon 2", "rollercoaster tycoon 3", "theme park", "dungeon keeper",
+            "evil genius", "dyson sphere program", "timberborn", "against the storm",
+            "game dev tycoon", "stardew valley", "slime rancher", "jurassic world evolution",
+            "black and white", "populous", "bloons td", "kingdom rush", "orcs must die",
+            "kerbal space program 2", "elite", "x4 foundations", "freelancer", "freespace 2",
+            "wing commander", "tie fighter", "x wing", "star wars empire at war",
+            "everspace", "everspace 2", "astroneer", "space engineers", "universe sandbox"
+        ],
+        65: [
+            "empires dawn of the modern world", "gates of hell", "sudden strike", "blitzkrieg",
+            "world in conflict", "wargame red dragon", "steel division", "broken arrow",
+            "american conquest", "sid meiers alpha centauri", "millennia", "master of magic",
+            "galactic civilizations", "homm 3", "kings bounty", "disciples ii",
+            "total war pharaoh", "ufo enemy unknown", "xenonauts", "phoenix point",
+            "shapez", "hardspace shipbreaker", "pulsar lost colony", "rebel galaxy",
+            "chorus", "starsector", "empyrion", "cosmoteer", "orbiter", "terra invicta",
+            "falling frontier", "ixion", "surviving the aftermath", "stationeers",
+            "pc building simulator", "powerwash simulator", "house flipper", "unpacking",
+            "freespace", "x3 terran conflict", "star wars rebellion", "homeworld 3",
+            "nebula" if False else "nebulous fleet command", "children of a dead earth",
+            "kerbal", "ksp", "flight of nova", "delta v rings of saturn", "reentry",
+            "mars horizon", "buzz aldrin race into space", "galactic civilizations iv",
+            "sins of a solar empire ii", "distant worlds", "distant worlds 2", "aurora 4x"
+        ],
+        85: [
+            "capitalism ii", "capitalism lab", "pharaoh", "caesar iii", "zeus master of olympus",
+            "emperor rise of the middle kingdom", "majesty", "kohan", "battle realms",
+            "warlords battlecry", "sacred" if False else "total war attila", "thrones of britannia",
+            "warcraft iii frozen throne", "command and conquer zero hour", "red alert yuris revenge",
+            "openra", "zero k", "beyond all reason", "planetary annihilation titans",
+            "supremacy 1914", "call of war", "heros of annihiliated empires" if False else "cossacks 3",
+            "anno 1602", "anno 1503", "the settlers ii", "the settlers iii", "railroad tycoon",
+            "railroad tycoon ii", "locomotion", "chrissawyers locomotion", "viva pinata",
+            "startopia", "spacebase startopia", "hospitallers" if False else "hospital tycoon",
+            "megaquarium", "software inc", "factorio space age", "captain of industry",
+            "foundry", "techtonica", "astro colony", "planetbase", "dawn of man",
+            "endzone", "patron", "ostriv", "farthest frontier", "foundation", "songs of syx"
+        ],
+        100: [
+            "distant worlds 2", "aurora 4x", "songs of syx", "children of a dead earth",
+            "terra invicta", "starsector", "imperivm iii", "patrician iii",
+            "zeus master of olympus", "caesar iii", "pharaoh", "dungeon keeper",
+            "startopia", "alpha centauri", "master of magic", "freelancer",
+            "freespace 2", "x wing alliance", "tie fighter", "beyond all reason"
+        ],
+    },
+    "vid-08": {
+        10: [
+            "mario", "luigi", "peach", "bowser", "yoshi", "link", "zelda", "pikachu",
+            "donkey kong", "kirby", "samus", "samus aran", "kratos", "nathan drake",
+            "joel", "ellie", "aloy", "solid snake", "snake", "geralt de rivia", "geralt",
+            "arthur morgan", "john marston", "cj", "carl johnson", "trevor philips",
+            "master chief", "jefe maestro", "lara croft", "crash bandicoot", "spyro",
+            "sonic", "pac man", "pacman", "ryu", "ken", "chun li", "scorpion",
+            "sub zero", "cloud strife", "cloud", "sephiroth", "sora", "steve",
+            "ezio auditore", "ezio", "leon kennedy", "leon s kennedy", "dante", "2b", "sans"
+        ],
+        25: [
+            "princesa peach", "toad", "wario", "waluigi", "rosalina", "diddy kong",
+            "princesa zelda", "ganondorf", "charizard", "mewtwo", "meta knight",
+            "king dedede", "fox mccloud", "captain falcon", "atreus", "jin sakai",
+            "sam porter bridges", "ratchet", "clank", "jak", "daxter", "sly cooper",
+            "crash", "sackboy", "astro bot", "cortana", "marcus fenix", "doomguy",
+            "doom slayer", "gordon freeman", "alyx vance", "chell", "glados", "tracer",
+            "arthas", "sylvanas", "ciri", "yennefer", "triss", "tommy vercetti",
+            "nico bellic", "niko bellic", "franklin clinton", "michael de santa",
+            "max payne", "alan wake", "agent 47", "agente 47", "altair", "edward kenway",
+            "sam fisher", "vaas", "big boss", "raiden", "tifa", "aerith", "squall",
+            "zidane", "tidus", "yuna", "claire redfield", "chris redfield", "jill valentine",
+            "ada wong", "albert wesker", "vergil", "bayonetta", "mega man", "megaman",
+            "tails", "knuckles", "shadow", "eggman", "dr eggman", "guybrush threepwood",
+            "cuphead", "creeper", "shulk", "joker", "kazuya", "jin kazama", "heihachi",
+            "johnny cage", "liu kang", "kitana", "akuma", "guile"
+        ],
+        45: [
+            "estela", "king k rool", "midna", "ridley", "falco lombardi", "ness", "lucas",
+            "marth", "ike", "byleth", "olimar", "isabelle", "canela", "tom nook",
+            "kk slider", "inkling", "freya", "elena fisher", "sully", "chloe frazer",
+            "joel miller", "abby", "deacon st john", "coco bandicoot", "neo cortex",
+            "sir daniel fortesque", "sweet tooth", "cole macgrath", "wander", "ico",
+            "arbiter", "dom santiago", "bj blazkowicz", "corvo attano", "g man",
+            "wheatley", "illidan", "thrall", "jaina proudmoore", "kerrigan", "jim raynor",
+            "shepard", "comandante shepard", "garrus", "dovahkiin", "vault boy",
+            "dutch van der linde", "vaas montenegro", "adam jensen", "big daddy",
+            "andrew ryan", "isaac clarke", "kyle crane", "faith connors", "manny calavera",
+            "duke nukem", "alex", "enderman", "naked snake", "revolver ocelot", "vivi",
+            "noctis", "lightning", "chocobo", "moogle", "riku", "crono", "morgana",
+            "kiryu", "kazuma kiryu", "goro majima", "ichiban kasuga", "ryo hazuki",
+            "amaterasu", "zero", "ethan winters", "lady dimitrescu", "nemesis",
+            "james sunderland", "pyramid head", "alucard", "simon belmont", "cammy",
+            "m bison", "zangief", "mileena", "sonya blade", "kazuya mishima",
+            "heihachi mishima", "terry bogard", "mai shiranui", "sol badguy",
+            "sonic the hedgehog", "robotnik", "amy rose", "rayman", "bomberman",
+            "banjo", "kazooie", "shovel knight", "el penitente", "hornet", "madeline",
+            "zagreus", "papyrus", "freddy fazbear", "jinx", "vi", "teemo", "jonesy"
+        ],
+        65: [
+            "totakeke", "entrenador rojo", "kat", "morgan yu", "d va", "mercy", "genji",
+            "diablo", "deckard cain", "tyrael", "tali", "liara", "johnny silverhand",
+            "sangre de dragon", "claude speed", "jesse faden", "connor", "bayek",
+            "kassandra", "eivor", "pagan min", "aiden pearce", "marcus holloway",
+            "rico rodriguez", "jc denton", "booker dewitt", "elizabeth", "raz",
+            "lechuck", "elaine marley", "april ryan", "serious sam", "herobrine",
+            "ocelot", "tifa lockhart", "barret", "clive", "mogu", "kairi", "roxas",
+            "axel", "magus", "yu narukami", "9s", "a2", "nero", "lady", "viewtiful joe",
+            "heather mason", "richter belmont", "blanka", "dhalsim", "raiden mk",
+            "king", "nina williams", "paul phoenix", "kyo kusanagi", "iori yagami",
+            "ky kiske", "ms pac man", "globox", "rabbids", "qbert", "dig dug",
+            "frogger", "earthworm jim", "conker", "shantae", "mugman", "penitente",
+            "frisk", "kris", "bendy", "monika", "glamrock freddy", "peppino", "ahri",
+            "yasuo", "lux", "peely"
+        ],
+        85: [
+            "seymour", "seifer", "auron", "vincent valentine", "yuffie", "cait sith",
+            "laguna", "vivi ornitier", "garnet", "steiner", "balthier", "fran",
+            "ignis", "gladiolus", "prompto", "aerith gainsborough", "zack fair",
+            "terra branford", "kefka", "cecil harvey", "kain highwind", "rydia",
+            "toriel", "asgore", "undye" if False else "undyne", "alphys", "mettaton",
+            "flowey", "asriel", "senua", "amisia" if False else "amicia de rune",
+            "hugo de rune", "cal kestis", "starkiller", "revan", "darth revan",
+            "hk 47", "bastila shan", "kreia", "minsc", "boo", "astarion", "shadowheart",
+            "karlach", "gale", "laezel", "wyll", "halsin", "vergil sparda",
+            "sparda", "akira yuki", "sarah bryant", "pai chan", "wolf hawkfield",
+            "siegfried", "nightmare", "mitsurugi", "sophitia", "ivy valentine",
+            "taki", "yoshimitsu", "lei wulong", "marshall law", "hwoarang", "xiaoyu",
+            "mokujin", "kuma", "geese howard", "rugal", "athena asamiya", "nakoruru",
+            "haohmaru", "samanosuke", "jubei", "dante sparda", "phoenix wright",
+            "miles edgeworth", "maya fey", "apollo justice", "layton", "profesor layton",
+            "luke triton", "kirby" if False else "waddle dee", "bandana dee", "ashley",
+            "mona", "jimmy t", "9 volt", "pyra", "mythra", "rex", "noah", "mio",
+            "elma", "kos mos", "fei fong wong", "elhaym", "juste belmont", "shanoa"
+        ],
+        100: [
+            "terra branford", "kefka", "cecil harvey", "kain highwind", "senua",
+            "amicia de rune", "darth revan", "hk 47", "minsc", "astarion",
+            "shadowheart", "karlach", "akira yuki", "geese howard", "nakoruru",
+            "haohmaru", "samanosuke", "phoenix wright", "miles edgeworth",
+            "profesor layton", "kos mos", "fei fong wong", "shanoa",
+            "april ryan", "sir daniel fortesque"
+        ],
+    },
+    "vid-09": {
+        10: [
+            "nintendo", "sony", "playstation", "microsoft", "xbox", "sega", "atari",
+            "capcom", "konami", "square enix", "bandai namco", "namco", "fromsoftware",
+            "naughty dog", "santa monica studio", "insomniac games", "rockstar games",
+            "rockstar", "electronic arts", "ea", "ea sports", "ubisoft", "activision",
+            "blizzard", "activision blizzard", "bethesda", "valve", "epic games",
+            "riot games", "cd projekt red", "cd projekt", "mojang", "kojima productions"
+        ],
+        25: [
+            "squaresoft", "enix", "guerrilla games", "sucker punch", "polyphony digital",
+            "bungie", "id software", "arkane", "obsidian", "bioware", "dice", "respawn",
+            "maxis", "take two", "2k", "2k games", "firaxis", "gearbox", "larian studios",
+            "remedy", "housemarque", "supergiant games", "team cherry", "devolver digital",
+            "paradox interactive", "creative assembly", "relic", "thq", "lucasarts",
+            "sierra", "rare", "retro studios", "game freak", "hal laboratory",
+            "intelligent systems", "monolith soft", "atlus", "platinumgames",
+            "team ninja", "koei tecmo", "snk", "level 5", "quantic dream", "hazelight",
+            "roblox", "supercell", "king", "rovio", "niantic", "dinamic",
+            "pyro studios", "mercurysteam", "tequila works", "the game kitchen", "nomada studio"
+        ],
+        45: [
+            "halo studios", "343 industries", "the coalition", "playground games",
+            "turn 10", "ninja theory", "compulsion games", "undead labs", "double fine",
+            "machinegames", "inxile", "treyarch", "infinity ward", "sledgehammer games",
+            "raven software", "popcap", "criterion", "codemasters", "zynga",
+            "mega crit", "annapurna interactive", "thq nordic", "embracer", "focus entertainment",
+            "ryu ga gotoku studio", "cyberconnect2", "arc system works", "falcom",
+            "nihon falcom", "grasshopper", "grasshopper manufacture", "tango gameworks",
+            "bloober team", "techland", "dontnod", "io interactive", "crytek", "rebellion",
+            "frontier developments", "team17", "re logic", "coffee stain", "ghost ship games",
+            "hello games", "klei entertainment", "motion twin", "yacht club games",
+            "concernedape", "toby fox", "localthunk", "dinamic multimedia", "pendulo studios",
+            "opera soft", "topo soft", "digital sun", "chibig", "piccolo studio"
+        ],
+        65: [
+            "bluepoint games", "bend studio", "media molecule", "team asobi", "san diego studio",
+            "nixxes", "firewalk", "haven studios", "tokyo rpg factory", "luminous productions",
+            "creative business unit iii", "sonic team", "am2", "sega am2", "amusement vision",
+            "smilebit", "united game artists", "hitmaker", "wow entertainment",
+            "overworks", "treasure", "hudson soft", "taito", "technos", "irems" if False else "irem",
+            "toaplan", "cave", "data east", "sunsoft", "jaleco", "kemco", "tengen",
+            "acclaim", "midway", "williams electronics", "infogrames", "ocean", "gremlin",
+            "psygnosis", "bullfrog", "lionhead", "black isle", "interplay", "troika games",
+            "origin systems", "westwood studios", "looking glass studios", "irrational games",
+            "3do company", "new world computing", "microprose", "ssi", "cinemaware",
+            "revolution software", "delphine software", "cavedog", "ensemble studios",
+            "gas powered games", "bizarre creations", "climax", "free radical", "factor 5",
+            "silicon knights", "neversoft", "vicarious visions", "toys for bob",
+            "beenox", "monolith productions", "turtle rock", "red barrels", "frictional games",
+            "supermassive games", "playdead", "moon studios", "amanita design", "11 bit studios"
+        ],
+        85: [
+            "zigurat", "baroque decay", "alpixel", "relevo", "spain" if False else "the outsiders",
+            "garaje" if False else "fourattic", "a crowd of monsters", "brainwash gang",
+            "beautifun games", "milkstone studios", "gylt" if False else "abylight",
+            "numantian games", "aeternum game studios", "lince works", "delirium studios",
+            "fx interactive", "zeta multimedia", "erbe software", "proein",
+            "virgin interactive", "eidos", "eidos interactive", "square", "squaresoft",
+            "coleco", "mattel", "nec", "commodore", "amstrad", "sinclair",
+            "ti" if False else "panasonic", "philips", "magnavox", "cdpr", "rgg",
+            "valve corporation", "nintendo epd", "nintendo ead", "clover studio",
+            "seedc" if False else "tri ace", "vanillaware", "aquaplus", "leaf", "key",
+            "type moon", "compile heart", "idea factory", "nippon ichi software", "nis",
+            "gust", "spike chunsoft", "marvelous", "xseed", "m2", "wayforward",
+            "inticreates", "inti creates", "arcsys", "french bread", "examu",
+            "lab zero", "skullgirls" if False else "netherrealm", "netherrealm studios",
+            "rocksteady", "wb games", "warner bros games", "monolith", "travelers tales",
+            "tt games", "sumo digital", "splash damage", "jagex", "ccp games",
+            "wargaming", "gaijin", "digital extremes", "grinding gear games",
+            "behavior interactive", "dead by daylight" if False else "behaviour interactive",
+            "starbreeze", "overkill", "fatshark", "coffee stain studios", "iron gate",
+            "keen games", "funcom", "bohemia interactive", "facepunch", "rebellion developments"
+        ],
+        100: [
+            "opera soft", "topo soft", "dinamic multimedia", "zigurat", "erbe software",
+            "fx interactive", "looking glass studios", "troika games", "black isle",
+            "bullfrog", "psygnosis", "westwood studios", "origin systems", "clover studio",
+            "cavedog", "delphine software", "treasure", "toaplan", "cave",
+            "vanillaware", "tri ace", "technos", "data east", "amusement vision", "smilebit"
+        ],
+    },
+    "vid-10": {
+        10: [
+            "roguelike", "roguelite", "metroidvania", "soulslike", "battle royale", "sandbox",
+            "mundo abierto", "cooperativo", "multijugador", "campaña", "modo historia",
+            "supervivencia", "sigilo", "plataformas", "shooter", "fps", "tps", "rpg",
+            "jrpg", "mmorpg", "moba", "rts", "hack and slash", "survival horror",
+            "checkpoint", "punto de control", "vida", "salud", "mana", "estamina",
+            "experiencia", "xp", "subir de nivel", "level up", "inventario", "crafteo",
+            "loot", "botin", "jefe", "jefe final", "boss", "mazmorra", "dungeon",
+            "pantalla dividida", "crossplay", "respawn", "lag", "ping", "speedrun",
+            "logro", "trofeo", "platino", "dlc", "skin", "easter egg", "glitch", "bug",
+            "combo", "parry", "esquiva", "doble salto", "game over", "arcade", "pixel art"
+        ],
+        25: [
+            "open world", "coop", "multiplayer", "stealth", "arpg", "beat em up",
+            "shoot em up", "bullet hell", "tower defense", "gacha", "visual novel",
+            "novela visual", "aventura grafica", "point and click", "puzle",
+            "guardado rapido", "quicksave", "autoguardado", "autosave", "barra de vida",
+            "hp", "energia", "escudo", "armadura", "arbol de habilidades", "skill tree",
+            "craftear", "crafting", "farmeo", "farmear", "grindeo", "grindear", "drop",
+            "miniboss", "raid", "incursion", "new game plus", "partida nueva plus",
+            "split screen", "fuego amigo", "friendly fire", "hitbox", "frame rate",
+            "frames por segundo", "netcode", "pase de batalla", "season pass",
+            "microtransaccion", "loot box", "aspecto", "huevo de pascua", "dash",
+            "wall jump", "bullet time", "quick time event", "qte", "permadeath",
+            "muerte permanente", "niebla de guerra", "fog of war", "aggro", "agro",
+            "tanque", "tank", "healer", "sanador", "support", "dps", "buff", "debuff",
+            "nerf", "nerfeo", "cooldown", "enfriamiento", "continue", "high score",
+            "ray tracing", "trazado de rayos", "npc", "bot", "camper", "campear",
+            "headshot", "critico", "golpe critico", "matchmaking", "ranked", "afk",
+            "noob", "casual", "hardcore", "tutorial", "hud", "minimapa", "viaje rapido",
+            "fast travel", "mision secundaria", "side quest", "pvp", "pve", "beta",
+            "remaster", "remake", "emulador", "dlc"
+        ],
+        45: [
+            "shmup", "idle", "clicker", "walking simulator", "rompecabezas",
+            "mundo persistente", "saqueo", "juego cruzado", "reaparicion", "spawn",
+            "hurtbox", "latencia", "rollback netcode", "rollback", "expansion",
+            "caja de botin", "cosmetico", "exploit", "desvio", "bloqueo", "dodge",
+            "dodge roll", "impulso", "salto en pared", "gancho", "tiempo bala",
+            "apoyo", "carry", "jungla", "mid", "top", "bot", "adc", "bufeo", "rework",
+            "meta", "tiempo de reutilizacion", "fin del juego", "continuar",
+            "puntuacion maxima", "record", "insert coin", "cel shading", "hdr", "dlss",
+            "fsr", "vsync", "input lag", "camara libre", "tercera persona",
+            "primera persona", "vista isometrica", "scroll lateral", "side scroller",
+            "generacion procedural", "procedimental", "semilla", "seed", "pnj", "bots",
+            "campeo", "rush", "rushear", "gankear", "gankeo", "wipe", "wipear",
+            "pull", "pullear", "kitear", "stunlock", "stun", "aturdimiento",
+            "tiro a la cabeza", "no scope", "quickscope", "wallbang", "aimbot",
+            "wallhack", "cheto", "truco", "modo dios", "god mode", "noclip", "mod",
+            "mods", "modding", "parche", "patch", "hotfix", "op", "overpowered",
+            "balanceo", "emparejamiento", "clasificatoria", "elo", "mmr", "smurf",
+            "boosting", "rage quit", "gg", "wp", "novato", "tryhard", "speedrunner",
+            "world record", "prologo", "epilogo", "cinematica", "cutscene", "interfaz",
+            "mapa", "mision", "mision principal", "quest", "recompensa", "desbloqueable",
+            "coleccionable", "cartucho", "mando", "joystick", "cruceta", "gatillo",
+            "servidor", "host", "lobby", "sala", "clan", "gremio", "guild",
+            "horda", "modo horda", "oleada", "asimetrico", "pvpve", "single player",
+            "un jugador", "dos jugadores", "online", "en linea", "offline", "lan",
+            "cross save", "guardado en la nube", "cloud save", "demo", "alfa",
+            "acceso anticipado", "early access", "reboot", "port", "emulacion",
+            "rom", "iso", "savestate", "tas"
+        ],
+        65: [
+            "kiting", "isometrico", "parallax", "ia", "inteligencia artificial",
+            "codigo trampa", "nerfeado", "roto", "glhf", "any percent", "cien por cien",
+            "brujula", "contrato", "palanca", "frametime", "tickrate", "heroe",
+            "clase", "faccion", "karma", "reputacion", "escalada", "planeo",
+            "recarga", "municion", "cargador", "mira", "retroceso", "recoil",
+            "daño por segundo", "daño en area", "aoe", "dot", "muerte subita",
+            "capturar la bandera", "duelo por equipos", "team deathmatch",
+            "todos contra todos", "free for all", "sin conexion", "mecanicas",
+            "mecanica", "modos de juego", "modo de juego", "logros", "trofeos",
+            "jefes", "jefes finales", "mazmorras", "dungeons", "incursiones",
+            "raids", "plataformeo", "combos", "glitches", "bugs", "exploits",
+            "parches", "expansiones", "dlcs", "skins", "aspectos", "checkpoints",
+            "saves", "guardados", "habilidades", "inventarios", "escudos", "armaduras"
+        ],
+        85: [
+            "hitstop", "hitstun", "blockstun", "frame data", "frames activos",
+            "frames de inicio", "startup frames", "recovery frames", "cancelar animacion",
+            "animation cancel", "i frames", "frames de invencibilidad",
+            "coyote time", "jump buffering", "input buffer", "buffer de entrada",
+            "rubber banding", "catch up", "pixel perfect", "subpixel",
+            "clipping", "out of bounds", "oob", "sequence break", "skip",
+            "wrong warp", "rng", "manipulacion de rng", "drop rate", "tasa de caida",
+            "pity system", "sistema de piedad", "softcap", "hardcap", "diminishing returns",
+            "scaling", "escalado", "power creep", "glass cannon", "cañon de cristal",
+            "min max", "minmaxing", "theorycrafting", "build", "builds", "meta game",
+            "metajuego", "endgame", "postgame", "midgame", "early game", "lategame",
+            "wave clear", "last hit", "denegar", "deny", "creep", "minion", "oleadas",
+            "roaming", "rotacion", "split push", "backdoor", "teamfight", "pelea de equipo",
+            "cc", "crowd control", "control de masas", "root", "enraizamiento",
+            "silence", "silencio", "taunt", "provocar", "cleanse", "purificar",
+            "invulnerabilidad", "inmunidad", "burst", "sustain", "poke", "pokear"
+        ],
+        100: [
+            "coyote time", "input buffer", "i frames", "frames de invencibilidad",
+            "animation cancel", "cancelar animacion", "sequence break", "wrong warp",
+            "out of bounds", "rubber banding", "hitstop", "hitstun", "blockstun",
+            "frame data", "pity system", "diminishing returns", "softcap", "hardcap",
+            "theorycrafting", "power creep", "rollback netcode", "tas", "savestate",
+            "backdoor", "split push"
+        ],
+    },
+}
+DENSITY_VID_1_TOPUP = {
+    "vid-08": {
+        100: [
+            "garrett", "caleb", "lo wang", "raziel", "kain", "vyse", "aika", "stocke",
+            "klonoa", "blinx", "tomba", "ryu hayabusa", "aya brea", "ashley riot",
+            "francis york morgan", "harry mason", "cybil bennett", "regina",
+            "cate archer", "gex"
+        ],
+    },
+    "vid-09": {
+        100: [
+            "made in spain", "indescomp", "ventamatic", "rebel act studios",
+            "gsc game world", "4a games", "ice pick lodge", "introversion software",
+            "spiderweb software", "sir tech", "compile", "technosoft",
+            "telenet japan", "wolf team", "quintet", "sandlot", "acquire", "chunsoft"
+        ],
+    },
+    "vid-10": {
+        100: [
+            "shoryuken", "hadouken", "konami code", "codigo konami",
+            "blast processing", "mode 7", "modo 7", "wavedash", "l cancel",
+            "dash dance", "footsies", "okizeme", "fuzzy guard", "chiptune",
+            "scanlines", "tilemap", "pacifist run", "no hit", "glitchless",
+            "low percent"
+        ],
+    },
+}
+
+
 STRIP_ARTICLE_ALLOWED = {
     "pel-023", "gen-030", "gen-033", "gen-036", "gen-040", "pel-022", "gen-037",
     "pel-027", "pel-029", "pel-032", "pel-026", "pel-028", "dep-011", "dep-029",
@@ -11429,6 +12432,8 @@ STRIP_ARTICLE_ALLOWED = {
     "gen-017", "pel-018", "mus-013", "geo-001", "pel-019", "geo-011", "gen-019",
     "pel-016", "mus-016", "mus-017", "geo-007", "mus-003", "dep-006", "pal-001",
     "mus-002",
+    "vid-01", "vid-02", "vid-03", "vid-04", "vid-05",
+    "vid-06", "vid-07", "vid-08", "vid-09", "vid-10",
 }
 
 NUMBER_VARIANT_ALLOWED = {
@@ -11440,6 +12445,7 @@ NUMBER_VARIANT_ALLOWED = {
     "gen-024", "pal-003", "pal-008", "pal-012", "gen-011", "mus-005", "mus-001",
     "dep-005", "gen-023", "pal-020", "gen-025", "gen-014", "gen-019", "mus-016",
     "pal-018", "mus-003", "pal-001", "gen-021",
+    "vid-02", "vid-03", "vid-06", "vid-07", "vid-08", "vid-09", "vid-10",
 }
 
 
@@ -11498,20 +12504,26 @@ def cmd_generar_lote(args):
             i += 1
 
     if not out_path:
-        print("Uso: python spyle_tool.py generar-lote <salida.json> [--lote 1|2|3] [--min 405]", file=sys.stderr)
+        print("Uso: python spyle_tool.py generar-lote <salida.json> [--lote 1|2|3|4] [--min 405]", file=sys.stderr)
         sys.exit(1)
 
-    if lote_num not in (1, 2, 3):
-        print(f"[ERROR] Solo estan habilitados --lote 1, 2 o 3 (solicitado: {lote_num}).", file=sys.stderr)
+    if lote_num not in (1, 2, 3, 4):
+        print(f"[ERROR] Solo estan habilitados --lote 1, 2, 3 o 4 (solicitado: {lote_num}).", file=sys.stderr)
         sys.exit(1)
 
     prompts_path = locate_prompts_js()
     with open(prompts_path, "r", encoding="utf-8") as f:
         content = f.read()
+    if lote_num == 4:
+        content, _ = ensure_extra_prompt_categories(content)
     cats, _ = parse_prompts_file(content)
 
+    cats_by_id = {c["id"]: c for c in cats}
     ordered = sorted(cats, key=lambda c: (len(c["pairs"]), c["id"]))
-    if lote_num == 3:
+    if lote_num == 4:
+        vid_ids = [f"vid-{n:02d}" for n in range(1, 11)]
+        target_cats = [cats_by_id[vid] for vid in vid_ids if vid in cats_by_id]
+    elif lote_num == 3:
         target_cats = [
             c for c in ordered
             if len({normalizar_clave(k) for k, _ in c["pairs"] if normalizar_clave(k)}) < min_target
@@ -11559,10 +12571,21 @@ def cmd_generar_lote(args):
             DENSITY_BATCH_3_B.get(cid, {}),
             DENSITY_BATCH_3_C.get(cid, {}),
             DENSITY_BATCH_3_TOPUP.get(cid, {}),
+            DENSITY_VID_1_A.get(cid, {}),
+            DENSITY_VID_1_B.get(cid, {}),
+            DENSITY_VID_1_TOPUP.get(cid, {}),
         ):
             for score_val in sorted(pool.keys()):
                 for w in pool[score_val]:
                     try_add(w, score_val)
+
+        # Absorber vocabulario previo compatible desde categorias gen-* de videojuegos
+        absorb_map = {"vid-04": ["gen-022"], "vid-05": ["gen-029"]}
+        for src_id in absorb_map.get(cid, []):
+            src_cat = cats_by_id.get(src_id)
+            if src_cat:
+                for rk, rscore in src_cat["pairs"]:
+                    try_add(rk, rscore)
 
         # Fallback seguro con variantes validas si aun no alcanza min_target
         if len(existing) + len(queued) < min_target:

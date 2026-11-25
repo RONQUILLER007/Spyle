@@ -1978,7 +1978,7 @@ function renderArchives() {
 }
 
 /* ===================== ESTRUCTURA DE RETOS DIARIOS, GENERADOR INFINITO Y CALENDARIO ===================== */
-const PREFIJOS_EXPEDIENTE_MIXTO = ["pel", "dep", "geo", "mus", "pal", "gen"];
+const PREFIJOS_EXPEDIENTE_MIXTO = ["pel", "dep", "geo", "mus", "pal", "gen", "vid"];
 const VENTANA_ANTIRREPETICION_DIAS = 7;
 const cacheExpedientesMixtos = new Map();
 
@@ -2243,7 +2243,9 @@ const PACK_PREFIX_MAP = {
   "geografia": "geo",
   "musica": "mus",
   "palabras": "pal",
-  "general": "gen"
+  "general": "gen",
+  "videojuegos": "vid",
+  "vid": "vid"
 };
 
 function getPackPlayablePrompts(packId) {
@@ -2279,6 +2281,7 @@ function renderPacks() {
 
     const card = document.createElement("button");
     card.type = "button";
+    card.dataset.pack = pk.id;
     card.className = "btn big pack-card" + (enCalibracion ? " locked" : "");
 
     const title = document.createElement("div");

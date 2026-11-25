@@ -926,6 +926,15 @@ h3 {
   gap: 6px !important;
 }
 
+.pack-card[data-pack="videojuegos"] {
+  border-left: 3px solid var(--steel-deep);
+  background: linear-gradient(135deg, var(--bg-panel) 0%, var(--steel-soft) 100%);
+}
+
+.pack-card[data-pack="videojuegos"]:hover:not(:disabled) {
+  border-color: var(--steel-deep);
+}
+
 .bar {
   width: 100%;
   height: 4px;
