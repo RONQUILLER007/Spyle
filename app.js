@@ -35,36 +35,68 @@ function normalizarTexto(palabra) {
 /** Retira artículos/determinantes iniciales (ES/EN) seguidos de una palabra de >= 2 caracteres. */
 function quitarArticulosIniciales(textoNorm) {
   if (!textoNorm) return '';
-  const sinArticulo = textoNorm.replace(
-    /^(?:el|la|los|las|un|una|unos|unas|al|del|the|a|an)\s+(?=\S{2,})/i,
-    ''
-  ).trim();
-  return sinArticulo || textoNorm;
+  let actual = textoNorm.trim();
+  const reArt = /^(?:el|la|los|las|lo|un|una|unos|unas|al|del|the|a|an)\s+(?=\S{2,})/i;
+  while (reArt.test(actual)) {
+    const siguiente = actual.replace(reArt, '').trim();
+    if (!siguiente || siguiente === actual) break;
+    actual = siguiente;
+  }
+  return actual || textoNorm;
 }
 
-/** Genera equivalencias regulares de singular y plural (-s, -es, -z <-> -ces) para términos >= 4 chars. */
+/** Genera equivalencias regulares de singular y plural para una palabra individual (>= 4 chars). */
+function _variantesPalabraNumero(palabra) {
+  const vars = new Set([palabra]);
+  if (!palabra || palabra.length < 4) return vars;
+
+  // De plural a singular
+  if (palabra.endsWith('ces') && palabra.length > 4) {
+    vars.add(palabra.slice(0, -3) + 'z');
+  }
+  if (palabra.endsWith('es') && palabra.length > 4) {
+    vars.add(palabra.slice(0, -2));
+  }
+  if (palabra.endsWith('s') && !palabra.endsWith('ss') && palabra.length > 3) {
+    vars.add(palabra.slice(0, -1));
+  }
+
+  // De singular a plural
+  if (palabra.endsWith('z')) {
+    vars.add(palabra.slice(0, -1) + 'ces');
+  } else if (/[aeiou]$/.test(palabra)) {
+    vars.add(palabra + 's');
+  } else if (/[dlnrj]$/.test(palabra)) {
+    vars.add(palabra + 'es');
+  }
+  return vars;
+}
+
+/** Genera equivalencias regulares de singular y plural (-s, -es, -z <-> -ces) para términos y sintagmas cortos. */
 function generarVariantesNumero(textoNorm) {
   const variantes = new Set([textoNorm]);
   if (!textoNorm || textoNorm.length < 4) return variantes;
 
-  // De plural a singular
-  if (textoNorm.endsWith('ces') && textoNorm.length > 4) {
-    variantes.add(textoNorm.slice(0, -3) + 'z');
-  }
-  if (textoNorm.endsWith('es') && textoNorm.length > 4) {
-    variantes.add(textoNorm.slice(0, -2));
-  }
-  if (textoNorm.endsWith('s') && !textoNorm.endsWith('ss') && textoNorm.length > 3) {
-    variantes.add(textoNorm.slice(0, -1));
+  for (const v of _variantesPalabraNumero(textoNorm)) {
+    variantes.add(v);
   }
 
-  // De singular a plural
-  if (textoNorm.endsWith('z')) {
-    variantes.add(textoNorm.slice(0, -1) + 'ces');
-  } else if (/[aeiou]$/.test(textoNorm)) {
-    variantes.add(textoNorm + 's');
-  } else if (/[dlnrj]$/.test(textoNorm)) {
-    variantes.add(textoNorm + 'es');
+  const tokens = textoNorm.split(/\s+/).filter(Boolean);
+  if (tokens.length === 2) {
+    const v1 = _variantesPalabraNumero(tokens[0]);
+    const v2 = _variantesPalabraNumero(tokens[1]);
+    for (const a of v1) {
+      for (const b of v2) {
+        variantes.add(`${a} ${b}`);
+      }
+    }
+  } else if (tokens.length >= 3) {
+    for (const a of _variantesPalabraNumero(tokens[0])) {
+      variantes.add([a, ...tokens.slice(1)].join(' '));
+    }
+    for (const b of _variantesPalabraNumero(tokens[tokens.length - 1])) {
+      variantes.add([...tokens.slice(0, -1), b].join(' '));
+    }
   }
 
   return variantes;
@@ -930,7 +962,7 @@ const sound = {
    - Estrategia de Búsqueda Dual: con espacios y colapsado sin espacios
    - Fuzzy Matching (Levenshtein === 1) para entradas de 5 o más letras
    ========================================================================== */
-const ARTICLES = ["el", "la", "los", "las", "un", "una", "unos", "unas", "al", "del", "the", "a", "an"];
+const ARTICLES = ["el", "la", "los", "las", "lo", "un", "una", "unos", "unas", "al", "del", "the", "a", "an"];
 
 function normalizeInput(str) {
   return normalizarTexto(str);
