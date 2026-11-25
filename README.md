@@ -39,15 +39,15 @@ El sistema utiliza una función canónica compartida de iconos tanto en las tarj
    - `DAILY_MISSIONS` conserva blindadas e inmutables todas las jornadas históricas (`dia1` a `dia31`) y las jornadas ya materializadas (`dia32` a `dia60`), ofreciendo **7 retos temáticos cada 24 horas idénticos para todos los jugadores**.
    - Para cualquier jornada nueva (y en la consolidación con `python -B spyle_tool.py consolidar-dias --hasta dia60`), un **generador determinista compartido entre `app.js` y `spyle_tool.py` (`mulberry32` con semilla fija del día `seed = (d * 2654435761) >>> 0`)** selecciona **1 categoría activa ($\ge 400$ palabras) de cada uno de los 7 dossiers activos** (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`, `vid-` = **7 categorías exactas**), excluyendo las categorías aparecidas en los **últimos 14 días (`N-1` a `N-14`)** (con ventana adaptativa en dossiers de menor tamaño) y sin clonar ningún día previo ni depender de `Math.random()` o `localStorage`.
    - Tanto los días guardados en `DAILY_MISSIONS` como los generados determinísticamente en vivo guardan progreso, puntuación y estado de reclamaciones en `localStorage`.
-2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **210 categorías activas** ($\ge 400$ palabras únicas), con comodín deshabilitado para entrenamiento puro.
-3. **Dossieres de Campo Temáticos (210 categorías · 88.466 palabras calibradas):** Expedientes clasificados agrupados en **7 áreas** del conocimiento (100 % activas con **mínimo 405**, **media 421,27** y **máximo 587** palabras por categoría):
+2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **220 categorías activas** ($\ge 400$ palabras únicas), con comodín deshabilitado para entrenamiento puro.
+3. **Dossieres de Campo Temáticos (220 categorías · 93.816 palabras calibradas):** Expedientes clasificados agrupados en **7 áreas** del conocimiento (100 % activas con **mínimo 405**, **media 426,44** y **máximo 810** palabras por categoría):
    - *General y Miscelánea* (`gen-`): 40 categorías (`gen-001` a `gen-040`)
    - *Palabras y Lenguaje* (`pal-`): 32 categorías (`pal-001` a `pal-032`)
    - *Películas y Cine* (`pel-`): 32 categorías (`pel-001` a `pel-032`)
    - *Deportes y Competición* (`dep-`): 32 categorías (`dep-001` a `dep-032`)
    - *Geografía y Territorio* (`geo-`): 32 categorías (`geo-001` a `geo-032`)
    - *Música y Acústica* (`mus-`): 32 categorías (`mus-001` a `mus-032`)
-   - *Videojuegos* (`vid-`): 10 categorías (`vid-01` a `vid-10`)
+   - *Videojuegos* (`vid-`): 20 categorías (`vid-01` a `vid-20`)
 4. **Archivo Histórico de Misiones:** Registro cronológico desbloqueable mediante Easter Egg diario. Permite inspeccionar expedientes completados (`[ VER EXPEDIENTE ]`) o infiltrarse en misiones anteriores no jugadas (`[ INFILTRARSE ]`).
 5. **Protocolo de Despliegue Operativo:** Ventana de confirmación táctica previa a cualquier partida con el resumen de reglas y advertencias antes de iniciar el cronómetro.
 6. **Briefing Inicial:** Al acceder por primera vez a la terminal, se despliega automáticamente la *Directiva de Operaciones // Briefing*. Puede reabrirse en cualquier momento mediante el botón `[ ? ]` de la cabecera.
@@ -87,11 +87,11 @@ Sistema integrado de condecoraciones persistentes en `localStorage` con notifica
 
 El umbral mínimo oficial para habilitar una categoría en juego es **`MIN_PALABRAS_CATEGORIA = 400`** (`MIN_ACTIVE_WORDS = 400` en `spyle_tool.py`), evaluado en el panel de desarrollador (`Alt + D` o `?dev=1`) según la escala de 4 niveles:
 
-- **Estado actual verificado del banco (`210/210` categorías activas):**
+- **Estado actual verificado del banco (`220/220` categorías activas):**
   - **Mínimo por categoría:** `405` palabras únicas (`0` categorías por debajo de `400`)
-  - **Media global:** `421,27` palabras por categoría
-  - **Máximo por categoría:** `587` palabras únicas
-  - **Total acumulado en `PROMPTS`:** `88.466` respuestas calibradas en español/inglés
+  - **Media global:** `426,44` palabras por categoría
+  - **Máximo por categoría:** `810` palabras únicas
+  - **Total acumulado en `PROMPTS`:** `93.816` respuestas calibradas en español/inglés
   - **Integridad estructural y DOM:** `0` IDs duplicados, `0` referencias huérfanas en `60/60` días guardados (`dia1`–`dia60`), `0` días consecutivos repetidos o clonados, reparto `1×7` dossiers verificado y **`115/115` IDs DOM** verificados entre `app.js` e `index.html`.
 
 - 🟢 **Completo / Activo ($\ge 400$ palabras):** Habilitada en Modo Ilimitado, Dossieres, Expediente Diario y Archivo Histórico.
@@ -118,7 +118,7 @@ Para garantizar una evaluación justa, rápida y tolerante al español e inglés
 
 Utilidad única y reutilizable para gestionar `prompts.js` con respaldo automático previo en `.backups/`, normalización estricta (`ñ` intacta, sin tildes vocálicas), validación de puntuaciones `{10, 25, 45, 65, 85, 100}`, regla anti-duplicados y rollback automático si falla la verificación sintáctica o estructural:
 
-- `python -B spyle_tool.py auditar` *(y `auditar --incompletas --dias`)*: audita las 210 categorías, estadísticas `min / media / max / total`, las 15 categorías de menor densidad, integridad de las jornadas en `DAILY_MISSIONS`, reparto equilibrado `1×7` dossiers, sintaxis de `prompts.js` y `app.js` y coincidencia de los `115/115` IDs DOM con `index.html`.
+- `python -B spyle_tool.py auditar` *(y `auditar --incompletas --dias`)*: audita las 220 categorías, estadísticas `min / media / max / total`, las 15 categorías de menor densidad, integridad de las jornadas en `DAILY_MISSIONS`, reparto equilibrado `1×7` dossiers, sintaxis de `prompts.js` y `app.js` y coincidencia de los `115/115` IDs DOM con `index.html`.
 - `python -B spyle_tool.py consolidar-dias --hasta dia60` *(o `generar-dias --hasta dia60`)*: materializa y guarda permanentemente en `DAILY_MISSIONS` dentro de `prompts.js` los días nuevos hasta el horizonte indicado con reparto determinista `1×7` dossiers y ventana de 14 días, sin modificar jamás ningún día ya existente.
 - `python -B spyle_tool.py normalizar`: normaliza claves, corrige puntuaciones heredadas fuera de escala y fusiona duplicados preservando la `ñ`.
 - `python -B spyle_tool.py bulk lote.json --cleanup`: importación masiva agrupada por puntuación (formato recomendado) con borrado automático del lote temporal al finalizar.
@@ -148,7 +148,7 @@ Cuando un jugador introduce un término no reconocido que considera válido:
 | `index.html` | Terminal táctica, cabecera, modales y recursos con cache-busting (`?v=1.2`) |
 | `style.css` | Estética Guerra Fría, animaciones de `#depth-gauge` (`tier-*`) y soporte `--keyboard-offset` |
 | `app.js` | Motor de juego, normalización morfológica, generador diario determinista (`1×7` dossiers, ventana 14 días), logros y UX |
-| `prompts.js` | Banco `PROMPTS` (210 categorías, 88.466 respuestas) y `DAILY_MISSIONS` (`dia1`–`dia60` consolidados) |
+| `prompts.js` | Banco `PROMPTS` (220 categorías, 93.816 respuestas) y `DAILY_MISSIONS` (`dia1`–`dia60` consolidados) |
 | `favicon.jpg` | Recurso gráfico e icono de la aplicación |
 | `spyle_tool.py` | CLI oficial de auditoría, consolidación de días (`consolidar-dias` / `generar-dias`), normalización, búsqueda e importación |
 | `AGENTS.md` | Reglas operativas permanentes para agentes y protocolo obligatorio de cierre Git |

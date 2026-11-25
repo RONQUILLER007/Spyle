@@ -23,14 +23,14 @@
 
 ## Inventario Actual del Banco y Escala Oficial de Densidad (4 Niveles)
 
-- **Banco completo de `PROMPTS`:** **210 categorías activas ($\ge 400$ palabras únicas; mínimo: `405`, media: `421,27`, máximo: `587`, total: `88.466` palabras)** distribuidas en los **7 dossieres temáticos**:
+- **Banco completo de `PROMPTS`:** **220 categorías activas ($\ge 400$ palabras únicas; mínimo: `405`, media: `426,44`, máximo: `810`, total: `93.816` palabras)** distribuidas en los **7 dossieres temáticos**:
   - `gen-`: **40** categorías (`gen-001` a `gen-040`)
   - `pel-`: **32** categorías (`pel-001` a `pel-032`)
   - `dep-`: **32** categorías (`dep-001` a `dep-032`)
   - `geo-`: **32** categorías (`geo-001` a `geo-032`)
   - `mus-`: **32** categorías (`mus-001` a `mus-032`)
   - `pal-`: **32** categorías (`pal-001` a `pal-032`)
-  - `vid-`: **10** categorías (`vid-01` a `vid-10` — Dossier Videojuegos)
+  - `vid-`: **20** categorías (`vid-01` a `vid-20` — Dossier Videojuegos)
 - **Calendario fijo y consolidado (`DAILY_MISSIONS`):** **60 jornadas completas guardadas (`dia1` a `dia60`)**, manteniendo inmutables los días históricos (`dia1`–`dia31`) y materializando de forma determinista sobre los 7 dossiers desde `dia32` en adelante (con relevo determinista infinito en tiempo real para cualquier día posterior).
 - **Escala oficial por densidad:**
   - **🟢 Completo / Activo ($\ge 400$ palabras):** Habilitada para Modo Ilimitado, Dossieres Temáticos, Expediente Diario y Archivo Histórico.
