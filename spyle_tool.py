@@ -28,11 +28,14 @@ Ejemplos de uso:
   python spyle_tool.py auditar --incompletas --dias
   python spyle_tool.py normalizar
   python spyle_tool.py buscar "fernando tejero"
+  python spyle_tool.py consolidar-dias --hasta dia60
+  python spyle_tool.py generar-dias --hasta dia60
 """
 
 import csv
 import datetime
 import json
+import math
 import os
 import re
 import shutil
@@ -50,6 +53,14 @@ if hasattr(sys.stdout, "reconfigure"):
 VALID_SCORES = {10, 25, 45, 65, 85, 100}
 MIN_ACTIVE_WORDS = 400
 MAX_BACKUPS = 10
+PREFIJOS_EXPEDIENTE_MIXTO = ["pel", "dep", "geo", "mus", "pal", "gen", "vid"]
+VENTANA_ANTIRREPETICION_DIAS = 14
+ROUNDS_PER_DAY = 7
+EPOCH_DATE = datetime.date(2026, 11, 7)
+MESES_ES_CORTOS = {
+    1: "ene", 2: "feb", 3: "mar", 4: "abr", 5: "may", 6: "jun",
+    7: "jul", 8: "ago", 9: "sep", 10: "oct", 11: "nov", 12: "dic",
+}
 
 
 def _locate_asset(filename, not_found_msg):
@@ -1746,6 +1757,22 @@ def cmd_auditar(args):
                 else:
                     print(f"  🔴 dia{dm['dia']:<2} ({dm['nombre']}) — Bloqueado ({len(slots)} incompletas: {detail})")
 
+        # Auditar reparto equilibrado sobre los 7 dossiers en dias nuevos (>= 32) y simulacion determinista
+        sim_horizon = max(max((dm["dia"] for dm in daily_missions), default=31), 60)
+        sim_days = generar_expedientes_deterministas(cats, daily_missions, sim_horizon)
+        unbalanced_new_days = []
+        expected_7 = set(PREFIJOS_EXPEDIENTE_MIXTO)
+        for d_num in range(32, sim_horizon + 1):
+            p_ids = sim_days.get(d_num, [])
+            prefs = {pid.split("-")[0] for pid in p_ids}
+            if len(p_ids) != ROUNDS_PER_DAY or prefs != expected_7:
+                unbalanced_new_days.append((f"dia{d_num}", p_ids))
+        print(
+            f"\nGenerador Determinista 7 Dossiers (dia32..dia{sim_horizon}, ventana {VENTANA_ANTIRREPETICION_DIAS} dias):\n"
+            f"  - Reparto 1x7 dossiers (pel, dep, geo, mus, pal, gen, vid): "
+            + ("OK (100% equilibrado)" if not unbalanced_new_days else f"ALERTA: {unbalanced_new_days[:5]}")
+        )
+
     if show_incompletas:
         incomp = [c for c in cats if len(c["pairs"]) < MIN_ACTIVE_WORDS]
         print(f"\nDetalle de Categorias Incompletas ({len(incomp)}):")
@@ -1863,6 +1890,305 @@ def cmd_buscar(args):
 
     if not exact_matches and not partial_matches:
         print("  (Sin resultados en prompts.js)")
+
+
+def _imul32(a, b):
+    """Emula Math.imul(a, b) de JavaScript en aritmetica entera de 32 bits."""
+    return ((a & 0xFFFFFFFF) * (b & 0xFFFFFFFF)) & 0xFFFFFFFF
+
+
+def _mulberry32(seed):
+    """Replica bit a bit el PRNG mulberry32(seed) de app.js."""
+    state = [seed & 0xFFFFFFFF]
+
+    def rnd():
+        state[0] = (state[0] + 0x6D2B79F5) & 0xFFFFFFFF
+        s = state[0]
+        t = _imul32(s ^ (s >> 15), 1 | s)
+        t = ((t + _imul32(t ^ (t >> 7), 61 | t)) ^ t) & 0xFFFFFFFF
+        return ((t ^ (t >> 14)) & 0xFFFFFFFF) / 4294967296.0
+
+    return rnd
+
+
+def _shuffle_determinista(items, rnd):
+    """Replica bit a bit shuffle(arr, rnd) de app.js."""
+    a = list(items)
+    for i in range(len(a) - 1, 0, -1):
+        j = int(math.floor(rnd() * (i + 1)))
+        a[i], a[j] = a[j], a[i]
+    return a
+
+
+def formatear_fecha_dia(day_num):
+    """Formatea la fecha de un numero de dia respecto a EPOCH (7 nov 2026 = dia 1)."""
+    dt = EPOCH_DATE + datetime.timedelta(days=day_num - 1)
+    return f"{dt.day} {MESES_ES_CORTOS[dt.month]} {dt.year}"
+
+
+def generar_expedientes_deterministas(cats, daily_missions, max_day):
+    """
+    Calcula de forma 100% determinista las 7 categorias de cada jornada desde dia 1 hasta max_day,
+    respetando de forma inmutable todas las jornadas ya guardadas en DAILY_MISSIONS y aplicando
+    exactamente el mismo algoritmo de app.js (_construirExpedienteMixtoUnico) para los dias nuevos:
+      - 1 categoria activa (>= MIN_ACTIVE_WORDS) por cada uno de los 7 dossiers:
+        pel, dep, geo, mus, pal, gen, vid.
+      - Ventana anti-repeticion de 14 dias (adaptativa si un dossier tiene <= 14 categorias).
+      - Proteccion anti-clonado frente a todas las jornadas previas.
+    """
+    completas = [c for c in cats if len(c["pairs"]) >= MIN_ACTIVE_WORDS]
+    saved_by_day = {
+        dm["dia"]: list(dm["prompts"][:ROUNDS_PER_DAY])
+        for dm in daily_missions
+        if len(dm.get("prompts", [])) >= ROUNDS_PER_DAY
+    }
+    resolved_by_day = {}
+
+    for d in range(1, max_day + 1):
+        if d in saved_by_day:
+            resolved_by_day[d] = list(saved_by_day[d])
+            continue
+
+        seed = (d * 2654435761) & 0xFFFFFFFF
+        rnd = _mulberry32(seed)
+
+        excluidas_por_prefijo = {}
+        for pref in PREFIJOS_EXPEDIENTE_MIXTO:
+            total_pref = sum(1 for p in completas if p["id"].startswith(pref + "-"))
+            ventana_pref = (
+                VENTANA_ANTIRREPETICION_DIAS
+                if total_pref > VENTANA_ANTIRREPETICION_DIAS
+                else max(1, total_pref - 3)
+            )
+            set_excl = set()
+            min_prev_pref = max(1, d - ventana_pref)
+            for prev in range(min_prev_pref, d):
+                for pid in resolved_by_day.get(prev, []):
+                    if pid.startswith(pref + "-"):
+                        set_excl.add(pid)
+            excluidas_por_prefijo[pref] = set_excl
+
+        excluidas_recientes = set()
+        min_prev = max(1, d - VENTANA_ANTIRREPETICION_DIAS)
+        for prev in range(min_prev, d):
+            for pid in resolved_by_day.get(prev, []):
+                excluidas_recientes.add(pid)
+
+        firmas_dias_pasados = set()
+        for prev in range(1, d):
+            prev_ids = resolved_by_day.get(prev, [])
+            if len(prev_ids) >= ROUNDS_PER_DAY:
+                firmas_dias_pasados.add(",".join(sorted(prev_ids[:ROUNDS_PER_DAY])))
+
+        seleccionadas = []
+        usados_hoy = set()
+
+        for idx_pref, pref in enumerate(PREFIJOS_EXPEDIENTE_MIXTO):
+            del_prefijo = [p for p in completas if p["id"].startswith(pref + "-") and p["id"] not in usados_hoy]
+            excl_pref = excluidas_por_prefijo.get(pref, excluidas_recientes)
+            pool = [p for p in del_prefijo if p["id"] not in excl_pref]
+            if not pool:
+                pool = del_prefijo
+            if not pool:
+                restantes = [p for p in completas if p["id"] not in usados_hoy]
+                restantes_no_rec = [p for p in restantes if p["id"] not in excluidas_recientes]
+                pool = restantes_no_rec if restantes_no_rec else restantes
+            if idx_pref == len(PREFIJOS_EXPEDIENTE_MIXTO) - 1 and len(seleccionadas) == ROUNDS_PER_DAY - 1 and len(pool) > 1:
+                base_ids = [p["id"] for p in seleccionadas]
+                sin_clonar = [
+                    cand for cand in pool
+                    if ",".join(sorted(base_ids + [cand["id"]])) not in firmas_dias_pasados
+                ]
+                if sin_clonar:
+                    pool = sin_clonar
+            if pool:
+                elegido = pool[int(math.floor(rnd() * len(pool)))]
+                seleccionadas.append(elegido)
+                usados_hoy.add(elegido["id"])
+
+        while len(seleccionadas) < ROUNDS_PER_DAY:
+            disponibles = [p for p in completas if p["id"] not in usados_hoy]
+            if not disponibles:
+                break
+            pool_comodin = [p for p in disponibles if p["id"] not in excluidas_recientes]
+            if not pool_comodin:
+                pool_comodin = disponibles
+            base_ids = [p["id"] for p in seleccionadas]
+            sin_clonar = [
+                cand for cand in pool_comodin
+                if ",".join(sorted(base_ids + [cand["id"]])) not in firmas_dias_pasados
+            ]
+            if sin_clonar:
+                pool_comodin = sin_clonar
+            elegido = pool_comodin[int(math.floor(rnd() * len(pool_comodin)))]
+            seleccionadas.append(elegido)
+            usados_hoy.add(elegido["id"])
+
+        prompts_finales = _shuffle_determinista(seleccionadas, rnd)
+        resolved_by_day[d] = [p["id"] for p in prompts_finales]
+
+    return resolved_by_day
+
+
+NOMBRES_OPERACIONES_DETERMINISTAS = [
+    "Operación Bastión", "Operación Centinela", "Operación Égida", "Operación Quimera",
+    "Operación Esfinge", "Operación Obelisco", "Operación Péndulo", "Operación Vértigo",
+    "Operación Cobalto", "Operación Meridiano II", "Operación Relámpago", "Operación Astrolabio",
+    "Operación Bóveda", "Operación Criptograma", "Operación Dédalo", "Operación Escorpión",
+    "Operación Fénix", "Operación Góndola", "Operación Hélice", "Operación Ícaro",
+    "Operación Jano", "Operación Kriptón", "Operación Leviatán", "Operación Monolito",
+    "Operación Nébula", "Operación Ónice", "Operación Pegaso", "Operación Quásar",
+    "Operación Rubicón", "Operación Sílex", "Operación Tridente", "Operación Umbral",
+    "Operación Valquiria", "Operación Zafiro", "Operación Acrópolis", "Operación Brújula",
+]
+
+
+def _nombre_operacion_dia(day_num):
+    """Asigna un nombre tactico determinista a una nueva jornada materializada."""
+    idx = (day_num - 32) % len(NOMBRES_OPERACIONES_DETERMINISTAS)
+    ciclo = (day_num - 32) // len(NOMBRES_OPERACIONES_DETERMINISTAS)
+    base = NOMBRES_OPERACIONES_DETERMINISTAS[idx]
+    return base if ciclo == 0 else f"{base} {ciclo + 1}"
+
+
+def cmd_consolidar_dias(args):
+    """
+    python -B spyle_tool.py consolidar-dias [--hasta dia60|60] [--dry-run]
+    (alias: generar-dias)
+    Materializa y guarda permanentemente en DAILY_MISSIONS (dentro de prompts.js) los dias nuevos
+    hasta el limite indicado usando la funcion determinista sobre los 7 dossiers activos,
+    manteniendo 100% intactos e inmutables todos los dias ya existentes en DAILY_MISSIONS.
+    """
+    dry_run = "--dry-run" in args
+    target_max_day = 60
+
+    i = 0
+    while i < len(args):
+        a = args[i]
+        if a == "--hasta" and i + 1 < len(args):
+            raw_val = re.sub(r"^dia_?", "", args[i + 1].strip(), flags=re.IGNORECASE)
+            try:
+                target_max_day = int(raw_val)
+            except ValueError:
+                print(f"[ERROR] Valor invalido para --hasta: '{args[i + 1]}'", file=sys.stderr)
+                sys.exit(1)
+            i += 2
+            continue
+        elif a.startswith("--hasta="):
+            raw_val = re.sub(r"^dia_?", "", a.split("=", 1)[1].strip(), flags=re.IGNORECASE)
+            try:
+                target_max_day = int(raw_val)
+            except ValueError:
+                print(f"[ERROR] Valor invalido para --hasta: '{a}'", file=sys.stderr)
+                sys.exit(1)
+        elif not a.startswith("--"):
+            raw_val = re.sub(r"^dia_?", "", a.strip(), flags=re.IGNORECASE)
+            if raw_val.isdigit():
+                target_max_day = int(raw_val)
+        i += 1
+
+    prompts_path = locate_prompts_js()
+    with open(prompts_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    cats, daily_missions = parse_prompts_file(content)
+    existing_days = {dm["dia"] for dm in daily_missions}
+    max_existing = max(existing_days, default=0)
+
+    if target_max_day < max_existing:
+        target_max_day = max_existing
+
+    resolved_map = generar_expedientes_deterministas(cats, daily_missions, target_max_day)
+    missing_days = [d for d in range(1, target_max_day + 1) if d not in existing_days]
+
+    print("\n" + "=" * 72)
+    print(f"CONSOLIDACION DETERMINISTA DE JORNADAS (7 DOSSIERS · VENTANA {VENTANA_ANTIRREPETICION_DIAS} DIAS)")
+    print("=" * 72)
+    print(f"  - Jornadas fijas/existentes blindadas : {len(existing_days)} (dia1..dia{max_existing})")
+    print(f"  - Horizonte solicitado (--hasta)      : dia{target_max_day}")
+    print(f"  - Jornadas nuevas a materializar      : {len(missing_days)}")
+
+    if not missing_days:
+        print(f"\n[INFO] Todas las jornadas hasta dia{target_max_day} ya estan guardadas en DAILY_MISSIONS.")
+        sample_days = sorted(existing_days)[-10:]
+        print("\nMuestra de las ultimas jornadas consolidadas:")
+        for d in sample_days:
+            pids = resolved_map[d]
+            prefs = [pid.split("-")[0] for pid in pids]
+            print(f"  * dia{d:<3} ({formatear_fecha_dia(d):<11}): [{', '.join(pids)}] -> dossiers: {prefs}")
+        return
+
+    dm_match = re.search(r"const\s+DAILY_MISSIONS\s*=\s*\{", content)
+    if not dm_match:
+        raise ValueError("No se encontro 'const DAILY_MISSIONS = {' en prompts.js")
+    dm_open = dm_match.end() - 1
+    dm_close = find_matching_brace(content, dm_open)
+    if dm_close == -1:
+        raise ValueError("Llave sin cerrar en DAILY_MISSIONS de prompts.js")
+
+    dm_block = content[dm_open:dm_close + 1]
+    new_entries = []
+    created_days = []
+
+    for d in missing_days:
+        if re.search(rf'\bid\s*:\s*"dia_{d}"', dm_block):
+            continue
+        pids = resolved_map[d]
+        nombre_op = _nombre_operacion_dia(d)
+        fecha_str = formatear_fecha_dia(d)
+        prompts_str = ", ".join(f'"{pid}"' for pid in pids)
+        new_entries.append(
+            f'  {d}: {{\n'
+            f'    id: "dia_{d}",\n'
+            f'    dia: {d},\n'
+            f'    nombre: "{nombre_op}",\n'
+            f'    fecha: "{fecha_str}",\n'
+            f'    prompts: [{prompts_str}]\n'
+            f'  }}'
+        )
+        created_days.append((d, nombre_op, fecha_str, pids))
+
+    for d, nombre_op, fecha_str, pids in created_days:
+        prefs = [pid.split("-")[0] for pid in pids]
+        print(f"  + dia{d:<3} | {fecha_str:<11} | {nombre_op:<22} | [{', '.join(pids)}] (7 dossiers: {len(set(prefs))}/7)")
+
+    if dry_run:
+        print("\n[DRY-RUN] Simulacion completada sin modificar prompts.js.")
+        return
+
+    updated = content
+    if new_entries:
+        inner = content[dm_open + 1:dm_close].rstrip()
+        sep = "\n" if inner.endswith(",") else ",\n"
+        replacement_block = "{" + inner + sep + ",\n".join(new_entries) + "\n}"
+        updated = content[:dm_open] + replacement_block + content[dm_close + 1:]
+
+    dm_match2 = re.search(r"const\s+DAILY_MISSIONS\s*=\s*\{", updated)
+    dm_open2 = dm_match2.end() - 1
+    dm_close2 = find_matching_brace(updated, dm_open2)
+    after_start = dm_close2 + 1
+    tail_search = re.search(
+        r'if\s*\(\s*typeof\s+window\s*!==\s*"undefined"\s*\)\s*window\.DAILY_MISSIONS\s*=\s*DAILY_MISSIONS;',
+        updated[after_start:],
+    )
+    insert_pos = (after_start + tail_search.start()) if tail_search else (after_start + 1)
+    alias_region = updated[after_start:insert_pos]
+
+    missing_aliases = []
+    for d in missing_days:
+        a1 = f"DAILY_MISSIONS.dia_{d} = DAILY_MISSIONS[{d}];"
+        a2 = f"DAILY_MISSIONS.dia{d} = DAILY_MISSIONS[{d}];"
+        if a1 not in alias_region:
+            missing_aliases.append(a1)
+        if a2 not in alias_region:
+            missing_aliases.append(a2)
+
+    if missing_aliases:
+        prefix = "" if alias_region.endswith("\n") or not alias_region else "\n"
+        updated = updated[:insert_pos] + prefix + "\n".join(missing_aliases) + "\n" + updated[insert_pos:]
+
+    guardar_prompts_seguro(prompts_path, updated)
+    print(f"\n[OK] Se materializaron y guardaron {len(created_days)} jornadas nuevas en DAILY_MISSIONS (hasta dia{target_max_day}).")
 
 
 DENSITY_BATCH_1_DATA = {
@@ -14225,6 +14551,8 @@ def main():
         "normalizar": cmd_normalizar,
         "buscar": cmd_buscar,
         "generar-lote": cmd_generar_lote,
+        "consolidar-dias": cmd_consolidar_dias,
+        "generar-dias": cmd_consolidar_dias,
     }
 
     if cmd not in commands:

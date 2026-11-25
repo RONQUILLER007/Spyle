@@ -1979,7 +1979,7 @@ function renderArchives() {
 
 /* ===================== ESTRUCTURA DE RETOS DIARIOS, GENERADOR INFINITO Y CALENDARIO ===================== */
 const PREFIJOS_EXPEDIENTE_MIXTO = ["pel", "dep", "geo", "mus", "pal", "gen", "vid"];
-const VENTANA_ANTIRREPETICION_DIAS = 7;
+const VENTANA_ANTIRREPETICION_DIAS = 14;
 const cacheExpedientesMixtos = new Map();
 
 function normalizarNumeroDia(day = dayNumber()) {
@@ -2034,7 +2034,28 @@ function _construirExpedienteMixtoUnico(d) {
   const seed = (d * 2654435761) >>> 0;
   const rnd = mulberry32(seed);
 
-  // Recopilar categorías aparecidas en los últimos 7 días (N-1 hasta N-7)
+  // Recopilar categorías aparecidas en los últimos 14 días (N-1 hasta N-14)
+  // Para dossiers cuyo tamaño total sea <= VENTANA_ANTIRREPETICION_DIAS (ej. vid con 10 categorías),
+  // aplica ventana adaptativa max(1, min(VENTANA_ANTIRREPETICION_DIAS, totalDossier - 3)) para no agotar el pool
+  const excluidasPorPrefijo = {};
+  for (const pref of PREFIJOS_EXPEDIENTE_MIXTO) {
+    const totalPref = completas.filter((p) => String(p.id).startsWith(pref + "-")).length;
+    const ventanaPref = totalPref > VENTANA_ANTIRREPETICION_DIAS
+      ? VENTANA_ANTIRREPETICION_DIAS
+      : Math.max(1, totalPref - 3);
+    const setExcl = new Set();
+    const minPrevPref = Math.max(1, d - ventanaPref);
+    for (let prev = minPrevPref; prev < d; prev++) {
+      const manualPrev = obtenerMisionManual(prev);
+      const cachedPrev = !manualPrev ? cacheExpedientesMixtos.get(prev) : null;
+      const prevIds = manualPrev ? manualPrev.prompts : (cachedPrev ? cachedPrev.prompts : []);
+      prevIds.forEach((id) => {
+        if (String(id).startsWith(pref + "-")) setExcl.add(id);
+      });
+    }
+    excluidasPorPrefijo[pref] = setExcl;
+  }
+
   const excluidasRecientes = new Set();
   const minPrev = Math.max(1, d - VENTANA_ANTIRREPETICION_DIAS);
   for (let prev = minPrev; prev < d; prev++) {
@@ -2058,15 +2079,25 @@ function _construirExpedienteMixtoUnico(d) {
   const seleccionadas = [];
   const usadosHoy = new Set();
 
-  // Rondas 1-6: 1 categoría completa por cada prefijo principal (pel-, dep-, geo-, mus-, pal-, gen-)
-  for (const pref of PREFIJOS_EXPEDIENTE_MIXTO) {
+  // Rondas 1-7: 1 categoría completa por cada uno de los 7 dossiers activos (pel-, dep-, geo-, mus-, pal-, gen-, vid-)
+  for (let idxPref = 0; idxPref < PREFIJOS_EXPEDIENTE_MIXTO.length; idxPref++) {
+    const pref = PREFIJOS_EXPEDIENTE_MIXTO[idxPref];
     const delPrefijo = completas.filter((p) => String(p.id).startsWith(pref + "-") && !usadosHoy.has(p.id));
-    let pool = delPrefijo.filter((p) => !excluidasRecientes.has(p.id));
+    const exclPref = excluidasPorPrefijo[pref] || excluidasRecientes;
+    let pool = delPrefijo.filter((p) => !exclPref.has(p.id));
     if (pool.length === 0) pool = delPrefijo;
     if (pool.length === 0) {
       const restantes = completas.filter((p) => !usadosHoy.has(p.id));
       const restantesNoRecientes = restantes.filter((p) => !excluidasRecientes.has(p.id));
       pool = restantesNoRecientes.length > 0 ? restantesNoRecientes : restantes;
+    }
+    if (idxPref === PREFIJOS_EXPEDIENTE_MIXTO.length - 1 && seleccionadas.length === ROUNDS - 1 && pool.length > 1) {
+      const baseIds = seleccionadas.map((p) => p.id);
+      const sinClonarDia = pool.filter((cand) => {
+        const firma = baseIds.concat(cand.id).sort().join(",");
+        return !firmasDiasPasados.has(firma);
+      });
+      if (sinClonarDia.length > 0) pool = sinClonarDia;
     }
     if (pool.length > 0) {
       const elegido = pool[Math.floor(rnd() * pool.length)];
@@ -2075,7 +2106,7 @@ function _construirExpedienteMixtoUnico(d) {
     }
   }
 
-  // Ronda 7: 1 categoría comodín de cualquier temática (evitando últimos 7 días y combinaciones pasadas)
+  // Fallback de seguridad si algún dossier estuviera vacío
   while (seleccionadas.length < ROUNDS) {
     const disponibles = completas.filter((p) => !usadosHoy.has(p.id));
     if (disponibles.length === 0) break;
@@ -2111,10 +2142,10 @@ function _construirExpedienteMixtoUnico(d) {
   return expedienteMixto;
 }
 
-/** Genera de forma determinista con mulberry32 el Archivo Mixto de 7 rondas y ventana anti-repetición de 7 días. */
+/** Genera de forma determinista con mulberry32 el Archivo Mixto de 7 rondas (1 por dossier) y ventana anti-repetición de 14 días. */
 function generarExpedienteMixto(day = dayNumber()) {
   const d = normalizarNumeroDia(day);
-  // Precalcular en orden ascendente para respetar la ventana de anti-repetición de los últimos 7 días
+  // Precalcular en orden ascendente para respetar la ventana de anti-repetición de los últimos 14 días
   for (let k = 1; k <= d; k++) {
     if (obtenerMisionManual(k)) {
       cacheExpedientesMixtos.delete(k);
@@ -2166,32 +2197,21 @@ function diaEsCompleto(day) {
 }
 
 function dailyPrompts(day = dayNumber()) {
-  // Expedientes ya completados conservan exactamente las categorías jugadas
-  try {
-    const st = getDailyState(day);
-    if (st && st.completado && Array.isArray(st.rondas) && st.rondas.length >= ROUNDS) {
-      const saved = st.rondas.slice(0, ROUNDS).map((r) => r && PROMPTS.find((p) => p.id === r.promptId));
-      if (saved.every(Boolean)) return saved;
-    }
-  } catch (e) { /* sin estado guardado */ }
-
-  const raw = dailyPromptsRaw(day);
+  const d = normalizarNumeroDia(day);
+  const raw = dailyPromptsRaw(d);
   if (raw.every(esCategoriaCompleta)) return raw;
 
-  // Sustitución dinámica de huecos incompletos por categorías aleatorias activas (>= MIN_PALABRAS_CATEGORIA = 400)
-  // del mismo prefijo que no se hayan jugado en la sesión
+  // Sustitución determinista de huecos incompletos por categorías activas (>= MIN_PALABRAS_CATEGORIA = 400)
+  // del mismo prefijo usando semilla fija del día (sin depender de Math.random ni de localStorage)
+  const fallbackRnd = mulberry32(((d * 2654435761) ^ 0x9E3779B9) >>> 0);
   const usados = new Set(raw.filter(esCategoriaCompleta).map((p) => p.id));
   return raw.map((p) => {
     if (esCategoriaCompleta(p)) return p;
     const prefijo = String(p.id).split("-")[0];
-    const noJugadas = PROMPTS.filter((c) => String(c.id).startsWith(prefijo + "-") && esCategoriaCompleta(c) && !usados.has(c.id) && !sessionPlayed.has(c.id));
-    const candidatos = noJugadas.length > 0
-      ? noJugadas
-      : PROMPTS.filter((c) => String(c.id).startsWith(prefijo + "-") && esCategoriaCompleta(c) && !usados.has(c.id));
+    const candidatos = PROMPTS.filter((c) => String(c.id).startsWith(prefijo + "-") && esCategoriaCompleta(c) && !usados.has(c.id));
     if (candidatos.length === 0) return p;
-    const elegido = candidatos[Math.floor(Math.random() * candidatos.length)];
+    const elegido = candidatos[Math.floor(fallbackRnd() * candidatos.length)];
     usados.add(elegido.id);
-    sessionPlayed.add(elegido.id);
     return elegido;
   });
 }

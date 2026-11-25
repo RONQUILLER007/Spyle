@@ -238,6 +238,209 @@ const DAILY_MISSIONS = {
     nombre: "Operación Faro",
     fecha: "7 dic 2026",
     prompts: ["pel-024", "dep-022", "geo-022", "mus-022", "pal-022", "gen-029", "gen-031"]
+  },
+  32: {
+    id: "dia_32",
+    dia: 32,
+    nombre: "Operación Bastión",
+    fecha: "8 dic 2026",
+    prompts: ["vid-11", "dep-024", "geo-014", "pal-032", "gen-032", "mus-014", "pel-032"]
+  },
+  33: {
+    id: "dia_33",
+    dia: 33,
+    nombre: "Operación Centinela",
+    fecha: "9 dic 2026",
+    prompts: ["geo-017", "pal-019", "gen-022", "vid-02", "pel-017", "dep-019", "mus-027"]
+  },
+  34: {
+    id: "dia_34",
+    dia: 34,
+    nombre: "Operación Égida",
+    fecha: "10 dic 2026",
+    prompts: ["pel-021", "mus-032", "geo-015", "vid-01", "dep-027", "pal-024", "gen-018"]
+  },
+  35: {
+    id: "dia_35",
+    dia: 35,
+    nombre: "Operación Quimera",
+    fecha: "11 dic 2026",
+    prompts: ["geo-025", "gen-019", "mus-018", "dep-018", "pel-020", "pal-025", "vid-14"]
+  },
+  36: {
+    id: "dia_36",
+    dia: 36,
+    nombre: "Operación Esfinge",
+    fecha: "12 dic 2026",
+    prompts: ["pal-015", "vid-06", "geo-030", "pel-015", "mus-001", "dep-030", "gen-008"]
+  },
+  37: {
+    id: "dia_37",
+    dia: 37,
+    nombre: "Operación Obelisco",
+    fecha: "13 dic 2026",
+    prompts: ["pal-017", "gen-016", "pel-030", "dep-020", "vid-10", "mus-017", "geo-019"]
+  },
+  38: {
+    id: "dia_38",
+    dia: 38,
+    nombre: "Operación Péndulo",
+    fecha: "14 dic 2026",
+    prompts: ["vid-16", "pel-029", "gen-028", "pal-002", "mus-029", "dep-029", "geo-028"]
+  },
+  39: {
+    id: "dia_39",
+    dia: 39,
+    nombre: "Operación Vértigo",
+    fecha: "15 dic 2026",
+    prompts: ["pel-018", "vid-17", "geo-001", "gen-025", "pal-030", "dep-032", "mus-016"]
+  },
+  40: {
+    id: "dia_40",
+    dia: 40,
+    nombre: "Operación Cobalto",
+    fecha: "16 dic 2026",
+    prompts: ["vid-08", "geo-032", "dep-028", "gen-033", "mus-021", "pal-014", "pel-002"]
+  },
+  41: {
+    id: "dia_41",
+    dia: 41,
+    nombre: "Operación Meridiano II",
+    fecha: "17 dic 2026",
+    prompts: ["vid-04", "pel-031", "dep-001", "mus-015", "geo-005", "pal-027", "gen-007"]
+  },
+  42: {
+    id: "dia_42",
+    dia: 42,
+    nombre: "Operación Relámpago",
+    fecha: "18 dic 2026",
+    prompts: ["dep-009", "gen-035", "mus-023", "vid-07", "pal-021", "pel-008", "geo-031"]
+  },
+  43: {
+    id: "dia_43",
+    dia: 43,
+    nombre: "Operación Astrolabio",
+    fecha: "19 dic 2026",
+    prompts: ["gen-027", "vid-18", "dep-006", "geo-002", "pel-010", "pal-006", "mus-030"]
+  },
+  44: {
+    id: "dia_44",
+    dia: 44,
+    nombre: "Operación Bóveda",
+    fecha: "20 dic 2026",
+    prompts: ["geo-003", "mus-019", "pal-013", "gen-017", "vid-15", "pel-027", "dep-004"]
+  },
+  45: {
+    id: "dia_45",
+    dia: 45,
+    nombre: "Operación Criptograma",
+    fecha: "21 dic 2026",
+    prompts: ["geo-023", "mus-031", "dep-011", "pal-007", "pel-003", "gen-034", "vid-03"]
+  },
+  46: {
+    id: "dia_46",
+    dia: 46,
+    nombre: "Operación Dédalo",
+    fecha: "22 dic 2026",
+    prompts: ["gen-038", "pal-016", "mus-024", "vid-12", "geo-011", "dep-021", "pel-011"]
+  },
+  47: {
+    id: "dia_47",
+    dia: 47,
+    nombre: "Operación Escorpión",
+    fecha: "23 dic 2026",
+    prompts: ["gen-014", "pel-022", "vid-11", "geo-018", "pal-010", "dep-024", "mus-013"]
+  },
+  48: {
+    id: "dia_48",
+    dia: 48,
+    nombre: "Operación Fénix",
+    fecha: "24 dic 2026",
+    prompts: ["geo-027", "vid-20", "dep-016", "pal-001", "gen-015", "mus-008", "pel-013"]
+  },
+  49: {
+    id: "dia_49",
+    dia: 49,
+    nombre: "Operación Góndola",
+    fecha: "25 dic 2026",
+    prompts: ["geo-013", "pel-021", "vid-09", "dep-002", "pal-023", "gen-039", "mus-022"]
+  },
+  50: {
+    id: "dia_50",
+    dia: 50,
+    nombre: "Operación Hélice",
+    fecha: "26 dic 2026",
+    prompts: ["geo-006", "mus-009", "gen-018", "vid-19", "dep-012", "pel-019", "pal-024"]
+  },
+  51: {
+    id: "dia_51",
+    dia: 51,
+    nombre: "Operación Ícaro",
+    fecha: "27 dic 2026",
+    prompts: ["gen-008", "vid-14", "dep-008", "mus-020", "geo-015", "pal-019", "pel-024"]
+  },
+  52: {
+    id: "dia_52",
+    dia: 52,
+    nombre: "Operación Jano",
+    fecha: "28 dic 2026",
+    prompts: ["mus-025", "pel-009", "dep-003", "gen-013", "vid-02", "geo-021", "pal-020"]
+  },
+  53: {
+    id: "dia_53",
+    dia: 53,
+    nombre: "Operación Kriptón",
+    fecha: "29 dic 2026",
+    prompts: ["dep-017", "pal-032", "mus-028", "geo-004", "gen-004", "vid-05", "pel-032"]
+  },
+  54: {
+    id: "dia_54",
+    dia: 54,
+    nombre: "Operación Leviatán",
+    fecha: "30 dic 2026",
+    prompts: ["dep-019", "pal-022", "vid-17", "pel-014", "geo-009", "mus-027", "gen-005"]
+  },
+  55: {
+    id: "dia_55",
+    dia: 55,
+    nombre: "Operación Monolito",
+    fecha: "31 dic 2026",
+    prompts: ["pal-014", "mus-002", "geo-022", "dep-005", "gen-019", "vid-08", "pel-018"]
+  },
+  56: {
+    id: "dia_56",
+    dia: 56,
+    nombre: "Operación Nébula",
+    fecha: "1 ene 2027",
+    prompts: ["pal-027", "dep-010", "vid-16", "geo-007", "pel-020", "mus-011", "gen-006"]
+  },
+  57: {
+    id: "dia_57",
+    dia: 57,
+    nombre: "Operación Ónice",
+    fecha: "2 ene 2027",
+    prompts: ["dep-023", "pal-011", "vid-06", "geo-025", "gen-031", "pel-029", "mus-012"]
+  },
+  58: {
+    id: "dia_58",
+    dia: 58,
+    nombre: "Operación Pegaso",
+    fecha: "3 ene 2027",
+    prompts: ["geo-019", "gen-011", "dep-020", "vid-13", "mus-032", "pel-006", "pal-003"]
+  },
+  59: {
+    id: "dia_59",
+    dia: 59,
+    nombre: "Operación Quásar",
+    fecha: "4 ene 2027",
+    prompts: ["dep-001", "pel-010", "vid-07", "pal-005", "gen-035", "mus-005", "geo-024"]
+  },
+  60: {
+    id: "dia_60",
+    dia: 60,
+    nombre: "Operación Rubicón",
+    fecha: "5 ene 2027",
+    prompts: ["gen-003", "geo-012", "pel-030", "mus-019", "pal-026", "vid-15", "dep-009"]
   }
 };
 DAILY_MISSIONS.dia_1 = DAILY_MISSIONS[1];
@@ -283,6 +486,64 @@ DAILY_MISSIONS.dia_30 = DAILY_MISSIONS[30];
 DAILY_MISSIONS.dia30 = DAILY_MISSIONS[30];
 DAILY_MISSIONS.dia_31 = DAILY_MISSIONS[31];
 DAILY_MISSIONS.dia31 = DAILY_MISSIONS[31];
+DAILY_MISSIONS.dia_32 = DAILY_MISSIONS[32];
+DAILY_MISSIONS.dia32 = DAILY_MISSIONS[32];
+DAILY_MISSIONS.dia_33 = DAILY_MISSIONS[33];
+DAILY_MISSIONS.dia33 = DAILY_MISSIONS[33];
+DAILY_MISSIONS.dia_34 = DAILY_MISSIONS[34];
+DAILY_MISSIONS.dia34 = DAILY_MISSIONS[34];
+DAILY_MISSIONS.dia_35 = DAILY_MISSIONS[35];
+DAILY_MISSIONS.dia35 = DAILY_MISSIONS[35];
+DAILY_MISSIONS.dia_36 = DAILY_MISSIONS[36];
+DAILY_MISSIONS.dia36 = DAILY_MISSIONS[36];
+DAILY_MISSIONS.dia_37 = DAILY_MISSIONS[37];
+DAILY_MISSIONS.dia37 = DAILY_MISSIONS[37];
+DAILY_MISSIONS.dia_38 = DAILY_MISSIONS[38];
+DAILY_MISSIONS.dia38 = DAILY_MISSIONS[38];
+DAILY_MISSIONS.dia_39 = DAILY_MISSIONS[39];
+DAILY_MISSIONS.dia39 = DAILY_MISSIONS[39];
+DAILY_MISSIONS.dia_40 = DAILY_MISSIONS[40];
+DAILY_MISSIONS.dia40 = DAILY_MISSIONS[40];
+DAILY_MISSIONS.dia_41 = DAILY_MISSIONS[41];
+DAILY_MISSIONS.dia41 = DAILY_MISSIONS[41];
+DAILY_MISSIONS.dia_42 = DAILY_MISSIONS[42];
+DAILY_MISSIONS.dia42 = DAILY_MISSIONS[42];
+DAILY_MISSIONS.dia_43 = DAILY_MISSIONS[43];
+DAILY_MISSIONS.dia43 = DAILY_MISSIONS[43];
+DAILY_MISSIONS.dia_44 = DAILY_MISSIONS[44];
+DAILY_MISSIONS.dia44 = DAILY_MISSIONS[44];
+DAILY_MISSIONS.dia_45 = DAILY_MISSIONS[45];
+DAILY_MISSIONS.dia45 = DAILY_MISSIONS[45];
+DAILY_MISSIONS.dia_46 = DAILY_MISSIONS[46];
+DAILY_MISSIONS.dia46 = DAILY_MISSIONS[46];
+DAILY_MISSIONS.dia_47 = DAILY_MISSIONS[47];
+DAILY_MISSIONS.dia47 = DAILY_MISSIONS[47];
+DAILY_MISSIONS.dia_48 = DAILY_MISSIONS[48];
+DAILY_MISSIONS.dia48 = DAILY_MISSIONS[48];
+DAILY_MISSIONS.dia_49 = DAILY_MISSIONS[49];
+DAILY_MISSIONS.dia49 = DAILY_MISSIONS[49];
+DAILY_MISSIONS.dia_50 = DAILY_MISSIONS[50];
+DAILY_MISSIONS.dia50 = DAILY_MISSIONS[50];
+DAILY_MISSIONS.dia_51 = DAILY_MISSIONS[51];
+DAILY_MISSIONS.dia51 = DAILY_MISSIONS[51];
+DAILY_MISSIONS.dia_52 = DAILY_MISSIONS[52];
+DAILY_MISSIONS.dia52 = DAILY_MISSIONS[52];
+DAILY_MISSIONS.dia_53 = DAILY_MISSIONS[53];
+DAILY_MISSIONS.dia53 = DAILY_MISSIONS[53];
+DAILY_MISSIONS.dia_54 = DAILY_MISSIONS[54];
+DAILY_MISSIONS.dia54 = DAILY_MISSIONS[54];
+DAILY_MISSIONS.dia_55 = DAILY_MISSIONS[55];
+DAILY_MISSIONS.dia55 = DAILY_MISSIONS[55];
+DAILY_MISSIONS.dia_56 = DAILY_MISSIONS[56];
+DAILY_MISSIONS.dia56 = DAILY_MISSIONS[56];
+DAILY_MISSIONS.dia_57 = DAILY_MISSIONS[57];
+DAILY_MISSIONS.dia57 = DAILY_MISSIONS[57];
+DAILY_MISSIONS.dia_58 = DAILY_MISSIONS[58];
+DAILY_MISSIONS.dia58 = DAILY_MISSIONS[58];
+DAILY_MISSIONS.dia_59 = DAILY_MISSIONS[59];
+DAILY_MISSIONS.dia59 = DAILY_MISSIONS[59];
+DAILY_MISSIONS.dia_60 = DAILY_MISSIONS[60];
+DAILY_MISSIONS.dia60 = DAILY_MISSIONS[60];
 if (typeof window !== "undefined") window.DAILY_MISSIONS = DAILY_MISSIONS;
 
 

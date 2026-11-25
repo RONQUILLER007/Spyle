@@ -23,14 +23,15 @@
 
 ## Inventario Actual del Banco y Escala Oficial de Densidad (4 Niveles)
 
-- **Banco completo de `PROMPTS`:** **200 categorías activas ($\ge 400$ palabras únicas; mínimo: `405`, media: `419,90`, máximo: `587`, total: `83.981` palabras)** distribuidas en los **6 dossieres temáticos**:
+- **Banco completo de `PROMPTS`:** **210 categorías activas ($\ge 400$ palabras únicas; mínimo: `405`, media: `421,27`, máximo: `587`, total: `88.466` palabras)** distribuidas en los **7 dossieres temáticos**:
   - `gen-`: **40** categorías (`gen-001` a `gen-040`)
   - `pel-`: **32** categorías (`pel-001` a `pel-032`)
   - `dep-`: **32** categorías (`dep-001` a `dep-032`)
   - `geo-`: **32** categorías (`geo-001` a `geo-032`)
   - `mus-`: **32** categorías (`mus-001` a `mus-032`)
   - `pal-`: **32** categorías (`pal-001` a `pal-032`)
-- **Calendario fijo (`DAILY_MISSIONS`):** **31 jornadas manuales completas (`dia1` a `dia31`)**, con 7 categorías activas por día y relevo determinista infinito a partir del **`Día 32`**.
+  - `vid-`: **10** categorías (`vid-01` a `vid-10` — Dossier Videojuegos)
+- **Calendario fijo y consolidado (`DAILY_MISSIONS`):** **60 jornadas completas guardadas (`dia1` a `dia60`)**, manteniendo inmutables los días históricos (`dia1`–`dia31`) y materializando de forma determinista sobre los 7 dossiers desde `dia32` en adelante (con relevo determinista infinito en tiempo real para cualquier día posterior).
 - **Escala oficial por densidad:**
   - **🟢 Completo / Activo ($\ge 400$ palabras):** Habilitada para Modo Ilimitado, Dossieres Temáticos, Expediente Diario y Archivo Histórico.
   - **🟡 Intermedio ($130\text{--}399$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego hasta alcanzar 400).
@@ -45,8 +46,11 @@
   - `quitarArticulosIniciales(textoNorm)`: admite variantes con o sin artículo/determinante inicial en español e inglés (`el`, `la`, `los`, `las`, `un`, `una`, `unos`, `unas`, `al`, `del`, `the`, `a`, `an`) cuando queda una palabra de $\ge 2$ caracteres.
   - `generarVariantesNumero(textoNorm)`: acepta equivalencias regulares de singular y plural (`-s`, `-es`, `-z` ↔ `-ces`) en palabras de $\ge 4$ caracteres; se desactiva automáticamente en categorías que exigen explícitamente `"en singular"`, `"en plural"` o `"en infinitivo"`.
   - Control anti-doble puntuación por raíz canónica (`yaUsadaEnSesionActual`) dentro de la misma sesión, conservando el término original limpio al transmitir reclamaciones a Google Sheets.
-- **Generador Determinista de Expedientes Diarios Infinitos (`generarExpedienteMixto`):**
-  - Prioriza siempre las **31 entradas manuales** definidas en `DAILY_MISSIONS` (`dia1` a `dia31`); a partir del **`Día 32`** (o para cualquier día sin entrada manual), genera automáticamente `[ ARCHIVO MIXTO // DÍA X ]` usando `mulberry32` con semilla basada en el día (`seed = (d * 2654435761) >>> 0`), 1 categoría por cada uno de los 6 prefijos (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín y ventana anti-repetición de 7 días (`N-1` a `N-7`).
+- **Generador Determinista Global y Equilibrado sobre 7 Dossiers (`generarExpedienteMixto` / `generar_expedientes_deterministas`):**
+  - Mantiene intactas e inmutables todas las jornadas ya guardadas en `DAILY_MISSIONS` (`dia1`–`dia31` y cualquier día ya consolidado).
+  - Para cualquier día nuevo, tanto `app.js` como `spyle_tool.py` ejecutan la misma función determinista con semilla matemática fija basada en el número de día (`seed = (d * 2654435761) >>> 0` con `mulberry32`), garantizando que **todos los jugadores obtengan exactamente las mismas 7 categorías cada día** sin depender de `Math.random()` ni de `localStorage`.
+  - **Reparto estricto 1×7 dossiers:** selecciona **1 categoría activa ($\ge 400$ palabras) de cada uno de los 7 dossiers** (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`, `vid-` = 7 categorías exactas), evitando repetir categorías utilizadas en los **últimos 14 días (`N-1` a `N-14`)** (con ventana adaptativa para dossiers de menor tamaño) y sin clonar ninguna combinación previa.
+  - **Materialización permanente de días nuevos:** mediante `python -B spyle_tool.py consolidar-dias --hasta dia60` (o `generar-dias --hasta dia60`), los días nuevos generados se guardan permanentemente en `DAILY_MISSIONS` dentro de `prompts.js` sin alterar ningún día existente.
 - **Feedback Visual y Ergonomía Táctil:**
   - Animación progresiva de `#depth-gauge` según tramo de puntuación base (`tier-low`, `tier-mid`, `tier-high`, `tier-100`).
   - Encuadre automático ante teclado virtual (`ajustarEncuadreTeclado` con `visualViewport`).
@@ -105,6 +109,12 @@ Todos los comandos aplican respaldo automático previo en `.backups/`, normaliza
 - **Buscar un término en todo `prompts.js`:**
   ```bash
   python spyle_tool.py buscar "fernando tejero"
+  ```
+
+- **Consolidar / materializar permanentemente días nuevos en `DAILY_MISSIONS` (sin alterar días ya existentes):**
+  ```bash
+  python -B spyle_tool.py consolidar-dias --hasta dia60
+  python -B spyle_tool.py generar-dias --hasta dia60
   ```
 
 ---

@@ -35,18 +35,19 @@ El sistema utiliza una función canónica compartida de iconos tanto en las tarj
 
 ## 🛠️ Modos de Juego y Navegación
 
-1. **Expediente Diario (31 días fijos) e Infinito Determinista (`[ ARCHIVO MIXTO // DÍA X ]`):**
-   - `DAILY_MISSIONS` ofrece **31 jornadas fijas curadas (`dia1` a `dia31`)** con 7 retos temáticos cada 24 horas para toda la comunidad.
-   - A partir del **`Día 32`** (superados los 31 días manuales), un **generador determinista con semilla por día (`mulberry32`)** construye automáticamente jornadas infinitas (`Día 32`, `Día 33`, etc.) etiquetadas como `[ ARCHIVO MIXTO // DÍA X ]`, seleccionando 1 categoría activa ($\ge 400$ palabras) de cada prefijo (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín, excluyendo las usadas en los **últimos 7 días (`N-1` a `N-7`)** y sin clonar ningún día pasado. Si se añade una misión manual futura para ese día, tiene prioridad automática.
-   - Tanto los 31 días manuales como los autogenerados guardan progreso, puntuación y estado de reclamaciones en `localStorage`.
-2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **200 categorías activas** ($\ge 400$ palabras únicas), con comodín deshabilitado para entrenamiento puro.
-3. **Dossieres de Campo Temáticos (200 categorías · 83.981 palabras calibradas):** Expedientes clasificados agrupados en **6 áreas** del conocimiento (100 % activas con **mínimo 405**, **media 419,90** y **máximo 587** palabras por categoría):
+1. **Expediente Diario (días fijos blindados + consolidación y generador infinito determinista sobre 7 dossiers):**
+   - `DAILY_MISSIONS` conserva blindadas e inmutables todas las jornadas históricas (`dia1` a `dia31`) y las jornadas ya materializadas (`dia32` a `dia60`), ofreciendo **7 retos temáticos cada 24 horas idénticos para todos los jugadores**.
+   - Para cualquier jornada nueva (y en la consolidación con `python -B spyle_tool.py consolidar-dias --hasta dia60`), un **generador determinista compartido entre `app.js` y `spyle_tool.py` (`mulberry32` con semilla fija del día `seed = (d * 2654435761) >>> 0`)** selecciona **1 categoría activa ($\ge 400$ palabras) de cada uno de los 7 dossiers activos** (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`, `vid-` = **7 categorías exactas**), excluyendo las categorías aparecidas en los **últimos 14 días (`N-1` a `N-14`)** (con ventana adaptativa en dossiers de menor tamaño) y sin clonar ningún día previo ni depender de `Math.random()` o `localStorage`.
+   - Tanto los días guardados en `DAILY_MISSIONS` como los generados determinísticamente en vivo guardan progreso, puntuación y estado de reclamaciones en `localStorage`.
+2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **210 categorías activas** ($\ge 400$ palabras únicas), con comodín deshabilitado para entrenamiento puro.
+3. **Dossieres de Campo Temáticos (210 categorías · 88.466 palabras calibradas):** Expedientes clasificados agrupados en **7 áreas** del conocimiento (100 % activas con **mínimo 405**, **media 421,27** y **máximo 587** palabras por categoría):
    - *General y Miscelánea* (`gen-`): 40 categorías (`gen-001` a `gen-040`)
    - *Palabras y Lenguaje* (`pal-`): 32 categorías (`pal-001` a `pal-032`)
    - *Películas y Cine* (`pel-`): 32 categorías (`pel-001` a `pel-032`)
    - *Deportes y Competición* (`dep-`): 32 categorías (`dep-001` a `dep-032`)
    - *Geografía y Territorio* (`geo-`): 32 categorías (`geo-001` a `geo-032`)
    - *Música y Acústica* (`mus-`): 32 categorías (`mus-001` a `mus-032`)
+   - *Videojuegos* (`vid-`): 10 categorías (`vid-01` a `vid-10`)
 4. **Archivo Histórico de Misiones:** Registro cronológico desbloqueable mediante Easter Egg diario. Permite inspeccionar expedientes completados (`[ VER EXPEDIENTE ]`) o infiltrarse en misiones anteriores no jugadas (`[ INFILTRARSE ]`).
 5. **Protocolo de Despliegue Operativo:** Ventana de confirmación táctica previa a cualquier partida con el resumen de reglas y advertencias antes de iniciar el cronómetro.
 6. **Briefing Inicial:** Al acceder por primera vez a la terminal, se despliega automáticamente la *Directiva de Operaciones // Briefing*. Puede reabrirse en cualquier momento mediante el botón `[ ? ]` de la cabecera.
@@ -86,19 +87,19 @@ Sistema integrado de condecoraciones persistentes en `localStorage` con notifica
 
 El umbral mínimo oficial para habilitar una categoría en juego es **`MIN_PALABRAS_CATEGORIA = 400`** (`MIN_ACTIVE_WORDS = 400` en `spyle_tool.py`), evaluado en el panel de desarrollador (`Alt + D` o `?dev=1`) según la escala de 4 niveles:
 
-- **Estado actual verificado del banco (`200/200` categorías activas):**
+- **Estado actual verificado del banco (`210/210` categorías activas):**
   - **Mínimo por categoría:** `405` palabras únicas (`0` categorías por debajo de `400`)
-  - **Media global:** `419,90` palabras por categoría
+  - **Media global:** `421,27` palabras por categoría
   - **Máximo por categoría:** `587` palabras únicas
-  - **Total acumulado en `PROMPTS`:** `83.981` respuestas calibradas en español/inglés
-  - **Integridad estructural y DOM:** `0` IDs duplicados, `0` referencias huérfanas en `31/31` días fijos (`dia1`–`dia31`), `0` días consecutivos repetidos o clonados y **`115/115` IDs DOM** verificados entre `app.js` e `index.html`.
+  - **Total acumulado en `PROMPTS`:** `88.466` respuestas calibradas en español/inglés
+  - **Integridad estructural y DOM:** `0` IDs duplicados, `0` referencias huérfanas en `60/60` días guardados (`dia1`–`dia60`), `0` días consecutivos repetidos o clonados, reparto `1×7` dossiers verificado y **`115/115` IDs DOM** verificados entre `app.js` e `index.html`.
 
 - 🟢 **Completo / Activo ($\ge 400$ palabras):** Habilitada en Modo Ilimitado, Dossieres, Expediente Diario y Archivo Histórico.
 - 🟡 **Intermedio ($130\text{--}399$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego).
 - 🔴 **Baja ($50\text{--}129$ palabras):** Base inicial insuficiente (bloqueada en juego).
 - ⚪ **Crítica / Vacía ($0\text{--}49$ palabras):** Categoría sin poblar o en esqueleto (bloqueada en juego).
 
-Incluye filtrado por rango de densidad y dossier (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`), además de ordenación bidireccional por día, cantidad de palabras, título o temática.
+Incluye filtrado por rango de densidad y dossier (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`, `vid-`), además de ordenación bidireccional por día, cantidad de palabras, título o temática.
 
 ---
 
@@ -117,7 +118,8 @@ Para garantizar una evaluación justa, rápida y tolerante al español e inglés
 
 Utilidad única y reutilizable para gestionar `prompts.js` con respaldo automático previo en `.backups/`, normalización estricta (`ñ` intacta, sin tildes vocálicas), validación de puntuaciones `{10, 25, 45, 65, 85, 100}`, regla anti-duplicados y rollback automático si falla la verificación sintáctica o estructural:
 
-- `python -B spyle_tool.py auditar` *(y `auditar --incompletas --dias`)*: audita las 200 categorías, estadísticas `min / media / max / total`, las 15 categorías de menor densidad, integridad de los 31 días, sintaxis de `prompts.js` y `app.js` y coincidencia de los `115/115` IDs DOM con `index.html`.
+- `python -B spyle_tool.py auditar` *(y `auditar --incompletas --dias`)*: audita las 210 categorías, estadísticas `min / media / max / total`, las 15 categorías de menor densidad, integridad de las jornadas en `DAILY_MISSIONS`, reparto equilibrado `1×7` dossiers, sintaxis de `prompts.js` y `app.js` y coincidencia de los `115/115` IDs DOM con `index.html`.
+- `python -B spyle_tool.py consolidar-dias --hasta dia60` *(o `generar-dias --hasta dia60`)*: materializa y guarda permanentemente en `DAILY_MISSIONS` dentro de `prompts.js` los días nuevos hasta el horizonte indicado con reparto determinista `1×7` dossiers y ventana de 14 días, sin modificar jamás ningún día ya existente.
 - `python -B spyle_tool.py normalizar`: normaliza claves, corrige puntuaciones heredadas fuera de escala y fusiona duplicados preservando la `ñ`.
 - `python -B spyle_tool.py bulk lote.json --cleanup`: importación masiva agrupada por puntuación (formato recomendado) con borrado automático del lote temporal al finalizar.
 - `python -B spyle_tool.py importar lote.json --cleanup`: importación por mapa palabra→puntuación y limpieza automática del JSON.
@@ -145,19 +147,22 @@ Cuando un jugador introduce un término no reconocido que considera válido:
 | :--- | :--- |
 | `index.html` | Terminal táctica, cabecera, modales y recursos con cache-busting (`?v=1.2`) |
 | `style.css` | Estética Guerra Fría, animaciones de `#depth-gauge` (`tier-*`) y soporte `--keyboard-offset` |
-| `app.js` | Motor de juego, normalización morfológica, generador diario (`Día 31+`), logros y UX |
-| `prompts.js` | Banco `PROMPTS` (200 categorías, 83.981 respuestas) y `DAILY_MISSIONS` (`dia1`–`dia31`) |
+| `app.js` | Motor de juego, normalización morfológica, generador diario determinista (`1×7` dossiers, ventana 14 días), logros y UX |
+| `prompts.js` | Banco `PROMPTS` (210 categorías, 88.466 respuestas) y `DAILY_MISSIONS` (`dia1`–`dia60` consolidados) |
 | `favicon.jpg` | Recurso gráfico e icono de la aplicación |
-| `spyle_tool.py` | CLI oficial de auditoría, normalización, búsqueda e importación masiva |
+| `spyle_tool.py` | CLI oficial de auditoría, consolidación de días (`consolidar-dias` / `generar-dias`), normalización, búsqueda e importación |
 | `AGENTS.md` | Reglas operativas permanentes para agentes y protocolo obligatorio de cierre Git |
 | `README.md` | Documentación técnica y operativa del proyecto |
 | `.gitignore` | Excluye `.backups/`, `.archive/`, `__pycache__/`, `*.pyc`, `lote*.json`, `temp*.json`, `.DS_Store`, `Thumbs.db` |
 
-### Flujo automático en Git y publicación continua (GitHub Pages)
+### Ciclo automático de consolidación de días, Git y despliegue en GitHub Pages
 
 - **Repositorio remoto:** `https://github.com/RONQUILLER007/Spyle.git` (rama principal `main`).
-- **Automatización Git (`AGENTS.md`):** tras cualquier modificación, adición o eliminación dentro de `Spyle/` y una vez superada la auditoría (`python -B spyle_tool.py auditar` con `0` errores), se ejecuta automáticamente `git status`, `git add -A`, `git commit -m "<mensaje descriptivo>"` y `git push origin main` respetando `.gitignore`. Si un `push` fallara por red o credenciales, los cambios permanecen confirmados localmente sin archivos temporales y se notifica el fallo.
-- **GitHub Pages (sin workflow YAML):** al tratarse de una aplicación estática pura en la raíz del repositorio (sin carpeta `.github/workflows`), el despliegue continuo se habilita en GitHub desde **Settings → Pages → Build and deployment → Source: `Deploy from a branch` → Branch: `main` / `(root)`**; cada `git push origin main` actualiza el sitio automáticamente, manteniendo control de caché en `Spyle/index.html`:
+- **Doble garantía de disponibilidad diaria (Estática en `prompts.js` + Determinista en `app.js`):**
+  1. **En vivo en el cliente (`app.js`):** Si se supera el último día materializado en `DAILY_MISSIONS`, `generarExpedienteMixto(day)` calcula en tiempo real exactamente el mismo set de 7 categorías (1 por dossier, semilla `mulberry32((d * 2654435761) >>> 0)`, ventana 14 días) en todos los navegadores sin requerir servidor ni cron externo.
+  2. **Materialización permanente en `prompts.js` (`spyle_tool.py`):** Ejecutar `python -B spyle_tool.py consolidar-dias --hasta dia<N>` (o `generar-dias --hasta dia<N>`) congela y guarda en `DAILY_MISSIONS` dentro de `prompts.js` todas las jornadas nuevas hasta `dia<N>` usando exactamente el mismo algoritmo determinista, blindando para siempre las jornadas ya existentes.
+- **Automatización Git (`AGENTS.md`):** tras cualquier modificación, consolidación de días o ampliación del banco dentro de `Spyle/` y una vez superada la auditoría (`python -B spyle_tool.py auditar` con `0` errores), se ejecuta automáticamente `git status`, `git add -A`, `git commit -m "<mensaje descriptivo>"` y `git push origin main` respetando `.gitignore`.
+- **GitHub Pages (sin necesidad de `.github/workflows` YAML):** al tratarse de una aplicación estática pura en la raíz del repositorio, el despliegue continuo opera directamente desde **Settings → Pages → Build and deployment → Source: `Deploy from a branch` → Branch: `main` / `(root)`**; cada `git push origin main` publica al instante los nuevos días consolidados y el banco actualizado, manteniendo control de caché en `Spyle/index.html`:
 
 ```html
 <link rel="stylesheet" href="style.css?v=1.2">
