@@ -968,7 +968,15 @@ const PROMPTS = [
       "def jam fight for ny": 65, "dragon ball z budokai": 25, "dragon ball z budokai 3": 25, "budokai 3": 25, "budokai tenkaichi 2": 25, "guitar hero ii": 25,
       "guitar hero iii": 25, "rock band": 25, "ace combat 4": 65, "ace combat 5": 65, "socom": 65, "mirrors edge": 45,
       "dead space": 25, "assassins creed": 10, "assassins creed ii": 10, "assassins creed 2": 10, "batman arkham asylum": 25, "borderlands": 25,
-      "plants vs zombies": 25, "plantas contra zombies": 25
+      "plants vs zombies": 25, "plantas contra zombies": 25, "soul calibur ii": 25, "soul calibur iii": 25, "nba street": 25, "diablo 2": 25,
+      "sims 2": 25, "guitar hero 3": 25, "call of duty 4 modern warfare": 25, "burnout takedown": 45, "tony hawks pro skater 3": 45, "tony hawks pro skater 4": 45,
+      "fatal frame": 45, "eyetoy": 45, "budokai tenkaichi 3": 45, "naruto ultimate ninja": 45, "gun": 45, "jade empire": 45,
+      "scarface": 45, "midnight club 2": 45, "ssx 3": 65, "viewtiful joe": 65, "dark chronicle": 65, "suikoden v": 65,
+      "valkyrie profile 2": 65, "xenosaga": 65, "wild arms 3": 65, "disgaea": 65, "shin megami tensei nocturne": 65, "vampire the masquerade bloodlines": 65,
+      "hitman contracts": 65, "freedom fighters": 65, "driver 3": 65, "test drive unlimited": 65, "flatout": 65, "second life": 65,
+      "crysis warhead": 65, "indigo prophecy": 85, "maximo": 85, "syphon filter": 85, "mercenarios": 85, "el padrino ps2": 85,
+      "simpson hit and run": 85, "the simpsons hit and run": 85, "medal of honor frontline": 85, "brothers in arms": 85, "ghost recon": 85, "rainbow six 3": 85,
+      "thief ii": 85, "mafia the city of lost heaven": 85, "supreme commander": 85, "condemned": 85
     }
   },
   {
@@ -1111,7 +1119,18 @@ const PROMPTS = [
       "chinchines": 85, "sonajas": 45, "sonajero": 45, "campana": 25, "campanilla": 45, "esquila": 65,
       "cascabelera": 85, "latigo": 65, "bloque de madera": 65, "caja china": 45, "jam block": 65, "temple block": 85,
       "rototom": 85, "octoban": 100, "acordeon": 25, "concertina": 65, "bandoneon": 45, "armonio": 65,
-      "organo": 25, "organo de tubos": 45, "organillo": 45
+      "organo": 25, "organo de tubos": 45, "organillo": 45, "baterias": 10, "tumbadora": 25, "kazoos": 25,
+      "vuvuzelas": 25, "didgeridoos": 25, "didyeridus": 25, "palma": 25, "cajon flamencos": 25, "cajones flamenco": 25,
+      "cascabele": 25, "bocinas": 25, "almireces": 25, "botella de ani": 25, "botellas de anis": 25, "cuerno": 45,
+      "clave": 45, "lira": 45, "yembe": 45, "piccolos": 45, "chirimias": 45, "txistus": 45,
+      "tamboras": 45, "clav": 45, "trompa francesas": 45, "trompas francesa": 45, "trompas francesas": 45, "corno franc": 45,
+      "corno france": 45, "corno franz": 45, "cornos franc": 45, "cornos france": 45, "cornos frances": 45, "cornos franz": 45,
+      "bugles": 45, "tablas": 45, "shakeres": 45, "cabasas": 45, "cortina": 65, "bata": 65,
+      "tabla india": 65, "mirliton": 65, "flautas dulces": 65, "flautas traveseras": 65, "acordeones": 65, "cajones flamencos": 65,
+      "tumbadoras": 65, "grallas": 65, "corno ingl": 65, "corno ingle": 65, "cornos ingl": 65, "cornos ingle": 65,
+      "cornos ingles": 65, "clarinete bajos": 65, "clarinetes bajo": 65, "clarinetes bajos": 65, "fliscornos": 85, "bombardinos": 85,
+      "bandoneones": 85, "melodicas": 85, "carillones": 85, "metalofonos": 85, "kalimbas": 85, "handpans": 85,
+      "pifanos": 85, "tamboriles": 85, "redoblantes": 85
     }
   },
   {
@@ -1332,7 +1351,15 @@ const PROMPTS = [
       "coral cerebro": 65, "coral rojo": 45, "coral de fuego": 65, "abanico de mar": 65, "anemona de mar": 25, "ortiguilla": 45,
       "ortiguillas": 45, "ortiga de mar": 65, "aguamala": 45, "medusa luna": 65, "medusa aurelia": 85, "medusa inmortal": 45,
       "turritopsis": 100, "medusa luminiscente": 65, "medusa caja": 65, "hidrozoo": 85, "coral blando": 65, "gusano de fuego": 85,
-      "gusano arbol de navidad": 85, "gusano penacho": 100, "planaria marina": 100
+      "gusano arbol de navidad": 85, "gusano penacho": 100, "planaria marina": 100, "esponja de mar": 10, "tortuga marinas": 10, "tortugas marina": 10,
+      "tortugas": 10, "estrella de mares": 10, "erizo de mares": 10, "albatro": 25, "nutrias": 25, "nutria marinas": 25,
+      "nutrias marina": 25, "pato marinos": 25, "patos marino": 25, "patos marinos": 25, "alcas": 25, "pardelas": 25,
+      "petreles": 25, "piqueros": 25, "oso polares": 25, "rata de aguas": 25, "ratas de agua": 25, "castor marinos": 25,
+      "castores marino": 25, "castores marinos": 25, "limulo": 45, "ballenas azules": 45, "ballenas jorobadas": 45, "marsopas": 45,
+      "elefantes marinos": 45, "leon marinos": 45, "leones marino": 45, "lobo marinos": 45, "lobos marino": 45, "manatis": 45,
+      "rorcuales": 45, "ballena azules": 45, "ballenas azul": 45, "ballena jorobadas": 45, "ballenas jorobada": 45, "yubartas": 45,
+      "buey de mares": 45, "esponjas": 45, "esponja marinas": 45, "esponjas marina": 45, "caracolas": 65, "pepinos de mar": 65,
+      "osos polares": 85, "alcatraz": 85, "cañailla": 85
     }
   },
 
@@ -1552,7 +1579,14 @@ const PROMPTS = [
       "la fuga": 65, "rabia": 85, "vis a vis el oasis": 45, "historias para no dormir": 25, "el hombre y la tierra": 25, "cronicas de un pueblo": 65,
       "la cabina": 65, "estudio 1": 45, "la barraca": 65, "platos rotos": 85, "media naranja": 65, "las chicas de hoy en dia": 65,
       "carmen y familia": 85, "todos los hombres sois iguales": 45, "la vida en el aire": 85, "a las once en casa": 65, "el botones sacarino": 65, "policias": 45,
-      "lobos": 85, "un lugar en el mundo": 100
+      "lobos": 85, "un lugar en el mundo": 100, "ministerio del tiempo": 10, "que se avecina": 10, "serrano": 10, "internado": 10,
+      "casa de papel": 10, "hombres de paco": 10, "barco": 10, "30 monedas": 25, "chicas del cable": 25, "principe": 25,
+      "reina del sur": 25, "embarcadero": 25, "peste": 25, "unidad": 25, "misterios de laura": 25, "otra mirada": 45,
+      "cocinera de castamar": 45, "templanza": 45, "cid": 45, "salir de clase": 45, "pazos de ulloa": 45, "super": 45,
+      "pecera de eva": 45, "pantano": 45, "protegidos": 45, "riera": 45, "secreto de puente viejo": 45, "accidente": 45,
+      "tiempo entre costuras": 45, "catedral del mar": 45, "huella del crimen": 45, "mesias": 45, "nasdrovia": 65, "los favoritos de midas": 65,
+      "benito y manolo": 65, "esta noche cruzamos el mississippi": 65, "segunda enseñanza": 65, "el joven picasso": 85, "teresita": 85, "b b": 85,
+      "presunto culpable": 85, "malaka": 85, "valle salvaje": 85
     }
   },
   {
@@ -1697,7 +1731,16 @@ const PROMPTS = [
       "reloj de caramelo": 65, "collar de caramelo": 45, "pipas churruca": 45, "pipas grefusa": 25, "grefusa": 25, "gublins barbacoa": 45,
       "papa delta": 45, "papadelta": 45, "snatts": 65, "cheetos pelotazos": 25, "cheetos rizos": 45, "cheetos gustosines": 45,
       "gustosines": 45, "triskys": 45, "maiz gigante": 45, "quicos gigantes": 45, "ruffles onduladas": 25, "lays gourmet": 45,
-      "lays vinagreta": 25, "doritos tex mex": 25, "doritos chilli": 45, "pringles original": 25, "pringles sour cream": 25, "takis fuego": 25
+      "lays vinagreta": 25, "doritos tex mex": 25, "doritos chilli": 45, "pringles original": 25, "pringles sour cream": 25, "takis fuego": 25,
+      "bucanero": 10, "boni": 10, "magnum": 10, "cornetto": 10, "calippo": 10, "piruleta corazon": 25,
+      "maiz tostado": 25, "principe de beukelaer": 25, "maria fontaneda": 25, "palmeras": 25, "sobaos": 25, "kinder chocolate": 25,
+      "mon cheri": 25, "lindt": 25, "valor": 25, "suchard": 25, "nestle jungly": 25, "jungly": 25,
+      "frigo pie": 25, "twister": 25, "solero": 25, "fantasmikos": 25, "torreznos": 45, "caramelo": 45,
+      "gominola": 45, "regalices": 45, "ensaimadas": 45, "croissants": 45, "chocolatina": 45, "chocolatinas": 45,
+      "bombon": 45, "bombones": 45, "lenguas de gato": 45, "pajitas de caramelo": 45, "sidral": 45, "cacaolat": 65,
+      "batido puleva": 65, "oikos": 65, "petit suisse": 65, "danonino": 65, "bang bang": 65, "monedas de chocolate": 65,
+      "paraguas de chocolate": 65, "conguito": 65, "lacasito": 65, "crunch": 85, "after eight": 85, "toffee": 85,
+      "golosina": 85, "golosinas": 85, "chucherias": 85
     }
   },
   {
@@ -1766,7 +1809,20 @@ const PROMPTS = [
       "scuffers": 45, "blue banana": 45, "edmmond": 65, "morrison": 65, "hoff": 45, "munich sports": 45,
       "paredes seguridad": 65, "panter": 65, "sparco": 45, "alpinestars": 45, "dainese": 45, "sidi": 65,
       "giro": 65, "bell": 65, "poc": 65, "castelli": 65, "santini": 65, "etxeondo": 65,
-      "gobik": 45, "rapha": 65, "assos": 85, "endura": 65, "fox": 45, "troy lee designs": 85
+      "gobik": 45, "rapha": 65, "assos": 85, "endura": 65, "fox": 45, "troy lee designs": 85,
+      "h m": 10, "foot locker": 10, "jd sports": 10, "sprinter": 10, "decimas": 10, "intersport": 10,
+      "woman secret": 25, "hawkers": 25, "polo ralph lauren": 25, "benetton": 25, "green coast": 25, "easy wear": 25,
+      "formula joven": 25, "the hoff brand": 25, "veja": 25, "arcteryx": 25, "fox racing": 25, "specialized": 25,
+      "trek": 25, "giant": 25, "orbea": 25, "bh": 25, "scott": 25, "c a": 45,
+      "starvie": 45, "courir": 45, "lola casademunt": 45, "muroexe": 45, "tropicfeel": 45, "d franklin": 45,
+      "flamingos life": 45, "altra": 45, "izas": 45, "o neill": 45, "oneill": 45, "hurley": 45,
+      "rvca": 45, "castore": 45, "reusch": 45, "sketchers": 65, "palace": 65, "canada goose": 65,
+      "nyamba": 65, "vibora": 65, "akkeron": 65, "spiuk": 65, "mayoral": 85, "carolina herrera": 85,
+      "roberto verino": 85, "angel schlesser": 85, "agatha ruiz de la prada": 85, "trucco": 85, "blanco": 85, "macson": 85,
+      "tiendas inside": 85, "cannondale": 85, "canyon": 85, "pinarello": 85, "bianchi": 85, "cervelo": 85,
+      "mondraker": 85, "mmr": 85, "megamo": 85, "coluer": 85, "revit": 85, "spidi": 85,
+      "tenaya": 85, "grifone": 85, "ho soccer": 85, "rinat": 85, "inverse": 85, "bioracer": 85,
+      "pearl izumi": 85
     }
   },
   {
@@ -1840,7 +1896,22 @@ const PROMPTS = [
       "jornalero": 45, "vendimiador": 65, "esquilador": 85, "cabrero": 65, "porquero": 85, "mulero": 85,
       "cochero": 65, "farolero": 85, "deshollinador": 65, "colchonero": 85, "espartero": 100, "sillero": 100,
       "guarnicionero": 100, "talabartero": 100, "peletero": 85, "tintorero": 85, "lavandera": 65, "planchadora": 65,
-      "modista": 45, "bordadora": 85, "encajera": 85, "sombrerera": 85
+      "modista": 45, "bordadora": 85, "encajera": 85, "sombrerera": 85, "veterinaria": 10, "psicologa": 10,
+      "farmaceutica": 25, "odontologo": 25, "barista": 25, "esteticista": 45, "maquillador": 45, "trabajador social": 45,
+      "educador": 45, "abogados": 45, "abogadas": 45, "arquitectos": 45, "arquitectas": 45, "ingenieros": 45,
+      "ingenieras": 45, "enfermeros": 45, "enfermeras": 45, "dentistas": 45, "veterinarios": 45, "psicologos": 45,
+      "periodistas": 45, "actores": 45, "actrices": 45, "fotografos": 45, "programadores": 45, "electricistas": 45,
+      "fontaneros": 45, "carpinteros": 45, "albañiles": 45, "pintores": 45, "mecanicos": 45, "agricultores": 65,
+      "cocineros": 65, "chefs": 65, "camareros": 65, "camareras": 65, "contables": 65, "jueces": 65,
+      "bomberos": 65, "militares": 65, "pilotos": 65, "taxistas": 65, "carteros": 65, "peluqueros": 65,
+      "peluqueras": 65, "farmaceuticos": 65, "odontologos": 65, "fisioterapeutas": 65, "cirujanos": 65, "pediatras": 65,
+      "locutores": 65, "presentadores": 65, "guionistas": 65, "diseñadores": 65, "informaticos": 65, "analistas": 65,
+      "soldadores": 65, "cerrajeros": 65, "jardineros": 65, "ganaderos": 85, "pescadores": 85, "carniceros": 85,
+      "pescaderos": 85, "panaderos": 85, "pasteleros": 85, "recepcionistas": 85, "administrativos": 85, "economistas": 85,
+      "banqueros": 85, "notarios": 85, "fiscales": 85, "conductores": 85, "camioneros": 85, "repartidores": 85,
+      "bibliotecarios": 85, "traductores": 85, "interpretes": 85, "barberos": 85, "sastres": 85, "modistas": 85,
+      "zapateros": 85, "relojeros": 85, "joyeros": 85, "cientificos": 85, "biologos": 85, "quimicos": 85,
+      "fisicos": 85, "matematicos": 85, "entrenadores": 85, "arbitros": 85, "socorristas": 85
     }
   },
   {
@@ -1902,7 +1973,23 @@ const PROMPTS = [
       "regulaciones": 25, "numeraciones": 45, "reputaciones": 45, "evolucionado": 45, "evolucionista": 45, "revolucionar": 25,
       "neurologia": 25, "neurologica": 45, "neuropatia": 65, "neurociencia": 45, "neuroquimica": 65, "neumologia": 45,
       "reumatologia": 45, "pseudociencia": 45, "pseudocientifico": 65, "europeista": 45, "europeizacion": 65, "musicoterapia": 45,
-      "psicoterapeuta": 45, "fisioterapeuta": 45, "quimioterapia": 45, "terapeutico": 45, "inauguraciones": 45
+      "psicoterapeuta": 45, "fisioterapeuta": 45, "quimioterapia": 45, "terapeutico": 45, "inauguraciones": 45, "ecuacion": 10,
+      "estudiando": 10, "estudiaron": 10, "vestuario": 10, "agricultores": 25, "aumentativo": 25, "autosuficiente": 25,
+      "cautiverio": 25, "enjuiciamiento": 25, "menopausia": 25, "preocupacion": 25, "reconquista": 25, "simultaneo": 25,
+      "sudamericano": 25, "superacion": 25, "ultravioleta": 25, "aceitunado": 45, "acentuacion": 45, "acuartelamiento": 45,
+      "adecuacion": 45, "adulteracion": 45, "aseguramiento": 45, "averiguacion": 45, "continuamente": 45, "elucidario": 45,
+      "excursionista": 45, "guarnicionero": 45, "indocumentado": 45, "inmunoterapia": 45, "instrumentacion": 45, "jerarquico": 45,
+      "metalinguistico": 45, "neutralizacion": 45, "ocultamiento": 45, "perturbacion": 45, "poliuretano": 45, "porqueria": 45,
+      "quebrantamiento": 45, "refugiado": 45, "repudiado": 45, "requisitoria": 45, "resucitado": 45, "salutifero": 45,
+      "sensualismo": 45, "solucionable": 45, "subcategoria": 45, "subestimacion": 45, "sublevacion": 45, "surrealismo": 45,
+      "amateurismo": 65, "constituyera": 65, "desautorice": 65, "descompusiera": 65, "entusiastico": 65, "equivoca": 65,
+      "oblicuamente": 65, "pneumatico": 65, "seudonimia": 65, "guarnicionera": 65, "cautiverios": 65, "elucidarios": 65,
+      "enjuiciamientos": 65, "funcionamientos": 65, "alumbramientos": 65, "ocultamientos": 65, "quebrantamientos": 65, "aseguramientos": 65,
+      "excursionistas": 65, "acentuaciones": 65, "adecuaciones": 65, "adulteraciones": 65, "argumentaciones": 65, "averiguaciones": 65,
+      "neutralizaciones": 65, "perturbaciones": 65, "preocupaciones": 65, "reunificaciones": 65, "sublevaciones": 65, "superaciones": 65,
+      "amateurismos": 65, "surrealismos": 65, "sensualismos": 65, "ecuaciones": 85, "vestuarios": 85, "aumentativos": 85,
+      "autosuficientes": 85, "menopausias": 85, "jerarquicos": 85, "metalinguisticos": 85, "neurociencias": 85, "pseudociencias": 85,
+      "poliuretanos": 85, "porquerias": 85, "requisitorias": 85, "solucionables": 85, "subcategorias": 85, "seudonimias": 85
     }
   },
   {
@@ -2195,7 +2282,20 @@ const PROMPTS = [
       "figuerense": 65, "calatayudense": 65, "teruelense": 45, "alcañizense": 65, "jacetense": 85, "tudelense": 65,
       "estellense": 65, "tafallense": 65, "olitense": 65, "calahorrense": 65, "arnedense": 65, "najerense": 65,
       "santanderiense": 45, "laredense": 65, "gijonense": 45, "avilesense": 45, "irunense": 65, "tolosense": 65,
-      "eibarrense": 65, "vitoriense": 45, "ubedense": 65, "salmantinense": 100
+      "eibarrense": 65, "vitoriense": 45, "ubedense": 65, "salmantinense": 100, "mostolense": 10, "harense": 25,
+      "jienense": 25, "ursaonense": 25, "tarrasense": 25, "pamplonense": 45, "santiaguense": 45, "dombenitense": 45,
+      "monzonense": 45, "gramenetense": 45, "molletense": 45, "granollerense": 45, "ingeniense": 45, "guimarense": 45,
+      "veratense": 45, "huercalense": 45, "consaburense": 45, "escorialense": 45, "torrelodonense": 45, "boadillense": 45,
+      "cosladense": 45, "madridejense": 45, "ocañense": 45, "navalcarnerense": 45, "cornellense": 65, "deniense": 65,
+      "villaviciosense": 65, "riberense": 65, "palense": 65, "haroense": 65, "santoñense": 65, "suancense": 65,
+      "reinosense": 65, "segobiense": 65, "calellense": 65, "calafellense": 65, "almadenense": 65, "quintanarense": 65,
+      "chinchonense": 65, "colmenarense": 65, "argandense": 65, "cacerense": 85, "ciudadrealense": 85, "valdepeñense": 85,
+      "tomellosense": 85, "villarroblense": 85, "motrilense": 85, "lucentense": 85, "rondense": 85, "algecirense": 85,
+      "almodovarense": 85, "argamasillense": 85, "calatravense": 85, "corralense": 85, "parlense": 85, "ciempozuelense": 85,
+      "pozuelense": 85, "sanfernandense": 85, "sansebastianense": 85, "premianense": 85, "masnovense": 85, "vilassarense": 85,
+      "arenysense": 85, "canetense": 85, "pinedense": 85, "malgratense": 85, "torderense": 85, "tossense": 85,
+      "palamosense": 85, "rosense": 85, "cadaquesense": 85, "vilanovense": 85, "tortosense": 85, "balaguerense": 85,
+      "tarreguense": 85, "cuellarense": 85, "pontevedrense": 85
     }
   },
   {
@@ -2258,7 +2358,26 @@ const PROMPTS = [
       "darsena": 65, "divan": 45, "dragoman": 100, "emir": 45, "enjalbegar": 100, "escabeche": 45,
       "espinaca": 25, "espinacas": 25, "falua": 85, "faquir": 65, "fardo": 65, "fulana": 45,
       "gacela": 45, "gandul": 65, "garrafa": 45, "gasa": 25, "gazpacho": 10, "guadaña": 65,
-      "guay": 25
+      "guay": 25, "azucena": 10, "cafe": 10, "jazmin": 10, "nuca": 10, "rincon": 10,
+      "sofa": 10, "alforja": 25, "alubia": 25, "amapola": 25, "ambar": 25, "arsenal": 25,
+      "fonda": 25, "haren": 25, "imam": 25, "iman": 25, "jeque": 25, "lima": 25,
+      "mascara": 25, "mazmorra": 25, "mezquino": 25, "sequia": 25, "sorbete": 25, "talco": 25,
+      "tarima": 25, "visir": 25, "zafiro": 25, "altramuz": 45, "argamasa": 45, "argolla": 45,
+      "candil": 45, "caravana": 45, "cenefa": 45, "cencerro": 45, "cimitarra": 45, "droga": 45,
+      "escarlata": 45, "estragon": 45, "gabardina": 45, "haragan": 45, "harem": 45, "jarro": 45,
+      "jubon": 45, "laca": 45, "macabro": 45, "maroma": 45, "marrano": 45, "mejunje": 45,
+      "mojama": 45, "monzon": 45, "mozarabe": 45, "mudejar": 45, "mulato": 45, "papagayo": 45,
+      "quintal": 45, "rambla": 45, "raudo": 45, "res": 45, "retama": 45, "riada": 45,
+      "rifa": 45, "romana": 45, "sarraceno": 45, "tahur": 45, "tamarindo": 45, "valija": 45,
+      "zafar": 45, "zagal": 45, "zalamero": 45, "zurron": 45, "almodrote": 65, "almoraduj": 65,
+      "baladi": 65, "benjui": 65, "berberisco": 65, "borcegui": 65, "botarga": 65, "buzo": 65,
+      "carraca": 65, "catifa": 65, "cipayo": 65, "corbacho": 65, "elche": 65, "elemi": 65,
+      "faluca": 65, "farda": 65, "galbana": 65, "jabeque": 65, "jaraiz": 65, "jofaina": 65,
+      "julepe": 65, "madraza": 65, "maimon": 65, "mamarracho": 65, "orozuz": 65, "rabadan": 65,
+      "realgar": 65, "sarasa": 65, "tafur": 65, "zaque": 65, "zaraguelles": 65, "zaranda": 65,
+      "zarco": 65, "zumaque": 65, "zumba": 65, "guadiana": 85, "gibraltar": 85, "alborada": 85,
+      "almacenar": 85, "arrocero": 85, "azufrado": 85, "califato": 85, "divanes": 85, "fideua": 85,
+      "jarabes": 85, "jinetes": 85, "mezquitas": 85
     }
   },
   {
@@ -2550,7 +2669,22 @@ const PROMPTS = [
       "plantita": 25, "hojita": 25, "ramita": 25, "semillita": 45, "animalito": 10, "bichito": 10,
       "pescadito": 25, "pollito": 10, "polluelo": 25, "patito": 10, "conejito": 10, "caballito": 10,
       "vaquita": 25, "cerdito": 10, "ovejita": 25, "cabrita": 25, "ratoncito": 10, "hormiguita": 25,
-      "mosquita": 25, "abejita": 25, "mariposita": 25, "tortuguita": 25, "ranita": 25
+      "mosquita": 25, "abejita": 25, "mariposita": 25, "tortuguita": 25, "ranita": 25, "camita": 10,
+      "abuelita": 10, "hermanito": 10, "hermanita": 10, "cico": 25, "cica": 25, "caseron": 25,
+      "mesilla": 25, "papelito": 25, "tipazo": 25, "botellon": 25, "cucharon": 25, "ventanilla": 25,
+      "besazo": 25, "despacito": 25, "solito": 25, "solita": 25, "amiguito": 25, "amiguita": 25,
+      "chiquitina": 45, "hombreton": 45, "grandote": 45, "puertecita": 45, "manecilla": 45, "arbolillo": 45,
+      "papelote": 45, "cochecillo": 45, "manazas": 45, "bocazas": 45, "narizon": 45, "orejon": 45,
+      "zapaton": 45, "zapatazo": 45, "platico": 45, "campanilla": 45, "chispazo": 45, "trancazo": 45,
+      "palazo": 45, "tiron": 45, "empujon": 45, "apagon": 45, "abrazote": 45, "suavecito": 45,
+      "rapidito": 45, "calentito": 45, "hijito": 45, "hijita": 45, "amigote": 45, "aldehuela": 65,
+      "pequeñita": 65, "gordito": 65, "gordita": 65, "flaquito": 65, "flaquita": 65, "bajito": 65,
+      "bajita": 65, "altote": 65, "altota": 65, "feucho": 65, "feucha": 65, "guapeton": 65,
+      "guapetona": 65, "listillo": 65, "listilla": 65, "tontorrona": 65, "bobalicon": 65, "dormilon": 65,
+      "dormilona": 65, "comilon": 65, "comilona": 65, "lloron": 65, "llorona": 65, "miedica": 65,
+      "gruñon": 65, "gruñona": 65, "corazoncito": 85, "panecillo": 85, "panecito": 85, "pececito": 85,
+      "crucecita": 85, "lucecita": 85, "vocecita": 85, "camioncito": 85, "trenazo": 85, "barcaza": 85,
+      "cazuelita": 85, "olita": 85, "vallecito": 85
     }
   },
   {
@@ -2620,7 +2754,39 @@ const PROMPTS = [
       "espectaculo": 10, "obstaculo": 25, "habitaculo": 45, "mayuscula": 10, "minuscula": 10, "particula": 25,
       "matricula": 25, "cuadricula": 45, "ridiculo": 10, "ridicula": 25, "modulo": 25, "nodulo": 45,
       "rectangulo": 10, "hexagono": 25, "heptagono": 45, "octogono": 45, "decagono": 45, "cupula": 25,
-      "boveda": 45, "gargola": 45, "portico": 45, "vestibulo": 45, "atico": 10, "sotano": 10
+      "boveda": 45, "gargola": 45, "portico": 45, "vestibulo": 45, "atico": 10, "sotano": 10,
+      "aspero": 10, "boligrafo": 10, "cascara": 10, "celebre": 10, "codigo": 10, "comodo": 10,
+      "cronica": 10, "decada": 10, "ejercito": 10, "exito": 10, "genero": 10, "lastima": 10,
+      "mascara": 10, "maximo": 10, "minimo": 10, "periodico": 10, "polvora": 10, "regimen": 10,
+      "republica": 10, "romantico": 10, "satelite": 10, "simbolo": 10, "simpatico": 10, "tipico": 10,
+      "unico": 10, "autonomo": 25, "candido": 25, "carceles": 25, "cespedes": 25, "cilindrico": 25,
+      "citrico": 25, "clinica": 25, "colera": 25, "complice": 25, "concavo": 25, "cuadrilatero": 25,
+      "decimo": 25, "deficit": 25, "deposito": 25, "dinamico": 25, "discipulo": 25, "elastico": 25,
+      "epico": 25, "esceptico": 25, "escrupulo": 25, "espiritu": 25, "estatico": 25, "estrategico": 25,
+      "exotico": 25, "fanatico": 25, "fenomeno": 25, "gramatica": 25, "habito": 25, "hipica": 25,
+      "hipotesis": 25, "horoscopo": 25, "impetu": 25, "indice": 25, "indigena": 25, "inedito": 25,
+      "insolito": 25, "intimo": 25, "intrepido": 25, "jubilo": 25, "lamina": 25, "lapida": 25,
+      "latigo": 25, "legitimo": 25, "lexico": 25, "limitrofe": 25, "lucido": 25, "lugubre": 25,
+      "magnifico": 25, "margenes": 25, "maritimo": 25, "merito": 25, "metalico": 25, "metodo": 25,
+      "metrico": 25, "milimetro": 25, "morbido": 25, "nitido": 25, "nomada": 25, "nordico": 25,
+      "olimpico": 25, "origenes": 25, "parabola": 25, "parametro": 25, "parpado": 25, "penultimo": 25,
+      "perdida": 25, "pesimo": 25, "polemica": 25, "postumo": 25, "preambulo": 25, "proposito": 25,
+      "protesis": 25, "proximo": 25, "pulpito": 25, "raquitico": 25, "replica": 25, "rotulo": 25,
+      "satira": 25, "semola": 25, "septimo": 25, "sintesis": 25, "sistematico": 25, "subito": 25,
+      "subdito": 25, "tectonico": 25, "tematica": 25, "termino": 25, "tetrico": 25, "tonico": 25,
+      "topico": 25, "tramite": 25, "triduo": 25, "tunica": 25, "utero": 25, "vastago": 25,
+      "vertigo": 25, "vinculo": 25, "vispera": 25, "vivido": 25, "zocalo": 25, "diabolo": 45,
+      "afonico": 45, "afono": 45, "alergico": 45, "anecdotico": 45, "angelico": 45, "animo": 45,
+      "anonimo": 45, "antidoto": 45, "apatico": 45, "apocrifo": 45, "arabigo": 45, "aritmetica": 45,
+      "armonico": 45, "asimetrico": 45, "asmatico": 45, "atletico": 45, "atavico": 45, "autentico": 45,
+      "balistico": 65, "balsamo": 65, "barbarico": 65, "barometro": 65, "benemerito": 65, "benevolo": 65,
+      "biologico": 65, "botanica": 65, "bronquico": 65, "burocratico": 65, "cabalistico": 65, "caligrafo": 65,
+      "calorico": 65, "canonigo": 65, "caotico": 65, "caracteristico": 65, "cardiaco": 65, "caustico": 65,
+      "celtibero": 65, "climatologico": 65, "colerico": 65, "concentricas": 85, "concentrico": 85, "conico": 85,
+      "cosmico": 85, "criptico": 85, "cronico": 85, "cuantico": 85, "demografico": 85, "demoniaco": 85,
+      "despotico": 85, "diabetico": 85, "dialectico": 85, "diatonico": 85, "didactico": 85, "diplomatico": 85,
+      "dogmatico": 85, "ecumenico": 85, "egocentrico": 85, "egolatra": 85, "eliptico": 85, "emblematico": 85,
+      "empirico": 85
     }
   },
   {
@@ -2922,7 +3088,16 @@ const PROMPTS = [
       "bombon": 25, "trufa": 45, "huevo kinder": 25, "galleta de la suerte": 45, "barrita de cereales": 25, "tortita de arroz": 25,
       "tortita de maiz": 25, "corteza de cerdo": 45, "torrezno": 45, "gusanito": 25, "hoja de cuaderno": 45, "tostada de pan": 45,
       "papel aluminio": 65, "bolsa de patatas": 65, "blister de pastillas": 65, "hoja de laurel seca": 85, "cascara de cacahuete": 85, "cascara de pistacho": 85,
-      "pan de angel": 100, "teja de almendra": 100, "carquiñoli": 100
+      "pan de angel": 100, "teja de almendra": 100, "carquiñoli": 100, "caramelo": 25, "palito": 25, "poliespan": 25,
+      "macarron": 25, "uvas": 25, "mortadela": 25, "tarjeta": 25, "cartones": 45, "periodicos": 45,
+      "revistas": 45, "sobres": 45, "tickets": 45, "recibos": 45, "billetes": 45, "barras de pan": 45,
+      "tostadas": 45, "nueces": 45, "almendras": 45, "avellanas": 45, "cacahuetes": 45, "pistachos": 45,
+      "palillos": 45, "cerillas": 45, "ramas": 45, "ramitas": 45, "hojas secas": 45, "palos": 45,
+      "tizas": 45, "lapices": 45, "bolsas": 45, "telas": 45, "pañuelos": 45, "cuerdas": 65,
+      "hilos": 65, "cartulinas": 65, "libretas": 65, "folletos": 65, "carteles": 65, "postales": 65,
+      "cromos": 65, "cartas": 65, "pegatinas": 65, "etiqueta": 65, "etiquetas": 65, "cajas de carton": 65,
+      "barquillos": 85, "gofres": 85, "obleas": 85, "tortitas": 85, "rosquillas": 85, "panecillos": 85,
+      "palomita": 85, "palomitas": 85, "piñones": 85, "castañas": 85
     }
   },
   {
@@ -3173,7 +3348,20 @@ const PROMPTS = [
       "macho cabrio": 100, "bruto": 100, "oso perezoso": 100, "vaca burra": 100, "perrazo de presa": 100, "bicho raro": 100,
       "mosquita muerta": 100, "lagarto juancho": 100, "pollo sin cabeza": 100, "pato mareado": 100, "burro de carga": 100, "perro del hortelano": 100,
       "gato escaldado": 100, "coyote de feria": 100, "sardinilla": 100, "cangrejo ermitaño": 100, "bicho palo": 100, "tarugo": 100,
-      "zopenco": 100, "alcornoque": 100, "mendrugo": 100, "melon": 100
+      "zopenco": 100, "alcornoque": 100, "mendrugo": 100, "melon": 100, "mosquito": 25, "moscardon": 25,
+      "mofeta": 25, "gocho": 25, "gocha": 25, "abeja": 45, "asnos": 45, "mulas": 45,
+      "cucarachas": 45, "viboras": 45, "serpientes": 45, "hienas": 45, "ovejas": 45, "borregas": 45,
+      "pavos": 45, "pavas": 45, "gansos": 45, "loros": 45, "cotorras": 45, "monos": 45,
+      "monas": 45, "gorilas": 45, "focas": 45, "ballenas": 45, "elefantes": 65, "lobos": 65,
+      "lobas": 65, "fieras": 65, "bestias": 65, "sapos": 65, "lagartos": 65, "lagartas": 65,
+      "tiburones": 65, "gusanos": 65, "moscas": 65, "zanganos": 65, "garrapatas": 65, "tortugas": 65,
+      "cochinos": 65, "cochinas": 65, "marranos": 65, "marranas": 65, "guarros": 65, "guarras": 65,
+      "gochos": 65, "gochas": 65, "lechones": 65, "bichos": 65, "ratones": 65, "culebras": 65,
+      "chacales": 65, "cabras": 85, "corderos": 85, "patos": 85, "gallos": 85, "cuervos": 85,
+      "buhos": 85, "simios": 85, "chimpances": 85, "mandriles": 85, "osos": 85, "osas": 85,
+      "hipopotamos": 85, "camellos": 85, "coyotes": 85, "tigres": 85, "animales": 85, "besugos": 85,
+      "caracoles": 85, "babosas": 85, "lombrices": 85, "mosquitos": 85, "moscardones": 85, "avispas": 85,
+      "piojos": 85, "sanguijuelas": 85, "alimañas": 85, "sabandijas": 85
     }
   },
   {
@@ -3318,7 +3506,18 @@ const PROMPTS = [
       "agarrar un ciego": 25, "llevar un ciego": 25, "tener un ciego": 25, "estar doblado": 45, "estar torcido": 45, "estar tajado": 45,
       "estar tajada": 45, "estar pedo": 25, "achispadillo": 65, "achispadilla": 65, "pasarse de copas": 25, "empinar el porron": 65,
       "beodo perdido": 65, "ir con el puntillo": 45, "coger el puntillo": 45, "ponerse fino": 45, "ponerse fino filipino": 65, "ir dando tumbos": 45,
-      "ir zigzagueando": 45
+      "ir zigzagueando": 45, "resaca": 10, "ceguera": 25, "moco": 25, "alegre": 25, "colocado": 25,
+      "pasado": 25, "pasada": 25, "intoxicado": 25, "hecho una cuba": 25, "pelotazo": 25, "colocon": 25,
+      "chispazo": 45, "tosta": 45, "tocado": 45, "volcado": 45, "destrozado": 45, "tumbado": 45,
+      "templa": 45, "gato": 45, "zorra": 45, "perra": 45, "torrija": 45, "pajara": 45,
+      "intoxicacion etilica": 45, "copa de mas": 45, "hecho polvo": 45, "puesto": 45, "bolingas": 45, "agarrarse un pedal": 65,
+      "agarrarse una cogorza": 65, "pillar una moña": 65, "pillar un pedal": 65, "beodos": 65, "beodas": 65, "borrachines": 65,
+      "cogorzas": 65, "curdas": 65, "melopeas": 65, "moñas": 65, "pedales": 65, "tajadas": 65,
+      "tajas": 65, "turcas": 65, "resacas": 65, "trancas": 85, "merluzas": 85, "castañas": 85,
+      "trompas": 85, "embriagados": 85, "embriagadas": 85, "achispados": 85, "achispadas": 85, "alcoholizados": 85,
+      "alcoholizadas": 85, "borrachuzos": 85, "borrachuzas": 85, "bebidos": 85, "bebidas": 85, "entonados": 85,
+      "entonadas": 85, "mamados": 85, "mamadas": 85, "doblados": 85, "dobladas": 85, "pelotazos": 85,
+      "colocones": 85
     }
   },
   {
@@ -3387,7 +3586,19 @@ const PROMPTS = [
       "degollar": 65, "soldar": 45, "asolar": 85, "desollar": 85, "expedir": 45, "regir": 45,
       "refreir": 65, "sofreir": 45, "gemir": 45, "teñir": 45, "desteñir": 65, "ceñir": 65,
       "reñir": 45, "rendir": 45, "derretir": 45, "embestir": 45, "colegir": 85, "concebir": 45,
-      "preconcebir": 85, "hendir": 85, "engreir": 85, "heñir": 100
+      "preconcebir": 85, "hendir": 85, "engreir": 85, "heñir": 100, "errar": 25, "deshelar": 45,
+      "desterrar": 45, "emparentar": 45, "encomendar": 45, "herrar": 45, "invernar": 45, "descollar": 45,
+      "despoblar": 45, "engrosar": 45, "holgar": 45, "recostar": 45, "reprobar": 45, "revolcar": 45,
+      "aborrecer": 45, "adolecer": 45, "apetecer": 45, "complacer": 45, "desfavorecer": 45, "embellecer": 45,
+      "enaltecer": 45, "encarecer": 45, "enflaquecer": 65, "enfurecer": 65, "enmohecer": 65, "ennoblecer": 65,
+      "ensombrecer": 65, "enternecer": 65, "entumecer": 65, "perecer": 65, "reaparecer": 65, "resplandecer": 65,
+      "reverdecer": 65, "robustecer": 65, "remorder": 65, "recocer": 65, "substraer": 85, "descaer": 85,
+      "fundir": 85, "podrir": 85, "pudrir": 85, "acaecer": 85, "desplacer": 85, "sobreponer": 85,
+      "antever": 85, "maltraer": 85, "roer": 85, "raer": 85, "abolir": 85, "adherir": 85,
+      "asentir": 85, "balbucir": 85, "cernir": 85, "comedir": 85, "controvertir": 85, "deferir": 85,
+      "engullir": 85, "estreñir": 85, "henchir": 85, "injerir": 85, "investir": 85, "trasoir": 85,
+      "proferir": 85, "reelegir": 85, "refluir": 85, "resentir": 85, "revenir": 85, "revestir": 85,
+      "transgredir": 85, "travestir": 85, "zaherir": 85
     }
   },
   {
@@ -3528,7 +3739,16 @@ const PROMPTS = [
       "overboard": 45, "un mar de enredos": 45, "el camarote de los hermanos marx": 45, "una noche en la opera": 45, "los caballeros las prefieren rubias": 45, "tu y yo": 45,
       "an affair to remember": 65, "el talento de mr ripley": 45, "plein soleil": 65, "a pleno sol": 65, "el cuchillo en el agua": 65, "knife in the water": 85,
       "the navigator": 85, "steamboat bill jr": 85, "el heroe del rio": 85, "battleship potemkin": 65, "l atalante": 85, "la atalante": 85,
-      "querelle": 85, "below": 85, "todo esta perdido": 65, "capitan de mar y guerra": 85, "the sand pebbles": 100, "el canoero del yang tse": 100
+      "querelle": 85, "below": 85, "todo esta perdido": 65, "capitan de mar y guerra": 85, "the sand pebbles": 100, "el canoero del yang tse": 100,
+      "life of pi": 10, "dunkirk": 10, "maldicion de la perla negra": 10, "little mermaid": 10, "the old man and the sea": 25, "sentido del agua": 25,
+      "meg": 25, "cofre del hombre muerto": 25, "venganza de salazar": 25, "spongebob movie": 25, "the big blue": 45, "triangle of sadness": 45,
+      "la perla negra": 45, "aventura del poseidon": 45, "playa": 45, "shallows": 45, "47 metros": 45, "el lobo de mar": 65,
+      "el corsario negro": 65, "el mundo acuatico": 65, "el silencio del mar": 65, "enemigos bajo el mar": 65, "u boot": 65, "the last voyage of the demeter": 65,
+      "hornblower": 65, "caza del octubre rojo": 65, "submarino": 65, "abismo": 65, "deriva": 65, "gran azul": 65,
+      "isla de las cabezas cortadas": 65, "isla de nim": 65, "monstruo marino": 65, "piratas": 85, "cutthroat island": 85, "el triangulo maldito": 85,
+      "un mar de lios": 85, "bajo diez banderas": 85, "el mar cruel": 85, "faro": 85, "lighthouse": 85, "ultimo viaje del demeter": 85,
+      "hora decisiva": 85, "finest hours": 85, "canto del lobo": 85, "niños del mar": 85, "cove": 100, "mundo del silencio": 100,
+      "contrabandistas de moonfleet": 100, "navegante": 100, "gran miercoles": 100
     }
   },
   {
@@ -3751,7 +3971,12 @@ const PROMPTS = [
       "daniel sanchez arevalo": 25, "sanchez arevalo": 45, "paco leon": 25, "eduardo casanova": 45, "javier calvo": 45, "javier ambrossi": 45,
       "cesc gay": 25, "agustin villaronga": 45, "villaronga": 45, "arantxa echevarria": 45, "paula ortiz": 45, "raul arevalo": 45,
       "mariano ozores": 45, "ozores": 65, "jesus franco": 65, "jess franco": 65, "basilio martin patino": 65, "agnieska holland": 65,
-      "carl theodor dreyer": 85, "jose luis borau": 100
+      "carl theodor dreyer": 85, "jose luis borau": 100, "alejandro gonzalez inarritu": 25, "mel brooks": 25, "john hughes": 25, "matthew vaughn": 45,
+      "pablo berger": 45, "spike jonze": 45, "alex garland": 45, "steven soderbergh": 45, "john woo": 45, "zhang yimou": 45,
+      "celine song": 65, "neil jordan": 65, "peter weir": 65, "luc besson": 65, "jean pierre jeunet": 65, "michel gondry": 65,
+      "gaspar noe": 65, "jacques audiard": 65, "rob reiner": 65, "chris columbus": 65, "richard donner": 65, "daniel calparsoro": 85,
+      "montxo armendariz": 85, "pablo larrain": 85, "sebastian lelio": 85, "juan jose campanella": 85, "damian szifron": 85, "charlie kaufman": 85,
+      "joe dante": 85, "ivan reitman": 85, "john landis": 85, "bob fosse": 85, "sergio corbucci": 85
     }
   },
   {
@@ -4039,7 +4264,31 @@ const PROMPTS = [
       "fernando guillen": 45, "fernando guillen cuervo": 45, "carlos hipolito": 45, "pablo derqui": 45, "hovik keuchkerian": 45, "alberto ammann": 45,
       "patrick criado": 45, "urko olazabal": 65, "de la torre": 25, "tamar novas": 45, "alejo sauras": 45, "daniel guzman": 45,
       "sanz": 45, "antonio dechent": 45, "jesus carroza": 45, "vicente romero": 45, "paco tous": 25, "tous": 45,
-      "viyuela": 45, "carlos santos": 45, "secun de la rosa": 45, "ivan massague": 45, "jose luis gil": 45
+      "viyuela": 45, "carlos santos": 45, "secun de la rosa": 45, "ivan massague": 45, "jose luis gil": 45, "lola herrera": 25,
+      "rosa maria sarda": 25, "emilio gutierrez cava": 25, "gutierrez cava": 25, "michelle jenner": 25, "silvia abril": 25, "natalia verbeke": 25,
+      "emilio aragon": 25, "enrique san francisco": 45, "quique san francisco": 45, "yon gonzalez": 45, "maxi iglesias": 45, "itziar ituño": 45,
+      "alba flores": 45, "arturo valls": 45, "anabel alonso": 45, "josep maria pou": 45, "emma ozores": 45, "jose luis ozores": 45,
+      "concha cuetos": 45, "esperanza roy": 45, "mabel rivera": 45, "maria castro": 45, "cristina castaño": 45, "marta hazas": 45,
+      "pepon nieto": 45, "eloy azorin": 45, "isabel ordaz": 45, "beatriz carvajal": 45, "maria adanez": 45, "eva isanta": 45,
+      "vanesa romero": 45, "kira miro": 45, "miguel bernardeau": 45, "maria leon": 45, "carmina barrios": 45, "miguel angel muñoz": 45,
+      "carlos bardem": 45, "pilar bardem": 45, "luis callejo": 45, "pedro casablanc": 45, "fran perea": 45, "ana duato": 45,
+      "ricardo gomez": 45, "irene escolar": 45, "dafne fernandez": 45, "victoria luengo": 65, "nuria espert": 65, "joaquin reyes": 65,
+      "raul cimas": 65, "gorka otxoa": 65, "salva reina": 65, "antonia san juan": 65, "maria pujalte": 65, "nathalie poza": 65,
+      "mariano peña": 65, "jordi sanchez": 65, "pablo chiapella": 65, "luis merlo": 65, "manuel zarzo": 65, "paquita rico": 65,
+      "victoria vera": 65, "silvia tortosa": 65, "bibi andersen": 65, "julian villagran": 65, "txema blasco": 65, "mikel losada": 65,
+      "lander otaola": 65, "jon plazaola": 65, "celso bugallo": 65, "alex o dogherty": 65, "elena furiase": 65, "ingrid rubio": 65,
+      "antonio velazquez": 65, "ivan sanchez": 65, "jesus puente": 65, "nathalie seseña": 65, "silvia alonso": 65, "diana gomez": 65,
+      "begoña vargas": 65, "laura galan": 65, "sofia otero": 65, "carla quilez": 65, "ramon agirre": 65, "loreto mauleon": 65,
+      "marta nieto": 65, "veronica sanchez": 65, "melanie olivares": 65, "andrea duro": 65, "claudia salas": 65, "georgina amoros": 65,
+      "mina el hammani": 65, "omar ayuso": 65, "itzan escamilla": 65, "javier calvo": 65, "javier ambrossi": 65, "olivia molina": 65,
+      "lydia bosch": 65, "belen lopez": 65, "daniel grao": 65, "javier pereira": 65, "alex garcia": 65, "gines garcia millan": 65,
+      "patricia conde": 65, "marta torne": 65, "enrique villen": 85, "pol monen": 85, "manuel rios": 85, "enrique auquer": 85,
+      "carlos cuevas": 85, "alvaro rico": 85, "dario grandinetti": 85, "leonardo sbaraglia": 85, "nancho novo": 85, "asier etxeandia": 85,
+      "aitor luna": 85, "martiño rivas": 85, "pep anton muñoz": 85, "joseba apaolaza": 85, "iker galartza": 85, "patxi bisquert": 85,
+      "raul fernandez": 85, "miriam giovanelli": 85, "sandra blazquez": 85, "nico romero": 85, "elena ballesteros": 85, "natalia rodriguez": 85,
+      "diego martin": 85, "jose luis torrijo": 85, "luis bermejo": 85, "javier bodalo": 85, "manuel galiana": 85, "luis varela": 85,
+      "jose lifante": 85, "victor elias": 85, "natalia sanchez": 85, "elena martin": 85, "monica bardem": 85, "itziar lazkano": 85,
+      "javier godino": 85, "alberto jo lee": 85, "eduardo velasco": 85, "maria jose cantudo": 85, "ana de armas": 85, "pablo rivero": 85
     }
   },
   {
@@ -4255,7 +4504,16 @@ const PROMPTS = [
       "gamera": 100, "ringu": 100, "the ring": 100, "ju on": 100, "la maldicion": 100, "erase una vez en china": 100,
       "once upon a time in china": 100, "police story": 100, "armas invencibles": 100, "la armadura de dios": 100, "a better tomorrow": 100, "infernal affairs": 100,
       "juego sucio": 100, "election": 100, "una historia china de fantasmas": 100, "mr vampire": 100, "dhoom": 100, "krrish": 100,
-      "singham": 100, "dabangg": 100, "kgf": 100, "bahubali": 100, "drishyam": 100
+      "singham": 100, "dabangg": 100, "kgf": 100, "bahubali": 100, "drishyam": 100, "guerra de las galaxias": 10,
+      "todo gas": 10, "animales fantasticos": 25, "tadeo jones": 25, "padrino": 25, "godfather": 25, "hobbit": 25,
+      "caballero oscuro": 25, "edad de hielo": 25, "cronicas de narnia": 25, "todo tren": 25, "ocho apellidos": 45, "agarralo como puedas": 45,
+      "despicable me": 45, "monstruos sa": 45, "momia": 45, "mummy": 45, "hangover": 45, "conjuring": 45,
+      "conjuro": 45, "purga": 45, "purge": 45, "caso bourne": 45, "mercenarios": 45, "expendables": 45,
+      "diario de bridget jones": 45, "corredor del laberinto": 45, "el protector": 65, "ahora me ves": 65, "la busqueda": 65, "cobra kai": 65,
+      "inmortales": 65, "exorcista": 65, "exorcist": 65, "profecia": 65, "omen": 65, "silencio de los corderos": 65,
+      "matanza de texas": 65, "proyecto de la bruja de blair": 65, "lugar tranquilo": 65, "quiet place": 65, "mariachi": 65, "padres de ella": 65,
+      "fockers": 65, "guardian invisible": 65, "traves de mi ventana": 65, "stand de los besos": 65, "mi gran boda griega": 85, "percy jackson": 85,
+      "sonic la pelicula": 85, "noche de los muertos vivientes": 85, "chicos del maiz": 85
     }
   },
   {
@@ -4554,7 +4812,12 @@ const PROMPTS = [
       "nino brown": 100, "frank white": 100, "carter verone": 100, "cipher": 100, "brixton lore": 100, "jakob toretto": 100,
       "dante reyes": 100, "deckard shaw": 100, "owen shaw": 100, "calvin j candie": 100, "stephen": 100, "hans beckert": 100,
       "harry lime": 100, "auric": 100, "dr evil": 100, "doctor maligno": 100, "gordo cabron": 100, "mini yo": 100,
-      "mugatu": 100, "balthazar": 100, "veronica": 100
+      "mugatu": 100, "balthazar": 100, "veronica": 100, "agent smith": 25, "tony montana": 25, "michael corleone": 25,
+      "al capone": 25, "el pinguino": 25, "reina malvada": 25, "syndrome": 25, "barbossa": 25, "coronel kurtz": 45,
+      "sid": 45, "mr glass": 45, "commodo": 45, "nosferatu": 45, "el acertijo": 45, "homelander": 65,
+      "patriot": 65, "gus fring": 65, "walter white": 65, "heisenberg": 65, "ramsey bolton": 65, "joffrey baratheon": 65,
+      "cersei lannister": 65, "el rey de la noche": 65, "night king": 65, "vecna": 65, "demogorgon": 65, "calavera roja": 65,
+      "count dooku": 85, "el mandarin": 85, "cobra kai": 85, "tiburon james bond": 85, "silva": 85
     }
   },
   {
@@ -4615,7 +4878,21 @@ const PROMPTS = [
       "the life and times of judge roy bean": 100, "los cañones de san sebastian": 100, "el rostro de la muerte": 100, "el hombre de laramie": 100, "the man from laramie": 100, "tierra generosa": 100,
       "monte walsh": 100, "ulzana s raid": 100, "la venganza de ulzana": 100, "chato el apache": 100, "chatos land": 100, "valdez viene": 100,
       "valdez is coming": 100, "los implacables": 100, "the tall men": 100, "el jardin del mal": 100, "garden of evil": 100, "el tesoro del ahorcado": 100,
-      "veracruz robert aldrich": 100, "la soga de la horca": 100, "cahill": 100, "el alguacil del diablo": 100
+      "veracruz robert aldrich": 100, "la soga de la horca": 100, "cahill": 100, "el alguacil del diablo": 100, "bueno el feo y el malo": 10, "good the bad and the ugly": 10,
+      "fistful of dollars": 10, "muerte tenia un precio": 10, "siete magnificos": 10, "magnificent seven": 10, "odiosos ocho": 10, "hateful eight": 10,
+      "jinete palido": 25, "searchers": 25, "diligencia": 25, "hombre que mato a liberty valance": 25, "renacido": 25, "revenant": 25,
+      "wild bunch": 45, "dorado": 45, "legion invencible": 45, "conquista del oeste": 45, "fuera de la ley": 45, "outlaw josey wales": 45,
+      "tren de las 3 10": 45, "asesinato de jesse james": 45, "big country": 45, "profesionales": 45, "professionals": 45, "tesoro de sierra madre": 45,
+      "treasure of the sierra madre": 45, "llanero solitario": 45, "lone ranger": 45, "giu la testa": 65, "trinidad": 65, "le seguian llamando trinidad": 65,
+      "my name is nobody": 65, "pat garrett y billy el niño": 65, "balada de cable hogue": 65, "leyenda de la ciudad sin nombre": 65, "aventuras de jeremiah johnson": 65, "hombre llamado caballo": 65,
+      "man called horse": 65, "gran silencio": 65, "halcon y la presa": 65, "resa dei conti": 65, "dia de la ira": 65, "mercenario": 65,
+      "retorno de ringo": 65, "pistola para ringo": 65, "cuatro del apocalipsis": 65, "alamo": 65, "pistolero": 65, "gunfighter": 65,
+      "ultimo tren de gun hill": 65, "quick and the dead": 65, "poder del perro": 65, "power of the dog": 65, "asesinos de la luna": 65, "balada de buster scruggs": 65,
+      "sisters brothers": 65, "hermanos sisters": 65, "arbol del ahorcado": 85, "hanging tree": 85, "rostro impenetrable": 85, "valientes andan solos": 85,
+      "hombre del oeste": 85, "vengador sin piedad": 85, "bravados": 85, "pradera sin ley": 85, "puerta del cielo": 85, "jinete electrico": 85,
+      "electric horseman": 85, "long riders": 85, "oro de mackenna": 85, "ingenua explosiva": 85, "naked spur": 85, "far country": 85,
+      "sargento negro": 85, "gran combate": 85, "calle de la horca": 85, "proposition": 85, "propuesta": 85, "salvation": 85,
+      "homesman": 85, "valle de la venganza": 85, "zurdo": 100
     }
   },
   {
@@ -4683,7 +4960,14 @@ const PROMPTS = [
       "los ultimos de filipinas": 100, "soldados de salamina": 100, "la hora de los valientes": 100, "madregilda": 100, "camina o revienta": 100, "gal": 100,
       "el conde": 100, "la noche de los lapices": 100, "perez": 100, "los chicos de san petri": 100, "la conjura de el escorial": 100, "el rey pasmado": 100,
       "esquilache": 100, "goya en burdeos": 100, "volaverunt": 100, "la hora de los hornos": 100, "el bañado": 100, "el caso mattei": 100,
-      "todo modo": 100, "manos sobre la ciudad": 100, "andrei rublev": 100, "alexander nevsky": 100, "ivan el terrible": 100, "el gatopardo": 100
+      "todo modo": 100, "manos sobre la ciudad": 100, "andrei rublev": 100, "alexander nevsky": 100, "ivan el terrible": 100, "el gatopardo": 100,
+      "the pianist": 10, "the social network": 10, "the wolf of wall street": 10, "gladiator": 10, "salvad al soldado ryan": 10, "the kings speech": 10,
+      "a beautiful mind": 10, "the impossible": 10, "imposible": 10, "pianista": 10, "the theory of everything": 25, "the pursuit of happyness": 25,
+      "catch me if you can": 25, "mente maravillosa": 25, "teoria del todo": 25, "discurso del rey": 25, "imitation game": 25, "los dos papas": 45,
+      "el maestro": 45, "los asesinos de la luna": 45, "killers of the flower moon": 45, "the zone of interest": 65, "society of the snow": 65, "miracle": 65,
+      "42": 65, "el luchador": 65, "el mayordomo": 65, "el caso sloane": 65, "primera plana": 85, "she said": 85,
+      "al descubierto": 85, "el escandalo": 85, "bombshell": 85, "richard jewell": 85, "la mula": 85, "the mule": 85,
+      "el hombre que conocia el infinito": 85, "temple grandin": 85, "j edgar": 85
     }
   },
   {
@@ -4752,7 +5036,13 @@ const PROMPTS = [
       "la opera de los tres centavos": 100, "el congreso": 100, "interstella 5555": 100, "pink flamingos": 100, "rock n roll high school": 100, "the decline of western civilization": 100,
       "sid and nancy": 100, "the harder they come": 100, "stormy weather": 100, "cabin in the sky": 100, "meet me in st louis": 100, "cita en san luis": 100,
       "the band wagon 1953": 100, "silk stockings": 100, "la bella de moscu": 100, "sweet charity": 100, "noches en la ciudad": 100, "1776": 100,
-      "man of la mancha": 100, "el hombre de la mancha": 100
+      "man of la mancha": 100, "el hombre de la mancha": 100, "land": 10, "ciudad de las estrellas": 10, "gran showman": 10, "greatest showman": 10,
+      "sound of music": 10, "miserables": 10, "fantasma de la opera": 10, "phantom of the opera": 10, "rey leon": 10, "bella y la bestia": 10,
+      "sirenita": 10, "mago de oz": 10, "wizard of oz": 10, "blues brothers": 25, "sound of metal": 25, "star is born": 25,
+      "libro de la selva": 25, "pianista": 25, "guardaespaldas": 25, "bodyguard": 25, "nightmare before christmas": 25, "novia cadaver": 25,
+      "chicos del coro": 25, "llamada": 25, "otro lado de la cama": 25, "tar": 45, "amy": 45, "back to black": 45,
+      "bob marley one love": 45, "a complete unknown": 45, "regreso de mary poppins": 45, "mundo de fantasia": 45, "tienda de los horrores": 45, "los muppets": 65,
+      "el muro": 65, "rhapsody in blue": 85, "the doors": 85
     }
   },
   {
@@ -4822,7 +5112,14 @@ const PROMPTS = [
       "kris bowers": 100, "terence blanchard": 100, "blanchard": 100, "m m keeravani": 100, "keeravani": 100, "ilayaraja": 100,
       "andrzej korzynski": 100, "carlo rustichelli": 100, "mario nascimbene": 100, "evanthia reboutsika": 100, "isaac hayes": 100, "curtis mayfield": 100,
       "t bone burnett": 100, "claude michel schonberg": 100, "jose nieto morales": 100, "federico monti arduit": 100, "luis de los arcos": 100, "paco martinez": 100,
-      "tomas breton": 100
+      "tomas breton": 100, "alejandro amenabar": 25, "cliff martinez": 25, "aaron copland": 25, "albert iglesias": 45, "mark mothersbaugh": 45,
+      "antonio pinto": 45, "kristen anderson lopez": 45, "robert lopez": 45, "germaine franco": 45, "benjamin wallfisch": 45, "joseph trapanese": 45,
+      "mac quayle": 45, "rolfe kent": 45, "arturo cardelus": 45, "ar rahman": 45, "john murphy": 45, "burt bacharach": 45,
+      "olafur arnalds": 65, "dustin ohalloran": 65, "tyler bates": 65, "isobel waller bridge": 65, "ivan martinez lacamara": 65, "victor reyes": 65,
+      "diego navarro": 65, "piero umiliani": 65, "armand amar": 65, "thom yorke": 65, "nils frahm": 65, "mark isham": 85,
+      "randy edelman": 85, "zacarias de la riva": 85, "eva gancedo": 85, "carlos rafael rivera": 85, "ilaiyaraaja": 85, "richard robbins": 85,
+      "carl davis": 85, "john addison": 85, "ron goodwin": 85, "roy budd": 85, "malcolm arnold": 85, "william walton": 85,
+      "sergei prokofiev": 85, "andre previn": 85, "dave grusin": 85, "john kander": 85
     }
   },
   {
@@ -4886,7 +5183,18 @@ const PROMPTS = [
       "miami vice": 45, "corrupcion en miami": 45, "los reyes de la calle": 65, "street kings": 65, "narc": 85, "los amos de la noche": 65,
       "we own the night": 65, "la entrega": 65, "the drop": 65, "true romance": 45, "amor a quemarropa": 45, "infernal affairs": 65,
       "juego sucio": 65, "hard boiled": 85, "the chaser": 85, "i saw the devil": 65, "encontre al diablo": 65, "the batman": 25,
-      "el ultimo boy scout": 45
+      "el ultimo boy scout": 45, "padrino": 10, "godfather": 10, "padrino ii": 10, "padrino 2": 10, "precio del poder": 10,
+      "silencio de los corderos": 10, "isla minima": 10, "confidential": 10, "intocables de eliot ness": 10, "secreto de sus ojos": 10, "hannibal": 25,
+      "padrino parte ii": 25, "padrino iii": 25, "padrino 3": 25, "departed": 25, "silence of the lambs": 25, "reino": 25,
+      "halcon maltes": 25, "maltese falcon": 25, "sueño eterno": 25, "tercer hombre": 25, "usual suspects": 25, "intocables": 25,
+      "untouchables": 25, "irlandes": 25, "irishman": 25, "golpe": 25, "ventana indiscreta": 25, "dragon rojo": 45,
+      "crack": 45, "crack cero": 45, "big sleep": 45, "third man": 45, "sting": 45, "historia de violencia": 45,
+      "soga": 45, "final de la escapada": 45, "samurai": 45, "sabueso de los baskerville": 45, "nice guys": 45, "cartero siempre llama dos veces": 45,
+      "dama de shanghai": 45, "callejon de las almas perdidas": 45, "contra el imperio de la droga": 65, "gone baby gone": 65, "adios pequeña adios": 65, "el clan": 65,
+      "un profeta": 65, "a prophet": 65, "circulo rojo": 65, "le llaman bodhi": 65, "crack dos": 65, "history of violence": 65,
+      "clan de los sicilianos": 65, "traidor": 65, "rojo vivo": 65, "enemigo publico": 65, "postman always rings twice": 65, "lady from shanghai": 65,
+      "el halcon ingles": 85, "gangs of new york": 85, "miller crossing": 85, "la sombra de una duda": 85, "perros de paja": 85, "pelham uno dos tres": 85,
+      "to live and die in la": 85, "public enemy": 85, "killers": 85
     }
   },
   {
@@ -5183,7 +5491,19 @@ const PROMPTS = [
       "joseba beloki": 45, "beloki": 45, "igor astarloa": 65, "marga fullana": 45, "fullana": 65, "jose antonio hermida": 45,
       "hermida": 45, "david valero": 45, "diego botin": 45, "botin": 65, "florian trittel": 45, "iker martinez": 45,
       "xabi fernandez": 45, "theresa zabell": 45, "zabell": 45, "luis doreste": 65, "doreste": 65, "fidel orozco": 65,
-      "pedro carrasco": 85, "emilio campra": 100, "julio rey": 100, "isidre esteve": 100
+      "pedro carrasco": 85, "emilio campra": 100, "julio rey": 100, "isidre esteve": 100, "teresa perales": 25, "gavi": 25,
+      "dani olmo": 25, "edurne pasaban": 25, "andoni zubizarreta": 25, "unai simon": 25, "bruno hortelano": 45, "paquillo fernandez": 45,
+      "guti": 45, "hugo gonzalez": 45, "rodrigo corrales": 45, "gonzalo perez de vargas": 45, "albert ramos": 45, "pablo carreño": 45,
+      "marcel granollers": 45, "joan capdevila": 45, "pirri": 45, "jose antonio camacho": 45, "rafael gordillo": 45, "quini": 45,
+      "luis arconada": 45, "mikel merino": 45, "fabian ruiz": 45, "marc cucurella": 45, "jesus navas": 45, "patri guijarro": 45,
+      "irene paredes": 45, "mariona caldentey": 45, "ona batlle": 45, "cata coll": 45, "joana pastrana": 65, "miriam blasco": 65,
+      "isabel fernandez": 65, "brigitte yague": 65, "nicolas garcia hemme": 65, "fernando alarza": 65, "luis suarez miramontes": 65, "migueli": 65,
+      "aymeric laporte": 65, "robin le normand": 65, "alberto gines": 65, "fatima diame": 65, "quique llopis": 65, "mariano garcia": 65,
+      "adel mechaal": 65, "fernando carro": 65, "martin lopez zubero": 65, "chema martinez": 65, "carlos arevalo": 65, "rodrigo germade": 65,
+      "marcus walz": 65, "nani roma": 65, "marc coma": 65, "cristina gutierrez": 65, "lucas eguibar": 65, "queralt castellet": 65,
+      "natalia via dufresne": 85, "blanca manchon": 85, "marina alabau": 85, "niurka montalvo": 85, "antonio peñalver": 85, "nuria fernandez": 85,
+      "maite zuñiga": 85, "jesus tortosa": 85, "javier illana": 85, "reyes estevez": 85, "juan carlos higuero": 85, "arturo casado": 85,
+      "david bustos": 85, "kevin lopez": 85, "beatriz manchon": 85, "regino hernandez": 85
     }
   },
   {
@@ -5249,7 +5569,18 @@ const PROMPTS = [
       "wide receiver": 45, "tight end": 65, "linebacker": 65, "field goal": 45, "fumble": 45, "sack": 45,
       "pitcher": 25, "bateador": 10, "catcher": 25, "out": 25, "safe": 45, "grand slam": 25,
       "strikeout": 45, "bunt": 85, "zona pintada": 65, "hors jeu": 85, "enroque largo": 100, "captura al paso": 100,
-      "ahogado": 100, "touchback": 100, "safety": 100, "icing": 100
+      "ahogado": 100, "touchback": 100, "safety": 100, "icing": 100, "autogol": 10, "tiro libre directo": 25,
+      "tiro libre indirecto": 25, "cartulina amarilla": 25, "cartulina roja": 25, "piscinazo": 25, "tijera": 25, "regate": 25,
+      "cabezazo": 25, "propia puerta": 25, "muerte subita": 25, "knock out": 25, "spare": 25, "saque de honor": 45,
+      "libre directo": 45, "falta tactica": 45, "zancadilla": 45, "regates": 45, "remate de cabeza": 45, "media volea": 45,
+      "paradon": 45, "despeje": 45, "gol en propia puerta": 45, "gol de plata": 45, "offside": 45, "try": 45,
+      "transformacion": 45, "jonron": 45, "poker": 45, "remate por tres": 65, "remate por cuatro": 65, "passing": 65,
+      "paralelo": 65, "cruzado": 65, "blitz": 65, "saques de banda": 65, "tarjetas amarillas": 65, "tarjetas rojas": 65,
+      "tiros libres": 65, "chilenos": 65, "vaselinas": 65, "cabezazos": 65, "voleas": 65, "paradas": 65,
+      "despejes": 65, "prorrogas": 65, "triples": 65, "rebotes": 65, "tapones": 65, "asistencias": 65,
+      "ensayos": 85, "placajes": 85, "meles": 85, "golpes francos": 85, "tiros de esquina": 85, "penaltis": 85,
+      "fueras de juego": 85, "saques de esquina": 85, "expulsiones": 85, "amonestaciones": 85, "dribling": 85, "driblar": 85,
+      "contragolpe": 85, "tiki taka": 85, "pressing": 85, "doble penalti": 85
     }
   },
   {
@@ -5321,7 +5652,13 @@ const PROMPTS = [
       "pachuca": 45, "toluca": 45, "santos laguna": 65, "atlas": 65, "leon": 65, "necaxa": 65,
       "queretaro": 65, "tijuana": 65, "saprissa": 65, "alajuelense": 85, "atlanta united": 65, "seattle sounders": 65,
       "portland timbers": 85, "los angeles fc": 45, "lafc": 65, "new york city fc": 45, "new york red bulls": 45, "dc united": 65,
-      "chicago fire": 65, "toronto fc": 65, "orlando city": 65, "santos fc": 45, "steaua bucarest": 100, "dinamo kiev": 100
+      "chicago fire": 65, "toronto fc": 65, "orlando city": 65, "santos fc": 45, "steaua bucarest": 100, "dinamo kiev": 100,
+      "america": 25, "chivas": 25, "fc bayern munich": 45, "manchester united fc": 45, "liverpool fc": 45, "arsenal fc": 45,
+      "chelsea fc": 45, "sl benfica": 45, "sporting cp": 45, "afc ajax": 45, "olympique lyonnais": 65, "olympique marseille": 65,
+      "fc nantes": 65, "toulouse fc": 65, "sv werder bremen": 65, "vfl wolfsburg": 65, "sc freiburg": 65, "bolton wanderers": 85,
+      "ss lazio": 85, "ssc napoli": 85, "acf fiorentina": 85, "bologna fc": 85, "torino fc": 85, "udinese calcio": 85,
+      "feyenoord rotterdam": 85, "ca boca juniors": 85, "ca river plate": 85, "racing club de avellaneda": 85, "ca independiente": 85, "se palmeiras": 85,
+      "cr flamengo": 85, "sc corinthians": 85
     }
   },
   {
@@ -5386,7 +5723,19 @@ const PROMPTS = [
       "jose maria martin carpena": 25, "principe felipe": 45, "san pablo": 45, "multiusos fontajau": 85, "nou congost": 65, "gran canaria arena": 65,
       "miribilla": 45, "bilbao arena": 65, "fontes do sar": 65, "pazo dos deportes": 65, "palacio vistalegre": 45, "oaka": 65,
       "stark arena": 85, "pionir": 85, "mediolanum forum": 85, "zalgirio arena": 85, "philippe chatrier": 25, "suzanne lenglen": 45,
-      "centre court": 45, "indian wells": 45, "indianapolis motor speedway": 85, "circuito de le mans": 85
+      "centre court": 45, "indian wells": 45, "indianapolis motor speedway": 85, "circuito de le mans": 85, "emirates stadium": 25, "el monumental": 25,
+      "el coliseum": 25, "nuevo jose zorrilla": 25, "la caja magica": 25, "sant jordi": 25, "dodger stadium": 25, "augusta national": 25,
+      "st andrews": 25, "riyadh air metropolitano": 45, "estadio olimpico de montjuic": 45, "estadio olimpico de roma": 45, "estadio olimpico de berlin": 45, "estadio da luz": 45,
+      "monte carlo": 45, "los pajaritos": 45, "anxo carro": 45, "san lazaro": 45, "el malecon": 45, "nou estadi": 45,
+      "estadi de montilivi": 45, "roig arena": 45, "real club de tenis barcelona": 45, "pabellon olimpico de badalona": 45, "arena aufschalke": 45, "deutsche bank park": 45,
+      "weserstadion": 45, "stade velodrome": 45, "estadio jose alvalade": 45, "estadio municipal de braga": 45, "stage front stadium": 65, "crypto com arena": 65,
+      "las vegas": 65, "el coliseo alfonso perez": 65, "coliseum alfonso perez": 65, "el heliodoro": 65, "el tartiere": 65, "linarejos": 65,
+      "el collao": 65, "pabellon principe felipe": 65, "vistalegre": 65, "olimpico de turin": 65, "renato dall ara": 65, "stade pierre mauroy": 65,
+      "la beaujoire": 65, "jan breydel": 65, "lotto park": 65, "sofi stadium": 65, "metlife stadium": 65, "campos de sport de el sardinero": 85,
+      "estadio de los juegos mediterraneos": 85, "jose rico perez": 85, "nova creu alta": 85, "circuito del jarama": 85, "circuito de monza": 85, "circuito de silverstone": 85,
+      "circuito de spa francorchamps": 85, "circuito de monaco": 85, "circuito de suzuka": 85, "circuito de interlagos": 85, "circuito de nurburgring": 85, "circuito de mugello": 85,
+      "circuito de misano": 85, "circuito de assen": 85, "circuito de portimao": 85, "goodwood": 85, "mount panorama": 85, "talladega": 85,
+      "pikes peak": 85
     }
   },
   /* ----- Dossier Deportes · Capítulo 2: Motor, Raqueta y Competición de Élite ----- */
@@ -6065,7 +6414,24 @@ const PROMPTS = [
       "iaido": 100, "naginata": 100, "kenjutsu": 100, "bojutsu": 100, "eskrima": 100, "kali": 100,
       "arnis": 100, "kalaripayattu": 100, "vovinam": 100, "bokator": 100, "glima": 100, "schwingen": 100,
       "gouren": 100, "jogo do pau": 100, "zipota": 100, "dambe": 100, "laamb": 100, "ssireum": 100,
-      "bokh": 100, "kurash": 100, "chidaoba": 100
+      "bokh": 100, "kurash": 100, "chidaoba": 100, "gimnasia ritmica": 10, "skateboard": 10, "gimnasia en trampolin": 25,
+      "duatlon": 25, "acuatlon": 25, "ciclismo btt": 25, "fmx": 25, "motocross freestyle": 25, "supercross": 25,
+      "supermoto": 25, "rally dakar": 25, "formula e": 25, "formula 2": 25, "formula 3": 25, "24 horas de le mans": 25,
+      "wrc": 25, "esqui nordico": 25, "esqui acrobatico": 25, "trineo de perros": 25, "danza sobre hielo": 25, "wing foil": 25,
+      "100 metros": 25, "200 metros": 25, "400 metros": 25, "800 metros": 25, "1500 metros": 25, "5000 metros": 25,
+      "10000 metros": 25, "media maraton": 25, "ultramaraton": 25, "vallas": 25, "relevos": 25, "campo a traves": 25,
+      "lucha": 25, "karate do": 45, "kung fu": 45, "esgrima florete": 45, "esgrima espada": 45, "esgrima sable": 45,
+      "patinaje en pista corta": 45, "carreras de drones": 45, "velocidad en moto": 45, "moto2": 45, "moto3": 45, "supersport": 45,
+      "rally raid": 45, "rallycross": 45, "karts": 45, "karting de alquiler": 45, "esqui de velocidad": 45, "monoesqui": 45,
+      "foiling": 45, "hidrospeed": 45, "wakesurf": 45, "caza deportiva": 45, "tiro al blanco": 45, "carrera de velocidad": 45,
+      "3000 metros obstaculos": 45, "carrera de orientacion": 45, "escalada de velocidad": 45, "escalada de dificultad": 45, "remo en banco movil": 45, "remo en banco fijo": 45,
+      "piraguismo eslalon": 45, "piraguismo en aguas tranquilas": 45, "stand up paddle": 45, "carreras de caballos": 65, "superbike": 65, "drift": 65,
+      "drag racing": 65, "fisicoculturismo": 65, "aizkolaritza": 65, "levantamiento de piedras": 65, "harrijasotzaile": 65, "tiro de cuerda": 65,
+      "baja": 65, "aerobic deportivo": 65, "full contact": 65, "kick boxing": 65, "k1": 65, "bjj": 65,
+      "brazilian jiu jitsu": 65, "luta livre": 65, "sumo wrestling": 65, "combate medieval": 65, "buhurt": 65, "archery": 85,
+      "freediving": 85, "alpinismo invernal": 85, "escalada en bloque": 85, "boulder": 85, "pancracio": 85, "catch wrestling": 85,
+      "armwrestling": 85, "carrera de obstaculos": 85, "cros": 85, "backgammon": 85, "swimrun": 85, "ice swimming": 85,
+      "natacion en hielo": 85
     }
   },
   {
@@ -6132,7 +6498,21 @@ const PROMPTS = [
       "csc": 100, "team csc": 100, "liberty seguros": 100, "saunier duval": 100, "caisse d epargne illes balears": 100, "illes balears": 100,
       "polti kometa": 100, "team dsm": 100, "dsm firmenich": 100, "gerolsteiner": 100, "lampre": 100, "liquigas": 100,
       "cannondale": 100, "katusha": 100, "omega pharma": 100, "etixx quick step": 100, "deceuninck quick step": 100, "tinkoff": 100,
-      "saxo bank": 100, "bmc": 100, "orica greenedge": 100, "dimension data": 100, "iam cycling": 100, "sunweb": 100
+      "saxo bank": 100, "bmc": 100, "orica greenedge": 100, "dimension data": 100, "iam cycling": 100, "sunweb": 100,
+      "oscar pereiro": 25, "visma lease a bike": 25, "jesus herrada": 25, "ivan garcia cortina": 25, "david de la cruz": 25, "juan antonio flecha": 25,
+      "igor astarloa": 25, "totalenergies": 25, "red bull bora hansgrohe": 45, "bora hansgrohe": 45, "ef education easypost": 45, "jon aberasturi": 45,
+      "cristian rodriguez": 45, "pelayo sanchez": 45, "roger adria": 45, "urko berrade": 45, "pau miquel": 45, "carlos canal": 45,
+      "garcia cortina": 45, "jose joaquin rojas": 45, "ruben fernandez": 45, "daniel navarro": 45, "beñat intxausti": 45, "mikel nieve": 45,
+      "eduard prades": 45, "delio fernandez": 45, "gustavo cesar veloso": 45, "ruben plaza": 45, "virenque": 45, "alessandro petacchi": 45,
+      "michele bartoli": 45, "danilo di luca": 45, "gilberto simoni": 45, "angel casero": 65, "igor gonzalez de galdeano": 65, "chechu rubiera": 65,
+      "johan museeuw": 65, "jens voigt": 65, "john degenkolb": 65, "richie porte": 65, "thor hushovd": 65, "alexander kristoff": 65,
+      "edvald boasson hagen": 65, "jakob fuglsang": 65, "rafal majka": 65, "matej mohoric": 65, "jan tratnik": 65, "chris horner": 65,
+      "george hincapie": 65, "tejay van garderen": 65, "brandon mcnulty": 65, "neilson powless": 65, "magnus cort": 65, "kasper asgreen": 65,
+      "mattias skjelmose": 65, "arnaud de lie": 65, "jasper stuyven": 65, "tiesj benoot": 65, "dylan van baarle": 65, "bauke mollema": 65,
+      "robert gesink": 65, "fabio jakobsen": 65, "christophe laporte": 65, "nacer bouhanni": 65, "tom pidcock": 85, "lenny martinez": 85,
+      "warren barguil": 85, "elisa longo borghini": 85, "annemiek van vleuten": 85, "demi vollering": 85, "mavi garcia": 85, "saeco": 85,
+      "fassa bortolo": 85, "lotto soudal": 85, "tudor pro cycling": 85, "alpecin fenix": 85, "htc highroad": 85, "garmin sharp": 85,
+      "ef pro cycling": 85, "mitchelton scott": 85, "ag2r la mondiale": 85
     }
   },
   {
@@ -6193,7 +6573,29 @@ const PROMPTS = [
       "duatlon acuatico": 100, "watsu": 100, "aquacycling": 100, "aquadynamic": 100, "aqualates": 100, "hidrospinning": 100,
       "natacion con perro": 100, "canin": 100, "dock diving": 100, "dockdogs": 100, "buceo en cuevas": 100, "espeleobuceo": 100,
       "buceo en pecios": 100, "buceo nocturno": 100, "buceo en altitud": 100, "buceo con nitrox": 100, "buceo con trimix": 100, "sidemount": 100,
-      "rebreather": 100, "mermaid swimming": 100, "mermaiding": 100, "natacion con cola de sirena": 100
+      "rebreather": 100, "mermaid swimming": 100, "mermaiding": 100, "natacion con cola de sirena": 100, "esnorquel": 25, "motos de agua": 25,
+      "descenso de cañones": 25, "nado sincronizado": 25, "natacion 100 metros libre": 25, "natacion 200 metros libre": 25, "natacion 100 metros espalda": 25, "natacion 100 metros braza": 25,
+      "natacion 100 metros mariposa": 25, "relevo 4x100 libre": 25, "salto desde acantilados": 25, "buceo libre": 25, "buceo recreativo": 25, "moto acuatica": 25,
+      "windsurf slalom": 25, "longboard surfing": 25, "piraguismo eslalon": 45, "piraguismo en aguas bravas": 45, "piraguismo en aguas tranquilas": 45, "canotaje": 45,
+      "wing foil": 45, "regata": 45, "natacion 50 metros libre": 45, "natacion 400 metros libre": 45, "natacion 800 metros libre": 45, "natacion 1500 metros libre": 45,
+      "natacion 200 metros espalda": 45, "natacion 200 metros braza": 45, "natacion 200 metros mariposa": 45, "natacion 200 metros estilos": 45, "natacion 400 metros estilos": 45, "relevo 4x200 libre": 45,
+      "natacion 10 km": 45, "waterpolo masculino": 45, "waterpolo femenino": 45, "waterpolo playa": 45, "beach waterpolo": 45, "buceo con escafandra": 45,
+      "piraguismo de velocidad": 45, "descenso en piragua": 45, "kayak de travesia": 45, "kayak freestyle": 45, "rafting en aguas bravas": 45, "paddleboard": 45,
+      "coastal rowing": 45, "regata de traineras": 45, "remo tradicional": 45, "regata oceanica": 45, "match race": 45, "e foil": 45,
+      "jetsurf": 45, "wakeboarding": 45, "surf adaptado": 45, "parasurfing": 45, "salto de plataforma": 65, "remo en banco movil": 65,
+      "remo en banco fijo": 65, "llagut": 65, "socorrismo acuatico": 65, "aquathlon": 65, "duo tecnico": 65, "duo libre": 65,
+      "rutina acrobatica": 65, "apnea en peso constante": 65, "videosub": 65, "caza fotosub": 65, "natacion con bialetas": 65, "natacion con monoaleta": 65,
+      "inmersion con aletas": 65, "biribol": 65, "baloncesto acuatico": 65, "voley acuatico": 65, "creek kayaking": 65, "prone paddleboard": 65,
+      "remo en pareja": 65, "single scull": 65, "cuadruple scull": 65, "barca de jabea": 65, "regata transoceanica": 65, "vela paralimpica": 65,
+      "windsurf freestyle": 65, "windsurf foil": 65, "formula windsurfing": 65, "speed windsurfing": 65, "kitesurf freestyle": 65, "big air kitesurf": 65,
+      "surf a motor": 65, "motonautica offshore": 65, "aquabike freestyle": 65, "esqui nautico figuras": 65, "esqui nautico slalom": 65, "esqui nautico saltos": 65,
+      "wake skate": 65, "tow in surfing": 65, "river surfing": 65, "surf en piscina de olas": 65, "boogie": 65, "bodyboarding": 65,
+      "dropknee": 65, "kneeboarding": 65, "mat surfing": 65, "paipo": 65, "pesca desde embarcacion": 65, "pesca en kayak": 65,
+      "spinning marino": 65, "natacion invernal": 65, "natacion en hielo": 65, "natacion espalda": 85, "natacion braza": 85, "natacion mariposa": 85,
+      "natacion crol": 85, "natacion libre": 85, "natacion estilos": 85, "relevos natacion": 85, "tubing": 85, "foiling": 85,
+      "windsurfing": 85, "kitesurfing": 85, "nacra": 85, "laser radial": 85, "europe vela": 85, "star vela": 85,
+      "tornado catamaran": 85, "dragon vela": 85, "remo scull": 85, "remo punta": 85, "esquife": 85, "canoa canadiense": 85,
+      "kayak slalom": 85, "kayak sprint": 85, "polo acuatico femenino": 85
     }
   },
   {
@@ -6262,7 +6664,17 @@ const PROMPTS = [
       "ranko zeravica": 100, "mirko novosel": 100, "clifford luyk": 85, "dan peterson": 100, "pini gershon": 85, "hubie brown": 100,
       "bill fitch": 100, "dick motta": 100, "avery johnson": 100, "dwane casey": 100, "kenny atkinson": 85, "chris finch": 85,
       "ime udoka": 85, "arne slot": 45, "slot": 45, "oliver glasner": 85, "valeriy lobanovskiy": 85, "lobanovskiy": 85,
-      "hugo meisl": 100, "vicente feola": 100, "juan lopez fontana": 100, "amadeo garcia de salazar": 100, "cesare rubini": 100, "valerio bianchini": 100
+      "hugo meisl": 100, "vicente feola": 100, "juan lopez fontana": 100, "amadeo garcia de salazar": 100, "cesare rubini": 100, "valerio bianchini": 100,
+      "marcello lippi": 25, "alfredo di stefano": 25, "kubala": 25, "erik ten hag": 25, "mike d antoni": 25, "valeri lobanovski": 45,
+      "greg popovich": 45, "chucho mateo": 45, "pepe bordalas": 45, "michel gonzalez": 45, "eduardo berizzo": 45, "gerardo martino": 45,
+      "tata martino": 45, "dunga": 45, "tele santana": 45, "laurent blanc": 45, "gareth southgate": 45, "sven goran eriksson": 45,
+      "jurgen klinsmann": 45, "klinsmann": 45, "rudi voller": 45, "fernando santos": 45, "ramon diaz": 45, "oscar tabarez": 45,
+      "ricardo gareca": 45, "john toshak": 65, "manolo jimenez": 65, "imanool": 65, "michel": 65, "garitano": 65,
+      "rick adelman": 65, "joan peñarroya": 65, "diego ocampo": 65, "salva maldonado": 65, "manel comas": 65, "lucas mondelo": 65,
+      "miguel mendez": 65, "carlos queiroz": 85, "howard kendall": 85, "roberto martinez": 85, "unai": 85, "boris maljkovic": 85,
+      "raymond domenech": 85, "azeglio vicini": 85, "cesare maldini": 85, "berti vogts": 85, "hans dieter flick": 85, "matthias sammer": 85,
+      "mircea lucescu": 85, "fatih terim": 85, "maestro tabarez": 85, "reinaldo rueda": 85, "alberto zaccheroni": 85, "walter mazzarri": 85,
+      "bert van marwijk": 85, "sean dyche": 85, "marco silva": 85, "geno auriemma": 85, "pat summitt": 85
     }
   },
   {
@@ -6404,7 +6816,24 @@ const PROMPTS = [
       "bajaj": 100, "royal enfield": 85, "cagiva": 65, "benelli": 65, "bimota": 85, "moto guzzi": 65,
       "gilera": 45, "sherco": 85, "beta": 85, "fantic": 85, "tm racing": 100, "cfmoto": 65,
       "kove": 100, "kamaz": 65, "iveco": 65, "tatra": 85, "man": 85, "scania": 85,
-      "deutz": 100
+      "deutz": 100, "aston martin f1": 10, "williams racing": 10, "haas f1": 10, "renault f1": 10, "mercedes petronas": 25,
+      "racing bulls": 25, "rb": 25, "alfa romeo f1": 25, "lotus f1": 25, "team lotus": 25, "jordan grand prix": 25,
+      "honda f1": 25, "toyota f1": 25, "jaguar racing": 25, "gazoo racing": 25, "chip ganassi racing": 25, "ganassi": 25,
+      "ktm factory racing": 25, "audi f1": 45, "cadillac f1": 45, "stewart grand prix": 45, "manor": 45, "caterham f1": 45,
+      "andretti global": 45, "trackhouse racing": 45, "honda hrc": 45, "suzuki ecstar": 45, "kawasaki racing team": 45, "prema racing": 45,
+      "skoda motorsport": 45, "volkswagen motorsport": 45, "dodge": 45, "kalex": 45, "boscoscuro": 45, "team aspar": 45,
+      "red bull ajo": 45, "williams f1": 45, "haas f1 team": 45, "sauber f1": 45, "mclaren f1": 45, "alpine f1 team": 45,
+      "aston martin aramco": 45, "stake f1 team": 45, "hitech gp": 45, "pertamina enduro vr46": 65, "yoshimura": 65, "manthey racing": 65,
+      "joest racing": 65, "schnitzer": 65, "abt sportsline": 65, "ligier automotive": 65, "multimatic": 65, "stewart haas": 65,
+      "cadillac racing": 65, "lamborghini squadra corse": 65, "suter": 65, "forward racing": 65, "intact gp": 65, "mt helmets msi": 65,
+      "snipers team": 65, "sic58": 65, "vr46 racing": 65, "audi sport team joest": 65, "mazda motorsport": 65, "acura motorsport": 65,
+      "lexus racing": 65, "rebellion racing": 65, "meyer shank racing": 65, "ed carpenter racing": 65, "aj foyt racing": 65, "richard childress racing": 65,
+      "23xi racing": 65, "m sport ford": 65, "hyundai shell mobis": 65, "toyota gazoo": 65, "dallara f1": 85, "march engineering": 85,
+      "fittipaldi automotive": 85, "scarab": 85, "maserati corse": 85, "ford performance": 85, "citroen total": 85, "abt": 85,
+      "team rosberg": 85, "phoenix racing": 85, "rowe racing": 85, "land motorsport": 85, "grasser racing": 85, "inter europol": 85,
+      "algarve pro racing": 85, "cool racing": 85, "vector sport": 85, "rodin motorsport": 85, "invicta racing": 85, "aix racing": 85,
+      "jenzer": 85, "juncos hollinger": 85, "front row motorsports": 85, "wood brothers racing": 85, "rfk racing": 85, "spire motorsports": 85,
+      "legacy motor club": 85, "kaulig racing": 85, "triple eight": 85, "tickford": 85, "walkinshaw": 85
     }
   },
   {
@@ -6473,7 +6902,16 @@ const PROMPTS = [
       "isar": 65, "lech": 85, "enns": 85, "mura": 85, "limmat": 85, "adda": 85,
       "oglio": 100, "mincio": 100, "tanaro": 85, "piave": 85, "tagliamento": 100, "isonzo": 85,
       "brenta": 85, "volturno": 85, "rio prut": 85, "rio glomma": 100, "rio kemijoki": 100, "rio torne": 100,
-      "rio lule": 100, "rio dal": 100
+      "rio lule": 100, "rio dal": 100, "struma": 45, "kemi": 45, "rio sado": 45, "rio lima": 45,
+      "rio aragon": 45, "aqueloo": 65, "alfeo": 65, "rio adaja": 65, "rio eresma": 65, "rio ulla": 65,
+      "rio tambre": 65, "rio tay": 65, "rio spey": 65, "rio forth": 65, "rio tyne": 65, "rio ouse": 65,
+      "rio avon": 65, "rio weser": 65, "rio clyde": 65, "rio trent": 65, "rio mersey": 65, "rio dvina": 65,
+      "rio kama": 65, "rio oka": 65, "rio vltava": 65, "rio morava": 65, "rio maritsa": 65, "rio vardar": 65,
+      "rio struma": 65, "rio dalalven": 65, "rio oise": 85, "rio saona": 85, "rio isere": 85, "rio durance": 85,
+      "rio dordogne": 85, "dordogne": 85, "rio adour": 85, "rio piave": 85, "rio adda": 85, "rio aare": 85,
+      "rio havel": 85, "rio isar": 85, "rio lech": 85, "rio ruhr": 85, "rio saar": 85, "saar": 85,
+      "rio lahn": 85, "rio fulda": 85, "rio werra": 85, "rio salzach": 85, "salzach": 85, "rio mincio": 85,
+      "rio brenta": 85, "rio tagliamento": 85, "rio isonzo": 85, "rio liffey": 85, "rio douro": 85, "rio tejo": 85
     }
   },
   {
@@ -6617,7 +7055,34 @@ const PROMPTS = [
       "islas marquesas": 45, "micronesia": 25, "melanesia": 45, "guam": 25, "nauru": 45, "tuvalu": 45,
       "kiribati": 45, "oahu": 45, "maui": 25, "kauai": 45, "midway": 45, "bikini": 45,
       "tuamotu": 65, "isla norte": 45, "isla sur": 45, "isla stewart": 65, "islas chatham": 85, "isla canguro": 65,
-      "isla norfolk": 85, "corsica": 45, "tristan de acuña": 100, "isla ascencion": 100
+      "isla norfolk": 85, "corsica": 45, "tristan de acuña": 100, "isla ascencion": 100, "vancouver": 25, "isle of skye": 25,
+      "santa helena": 25, "haiti": 25, "cayo coco": 25, "staten island": 25, "jeju": 25, "isla de jeju": 25,
+      "phuket": 25, "koh samui": 25, "koh phi phi": 25, "dodecaneso": 45, "zacinto": 45, "estromboli": 45,
+      "santo tome y principe": 45, "flores": 45, "mull": 45, "islay": 45, "arran": 45, "helgoland": 45,
+      "novaya zemlya": 45, "lemnos": 45, "evia": 45, "egina": 45, "hydra": 45, "skiathos": 45,
+      "skopelos": 45, "ios": 45, "lefkada": 45, "panteleria": 45, "giglio": 45, "montecristo": 45,
+      "isla de la juventud": 45, "catalina": 45, "molokai": 45, "lanai": 45, "saipan": 45, "lord howe": 45,
+      "bohol": 45, "leyte": 45, "samar": 45, "negros": 45, "panay": 45, "siargao": 45,
+      "penang": 45, "langkawi": 45, "phu quoc": 45, "koh tao": 45, "andaman": 45, "terceira": 45,
+      "esporadas": 65, "chios": 65, "delos": 65, "antigua y barbuda": 65, "isla de navidad": 65, "isla de santa elena": 65,
+      "lewis y harris": 65, "usedom": 65, "hiiumaa": 65, "vesteralen": 65, "wrangel": 65, "solovki": 65,
+      "kizhi": 65, "valaam": 65, "antiparos": 65, "amorgos": 65, "ustica": 65, "ponza": 65,
+      "ventotene": 65, "favignana": 65, "salina": 65, "vulcano": 65, "panarea": 65, "vis": 65,
+      "mljet": 65, "rab": 65, "yerba": 65, "goree": 65, "annobon": 65, "robinson crusoe": 65,
+      "archipielago juan fernandez": 65, "isla de los estados": 65, "providencia": 65, "utila": 65, "antigua": 65, "barbuda": 65,
+      "granada": 65, "isla saona": 65, "cayo largo": 65, "nueva providencia": 65, "gran bahama": 65, "eleuthera": 65,
+      "andros": 65, "niihau": 65, "wake": 65, "tinian": 65, "yap": 65, "chuuk": 65,
+      "pohnpei": 65, "kiritimati": 65, "islas cocos": 65, "kangaroo island": 65, "islas mariana": 85, "islas marianas": 85,
+      "islas vanuatu": 85, "islas cook": 85, "niue": 85, "islas de la sociedad": 85, "islas australes": 85, "islas stewart": 85,
+      "islas auckland": 85, "islas campbell": 85, "isla kodiak": 85, "isla banks": 85, "isla devon": 85, "fraser": 85,
+      "kgari": 85, "isla magnetica": 85, "whitsundays": 85, "espiritu santo": 85, "efate": 85, "tanna": 85,
+      "upolu": 85, "savaii": 85, "tongatapu": 85, "viti levu": 85, "vanua levu": 85, "tarawa": 85,
+      "funafuti": 85, "majuro": 85, "visayas": 85, "batam": 85, "bintan": 85, "bangka": 85,
+      "belitung": 85, "madura": 85, "sumbawa": 85, "sumba": 85, "halmahera": 85, "seram": 85,
+      "buru": 85, "ishigaki": 85, "miyakojima": 85, "tsushima": 85, "sado": 85, "awaji": 85,
+      "daejeon": 85, "ulleungdo": 85, "tioman": 85, "diego garcia": 85, "chagos": 85, "mafia": 85,
+      "unguja": 85, "nosy be": 85, "rodrigues": 85, "mahe": 85, "praslin": 85, "la digue": 85,
+      "pico": 85, "faial": 85, "corvo": 85
     }
   },
   {
@@ -6759,7 +7224,36 @@ const PROMPTS = [
       "isfahan": 65, "shiraz": 65, "mashhad": 65, "almaty": 45, "bujara": 65, "asuan": 45,
       "kano": 65, "ibadan": 65, "mombasa": 45, "kumasi": 65, "duala": 65, "lubumbashi": 65,
       "sydney": 10, "brisbane": 25, "perth": 25, "adelaida": 25, "gold coast": 45, "christchurch": 45,
-      "queenstown": 65, "san pablo": 45, "puerto montt": 100, "ushuaia": 100, "antofagasta": 100, "ciudad juarez": 100
+      "queenstown": 65, "san pablo": 45, "puerto montt": 100, "ushuaia": 100, "antofagasta": 100, "ciudad juarez": 100,
+      "pisa": 25, "siena": 25, "nimes": 25, "cannes": 25, "york": 25, "charlotte": 25,
+      "honolulu": 25, "la plata": 25, "odessa": 25, "guimaraes": 45, "aveiro": 45, "setubal": 45,
+      "funchal": 45, "ponta delgada": 45, "duisburg": 45, "bochum": 45, "wuppertal": 45, "mannheim": 45,
+      "karlsruhe": 45, "augsburgo": 45, "wiesbaden": 45, "munster": 45, "kiel": 45, "lubeca": 45,
+      "rostock": 45, "potsdam": 45, "padua": 45, "trieste": 45, "brescia": 45, "parma": 45,
+      "modena": 45, "ravena": 45, "rimini": 45, "perugia": 45, "livorno": 45, "bergamo": 45,
+      "salerno": 45, "mesina": 45, "cagliari": 45, "toulon": 45, "reims": 45, "saint etienne": 45,
+      "le havre": 45, "grenoble": 45, "dijon": 45, "angers": 45, "clermont ferrand": 45, "aix en provence": 45,
+      "brest": 45, "limoges": 45, "tours": 45, "amiens": 45, "metz": 45, "orleans": 45,
+      "rouen": 45, "caen": 45, "nancy": 45, "aviñon": 45, "tampa": 65, "edmonton": 65,
+      "winnipeg": 65, "belem": 65, "merida mexico": 65, "oaxaca": 65, "coventry": 65, "bradford": 65,
+      "wolverhampton": 65, "plymouth": 65, "leicester": 65, "norwich": 65, "bath": 65, "aberdeen": 65,
+      "dundee": 65, "swansea": 65, "plzen": 65, "wroclaw": 65, "katowice": 65, "lublin": 65,
+      "iasi": 65, "constanza": 65, "brasov": 65, "szeged": 65, "kosice": 65, "maribor": 65,
+      "rijeka": 65, "novi sad": 65, "lviv": 65, "samara": 65, "nizhni novgorod": 65, "omsk": 65,
+      "cheliabinsk": 65, "volgogrado": 65, "kaliningrado": 65, "adana": 65, "gaziantep": 65, "konya": 65,
+      "trabzon": 65, "bodrum": 65, "sheffield": 85, "newcastle": 85, "nottingham": 85, "southampton": 85,
+      "groninga": 85, "bergen noruega": 85, "tampere": 85, "turku": 85, "lucerna": 85, "lugano": 85,
+      "mosul": 85, "erbil": 85, "tabriz": 85, "sendai": 85, "daegu": 85, "daejeon": 85,
+      "gwangju": 85, "ulsan": 85, "tianjin": 85, "suzhou": 85, "harbin": 85, "qingdao": 85,
+      "dalian": 85, "macao": 85, "kaohsiung": 85, "ahmedabad": 85, "surat": 85, "pune": 85,
+      "lucknow": 85, "kochi": 85, "rawalpindi": 85, "faisalabad": 85, "bandung": 85, "yogyakarta": 85,
+      "johor bahru": 85, "da nang": 85, "siem reap": 85, "pattaya": 85, "mandalay": 85, "goiania": 85,
+      "campinas": 85, "florianopolis": 85, "iquitos": 85, "bucaramanga": 85, "santa marta": 85, "barquisimeto": 85,
+      "cuenca ecuador": 85, "cochabamba": 85, "salta": 85, "tucuman": 85, "valdivia": 85, "leon mexico": 85,
+      "queretaro": 85, "aguascalientes": 85, "veracruz": 85, "nashville": 85, "memphis": 85, "milwaukee": 85,
+      "minneapolis": 85, "st louis": 85, "sacramento": 85, "anchorage": 85, "halifax": 85, "hamilton": 85,
+      "alexandria": 85, "giza": 85, "sharm el sheij": 85, "essaouira": 85, "constantine": 85, "douala": 85,
+      "arusha": 85, "hobart": 85, "dunedin": 85
     }
   },
   {
@@ -6905,7 +7399,11 @@ const PROMPTS = [
       "angel de la independencia": 45, "tikal": 45, "copan": 65, "lineas de nazca": 25, "sacsayhuaman": 65, "tiwanaku": 85,
       "obelisco de buenos aires": 25, "teatro colon": 45, "casa rosada": 25, "pan de azucar": 25, "maracana": 25, "catedral de sal de zipaquira": 65,
       "gran zimbabue": 85, "leptis magna": 85, "cartago": 45, "anfiteatro de el djem": 85, "mezquita de hassan ii": 45, "uluru": 25,
-      "ayers rock": 45, "baalbek": 85, "gran mezquita de djenne": 100
+      "ayers rock": 45, "baalbek": 85, "gran mezquita de djenne": 100, "guggenheim bilbao": 10, "cibeles": 10, "piramides de guiza": 10,
+      "esfinge de guiza": 25, "versailles": 25, "neuschwanstein": 25, "moais de pascua": 25, "puente de bizkaia": 45, "san juan de gaztelugatxe": 45,
+      "catedral de barcelona": 65, "santa maria del mar": 65, "alcazaba de malaga": 65, "alcazaba de almeria": 65, "castillo de cardona": 65, "castillo de xativa": 65,
+      "palacio real de olite": 65, "monasterio de piedra": 65, "real sitio de aranjuez": 65, "palacio de la granja": 65, "basilica de covadonga": 85, "santuario de aranzazu": 85,
+      "teatro real": 85, "palacio de comunicaciones": 85, "arco de constantino": 85, "manneken pis": 85
     }
   },
   /* ----- Dossier Geografía · Capítulo 2: Geografía Nacional e Ibérica ----- */
@@ -7213,7 +7711,13 @@ const PROMPTS = [
       "puerto de mahon": 45, "bahia de ciudadela": 45, "bahia de san antonio": 45, "bahia de ibiza": 25, "bahia de santa eulalia": 45, "punta de anaga": 45,
       "punta de teno": 25, "cabo de teno": 45, "punta de rasca": 65, "punta de jandia": 25, "jandia": 25, "punta de la entallada": 65,
       "punta del papagayo": 45, "bahia de las palmas": 45, "punta de maspalomas": 45, "bahia de gando": 65, "punta de fuencaliente": 45, "punta de la restinga": 45,
-      "punta de almina": 65, "bahia de ceuta": 45, "bahia de melilla": 45
+      "punta de almina": 65, "bahia de ceuta": 45, "bahia de melilla": 45, "cabo de trafalgar": 10, "cabo peñas": 10, "delta del ebro": 10,
+      "concha": 10, "nao": 25, "tarifa": 25, "punta europa": 25, "cabo toriñana": 25, "cabo vilano": 25,
+      "matxitxako": 25, "cabo higer": 25, "cabo de anaga": 25, "anaga": 25, "cabo teno": 25, "bahia de almeria": 25,
+      "cabo de salou": 45, "san antonio": 45, "cabo roche": 45, "toriñana": 45, "higer": 45, "cabo salinas": 45,
+      "punta orchilla": 45, "ria de a coruña": 45, "ria de guernica": 45, "bahia de san sebastian": 45, "abra": 45, "cabo prioiro": 65,
+      "cabo sillero": 65, "fisterra": 65, "cabo lastres": 65, "higuer": 65, "alfaques": 65, "bahia de mazagon": 85,
+      "bahia de huelva": 85, "bahia de blanes": 85, "bahia de santa cruz": 85
     }
   },
   {
@@ -8055,7 +8559,16 @@ const PROMPTS = [
       "arco musical": 85, "guitarras": 25, "violines": 25, "pianos": 25, "arpas": 25, "bajos": 25,
       "ukeleles": 45, "contrabajos": 45, "violonchelos": 45, "chelos": 45, "laudes": 65, "mandolinas": 65,
       "violas": 45, "banjos": 45, "bandurrias": 65, "timples": 65, "charangos": 65, "citaras": 65,
-      "pipa china": 100
+      "pipa china": 100, "bajo electricos": 10, "bajos electrico": 10, "bajoelectricos": 10, "guitarra electricas": 10, "guitarras electrica": 10,
+      "guitarraelectricas": 10, "guitarra españolas": 10, "guitarras española": 10, "guitarraespañolas": 10, "guitarra acusticas": 10, "guitarras acustica": 10,
+      "guitarraacusticas": 10, "guitarra clasicas": 10, "guitarras clasica": 10, "guitarraclasicas": 10, "violin electrico": 25, "pianoforte": 25,
+      "arpa celta": 25, "ukuleles": 25, "violoncelos": 25, "cellos": 25, "cuerda vocal": 25, "cuerda vocale": 25,
+      "cuerda vocales": 25, "cuerdas vocal": 25, "cuerdas vocale": 25, "cuerdasvocal": 25, "cuerdasvocale": 25, "guitarra flamencas": 25,
+      "guitarra pedal steel": 65, "stick": 65, "octabajo": 65, "guitarras clasicas": 65, "guitarras electricas": 65, "guitarras acusticas": 65,
+      "guitarras españolas": 65, "guitarras flamencas": 65, "bajos electricos": 65, "clavicordios": 65, "clavecines": 65, "espinetas": 65,
+      "liras": 65, "balalaikas": 85, "sitares": 85, "arpas celtas": 85, "arpas paraguayas": 85, "zanfonas": 85,
+      "vihuelas": 85, "salterios": 85, "dobros": 85, "rabeles": 85, "tiorbas": 85, "archilaudes": 85,
+      "bouzoukis": 85, "kotos": 85, "shamisens": 85
     }
   },
   {
@@ -8129,7 +8642,8 @@ const PROMPTS = [
       "duo dinamico": 10, "paloma san basilio": 25, "bertin osborne": 25, "peret": 25, "dellafuente": 25, "maka": 45,
       "rvfv": 25, "omar montes": 10, "morad": 10, "jc reyes": 25, "saiko": 25, "amaia": 25,
       "rusowsky": 45, "sen senra": 45, "judeline": 45, "guitarricadelafuente": 25, "la moda": 45, "derribos arias": 85,
-      "esplendor geometrico": 100, "enrique morente y lagartija nick": 100, "surfin bichos": 100
+      "esplendor geometrico": 100, "enrique morente y lagartija nick": 100, "surfin bichos": 100, "leon benavente": 45, "serrat": 45, "secretos": 45,
+      "tote king": 85, "ana mena": 85, "abraham mateo": 85
     }
   },
   {
@@ -8201,7 +8715,10 @@ const PROMPTS = [
       "melodic death metal": 65, "mathcore": 85, "boom bap": 45, "gangsta rap": 45, "g funk": 65, "conscious rap": 65,
       "jazz rap": 65, "cloud rap": 65, "emo rap": 45, "phonk": 45, "uk drill": 65, "neoperreo": 65,
       "rebetiko": 65, "klezmer": 65, "zydeco": 65, "cajun": 65, "gamelan": 85, "tuareg blues": 85,
-      "cumbia rebajada": 85
+      "cumbia rebajada": 85, "metal": 10, "edm": 10, "rock alternativo": 25, "alternativo": 25, "dnb": 25,
+      "progresivo": 45, "psicodelico": 45, "boombap": 45, "bossa": 45, "pop rock": 45, "gothic rock": 65,
+      "rock gotico": 65, "rap rock": 65, "funk rock": 65, "acid jazz": 85, "chillstep": 85, "future bass": 85,
+      "slap house": 85, "europop": 85, "bubblegum pop": 85, "balkan": 85
     }
   },
   {
@@ -8342,7 +8859,18 @@ const PROMPTS = [
       "pito castellano": 85, "chistu": 65, "acordeon diatonico": 65, "acordeon cromatico": 65, "acordeon de botones": 65, "sheng": 100,
       "clarin": 45, "trompa doble": 65, "trombon tenor": 65, "trombon de varas": 45, "trombon de pistones": 65, "saxo soprano": 45,
       "saxo alto": 25, "saxo tenor": 25, "saxo baritono": 45, "aerofono": 65, "timbal sinfonico": 65, "tabla hindu": 85,
-      "heckelphone": 100, "theremin": 100, "hang drum": 100
+      "heckelphone": 100, "theremin": 100, "hang drum": 100, "flauta traveseras": 10, "flautas travesera": 10, "flauta dulces": 10,
+      "flautas dulce": 10, "tumbadora": 25, "guitarras": 25, "pianos": 25, "violines": 25, "arpas": 25,
+      "bajos": 25, "ukeleles": 25, "violonchelos": 25, "contrabajos": 25, "laudes": 25, "mandolinas": 25,
+      "banjos": 25, "microfonos": 25, "altavoces": 25, "amplificadores": 25, "baqueta": 25, "batutas": 25,
+      "atriles": 25, "partituras": 25, "diapasones": 25, "cuerno": 45, "clave": 45, "palillos": 45,
+      "piccolos": 45, "flautines": 45, "didgeridoos": 45, "corno franc": 45, "corno france": 45, "corno franz": 45,
+      "cornos franc": 45, "cornos france": 45, "cornos frances": 45, "cornos franz": 45, "corno ingl": 45, "corno ingle": 45,
+      "cornos ingl": 45, "cornos ingle": 45, "cornos ingles": 45, "timbale": 45, "charl": 45, "cortina": 65,
+      "bata": 65, "mirliton": 65, "flautas dulces": 65, "flautas traveseras": 65, "cajones flamencos": 65, "triangulos": 65,
+      "fliscornos": 85, "bandoneones": 85, "melodicas": 85, "guiros": 85, "campanas": 85, "carillones": 85,
+      "metalofonos": 85, "handpans": 85, "zambombas": 85, "carracas": 85, "matracas": 85, "silbatos": 85,
+      "pifanos": 85, "tamboriles": 85, "redoblantes": 85
     }
   },
   {
@@ -8406,7 +8934,18 @@ const PROMPTS = [
       "hawaii bombay": 25, "no hay marcha en nueva york": 25, "las chicas son guerreras": 25, "sin aliento": 45, "la senda del tiempo": 45, "cuentame un cuento": 25,
       "corazon de tiza": 45, "rosas en el mar": 45, "libertad sin ira": 25, "canto a la libertad": 25, "l estaca": 45, "la estaca": 45,
       "asturias": 25, "santa barbara bendita": 45, "a rianxeira": 25, "negra sombra": 45, "boig per tu": 25, "lau teilatu": 45,
-      "clavelitos": 25, "soledad": 45, "caminante no hay camino": 65, "el sitio de mi recreo": 65, "asturias patria querida": 100
+      "clavelitos": 25, "soledad": 45, "caminante no hay camino": 65, "el sitio de mi recreo": 65, "asturias patria querida": 100, "danza kuduro": 10,
+      "bilirrubina": 10, "vida es un carnaval": 10, "dios le pido": 10, "gasolina": 25, "limbo": 25, "bomba": 25,
+      "venecia": 25, "la costa del silencio": 25, "la puerta de alcala": 25, "cuando zarpa el amor": 25, "bicicleta": 25, "perdon": 25,
+      "tiburon": 25, "gota fria": 25, "la negra tiene tumbao": 45, "dile": 45, "marta tiene un marcapasos": 45, "vino tinto": 45,
+      "salta": 45, "pajaros de barro": 45, "un ramito de violetas": 45, "amigos para siempre": 45, "noelia": 45, "america america": 45,
+      "beso y una flor": 45, "fin del mundo": 45, "raja de tu falda": 45, "foto en blanco y negro": 45, "madre de jose": 45, "playa": 45,
+      "cantante": 45, "tierra del olvido": 45, "gato en la oscuridad": 45, "saeta": 45, "el rompeolas": 65, "black is black": 65,
+      "soldados del amor": 65, "moriria por vos": 65, "lagrimas de amor": 65, "enamorado de la moda juvenil": 65, "el venao": 65, "y viva españa": 65,
+      "el toro enamorado de la luna": 65, "vereda de la puerta de atras": 65, "casa por el tejado": 65, "chispa adecuada": 65, "quien le importa": 65, "camisa negra": 65,
+      "leyenda del tiempo": 65, "algo de mi": 85, "perdoname": 85, "cartas amarillas": 85, "años 80": 85, "standby": 85,
+      "dolores se llamaba lola": 85, "todo a cien": 85, "alba": 85, "rayo de sol": 85, "baul de los recuerdos": 85, "mujer de verde": 85,
+      "acto": 100, "rockeros van al infierno": 100, "roce de tu cuerpo": 100
     }
   },
   {
@@ -8470,7 +9009,22 @@ const PROMPTS = [
       "masters of hardcore": 65, "parklife": 65, "trnsmt": 65, "boomtown": 65, "all points east": 65, "electric picnic": 65,
       "nos alive": 45, "super bock super rock": 45, "paredes de coura": 65, "meo sudoeste": 65, "boom festival": 65, "neopop": 65,
       "afro nation": 45, "summer sonic": 65, "rock in japan": 85, "splendour in the grass": 85, "mawazine": 85, "osheaga": 85,
-      "reading festival": 65, "monterey pop": 85, "mutek": 100, "unsound": 100, "atonal berlin": 100, "le guess who": 100
+      "reading festival": 65, "monterey pop": 85, "mutek": 100, "unsound": 100, "atonal berlin": 100, "le guess who": 100,
+      "brunch electronik": 25, "z live": 25, "canela party": 25, "santander music": 25, "montreux jazz": 25, "rock fest barcelona": 45,
+      "a summer story": 45, "share festival": 45, "regueton beach festival": 45, "primavera sound porto": 45, "festival de los sentidos": 45, "palencia sonora": 45,
+      "alhambra sound": 45, "bull music festival": 45, "paraiso": 45, "mediterranea festival": 45, "spring festival": 45, "z live rock": 45,
+      "bime bilbao": 45, "shikillo festival": 45, "polar sound": 45, "fiz": 45, "sonidos liquidos": 45, "ehz": 65,
+      "gazpatxo rock": 65, "fan futura": 65, "sonic": 65, "sonica": 65, "sonar by day": 65, "sonar by night": 65,
+      "brunch in the park": 65, "emdiv music": 65, "barcia metal fest": 65, "slap festival": 65, "lagata reggae": 65, "heineken jazzaldia": 65,
+      "festival de pedralbes": 65, "solazo fest": 65, "sonrias baixas": 65, "castañazo rock": 65, "mundaka festival": 65, "outside lands": 65,
+      "bottlerock": 65, "tomorrowland winter": 65, "tomorrowland brasil": 65, "north sea jazz": 65, "main square": 65, "solidays": 65,
+      "nuits sonores": 65, "gigante": 85, "festival gigante": 85, "ezcaray fest": 85, "andalucia big festival": 85, "primavera": 85,
+      "fib benicassim": 85, "leyendas": 85, "aupa": 85, "low cost": 85, "sos 48": 85, "elrow town": 85,
+      "graspop metal meeting": 85, "sonisphere": 85, "tomorrowland belgium": 85, "sonus": 85, "hideout": 85, "dimensions": 85,
+      "outlook": 85, "dgtl": 85, "lollapalooza berlin": 85, "hurricane": 85, "melt": 85, "falls festival": 85,
+      "creamfields uk": 85, "green man": 85, "latitude": 85, "t in the park": 85, "bst hyde park": 85, "oyafestivalen": 85,
+      "way out west": 85, "flow festival": 85, "off festival": 85, "opener": 85, "colours of ostrava": 85, "pohoda": 85,
+      "nos primavera sound": 85
     }
   },
   {
@@ -8918,7 +9472,21 @@ const PROMPTS = [
       "monster magnet": 100, "clutch": 100, "eyehategod": 100, "crowbar": 100, "down": 100, "corrosion of conformity": 100,
       "dri": 100, "nuclear assault": 100, "sacred reich": 100, "forbidden": 100, "dark angel": 100, "death angel": 100,
       "flotsam and jetsam": 100, "metal church": 100, "crimson glory": 100, "savatage": 100, "queensryche": 100, "fates warning": 100,
-      "watchtower": 100
+      "watchtower": 100, "heroes del silencio": 10, "deftones": 25, "angeles del infierno": 25, "la fuga": 25, "queens of the stone age": 25,
+      "royal blood": 25, "maneskin": 25, "greta van fleet": 25, "nine inch nails": 25, "nin": 25, "ministry": 25,
+      "papa roach": 25, "alter bridge": 25, "creed": 25, "volbeat": 25, "halestorm": 25, "the pretty reckless": 25,
+      "rise against": 45, "municipal waste": 45, "vita imana": 45, "skunk df": 45, "hora zulu": 45, "dark moor": 45,
+      "opera magna": 45, "dunedain": 45, "zenobia": 45, "angra": 45, "delain": 45, "lacuna coil": 45,
+      "jinjer": 45, "spiritbox": 45, "sleep token": 45, "bad omens": 45, "babymetal": 65, "motionless in white": 65,
+      "ice nine kills": 65, "beartooth": 65, "i prevail": 65, "falling in reverse": 65, "pierce the veil": 65, "asking alexandria": 65,
+      "enter shikari": 65, "qotsa": 65, "fu manchu": 65, "my dying bride": 65, "paradise lost": 65, "anathema": 65,
+      "katatonia": 65, "type o negative": 65, "danzig": 65, "fear factory": 65, "static x": 65, "coal chamber": 65,
+      "mudvayne": 65, "godsmack": 65, "seether": 65, "three days grace": 65, "breaking benjamin": 65, "skillet": 65,
+      "shinedown": 65, "steel panther": 65, "in this moment": 65, "airbourne": 65, "dark tranquillity": 85, "riot": 85,
+      "alestorm": 85, "korpiklaani": 85, "eluveitie": 85, "ensiferum": 85, "wintersun": 85, "turisas": 85,
+      "finntroll": 85, "soilwork": 85, "entombed": 85, "suffocation": 85, "nile": 85, "gorgoroth": 85,
+      "satyricon": 85, "enslaved": 85, "ulver": 85, "agalloch": 85, "alcest": 85, "havok": 85,
+      "warbringer": 85, "latzen": 85, "elbereth": 85
     }
   },
   {
@@ -9146,7 +9714,14 @@ const PROMPTS = [
       "octava justa": 45, "novena": 65, "decima": 65, "tono": 10, "semitono": 25, "enarmonia": 65,
       "acorde": 10, "triada": 25, "acorde mayor": 25, "acorde menor": 25, "acorde disminuido": 45, "acorde aumentado": 45,
       "acorde de septima": 25, "inversion": 45, "modulacion": 45, "transposicion": 45, "tesitura": 25, "registro": 25,
-      "afinacion": 10, "diapason": 25, "acciacatura": 100, "pizzicato bartok": 100
+      "afinacion": 10, "diapason": 25, "acciacatura": 100, "pizzicato bartok": 100, "ritmo": 10, "armonia": 10,
+      "melodia": 10, "metronomo": 10, "polifonia": 25, "monodia": 45, "pentagramas": 45, "compases": 45,
+      "negras": 45, "blancas": 45, "redondas": 45, "fusas": 45, "semifusas": 45, "silencios": 45,
+      "sostenidos": 45, "bemoles": 45, "becuadros": 45, "armaduras": 45, "arpegios": 45, "acordes": 45,
+      "triadas": 45, "intervalos": 45, "octavas": 45, "cadencias": 45, "trinos": 45, "calderones": 45,
+      "ligaduras": 45, "puntillos": 45, "tresillos": 45, "sincopas": 45, "diapasones": 65, "metronomos": 65,
+      "tempos": 65, "modalidad": 65, "disonancia": 65, "consonancia": 65, "enharmonia": 85, "falsete": 85,
+      "bel canto": 85, "tessitura": 85, "timbre": 85
     }
   },
   {
@@ -9216,7 +9791,12 @@ const PROMPTS = [
       "de un pais en llamas": 100, "veneno": 100, "blues de la frontera": 100, "echate un cantecito": 100, "la taberna del buda": 100, "besos de perro": 100,
       "a palos con el mundo": 100, "malas noticias": 100, "corazon de neon": 100, "al calor de tu hogar": 100, "a por ellos que son pocos y cobardes": 100, "no quiero irme a dormir": 100,
       "el canto del loco": 100, "a contracorriente": 100, "estados de animo el canto del loco": 100, "dile al sol": 100, "un viaje en el tiempo": 100, "la mujer de verde": 100,
-      "magia y efectos especiales": 100, "puedes contar conmigo": 100, "la vida moderna": 100, "el manual de la felicidad": 100, "la verdad": 100, "el fin del mundo": 100
+      "magia y efectos especiales": 100, "puedes contar conmigo": 100, "la vida moderna": 100, "el manual de la felicidad": 100, "la verdad": 100, "el fin del mundo": 100,
+      "sgt peppers": 10, "wall": 10, "mal querer": 10, "verano sin ti": 10, "leyenda del tiempo": 10, "madrileño": 10,
+      "highway to hell": 25, "animals": 25, "white album": 25, "vs": 45, "la calle es tuya": 45, "grace": 45,
+      "darkness on the edge of town": 65, "kind of blue": 65, "a love supreme": 65, "bitches brew": 65, "hunky dory": 85, "scary monsters": 85,
+      "power corruption and lies": 85, "loveless": 85, "funeral": 85, "in the aeroplane over the sea": 85, "kid amnesiac": 85, "channel orange": 85,
+      "blonde": 85, "donda": 85, "el dorado": 85
     }
   },
   {
@@ -9279,7 +9859,27 @@ const PROMPTS = [
       "florida georgia line": 65, "dan and shay": 65, "outkast": 25, "mobb deep": 45, "eric b and rakim": 65, "run dmc": 25,
       "rae sremmurd": 45, "migos": 25, "suicideboys": 45, "city girls": 65, "tatu": 25, "icona pop": 45,
       "lmfao": 25, "cocteau twins": 65, "the jesus and mary chain": 45, "jesus and mary chain": 45, "inxs": 25, "hermanos farriss": 85,
-      "crowded house": 45, "split enz": 85, "hermanos finn": 100, "hermanos reyes": 100
+      "crowded house": 45, "split enz": 85, "hermanos finn": 100, "hermanos reyes": 100, "greta van fleet": 25, "al bano y romina power": 25,
+      "sonny y cher": 25, "ub40": 25, "the chicks": 25, "dixie chicks": 25, "los morancos": 25, "los romeros": 25,
+      "the romeros": 25, "spandau ballet": 45, "the breeders": 45, "sparks": 45, "the osmonds": 45, "osmonds": 45,
+      "allman brothers band": 45, "the allman brothers": 45, "the kelly family": 45, "kelly family": 45, "nacha pop": 45, "el canto del loco": 45,
+      "sidecars": 45, "tanxugueiras": 45, "angus y julia stone": 45, "the cribs": 45, "lamb of god": 45, "the shangri las": 45,
+      "andrews sisters": 45, "the andrews sisters": 45, "mills brothers": 45, "the mills brothers": 45, "carter family": 45, "the carter family": 45,
+      "jodeci": 45, "finn brothers": 45, "the b 52s": 45, "b 52s": 45, "virus": 45, "babasonicos": 45,
+      "los temerarios": 45, "los acosta": 45, "pedro y javier herrero": 45, "dani y jesus oviedo": 45, "lucia y joaquin galan": 45, "lola y rosario flores": 45,
+      "billie eilish y finneas": 65, "finneas y billie eilish": 65, "the warning": 65, "ibeyi": 65, "chloe x halle": 65, "cavalera conspiracy": 65,
+      "devo": 65, "sly and the family stone": 65, "no doubt": 65, "paramore": 65, "lynyrd skynyrd": 65, "las supremas de mostoles": 65,
+      "aly y aj": 65, "all saints": 65, "jedward": 65, "hermanos rigual": 65, "los hermanos rigual": 65, "los tres reyes": 65,
+      "cimorelli": 65, "the band perry": 65, "the judds": 65, "the staple singers": 65, "staple singers": 65, "the winans": 65,
+      "the clark sisters": 65, "beverly sisters": 65, "boswell sisters": 65, "the ames brothers": 65, "the mcguire sisters": 65, "the lennon sisters": 65,
+      "the cowsills": 65, "louvin brothers": 65, "the louvin brothers": 65, "stanley brothers": 65, "the stanley brothers": 65, "osborne brothers": 65,
+      "the magic numbers": 65, "the fiery furnaces": 65, "throwing muses": 65, "the easybeats": 65, "ziggy marley and the melody makers": 65, "morgan heritage": 65,
+      "the gap band": 65, "kool and the gang": 85, "earth wind and fire": 85, "the sylvers": 85, "debarge": 85, "the emotions": 85,
+      "the braxtons": 85, "braxtons": 85, "mary mary": 85, "k ci and jojo": 85, "b witched": 85, "the moffatts": 85,
+      "nat and alex wolff": 85, "the osmond brothers": 85, "banda el recodo": 85, "la barberia del sur": 85, "the shires": 85, "xscape": 85,
+      "donny and marie osmond": 85, "enrique y estrella morente": 85, "pepe y juan habichuela": 85, "rosario y lolita": 85, "antonio y juan carmona": 85, "jesse y joy huerta": 85,
+      "hanna y ashley": 85, "los aguilar": 85, "pepe y angela aguilar": 85, "los humildes": 85, "los caminantes": 85, "the jackson five": 85,
+      "ike y tina turner": 85, "tim y neil finn": 85, "kabah": 85
     }
   },
   {
@@ -9344,7 +9944,26 @@ const PROMPTS = [
       "angelillo": 100, "el niño de cabra": 100, "cayetano muriel": 100, "sebastian muñoz el pena": 100, "el pena": 100, "el mochuelo": 100,
       "juan breva de velez": 100, "antonio el de la calzada": 100, "manuel torre": 100, "niño de gloria": 100, "el gloria": 100, "la sorda": 100,
       "tio jose de paula": 100, "el borrico": 100, "curro mairena": 100, "manuel centeno": 100, "el carbonerillo": 100, "paco mazaco": 100,
-      "el americano": 100
+      "el americano": 100, "diego el cigala": 10, "el cigala": 10, "antonio el bailarin": 25, "antonio ruiz soler": 25, "la niña de la puebla": 25,
+      "niña de la puebla": 25, "dolores vargas": 25, "el principe gitano": 25, "calixto sanchez": 25, "naranjito de triana": 25, "chano dominguez": 25,
+      "antonio montoya farruco": 25, "rafael amargo": 25, "jesus carmona": 25, "manuel liñan": 25, "olga pericet": 25, "patricia guerrero": 25,
+      "marco flores": 25, "rafael farina": 45, "farina": 45, "manuel vallejo": 45, "chocolate": 45, "diego carrasco": 45,
+      "serranito": 45, "maria pages": 45, "planeta": 45, "manuel escacena": 45, "juana la macarrona": 45, "la terremoto": 45,
+      "el flecha de cadiz": 45, "el chaqueta": 45, "rafael romero": 45, "jose soto sordera": 45, "terremoto hijo": 45, "enrique montoya": 45,
+      "pepe de la matrona": 45, "el pali": 45, "tomas el nitri": 45, "el nitri": 45, "niño miguel": 45, "pedro bacan": 45,
+      "el zambo": 45, "la piriñaca": 45, "montse cortes": 45, "la tana": 45, "sandra carrasco": 45, "argentina": 45,
+      "belen maya": 45, "joaquin grilo": 45, "javier baron": 45, "javier latorre": 45, "andres marin": 45, "antonio el pipa": 45,
+      "juana amaya": 45, "pastora galvan": 45, "manolo marin": 45, "aurelio selles": 65, "victor monge serranito": 65, "blanca del rey": 65,
+      "el turronero": 65, "la andonda": 65, "curro dulci": 65, "paquirri el guante": 65, "paca aguilera": 65, "la mejorana": 65,
+      "rosario": 65, "florencio ruiz lara": 65, "tio gregorio": 65, "tio sordera": 65, "enrique soto": 65, "jacinto almaden": 65,
+      "chato de la isla": 65, "alonso nuñez": 65, "el titi": 65, "agujetas hijo": 65, "diego agujetas": 65, "antonio agujetas": 65,
+      "dolores agujetas": 65, "roque montoya": 65, "jarrito": 65, "santiago lara": 65, "rycardo moreno": 65, "joselito acedo": 65,
+      "paco de antequera": 65, "miguel vega de la cruz": 65, "diego de los santos": 65, "el rubichi": 65, "juana la del pipa": 65, "tio juane": 65,
+      "tia anica la piriñaca": 65, "antonio montoya": 65, "el farru": 65, "barullo": 65, "rafael campallo": 65, "adela campallo": 65,
+      "alfonso losa": 65, "el yiyo": 65, "angelita vargas": 65, "la singla": 65, "antonia la singla": 65, "curro velez": 65,
+      "el mistela": 65, "juanito villar": 85, "maria jose llergo": 85, "miguel ochando": 85, "tio luis el de la juliana": 85, "tio jose el granaino": 85,
+      "curro durse": 85, "antonia gallardo": 85, "la rubia": 85, "luisa buton": 85, "rafael el tuerto": 85, "titi de triana": 85,
+      "maria la marrurra": 85, "chico perez": 85, "enrique vargas el principe": 85, "el grilo": 85
     }
   },
   {
@@ -9486,7 +10105,16 @@ const PROMPTS = [
       "the shamen": 65, "the klf": 45, "klf": 65, "enter shikari": 65, "bring me the horizon": 45, "bullet for my valentine": 45,
       "cradle of filth": 65, "dragonforce": 65, "tubeway army": 85, "the seahorses": 85, "the divine comedy": 65, "moloko": 65,
       "lamb": 85, "jesus jones": 65, "pop will eat itself": 100, "neds atomic dustbin": 100, "wonder stuff": 100, "bolt thrower": 100,
-      "angel witch": 100, "arab strap": 100
+      "angel witch": 100, "arab strap": 100, "snow patrol": 25, "the communards": 25, "the style council": 25, "style council": 25,
+      "big country": 25, "talk talk": 45, "the spencer davis group": 45, "soft machine": 45, "ash": 45, "shed seven": 45,
+      "beautiful south": 45, "cast": 65, "gong": 65, "barclay james harvest": 65, "the tremeloes": 65, "showaddywaddy": 65,
+      "stiff little fingers": 65, "the undertones": 65, "fields of the nephilim": 65, "love and rockets": 65, "the pastels": 65, "athlete": 65,
+      "the view": 65, "mansun": 65, "the boo radleys": 65, "black grape": 65, "electronic": 65, "the the": 65,
+      "blancmange": 65, "shakespears sister": 65, "the chameleons": 65, "sigue sigue sputnik": 85, "adam and the ants": 85, "elvis costello and the attractions": 85,
+      "999": 85, "the pigeon detectives": 85, "gene": 85, "longpigs": 85, "terrorvision": 85, "the wonder stuff": 85,
+      "carter usm": 85, "the la s": 85, "monaco": 85, "blow monkeys": 85, "curiosity killed the cat": 85, "hue and cry": 85,
+      "hipsway": 85, "lloyd cole and the commotions": 85, "echo the bunnymen": 85, "the house of love": 85, "catherine wheel": 85, "pale saints": 85,
+      "chapterhouse": 85, "swervedriver": 85, "spacemen 3": 85
     }
   },
 
@@ -9715,7 +10343,19 @@ const PROMPTS = [
       "fade to silence": 85, "impact winter": 85, "the wild eight": 85, "distrust": 85, "60 seconds": 45, "60 parsecs": 65,
       "mr prepper": 65, "organ trail": 85, "death road to canada": 65, "zombie night terror": 85, "lollipop chainsaw": 45, "shadows of the damned": 65,
       "house of the dead": 45, "the house of the dead": 45, "zombies ate my neighbors": 65, "dead nation": 65, "helldivers": 45, "helldivers 2": 25,
-      "deep rock galactic": 45, "warhammer vermintide": 65, "vermintide 2": 45, "darktide": 65
+      "deep rock galactic": 45, "warhammer vermintide": 65, "vermintide 2": 45, "darktide": 65, "last of us 2": 10, "last of us parte 2": 10,
+      "the callisto protocol": 25, "world war z aftermath": 25, "forest": 25, "last of us part ii": 25, "division": 25, "callisto protocol": 25,
+      "seven days to die": 45, "the last of us part i": 45, "the last of us remastered": 45, "the walking dead season 2": 45, "surviving mars": 45, "banished": 45,
+      "stalker 2 heart of chernobyl": 45, "last day on earth": 45, "long dark": 45, "flame in the flood": 45, "evil within": 45, "evil within 2": 45,
+      "outlast trials": 45, "division 2": 45, "day before": 45, "zombiu": 65, "lisa the painful": 65, "neo scavenger": 65,
+      "sesenta segundos": 65, "endzone": 65, "overkills the walking dead": 65, "walking dead saints and sinners": 65, "enslaved odyssey to the west": 65, "code vein": 65,
+      "the long dark wintermute": 65, "stranded alien dawn": 65, "h1z1 just survive": 65, "escape from tarkov": 65, "vigor": 65, "day r survival": 65,
+      "last day on earth survival": 65, "dead trigger": 65, "dead trigger 2": 65, "zombie tsunami": 65, "sniper elite nazi zombie army": 65, "signalis": 65,
+      "tormented souls": 65, "the walking dead telltale": 85, "decaying winter": 85, "infection free zone": 85, "infestation": 85, "stubbs": 85,
+      "state of decay juggernaut edition": 85, "parasite eve": 85, "dino crisis": 85, "fear": 85, "sunkenland": 85, "green hell vr": 85,
+      "we happy few": 85, "pathologic": 85, "pathologic 2": 85, "caves of qud": 85, "smalland survive the wilds": 85, "dune awakening": 85,
+      "dread hunger": 85, "windbound": 85, "frostborn": 85, "grim soul": 85, "dead target": 85, "zombie frontier": 85,
+      "infected": 85, "front": 85, "wild eight": 85
     }
   },
   {
@@ -9781,7 +10421,16 @@ const PROMPTS = [
       "judiones": 45, "judiones de la granja": 45, "fabes con jabali": 65, "fabes con perdiz": 65, "fabes con centollo": 65, "pochas con almejas": 65,
       "pochas con codornices": 65, "pochas a la navarra": 45, "pochas estofadas": 45, "pochas": 45, "garbanzos con bacalao": 45, "garbanzos con callos": 45,
       "garbanzos con langostinos": 65, "garbanzos con chocos": 45, "garbanzos con acelgas": 45, "michirones": 65, "olla aranesa": 65, "olleta": 65,
-      "olleta alicantina": 65, "olla churra": 85, "olla de san anton": 85, "arroz caldoso con bogavante": 25, "arroz meloso": 45, "arros brut": 65
+      "olleta alicantina": 65, "olla churra": 85, "olla de san anton": 85, "arroz caldoso con bogavante": 25, "arroz meloso": 45, "arros brut": 65,
+      "lenteja": 10, "cocido madrileños": 10, "cocidos madrileño": 10, "cocidos madrileños": 10, "fabada asturianas": 10, "fabadas asturiana": 10,
+      "fabadas asturianas": 10, "pucheros": 10, "sopa de fideo": 10, "sopas de fideos": 10, "gazpachos": 10, "salmorejos": 10,
+      "lenteja con chorizo": 10, "lentejas con chorizos": 10, "paellas": 10, "ajo blanco": 25, "carrilleras al vino tinto": 25, "pisto manchego": 25,
+      "pote gallegos": 25, "potes gallego": 25, "potes gallegos": 25, "menestras": 25, "porrusaldas": 25, "gacha": 25,
+      "miga": 25, "ajoarrieros": 25, "sopa castellanas": 25, "sopas castellana": 25, "sopas castellanas": 25, "judias pintas": 45,
+      "caldereta asturiana": 45, "berza gitana": 45, "patatas revolconas": 45, "patatas meneas": 45, "cordero en chilindron": 45, "menestra de verduras": 45,
+      "arroz con almejas": 45, "galianos": 65, "rancho": 65, "pringa": 65, "guiso de carne": 65, "judias blancas": 65,
+      "habichuelas con chorizo": 65, "potajes": 85, "cocidos": 85, "guisos": 85, "sopas": 85, "estofados": 85,
+      "caldos": 85, "fabadas": 85, "calderetas": 85
     }
   },
   {
@@ -9843,7 +10492,20 @@ const PROMPTS = [
       "boyero de flandes": 65, "boyero australiano": 45, "kelpie": 65, "kelpie australiano": 65, "corgi": 25, "cavalier": 45,
       "perro de san huberto": 65, "perro lobo": 45, "carea leones": 65, "pastor leones": 65, "mastin del tibet": 65, "pomsky": 45,
       "maltipoo": 45, "goldendoodle": 45, "labradoodle": 45, "cockapoo": 45, "cavapoo": 65, "puggle": 65,
-      "chorkie": 85
+      "chorkie": 85, "pastor alemanes": 10, "pastores aleman": 10, "pastores alemanes": 10, "labradores": 10, "golden retrieveres": 10,
+      "goldenes retriever": 10, "goldenes retrieveres": 10, "chihuahuas": 10, "caniches": 10, "yorkshires": 10, "boxeres": 10,
+      "pitbulles": 10, "rottweileres": 10, "galgos": 10, "malamute de alaska": 25, "perro de aguas español": 25, "american staffordshire": 25,
+      "podencos": 25, "mastin españoles": 25, "mastines español": 25, "mastines españoles": 25, "alano españoles": 25, "alanos español": 25,
+      "alanos españoles": 25, "perro de agua españoles": 25, "perros de agua español": 25, "bodeguero andaluces": 25, "bodegueros andaluces": 25, "bodegueros andaluz": 25,
+      "mastin del pirineos": 25, "mastines del pirineo": 25, "dobermanes": 25, "border collies": 25, "borderes collie": 25, "borderes collies": 25,
+      "beagles": 25, "teckeles": 25, "carlinos": 25, "shiba inus": 25, "shibas inu": 25, "akitas": 25,
+      "dalmatas": 25, "gran dan": 25, "gran dane": 25, "granes dan": 25, "granes dane": 25, "granes danes": 25,
+      "san bernardos": 25, "terranovas": 25, "samoyedos": 25, "lhasa apsos": 25, "cavalier king charles": 45, "rough collie": 45,
+      "pastor de shetland": 45, "westy": 45, "lebrel afgano": 65, "antiguo pastor ingles": 65, "pastor caucasico": 65, "corgi gales": 65,
+      "ratonero bodeguero": 65, "gos d atura": 65, "pastor vasco": 65, "palleiro": 85, "villano de las encartaciones": 85, "anatolian shepherd": 85,
+      "barbet": 85, "borador": 85, "brussels griffon": 85, "chesapeake bay retriever": 85, "fila brasileiro": 85, "griffon de bruselas": 85,
+      "hokkaido": 85, "irish wolfhound": 85, "kai ken": 85, "lagotto romagnolo": 85, "pharaoh hound": 85, "silky terrier": 85,
+      "tibetan spaniel": 85, "tibetan terrier": 85, "vizsla hungaro": 85
     }
   },
   {
@@ -9910,7 +10572,15 @@ const PROMPTS = [
       "botines chelsea": 45, "chelsea": 45, "desert boots": 65, "pisacacas": 45, "pisamierdas": 45, "carapijos": 85,
       "zapatilla": 25, "deportiva": 25, "playera": 45, "bamba": 45, "babucha": 45, "zueco": 45,
       "bailarina": 45, "manoletina": 45, "mercedita": 65, "salon": 45, "zapato de salon": 45, "destalonado": 65,
-      "cuñas": 45, "zapatos de cuña": 45
+      "cuñas": 45, "zapatos de cuña": 45, "gorra": 10, "camisetas": 10, "camisas": 10, "sudaderas": 10,
+      "smoking": 25, "stilettos": 45, "zapatillas de casa": 45, "abrigos": 45, "chaquetas": 45, "cazadoras": 45,
+      "gabardinas": 45, "chubasqueros": 45, "parkas": 45, "chalecos": 45, "americanas": 45, "trajes": 45,
+      "faldas": 45, "minifaldas": 45, "vestidos": 45, "monos": 45, "petos": 45, "polos": 45,
+      "blusas": 45, "pijamas": 45, "batas": 45, "albornoces": 45, "media": 65, "leotardo": 65,
+      "sujetadores": 65, "bikinis": 65, "tacon": 65, "pantufla": 65, "bufandas": 65, "pañuelos": 65,
+      "fulares": 65, "gorros": 65, "gorras": 65, "sombreros": 65, "boinas": 65, "cinturones": 65,
+      "corbatas": 65, "pajaritas": 65, "plumiferos": 85, "rebecas": 85, "cardigans": 85, "ponchos": 85,
+      "anoraks": 85, "tangas": 85, "espardeñas": 85
     }
   },
   {
