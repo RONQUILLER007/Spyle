@@ -4970,7 +4970,67 @@ function filtrarYOrdenarAuditor() {
   });
 }
 
+function obtenerMaxDiaConfigurado() {
+  if (typeof DAILY_MISSIONS === "undefined" || !DAILY_MISSIONS) return 1;
+  const promptById = new Map(
+    (typeof PROMPTS !== "undefined" && Array.isArray(PROMPTS) ? PROMPTS : []).map((p) => [p.id, p])
+  );
+  const diasCompletosSet = new Set();
+  const todosDiasNumericos = [];
+
+  for (const [key, mission] of Object.entries(DAILY_MISSIONS)) {
+    const match = String(key).match(/^(?:dia_?)?(\d+)$/i);
+    const keyNum = match ? Number(match[1]) : NaN;
+    const diaNum = (mission && typeof mission.dia === "number" && mission.dia > 0)
+      ? Math.floor(mission.dia)
+      : (Number.isFinite(keyNum) && keyNum > 0 ? Math.floor(keyNum) : NaN);
+
+    if (!Number.isFinite(diaNum) || diaNum <= 0) continue;
+    todosDiasNumericos.push(diaNum);
+
+    if (mission && Array.isArray(mission.prompts) && mission.prompts.length >= ROUNDS) {
+      const sonCompletas = mission.prompts.slice(0, ROUNDS).every((pid) => {
+        const pObj = promptById.get(pid);
+        return pObj && esCategoriaCompleta(pObj);
+      });
+      if (sonCompletas) {
+        diasCompletosSet.add(diaNum);
+      }
+    }
+  }
+
+  if (diasCompletosSet.size > 0) return Math.max(...diasCompletosSet);
+  if (todosDiasNumericos.length > 0) return Math.max(...todosDiasNumericos);
+  return 1;
+}
+
+function actualizarEtiquetasAuditor(totalExpedientes = null) {
+  const total = typeof totalExpedientes === "number"
+    ? totalExpedientes
+    : (typeof PROMPTS !== "undefined"
+      ? (Array.isArray(PROMPTS) ? PROMPTS.length : Object.keys(PROMPTS).length)
+      : 0);
+
+  const densitySelect = $("audit-density");
+  if (densitySelect) {
+    const optTodas = densitySelect.querySelector('option[value="todas"]');
+    if (optTodas) optTodas.textContent = `Todas (${total})`;
+  }
+
+  const maxDia = obtenerMaxDiaConfigurado();
+  const maxDiaFmt = String(maxDia).padStart(2, "0");
+  const sortSelect = $("audit-sort");
+  if (sortSelect) {
+    const optAsc = sortSelect.querySelector('option[value="dia-asc"]');
+    const optDesc = sortSelect.querySelector('option[value="dia-desc"]');
+    if (optAsc) optAsc.textContent = `Día (01 ➔ ${maxDiaFmt})`;
+    if (optDesc) optDesc.textContent = `Día (${maxDiaFmt} ➔ 01)`;
+  }
+}
+
 function initAuditControls() {
+  actualizarEtiquetasAuditor();
+
   const sortSelect = $("audit-sort");
   const densitySelect = $("audit-density");
   const themeSelect = $("audit-theme");
@@ -5008,6 +5068,7 @@ function renderDevAudit() {
 
   const bancoCategorias = auditPrompts();
   const totalExpedientes = bancoCategorias.length;
+  actualizarEtiquetasAuditor(totalExpedientes);
   const diasCompletos = Math.floor(totalExpedientes / ROUNDS);
   const count = (l) => bancoCategorias.filter((a) => a.light === l).length;
 
@@ -5049,6 +5110,7 @@ sound.updateButton();
 setJudgeSeal("idle");
 refreshMenu();
 updateTelemetry(0, 0);
+actualizarEtiquetasAuditor();
 
 // Navegación al Calendario Histórico
 const btnArchivoHistorico = $("btn-archivo-historico") || $("btn-calendar");
