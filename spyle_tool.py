@@ -3,9 +3,9 @@
 """
 spyle_tool.py — Herramienta CLI oficial y reutilizable para gestionar `prompts.js` en Spyle.
 
-Escala oficial de densidad (MIN_ACTIVE_WORDS = 250):
-  - 🟢 Completo (>= 250 palabras): Categoria activa en todos los modos de juego.
-  - 🟡 Intermedio (130 - 249 palabras): Avanzada en desarrollo.
+Escala oficial de densidad (MIN_ACTIVE_WORDS = 400):
+  - 🟢 Completo (>= 400 palabras): Categoria activa en todos los modos de juego.
+  - 🟡 Intermedio (130 - 399 palabras): Avanzada en desarrollo.
   - 🔴 Baja (50 - 129 palabras): Base inicial insuficiente.
   - ⚪ Critica / Vacia (0 - 49 palabras): Sin poblar o en esqueleto.
 
@@ -48,7 +48,7 @@ if hasattr(sys.stdout, "reconfigure"):
         pass
 
 VALID_SCORES = {10, 25, 45, 65, 85, 100}
-MIN_ACTIVE_WORDS = 250
+MIN_ACTIVE_WORDS = 400
 MAX_BACKUPS = 10
 
 
@@ -554,9 +554,9 @@ def resolve_category(cats_by_id, cats_by_title, key):
 
 
 def print_summary_table(rows):
-    """Imprime tabla resumen: Categoria | Añadidas | Omitidas (duplicadas) | Total actual | Estado (>=250)."""
+    """Imprime tabla resumen: Categoria | Añadidas | Omitidas (duplicadas) | Total actual | Estado (>=400)."""
     print("\n" + "=" * 96)
-    print(f"{'Categoria':<48} | {'Añadidas':>8} | {'Omitidas':>8} | {'Total':>6} | {'Estado (>=250)'}")
+    print(f"{'Categoria':<48} | {'Añadidas':>8} | {'Omitidas':>8} | {'Total':>6} | {'Estado (>=' + str(MIN_ACTIVE_WORDS) + ')'}")
     print("-" * 96)
     for r in rows:
         label = f"{r['id']} - {r['texto']}"
@@ -564,13 +564,13 @@ def print_summary_table(rows):
             label = label[:44] + "..."
         t = r["total"]
         if t >= MIN_ACTIVE_WORDS:
-            estado = "🟢 COMPLETO (>=250)"
+            estado = f"🟢 COMPLETO (>={MIN_ACTIVE_WORDS})"
         elif t >= 130:
-            estado = f"🟡 INTERMEDIO ({t}/250)"
+            estado = f"🟡 INTERMEDIO ({t}/{MIN_ACTIVE_WORDS})"
         elif t >= 50:
-            estado = f"🔴 BAJA ({t}/250)"
+            estado = f"🔴 BAJA ({t}/{MIN_ACTIVE_WORDS})"
         else:
-            estado = f"⚪ CRITICA/VACIA ({t}/250)"
+            estado = f"⚪ CRITICA/VACIA ({t}/{MIN_ACTIVE_WORDS})"
         print(f"{label:<48} | {r['added']:>8} | {r['skipped']:>8} | {r['total']:>6} | {estado}")
     print("=" * 96)
 
@@ -1415,7 +1415,7 @@ def cmd_sheets(args):
 def cmd_auditar(args):
     """
     Audita el banco de categorias (`prompts.js`) y la sintaxis de `prompts.js` / `app.js`:
-      - Escala oficial de 4 niveles (MIN_ACTIVE_WORDS = 250).
+      - Escala oficial de 4 niveles (MIN_ACTIVE_WORDS = 400).
       - Unicidad de IDs en PROMPTS, integridad de DAILY_MISSIONS, validez de {10,25,45,65,85,100}
         y ausencia de claves vacias.
       - Equilibrio de dificultad (tramos 10 pts y 100 pts en todas las categorias completas).
@@ -1476,7 +1476,7 @@ def cmd_auditar(args):
     print(f"AUDITORIA GLOBAL DE PROMPTS ({len(cats)} categorias totales)")
     print("=" * 72)
     print(f"  🟢 Completo / Activo (>= {MIN_ACTIVE_WORDS} palabras) : {len(activas)}")
-    print(f"  🟡 Intermedio (130 - 249)               : {len(amarillas)}")
+    print(f"  🟡 Intermedio (130 - {MIN_ACTIVE_WORDS - 1})               : {len(amarillas)}")
     print(f"  🔴 Baja (50 - 129)                      : {len(rojas)}")
     print(f"  ⚪ Critica / Vacia (0 - 49)             : {len(vacias)}")
 
@@ -1517,7 +1517,7 @@ def cmd_auditar(args):
 
     counts = [len(c["pairs"]) for c in cats]
     total_words = sum(counts)
-    under_255 = [(c["id"], len(c["pairs"])) for c in cats if len(c["pairs"]) < 255]
+    under_min = [(c["id"], len(c["pairs"])) for c in cats if len(c["pairs"]) < MIN_ACTIVE_WORDS]
     over_400 = sum(1 for c in cats if len(c["pairs"]) >= 400)
     min_words = min(counts, default=0)
     max_words = max(counts, default=0)
@@ -1529,7 +1529,7 @@ def cmd_auditar(args):
     print(f"  - Referencias huerfanas diarias : {'0 (OK)' if not missing_daily_ids else f'ALERTA: {missing_daily_ids}'}")
     print(f"  - Dias consecutivos repetidos   : {'0 (OK)' if not consecutive_dups else f'ALERTA: {consecutive_dups}'}")
     print(f"  - Dias clonados entre jornadas  : {'0 (OK)' if not cloned_days else f'ALERTA: {cloned_days}'}")
-    print(f"  - Categorias con < 255 palabras : {'0 (OK)' if not under_255 else f'AVISO: {len(under_255)} ({under_255[:5]})'} (min: {min_words} | media: {avg_words:.2f} | max: {max_words} | total: {total_words})")
+    print(f"  - Categorias con < {MIN_ACTIVE_WORDS} palabras : {'0 (OK)' if not under_min else f'AVISO: {len(under_min)} ({under_min[:5]})'} (min: {min_words} | media: {avg_words:.2f} | max: {max_words} | total: {total_words})")
     print(f"  - Categorias con >= 400 palabras: {over_400}/{len(cats)}")
     print(f"  - Puntuaciones fuera de escala  : {'0 (OK)' if not invalid_scores else f'ALERTA: {len(invalid_scores)}'}")
     if invalid_scores:

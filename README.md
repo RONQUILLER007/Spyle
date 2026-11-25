@@ -35,12 +35,12 @@ El sistema utiliza una función canónica compartida de iconos tanto en las tarj
 
 ## 🛠️ Modos de Juego y Navegación
 
-1. **Expediente Diario (30 días fijos) e Infinito Determinista (`[ ARCHIVO MIXTO // DÍA X ]`):**
-   - `DAILY_MISSIONS` ofrece **30 jornadas fijas curadas (`dia1` a `dia30`)** con 7 retos temáticos cada 24 horas para toda la comunidad.
-   - A partir del **`Día 31`** (superados los 30 días manuales), un **generador determinista con semilla por día (`mulberry32`)** construye automáticamente jornadas infinitas (`Día 31`, `Día 32`, etc.) etiquetadas como `[ ARCHIVO MIXTO // DÍA X ]`, seleccionando 1 categoría activa ($\ge 250$ palabras) de cada prefijo (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín, excluyendo las usadas en los **últimos 7 días (`N-1` a `N-7`)** y sin clonar ningún día pasado. Si se añade una misión manual futura para ese día, tiene prioridad automática.
-   - Tanto los 30 días manuales como los autogenerados guardan progreso, puntuación y estado de reclamaciones en `localStorage`.
-2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **200 categorías activas** ($\ge 250$ palabras únicas), con comodín deshabilitado para entrenamiento puro.
-3. **Dossieres de Campo Temáticos (200 categorías · 64.151 palabras calibradas):** Expedientes clasificados agrupados en **6 áreas** del conocimiento (100 % activas con **mínimo 281**, **media 320,75** y **máximo 587** palabras por categoría):
+1. **Expediente Diario (31 días fijos) e Infinito Determinista (`[ ARCHIVO MIXTO // DÍA X ]`):**
+   - `DAILY_MISSIONS` ofrece **31 jornadas fijas curadas (`dia1` a `dia31`)** con 7 retos temáticos cada 24 horas para toda la comunidad.
+   - A partir del **`Día 32`** (superados los 31 días manuales), un **generador determinista con semilla por día (`mulberry32`)** construye automáticamente jornadas infinitas (`Día 32`, `Día 33`, etc.) etiquetadas como `[ ARCHIVO MIXTO // DÍA X ]`, seleccionando 1 categoría activa ($\ge 400$ palabras) de cada prefijo (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín, excluyendo las usadas en los **últimos 7 días (`N-1` a `N-7`)** y sin clonar ningún día pasado. Si se añade una misión manual futura para ese día, tiene prioridad automática.
+   - Tanto los 31 días manuales como los autogenerados guardan progreso, puntuación y estado de reclamaciones en `localStorage`.
+2. **Entrenamiento Ilimitado:** Rondas infinitas no repetitivas seleccionadas aleatoriamente entre las **200 categorías activas** ($\ge 400$ palabras únicas), con comodín deshabilitado para entrenamiento puro.
+3. **Dossieres de Campo Temáticos (200 categorías · 83.981 palabras calibradas):** Expedientes clasificados agrupados en **6 áreas** del conocimiento (100 % activas con **mínimo 405**, **media 419,90** y **máximo 587** palabras por categoría):
    - *General y Miscelánea* (`gen-`): 40 categorías (`gen-001` a `gen-040`)
    - *Palabras y Lenguaje* (`pal-`): 32 categorías (`pal-001` a `pal-032`)
    - *Películas y Cine* (`pel-`): 32 categorías (`pel-001` a `pel-032`)
@@ -82,19 +82,19 @@ Sistema integrado de condecoraciones persistentes en `localStorage` con notifica
 
 ---
 
-## 🔍 Auditor de Densidad, Métricas del Banco y Escala de 4 Niveles ($\ge 250$)
+## 🔍 Auditor de Densidad, Métricas del Banco y Escala de 4 Niveles ($\ge 400$)
 
-El umbral mínimo oficial para habilitar una categoría en juego es **`MIN_PALABRAS_CATEGORIA = 250`** (`MIN_ACTIVE_WORDS = 250` en `spyle_tool.py`), evaluado en el panel de desarrollador (`Alt + D` o `?dev=1`) según la escala de 4 niveles:
+El umbral mínimo oficial para habilitar una categoría en juego es **`MIN_PALABRAS_CATEGORIA = 400`** (`MIN_ACTIVE_WORDS = 400` en `spyle_tool.py`), evaluado en el panel de desarrollador (`Alt + D` o `?dev=1`) según la escala de 4 niveles:
 
 - **Estado actual verificado del banco (`200/200` categorías activas):**
-  - **Mínimo por categoría:** `281` palabras únicas (`0` categorías por debajo de `255`)
-  - **Media global:** `320,75` palabras por categoría
+  - **Mínimo por categoría:** `405` palabras únicas (`0` categorías por debajo de `400`)
+  - **Media global:** `419,90` palabras por categoría
   - **Máximo por categoría:** `587` palabras únicas
-  - **Total acumulado en `PROMPTS`:** `64.151` respuestas calibradas en español/inglés
-  - **Integridad estructural y DOM:** `0` IDs duplicados, `0` referencias huérfanas en `30/30` días fijos (`dia1`–`dia30`), `0` días consecutivos repetidos o clonados y **`115/115` IDs DOM** verificados entre `app.js` e `index.html`.
+  - **Total acumulado en `PROMPTS`:** `83.981` respuestas calibradas en español/inglés
+  - **Integridad estructural y DOM:** `0` IDs duplicados, `0` referencias huérfanas en `31/31` días fijos (`dia1`–`dia31`), `0` días consecutivos repetidos o clonados y **`115/115` IDs DOM** verificados entre `app.js` e `index.html`.
 
-- 🟢 **Completo / Activo ($\ge 250$ palabras):** Habilitada en Modo Ilimitado, Dossieres, Expediente Diario y Archivo Histórico.
-- 🟡 **Intermedio ($130\text{--}249$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego).
+- 🟢 **Completo / Activo ($\ge 400$ palabras):** Habilitada en Modo Ilimitado, Dossieres, Expediente Diario y Archivo Histórico.
+- 🟡 **Intermedio ($130\text{--}399$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego).
 - 🔴 **Baja ($50\text{--}129$ palabras):** Base inicial insuficiente (bloqueada en juego).
 - ⚪ **Crítica / Vacía ($0\text{--}49$ palabras):** Categoría sin poblar o en esqueleto (bloqueada en juego).
 
@@ -117,7 +117,7 @@ Para garantizar una evaluación justa, rápida y tolerante al español e inglés
 
 Utilidad única y reutilizable para gestionar `prompts.js` con respaldo automático previo en `.backups/`, normalización estricta (`ñ` intacta, sin tildes vocálicas), validación de puntuaciones `{10, 25, 45, 65, 85, 100}`, regla anti-duplicados y rollback automático si falla la verificación sintáctica o estructural:
 
-- `python -B spyle_tool.py auditar` *(y `auditar --incompletas --dias`)*: audita las 200 categorías, estadísticas `min / media / max / total`, las 15 categorías de menor densidad, integridad de los 30 días, sintaxis de `prompts.js` y `app.js` y coincidencia de los `115/115` IDs DOM con `index.html`.
+- `python -B spyle_tool.py auditar` *(y `auditar --incompletas --dias`)*: audita las 200 categorías, estadísticas `min / media / max / total`, las 15 categorías de menor densidad, integridad de los 31 días, sintaxis de `prompts.js` y `app.js` y coincidencia de los `115/115` IDs DOM con `index.html`.
 - `python -B spyle_tool.py normalizar`: normaliza claves, corrige puntuaciones heredadas fuera de escala y fusiona duplicados preservando la `ñ`.
 - `python -B spyle_tool.py bulk lote.json --cleanup`: importación masiva agrupada por puntuación (formato recomendado) con borrado automático del lote temporal al finalizar.
 - `python -B spyle_tool.py importar lote.json --cleanup`: importación por mapa palabra→puntuación y limpieza automática del JSON.
@@ -146,7 +146,7 @@ Cuando un jugador introduce un término no reconocido que considera válido:
 | `index.html` | Terminal táctica, cabecera, modales y recursos con cache-busting (`?v=1.2`) |
 | `style.css` | Estética Guerra Fría, animaciones de `#depth-gauge` (`tier-*`) y soporte `--keyboard-offset` |
 | `app.js` | Motor de juego, normalización morfológica, generador diario (`Día 31+`), logros y UX |
-| `prompts.js` | Banco `PROMPTS` (200 categorías, 64.151 respuestas) y `DAILY_MISSIONS` (`dia1`–`dia30`) |
+| `prompts.js` | Banco `PROMPTS` (200 categorías, 83.981 respuestas) y `DAILY_MISSIONS` (`dia1`–`dia31`) |
 | `favicon.jpg` | Recurso gráfico e icono de la aplicación |
 | `spyle_tool.py` | CLI oficial de auditoría, normalización, búsqueda e importación masiva |
 | `AGENTS.md` | Reglas operativas permanentes para agentes y protocolo obligatorio de cierre Git |
@@ -172,5 +172,5 @@ Cuando un jugador introduce un término no reconocido que considera válido:
 **Spyle** constituye una **adaptación cultural independiente al español y una reimaginación temática de espionaje y contrainteligencia** inspirada en el concepto original del juego de navegador **Tinkle** ([tinkle.day](https://tinkle.day)), ideado y publicado por **u/Longjumping-Yam-6532** en la comunidad **r/wordgames** de Reddit.
 
 - **Reconocimiento explícito al creador original:** La mecánica conceptual original de trivia inversa (*Reverse-Trivia / Pointless scoring*) pertenece a **Tinkle** (`u/Longjumping-Yam-6532` en `r/wordgames` / [tinkle.day](https://tinkle.day)). **Spyle** no pretende suplantar la identidad del autor ni atribuirse la autoría de la obra original.
-- **Adaptación propia en español:** A partir de esa premisa inspiradora, **Spyle** desarrolla una ambientación propia de contrainteligencia en la Guerra Fría, reglas ampliadas en español (cláusula de disparo limpio, comodín operativo quemado, logros retroactivos, archivo histórico y modo diario infinito determinista desde el Día 31) y un banco propio calibrado en España de **200 categorías y 64.151 respuestas**.
+- **Adaptación propia en español:** A partir de esa premisa inspiradora, **Spyle** desarrolla una ambientación propia de contrainteligencia en la Guerra Fría, reglas ampliadas en español (cláusula de disparo limpio, comodín operativo quemado, logros retroactivos, archivo histórico y modo diario infinito determinista desde el Día 32) y un banco propio calibrado en España de **200 categorías y 83.981 respuestas**.
 - **Código y Arquitectura Independientes:** Toda la implementación técnica (interfaz de terminal táctica, animaciones en `#depth-gauge`, encuadre `visualViewport`, motor de normalización y flexibilidad morfológica, generador diario determinista, persistencia en `localStorage`, CLI `spyle_tool.py` e integración serverless con Google Sheets) ha sido escrita desde cero sin reutilizar código fuente ni recursos gráficos de **Tinkle**.

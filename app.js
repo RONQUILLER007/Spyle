@@ -10,7 +10,7 @@ const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx9Supz_QAPtnOT0afc
    REGLA GLOBAL DE CATEGORÍA ACTIVA (solo categorías cerradas en verde)
    El Auditor de Densidad lee PROMPTS completo, sin filtrar.
    ========================================================================== */
-const MIN_PALABRAS_CATEGORIA = 250;
+const MIN_PALABRAS_CATEGORIA = 400;
 
 function esCategoriaCompleta(prompt) {
   if (!prompt || !prompt.answers) return false;
@@ -2178,7 +2178,7 @@ function dailyPrompts(day = dayNumber()) {
   const raw = dailyPromptsRaw(day);
   if (raw.every(esCategoriaCompleta)) return raw;
 
-  // Sustitución dinámica de huecos incompletos por categorías aleatorias activas (>= MIN_PALABRAS_CATEGORIA = 250)
+  // Sustitución dinámica de huecos incompletos por categorías aleatorias activas (>= MIN_PALABRAS_CATEGORIA = 400)
   // del mismo prefijo que no se hayan jugado en la sesión
   const usados = new Set(raw.filter(esCategoriaCompleta).map((p) => p.id));
   return raw.map((p) => {

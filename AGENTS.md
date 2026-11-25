@@ -6,7 +6,7 @@
 > - **PROHIBIDO leer o abrir `prompts.js` antes de importar**, ya que `spyle_tool.py` descarta duplicados automáticamente.
 > - Usa siempre el formato agrupado **`bulk`** con `--cleanup` (`python spyle_tool.py bulk lote.json --cleanup`) para ahorrar tokens y tiempo de ejecución.
 >
-> **OBJETIVO MÍNIMO POR CATEGORÍA (`>= 250`):** El umbral mínimo para que una categoría esté **🟢 Completa / Activa** y quede habilitada en todos los modos de juego (`MIN_PALABRAS_CATEGORIA = 250` en `app.js` / `MIN_ACTIVE_WORDS = 250` en `spyle_tool.py`) es alcanzar **al menos 250 palabras únicas** en su objeto `answers` (incluyendo respuestas de `10 pts` y de `100 pts`).
+> **OBJETIVO MÍNIMO POR CATEGORÍA (`>= 400`):** El umbral mínimo para que una categoría esté **🟢 Completa / Activa** y quede habilitada en todos los modos de juego (`MIN_PALABRAS_CATEGORIA = 400` en `app.js` / `MIN_ACTIVE_WORDS = 400` en `spyle_tool.py`) es alcanzar **al menos 400 palabras únicas** en su objeto `answers` (incluyendo respuestas de `10 pts` y de `100 pts`).
 >
 > **REGLA OBLIGATORIA DE CIERRE GIT:** Siempre que se modifique, añada o elimine cualquier archivo dentro de `Documents\Antigravity\Spyle` (sin tocar proyectos hermanos como `Lokal` o `Inglés Sara`), y tras superar sin errores `python -B spyle_tool.py auditar`, ejecuta automáticamente `git status`, `git add -A`, `git commit -m "<mensaje descriptivo>"` y `git push origin main` (ver detalles en el protocolo de cierre al final de este documento).
 
@@ -23,17 +23,17 @@
 
 ## Inventario Actual del Banco y Escala Oficial de Densidad (4 Niveles)
 
-- **Banco completo de `PROMPTS`:** **200 categorías activas ($\ge 250$ palabras únicas)** distribuidas en los **6 dossieres temáticos**:
+- **Banco completo de `PROMPTS`:** **200 categorías activas ($\ge 400$ palabras únicas; mínimo: `405`, media: `419,90`, máximo: `587`, total: `83.981` palabras)** distribuidas en los **6 dossieres temáticos**:
   - `gen-`: **40** categorías (`gen-001` a `gen-040`)
   - `pel-`: **32** categorías (`pel-001` a `pel-032`)
   - `dep-`: **32** categorías (`dep-001` a `dep-032`)
   - `geo-`: **32** categorías (`geo-001` a `geo-032`)
   - `mus-`: **32** categorías (`mus-001` a `mus-032`)
   - `pal-`: **32** categorías (`pal-001` a `pal-032`)
-- **Calendario fijo (`DAILY_MISSIONS`):** **30 jornadas manuales completas (`dia1` a `dia30`)**, con 7 categorías activas por día y relevo determinista infinito a partir del **`Día 31`**.
+- **Calendario fijo (`DAILY_MISSIONS`):** **31 jornadas manuales completas (`dia1` a `dia31`)**, con 7 categorías activas por día y relevo determinista infinito a partir del **`Día 32`**.
 - **Escala oficial por densidad:**
-  - **🟢 Completo / Activo ($\ge 250$ palabras):** Habilitada para Modo Ilimitado, Dossieres Temáticos, Expediente Diario y Archivo Histórico.
-  - **🟡 Intermedio ($130\text{--}249$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego hasta alcanzar 250).
+  - **🟢 Completo / Activo ($\ge 400$ palabras):** Habilitada para Modo Ilimitado, Dossieres Temáticos, Expediente Diario y Archivo Histórico.
+  - **🟡 Intermedio ($130\text{--}399$ palabras):** Categoría avanzada en desarrollo (bloqueada en juego hasta alcanzar 400).
   - **🔴 Baja ($50\text{--}129$ palabras):** Categoría con base inicial insuficiente (bloqueada en juego).
   - **⚪ Crítica / Vacía ($0\text{--}49$ palabras):** Categoría sin poblar o en esqueleto (bloqueada en juego).
 
@@ -46,7 +46,7 @@
   - `generarVariantesNumero(textoNorm)`: acepta equivalencias regulares de singular y plural (`-s`, `-es`, `-z` ↔ `-ces`) en palabras de $\ge 4$ caracteres; se desactiva automáticamente en categorías que exigen explícitamente `"en singular"`, `"en plural"` o `"en infinitivo"`.
   - Control anti-doble puntuación por raíz canónica (`yaUsadaEnSesionActual`) dentro de la misma sesión, conservando el término original limpio al transmitir reclamaciones a Google Sheets.
 - **Generador Determinista de Expedientes Diarios Infinitos (`generarExpedienteMixto`):**
-  - Prioriza siempre las **30 entradas manuales** definidas en `DAILY_MISSIONS` (`dia1` a `dia30`); a partir del **`Día 31`** (o para cualquier día sin entrada manual), genera automáticamente `[ ARCHIVO MIXTO // DÍA X ]` usando `mulberry32` con semilla basada en el día (`seed = (d * 2654435761) >>> 0`), 1 categoría por cada uno de los 6 prefijos (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín y ventana anti-repetición de 7 días (`N-1` a `N-7`).
+  - Prioriza siempre las **31 entradas manuales** definidas en `DAILY_MISSIONS` (`dia1` a `dia31`); a partir del **`Día 32`** (o para cualquier día sin entrada manual), genera automáticamente `[ ARCHIVO MIXTO // DÍA X ]` usando `mulberry32` con semilla basada en el día (`seed = (d * 2654435761) >>> 0`), 1 categoría por cada uno de los 6 prefijos (`pel-`, `dep-`, `geo-`, `mus-`, `pal-`, `gen-`) más 1 comodín y ventana anti-repetición de 7 días (`N-1` a `N-7`).
 - **Feedback Visual y Ergonomía Táctil:**
   - Animación progresiva de `#depth-gauge` según tramo de puntuación base (`tier-low`, `tier-mid`, `tier-high`, `tier-100`).
   - Encuadre automático ante teclado virtual (`ajustarEncuadreTeclado` con `visualViewport`).
